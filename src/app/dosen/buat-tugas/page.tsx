@@ -239,8 +239,12 @@ PENJELASAN LOGIS WAJIB:
                   className="w-full text-xs bg-input-bg border border-input-border rounded-xl px-3 py-2.5 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300"
                 >
                   <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile (Rekomendasi Skripsi)</option>
+                  <option value="llama-3.1-70b-versatile">Llama 3.1 70B Versatile (Kinerja Tinggi)</option>
+                  <option value="llama-3.1-8b-instant">Llama 3.1 8B Instant (Sangat Cepat)</option>
+                  <option value="gemma2-9b-it">Gemma 2 9B IT (Gemma Google)</option>
                   <option value="mixtral-8x7b-32768">Mixtral 8x7B (Kecepatan Tinggi)</option>
                   <option value="llama3-8b-8192">Llama 3 8B (Ringan)</option>
+                  <option value="llama3-70b-8192">Llama 3 70B (Stabil)</option>
                 </select>
               </div>
 
