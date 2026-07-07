@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Assistant Lecturer - Validasi Nilai</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #020617;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.3) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    
+    /* Smooth transition for hover effects */
+    .transition-all-300 {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Custom scrollbar for raw document pane */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-100 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="border-b border-slate-800 bg-brand-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-tr from-indigo-500 to-sky-400 text-white w-9 h-9 rounded-xl flex items-center justify-center font-extrabold text-lg shadow-lg shadow-indigo-500/20">
+          S
+        </div>
+        <div>
+          <span class="font-bold text-slate-100 text-sm tracking-tight">Smart Assistant Lecturer</span>
+          <p class="text-[10px] text-slate-400 -mt-0.5">Dashboard Dosen &bull; Validasi Evaluasi</p>
+        </div>
+      </div>
+
+      <!-- Quick Context Info -->
+      <div class="hidden md:flex items-center gap-6 text-xs text-slate-400">
+        <div>
+          <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Mata Kuliah</span>
+          <span class="text-slate-200 font-semibold">Basis Data Lanjut (IF204)</span>
+        </div>
+        <div class="h-8 w-px bg-slate-800"></div>
+        <div>
+          <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Tugas</span>
+          <span class="text-slate-200 font-semibold">Praktikum 2: Inner Join & Subquery</span>
+        </div>
+      </div>
+
+      <!-- Back Navigation & Status -->
+      <div class="flex items-center gap-3">
+        <a href="#" class="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl transition-all-300 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+          Kembali ke Rekap
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- WORKSPACE CONTAINER (SPLIT SCREEN) -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-6 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+    
+    <!-- LEFT PANEL: STUDENT RAW ANSWER (extracted text) -->
+    <div class="flex flex-col bg-slate-900/60 border border-slate-800/80 rounded-2xl shadow-xl backdrop-blur-md overflow-hidden">
+      <!-- Panel Header -->
+      <div class="px-6 py-4 border-b border-slate-800 bg-slate-950/40 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <span class="flex h-2.5 w-2.5 rounded-full bg-indigo-400 animate-pulse"></span>
+          <h2 class="font-bold text-slate-200 text-sm tracking-wide uppercase">Berkas Jawaban Mahasiswa</h2>
+        </div>
+        <span class="text-[11px] font-mono text-slate-400 bg-slate-800/60 border border-slate-700/50 px-2 py-0.5 rounded">
+          jawaban_tugas2_220102043.docx
+        </span>
+      </div>
+
+      <!-- Student Metadata Card -->
+      <div class="px-6 py-4 border-b border-slate-800/50 bg-slate-950/20 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+        <div>
+          <span class="text-slate-500 block uppercase text-[9px] font-bold tracking-wider mb-0.5">Nama Mahasiswa</span>
+          <span class="text-slate-200 font-semibold">M. Reyvan Purnama</span>
+        </div>
+        <div>
+          <span class="text-slate-500 block uppercase text-[9px] font-bold tracking-wider mb-0.5">NIM</span>
+          <span class="text-slate-200 font-mono font-semibold">220102043</span>
+        </div>
+        <div>
+          <span class="text-slate-500 block uppercase text-[9px] font-bold tracking-wider mb-0.5">Metode Unggah</span>
+          <span class="text-slate-300">File Extractor (Mammoth)</span>
+        </div>
+        <div>
+          <span class="text-slate-500 block uppercase text-[9px] font-bold tracking-wider mb-0.5">Tanggal Pengumpulan</span>
+          <span class="text-slate-300">07 Juli 2026, 14:32</span>
+        </div>
+      </div>
+
+      <!-- Raw Text Answer View -->
+      <div class="flex-1 p-6 overflow-y-auto max-h-[calc(100vh-320px)] custom-scrollbar bg-slate-950/30">
+        <!-- Essay Question Reference -->
+        <div class="mb-6 p-4 rounded-xl border border-slate-800/80 bg-slate-900/40 text-xs">
+          <h4 class="font-bold text-indigo-400 uppercase tracking-wide mb-1.5 flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            Teks Soal Uraian:
+          </h4>
+          <p class="text-slate-350 leading-relaxed font-sans">
+            "Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut."
+          </p>
+        </div>
+
+        <!-- Student Extracted Answer Content -->
+        <h4 class="font-bold text-slate-300 uppercase tracking-wider text-xs mb-3 flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+          Konten Teks Jawaban:
+        </h4>
+        <div class="space-y-4 text-sm text-slate-300 leading-relaxed font-sans">
+          <p>Berikut adalah jawaban saya untuk tugas Praktikum 2:</p>
+          
+          <p class="font-semibold text-slate-200">1. Query SQL:</p>
+          <pre class="bg-slate-950 border border-slate-800 rounded-lg p-4 font-mono text-xs text-sky-300 overflow-x-auto leading-relaxed">
+SELECT m.student_name, mk.course_name, k.grade
+FROM mahasiswa m
+INNER JOIN krs k ON m.id = k.mahasiswa_id
+INNER JOIN matakuliah mk ON k.matakuliah_id = mk.id
+WHERE k.grade > 80;</pre>
+
+          <p class="font-semibold text-slate-200">2. Penjelasan Alur Eksekusi Query:</p>
+          <ul class="list-disc pl-5 space-y-2 text-slate-350">
+            <li>
+              Pertama, DBMS akan memproses klausa <code class="font-mono text-indigo-300 bg-slate-900 px-1 rounded">FROM</code> untuk menentukan tabel utama yang digunakan, yaitu tabel <code class="font-mono text-slate-200">mahasiswa</code> (dengan alias <code class="font-mono text-slate-200">m</code>).
+            </li>
+            <li>
+              Kedua, DBMS melakukan <code class="font-mono text-indigo-300 bg-slate-900 px-1 rounded">INNER JOIN</code> pertama ke tabel <code class="font-mono text-slate-200">krs</code> (alias <code class="font-mono text-slate-200">k</code>) berdasarkan kecocokan primary key <code class="font-mono text-slate-200">m.id</code> dan foreign key <code class="font-mono text-slate-200">k.mahasiswa_id</code>. Hasil join ini menghasilkan relasi mahasiswa beserta data mata kuliah yang diambilnya.
+            </li>
+            <li>
+              Ketiga, dilakukan <code class="font-mono text-indigo-300 bg-slate-900 px-1 rounded">INNER JOIN</code> kedua ke tabel <code class="font-mono text-slate-200">matakuliah</code> (alias <code class="font-mono text-slate-200">mk</code>) menggunakan kolom <code class="font-mono text-slate-200">k.matakuliah_id</code> dan <code class="font-mono text-slate-200">mk.id</code> untuk mengambil informasi nama mata kuliah yang bersesuaian.
+            </li>
+            <li>
+              Keempat, baris data hasil gabungan tersebut akan difilter menggunakan klausa <code class="font-mono text-indigo-300 bg-slate-900 px-1 rounded">WHERE</code> dengan kondisi <code class="font-mono text-slate-200">k.grade > 80</code>. Sehingga data nilai yang kurang dari atau sama dengan 80 akan dibuang.
+            </li>
+            <li>
+              Terakhir, klausa <code class="font-mono text-indigo-300 bg-slate-900 px-1 rounded">SELECT</code> dieksekusi untuk memproyeksikan atau menampilkan tiga atribut akhir saja, yaitu nama mahasiswa, nama mata kuliah, dan nilai akhir.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: AI EVALUATION & LECTURER OVERRIDE -->
+    <div class="flex flex-col gap-6">
+      
+      <!-- AI EVALUATION REPORT -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl shadow-xl backdrop-blur-md overflow-hidden flex-1 flex flex-col">
+        <!-- Panel Header -->
+        <div class="px-6 py-4 border-b border-slate-800 bg-slate-950/40 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.585a.75.75 0 011.05-.183c2.72 1.813 5.44 1.813 8.16 0a.75.75 0 11.866 1.23c-3.12 2.08-6.24 2.08-9.36 0a.75.75 0 01-.716-1.047zm.052 4.412a.75.75 0 011.026.25c1.82 2.73 4.825 2.73 6.644 0a.75.75 0 111.238.847c-2.486 3.73-7.632 3.73-10.118 0a.75.75 0 01.21-1.097zM2.84 13.916a.75.75 0 011.037.228c1.4 2.1 4.144 3.1 8.123 3.1 3.98 0 6.723-1 8.123-3.1a.75.75 0 111.254.818c-1.68 2.52-5.068 3.782-9.377 3.782-4.31 0-7.697-1.262-9.377-3.782a.75.75 0 01.228-1.026z" clip-rule="evenodd"></path></svg>
+            <h2 class="font-bold text-slate-200 text-sm tracking-wide uppercase">Hasil Penilaian AI (Llama 3.3 via Groq)</h2>
+          </div>
+          <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            Graded (Sesuai Rubrik)
+          </span>
+        </div>
+
+        <!-- Scrollable Evaluation Details -->
+        <div class="flex-1 p-6 overflow-y-auto max-h-[calc(100vh-420px)] custom-scrollbar space-y-6 bg-slate-950/15">
+          
+          <!-- Score Dashboard Section -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- AI Holistic Score -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-center items-center text-center relative overflow-hidden group">
+              <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-1">Skor Holistik AI</span>
+              <div class="text-4xl font-extrabold text-white tracking-tight">95</div>
+              <span class="text-[10px] text-slate-500 mt-1">Penilaian Global</span>
+              <div class="absolute inset-x-0 bottom-0 h-1 bg-indigo-500"></div>
+            </div>
+            
+            <!-- Weighted Score -->
+            <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-4 flex flex-col justify-center items-center text-center relative overflow-hidden">
+              <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold mb-1">Skor Tertimbang</span>
+              <div class="text-4xl font-extrabold text-indigo-400 tracking-tight">96.0</div>
+              <span class="text-[10px] text-slate-500 mt-1">Kalkulasi Bobot</span>
+              <div class="absolute inset-x-0 bottom-0 h-1 bg-sky-400"></div>
+            </div>
+
+            <!-- Current Final Score (Live sync with override) -->
+            <div class="bg-slate-900/80 border border-indigo-900 rounded-xl p-4 flex flex-col justify-center items-center text-center relative overflow-hidden bg-gradient-to-b from-indigo-950/20 to-slate-900">
+              <span class="text-[9px] uppercase tracking-wider text-indigo-300 font-bold mb-1">Nilai Akhir Dosen</span>
+              <div id="live-final-score" class="text-4xl font-extrabold text-emerald-400 tracking-tight">96.0</div>
+              <span id="override-status" class="text-[10px] text-slate-400 mt-1">Mengikuti AI</span>
+              <div class="absolute inset-x-0 bottom-0 h-1 bg-emerald-500"></div>
+            </div>
+          </div>
+
+          <!-- AI Holistic Feedback -->
+          <div class="p-4 rounded-xl border border-slate-800/80 bg-slate-900/20">
+            <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wide mb-2 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
+              Feedback Global (Bahasa Indonesia):
+            </h4>
+            <p class="text-xs text-slate-350 leading-relaxed">
+              "Secara keseluruhan, jawaban mahasiswa menunjukkan pemahaman tingkat tinggi mengenai konsep INNER JOIN database. Query SQL ditulis dengan sintaksis yang benar, alias yang rapi, dan filter kondisi WHERE yang tepat sesuai batasan soal. Penjelasan alur eksekusi query juga terstruktur dengan runut mulai dari tahapan FROM hingga SELECT. Sedikit catatan optimasi adalah penjelasan alur JOIN bisa diperjelas bahwa penggabungan dilakukan di memori terlebih dahulu."
+            </p>
+          </div>
+
+          <!-- Chain-of-Thought (Reasoning Log) Accordion -->
+          <div class="border border-slate-800 rounded-xl overflow-hidden">
+            <button onclick="toggleCoT()" class="w-full px-4 py-3 bg-slate-900/40 hover:bg-slate-900/70 text-left flex justify-between items-center transition-all-300">
+              <span class="text-xs font-bold text-slate-300 uppercase tracking-wide flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                Log Penalaran AI (Chain-of-Thought)
+              </span>
+              <svg id="cot-arrow" class="w-4 h-4 text-slate-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div id="cot-content" class="hidden px-4 py-3.5 bg-slate-950/40 border-t border-slate-850/60 font-mono text-[11px] text-slate-400 leading-relaxed whitespace-pre-wrap">
+[LOG PENALARAN LLM - CHAIN-OF-THOUGHT (COT)]
+1. ANALISIS SOAL: Soal meminta (a) Query SQL dengan 2 INNER JOIN menghubungkan mahasiswa, krs, matakuliah. (b) Filter WHERE k.grade > 80. (c) Penjelasan alur eksekusi logika query.
+2. EVALUASI JAWABAN MAHASISWA (SINTAKS SQL):
+   - Mahasiswa menulis: `SELECT m.student_name, mk.course_name, k.grade FROM mahasiswa m INNER JOIN krs k ON m.id = k.mahasiswa_id INNER JOIN matakuliah mk ON k.matakuliah_id = mk.id WHERE k.grade > 80;`
+   - Validasi syntax: Sintaks INNER JOIN valid. Alias m, k, dan mk didefinisikan secara eksplisit. Hubungan primary key/foreign key tepat.
+   - Validasi filter: Kondisi `k.grade > 80` sesuai kriteria.
+3. EVALUASI PENJELASAN ALUR EKSEKUSI:
+   - Langkah 1 (FROM & Alias): Mahasiswa mendeskripsikan pemrosesan FROM terlebih dahulu. Tepat.
+   - Langkah 2 & 3 (INNER JOIN): Penjelasan penggabungan tabel mahasiswa-krs dan krs-matakuliah menggunakan kunci referensi sangat tepat.
+   - Langkah 4 (WHERE): Mahasiswa menjelaskan filter kondisi WHERE dilakukan setelah data digabungkan. Secara logis tepat untuk optimasi konseptual.
+   - Langkah 5 (SELECT): Mahasiswa menjelaskan proyeksi SELECT di akhir. Tepat sesuai standard logical query processing.
+4. ANALISIS RUBRIK & PEMBERIAN SKOR:
+   - Aspek 1 (Kebenaran Sintaks SQL - Bobot 40%): Kode 100% benar. Skor: 100.
+   - Aspek 2 (Logika Join & Relasi - Bobot 30%): Relasi m-k-mk terintegrasi sempurna. Skor: 100.
+   - Aspek 3 (Akurasi Penjelasan Alur - Bobot 30%): Penjelasan runut dan sesuai logical processing. Ada sedikit ruang detail, tapi secara esensi sangat baik. Skor: 86.6.
+5. KALKULASI TERTEMBANG: (100 * 0.40) + (100 * 0.30) + (86.6 * 0.30) = 40 + 30 + 26.0 = 96.0.
+            </div>
+          </div>
+
+          <!-- Detailed Rubric Breakdown -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Breakdown Penilaian Aspek Rubrik:</h4>
+            
+            <!-- Aspect 1 -->
+            <div class="border border-slate-800 bg-slate-900/30 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h5 class="text-xs font-bold text-slate-200">1. Kebenaran Sintaks SQL</h5>
+                  <span class="text-[10px] text-slate-400">Bobot Aspek: 40%</span>
+                </div>
+                <div class="bg-indigo-950/50 border border-indigo-800 text-indigo-400 text-xs font-bold px-2.5 py-1 rounded">
+                  Skor: 100 / 100
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-950/20 p-2.5 rounded border border-slate-850">
+                <strong>Justifikasi AI:</strong> Sintaksis SQL benar sepenuhnya. Semua kolom yang dipilih menggunakan alias yang relevan dan batasan WHERE k.grade > 80 diimplementasikan secara akurat.
+              </p>
+            </div>
+
+            <!-- Aspect 2 -->
+            <div class="border border-slate-800 bg-slate-900/30 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h5 class="text-xs font-bold text-slate-200">2. Logika Join & Relasi Tabel</h5>
+                  <span class="text-[10px] text-slate-400">Bobot Aspek: 30%</span>
+                </div>
+                <div class="bg-indigo-950/50 border border-indigo-800 text-indigo-400 text-xs font-bold px-2.5 py-1 rounded">
+                  Skor: 100 / 100
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-950/20 p-2.5 rounded border border-slate-850">
+                <strong>Justifikasi AI:</strong> Penggabungan tiga tabel (mahasiswa, krs, matakuliah) menggunakan INNER JOIN bertumpuk dilakukan dengan sangat logis melalui kunci referensi yang tepat.
+              </p>
+            </div>
+
+            <!-- Aspect 3 -->
+            <div class="border border-slate-800 bg-slate-900/30 rounded-xl p-4 space-y-2">
+              <div class="flex justify-between items-start">
+                <div>
+                  <h5 class="text-xs font-bold text-slate-200">3. Akurasi Penjelasan Alur</h5>
+                  <span class="text-[10px] text-slate-400">Bobot Aspek: 30%</span>
+                </div>
+                <div class="bg-indigo-950/50 border border-indigo-800 text-indigo-400 text-xs font-bold px-2.5 py-1 rounded">
+                  Skor: 86.6 / 100
+                </div>
+              </div>
+              <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-950/20 p-2.5 rounded border border-slate-850">
+                <strong>Justifikasi AI:</strong> Mahasiswa menjelaskan logical query processing dengan baik dari FROM, JOIN, WHERE, dan SELECT. Namun penjelasan join bisa ditambahkan detail performa memori.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LECTURER MANUAL OVERRIDE CONTROL -->
+      <div class="bg-gradient-to-r from-slate-900 via-slate-900 to-indigo-950/30 border border-indigo-500/20 rounded-2xl shadow-xl p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="bg-indigo-500/20 text-indigo-400 p-1.5 rounded-lg border border-indigo-500/30">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+            </div>
+            <div>
+              <h3 class="font-bold text-slate-200 text-sm tracking-wide uppercase">Kontrol Dosen (Manual Override)</h3>
+              <p class="text-[10px] text-slate-400">Otoritas dosen mutlak untuk merevisi penilaian otomatis AI</p>
+            </div>
+          </div>
+          <span id="override-indicator" class="hidden text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-full uppercase tracking-wider flex items-center gap-1">
+            <span class="h-1.5 w-1.5 bg-amber-400 rounded-full"></span>
+            Nilai Direvisi
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 items-center">
+          <!-- Slider input for score -->
+          <div class="sm:col-span-3 space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-400">Sesuaikan Nilai Akhir</span>
+              <span id="slider-value" class="text-indigo-400 font-mono">96</span>
+            </div>
+            <input 
+              id="score-slider" 
+              type="range" 
+              min="0" 
+              max="100" 
+              value="96" 
+              step="1"
+              class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+              oninput="handleSliderInput(this.value)"
+            >
+            <div class="flex justify-between text-[9px] text-slate-600 font-bold">
+              <span>0 (GAGAL)</span>
+              <span>50</span>
+              <span>75</span>
+              <span>100 (SEMPURNA)</span>
+            </div>
+          </div>
+
+          <!-- Reset Button to sync back with AI -->
+          <div class="sm:col-span-1">
+            <button 
+              type="button"
+              onclick="resetToAI()"
+              class="w-full h-10 text-xs font-semibold text-slate-300 hover:text-white bg-slate-850 hover:bg-slate-800 border border-slate-750 rounded-xl transition-all-300 flex items-center justify-center gap-1.5"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3-3 3 3m-3-3v12"></path></svg>
+              Reset ke AI
+            </button>
+          </div>
+        </div>
+
+        <!-- Override Justification Notes -->
+        <div class="space-y-2">
+          <label for="override-note" class="text-xs font-semibold text-slate-400 block">Catatan Dosen / Justifikasi Perubahan (Opsional)</label>
+          <textarea 
+            id="override-note" 
+            rows="2" 
+            placeholder="Tuliskan catatan kenapa Anda merubah nilai dari rekomendasi AI..."
+            class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl p-3 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-indigo-500/80 focus:ring-1 focus:ring-indigo-500/80 transition-all-300 font-sans"
+          ></textarea>
+        </div>
+
+        <!-- Action Button -->
+        <button 
+          type="button" 
+          onclick="publishGrade()"
+          class="w-full h-11 bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-600 hover:to-sky-600 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all-300 shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Setujui & Publikasikan Nilai
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-900 bg-brand-950 py-4 text-center text-xs text-slate-600">
+    <p>&copy; 2026 Smart Assistant Lecturer - Skripsi IT Universitas Muhammadiyah Bandung</p>
+  </footer>
+
+  <!-- JAVASCRIPT FOR MOCKUP INTERACTIONS -->
+  <script>
+    const INITIAL_AI_SCORE = 96.0;
+    let currentScore = INITIAL_AI_SCORE;
+    
+    const liveFinalScore = document.getElementById('live-final-score');
+    const overrideStatus = document.getElementById('override-status');
+    const overrideIndicator = document.getElementById('override-indicator');
+    const scoreSlider = document.getElementById('score-slider');
+    const sliderValue = document.getElementById('slider-value');
+    const overrideNote = document.getElementById('override-note');
+
+    function handleSliderInput(value) {
+      currentScore = parseFloat(value);
+      sliderValue.innerText = value;
+      liveFinalScore.innerText = currentScore.toFixed(1);
+      
+      if (currentScore !== INITIAL_AI_SCORE) {
+        overrideStatus.innerText = 'Nilai Direvisi Dosen';
+        overrideStatus.classList.remove('text-slate-400');
+        overrideStatus.classList.add('text-amber-400', 'font-bold');
+        overrideIndicator.classList.remove('hidden');
+      } else {
+        overrideStatus.innerText = 'Mengikuti AI';
+        overrideStatus.classList.remove('text-amber-400', 'font-bold');
+        overrideStatus.classList.add('text-slate-400');
+        overrideIndicator.classList.add('hidden');
+      }
+    }
+
+    function resetToAI() {
+      currentScore = INITIAL_AI_SCORE;
+      scoreSlider.value = INITIAL_AI_SCORE;
+      sliderValue.innerText = INITIAL_AI_SCORE;
+      liveFinalScore.innerText = INITIAL_AI_SCORE.toFixed(1);
+      
+      overrideStatus.innerText = 'Mengikuti AI';
+      overrideStatus.classList.remove('text-amber-400', 'font-bold');
+      overrideStatus.classList.add('text-slate-400');
+      overrideIndicator.classList.add('hidden');
+      overrideNote.value = '';
+    }
+
+    function toggleCoT() {
+      const cotContent = document.getElementById('cot-content');
+      const cotArrow = document.getElementById('cot-arrow');
+      
+      if (cotContent.classList.contains('hidden')) {
+        cotContent.classList.remove('hidden');
+        cotArrow.classList.add('rotate-180');
+      } else {
+        cotContent.classList.add('hidden');
+        cotArrow.classList.remove('rotate-180');
+      }
+    }
+
+    function publishGrade() {
+      alert(`Sukses! Nilai Akhir untuk M. Reyvan Purnama (NIM: 220102043) berhasil disimpan sebesar ${currentScore.toFixed(1)}.\n\nData ini disinkronisasikan ke Supabase.`);
+    }
+  </script>
+</body>
+</html>

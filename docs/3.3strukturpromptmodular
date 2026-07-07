@@ -1,0 +1,30 @@
+flowchart TD
+    %% === TEMA AKADEMIK (MONOKROM/GRAYSCALE) ===
+    classDef default fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000
+    classDef boundary fill:#fcfcfc,stroke:#000000,stroke-width:2px,stroke-dasharray: 5 5,color:#000000
+    classDef module fill:#f9f9f9,stroke:#000000,stroke-width:1.5px,color:#000000
+
+    subgraph PROMPT ["Struktur Utama Prompt-Template (Middleware)"]
+        direction TD
+        
+        ROLE["<b>[ROLE] Peran Sistem</b>"]:::module
+        TASK["<b>[TASK] Instruksi Evaluasi & CoT</b>"]:::module
+
+        subgraph GROUNDING ["Area Context Grounding (Otoritas Dosen)"]
+            direction TD
+            CRITERIA["<b>[CRITERIA] Rubrik Penilaian</b>"]:::module
+            CONTEXT["<b>[CONTEXT] Konteks Akademik</b>"]:::module
+            SOAL["<b>[SOAL_ESAI] Konteks Pertanyaan</b>"]:::module
+        end
+
+        INPUT["<b>[INPUT_DATA] Jawaban Mahasiswa</b>"]:::module
+        OUTPUT["<b>[OUTPUT_FORMAT] Spesifikasi Keluaran</b>"]:::module
+
+        %% Alur Perakitan Prompt
+        ROLE --> TASK
+        TASK --> GROUNDING
+        GROUNDING --> INPUT
+        INPUT --> OUTPUT
+    end
+
+    class PROMPT,GROUNDING boundary

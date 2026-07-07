@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Assistant Lecturer - Portal Mahasiswa</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #020617;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.3) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .transition-all-300 {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-100 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="border-b border-slate-800 bg-brand-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-tr from-indigo-500 to-sky-400 text-white w-9 h-9 rounded-xl flex items-center justify-center font-extrabold text-lg shadow-lg shadow-indigo-500/20">
+          S
+        </div>
+        <div>
+          <span class="font-bold text-slate-100 text-sm tracking-tight">Smart Assistant Lecturer</span>
+          <p class="text-[10px] text-slate-400 -mt-0.5">Universitas Muhammadiyah Bandung &bull; Student Portal</p>
+        </div>
+      </div>
+
+      <!-- Portal Badge -->
+      <span class="px-2.5 py-1 text-[11px] font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-full flex items-center gap-1.5">
+        <span class="h-1.5 w-1.5 bg-indigo-400 rounded-full"></span>
+        Student Access Mode
+      </span>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 flex flex-col justify-center">
+
+    <!-- ================= STATE 1: SUBMISSION FORM ================= -->
+    <div id="state-form" class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      <!-- Left side: Task Details & Rubric -->
+      <div class="lg:col-span-1 space-y-4">
+        <!-- Assignment Info Card -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md space-y-4">
+          <div class="space-y-1">
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Detail Tugas</span>
+            <span class="px-2 py-0.5 text-[10px] bg-indigo-950 text-indigo-300 border border-indigo-900 rounded font-semibold">IF204 &bull; Basis Data Lanjut</span>
+            <h1 class="text-base font-bold text-slate-100 tracking-tight leading-snug mt-2">
+              Praktikum 2: Inner Join & Subquery
+            </h1>
+          </div>
+          <div class="flex items-center gap-2 text-xs text-slate-400 border-t border-slate-800 pt-3">
+            <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+            <span>Tenggat: <strong class="text-slate-200">15 Juli 2026, 23:59 WIB</strong></span>
+          </div>
+        </div>
+
+        <!-- Rubric Card -->
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md space-y-3">
+          <div>
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Kriteria Penilaian (Rubrik)</span>
+            <p class="text-[10px] text-slate-500">Bobot resmi dari dosen pengampu.</p>
+          </div>
+
+          <div class="space-y-2 max-h-[220px] overflow-y-auto pr-1 custom-scrollbar">
+            <!-- Rubric 1 -->
+            <div class="bg-slate-950/40 border border-slate-850 rounded-xl p-3 text-xs space-y-1">
+              <div class="flex justify-between items-center font-bold text-slate-350">
+                <span>Kebenaran Sintaks SQL</span>
+                <span class="text-indigo-400">40%</span>
+              </div>
+              <p class="text-slate-500 text-[10px] leading-relaxed">SELECT, FROM, JOIN, dan WHERE harus ditulis dengan benar tanpa syntax error.</p>
+            </div>
+            <!-- Rubric 2 -->
+            <div class="bg-slate-950/40 border border-slate-850 rounded-xl p-3 text-xs space-y-1">
+              <div class="flex justify-between items-center font-bold text-slate-350">
+                <span>Logika Join & Relasi Tabel</span>
+                <span class="text-indigo-400">30%</span>
+              </div>
+              <p class="text-slate-500 text-[10px] leading-relaxed">Kebenaran penghubung antar-tabel mahasiswa ke krs dan krs ke matakuliah.</p>
+            </div>
+            <!-- Rubric 3 -->
+            <div class="bg-slate-950/40 border border-slate-850 rounded-xl p-3 text-xs space-y-1">
+              <div class="flex justify-between items-center font-bold text-slate-350">
+                <span>Akurasi Penjelasan Alur</span>
+                <span class="text-indigo-400">30%</span>
+              </div>
+              <p class="text-slate-500 text-[10px] leading-relaxed">Ketepatan penjelasan urutan logika pemrosesan query (logical processing order).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side: Submit Form & Dropzone -->
+      <div class="lg:col-span-2">
+        <form onsubmit="handleFormSubmit(event)" class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-xl backdrop-blur-md space-y-5">
+          <div class="border-b border-slate-800 pb-3">
+            <h2 class="text-base font-bold text-slate-200 tracking-tight uppercase">Kirimkan Berkas Tugas</h2>
+            <p class="text-xs text-slate-450">Berkas akan dievaluasi langsung oleh AI asisten dosen menggunakan dokumen parser.</p>
+          </div>
+
+          <!-- Essay Question Card -->
+          <div class="bg-slate-950/40 border border-slate-800 rounded-xl p-4 space-y-1.5">
+            <span class="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Pertanyaan Soal Esai:</span>
+            <p class="text-xs font-semibold text-slate-200 leading-relaxed font-sans">
+              "Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut."
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Full Name -->
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-450 block" for="studentName">Nama Lengkap *</label>
+              <input 
+                id="studentName" 
+                type="text" 
+                placeholder="e.g. M. Reyvan Purnama" 
+                value="M. Reyvan Purnama"
+                required
+                class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-indigo-500 transition-all-300"
+              >
+            </div>
+            <!-- NIM -->
+            <div class="space-y-2">
+              <label class="text-xs font-semibold text-slate-455 block" for="studentNim">NIM (Nomor Induk Mahasiswa) *</label>
+              <input 
+                id="studentNim" 
+                type="text" 
+                placeholder="e.g. 220102043" 
+                value="220102043"
+                required
+                class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 font-mono focus:outline-none focus:border-indigo-500 transition-all-300"
+              >
+            </div>
+          </div>
+
+          <!-- Document Parser Dropzone -->
+          <div class="space-y-2">
+            <label class="text-xs font-semibold text-slate-450 block">Berkas Jawaban (.pdf, .docx, .txt) *</label>
+            
+            <div id="dropzone" class="border-2 border-dashed border-slate-800 hover:border-indigo-500/80 bg-slate-950/30 rounded-2xl p-6 text-center cursor-pointer transition-all-300 flex flex-col items-center justify-center space-y-2 min-h-36" onclick="triggerFileInput()">
+              <input type="file" id="file-input" accept=".pdf,.docx,.txt" class="hidden" onchange="handleFileChange(event)">
+              
+              <svg id="upload-icon" class="w-8 h-8 text-slate-500 transition-all-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+              
+              <div id="upload-text" class="text-xs">
+                <span class="text-indigo-400 font-bold">Klik untuk mengunggah</span> atau drag & drop berkas Anda
+                <p class="text-[10px] text-slate-500 mt-1">Ukuran berkas maksimal 5MB (.pdf, .docx, .txt)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="w-full h-11 bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-600 hover:to-sky-600 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all-300 shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            Kirim & Evaluasi Sekarang
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- ================= STATE 2: AI INFERENCE PROGRESS ================= -->
+    <div id="state-loading" class="hidden max-w-lg w-full mx-auto bg-slate-900/60 border border-slate-800/80 rounded-3xl p-8 shadow-2xl backdrop-blur-md text-center space-y-6">
+      <div class="flex justify-center">
+        <div class="relative">
+          <!-- Spinning Circle -->
+          <div class="size-20 rounded-full border-4 border-slate-800 border-t-indigo-500 animate-spin"></div>
+          <!-- Sparkles Icon in center -->
+          <svg class="w-7 h-7 text-indigo-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+        </div>
+      </div>
+      
+      <div class="space-y-2">
+        <h2 class="text-xl font-extrabold text-slate-100 tracking-tight">AI Sedang Mengevaluasi Jawaban Anda</h2>
+        <p class="text-xs text-slate-450 max-w-xs mx-auto">
+          Lapisan middleware sedang memproses jawaban Anda menggunakan model penalaran <strong>Llama 3.3 (Groq API)</strong>.
+        </p>
+      </div>
+
+      <!-- Realtime step loader card -->
+      <div class="bg-slate-950/50 border border-slate-800/60 rounded-xl py-3 px-4 max-w-xs mx-auto">
+        <span id="loading-status-text" class="text-xs text-indigo-300 font-semibold flex items-center justify-center gap-2">
+          <!-- Small loader -->
+          <svg class="w-3.5 h-3.5 animate-spin text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3-3 3 3m-3-3v12"></path></svg>
+          Mengekstrak berkas unggahan...
+        </span>
+      </div>
+    </div>
+
+
+    <!-- ================= STATE 3: REAL-TIME FEEDBACK ================= -->
+    <div id="state-result" class="hidden max-w-3xl w-full mx-auto space-y-6">
+      
+      <!-- SUCCESS BANNER -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md flex flex-col md:flex-row items-center gap-4 justify-between">
+        <div class="flex items-center gap-3.5 text-center md:text-left">
+          <div class="size-11 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          </div>
+          <div>
+            <h2 class="font-bold text-slate-100 text-sm tracking-wide uppercase">Jawaban Berhasil Dievaluasi!</h2>
+            <p class="text-[10.5px] text-slate-450">Umpan balik formatif dan skor Anda siap ditinjau di bawah ini.</p>
+          </div>
+        </div>
+        <button 
+          onclick="resetToForm()"
+          class="px-4 py-2 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-750 border border-slate-700 rounded-xl transition-all-300"
+        >
+          Kirim Berkas Baru
+        </button>
+      </div>
+
+      <!-- SCORE & HOLISTIC FEEDBACK GRID -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+        <!-- SCORE CARD -->
+        <div class="bg-gradient-to-b from-indigo-950/80 to-slate-900/90 border border-indigo-500/20 rounded-3xl p-6 shadow-xl flex flex-col justify-between items-center text-center">
+          <div class="space-y-1">
+            <svg class="w-6 h-6 text-indigo-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5a2 2 0 10-2 2h2zm0 0h4m-4 0H8m0 0v8a4 4 0 008 0v-8H8z"></path></svg>
+            <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold block">Skor Akhir Anda</span>
+          </div>
+          
+          <div class="my-6">
+            <h3 class="text-7xl font-extrabold tracking-tighter text-white">96.0</h3>
+            <span class="text-[10px] text-slate-500">skala 100</span>
+          </div>
+
+          <div class="text-[10px] text-indigo-300 bg-indigo-500/10 border border-indigo-500/20 px-3 py-1.5 rounded-full font-semibold">
+            Berdasarkan kalkulasi aspek rubrik
+          </div>
+        </div>
+
+        <!-- HOLISTIC FEEDBACK CARD -->
+        <div class="md:col-span-2 bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 shadow-xl flex flex-col justify-between">
+          <div class="space-y-2">
+            <div class="flex items-center gap-2 text-indigo-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
+              <span class="text-xs font-bold uppercase tracking-wider">Umpan Balik Holistik AI:</span>
+            </div>
+            <p class="text-xs text-slate-350 leading-relaxed font-sans">
+              "Secara keseluruhan, jawaban mahasiswa menunjukkan pemahaman tingkat tinggi mengenai konsep INNER JOIN database. Query SQL ditulis dengan sintaksis yang benar, alias yang rapi, dan filter kondisi WHERE yang tepat sesuai batasan soal. Penjelasan alur eksekusi query juga terstruktur dengan runut mulai dari tahapan FROM hingga SELECT. Sedikit catatan optimasi adalah penjelasan alur JOIN bisa diperjelas bahwa penggabungan dilakukan di memori terlebih dahulu."
+            </p>
+          </div>
+          
+          <div class="text-[10px] text-slate-550 border-t border-slate-850 pt-3 mt-4">
+            *Hasil di atas merupakan penilaian asisten AI sementara. Dosen pengampu dapat meninjau dan menyesuaikan nilai ini.
+          </div>
+        </div>
+      </div>
+
+      <!-- DETAILED BREAKDOWN -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 shadow-xl space-y-4">
+        <div>
+          <h3 class="text-sm font-bold text-slate-200 tracking-wide uppercase">Rincian Penilaian Aspek Rubrik</h3>
+          <p class="text-[11px] text-slate-450">Detail perolehan poin dan feedback AI pada masing-masing kriteria tugas.</p>
+        </div>
+
+        <div class="space-y-3">
+          <!-- Aspect 1 -->
+          <div class="border border-slate-850 bg-slate-950/20 rounded-2xl p-4 space-y-2">
+            <div class="flex justify-between items-start gap-4">
+              <div>
+                <h4 class="text-xs font-bold text-slate-200">1. Kebenaran Sintaks SQL</h4>
+                <span class="text-[10px] text-slate-500">Bobot Aspek: 40%</span>
+              </div>
+              <div class="bg-indigo-950/50 border border-indigo-900 text-indigo-400 text-xs font-bold px-2.5 py-1 rounded">
+                Skor: 100 / 100
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-950/30 p-2.5 rounded border border-slate-900">
+              Sintaksis SQL benar sepenuhnya. Semua kolom yang dipilih menggunakan alias yang relevan dan batasan WHERE k.grade > 80 diimplementasikan secara akurat.
+            </p>
+          </div>
+
+          <!-- Aspect 2 -->
+          <div class="border border-slate-850 bg-slate-950/20 rounded-2xl p-4 space-y-2">
+            <div class="flex justify-between items-start gap-4">
+              <div>
+                <h4 class="text-xs font-bold text-slate-200">2. Logika Join & Relasi Tabel</h4>
+                <span class="text-[10px] text-slate-500">Bobot Aspek: 30%</span>
+              </div>
+              <div class="bg-indigo-950/50 border border-indigo-900 text-indigo-400 text-xs font-bold px-2.5 py-1 rounded">
+                Skor: 100 / 100
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-950/30 p-2.5 rounded border border-slate-900">
+              Penggabungan tiga tabel (mahasiswa, krs, matakuliah) menggunakan INNER JOIN bertumpuk dilakukan dengan sangat logis melalui kunci referensi yang tepat.
+            </p>
+          </div>
+
+          <!-- Aspect 3 -->
+          <div class="border border-slate-850 bg-slate-950/20 rounded-2xl p-4 space-y-2">
+            <div class="flex justify-between items-start gap-4">
+              <div>
+                <h4 class="text-xs font-bold text-slate-200">3. Akurasi Penjelasan Alur</h4>
+                <span class="text-[10px] text-slate-500">Bobot Aspek: 30%</span>
+              </div>
+              <div class="bg-indigo-950/50 border border-indigo-900 text-indigo-400 text-xs font-bold px-2.5 py-1 rounded">
+                Skor: 86.6 / 100
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-950/30 p-2.5 rounded border border-slate-900">
+              Mahasiswa menjelaskan logical query processing dengan baik dari FROM, JOIN, WHERE, dan SELECT. Namun penjelasan join bisa ditambahkan detail performa memori.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-900 bg-brand-950 py-4 text-center text-xs text-slate-600">
+    <p>&copy; 2026 Smart Assistant Lecturer - Skripsi IT Universitas Muhammadiyah Bandung</p>
+  </footer>
+
+  <!-- STATE SWITCHING JAVASCRIPT -->
+  <script>
+    const stateForm = document.getElementById('state-form');
+    const stateLoading = document.getElementById('state-loading');
+    const stateResult = document.getElementById('state-result');
+    const loadingStatusText = document.getElementById('loading-status-text');
+
+    function triggerFileInput() {
+      document.getElementById('file-input').click();
+    }
+
+    function handleFileChange(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const dropzone = document.getElementById('dropzone');
+        const uploadIcon = document.getElementById('upload-icon');
+        const uploadText = document.getElementById('upload-text');
+
+        // Change dropzone style to showing selected file
+        dropzone.classList.remove('border-slate-800');
+        dropzone.classList.add('border-indigo-500', 'bg-indigo-500/5');
+        uploadIcon.classList.remove('text-slate-500');
+        uploadIcon.classList.add('text-indigo-400');
+        uploadText.innerHTML = `
+          <span class="text-emerald-400 font-bold block text-sm mb-1">Berkas Terpilih:</span>
+          <span class="font-mono text-slate-200 block bg-slate-900 border border-slate-800 px-3 py-1 rounded-lg text-xs truncate max-w-xs mx-auto">${file.name}</span>
+          <p class="text-[10px] text-slate-400 mt-1.5">Ukuran: ${(file.size / 1024).toFixed(1)} KB (Siap diunggah)</p>
+        `;
+      }
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      
+      // Switch to loading state
+      stateForm.classList.add('hidden');
+      stateLoading.classList.remove('hidden');
+
+      // Loader steps cycler
+      const steps = [
+        "Membaca berkas PDF/Word Mahasiswa...",
+        "Mengekstrak plain text & melakukan pembersihan regex...",
+        "Menghubungkan ke server Groq Cloud API...",
+        "Llama 3.3 sedang menilai jawaban sesuai parameter grounding...",
+        "Menghitung perolehan skor aspek rubrik...",
+        "Merumuskan umpan balik formatif Bahasa Indonesia..."
+      ];
+      
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        currentStep++;
+        if (currentStep < steps.length) {
+          loadingStatusText.innerHTML = `
+            <svg class="w-3.5 h-3.5 animate-spin text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3-3 3 3m-3-3v12"></path></svg>
+            ${steps[currentStep]}
+          `;
+        }
+      }, 700);
+
+      // Transition to results after 4.2 seconds
+      setTimeout(() => {
+        clearInterval(interval);
+        stateLoading.classList.add('hidden');
+        stateResult.classList.remove('hidden');
+      }, 4200);
+    }
+
+    function resetToForm() {
+      stateResult.classList.add('hidden');
+      stateForm.classList.remove('hidden');
+      
+      // Reset dropzone
+      const dropzone = document.getElementById('dropzone');
+      const uploadIcon = document.getElementById('upload-icon');
+      const uploadText = document.getElementById('upload-text');
+      document.getElementById('file-input').value = '';
+
+      dropzone.className = 'border-2 border-dashed border-slate-800 hover:border-indigo-500/80 bg-slate-950/30 rounded-2xl p-6 text-center cursor-pointer transition-all-300 flex flex-col items-center justify-center space-y-2 min-h-36';
+      uploadIcon.className = 'w-8 h-8 text-slate-500 transition-all-300';
+      uploadText.innerHTML = `
+        <span class="text-indigo-400 font-bold">Klik untuk mengunggah</span> atau drag & drop berkas Anda
+        <p class="text-[10px] text-slate-500 mt-1">Ukuran berkas maksimal 5MB (.pdf, .docx, .txt)</p>
+      `;
+    }
+  </script>
+</body>
+</html>

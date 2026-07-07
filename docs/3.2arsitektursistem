@@ -1,0 +1,90 @@
+ flowchart TD
+
+    %% === TEMA AKADEMIK (MONOKROM/GRAYSCALE) ===
+
+    classDef default fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000
+
+    classDef boundary fill:none,stroke:#000000,stroke-width:2px,stroke-dasharray: 5 5
+
+    classDef module fill:#f9f9f9,stroke:#000000,stroke-width:1px,color:#000000
+
+    classDef db fill:#ffffff,stroke:#000000,stroke-width:1.5px,color:#000000
+
+
+    %% === AKTOR / PENGGUNA ===
+
+    Dosen["Dosen<br>(Administrator)"]
+
+    Mahasiswa["Mahasiswa<br>(User)"]
+
+
+    %% === SISTEM UTAMA ===
+
+    subgraph NEXTJS ["Sistem Aplikasi Web Next.js"]
+
+        direction TB
+
+        UI["Antarmuka Pengguna"]:::module
+
+
+        subgraph MW ["Lapisan Middleware / API"]
+
+            direction TB
+
+            Parser["Modul Document Parser"]:::module
+
+            Cleansing["Modul Data Cleansing"]:::module
+
+            Orchestrator["Modul Prompt Orchestrator"]:::module
+
+            GroqClient["Groq API Client<br>(GPT-OSS 120B)"]:::module
+
+
+            %% Alur Internal Middleware
+
+            Parser --> Cleansing
+
+            Cleansing --> Orchestrator
+
+            Orchestrator <--> GroqClient
+
+        end
+
+
+        %% Hubungan Antarmuka dengan Middleware
+
+        UI --> Parser
+
+        Orchestrator --> UI
+
+    end
+
+    
+
+    %% Menerapkan gaya garis putus-putus untuk kotak sistem
+
+    class NEXTJS,MW boundary
+
+
+    %% === LAYANAN EKSTERNAL ===
+
+    Supabase[("Basis Data Supabase<br>PostgreSQL")]:::db
+
+    GroqCloud["Layanan Inferensi Groq API Cloud<br>(GPT-OSS 120B)"]:::module
+
+
+    %% === RELASI SISTEM ===
+
+    Dosen --> UI
+
+    Mahasiswa --> UI
+
+
+    %% Orchestrator mengendalikan baca/tulis ke Supabase
+
+    Orchestrator <--> Supabase
+
+
+    %% Hubungan luar ke pihak ketiga
+
+    GroqClient <--> GroqCloud
