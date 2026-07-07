@@ -163,7 +163,7 @@ export async function POST(req: NextRequest) {
     } catch (err: any) {
       console.error("LLM Provider error:", err);
       return NextResponse.json(
-        { error: `Gagal memanggil API Llama 3.3 (Groq): ${err.message}` },
+        { error: `Gagal memanggil API GPT-OSS 120B (Groq): ${err.message}` },
         { status: 502 }
       );
     }

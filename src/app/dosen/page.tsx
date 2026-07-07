@@ -181,7 +181,7 @@ export default function DosenDashboard() {
               <GraduationCap className="w-5 h-5 text-brand-secondary" />
               {totalAssignments} Tugas
             </div>
-            <p className="text-[10px] text-muted-text mt-1">Llama 3.3 sebagai model grading utama</p>
+            <p className="text-[10px] text-muted-text mt-1">GPT-OSS 120B sebagai model grading utama</p>
           </div>
 
           <div className="bg-card border border-card-border rounded-2xl p-5 shadow-sm transition-all duration-300">
@@ -247,7 +247,7 @@ export default function DosenDashboard() {
                       </div>
                       <h3 className="font-bold text-foreground text-xs mt-2 leading-snug">{item.title}</h3>
                       <p className="text-[10px] text-muted-text mt-1">Kode: {item.course_code}</p>
-                      <div className="mt-2 text-[9px] text-muted-text font-mono">Model: {item.model}</div>
+                      <div className="mt-2 text-[9px] text-muted-text font-mono">Model: {item.model === "llama-3.3-70b-versatile" ? "GPT-OSS 120B" : item.model}</div>
                     </div>
                   ))
                 )}
