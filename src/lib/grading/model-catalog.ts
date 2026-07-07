@@ -31,7 +31,15 @@ function isLikelyTextModel(modelId: string): boolean {
 }
 
 function fallbackCatalog(source: "fallback" | "cache"): ModelCatalogResult {
-  const fallbackModels = [DEFAULT_LLM_MODEL];
+  const fallbackModels = [
+    DEFAULT_LLM_MODEL,
+    "llama-3.1-70b-versatile",
+    "llama-3.1-8b-instant",
+    "gemma2-9b-it",
+    "mixtral-8x7b-32768",
+    "llama3-8b-8192",
+    "llama3-70b-8192"
+  ];
   return {
     provider: DEFAULT_LLM_PROVIDER,
     models: fallbackModels,

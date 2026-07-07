@@ -32,6 +32,33 @@ export default function CreateAssignment() {
   const [academicContext, setAcademicContext] = useState("");
 
   const [rubrics, setRubrics] = useState<RubricItem[]>([]);
+  const [modelOptions, setModelOptions] = useState<string[]>(["llama-3.3-70b-versatile"]);
+  const [isLoadingModels, setIsLoadingModels] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    async function loadModels() {
+      try {
+        const response = await fetch("/api/internal/llm/models?provider=groq");
+        if (response.ok) {
+          const data = await response.json();
+          if (active && data.models && data.models.length > 0) {
+            setModelOptions(data.models);
+            const recommended = data.recommendedModel || "llama-3.3-70b-versatile";
+            setModel(recommended);
+          }
+        }
+      } catch (err) {
+        console.error("Gagal memuat katalog model:", err);
+      } finally {
+        if (active) setIsLoadingModels(false);
+      }
+    }
+    loadModels();
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const loadTemplate = () => {
     setTitle("Praktikum 2: Inner Join & Subquery");
@@ -231,20 +258,20 @@ PENJELASAN LOGIS WAJIB:
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-text block" htmlFor="llm-model">Model AI Inferencing (Groq Cloud)</label>
+                <label className="text-xs font-semibold text-muted-text block" htmlFor="llm-model">
+                  Model AI Inferencing (Groq Cloud) {isLoadingModels && <span className="text-[10px] text-muted-text animate-pulse">(Memuat...)</span>}
+                </label>
                 <select 
                   id="llm-model"
                   value={model}
                   onChange={(e) => setModel(e.target.value)}
                   className="w-full text-xs bg-input-bg border border-input-border rounded-xl px-3 py-2.5 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300"
                 >
-                  <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile (Rekomendasi Skripsi)</option>
-                  <option value="llama-3.1-70b-versatile">Llama 3.1 70B Versatile (Kinerja Tinggi)</option>
-                  <option value="llama-3.1-8b-instant">Llama 3.1 8B Instant (Sangat Cepat)</option>
-                  <option value="gemma2-9b-it">Gemma 2 9B IT (Gemma Google)</option>
-                  <option value="mixtral-8x7b-32768">Mixtral 8x7B (Kecepatan Tinggi)</option>
-                  <option value="llama3-8b-8192">Llama 3 8B (Ringan)</option>
-                  <option value="llama3-70b-8192">Llama 3 70B (Stabil)</option>
+                  {modelOptions.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt} {opt === "llama-3.3-70b-versatile" ? "(Rekomendasi Skripsi)" : ""}
+                    </option>
+                  ))}
                 </select>
               </div>
 
