@@ -217,7 +217,7 @@ export async function POST(req: NextRequest) {
     const aspectScores = normalizedRubric.map(ar => ({
       submission_id: submission.id,
       aspect_name: ar.aspect,
-      score: ar.score,
+      score: Number(((ar.score * ar.weight) / 100).toFixed(2)),
       feedback_text: ar.feedback
     }));
 

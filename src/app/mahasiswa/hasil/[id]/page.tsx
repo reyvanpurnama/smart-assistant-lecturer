@@ -87,10 +87,18 @@ export default function StudentFeedback({ params }: PageProps) {
 
         const mergedRubrics = (rubScores || []).map(rs => {
           const matchDef = (rubricsDef || []).find(rd => rd.aspect_name === rs.aspect_name);
+          const maxWeight = matchDef ? Number(matchDef.weight) : 100;
+          let scoreVal = Number(rs.score);
+
+          // If old data has raw score (0-100) instead of weighted score (0-weight)
+          if (scoreVal > maxWeight && maxWeight > 0) {
+            scoreVal = Number(((scoreVal * maxWeight) / 100).toFixed(2));
+          }
+
           return {
             name: rs.aspect_name,
-            score: Number(rs.score),
-            max: matchDef ? Number(matchDef.weight) : 100,
+            score: scoreVal,
+            max: maxWeight,
             feedback: rs.feedback_text
           };
         });

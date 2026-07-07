@@ -86,13 +86,23 @@ export default function LecturerOverride({ params }: PageProps) {
         // Merge rubric definitions with scores
         const initialAspects = (rubricsDef || []).map(rd => {
           const scoreRow = (currentScores || []).find(cs => cs.aspect_name === rd.aspect_name);
+          const maxWeight = Number(rd.weight);
+          let scoreVal = scoreRow ? Number(scoreRow.score) : 0;
+          let aiScoreVal = scoreRow ? Number(scoreRow.score) : 0;
+
+          // If old data has raw score (0-100) instead of weighted score (0-weight)
+          if (scoreVal > maxWeight && maxWeight > 0) {
+            scoreVal = Number(((scoreVal * maxWeight) / 100).toFixed(2));
+            aiScoreVal = Number(((aiScoreVal * maxWeight) / 100).toFixed(2));
+          }
+
           return {
             id: scoreRow ? scoreRow.id : null,
             aspect_name: rd.aspect_name,
-            max_weight: Number(rd.weight),
+            max_weight: maxWeight,
             description: rd.description,
-            score: scoreRow ? Number(scoreRow.score) : 0,
-            ai_score: scoreRow ? Number(scoreRow.score) : 0
+            score: scoreVal,
+            ai_score: aiScoreVal
           };
         });
 
