@@ -2,6 +2,14 @@
 -- SKRIPSI: SMART ASSISTANT LECTURER (SAL) - DATABASE SCHEMA SETUPS
 -- =========================================================================
 
+-- PEMBERSIHAN TABEL BEKAS (RESET DATABASE)
+DROP TABLE IF EXISTS public.rubric_scores CASCADE;
+DROP TABLE IF EXISTS public.grading_jobs CASCADE;
+DROP TABLE IF EXISTS public.grades CASCADE;
+DROP TABLE IF EXISTS public.rubrics CASCADE;
+DROP TABLE IF EXISTS public.submissions CASCADE;
+DROP TABLE IF EXISTS public.assignments CASCADE;
+
 -- 1. TABEL: ASSIGNMENTS (Daftar Tugas Praktikum Dosen)
 CREATE TABLE IF NOT EXISTS public.assignments (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
