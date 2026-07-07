@@ -295,11 +295,28 @@ export default function StudentPortal() {
                   className="hidden" 
                 />
                 <label htmlFor="file-upload" className="cursor-pointer space-y-2 block">
-                  <Upload className="w-8 h-8 text-emerald-500 mx-auto" />
-                  <div className="text-xs text-foreground font-bold">
-                    {fileName ? `Terpilih: ${fileName}` : "Seret & letakkan berkas di sini atau klik untuk mencari"}
-                  </div>
-                  <p className="text-[10px] text-muted-text">Mendukung format PDF, DOCX, dan TXT (Maks. 5MB)</p>
+                  {file ? (
+                    <div className="space-y-3 py-2">
+                      <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto animate-bounce" />
+                      <div>
+                        <div className="text-xs text-foreground font-bold">
+                          Berkas Berhasil Terlampir!
+                        </div>
+                        <div className="mt-2 px-3 py-1.5 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl border border-emerald-500/20 text-xs font-semibold max-w-xs mx-auto truncate font-mono">
+                          {fileName}
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-muted-text">Klik atau seret berkas baru untuk mengganti</p>
+                    </div>
+                  ) : (
+                    <>
+                      <Upload className="w-8 h-8 text-emerald-500 mx-auto" />
+                      <div className="text-xs text-foreground font-bold">
+                        Seret &amp; letakkan berkas di sini atau klik untuk mencari
+                      </div>
+                      <p className="text-[10px] text-muted-text">Mendukung format PDF, DOCX, dan TXT (Maks. 5MB)</p>
+                    </>
+                  )}
                 </label>
               </div>
 

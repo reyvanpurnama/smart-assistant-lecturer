@@ -261,6 +261,28 @@ export default function LecturerOverride({ params }: PageProps) {
                   </div>
                 </div>
 
+                {submission.file_path && (
+                  <div className="p-3.5 bg-indigo-500/5 border border-indigo-500/10 rounded-xl flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-indigo-500" />
+                      <div>
+                        <span className="text-[9px] text-muted-text uppercase font-bold block">Dokumen Asli</span>
+                        <span className="text-xs font-semibold text-foreground font-mono truncate max-w-[150px] sm:max-w-xs block">
+                          {submission.file_path.split("/").pop()}
+                        </span>
+                      </div>
+                    </div>
+                    <a 
+                      href={`https://reyvanpurnama-smart-assistant-lecturer.supabase.co/storage/v1/object/public/student-submissions/${submission.file_path}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="px-3 py-1.5 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg text-[10px] font-bold transition-all duration-300"
+                    >
+                      Buka Berkas
+                    </a>
+                  </div>
+                )}
+
                 <div>
                   <span className="text-[10px] font-bold text-muted-text block mb-1">Jawaban (Teks &amp; Kode SQL):</span>
                   <pre className="p-4 bg-slate-900 text-slate-100 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800 whitespace-pre-wrap">
