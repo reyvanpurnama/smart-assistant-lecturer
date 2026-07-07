@@ -14,6 +14,7 @@ import {
   MessageSquare
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createClient } from "@/utils/supabase/client";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -21,13 +22,17 @@ interface PageProps {
 
 export default function StudentFeedback({ params }: PageProps) {
   const resolvedParams = use(params);
-  const nim = resolvedParams.id;
+  const submissionId = resolvedParams.id;
   const searchParams = useSearchParams();
-  const name = searchParams.get("name") || "Mahasiswa Praktikum";
+  const nameQuery = searchParams.get("name") || "Mahasiswa Praktikum";
 
   // Loading Progression States
   const [step, setStep] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [submission, setSubmission] = useState<any>(null);
+  const [rubrics, setRubrics] = useState<any[]>([]);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const steps = [
     "Membaca berkas jawaban mahasiswa...",
@@ -41,22 +46,67 @@ export default function StudentFeedback({ params }: PageProps) {
     if (step < steps.length) {
       const timer = setTimeout(() => {
         setStep(prev => prev + 1);
-      }, 1500);
+      }, 1200);
       return () => clearTimeout(timer);
     } else {
       setIsLoading(false);
     }
   }, [step]);
 
-  // Mock Result Data
-  const mockResult = {
-    totalScore: 96.0,
-    aspects: [
-      { name: "Kebenaran Sintaks SQL", score: 40, max: 40, feedback: "Sintaks query ditulis secara tepat menggunakan standar ANSI-SQL, SELECT, FROM, JOIN, dan filter WHERE sudah sempurna." },
-      { name: "Logika Join & Relasi Tabel", score: 30, max: 30, feedback: "Penghubung foreign-primary key dari tabel mahasiswa ke krs dan krs ke matakuliah terjalin secara logis." },
-      { name: "Akurasi Penjelasan Alur", score: 26, max: 30, feedback: "Penjelasan logical execution order (FROM -> JOIN -> WHERE -> SELECT) sudah runtut. Sedikit kurang merinci optimasi DBMS internal, namun sangat memuaskan." }
-    ]
-  };
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const supabase = createClient();
+
+        // 1. Fetch submission details
+        const { data: sub, error: subErr } = await supabase
+          .from("submissions")
+          .select("id, assignment_id, nim, student_name, ai_score, final_score, status, cot_log")
+          .eq("id", submissionId)
+          .single();
+
+        if (subErr || !sub) {
+          throw new Error("Hasil penilaian tidak ditemukan atau data Supabase belum selesai disinkronkan.");
+        }
+
+        // 2. Fetch rubric scores
+        const { data: rubScores, error: rubErr } = await supabase
+          .from("rubric_scores")
+          .select("aspect_name, score, feedback_text")
+          .eq("submission_id", submissionId);
+
+        if (rubErr) {
+          throw new Error(`Gagal memuat rincian rubrik: ${rubErr.message}`);
+        }
+
+        // 3. Fetch original rubric definitions for max scores
+        const { data: rubricsDef } = await supabase
+          .from("rubrics")
+          .select("aspect_name, weight")
+          .eq("assignment_id", sub.assignment_id);
+
+        const mergedRubrics = (rubScores || []).map(rs => {
+          const matchDef = (rubricsDef || []).find(rd => rd.aspect_name === rs.aspect_name);
+          return {
+            name: rs.aspect_name,
+            score: Number(rs.score),
+            max: matchDef ? Number(matchDef.weight) : 100,
+            feedback: rs.feedback_text
+          };
+        });
+
+        setSubmission(sub);
+        setRubrics(mergedRubrics);
+      } catch (err: any) {
+        console.error(err);
+        setErrorMsg(err.message || "Terjadi kesalahan memuat data.");
+      }
+    }
+
+    if (!isLoading) {
+      loadData();
+    }
+  }, [isLoading, submissionId]);
 
   return (
     <div className="flex-1 flex flex-col min-h-screen">
@@ -116,7 +166,20 @@ export default function StudentFeedback({ params }: PageProps) {
               {steps[step] || "Menyelesaikan penilaian..."}
             </div>
           </div>
-        ) : (
+        ) : errorMsg ? (
+          /* ERROR RENDER */
+          <div className="w-full max-w-md bg-card border border-card-border rounded-2xl p-6 shadow-md text-center space-y-4">
+            <AlertTriangle className="w-12 h-12 text-rose-500 mx-auto" />
+            <h3 className="text-sm font-bold text-foreground uppercase">Gagal Memuat Hasil</h3>
+            <p className="text-xs text-muted-text">{errorMsg}</p>
+            <Link 
+              href="/mahasiswa" 
+              className="inline-block px-4 py-2 bg-indigo-500 text-white rounded-xl text-xs font-bold"
+            >
+              Coba Kumpulkan Ulang
+            </Link>
+          </div>
+        ) : submission ? (
           /* FINISHED EVALUATION FEEDBACK STATE */
           <div className="w-full space-y-6 animate-fade-in transition-all duration-300">
             
@@ -128,14 +191,14 @@ export default function StudentFeedback({ params }: PageProps) {
                 </div>
                 <div>
                   <h2 className="text-lg font-extrabold text-foreground tracking-tight">Evaluasi AI Selesai</h2>
-                  <p className="text-xs text-muted-text mt-0.5">Jawaban dari <strong>{name}</strong> (NIM: <span className="font-mono">{nim}</span>) telah dinilai.</p>
+                  <p className="text-xs text-muted-text mt-0.5">Jawaban dari <strong>{submission.student_name}</strong> (NIM: <span className="font-mono">{submission.nim}</span>) telah dinilai.</p>
                 </div>
               </div>
 
               <div className="bg-slate-500/5 px-6 py-3 rounded-2xl border border-card-border text-center w-full sm:w-auto">
                 <span className="text-[9px] text-muted-text uppercase font-bold block">Skor AI Kumulatif</span>
                 <div className="text-2xl font-extrabold text-brand-primary tracking-tight font-mono mt-0.5">
-                  {mockResult.totalScore.toFixed(1)} <span className="text-xs text-muted-text">/ 100</span>
+                  {Number(submission.final_score).toFixed(1)} <span className="text-xs text-muted-text">/ 100</span>
                 </div>
               </div>
             </div>
@@ -148,16 +211,16 @@ export default function StudentFeedback({ params }: PageProps) {
               </h3>
 
               <div className="space-y-4">
-                {mockResult.aspects.map((aspect, idx) => (
+                {rubrics.map((aspect, idx) => (
                   <div key={idx} className="bg-slate-500/5 border border-card-border/60 rounded-xl p-4 transition-all duration-300 space-y-2">
                     <div className="flex justify-between items-start">
                       <h4 className="text-xs font-bold text-foreground">{aspect.name}</h4>
                       <div className="text-xs font-mono font-bold text-brand-primary">
-                        {aspect.score} <span className="text-muted-text">/ {aspect.max}</span>
+                        {aspect.score.toFixed(1)} <span className="text-muted-text">/ {aspect.max}</span>
                       </div>
                     </div>
                     <p className="text-xs text-muted-text leading-relaxed">
-                      {aspect.feedback}
+                      {aspect.feedback || "Tidak ada rincian umpan balik."}
                     </p>
                   </div>
                 ))}
@@ -176,7 +239,7 @@ export default function StudentFeedback({ params }: PageProps) {
             </div>
 
           </div>
-        )}
+        ) : null}
       </main>
 
       {/* FOOTER */}

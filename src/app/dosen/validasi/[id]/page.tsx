@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, use } from "react";
+import { useRouter } from "next/navigation";
+import { useState, useEffect, use } from "react";
 import { 
   ArrowLeft, 
   Sparkles, 
@@ -15,112 +16,167 @@ import {
   AlertCircle
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createClient } from "@/utils/supabase/client";
 
 interface PageProps {
   params: Promise<{ id: string }>;
 }
 
 export default function LecturerOverride({ params }: PageProps) {
+  const router = useRouter();
   const resolvedParams = use(params);
-  const nim = resolvedParams.id;
+  const submissionId = resolvedParams.id;
 
-  // Mock Student Data based on NIM
-  const getStudentData = (nimVal: string) => {
-    const students: Record<string, any> = {
-      "220102043": {
-        name: "M. Reyvan Purnama",
-        answer: `SELECT m.student_name, mk.course_name, k.grade
-FROM mahasiswa m
-INNER JOIN krs k ON m.id = k.mahasiswa_id
-INNER JOIN matakuliah mk ON k.matakuliah_id = mk.id
-WHERE k.grade > 80;
-
-Penjelasan alur eksekusi query SQL:
-1. SQL Server/Database Engine akan memproses klausa FROM terlebih dahulu untuk mengambil data dari tabel mahasiswa (m).
-2. Kemudian klausa INNER JOIN krs (k) dieksekusi dengan mencocokkan primary key mahasiswa.id dengan foreign key krs.mahasiswa_id.
-3. INNER JOIN matakuliah (mk) berikutnya mencocokkan foreign key krs.matakuliah_id dengan primary key matakuliah.id.
-4. Klausa WHERE k.grade > 80 diproses untuk memfilter baris data yang nilai mata kuliahnya lebih besar dari 80.
-5. Terakhir, klausa SELECT dieksekusi untuk menampilkan kolom nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) ke layar output.`,
-        aiScores: { sql: 40, join: 30, flow: 26 },
-        cot: `[SYSTEM] Menginisialisasi modul Context Grounding...
-[GROUNDING] Memuat skema tabel referensi dan sintaks Ground Truth...
-[COGNITIVE] Menganalisis sintaks SQL Mahasiswa:
-- Klausa SELECT sesuai dengan kriteria proyeksi.
-- Struktur INNER JOIN m -> k -> mk dieksekusi secara tepat.
-- Kondisi filter WHERE k.grade > 80 valid.
-[COGNITIVE] Menganalisis Penjelasan Alur:
-- Langkah pemrosesan logical query order (FROM -> JOIN -> WHERE -> SELECT) dijelaskan secara runut dan benar.
-- Ada sedikit kekurangan detail pada logical execution database engine, namun penjelasan secara keseluruhan sudah sangat baik.
-[SCORE CALCULATOR] Kebenaran Sintaks SQL: 40/40. Logika Join: 30/30. Alur Eksekusi: 26/30.
-[DECISION] Evaluasi selesai. Nilai Kumulatif AI: 96.0`
-      },
-      "220102011": {
-        name: "Ahmad Jalaludin",
-        answer: `SELECT student_name, course_name, grade
-FROM mahasiswa, krs, matakuliah
-WHERE mahasiswa.id = krs.mahasiswa_id 
-AND krs.matakuliah_id = matakuliah.id 
-AND grade >= 80;
-
-Alur eksekusi:
-Query ini mengambil tabel mahasiswa, krs, dan matakuliah. Lalu menghubungkan id mahasiswa ke krs dan id krs ke matakuliah di klausa WHERE. Kemudian memfilter nilai grade yang minimal 80. Terakhir mengambil kolom student_name, course_name, grade.`,
-        aiScores: { sql: 32, join: 25, flow: 25 },
-        cot: `[SYSTEM] Menginisialisasi modul Context Grounding...
-[GROUNDING] Memuat skema tabel referensi dan sintaks Ground Truth...
-[COGNITIVE] Menganalisis sintaks SQL Mahasiswa:
-- Menggunakan IMPLICIT JOIN (comma separated tables di FROM) bukan INNER JOIN eksplisit. Ini merupakan bad practice untuk basis data lanjut, namun sintaks berjalan dengan benar.
-- Kondisi filter menggunakan grade >= 80 (padahal di soal tertulis "di atas 80", harusnya > 80). Ini menyebabkan data nilai tepat 80 ikut terbawa. Skor dikurangi.
-[COGNITIVE] Menganalisis Penjelasan Alur:
-- Penjelasan alur sangat singkat dan tidak merinci tahapan logical processing order (FROM -> JOIN -> WHERE -> SELECT).
-[SCORE CALCULATOR] Kebenaran Sintaks SQL: 32/40. Logika Join: 25/30. Alur Eksekusi: 25/30.
-[DECISION] Evaluasi selesai. Nilai Kumulatif AI: 82.0`
-      }
-    };
-
-    return students[nimVal] || {
-      name: "Mahasiswa Contoh",
-      answer: `SELECT * FROM mahasiswa WHERE kelas = 'A';`,
-      aiScores: { sql: 20, join: 10, flow: 10 },
-      cot: `[SYSTEM] Menginisialisasi modul...
-[GROUNDING] Tidak mendeteksi SQL query yang relevan...
-[DECISION] Penilaian selesai. Nilai Kumulatif AI: 40.0`
-    };
-  };
-
-  const student = getStudentData(nim);
-
-  interface ScoresState {
-    sql: number;
-    join: number;
-    flow: number;
-  }
-
-  // States
+  const [submission, setSubmission] = useState<any>(null);
+  const [assignment, setAssignment] = useState<any>(null);
+  const [aspectScores, setAspectScores] = useState<any[]>([]);
+  
   const [isCotExpanded, setIsCotExpanded] = useState(true);
-  const [scores, setScores] = useState<ScoresState>({
-    sql: student.aiScores.sql,
-    join: student.aiScores.join,
-    flow: student.aiScores.flow
-  });
   const [isOverridden, setIsOverridden] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        setIsLoading(true);
+
+        // 1. Fetch submission details
+        const { data: sub, error: subErr } = await supabase
+          .from("submissions")
+          .select("*")
+          .eq("id", submissionId)
+          .single();
+
+        if (subErr || !sub) {
+          throw new Error("Pengumpulan tidak ditemukan.");
+        }
+
+        setSubmission(sub);
+        setIsOverridden(sub.status === "Overridden");
+
+        // 2. Fetch assignment details
+        const { data: assign, error: assignErr } = await supabase
+          .from("assignments")
+          .select("*")
+          .eq("id", sub.assignment_id)
+          .single();
+
+        if (assignErr) throw assignErr;
+        setAssignment(assign);
+
+        // 3. Fetch rubric definitions
+        const { data: rubricsDef, error: rubDefErr } = await supabase
+          .from("rubrics")
+          .select("*")
+          .eq("assignment_id", sub.assignment_id);
+
+        if (rubDefErr) throw rubDefErr;
+
+        // 4. Fetch current rubric scores
+        const { data: currentScores, error: scoresErr } = await supabase
+          .from("rubric_scores")
+          .select("*")
+          .eq("submission_id", submissionId);
+
+        if (scoresErr) throw scoresErr;
+
+        // Merge rubric definitions with scores
+        const initialAspects = (rubricsDef || []).map(rd => {
+          const scoreRow = (currentScores || []).find(cs => cs.aspect_name === rd.aspect_name);
+          return {
+            id: scoreRow ? scoreRow.id : null,
+            aspect_name: rd.aspect_name,
+            max_weight: Number(rd.weight),
+            description: rd.description,
+            score: scoreRow ? Number(scoreRow.score) : 0,
+            ai_score: scoreRow ? Number(scoreRow.score) : 0
+          };
+        });
+
+        setAspectScores(initialAspects);
+
+      } catch (err) {
+        console.error("Error loading validation data:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadData();
+  }, [submissionId]);
 
   // Calculate scores
-  const totalScore = scores.sql + scores.join + scores.flow;
-  const originalTotal = student.aiScores.sql + student.aiScores.join + student.aiScores.flow;
+  const originalTotal = aspectScores.reduce((acc, curr) => acc + curr.ai_score, 0);
+  const totalScore = aspectScores.reduce((acc, curr) => acc + curr.score, 0);
 
-  const handleSliderChange = (key: keyof ScoresState, val: number) => {
-    setScores((prev: ScoresState) => ({ ...prev, [key]: val }));
+  const handleSliderChange = (index: number, val: number) => {
+    setAspectScores(prev => {
+      const next = [...prev];
+      next[index].score = val;
+      return next;
+    });
     setIsOverridden(true);
   };
 
   const resetToAI = () => {
-    setScores({ ...student.aiScores });
+    setAspectScores(prev => prev.map(a => ({ ...a, score: a.ai_score })));
     setIsOverridden(false);
   };
 
-  const saveOverride = () => {
-    alert(`Sukses menyimpan perubahan nilai!\n\nNama: ${student.name}\nNilai Akhir: ${totalScore.toFixed(1)} (Override: ${isOverridden ? 'YA' : 'TIDAK'})`);
+  const saveOverride = async () => {
+    try {
+      setIsSaving(true);
+      
+      // Update individual aspect scores in rubric_scores
+      for (const aspect of aspectScores) {
+        if (aspect.id) {
+          const { error: updateScoreErr } = await supabase
+            .from("rubric_scores")
+            .update({ score: aspect.score })
+            .eq("id", aspect.id);
+          
+          if (updateScoreErr) throw updateScoreErr;
+        }
+      }
+
+      // Update submission status and final_score
+      const { error: updateSubErr } = await supabase
+        .from("submissions")
+        .update({
+          final_score: totalScore,
+          status: isOverridden ? "Overridden" : "Graded"
+        })
+        .eq("id", submissionId);
+
+      if (updateSubErr) throw updateSubErr;
+
+      alert(`Sukses menyimpan perubahan nilai!\n\nNama: ${submission.student_name}\nNilai Akhir: ${totalScore.toFixed(1)} (Override: ${isOverridden ? 'YA' : 'TIDAK'})`);
+      router.push("/dosen");
+    } catch (err: any) {
+      alert(`Gagal menyimpan perubahan: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex-1 flex items-center justify-center min-h-screen text-xs text-muted-text">
+        Memuat lembar validasi mahasiswa...
+      </div>
+    );
+  }
+
+  if (!submission) {
+    return (
+      <div className="flex-1 flex items-center justify-center min-h-screen text-xs text-rose-500 font-bold">
+        Lembar pengumpulan tidak ditemukan di database.
+      </div>
+    );
+  }
 
   return (
     <div className="flex-1 flex flex-col min-h-screen">
@@ -161,8 +217,8 @@ Query ini mengambil tabel mahasiswa, krs, dan matakuliah. Lalu menghubungkan id 
               <User className="w-6 h-6" />
             </div>
             <div>
-              <h1 className="text-lg font-extrabold text-foreground tracking-tight">{student.name}</h1>
-              <p className="text-xs text-muted-text">NIM: <span className="font-mono">{nim}</span> &bull; Kelas: Basis Data Lanjut (IF204)</p>
+              <h1 className="text-lg font-extrabold text-foreground tracking-tight">{submission.student_name}</h1>
+              <p className="text-xs text-muted-text">NIM: <span className="font-mono">{submission.nim}</span> &bull; Kelas: Basis Data Lanjut (IF204)</p>
             </div>
           </div>
 
@@ -201,14 +257,14 @@ Query ini mengambil tabel mahasiswa, krs, dan matakuliah. Lalu menghubungkan id 
                 <div>
                   <span className="text-[10px] font-bold text-muted-text block mb-1">Pertanyaan Tugas:</span>
                   <div className="p-3.5 bg-slate-500/5 border border-card-border/60 rounded-xl text-xs text-foreground/80 leading-relaxed">
-                    Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa, nama mata kuliah, dan nilai akhir yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Serta jelaskan alur eksekusi query tersebut.
+                    {assignment?.question || "Tuliskan sintaks query SQL."}
                   </div>
                 </div>
 
                 <div>
                   <span className="text-[10px] font-bold text-muted-text block mb-1">Jawaban (Teks &amp; Kode SQL):</span>
                   <pre className="p-4 bg-slate-900 text-slate-100 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed border border-slate-800 whitespace-pre-wrap">
-                    {student.answer}
+                    {submission.raw_answer_text}
                   </pre>
                 </div>
               </div>
@@ -234,7 +290,7 @@ Query ini mengambil tabel mahasiswa, krs, dan matakuliah. Lalu menghubungkan id 
               {isCotExpanded && (
                 <div className="mt-3">
                   <pre className="p-4 bg-slate-950 text-indigo-300 rounded-xl text-[10px] font-mono leading-relaxed border border-slate-900 overflow-x-auto whitespace-pre-wrap max-h-56 custom-scrollbar">
-                    {student.cot}
+                    {submission.cot_log || "[SYSTEM] Tidak ada log reasoning."}
                   </pre>
                 </div>
               )}
@@ -247,88 +303,33 @@ Query ini mengambil tabel mahasiswa, krs, dan matakuliah. Lalu menghubungkan id 
               </h2>
 
               <div className="space-y-5">
-                
-                {/* Rubric Aspect 1 */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h4 className="text-xs font-bold text-foreground">Kebenaran Sintaks SQL</h4>
-                      <p className="text-[10px] text-muted-text">Maksimal 40% bobot &bull; SELECT, FROM, JOIN, WHERE.</p>
+                {aspectScores.map((aspect, idx) => (
+                  <div key={idx} className="space-y-2">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <h4 className="text-xs font-bold text-foreground">{aspect.aspect_name}</h4>
+                        <p className="text-[10px] text-muted-text">Maksimal {aspect.max_weight}% bobot &bull; {aspect.description}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-xs font-mono font-bold text-brand-primary">{aspect.score}</span>
+                        <span className="text-[10px] text-muted-text"> / {aspect.max_weight}</span>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs font-mono font-bold text-brand-primary">{scores.sql}</span>
-                      <span className="text-[10px] text-muted-text"> / 40</span>
-                    </div>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="40" 
-                    value={scores.sql}
-                    onChange={(e) => handleSliderChange("sql", parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
-                  />
-                  <div className="flex justify-between text-[8px] text-muted-text font-mono">
-                    <span>0 (Salah total)</span>
-                    <span className="text-indigo-400 font-bold">AI: {student.aiScores.sql}</span>
-                    <span>40 (Sempurna)</span>
-                  </div>
-                </div>
-
-                {/* Rubric Aspect 2 */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h4 className="text-xs font-bold text-foreground">Logika Join &amp; Relasi Tabel</h4>
-                      <p className="text-[10px] text-muted-text">Maksimal 30% bobot &bull; Penghubung antar foreign key.</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-mono font-bold text-brand-primary">{scores.join}</span>
-                      <span className="text-[10px] text-muted-text"> / 30</span>
+                    <input 
+                      type="range" 
+                      min="0" 
+                      max={aspect.max_weight} 
+                      value={aspect.score}
+                      onChange={(e) => handleSliderChange(idx, parseInt(e.target.value))}
+                      className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
+                    />
+                    <div className="flex justify-between text-[8px] text-muted-text font-mono">
+                      <span>0 (Salah total)</span>
+                      <span className="text-indigo-400 font-bold">AI: {aspect.ai_score}</span>
+                      <span>{aspect.max_weight} (Sempurna)</span>
                     </div>
                   </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="30" 
-                    value={scores.join}
-                    onChange={(e) => handleSliderChange("join", parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
-                  />
-                  <div className="flex justify-between text-[8px] text-muted-text font-mono">
-                    <span>0 (Salah relasi)</span>
-                    <span className="text-indigo-400 font-bold">AI: {student.aiScores.join}</span>
-                    <span>30 (Sempurna)</span>
-                  </div>
-                </div>
-
-                {/* Rubric Aspect 3 */}
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h4 className="text-xs font-bold text-foreground">Akurasi Penjelasan Alur</h4>
-                      <p className="text-[10px] text-muted-text">Maksimal 30% bobot &bull; Logical execution order query.</p>
-                    </div>
-                    <div className="text-right">
-                      <span className="text-xs font-mono font-bold text-brand-primary">{scores.flow}</span>
-                      <span className="text-[10px] text-muted-text"> / 30</span>
-                    </div>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="30" 
-                    value={scores.flow}
-                    onChange={(e) => handleSliderChange("flow", parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-indigo-500"
-                  />
-                  <div className="flex justify-between text-[8px] text-muted-text font-mono">
-                    <span>0 (Tidak menjelaskan)</span>
-                    <span className="text-indigo-400 font-bold">AI: {student.aiScores.flow}</span>
-                    <span>30 (Sempurna)</span>
-                  </div>
-                </div>
-
+                ))}
               </div>
 
               {/* Summary Indicator */}
@@ -366,10 +367,20 @@ Query ini mengambil tabel mahasiswa, krs, dan matakuliah. Lalu menghubungkan id 
 
               <button 
                 onClick={saveOverride}
+                disabled={isSaving}
                 className="h-11 px-8 bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all duration-300 shadow-md shadow-indigo-500/25 flex items-center justify-center gap-1.5"
               >
-                <Save className="w-4 h-4" />
-                Simpan &amp; Sahkan Nilai
+                {isSaving ? (
+                  <>
+                    <span className="animate-spin border-2 border-t-transparent border-white rounded-full w-3.5 h-3.5 mr-1.5"></span>
+                    Menyimpan...
+                  </>
+                ) : (
+                  <>
+                    <Save className="w-4 h-4" />
+                    Simpan &amp; Sahkan Nilai
+                  </>
+                )}
               </button>
             </div>
 

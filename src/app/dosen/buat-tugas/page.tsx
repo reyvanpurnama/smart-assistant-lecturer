@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { 
   AlertCircle, 
@@ -11,6 +12,7 @@ import {
   Settings
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createClient } from "@/utils/supabase/client";
 
 interface RubricItem {
   id: string;
@@ -20,6 +22,7 @@ interface RubricItem {
 }
 
 export default function CreateAssignment() {
+  const router = useRouter();
   const [courseCode, setCourseCode] = useState("IF204");
   const [title, setTitle] = useState("Praktikum 2: Inner Join & Subquery");
   const [model, setModel] = useState("llama-3.3-70b-versatile");
@@ -56,6 +59,9 @@ PENJELASAN LOGIS WAJIB:
   ]);
 
   const [totalWeight, setTotalWeight] = useState(100);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const supabase = createClient();
 
   useEffect(() => {
     const sum = rubrics.reduce((acc, curr) => acc + curr.weight, 0);
@@ -79,13 +85,57 @@ PENJELASAN LOGIS WAJIB:
     setRubrics([...rubrics, { id: newId, name: "", weight: 0, description: "" }]);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (totalWeight !== 100) {
       alert("Error: Total bobot kriteria harus tepat bernilai 100%!");
       return;
     }
-    alert(`Sukses! Tugas "${title}" berhasil dikunci dan dipublikasikan di database Supabase.`);
+    
+    try {
+      setIsSaving(true);
+
+      // 1. Insert assignment
+      const { data: newAssignment, error: insertAssignErr } = await supabase
+        .from("assignments")
+        .insert({
+          course_code: courseCode,
+          title,
+          model,
+          due_date: dueDate ? new Date(dueDate).toISOString() : null,
+          question: essayQuestion,
+          reference_context: academicContext
+        })
+        .select()
+        .single();
+      
+      if (insertAssignErr || !newAssignment) {
+        throw new Error(insertAssignErr?.message || "Gagal menyimpan data tugas.");
+      }
+
+      // 2. Insert rubrics
+      const rubricRows = rubrics.map(r => ({
+        assignment_id: newAssignment.id,
+        aspect_name: r.name,
+        weight: r.weight,
+        description: r.description
+      }));
+
+      const { error: insertRubricErr } = await supabase
+        .from("rubrics")
+        .insert(rubricRows);
+
+      if (insertRubricErr) {
+        throw new Error(insertRubricErr.message);
+      }
+
+      alert(`Sukses! Tugas "${title}" berhasil dikunci dan dipublikasikan di database Supabase.`);
+      router.push("/dosen");
+    } catch (err: any) {
+      alert(`Terjadi kesalahan: ${err.message}`);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   return (
@@ -339,15 +389,24 @@ PENJELASAN LOGIS WAJIB:
             </button>
             <button 
               type="submit"
-              disabled={totalWeight !== 100}
+              disabled={totalWeight !== 100 || isSaving}
               className={`h-11 px-8 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-2 ${
-                totalWeight === 100
+                totalWeight === 100 && !isSaving
                   ? "bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-600 hover:to-sky-600 shadow-indigo-500/25"
                   : "bg-slate-300 dark:bg-slate-800 text-slate-500 dark:text-slate-600 cursor-not-allowed opacity-50"
               }`}
             >
-              <Save className="w-4 h-4" />
-              Kunci &amp; Publikasikan Tugas
+              {isSaving ? (
+                <>
+                  <span className="animate-spin border-2 border-t-transparent border-white rounded-full w-4 h-4 mr-2"></span>
+                  Mempublikasikan...
+                </>
+              ) : (
+                <>
+                  <Save className="w-4 h-4" />
+                  Kunci &amp; Publikasikan Tugas
+                </>
+              )}
             </button>
           </div>
 

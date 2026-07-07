@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   GraduationCap, 
   BookOpen, 
@@ -15,17 +15,99 @@ import {
   ChevronRight
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createClient } from "@/utils/supabase/client";
 
 export default function DosenDashboard() {
-  const [students, setStudents] = useState([
-    { nim: "220102043", name: "M. Reyvan Purnama", aiScore: 96.0, finalScore: 96.0, status: "Graded" },
-    { nim: "220102011", name: "Ahmad Jalaludin", aiScore: 82.0, finalScore: 90.0, status: "Overridden" },
-    { nim: "220102015", name: "Siti Nurhaliza", aiScore: 88.5, finalScore: 88.5, status: "Graded" },
-    { nim: "220102029", name: "Fikri Syahputra", aiScore: 12.0, finalScore: 12.0, status: "Outlier" },
-    { nim: "220102052", name: "Rizky Ramadhan", aiScore: 79.0, finalScore: 79.0, status: "Graded" }
-  ]);
+  const [assignments, setAssignments] = useState<any[]>([]);
+  const [activeAssignment, setActiveAssignment] = useState<any>(null);
+  const [students, setStudents] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Statistics
+  const [totalAssignments, setTotalAssignments] = useState(1);
+  const [classAverage, setClassAverage] = useState(85.4);
+  const [submissionCount, setSubmissionCount] = useState(0);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function loadInitialData() {
+      try {
+        setIsLoading(true);
+
+        // 1. Fetch assignments
+        const { data: list, error: listError } = await supabase
+          .from("assignments")
+          .select("id, title, course_code, model, created_at, question, reference_context")
+          .order("created_at", { ascending: false });
+
+        if (listError) throw listError;
+
+        if (list && list.length > 0) {
+          setAssignments(list);
+          setTotalAssignments(list.length);
+          
+          // Select the latest assignment by default
+          setActiveAssignment(list[0]);
+        }
+      } catch (err) {
+        console.error("Error loading assignments:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    loadInitialData();
+  }, []);
+
+  // Fetch submissions when activeAssignment changes
+  useEffect(() => {
+    if (!activeAssignment) return;
+
+    async function loadSubmissions() {
+      try {
+        const { data: subs, error: subsError } = await supabase
+          .from("submissions")
+          .select("id, nim, student_name, ai_score, final_score, status")
+          .eq("assignment_id", activeAssignment.id)
+          .order("created_at", { ascending: false });
+
+        if (subsError) throw subsError;
+
+        if (subs) {
+          const mapped = subs.map(s => ({
+            id: s.id,
+            nim: s.nim,
+            name: s.student_name,
+            aiScore: Number(s.ai_score),
+            finalScore: Number(s.final_score),
+            status: s.status
+          }));
+          setStudents(mapped);
+          setSubmissionCount(mapped.length);
+
+          // Calculate average
+          if (mapped.length > 0) {
+            const sum = mapped.reduce((acc, curr) => acc + curr.finalScore, 0);
+            setClassAverage(Number((sum / mapped.length).toFixed(1)));
+          } else {
+            setClassAverage(0);
+          }
+        }
+      } catch (err) {
+        console.error("Error loading submissions:", err);
+      }
+    }
+
+    loadSubmissions();
+  }, [activeAssignment]);
 
   const exportToCSV = () => {
+    if (students.length === 0) {
+      alert("Tidak ada data nilai mahasiswa yang bisa diekspor.");
+      return;
+    }
+
     const csvData = [
       ["nim", "nama_mahasiswa", "skor_ai", "skor_dosen", "status"],
       ...students.map(s => [s.nim, s.name, s.aiScore.toFixed(1), s.finalScore.toFixed(1), s.status])
@@ -39,13 +121,13 @@ export default function DosenDashboard() {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "rekap_nilai_praktikum2.csv");
+    link.setAttribute("download", `rekap_nilai_${activeAssignment?.title.toLowerCase().replace(/\s+/g, "_")}.csv`);
     document.body.appendChild(link);
     
     link.click();
     document.body.removeChild(link);
     
-    alert("Sukses mengunduh berkas 'rekap_nilai_praktikum2.csv'!\n\nDataset ini siap digunakan untuk komputasi QWK dan Pearson di Google Colab.");
+    alert(`Sukses mengunduh berkas rekap nilai!\n\nDataset ini siap digunakan untuk komputasi QWK dan Pearson di Google Colab.`);
   };
 
   return (
@@ -97,7 +179,7 @@ export default function DosenDashboard() {
             <span className="text-[9px] uppercase tracking-wider text-muted-text font-bold block mb-1">Total Tugas Dibuat</span>
             <div className="text-xl font-extrabold text-foreground tracking-tight flex items-center gap-1.5">
               <GraduationCap className="w-5 h-5 text-brand-secondary" />
-              3 Tugas
+              {totalAssignments} Tugas
             </div>
             <p className="text-[10px] text-muted-text mt-1">Llama 3.3 sebagai model grading utama</p>
           </div>
@@ -106,7 +188,7 @@ export default function DosenDashboard() {
             <span className="text-[9px] uppercase tracking-wider text-muted-text font-bold block mb-1">Rata-rata Nilai Kelas</span>
             <div className="text-xl font-extrabold text-brand-primary tracking-tight flex items-center gap-1.5">
               <BarChart3 className="w-5 h-5 text-emerald-500" />
-              85.4 / 100
+              {classAverage} / 100
             </div>
             <p className="text-[10px] text-muted-text mt-1">Mengalami tren kenaikan kualitatif</p>
           </div>
@@ -115,9 +197,9 @@ export default function DosenDashboard() {
             <span className="text-[9px] uppercase tracking-wider text-muted-text font-bold block mb-1">Status Pengumpulan</span>
             <div className="text-xl font-extrabold text-foreground tracking-tight flex items-center gap-1.5">
               <Users className="w-5 h-5 text-amber-500" />
-              95% (42 / 45)
+              {submissionCount} Mahasiswa
             </div>
-            <p className="text-[10px] text-muted-text mt-1">3 Mahasiswa belum mengumpulkan</p>
+            <p className="text-[10px] text-muted-text mt-1">Jawaban tersimpan riil di Supabase</p>
           </div>
         </div>
 
@@ -139,35 +221,36 @@ export default function DosenDashboard() {
               </div>
 
               <div className="space-y-3">
-                <div className="bg-indigo-500/5 dark:bg-indigo-950/20 border-2 border-indigo-500/80 rounded-xl p-4 cursor-pointer transition-all duration-300">
-                  <div className="flex justify-between items-center">
-                    <span className="px-1.5 py-0.5 text-[9px] bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 rounded font-semibold border border-indigo-500/30 uppercase">Aktif</span>
-                    <span className="text-[10px] text-muted-text font-mono">42 mhs</span>
-                  </div>
-                  <h3 className="font-bold text-foreground text-xs mt-2 leading-snug">Praktikum 2: Inner Join & Subquery</h3>
-                  <p className="text-[10px] text-muted-text mt-1">Tenggat: 15 Juli 2026</p>
-                  <div className="mt-2 text-[9px] text-muted-text font-mono">Model: llama-3.3-70b-versatile</div>
-                </div>
-
-                <div className="bg-card border border-card-border rounded-xl p-4 hover:border-indigo-500/50 cursor-pointer transition-all duration-300">
-                  <div className="flex justify-between items-center">
-                    <span className="px-1.5 py-0.5 text-[9px] bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 rounded font-semibold border border-card-border uppercase">Arsip</span>
-                    <span className="text-[10px] text-muted-text font-mono">45 mhs</span>
-                  </div>
-                  <h3 className="font-bold text-foreground text-xs mt-2 leading-snug">Praktikum 1: DDL & DML Schema</h3>
-                  <p className="text-[10px] text-muted-text mt-1">Tenggat: 28 Juni 2026</p>
-                  <div className="mt-2 text-[9px] text-muted-text font-mono">Model: llama3-8b-8192</div>
-                </div>
-
-                <div className="bg-card border border-card-border rounded-xl p-4 hover:border-indigo-500/50 cursor-pointer transition-all duration-300">
-                  <div className="flex justify-between items-center">
-                    <span className="px-1.5 py-0.5 text-[9px] bg-slate-150 dark:bg-slate-900 text-slate-450 rounded font-semibold border border-card-border uppercase">Draft</span>
-                    <span className="text-[10px] text-muted-text font-mono">0 mhs</span>
-                  </div>
-                  <h3 className="font-bold text-foreground text-xs mt-2 leading-snug">Ujian Tengah Semester (Teori)</h3>
-                  <p className="text-[10px] text-muted-text mt-1">Tenggat: -</p>
-                  <div className="mt-2 text-[9px] text-muted-text font-mono">Model: -</div>
-                </div>
+                {isLoading ? (
+                  <div className="text-center text-xs text-muted-text py-4">Memuat daftar tugas...</div>
+                ) : assignments.length === 0 ? (
+                  <div className="text-center text-xs text-muted-text py-4">Belum ada tugas praktikum.</div>
+                ) : (
+                  assignments.map((item) => (
+                    <div 
+                      key={item.id}
+                      onClick={() => setActiveAssignment(item)}
+                      className={`border rounded-xl p-4 cursor-pointer transition-all duration-300 ${
+                        activeAssignment?.id === item.id
+                          ? "bg-indigo-500/5 dark:bg-indigo-950/20 border-indigo-500/80 border-2"
+                          : "bg-card border-card-border hover:border-indigo-500/50"
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <span className={`px-1.5 py-0.5 text-[9px] rounded font-semibold border uppercase ${
+                          activeAssignment?.id === item.id 
+                            ? "bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border-indigo-500/30"
+                            : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border-card-border"
+                        }`}>
+                          {activeAssignment?.id === item.id ? "Aktif" : "Tersimpan"}
+                        </span>
+                      </div>
+                      <h3 className="font-bold text-foreground text-xs mt-2 leading-snug">{item.title}</h3>
+                      <p className="text-[10px] text-muted-text mt-1">Kode: {item.course_code}</p>
+                      <div className="mt-2 text-[9px] text-muted-text font-mono">Model: {item.model}</div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
@@ -178,7 +261,7 @@ export default function DosenDashboard() {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-card-border pb-3 gap-2">
                 <div>
                   <h2 className="font-bold text-foreground text-xs tracking-wider uppercase">Tabel Rekap Nilai Tugas</h2>
-                  <p className="text-[10px] text-muted-text mt-0.5">Praktikum 2: Inner Join & Subquery</p>
+                  <p className="text-[10px] text-muted-text mt-0.5">{activeAssignment ? activeAssignment.title : "Tidak Ada Tugas Terpilih"}</p>
                 </div>
                 
                 <button 
@@ -204,39 +287,47 @@ export default function DosenDashboard() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-card-border/60">
-                    {students.map((student) => (
-                      <tr key={student.nim} className="hover:bg-slate-500/5 transition-all duration-300">
-                        <td className="py-3.5 px-2 font-mono text-foreground/80">{student.nim}</td>
-                        <td className="py-3.5 px-2 font-semibold text-foreground">{student.name}</td>
-                        <td className="py-3.5 px-2 text-center font-mono text-foreground/70">{student.aiScore.toFixed(1)}</td>
-                        <td className="py-3.5 px-2 text-center font-mono text-brand-primary font-bold">{student.finalScore.toFixed(1)}</td>
-                        <td className="py-3.5 px-2 text-center">
-                          {student.status === "Graded" && (
-                            <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                              Graded
-                            </span>
-                          )}
-                          {student.status === "Overridden" && (
-                            <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                              Overridden
-                            </span>
-                          )}
-                          {student.status === "Outlier" && (
-                            <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
-                              Outlier
-                            </span>
-                          )}
-                        </td>
-                        <td className="py-3.5 px-2 text-center">
-                          <Link 
-                            href={`/dosen/validasi/${student.nim}`} 
-                            className="px-2.5 py-1 text-[10px] font-bold text-indigo-500 hover:text-white bg-indigo-500/5 hover:bg-indigo-600 border border-indigo-500/10 hover:border-indigo-600 rounded-lg transition-all duration-300 inline-block"
-                          >
-                            Periksa
-                          </Link>
+                    {students.length === 0 ? (
+                      <tr>
+                        <td colSpan={6} className="py-6 text-center text-xs text-muted-text">
+                          Belum ada mahasiswa yang mengumpulkan jawaban untuk tugas ini.
                         </td>
                       </tr>
-                    ))}
+                    ) : (
+                      students.map((student) => (
+                        <tr key={student.id} className="hover:bg-slate-500/5 transition-all duration-300">
+                          <td className="py-3.5 px-2 font-mono text-foreground/80">{student.nim}</td>
+                          <td className="py-3.5 px-2 font-semibold text-foreground">{student.name}</td>
+                          <td className="py-3.5 px-2 text-center font-mono text-foreground/70">{student.aiScore.toFixed(1)}</td>
+                          <td className="py-3.5 px-2 text-center font-mono text-brand-primary font-bold">{student.finalScore.toFixed(1)}</td>
+                          <td className="py-3.5 px-2 text-center">
+                            {student.status === "Graded" && (
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                Graded
+                              </span>
+                            )}
+                            {student.status === "Overridden" && (
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                                Overridden
+                              </span>
+                            )}
+                            {student.status === "Outlier" && (
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+                                Outlier
+                              </span>
+                            )}
+                          </td>
+                          <td className="py-3.5 px-2 text-center">
+                            <Link 
+                              href={`/dosen/validasi/${student.id}`} 
+                              className="px-2.5 py-1 text-[10px] font-bold text-indigo-500 hover:text-white bg-indigo-500/5 hover:bg-indigo-600 border border-indigo-500/10 hover:border-indigo-600 rounded-lg transition-all duration-300 inline-block"
+                            >
+                              Periksa
+                            </Link>
+                          </td>
+                        </tr>
+                      ))
+                    )}
                   </tbody>
                 </table>
               </div>

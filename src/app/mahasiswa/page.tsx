@@ -20,8 +20,10 @@ export default function StudentPortal() {
   const [nim, setNim] = useState("");
   const [name, setName] = useState("");
   const [answer, setAnswer] = useState("");
+  const [file, setFile] = useState<File | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
   const [isDragActive, setIsDragActive] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -39,29 +41,58 @@ export default function StudentPortal() {
     setIsDragActive(false);
     
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-      setFileName(e.dataTransfer.files[0].name);
+      const selectedFile = e.dataTransfer.files[0];
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
     }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFileName(e.target.files[0].name);
+      const selectedFile = e.target.files[0];
+      setFile(selectedFile);
+      setFileName(selectedFile.name);
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!nim || !name) {
       alert("Harap isi Nama dan NIM terlebih dahulu!");
       return;
     }
-    if (!answer && !fileName) {
+    if (!answer && !file) {
       alert("Harap unggah berkas jawaban atau isi teks esai query SQL!");
       return;
     }
-    
-    // Direct redirect to Halaman E (Hasil Evaluasi Mhs) for the specific student NIM
-    router.push(`/mahasiswa/hasil/${nim}?name=${encodeURIComponent(name)}`);
+
+    try {
+      setIsSubmitting(true);
+      const formData = new FormData();
+      formData.append("nim", nim);
+      formData.append("name", name);
+      formData.append("answer", answer);
+      if (file) {
+        formData.append("file", file);
+      }
+
+      const res = await fetch("/api/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Gagal mengirimkan tugas.");
+      }
+      
+      // Redirect to Halaman E (Hasil Evaluasi Mhs) passing the database submission ID
+      router.push(`/mahasiswa/hasil/${data.submissionId}?name=${encodeURIComponent(name)}`);
+    } catch (err: any) {
+      alert(`Terjadi kesalahan: ${err.message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -210,10 +241,24 @@ export default function StudentPortal() {
               {/* Submit Action */}
               <button 
                 type="submit"
-                className="w-full h-11 bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all duration-300 shadow-md shadow-emerald-500/25 flex items-center justify-center gap-1.5"
+                disabled={isSubmitting}
+                className={`w-full h-11 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-1.5 ${
+                  isSubmitting
+                    ? "bg-slate-500/50 cursor-not-allowed shadow-none"
+                    : "bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 shadow-emerald-500/25"
+                }`}
               >
-                <CheckCircle2 className="w-4 h-4" />
-                Kirim &amp; Nilai Jawaban dengan AI
+                {isSubmitting ? (
+                  <>
+                    <span className="animate-spin border-2 border-t-transparent border-white rounded-full w-4 h-4 mr-2"></span>
+                    Mengevaluasi Jawaban dengan AI...
+                  </>
+                ) : (
+                  <>
+                    <CheckCircle2 className="w-4 h-4" />
+                    Kirim &amp; Nilai Jawaban dengan AI
+                  </>
+                )}
               </button>
             </div>
           </div>
