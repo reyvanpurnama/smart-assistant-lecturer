@@ -24,16 +24,19 @@ interface RubricItem {
 export default function CreateAssignment() {
   const router = useRouter();
   const [courseCode, setCourseCode] = useState("IF204");
-  const [title, setTitle] = useState("Praktikum 2: Inner Join & Subquery");
+  const [title, setTitle] = useState("");
   const [model, setModel] = useState("llama-3.3-70b-versatile");
-  const [dueDate, setDueDate] = useState("2026-07-15T23:59");
+  const [dueDate, setDueDate] = useState("");
   
-  const [essayQuestion, setEssayQuestion] = useState(
-    "Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut."
-  );
-  
-  const [academicContext, setAcademicContext] = useState(
-    `SKEMA TABEL DATABASE REFERENSI:
+  const [essayQuestion, setEssayQuestion] = useState("");
+  const [academicContext, setAcademicContext] = useState("");
+
+  const [rubrics, setRubrics] = useState<RubricItem[]>([]);
+
+  const loadTemplate = () => {
+    setTitle("Praktikum 2: Inner Join & Subquery");
+    setEssayQuestion("Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut.");
+    setAcademicContext(`SKEMA TABEL DATABASE REFERENSI:
 1. mahasiswa (id INT PRIMARY KEY, student_name VARCHAR(100))
 2. matakuliah (id INT PRIMARY KEY, course_name VARCHAR(100))
 3. krs (id INT PRIMARY KEY, mahasiswa_id INT, matakuliah_id INT, grade INT, FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(id), FOREIGN KEY (matakuliah_id) REFERENCES matakuliah(id))
@@ -49,14 +52,13 @@ PENJELASAN LOGIS WAJIB:
 - FROM klausa dijalankan awal.
 - INNER JOIN m ke k ke mk dilakukan melalui key relasi mahasiswa_id dan matakuliah_id.
 - WHERE k.grade > 80 untuk menyaring data nilai di atas 80.
-- SELECT memproyeksikan nama mahasiswa, nama mk, dan grade.`
-  );
-
-  const [rubrics, setRubrics] = useState<RubricItem[]>([
-    { id: "1", name: "Kebenaran Sintaks SQL", weight: 40, description: "Sintaks SELECT, FROM, JOIN, dan WHERE harus ditulis dengan benar tanpa syntax error." },
-    { id: "2", name: "Logika Join & Relasi Tabel", weight: 30, description: "Kebenaran penghubung antar-tabel mahasiswa ke krs dan krs ke matakuliah." },
-    { id: "3", name: "Akurasi Penjelasan Alur", weight: 30, description: "Ketepatan penjelasan urutan logika pemrosesan query (logical processing order)." }
-  ]);
+- SELECT memproyeksikan nama mahasiswa, nama mk, dan grade.`);
+    setRubrics([
+      { id: "1", name: "Kebenaran Sintaks SQL", weight: 40, description: "Sintaks SELECT, FROM, JOIN, dan WHERE harus ditulis dengan benar tanpa syntax error." },
+      { id: "2", name: "Logika Join & Relasi Tabel", weight: 30, description: "Kebenaran penghubung antar-tabel mahasiswa ke krs dan krs ke matakuliah." },
+      { id: "3", name: "Akurasi Penjelasan Alur", weight: 30, description: "Ketepatan penjelasan urutan logika pemrosesan query (logical processing order)." }
+    ]);
+  };
 
   const [totalWeight, setTotalWeight] = useState(100);
   const [isSaving, setIsSaving] = useState(false);
@@ -169,15 +171,24 @@ PENJELASAN LOGIS WAJIB:
 
       {/* FORM CONTAINER */}
       <main className="flex-1 max-w-4xl w-full mx-auto px-6 py-8">
-        <div className="space-y-2 mb-8">
-          <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider">
-            <Settings className="w-4 h-4" />
-            Langkah Setup Evaluasi
+        <div className="space-y-2 mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider">
+              <Settings className="w-4 h-4" />
+              Langkah Setup Evaluasi
+            </div>
+            <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">Buat Parameter Grounding &amp; Rubrik</h1>
+            <p className="text-xs text-muted-text max-w-2xl leading-relaxed">
+              Kunci parameter grounding di bawah ini. AI asisten dosen akan menilai jawaban mahasiswa secara ketat berdasarkan kunci/referensi materi ajar dan rubrik yang Anda tentukan untuk mencegah penilaian yang subjektif dan halusinasi model.
+            </p>
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">Buat Parameter Grounding &amp; Rubrik</h1>
-          <p className="text-xs text-muted-text max-w-2xl leading-relaxed">
-            Kunci parameter grounding di bawah ini. AI asisten dosen akan menilai jawaban mahasiswa secara ketat berdasarkan kunci/referensi materi ajar dan rubrik yang Anda tentukan untuk mencegah penilaian yang subjektif dan halusinasi model.
-          </p>
+          <button
+            type="button"
+            onClick={loadTemplate}
+            className="self-start md:self-center px-4 py-2 text-xs font-bold text-indigo-500 hover:text-white bg-indigo-500/10 hover:bg-indigo-600 border border-indigo-500/20 hover:border-indigo-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+          >
+            Gunakan Template Soal (Skripsi)
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
