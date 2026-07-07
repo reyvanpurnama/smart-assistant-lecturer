@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   FileText, 
   Upload, 
@@ -12,6 +12,7 @@ import {
   AlertCircle
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { createClient } from "@/utils/supabase/client";
 
 export default function StudentPortal() {
   const router = useRouter();
@@ -24,6 +25,37 @@ export default function StudentPortal() {
   const [fileName, setFileName] = useState<string | null>(null);
   const [isDragActive, setIsDragActive] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Assignments State
+  const [assignments, setAssignments] = useState<any[]>([]);
+  const [selectedAssignment, setSelectedAssignment] = useState<any>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    async function fetchAssignments() {
+      try {
+        setIsLoading(true);
+        const { data, error } = await supabase
+          .from("assignments")
+          .select("id, title, question, due_date, course_code")
+          .order("created_at", { ascending: false });
+        
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          setAssignments(data);
+          setSelectedAssignment(data[0]);
+        }
+      } catch (err) {
+        console.error("Gagal memuat daftar tugas:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchAssignments();
+  }, []);
 
   const handleDrag = (e: React.DragEvent) => {
     e.preventDefault();
@@ -61,6 +93,10 @@ export default function StudentPortal() {
       alert("Harap isi Nama dan NIM terlebih dahulu!");
       return;
     }
+    if (!selectedAssignment) {
+      alert("Harap pilih tugas praktikum terlebih dahulu!");
+      return;
+    }
     if (!answer && !file) {
       alert("Harap unggah berkas jawaban atau isi teks esai query SQL!");
       return;
@@ -72,6 +108,7 @@ export default function StudentPortal() {
       formData.append("nim", nim);
       formData.append("name", name);
       formData.append("answer", answer);
+      formData.append("assignmentId", selectedAssignment.id);
       if (file) {
         formData.append("file", file);
       }
@@ -93,6 +130,18 @@ export default function StudentPortal() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const formatDueDate = (dateStr: string) => {
+    if (!dateStr) return "Tidak ada tenggat";
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    }) + " WIB";
   };
 
   return (
@@ -127,28 +176,57 @@ export default function StudentPortal() {
       {/* MAIN CONTAINER */}
       <main className="flex-1 max-w-4xl w-full mx-auto px-6 py-8">
         
-        {/* ASSIGNMENT INFO PANEL */}
-        <div className="bg-card border border-card-border rounded-2xl p-5 mb-6 shadow-sm transition-all duration-300">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-card-border pb-3 mb-4 gap-2">
-            <div>
-              <span className="px-2 py-0.5 text-[9px] font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20 uppercase tracking-wider">
-                Tugas Praktikum Mandiri
-              </span>
-              <h2 className="text-base font-extrabold text-foreground tracking-tight mt-1">
-                Praktikum 2: Inner Join &amp; Subquery
-              </h2>
-            </div>
-            <div className="text-left sm:text-right font-mono text-[10px] text-muted-text">
-              Tenggat: <strong className="text-rose-500">15 Juli 2026, 23:59 WIB</strong>
-            </div>
+        {/* ASSIGNMENT CHOOSE & INFO PANEL */}
+        <div className="bg-card border border-card-border rounded-2xl p-5 mb-6 shadow-sm transition-all duration-300 space-y-4">
+          <div className="space-y-2">
+            <label className="text-xs font-semibold text-muted-text block" htmlFor="select-assignment">Pilih Tugas Praktikum Aktif:</label>
+            {isLoading ? (
+              <div className="text-xs text-muted-text py-2">Memuat daftar tugas...</div>
+            ) : assignments.length === 0 ? (
+              <div className="text-xs text-rose-500 font-semibold py-2">Belum ada tugas praktikum aktif dari Dosen.</div>
+            ) : (
+              <select
+                id="select-assignment"
+                value={selectedAssignment?.id || ""}
+                onChange={(e) => {
+                  const found = assignments.find(a => a.id === e.target.value);
+                  if (found) setSelectedAssignment(found);
+                }}
+                className="w-full text-xs bg-input-bg border border-input-border rounded-xl px-3.5 py-2.5 text-foreground focus:outline-none focus:border-emerald-500 transition-all duration-300 cursor-pointer"
+              >
+                {assignments.map(a => (
+                  <option key={a.id} value={a.id}>
+                    [{a.course_code}] {a.title}
+                  </option>
+                ))}
+              </select>
+            )}
           </div>
 
-          <div className="space-y-2 text-xs leading-relaxed text-foreground/80">
-            <p className="font-semibold text-foreground">Pertanyaan Uraian:</p>
-            <p className="bg-slate-500/5 p-3 rounded-xl border border-card-border/60">
-              Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut.
-            </p>
-          </div>
+          {selectedAssignment && (
+            <div className="border-t border-card-border/60 pt-4 animate-fade-in">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-card-border/60 pb-3 mb-4 gap-2">
+                <div>
+                  <span className="px-2 py-0.5 text-[9px] font-bold bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 rounded-full border border-indigo-500/20 uppercase tracking-wider">
+                    {selectedAssignment.course_code}
+                  </span>
+                  <h2 className="text-base font-extrabold text-foreground tracking-tight mt-1">
+                    {selectedAssignment.title}
+                  </h2>
+                </div>
+                <div className="text-left sm:text-right font-mono text-[10px] text-muted-text">
+                  Tenggat: <strong className="text-rose-500">{formatDueDate(selectedAssignment.due_date)}</strong>
+                </div>
+              </div>
+
+              <div className="space-y-2 text-xs leading-relaxed text-foreground/80">
+                <p className="font-semibold text-foreground">Pertanyaan Uraian:</p>
+                <p className="bg-slate-500/5 p-3 rounded-xl border border-card-border/60 whitespace-pre-wrap">
+                  {selectedAssignment.question}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* SUBMISSION FORM */}
@@ -219,7 +297,7 @@ export default function StudentPortal() {
                 <label htmlFor="file-upload" className="cursor-pointer space-y-2 block">
                   <Upload className="w-8 h-8 text-emerald-500 mx-auto" />
                   <div className="text-xs text-foreground font-bold">
-                    {fileName ? `Terpilih: ${fileName}` : "Seret &amp; letakkan berkas di sini atau klik untuk mencari"}
+                    {fileName ? `Terpilih: ${fileName}` : "Seret & letakkan berkas di sini atau klik untuk mencari"}
                   </div>
                   <p className="text-[10px] text-muted-text">Mendukung format PDF, DOCX, dan TXT (Maks. 5MB)</p>
                 </label>
@@ -241,9 +319,9 @@ export default function StudentPortal() {
               {/* Submit Action */}
               <button 
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !selectedAssignment}
                 className={`w-full h-11 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all duration-300 shadow-md flex items-center justify-center gap-1.5 ${
-                  isSubmitting
+                  isSubmitting || !selectedAssignment
                     ? "bg-slate-500/50 cursor-not-allowed shadow-none"
                     : "bg-gradient-to-r from-emerald-500 to-sky-500 hover:from-emerald-600 hover:to-sky-600 shadow-emerald-500/25"
                 }`}
