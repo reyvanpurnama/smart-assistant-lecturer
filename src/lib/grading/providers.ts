@@ -107,7 +107,7 @@ function buildOpenAICompatibleFromEnv(selection?: ProviderSelection): OpenAIComp
       provider: requestedProvider || "openai-compatible",
       apiKey: explicitKey,
       baseUrl: explicitBaseUrl,
-      model: requestedModel || explicitModel || "llama-3.3-70b-versatile",
+      model: requestedModel || explicitModel || "openai/gpt-oss-120b",
     });
   }
 
@@ -116,7 +116,7 @@ function buildOpenAICompatibleFromEnv(selection?: ProviderSelection): OpenAIComp
       provider: "groq",
       apiKey: process.env.GROQ_API_KEY,
       baseUrl: "https://api.groq.com/openai/v1",
-      model: requestedModel || process.env.LLM_MODEL || "llama-3.3-70b-versatile",
+      model: requestedModel || process.env.LLM_MODEL || "openai/gpt-oss-120b",
     });
   }
 

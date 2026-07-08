@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
         .insert({
           course_code: "IF204",
           title: "Praktikum 2: Inner Join & Subquery",
-          model: "llama-3.3-70b-versatile",
+          model: "openai/gpt-oss-120b",
           question: "Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut.",
           reference_context: `SKEMA TABEL DATABASE REFERENSI:\n1. mahasiswa (id INT PRIMARY KEY, student_name VARCHAR(100))\n2. matakuliah (id INT PRIMARY KEY, course_name VARCHAR(100))\n3. krs (id INT PRIMARY KEY, mahasiswa_id INT, matakuliah_id INT, grade INT, FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(id), FOREIGN KEY (matakuliah_id) REFERENCES matakuliah(id))\n\nSINTAKS QUERY YANG BENAR (GROUND TRUTH):\nSELECT m.student_name, mk.course_name, k.grade\nFROM mahasiswa m\nINNER JOIN krs k ON m.id = k.mahasiswa_id\nINNER JOIN matakuliah mk ON k.matakuliah_id = mk.id\nWHERE k.grade > 80;\n\nPENJELASAN LOGIS WAJIB:\n- FROM klausa dijalankan awal.\n- INNER JOIN m ke k ke mk dilakukan melalui key relasi mahasiswa_id dan matakuliah_id.\n- WHERE k.grade > 80 untuk menyaring data nilai di atas 80.\n- SELECT memproyeksikan nama mahasiswa, nama mk, dan grade.`
         })

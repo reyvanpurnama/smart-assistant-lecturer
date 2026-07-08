@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { createClient } from "@/utils/supabase/client";
+import { getModelDisplayName } from "@/lib/grading/model-policy";
 
 export default function DosenDashboard() {
   const [assignments, setAssignments] = useState<any[]>([]);
@@ -247,7 +248,7 @@ export default function DosenDashboard() {
                       </div>
                       <h3 className="font-bold text-foreground text-xs mt-2 leading-snug">{item.title}</h3>
                       <p className="text-[10px] text-muted-text mt-1">Kode: {item.course_code}</p>
-                      <div className="mt-2 text-[9px] text-muted-text font-mono">Model: {item.model && item.model.toLowerCase().includes("70b") ? "GPT-OSS 120B" : item.model}</div>
+                      <div className="mt-2 text-[9px] text-muted-text font-mono">Model: {getModelDisplayName(item.model)}</div>
                     </div>
                   ))
                 )}

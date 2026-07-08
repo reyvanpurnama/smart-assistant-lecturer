@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { createClient } from "@/utils/supabase/client";
+import { DEFAULT_LLM_MODEL, getModelDisplayName } from "@/lib/grading/model-policy";
 
 interface RubricItem {
   id: string;
@@ -25,14 +26,14 @@ export default function CreateAssignment() {
   const router = useRouter();
   const [courseCode, setCourseCode] = useState("IF204");
   const [title, setTitle] = useState("");
-  const [model, setModel] = useState("llama-3.3-70b-versatile");
+  const [model, setModel] = useState(DEFAULT_LLM_MODEL);
   const [dueDate, setDueDate] = useState("");
   
   const [essayQuestion, setEssayQuestion] = useState("");
   const [academicContext, setAcademicContext] = useState("");
 
   const [rubrics, setRubrics] = useState<RubricItem[]>([]);
-  const [modelOptions, setModelOptions] = useState<string[]>(["llama-3.3-70b-versatile"]);
+  const [modelOptions, setModelOptions] = useState<string[]>([DEFAULT_LLM_MODEL]);
   const [isLoadingModels, setIsLoadingModels] = useState(true);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ export default function CreateAssignment() {
           const data = await response.json();
           if (active && data.models && data.models.length > 0) {
             setModelOptions(data.models);
-            const recommended = data.recommendedModel || "llama-3.3-70b-versatile";
+            const recommended = data.recommendedModel || DEFAULT_LLM_MODEL;
             setModel(recommended);
           }
         }
@@ -269,7 +270,7 @@ PENJELASAN LOGIS WAJIB:
                 >
                   {modelOptions.map((opt) => (
                     <option key={opt} value={opt}>
-                      {opt.toLowerCase().includes("70b") ? "GPT-OSS 120B" : opt}
+                      {getModelDisplayName(opt)}
                     </option>
                   ))}
                 </select>
