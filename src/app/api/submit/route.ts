@@ -123,72 +123,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Load rubric aspects
-    const { data: rubrics, error: rubricError } = await supabase
-      .from("rubrics")
-      .select("aspect_name, weight, description")
-      .eq("assignment_id", assignment.id);
-
-    if (rubricError || !rubrics || rubrics.length === 0) {
-      return NextResponse.json(
-        { error: "Kriteria penilaian rubrik tugas belum terkonfigurasi." },
-        { status: 500 }
-      );
-    }
-
-    // 3. Compose Prompt and Trigger Groq API Inference
-    const rubricDefinitions = rubrics.map(r => ({
-      aspect: r.aspect_name,
-      weight: r.weight,
-      description: r.description
-    }));
-
-    const prompt = composeGradingPrompt({
-      assignmentTitle: assignment.title,
-      assignmentInstructions: null,
-      soalEsai: assignment.question,
-      contextGrounding: assignment.reference_context,
-      studentAnswer: finalAnswerText,
-      rubrics: rubricDefinitions
-    });
-
-    const provider = getLLMProvider({
-      provider: "groq",
-      model: assignment.model
-    });
-
-    let providerRawOutput = "";
-    try {
-      providerRawOutput = await provider.gradeEssay({ prompt });
-    } catch (err: any) {
-      console.error("LLM Provider error:", err);
-      return NextResponse.json(
-        { error: `Gagal memanggil API GPT-OSS 120B (Groq): ${err.message}` },
-        { status: 502 }
-      );
-    }
-
-    // 4. Parse LLM Output & Reconcile Scores
-    let parsedResult;
-    try {
-      parsedResult = parseLLMResponse(providerRawOutput);
-    } catch (err: any) {
-      console.error("LLM Parser error:", err);
-      return NextResponse.json(
-        { error: `Format respon dari AI tidak valid: ${err.message}` },
-        { status: 502 }
-      );
-    }
-
-    const normalizedRubric = reconcileRubricScores(
-      rubricDefinitions,
-      parsedResult.rubric,
-      parsedResult.holistic.score
-    );
-
-    const calculatedTotalScore = computeWeightedTotal(normalizedRubric);
-
-    // 5. Save Results to Supabase Database
+    // 3. Save Initial Submission to Supabase Database (Grade is null initially)
     const { data: submission, error: submissionInsertError } = await supabase
       .from("submissions")
       .insert({
@@ -197,10 +132,10 @@ export async function POST(req: NextRequest) {
         student_name: name,
         file_path: filePath,
         raw_answer_text: finalAnswerText,
-        ai_score: calculatedTotalScore,
-        final_score: calculatedTotalScore,
+        ai_score: null,
+        final_score: null,
         status: "Graded",
-        cot_log: parsedResult.global_reasoning
+        cot_log: null
       })
       .select("id")
       .single();
@@ -208,30 +143,15 @@ export async function POST(req: NextRequest) {
     if (submissionInsertError || !submission) {
       console.error("Database insert error:", submissionInsertError);
       return NextResponse.json(
-        { error: `Gagal menyimpan hasil penilaian: ${submissionInsertError?.message}` },
+        { error: `Gagal menyimpan jawaban mahasiswa: ${submissionInsertError?.message}` },
         { status: 500 }
       );
     }
 
-    // Save individual aspect scores
-    const aspectScores = normalizedRubric.map(ar => ({
-      submission_id: submission.id,
-      aspect_name: ar.aspect,
-      score: Number(((ar.score * ar.weight) / 100).toFixed(2)),
-      feedback_text: ar.feedback
-    }));
-
-    await supabase.from("rubric_scores").insert(aspectScores);
-
-    // 6. Return Success Data
+    // 4. Return Success Data with submissionId
     return NextResponse.json({
       success: true,
-      submissionId: submission.id,
-      nim,
-      name,
-      totalScore: calculatedTotalScore,
-      cot: parsedResult.global_reasoning,
-      aspects: normalizedRubric
+      submissionId: submission.id
     });
 
   } catch (error: any) {

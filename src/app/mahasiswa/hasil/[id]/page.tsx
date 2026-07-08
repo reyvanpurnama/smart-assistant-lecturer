@@ -29,6 +29,7 @@ export default function StudentFeedback({ params }: PageProps) {
   // Loading Progression States
   const [step, setStep] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [modelName, setModelName] = useState("GPT-OSS 120B");
 
   const [submission, setSubmission] = useState<any>(null);
   const [rubrics, setRubrics] = useState<any[]>([]);
@@ -38,28 +39,27 @@ export default function StudentFeedback({ params }: PageProps) {
     "Membaca berkas jawaban mahasiswa...",
     "Mengekstrak teks & memetakan variabel database...",
     "Mencocokkan jawaban dengan Modul Grounding...",
-    "Menjalankan inferensi kognitif Llama 3.3...",
+    `Menjalankan inferensi kognitif ${modelName}...`,
     "Mem-parsing output kriteria & memvalidasi skor..."
   ];
 
   useEffect(() => {
-    if (step < steps.length) {
-      const timer = setTimeout(() => {
+    let timer: NodeJS.Timeout;
+    if (isLoading && step < steps.length - 1) {
+      timer = setTimeout(() => {
         setStep(prev => prev + 1);
-      }, 1200);
-      return () => clearTimeout(timer);
-    } else {
-      setIsLoading(false);
+      }, 1500);
     }
-  }, [step]);
+    return () => clearTimeout(timer);
+  }, [step, isLoading, steps.length]);
 
   useEffect(() => {
-    async function loadData() {
+    async function loadDataAndGrade() {
       try {
         const supabase = createClient();
 
         // 1. Fetch submission details
-        const { data: sub, error: subErr } = await supabase
+        let { data: sub, error: subErr } = await supabase
           .from("submissions")
           .select("id, assignment_id, nim, student_name, ai_score, final_score, status, cot_log, file_path")
           .eq("id", submissionId)
@@ -69,7 +69,53 @@ export default function StudentFeedback({ params }: PageProps) {
           throw new Error("Hasil penilaian tidak ditemukan atau data Supabase belum selesai disinkronkan.");
         }
 
-        // 2. Fetch rubric scores
+        // Fetch assignment to find out which model is selected
+        const { data: assignmentData } = await supabase
+          .from("assignments")
+          .select("model")
+          .eq("id", sub.assignment_id)
+          .single();
+
+        if (assignmentData?.model) {
+          const m = assignmentData.model.toLowerCase();
+          if (m.includes("llama")) {
+            setModelName("Llama 3.3");
+          } else if (m.includes("qwen")) {
+            setModelName("Qwen 2.5");
+          } else {
+            setModelName("GPT-OSS 120B");
+          }
+        }
+
+        // 2. If it's not graded yet (ai_score is null), trigger the grade API!
+        if (sub.ai_score === null) {
+          const res = await fetch("/api/grade", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ submissionId }),
+          });
+
+          if (!res.ok) {
+            const data = await res.json();
+            throw new Error(data.error || "Gagal memproses penilaian AI.");
+          }
+
+          // Re-fetch submission after grading finishes
+          const { data: updatedSub, error: reFetchErr } = await supabase
+            .from("submissions")
+            .select("id, assignment_id, nim, student_name, ai_score, final_score, status, cot_log, file_path")
+            .eq("id", submissionId)
+            .single();
+
+          if (reFetchErr || !updatedSub) {
+            throw new Error("Gagal mengambil data hasil penilaian terupdate.");
+          }
+          sub = updatedSub;
+        }
+
+        // 3. Fetch rubric scores
         const { data: rubScores, error: rubErr } = await supabase
           .from("rubric_scores")
           .select("aspect_name, score, feedback_text")
@@ -79,7 +125,7 @@ export default function StudentFeedback({ params }: PageProps) {
           throw new Error(`Gagal memuat rincian rubrik: ${rubErr.message}`);
         }
 
-        // 3. Fetch original rubric definitions for max scores
+        // 4. Fetch original rubric definitions for max scores
         const { data: rubricsDef } = await supabase
           .from("rubrics")
           .select("aspect_name, weight")
@@ -105,16 +151,16 @@ export default function StudentFeedback({ params }: PageProps) {
 
         setSubmission(sub);
         setRubrics(mergedRubrics);
+        setIsLoading(false);
       } catch (err: any) {
         console.error(err);
         setErrorMsg(err.message || "Terjadi kesalahan memuat data.");
+        setIsLoading(false);
       }
     }
 
-    if (!isLoading) {
-      loadData();
-    }
-  }, [isLoading, submissionId]);
+    loadDataAndGrade();
+  }, [submissionId]);
 
   return (
     <div className="flex-1 flex flex-col min-h-screen">
