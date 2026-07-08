@@ -269,7 +269,7 @@ PENJELASAN LOGIS WAJIB:
                 >
                   {modelOptions.map((opt) => (
                     <option key={opt} value={opt}>
-                      {opt === "llama-3.3-70b-versatile" ? "GPT-OSS 120B" : opt}
+                      {opt.toLowerCase().includes("70b") ? "GPT-OSS 120B" : opt}
                     </option>
                   ))}
                 </select>
