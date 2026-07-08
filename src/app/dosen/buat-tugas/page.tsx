@@ -130,7 +130,7 @@ Aturan Toleransi:
     { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Kebenaran penulisan query untuk memasukkan ketiga baris data mahasiswa secara lengkap." },
     { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran logika dan sintaks dari ketiga query pemanggilan data (tampil semua, filter jurusan, dan filter IPK)." },
     { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Kebenaran query perubahan IPK mahasiswa dengan NIM '12346' menjadi 3.8." },
-    { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi'." },
+    { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi' (diperbolehkan menggunakan filter nim = '12347' atau nama = 'Citra Dewi')." },
     { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Kebenaran query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom baru tersebut." }
   ]);
   const [modelOptions, setModelOptions] = useState<string[]>([DEFAULT_LLM_MODEL]);
@@ -262,7 +262,7 @@ Aturan Toleransi:
       { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Kebenaran penulisan query untuk memasukkan ketiga baris data mahasiswa secara lengkap." },
       { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran logika dan sintaks dari ketiga query pemanggilan data (tampil semua, filter jurusan, dan filter IPK)." },
       { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Kebenaran query perubahan IPK mahasiswa dengan NIM '12346' menjadi 3.8." },
-      { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi'." },
+      { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi' (diperbolehkan menggunakan filter nim = '12347' atau nama = 'Citra Dewi')." },
       { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Kebenaran query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom baru tersebut." }
     ]);
   };
