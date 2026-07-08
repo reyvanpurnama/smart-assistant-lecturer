@@ -4,6 +4,11 @@ export async function parseDocument(buffer: Buffer, originalName: string): Promi
   const ext = originalName.toLowerCase().split(".").pop();
 
   if (ext === "pdf") {
+    if (typeof global.DOMMatrix === "undefined") {
+      (global as any).DOMMatrix = class DOMMatrix {
+        constructor() {}
+      };
+    }
     const pdfParse = require("pdf-parse");
     const data = await pdfParse(buffer);
     return data.text || "";
