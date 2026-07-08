@@ -25,14 +25,113 @@ interface RubricItem {
 export default function CreateAssignment() {
   const router = useRouter();
   const [courseCode, setCourseCode] = useState("IF204");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState("Praktikum 1: Konsep DBMS dan Dasar SQL");
   const [model, setModel] = useState(DEFAULT_LLM_MODEL);
   const [dueDate, setDueDate] = useState("");
   
-  const [essayQuestion, setEssayQuestion] = useState("");
-  const [academicContext, setAcademicContext] = useState("");
+  const [essayQuestion, setEssayQuestion] = useState(`Tuliskan perintah SQL untuk menyelesaikan seluruh latihan berikut secara berurutan:
 
-  const [rubrics, setRubrics] = useState<RubricItem[]>([]);
+1. Membuat Database:
+- Buat database baru bernama 'universitas'.
+
+2. Membuat Tabel:
+- Buat tabel 'mahasiswa' dengan kolom:
+  * nim (PK, VARCHAR)
+  * nama (VARCHAR)
+  * jurusan (VARCHAR)
+  * angkatan (YEAR/INT)
+  * ipk (DECIMAL/FLOAT/DOUBLE)
+
+3. Menambahkan Data:
+- Tambahkan 3 data mahasiswa berikut:
+  * ('12345', 'Ali Hasan', 'Informatika', 2021, 3.75)
+  * ('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60)
+  * ('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85)
+
+4. Membaca Data:
+- Tampilkan semua data mahasiswa.
+- Tampilkan mahasiswa dari jurusan 'Informatika'.
+- Tampilkan mahasiswa dengan IPK lebih dari 3.7.
+
+5. Memperbarui Data:
+- Perbarui IPK mahasiswa dengan NIM '12346' menjadi 3.8.
+
+6. Menghapus Data:
+- Hapus data mahasiswa dengan nama 'Citra Dewi'.
+
+7. Mengubah Struktur Tabel:
+- Tambahkan kolom 'tanggal_lahir' pada tabel mahasiswa.
+- Masukkan nilai tanggal lahir pada setiap data di tabel mahasiswa.`);
+  
+  const [academicContext, setAcademicContext] = useState(`DOKUMEN ACUAN DAN PANDUAN TOLERANSI VARIASI (GROUND TRUTH):
+
+1. PEMBUATAN DATABASE
+Sintaks Standar: CREATE DATABASE universitas;
+Aturan Toleransi:
+- Case-insensitivity dibebaskan (CREATE DATABASE / create database / Create Database).
+- Penggunaan karakter titik koma (;) di akhir query bersifat opsional.
+
+2. PEMBUATAN TABEL
+Sintaks Standar: 
+CREATE TABLE mahasiswa (
+  nim VARCHAR(10) PRIMARY KEY,
+  nama VARCHAR(100),
+  jurusan VARCHAR(50),
+  angkatan YEAR,
+  ipk DECIMAL(3,2)
+);
+Aturan Toleransi:
+- Ukuran VARCHAR dibebaskan (misal VARCHAR(10) hingga VARCHAR(255)).
+- Presisi DECIMAL dibebaskan, atau boleh menggunakan FLOAT/DOUBLE.
+- Kolom angkatan boleh menggunakan tipe data YEAR, INT, atau INTEGER.
+- Susunan kolom boleh berbeda asalkan seluruh kolom yang diminta (nim, nama, jurusan, angkatan, ipk) ada dan primary key didefinisikan pada kolom nim.
+
+3. MENAMBAHKAN DATA
+Sintaks Standar:
+INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES 
+('12345', 'Ali Hasan', 'Informatika', 2021, 3.75),
+('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60),
+('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
+Aturan Toleransi:
+- Mahasiswa boleh menggunakan satu query INSERT dengan banyak VALUES (multi-row insert) ATAU tiga perintah INSERT INTO terpisah.
+- Tanda kutip string boleh menggunakan kutip tunggal (') atau kutip ganda (").
+
+4. MEMBACA DATA
+Sintaks Standar:
+- Query 1: SELECT * FROM mahasiswa;
+- Query 2: SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
+- Query 3: SELECT * FROM mahasiswa WHERE ipk > 3.7;
+Aturan Toleransi:
+- Kolom yang ditampilkan boleh menggunakan bintang (*) atau menjabarkan nama kolom secara eksplisit (nim, nama, dll).
+- Nilai filter 'Informatika' dan angka 3.7 boleh menggunakan variasi kutip tunggal/ganda serta format angka desimal (3.7 / 3.70).
+
+5. MEMPERBARUI DATA
+Sintaks Standar: UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';
+Aturan Toleransi:
+- Sintaks dasar UPDATE-SET-WHERE harus terpenuhi dengan benar.
+
+6. MENGHAPUS DATA
+Sintaks Standar: DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
+Aturan Toleransi:
+- Sintaks dasar DELETE-FROM-WHERE harus terpenuhi dengan benar.
+
+7. MENGUBAH STRUKTUR TABEL
+Sintaks Standar:
+- Langkah 1: ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
+- Langkah 2: UPDATE mahasiswa SET tanggal_lahir = '2003-05-15' WHERE nim = '12345'; (diikuti update untuk data lainnya)
+Aturan Toleransi:
+- Kolom baru tanggal lahir boleh bertipe DATE atau VARCHAR/TEXT.
+- Nilai tanggal lahir yang di-update dibebaskan asalkan sintaks query UPDATE benar.`);
+
+  const [rubrics, setRubrics] = useState<RubricItem[]>([
+    { id: "1", name: "Penerapan CREATE DATABASE", weight: 10, description: "Kebenaran sintaks pembuatan database 'universitas' dengan benar tanpa error." },
+    { id: "2", name: "Penerapan CREATE TABLE", weight: 10, description: "Kebenaran sintaks pembuatan tabel 'mahasiswa' lengkap dengan Primary Key (nim) dan tipe data yang relevan." },
+    { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Kebenaran penulisan query untuk memasukkan ketiga baris data mahasiswa secara lengkap." },
+    { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran logika dan sintaks dari ketiga query pemanggilan data (tampil semua, filter jurusan, dan filter IPK)." },
+    { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Kebenaran query perubahan IPK mahasiswa dengan NIM '12346' menjadi 3.8." },
+    { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi'." },
+    { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Kebenaran query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom baru tersebut." }
+  ]);
   const [modelOptions, setModelOptions] = useState<string[]>([DEFAULT_LLM_MODEL]);
   const [isLoadingModels, setIsLoadingModels] = useState(true);
 
@@ -62,29 +161,107 @@ export default function CreateAssignment() {
   }, []);
 
   const loadTemplate = () => {
-    setTitle("Praktikum 2: Inner Join & Subquery");
-    setEssayQuestion("Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut.");
-    setAcademicContext(`SKEMA TABEL DATABASE REFERENSI:
-1. mahasiswa (id INT PRIMARY KEY, student_name VARCHAR(100))
-2. matakuliah (id INT PRIMARY KEY, course_name VARCHAR(100))
-3. krs (id INT PRIMARY KEY, mahasiswa_id INT, matakuliah_id INT, grade INT, FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(id), FOREIGN KEY (matakuliah_id) REFERENCES matakuliah(id))
+    setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL");
+    setEssayQuestion(`Tuliskan perintah SQL untuk menyelesaikan seluruh latihan berikut secara berurutan:
 
-SINTAKS QUERY YANG BENAR (GROUND TRUTH):
-SELECT m.student_name, mk.course_name, k.grade
-FROM mahasiswa m
-INNER JOIN krs k ON m.id = k.mahasiswa_id
-INNER JOIN matakuliah mk ON k.matakuliah_id = mk.id
-WHERE k.grade > 80;
+1. Membuat Database:
+- Buat database baru bernama 'universitas'.
 
-PENJELASAN LOGIS WAJIB:
-- FROM klausa dijalankan awal.
-- INNER JOIN m ke k ke mk dilakukan melalui key relasi mahasiswa_id dan matakuliah_id.
-- WHERE k.grade > 80 untuk menyaring data nilai di atas 80.
-- SELECT memproyeksikan nama mahasiswa, nama mk, dan grade.`);
+2. Membuat Tabel:
+- Buat tabel 'mahasiswa' dengan kolom:
+  * nim (PK, VARCHAR)
+  * nama (VARCHAR)
+  * jurusan (VARCHAR)
+  * angkatan (YEAR/INT)
+  * ipk (DECIMAL/FLOAT/DOUBLE)
+
+3. Menambahkan Data:
+- Tambahkan 3 data mahasiswa berikut:
+  * ('12345', 'Ali Hasan', 'Informatika', 2021, 3.75)
+  * ('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60)
+  * ('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85)
+
+4. Membaca Data:
+- Tampilkan semua data mahasiswa.
+- Tampilkan mahasiswa dari jurusan 'Informatika'.
+- Tampilkan mahasiswa dengan IPK lebih dari 3.7.
+
+5. Memperbarui Data:
+- Perbarui IPK mahasiswa dengan NIM '12346' menjadi 3.8.
+
+6. Menghapus Data:
+- Hapus data mahasiswa dengan nama 'Citra Dewi'.
+
+7. Mengubah Struktur Tabel:
+- Tambahkan kolom 'tanggal_lahir' pada tabel mahasiswa.
+- Masukkan nilai tanggal lahir pada setiap data di tabel mahasiswa.`);
+    setAcademicContext(`DOKUMEN ACUAN DAN PANDUAN TOLERANSI VARIASI (GROUND TRUTH):
+
+1. PEMBUATAN DATABASE
+Sintaks Standar: CREATE DATABASE universitas;
+Aturan Toleransi:
+- Case-insensitivity dibebaskan (CREATE DATABASE / create database / Create Database).
+- Penggunaan karakter titik koma (;) di akhir query bersifat opsional.
+
+2. PEMBUATAN TABEL
+Sintaks Standar: 
+CREATE TABLE mahasiswa (
+  nim VARCHAR(10) PRIMARY KEY,
+  nama VARCHAR(100),
+  jurusan VARCHAR(50),
+  angkatan YEAR,
+  ipk DECIMAL(3,2)
+);
+Aturan Toleransi:
+- Ukuran VARCHAR dibebaskan (misal VARCHAR(10) hingga VARCHAR(255)).
+- Presisi DECIMAL dibebaskan, atau boleh menggunakan FLOAT/DOUBLE.
+- Kolom angkatan boleh menggunakan tipe data YEAR, INT, atau INTEGER.
+- Susunan kolom boleh berbeda asalkan seluruh kolom yang diminta (nim, nama, jurusan, angkatan, ipk) ada dan primary key didefinisikan pada kolom nim.
+
+3. MENAMBAHKAN DATA
+Sintaks Standar:
+INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES 
+('12345', 'Ali Hasan', 'Informatika', 2021, 3.75),
+('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60),
+('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
+Aturan Toleransi:
+- Mahasiswa boleh menggunakan satu query INSERT dengan banyak VALUES (multi-row insert) ATAU tiga perintah INSERT INTO terpisah.
+- Tanda kutip string boleh menggunakan kutip tunggal (') atau kutip ganda (").
+
+4. MEMBACA DATA
+Sintaks Standar:
+- Query 1: SELECT * FROM mahasiswa;
+- Query 2: SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
+- Query 3: SELECT * FROM mahasiswa WHERE ipk > 3.7;
+Aturan Toleransi:
+- Kolom yang ditampilkan boleh menggunakan bintang (*) atau menjabarkan nama kolom secara eksplisit (nim, nama, dll).
+- Nilai filter 'Informatika' dan angka 3.7 boleh menggunakan variasi kutip tunggal/ganda serta format angka desimal (3.7 / 3.70).
+
+5. MEMPERBARUI DATA
+Sintaks Standar: UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';
+Aturan Toleransi:
+- Sintaks dasar UPDATE-SET-WHERE harus terpenuhi dengan benar.
+
+6. MENGHAPUS DATA
+Sintaks Standar: DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
+Aturan Toleransi:
+- Sintaks dasar DELETE-FROM-WHERE harus terpenuhi dengan benar.
+
+7. MENGUBAH STRUKTUR TABEL
+Sintaks Standar:
+- Langkah 1: ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
+- Langkah 2: UPDATE mahasiswa SET tanggal_lahir = '2003-05-15' WHERE nim = '12345'; (diikuti update untuk data lainnya)
+Aturan Toleransi:
+- Kolom baru tanggal lahir boleh bertipe DATE atau VARCHAR/TEXT.
+- Nilai tanggal lahir yang di-update dibebaskan asalkan sintaks query UPDATE benar.`);
     setRubrics([
-      { id: "1", name: "Kebenaran Sintaks SQL", weight: 40, description: "Sintaks SELECT, FROM, JOIN, dan WHERE harus ditulis dengan benar tanpa syntax error." },
-      { id: "2", name: "Logika Join & Relasi Tabel", weight: 30, description: "Kebenaran penghubung antar-tabel mahasiswa ke krs dan krs ke matakuliah." },
-      { id: "3", name: "Akurasi Penjelasan Alur", weight: 30, description: "Ketepatan penjelasan urutan logika pemrosesan query (logical processing order)." }
+      { id: "1", name: "Penerapan CREATE DATABASE", weight: 10, description: "Kebenaran sintaks pembuatan database 'universitas' dengan benar tanpa error." },
+      { id: "2", name: "Penerapan CREATE TABLE", weight: 10, description: "Kebenaran sintaks pembuatan tabel 'mahasiswa' lengkap dengan Primary Key (nim) dan tipe data yang relevan." },
+      { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Kebenaran penulisan query untuk memasukkan ketiga baris data mahasiswa secara lengkap." },
+      { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran logika dan sintaks dari ketiga query pemanggilan data (tampil semua, filter jurusan, dan filter IPK)." },
+      { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Kebenaran query perubahan IPK mahasiswa dengan NIM '12346' menjadi 3.8." },
+      { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi'." },
+      { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Kebenaran query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom baru tersebut." }
     ]);
   };
 
