@@ -114,6 +114,7 @@ Aturan Toleransi:
 Sintaks Standar: DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
 Aturan Toleransi:
 - Sintaks dasar DELETE-FROM-WHERE harus terpenuhi dengan benar.
+- Penggunaan filter berdasarkan NIM ('12347') diperbolehkan karena NIM '12347' secara unik merepresentasikan mahasiswa bernama Citra Dewi.
 
 7. MENGUBAH STRUKTUR TABEL
 Sintaks Standar:
@@ -246,6 +247,7 @@ Aturan Toleransi:
 Sintaks Standar: DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
 Aturan Toleransi:
 - Sintaks dasar DELETE-FROM-WHERE harus terpenuhi dengan benar.
+- Penggunaan filter berdasarkan NIM ('12347') diperbolehkan karena NIM '12347' secara unik merepresentasikan mahasiswa bernama Citra Dewi.
 
 7. MENGUBAH STRUKTUR TABEL
 Sintaks Standar:
