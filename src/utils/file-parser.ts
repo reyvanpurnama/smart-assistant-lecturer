@@ -1,17 +1,13 @@
 import mammoth from "mammoth";
+import { extractText, getDocumentProxy } from "unpdf";
 
 export async function parseDocument(buffer: Buffer, originalName: string): Promise<string> {
   const ext = originalName.toLowerCase().split(".").pop();
 
   if (ext === "pdf") {
-    if (typeof global.DOMMatrix === "undefined") {
-      (global as any).DOMMatrix = class DOMMatrix {
-        constructor() {}
-      };
-    }
-    const pdfParse = require("pdf-parse");
-    const data = await pdfParse(buffer);
-    return data.text || "";
+    const pdf = await getDocumentProxy(new Uint8Array(buffer));
+    const { text } = await extractText(pdf, { mergePages: true });
+    return text || "";
   } 
   
   if (ext === "docx" || ext === "doc") {
