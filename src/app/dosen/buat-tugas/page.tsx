@@ -25,114 +25,15 @@ interface RubricItem {
 export default function CreateAssignment() {
   const router = useRouter();
   const [courseCode, setCourseCode] = useState("IF204");
-  const [title, setTitle] = useState("Praktikum 1: Konsep DBMS dan Dasar SQL");
+  const [title, setTitle] = useState("");
   const [model, setModel] = useState(DEFAULT_LLM_MODEL);
   const [dueDate, setDueDate] = useState("");
   
-  const [essayQuestion, setEssayQuestion] = useState(`Tuliskan perintah SQL untuk menyelesaikan seluruh latihan berikut secara berurutan:
-
-1. Membuat Database:
-- Buat database baru bernama 'universitas'.
-
-2. Membuat Tabel:
-- Buat tabel 'mahasiswa' dengan kolom:
-  * nim (PK, VARCHAR)
-  * nama (VARCHAR)
-  * jurusan (VARCHAR)
-  * angkatan (YEAR/INT)
-  * ipk (DECIMAL/FLOAT/DOUBLE)
-
-3. Menambahkan Data:
-- Tambahkan 3 data mahasiswa berikut:
-  * ('12345', 'Ali Hasan', 'Informatika', 2021, 3.75)
-  * ('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60)
-  * ('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85)
-
-4. Membaca Data:
-- Tampilkan semua data mahasiswa.
-- Tampilkan mahasiswa dari jurusan 'Informatika'.
-- Tampilkan mahasiswa dengan IPK lebih dari 3.7.
-
-5. Memperbarui Data:
-- Perbarui IPK mahasiswa dengan NIM '12346' menjadi 3.8.
-
-6. Menghapus Data:
-- Hapus data mahasiswa dengan nama 'Citra Dewi'.
-
-7. Mengubah Struktur Tabel:
-- Tambahkan kolom 'tanggal_lahir' pada tabel mahasiswa.
-- Masukkan nilai tanggal lahir pada setiap data di tabel mahasiswa.`);
+  const [essayQuestion, setEssayQuestion] = useState("");
   
-  const [academicContext, setAcademicContext] = useState(`DOKUMEN ACUAN DAN PANDUAN TOLERANSI VARIASI (GROUND TRUTH):
+  const [academicContext, setAcademicContext] = useState("");
 
-1. PEMBUATAN DATABASE
-Sintaks Standar: CREATE DATABASE universitas;
-Aturan Toleransi:
-- Case-insensitivity dibebaskan (CREATE DATABASE / create database / Create Database).
-- Penggunaan karakter titik koma (;) di akhir query bersifat opsional.
-
-2. PEMBUATAN TABEL
-Sintaks Standar: 
-CREATE TABLE mahasiswa (
-  nim VARCHAR(10) PRIMARY KEY,
-  nama VARCHAR(100),
-  jurusan VARCHAR(50),
-  angkatan YEAR,
-  ipk DECIMAL(3,2)
-);
-Aturan Toleransi:
-- Ukuran VARCHAR dibebaskan (misal VARCHAR(10) hingga VARCHAR(255)).
-- Presisi DECIMAL dibebaskan, atau boleh menggunakan FLOAT/DOUBLE.
-- Kolom angkatan boleh menggunakan tipe data YEAR, INT, atau INTEGER.
-- Susunan kolom boleh berbeda asalkan seluruh kolom yang diminta (nim, nama, jurusan, angkatan, ipk) ada dan primary key didefinisikan pada kolom nim.
-
-3. MENAMBAHKAN DATA
-Sintaks Standar:
-INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES 
-('12345', 'Ali Hasan', 'Informatika', 2021, 3.75),
-('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60),
-('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
-Aturan Toleransi:
-- Mahasiswa boleh menggunakan satu query INSERT dengan banyak VALUES (multi-row insert) ATAU tiga perintah INSERT INTO terpisah.
-- Tanda kutip string boleh menggunakan kutip tunggal (') atau kutip ganda (").
-
-4. MEMBACA DATA
-Sintaks Standar:
-- Query 1: SELECT * FROM mahasiswa;
-- Query 2: SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
-- Query 3: SELECT * FROM mahasiswa WHERE ipk > 3.7;
-Aturan Toleransi:
-- Kolom yang ditampilkan boleh menggunakan bintang (*) atau menjabarkan nama kolom secara eksplisit (nim, nama, dll).
-- Nilai filter 'Informatika' dan angka 3.7 boleh menggunakan variasi kutip tunggal/ganda serta format angka desimal (3.7 / 3.70).
-
-5. MEMPERBARUI DATA
-Sintaks Standar: UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';
-Aturan Toleransi:
-- Sintaks dasar UPDATE-SET-WHERE harus terpenuhi dengan benar.
-
-6. MENGHAPUS DATA
-Sintaks Standar: DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
-Aturan Toleransi:
-- Sintaks dasar DELETE-FROM-WHERE harus terpenuhi dengan benar.
-- Penggunaan filter berdasarkan NIM ('12347') diperbolehkan karena NIM '12347' secara unik merepresentasikan mahasiswa bernama Citra Dewi.
-
-7. MENGUBAH STRUKTUR TABEL
-Sintaks Standar:
-- Langkah 1: ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
-- Langkah 2: UPDATE mahasiswa SET tanggal_lahir = '2003-05-15' WHERE nim = '12345'; (diikuti update untuk data lainnya)
-Aturan Toleransi:
-- Kolom baru tanggal lahir boleh bertipe DATE atau VARCHAR/TEXT.
-- Nilai tanggal lahir yang di-update dibebaskan asalkan sintaks query UPDATE benar.`);
-
-  const [rubrics, setRubrics] = useState<RubricItem[]>([
-    { id: "1", name: "Penerapan CREATE DATABASE", weight: 10, description: "Kebenaran sintaks pembuatan database 'universitas' dengan benar tanpa error." },
-    { id: "2", name: "Penerapan CREATE TABLE", weight: 10, description: "Kebenaran sintaks pembuatan tabel 'mahasiswa' lengkap dengan Primary Key (nim) dan tipe data yang relevan." },
-    { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Kebenaran penulisan query untuk memasukkan ketiga baris data mahasiswa secara lengkap." },
-    { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran logika dan sintaks dari ketiga query pemanggilan data (tampil semua, filter jurusan, dan filter IPK)." },
-    { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Kebenaran query perubahan IPK mahasiswa dengan NIM '12346' menjadi 3.8." },
-    { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi' (diperbolehkan menggunakan filter nim = '12347' atau nama = 'Citra Dewi')." },
-    { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Kebenaran query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom baru tersebut." }
-  ]);
+  const [rubrics, setRubrics] = useState<RubricItem[]>([]);
   const [modelOptions, setModelOptions] = useState<string[]>([DEFAULT_LLM_MODEL]);
   const [isLoadingModels, setIsLoadingModels] = useState(true);
 
@@ -162,6 +63,7 @@ Aturan Toleransi:
   }, []);
 
   const loadTemplate = () => {
+    setCourseCode("IF204");
     setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL");
     setEssayQuestion(`Tuliskan perintah SQL untuk menyelesaikan seluruh latihan berikut secara berurutan:
 
