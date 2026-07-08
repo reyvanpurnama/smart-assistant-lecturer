@@ -42,11 +42,50 @@ function extractJsonObject(raw: string): string {
 export function parseLLMResponse(raw: string): ParsedLLMGrade {
   const jsonText = extractJsonObject(raw);
 
-  let parsedJson: unknown;
+  let parsedJson: any;
   try {
     parsedJson = JSON.parse(jsonText);
   } catch {
     throw new Error("LLM response is not valid JSON.");
+  }
+
+  // Pre-process and sanitize to make the parser resilient against model formatting slips
+  if (parsedJson && typeof parsedJson === "object") {
+    const rawRubrics = parsedJson.rubric;
+    const validRubrics: any[] = [];
+    if (Array.isArray(rawRubrics)) {
+      for (const item of rawRubrics) {
+        if (item && typeof item === "object") {
+          const parsedItem = rubricScoreSchema.safeParse(item);
+          if (parsedItem.success) {
+            validRubrics.push(parsedItem.data);
+          } else {
+            console.warn("Ignoring invalid rubric item:", item, parsedItem.error);
+          }
+        } else {
+          console.warn("Ignoring non-object rubric item:", item);
+        }
+      }
+    }
+    parsedJson.rubric = validRubrics;
+
+    // Fallbacks for missing/malformed root fields
+    if (!parsedJson.global_reasoning || typeof parsedJson.global_reasoning !== "string") {
+      parsedJson.global_reasoning = parsedJson.holistic?.feedback || "Evaluasi otomatis selesai.";
+    }
+    if (!parsedJson.holistic || typeof parsedJson.holistic !== "object") {
+      parsedJson.holistic = { score: 70, feedback: "Evaluasi selesai." };
+    } else {
+      if (typeof parsedJson.holistic.score !== "number") {
+        parsedJson.holistic.score = Number(parsedJson.holistic.score) || 70;
+      }
+      if (typeof parsedJson.holistic.feedback !== "string") {
+        parsedJson.holistic.feedback = "Evaluasi selesai.";
+      }
+    }
+    if (typeof parsedJson.weighted_total !== "number") {
+      parsedJson.weighted_total = Number(parsedJson.weighted_total) || 0;
+    }
   }
 
   const parsed = llmGradeSchema.safeParse(parsedJson);
