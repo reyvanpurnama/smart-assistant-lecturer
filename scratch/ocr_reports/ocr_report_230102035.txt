@@ -1,0 +1,121 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: DESTI NOVIANTY
+NIM: 230102035
+Tanggal Ekstraksi: 7/12/2026, 12:59:23 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+Navigator:
+SCHEMAS °
+Q Filter objects
+> osys
+v [5 universitas
+TB Tables
+BP Views
+TB Stored Procedures
+B90 Functions
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+SCHEMAS °
+Q Filter objects
+> sys
+v I universitas
+vB Tables
+» El mahasiswa
+
+BF Views
+
+B Stored Procedures
+
+BS Functions
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+| ResultGrid | {4% Fer Rov: edt: gl Eb Ei: | eworyimpon: BY ll | Wrap Col Content: 11 a
+nim nama Jurusan angkatan _ ipk n
+
+> [12345 Aitesan Informatie 2021 3.75 =
+12346 BudiSantoso Sistem Informasi 2022 3.60
+12347 Citra Dewi Teknik Komputer 2020 3.85
+
+. [roils]
+
+mahasiswa2 x Apply Revert
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| ResuitGrid | fH 4% Fer Rows: | edt: gly Eb ER | eportimport: EY (ff) | wrap cel Content: 12 a
+nim nama Jurusan angkatan pk
+
+» [12345 AliHasan Informatica 2021 3.75 =
+12346 BudiSantoso Sistem Informasi 2022 3.60
+12347 Citra Dewi Teknik Komputer 2020 3.85
+. [rou Tou]
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt: gd) Eb Eb | Exporyimport: Bi {i | Wrap cell Content: TR a
+nim nama Jurusan angkatan pk _—
+
+» [12345 AiHasan Informatika 2021 3.75 "Gd
+
+.
+
+mahasiswa5 x Apply Revert
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt: gd) Eb Eb | Exporyimport: Bf {8 | Wrap cell Content: TE a
+nm nama Jurusan anghatan pk =
+
+» [12395 AHassan Informatika 2021 3.75 or
+12347 CiraDewi Teknik Komputer 202 3.85
+
+.
+
+mahasiswa 4 x Apply Rever
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+Result Grid | TH 4% Fiter Rows: | edt: 4) Eb Eb | Exporyimport: Ef {8 | Wrap cell Content: TE a
+
+nim nama Jurusan angkatan _ ipk _—
+b [12346 BudiSantoso Sistem Informasi 2022 3.80 "Gd
+.
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+Result Grid | TH 4% Fiter Rows: | edt: gd) Eb Eb | Exporyimport: Bf {8 | Wrap cell Content: TE a
+nim nama Jjurusan angkatan ik Result
+
+b [12347 CiraDew Teknk Komputer 2020 3.85 Gd
+
+.
+
+mahasiswa 8 x Avo Revert
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+| Result Grid | Hf 4% Fiter Rows: |edt: gl Eb Ei: | eworyimpor: BY ll | rap Col Content: 12 a
+nm nama jurusan angkatan pk tanggal lah
+
+» [12345 AiHasan Informatica 2021 3.75 2002-05-15 =
+12346 BudiSantoso Sistem Informasi 2022 3.80 2003-08-20
+12347 Citra Dewi Teknik Komputer 2020 3.85 2001-03-12
+
+. [ol]
+
+mahasiswa 12 x Apply Revert
+--------------------------------------------------
+

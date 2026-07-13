@@ -1,0 +1,127 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Fina Faradilla
+NIM: 230102051
+Tanggal Ekstraksi: 7/12/2026, 12:56:18 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+SCHEMAS Rd
+Q Filter objects
+> osys
+v [] universitas
+v El mahasiswa
+¥[#] Columns.
+* nim
+® nama
+@ jurusan
+# angkatan
+* pk
+» B Indexes
+» T ForeignKeys
+» 5 Triggers
+BF Views
+TB Stored Procedures
+BF Functions
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+SCHEMAS Rd
+Q Filter objects
+> osys
+v [] universitas
+v El mahasiswa
+¥[#] Columns.
+* nim
+® nama
+@ jurusan
+# angkatan
+* pk
+» B Indexes
+» T ForeignKeys
+» 5 Triggers
+BF Views
+TB Stored Procedures
+BF Functions
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+| Resuitarid | HH 4% Fer Rov: | edt: gh) E> ER | exporyimport: ERY (8) | wrap cel Contents 12
+nim nama jurusan angkatan pk
+» 12345  AliHasan Informatika 2021 3.75
+12346  BudiSantoso Sistem Informasi 2022 3.60
+12347 Citra Dewi Teknik Komputer 2020 3.85
+. [oi
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| Resuitarid | HH 4% Fer Rov: | edt: gh) E> ER | exporyimport: ERY (8) | wrap cel Contents 12
+nim nama jurusan angkatan pk
+» 12345  AliHasan Informatika 2021 3.75
+12346  BudiSantoso Sistem Informasi 2022 3.60
+12347 Citra Dewi Teknik Komputer 2020 3.85
+. [os]
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt: gh) Eb Eb | Exporyimport: BY 8) | wrap ell Content: IE
+nim nama Jjurusan angkatan  ipk
+> [12345 AiHasan Informatika 221 3.75
+.
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+Result Grid | fl] 4% Fiter Rows: | edt: gh) Eb Eb | Exporyimport: BY 8) | wrap ell Content: IE
+nm nema jurusan angkatan pk
+
+> [12345 AiHasan Informatica 2021 3.75
+12347 CGitraDewi Teknik Komputer 2020 3.85
+
+. om [ol]
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+31 -- 8. Memperbarui IPK Mahasiswa dengan NIM '12346° Menjadi 3.8
+32e
+33 e
+34
+| Result Grid | | 4% Fter Rows: edt: gd Bb Ek | eworimeon: BY
+nim nama jurusan angkatan ik
+» 12346 BudiSantoso Sistem Informasi 2022 3.80
+.
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+37
+38
+39 -- 10. Menambahkan Kolom Tanggal Lahir
+| ResuitGrid | fl 4% Fier Rows: lest: gd Eb Ei | ewory
+nm nema surusan angiatan pk
+» [12345 AliHasan Informatika 2021 3.75
+12346 BudiSantoso Sistem Informasi 2022 3.80
+.
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+39 -- 10. Menambahkan Kolom Tanggal Lahir
+40 ALTER TABLE mahasiswa ADD tanggal lahir DATE;
+41 © SELECT * FROM mahasiswa;
+| Result Grid | {43 Fter Rows: | ede: gh) Eb Eb | expo
+nim nama jurusan angiatan pk tanggal lahir
+Result
+> [12345 AiHasan Informatika 2021 3.75 God
+123%  BudiSantoso Sistem Informasi 2022 3.80
+.
+Form
+Editor
+--------------------------------------------------
+

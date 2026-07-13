@@ -1,0 +1,199 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Gita Rohimawati
+NIM: 230102052
+Tanggal Ekstraksi: 7/12/2026, 1:05:03 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+Navigator: | oH-rres x SRLAddIons:
+SCHEMAS °C WHI FFAQ RI OOE ume Iv ¥Q 4 > |[F Fumo
+Q Filter objects 1 CREATE DATABASE universita . .
+v8 os N | eb Automatic context help is
+» B Tables disabled. Use the toolbar t
+» BF Views manually get help for the
+> Zz Stored Procedures current caret position or t
+» B Functions )
++O universes toggle automatic help.
+Administration Schemas
+Fr [— Context Help Snippets
+Output
+Schema: universitas (J Action Output -
+# Time ‘Action Message Duration / Fetch
+© 1 133830 CREATE DATABASE universtas Eror Code: 1007. Cant create database Universtas'... 0.000 sec
+© 2 1340116 DROP DATABASE universias’ Orow(s) affected 0031 sec
+© 3 134026 CREATE DATABASE universtas 1 owls) affected 0.047 sec
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+a Viy>UL Workbench - u x
+A Local instance MySQLST-W_ x
+ile Edit View Query Database Server Tools Scripting Help
+Hilo EEE RE & @ D=0
+Navigator: | saLFies x | SQLAdditions:
+SCHEMAS °C WHI FFOAQ RIO OE umoi0wnow ~d% ¥Q <> [[F Fumo
+Q |Fiter objects 1® CREATE DATABASE universitas; . =
+v& os 4 Automatic context help is
+» B Tables pe disabled. Use the toolbar t
+» BF Views 3:8 CO CREATR TARLY, wan sus manually get help for the
+» BF stored Procedures 4 MEH TT NEL NERENENY BRR NEY. current caret position or tc
+» Bn Functions 5 NAMA VARCHAR(58), toggle automatic help.
+> B universitas 6 JURUSAN VARCHAR(58)
+7 ANGKATAN YEAR,
+8 IPK DECIMAL
+9 Yl
+1e
+1
+PA
+*
+Administration Schemas
+ee Context Help Snippets
+Output
+Schema: universitas CF Action Output NM
+# Time Action Message Duration / Fetch
+© 1 133830 CREATE DATABASE universtas Eror Code: 1007. Cant create database niverstas’... 0.000sec
+© 2 1340116 DROP DATABASE universias’ 0row(s) affected 0031 sec
+© 3 134026 CREATE DATABASE universtas 1 owls) affected 0.047 sec
+© 4 135601 CREATE TABLE mahasiswa (NIM INT AUTO_INCR... Orow(s) affected 0.156 sec
+Object Info Session
+IL SI Se 1B
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+e Edit View Query Database Server Tools Scripting Help
+8 e SEE&E EE « @ DL
+avigator | saLFies x | SQLAdditions
+EAS * WHI FFAQC RD OOF memos ik FQ < > |[F Fumo
+Filter objects 12
+B sys 13 ® INSERT INTO mahasiswa (NIM, NAMA, JURUSAN, ANGKATAN, IPK) VALUE! AStomatic context Help |
+> 9 Tables 14 12345, Ali Hasan’, 'Informatika', 2021, 3.75 ); thsabled. Vise the touibar
+» BF Views ¢ ?: . 2 59:78 0 manually get help for th
+» BR Stored Procedures 15 ® INSERT INTO mahasiswa (NIM, NAMA, JURUSAN, ANGKATAN, IPK) VALUE cyrrent caret position or
+» Bf Functions 16 (12346, 'Budi Santoso’ , 'Sistem Informasi', 2022, 3.60 ); toggle automatic help.
+J universitas 5 J
+3 5 3 3
+stim 17 ® INSERT INTO mahasiswa (NIM, NAMA, JURUSAN, ANGKATAN, IPK) VALUE
+» Bl mahasiswa 18 (12347, 'Citra Dewi’, 'Teknik Komputer', 2020, 3.85);
+BF Views 22
+B51 stored Procedures
+TB Functions | Result Grid | HH 4% Fiter Rows: | edt: gd) BE Eb | Expo
+NIM NAMA JURUSAN ANGKATAN  IPK —
+» [12345  AliHasan Informatika 22021 3.75 Gr
+12346 BudiSantoso Sistem Informasi 2022 3.6 —
+12347 GiraDewi Teknik Komputer 2020 3.85 =
+#4 oo] =
+EA (4
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+e Edit View Query Database Server Tools Scripting Help
+8 e SEE&E EE « @ DL
+avigator | saLFies x | SQLAdditions
+EAS * WHI FFAQC RD OOF memos ik FQ < > |[F Fumo
+Filter objects 12
+B sys 13 ® INSERT INTO mahasiswa (NIM, NAMA, JURUSAN, ANGKATAN, IPK) VALUE! AStomatic context Help |
+> 9 Tables 14 12345, Ali Hasan’, 'Informatika', 2021, 3.75 ); thsabled. Vise the touibar
+» BF Views ¢ ?: . 2 59:78 0 manually get help for th
+» BR Stored Procedures 15 ® INSERT INTO mahasiswa (NIM, NAMA, JURUSAN, ANGKATAN, IPK) VALUE cyrrent caret position or
+» Bf Functions 16 (12346, 'Budi Santoso’ , 'Sistem Informasi', 2022, 3.60 ); toggle automatic help.
+J universitas 5 J
+3 5 3 3
+stim 17 ® INSERT INTO mahasiswa (NIM, NAMA, JURUSAN, ANGKATAN, IPK) VALUE
+» Bl mahasiswa 18 (12347, 'Citra Dewi’, 'Teknik Komputer', 2020, 3.85);
+BF Views 22
+B51 stored Procedures
+TB Functions | Result Grid | HH 4% Fiter Rows: | edt: gd) BE Eb | Expo
+NIM NAMA JURUSAN ANGKATAN  IPK —
+» [12345  AliHasan Informatika 22021 3.75 Gr
+12346 BudiSantoso Sistem Informasi 2022 3.6 —
+12347 GiraDewi Teknik Komputer 2020 3.85 =
+#4 oo] =
+EA (4
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+Eos 23
+24 ® SELECT * FROM mahasiswa
+25 WHERE JURUSAN = ‘informatika' :
+| Result Grid | HH 4% Fiter Rows: | edt: gd) Eb Eb | Expory
+NIM NAMA JURUSAN  ANGKATAN IPK
+» [12345 AlHasan Informatika 2021 3.75 Grid
+.
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+52
+53 e SELECT * FROM mahasiswa
+54 WHERE IPK > 3.7 3
+55
+Result Grid | Jl] 4% Fiter Roves: |edit: gh) BE BE |ewo
+NM NAMA JURUSAN ANGATAN PK E
+[12345 AiHesan Informatika 221 3.75 =)
+12347 GiraDewi Teknik Komputer 2020 385
+.
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+22
+56 ® UPDATE mahasiswa
+57 SET IPK = 3.8
+58 WHERE NIM = "12346;
+59 |
+60
+4 —
+| ResuitGrid | HH 4% Fer Rows: |eot: gd) BB Bs [expo
+NM NAMA JRUSAN ANGKATAN PK
+> [12345 AiHasan Informatika 2021 3.75 k 2
+12346 BudiSantoso Sistem Informasi 2022 38
+12347 CitaDewi  Teknk Komputer 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+ce ® DELETE FROM mahasiswa
+61 WHERE NIM = "12347" ;
+62
+63
+64
+| ResultGrid | HH 43 Fiter Rows: | edt: gd) Eb BE | Bpo
+NIM NAMA JURUSAN ANGKATAN  IPK
+» [12345 Ali Hasan Informatika 2021 3.75 Gi
+pe = Lei
+.
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+| TREE SQLAgditi
+EH ZFFAQCIH GORE mono - 4% FQ « >|
+606 ® DELETE FROM mahasiswa
+61 WHERE NIM = '12347° ; Alsi
+© ’ disabl
+- mant
+63 -- Menambah kolom tanggal lahir curres
+64 ® ALTER TABLE mahasiswa tog:
+65 ADD COLUMN tanggal_lahir DATE;
+66
+67 -- Mengisi nilai tanggal lahir (contoh tanggal)
+68 ® UPDATE mahasiswa
+69 SET tanggal lahir = '2000-61-15'
+70 WHERE nim = '12345';
+7
+| Result Grid | HH 4% Fiter Rove: | edt: gd) Eb Eis | Expory
+NIM NAMA JURUSAN ANGKATAN [PK tanggal_lehir
+» [12345 AiHasan Informatika 2021 3.75 2000-01-15
+123%  BudiSantoso Sistem Informasi 2022 38 2001-03-20
+5
+mahasiswa § x Apply Rever Context He
+Output
+CF Action Output -
+--------------------------------------------------
+

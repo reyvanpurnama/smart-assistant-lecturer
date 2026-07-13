@@ -1,0 +1,113 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Fachri Fatrian Nugraha
+NIM: 230102041
+Tanggal Ekstraksi: 7/12/2026, 12:59:34 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+B® Mysat Workbench - a x
+A M3de270013306 x
+Ele Eét View Query Dasbase Sever Too Seriping Help
+Se STEHT A & [A n=
+Navigator =m SqLadditions
+SCHEMAS °C WH FFACIHOOME mmm ih ¢Q dE <> | % | sme B
+Pr jects 1 create database universitas; Automatic contest biclp i
+ve od 2% use universitas; disabled. Use the toolbar to
+views ‘manually get help for the
+BF Stored Procedures current caret position or to
+BF Functions toggle automatic help.
+Administration Schemas e—— Contest Help Snippets
+Information Output
+Acton Output z
+No object selected © Tme Aen Message Dunton / Fech
+© 1134818 create database univenstas 1rowts) ected 0015 sec
+© 2 135007 use unventas Orows) affected 0000sec
+Object Info Session
+Query Complited 3
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+SCHEMAS «
+Q Filter objects
+v [] universitas [i [8
+vB Tables
+v E mahasiswa
+¥ [#] Columns
+@ nim
+® nama
+@ jurusan
+* tahun
+® ipk
+vB Indexes
+¥=] PRIMARY
+3 ForeignKeys
+55 Triggers
+BF views
+Stored Procedures
+B Functions
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+| ResultGrid | HH 4% FiterRows: ~~ |ean gy
+nim nama jurusan tahun ik
+» [12345  AiiHasan Informatika 2021 3.75
+123% BudiSantoso SistemInformasi 2022 3.60
+12347 CittaDewi  TeknkKomputer ~~ 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt:
+nim nama jurusan tahun ik
+» [12345  AiiHasan Informatika 2021 3.75
+123% BudiSantoso SistemInformasi 2022 3.60
+12347 CittaDewi  TeknkKomputer ~~ 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+| Result Grid | HH 4% Filter Rows: | Edit: [ga
+» [12345 AliHasan Informatika 2021 3.75
+.
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+| ResultGrid | HH 43% Fiter Rows: | edt:
+nim nama jurusan tahun ipk
+» [12345 AliHasan Informatika 2021 3.75
+12347 CittaDewi TeknkKomputer ~~ 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt:
+nim nama jurusan tahun pk
+» [12345 AliHasan Informatika 2021 3.75
+12347 CittaDewi TeknkKomputer 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edn: gd)
+nim nama jurusan tahun ik
+» [12345 AliHasan Informatika 2021 3.75
+.
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+| Result Grid | BH 4% Fiter Rows: | edt: gl) Eb Eb | eport/import:
+» 12345 AliHasan Informatika 2021 3.75 2004-07-10
+12346  BudiSantoso Sistem Informasi 2022 3.80 2006-03-13
+3
+--------------------------------------------------
+

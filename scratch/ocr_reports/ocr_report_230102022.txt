@@ -1,0 +1,328 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: ANGGA PAJRI PADILAH
+NIM: 230102022
+Tanggal Ekstraksi: 7/12/2026, 12:57:58 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+ll MySQL Workbench - a x
+
+A Local instance MySQLED x
+
+File Edit View Query Database Server Tools Scripting Help
+
+Sle sT8HEE @ & [3 a=n
+
+Nevigatar [aun 1 | SaUAdditions
+
+SCHEMAS * MEH FFAC ROOF momo -%¢Q [dE <3 | wm -
+
+a Fier cbc Le cReare ourasase niversitas;
+
+San : Automatic context help is disabled.
+
+» © sakila 2 USE universitas;
+
+Bos . Use the toolbar to manually get help
+» 5 Tables for the current caret position or to
+> B Views toggle automatic help.
+
+» 3 Stored Procedures.
+» BF Functions.
+
+»S word
+
+Admission schemas FE Conte velo [Sipe
+
+infomation ups
+
+Acton Output 8
+Ho object selected + me [An Moraga Dun, rch
+© 1 143637 CREATE DATABASE uwentas row) ected 00t6sec
+© 2 143637 USEuniverstas rows) afected 0.000 sec
+Object no Scien
+1637
+» HQuoPume*PaldluneBd +a ne RID ge
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+IB MysaL Workbench = a x
+#®  Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf eo 88888 [A & [2] a=n
+Navigator: =m 'SQLAdditions:
+scHEmAS * WH FFAC DOOR moon 1% ¢Q [= <> |@ | am 5
+NP Nalin Automatic context help is disabled.
+vB a Use the toolbar to manually get help
+» 3 Tables VD for the current caret position or to
+> B5 Views gold le automatic help.
+» 1 Sora racaduras B VARCHAR(1€) PRIMARY KEY, toggl p-
+PE oe : | SE
+om cc BY
+| =
+un
+—— EE. Jp —
+= —
+Acton Output 8
+No object selected + Tme Aen Message Duration / Fetch
+© 1 143637 CREATE DATABASE universtas 1 rows) affected 0016sec
+© 2 143637 USEuniverstas Orows) affected 0.000 sec
+© 3 144000 CREATE TABLEmahasiswa ( nim VARCHAR(10) PRIMARY KEY, nama VARCH... Orowls) affected 0.031 sec.
+2 BQuoPue *CoadNael +a © 20 yun 8
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+B® MysaL Workbench = a x
+A Local instance MySQLBO x
+File Edit View Query Database Server Tools Scripting Help
+§8 oe S888 R « ° O20
+Navigator: SQLAdditions:
+Samus C WH FFAQC SH OOM mmo -%¢Q [HE <> (EG | amo -
+Q Filter objects 1e CREATE DATABASE universitas; - % 1%:
+> © sain 2 use untversites; Automatic context help is disabled.
+v8 N Use the toolbar to manually get help
+» 3 Tables — for the current caret position or to
+< Borsdmcadwes hy nin VARGUA(1S) PRIMAY KEY, toggle automatic help.
+» BP Functions s nama VARCHAR(59),
+> word ; Jurusan vARCHAA(S®),
+. ngtatan veas,
+El ipk DECTMAL(3,2)
+w Ly
+u
+12 ® INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES
+3 Cae, A sen, Ist, 2831, 3.75),
+1 (rae, ‘wat santos, ‘sistes Inforsssi’, 2023, 3.60),
+15 Caer, cite bed’, “Teknik Komuter’, 1038, 3.85%;
+Rimieistion] scremas JE Context el | Sippes
+Information Output
+0 Acson Ott g
+Ho object selected o Tne Aen asa oun een
+© 1 143637 CREATE DATABASE universtas 1 owls) affected. 0016 sec
+° 2 14:36:37 USE universtas. 0 row(s) affected 0.000 sec.
+© 3 144000 CREATE TABLE mahasiswa ( nim VARCHAR(10) PRIMARY KEY, nama VARCH... Orow(s) affected 0031 sec.
+° 4 14:42:17 INSERT INTO mahasiswa nim. nama, jurusan, angkatan, ik) VALUES (12345. A 3rowis) affected Records: 3 Duplicates: 0 Wamings: 0 0015sec.
+Object no [Sassen
+1 © A ; 1445
+2 HAQuoPue *PadaeB Fa esa M0.
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+B® MysaL Workbench — a x
+Local instance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sle S88 E & @ D=0
+Navigator: | Query 1 | SQLAdditions.
+SCHEMAS * WH FFAQC EH OORE memo - 4% ¢Q [= < > [[@ | mr -
+Q Fier objects 12 ® INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES i a.
+> 8 sai 13 (123457, "Alf nasa’, ‘Informatika’, 2021, 3.75), Automatic context help is disabled.
+vE sys I 12346", "Budi Santoso’, ‘sistem Informasi’, 2022, 3.66), Use the toolbar to manually get help
+> Tables Rov em rou rag ped for the current caret position or to
+» BF views = | toggle automatic help.
+» 8 Stored Procedures
+» 5 Functions 7 e SELECT * PRON mahasisna;
+> 8 word EE —
+| ResuitGrd | {4% Fite Rowe: |est: gd Eb Bh | ewoniimpon: Bg {i | weep Col Contents TE
+i ET TT J
+b 15% Amn Informatie 21 375
+|12% BudSamtoso stem Informass 222 350
+| 380 =
+12347 GraDews Terk Komputer 2 385 22) =
+. = Lo] [ my
+Form
+fe
+Adminstration Schemas mahasisua? x = fer Comtetheln Sippel
+Information Output
+OF Acton Output -
+le *  Tme Aon Message Duration / Fetch
+© 1 143637 CREATE DATABASE universtas 1 row(s) affected 0016 sec
+© 2 143637 USEunverstas 0rowts) affected 0.000 sec
+° 3 14.40.00 CREATE TABLE mahasiwa ( nim VARCHAR(10) PRIMARY KEY, nama VARC... 0 row(s) affected 0031 sec
+° 4 14.4217 INSERT INTO mahasiswa (nim. nama, jurusan. angkatan, ipk) VALUES (12345 ‘A. 3row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0.015 sec
+° 5 14:46:46 SELECT * FROM mahasiswa LIMIT 0. 1000 Irowis) retumed 0.000 sec / 0.000 sec
+Objectinfo Session
+1446
+<$ HQuoPue Coa B +d ~oc00 00
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+Bl MySQL Workbench == a x
+# Local instance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sie STFHE EAE & ° D=0
+Navigator: | Query 1 | 'SQLAdditions
+Sains © WE FFOAC BH OORE memo -%¥a[lE <> 10) fy amore -
+Q Filter objects 15 12345", "ALL sasan’, ‘Informatika’, 2021, 3.75), ” are
+RE rr WR msgs iliac ed Automatic context help is disabled.
+YE 15 (13, Citra Ded’, “Teli fomputer, 028, 2.85% Use the toolbar to manually get help
+» 3 ables - for the current caret position or to
+ oadinw 1a select + pron manasisn; | toggle automatic help.
+» 3 Functions me
+» 5 word « — N
+| Result Grid | 3H 4% Fier Rov: i. | est: gl BD Eh | ewortimports BY [| wrap Col Contant: TE
+nim nama Jurusan. angkatan ip
+b [23% Aten fometa 21 375
+A = mm mm
+Fae
+8
+Administration Schemas mabasiswa8 x hoy | meen Coney [Sippel
+information Out
+Acton Output .
+So object selected * Tme Aden Message Durston / Fecn
+© 1 143637 CREATE DATABASE urwerstas 1 rows) afected 00165ec
+© 2 143637 USEuniverstas Orowis) affected 0.000 sec
+[-] 3 14.4000 CREATE TABLE mahasiswa ( nim VARCHAR(10) PRIMARY KEY. nama VARC.. Orow(s) affected 0031 sec
+© 4 144217 INSERT INTO mahasiswa (im. nama, juan, angkatan. iok) VALUES (12345 Ai. 3row(s) affected Records: 3 Duplicates: 0 Wamings: 0 00155ec
+[3 5 14:46:46 SELECT * FROM mahasiswa LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec.
+object nfo [EER © 6 144301 SELECT" FROM mahasima WHERE jsusan = omatka’ LMIT 0, 1000 rowed 00sec /0000sec
+1449
+Ry HQuodPume Padme Bl +a NEE TC
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+B® MysaL Workbench — a x
+Local instance MySQLBO x
+File Edit View Query Database Server Tools Scripting Help
+Sie S88 Ra & @ D=0
+Navigator: | Query 1 | 'SQLAdditions
+SCHEMAS * WH FFAC RD OOM moon -% ¢ Qa 1E <> | Gy | dre .
+Q Fier ects 1 (rave, ‘suds santos’, ‘sists Inforsssi’, 2022, 3.60), " a
+> 5 sake 15 ('12347°, Citra Dewi’, ‘Teknik Komputer’, 2020, 3.85); Automatic context help is disabled.
+v8 oe Use the toolbar to manually get help
+» 5 Tables Re a Ra; for the current caret position or to
+ine 186 SELECT RON mahasisws WERE Jurusan - “Inforstita’; | toggle automatic help.
+» 3 Functions 19% SELECT * FROM mahasisva WHERE 10k > 3.7]
+> 5 wodd EE
+| ResultGrid | fH 4% Fier Rows: |ede: gl Eb Eh | eporyimport: BY {i | Wrap Col Content: IE
+| (fm eee) [emi ngaln:) pk, |
+» [12395 Ahsan infomatia 221 375
+123 GraDew Temkowutsr 220 385 —
+NA a RS -
+=
+5
+Administration. Schemas fRe— reeemeey
+formation Out
+Action Output -
+Ho object selected ome Aen rs oun Fen
+© 2 143637 USEunverstas Orowls) affected 0000sec
+© 3 144000 CREATE TABLE mahasiswa ( nim VARCHAR(10) PRIMARY KEY, nama VAR... 0rowis) affected 0031sec.
+° 4 14.4217 INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ik) VALUES (12345'"..  3row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0015sec.
+© 5 1444 SELECT" FROM mahasewa LMITO, 1000 ow etamed 00001ec /0000sec
+° 6 14:49:01 SELECT * FROM mahasiswa WHERE jurusan = Informatika’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec.
+Object Info. [EER © 7 145015 SELECT * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0. 1000 2rowis) retumed 0.000 sec / 0.000 sec.
+1450
+<$ HQuoPue Coa B +d ~oca0 000
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+B® MysaL Workbench - a x
+Local instance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sie S888 [+ [} n=n
+Navigator: | Query 1 x] SQLAdditions.
+SCHEMAS * me FHFAQC RD OOF moon 4 ¢Q {FE <> [3 F | mot -
+Q ter obects w Uy i oo
+NT Automatic context help is disabled.
+Tr 126 INSERT INTO mhastswa (nis, nama, Jurusan, angkatan, 19K) VALUES Use the toolbar to manually get help
+to 13 (aes, Al sesen', Informatika’, 2021, 3.75), for the cuent caret position orto
+> views SED oo : toggle automatic help.
+SB Came, ws santo, “sisters, 2033, 3.60),
+4 initial 15 (147, ‘Citra Dewi’, “Teknik Komputer”, 2628, 3.85);
+» 1 world »
+7a SELECT + pron mahasiswe;
+18 SELECT * FROM mahasisws WERE Jurusan = Informatie’;
+150 SELECT + Fron saasiove WERE 9k > 3.7;
+»
+=e EE
+2 SET ipk = 3.8
+3 wee nine Cazes’;
+M
+Administration Schemas —_— Context Help Snippets.
+Information Out
+Action Output ]
+Mo object selected *  Tme Aon Message Duraton / Fetch
+° 3 14.40.00 CREATE TABLE mahasiswa ( nim VARCHAR(10) PRIMARY KEY, nama VAR... Orow(s) affected 0031 sec
+© 4 144217 INSERT INTO mahasswa fim, nama, juan, angkatan, ipk) VALUES (12345.".  3row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0015 sec
+o 5 14:46:46 SELECT * FROM mahasiswa LIMIT 0. 1000 Jrow(s) retumed 0.000 sec / 0.000 sec.
+[] 6 1449.01 SELECT * FROM mahasiswa WHERE jurusan = nformatika’ LIMIT 0. 1000 1 row(s) retuned 0.000 sec / 0.000 sec.
+© 7 145015 SELECT * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0. 1000 2 rows) retumed 0.000 sec /0.000 sec
+Object Info | Session © 8 145128 UPDATE mahasiswa SET ipk = 38 WHERE nim = 12346" 1 rows) affected Rows matched: 1 Changed: 1 Wamings: 0 0000sec
+= 1451
+$ HeauoPue * CEH eB F+W ~oc90 000
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+0 MS Workbench - oo x
+A cin <
+Be Bh or Gm Dime So Dek Soe
+GEIR LY a=u
+“as © 88/770 EH OOH mewm -% va DE 5 4 oe
+Ns 1p oe pt deny Automatic context help is
+= est mtversitas; disabled, Use the toolbar t
+VE umersans N ‘manually get help for the.
+pon © ae a mio ¢ ent caret position of
+He Le aces ma se, Tooule automatic help.
+Bsns © me vou,
+rend 7 Sen wow,
+Ll eames
+w by
+1+ Deen 110 stato (sin, nm, rc, spats 1) VRS
+De CT a stk WE vt + formtia's
+Administaton Shes N ee
+object sect a wen nie iz]
+3 rmoms
+on ki Fone re Em ir td Fr id Co Wend frre
+© 12 1375 ELT mn WHERE nO roe 17 og et th ot ods ERED Ea, To i dh 000m
+ORT RET ERE 57 rot 17 org fs et td + ETE C1 ar. orc 000
+Oi i Cro OAT ee Coe 7. Coan rt i prose
+© 15 142 DRLET Mma WHERE recon 17 eo oh ner st ts WR Gr. oto OO |
+oi [ss PRP m———— pris coe
+re Q seven ™ aoc de x oo" B cum 00
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+B® MysaL Workbench — a x
+Local instance MySQLED x
+Fie Edt View Query Dabsse Sever Tools Scripng Help
+Sie S88 Ra & [ol m=n
+Navigator: | Query 1 | SQLAdditions.
+SCHEMAS * WH FFAC RD OOM moon -% ¢Q 1E < > [[@ | mr -
+Q iter objects 2 seriks3s . oo
+Bis 8 ean Automatic context help is disabled.
+tomy 1 Use the toolbar to manually get help
+» 5 Tables Be aE for the current caret position or to
+> 85 views Sliagiyers og toggle automatic help.
+(4 ou PTE 3 eRe name » 112367; ogg!
+» 5 Functions z ~
+= 3s ALTER TABLE mahasiswa ADO tanggal lair DATE;
+236 UPDATE mahasisva
+BST gles «Cees
+an WHERE nino ‘12365;
+2
+ne
+3: SET tanggallandr » “2601-93.20°
+3 HERE nine (1238';
+wo
+Administration Schemas —_— Context Help | Snippets
+Information Output
+OF Acton Output -
+le + Tme Aon Message Duason / Fetch
+© 14 150511 SELECT * FROM mehasiswa WHERE ipk > 3.7 LIMIT 0. 1000. 2 rows) retumed 0.000 sec / 0.000 sec
+© 15 150511 UPDATE mahasewa SET pk = 38 WHERE nm = T2346" owls) affected Rows matched: 1 Changed: 1 Wamings:0 0000sec
+© 16 150511 DELETE FROM mahasiswa WHERE nama = 12347 Ermor Code: 1175. You are using safe update mode and you tried to update atable .. 0.000 sec.
+© 17 150524 ALTER TABLE mahasiswa ADD tanggal_lahir DATE Orowis) affected Records: 0 Duplicates: 0 Wamings: 0 0016 sec
+© 18 150524 UPDATEmahasiswa SET tanggal_lahir = 2000-01-15" WHERE nim = 12345 1 rowis) affected Rows matched: 1 Changed: 1 Wamings: 0 0.000 sec |
+Object Info [Bea © 19 150524 UPDATE mahasiswa SET tanggal lah = 2001-03-20" WHERE im = 12346 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.000 sec
+- 1505
+<$ ZBeauo@ue PCa e EB +E ~eo=90 m0
+--------------------------------------------------
+

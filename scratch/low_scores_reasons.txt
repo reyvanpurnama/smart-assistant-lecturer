@@ -1,0 +1,164 @@
+==================================================
+MAHASISWA: DESTI NOVIANTY (230102035)
+SKOR AI: 78
+==================================================
+
+### RAW ANSWER TEXT (DI DATABASE):
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : DESTI NOVIANTY NIM : 230102035 Tgl praktikum : 03 Desember 2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan:  Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL.  Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan :  Buat database baru bernama universitas. Perintah SQL: CREATE DATABASE universitas; Screenshot hasil running query 2. Membuat Tabel Latihan:  Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasiswa) 
+
+### RUBRIC BREAKDOWN:
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Sintaks CREATE DATABASE universitas; sudah tepat dan tidak ada error.
+- [Penerapan SELECT / READ DATA] Skor: 9.9
+  Feedback: Hanya query pertama (SELECT * FROM mahasiswa) yang lengkap. Query kedua dan ketiga tidak menyertakan kata kunci SELECT, sehingga sintaks tidak valid.
+- [Penerapan UPDATE DATA] Skor: 10
+  Feedback: Query UPDATE untuk mengubah IPK mahasiswa dengan NIM 12346 menjadi 3.8 sudah tepat.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Query CREATE DATABASE sudah benar dan sesuai toleransi.
+- [Penerapan CREATE TABLE] Skor: 10
+  Feedback: Definisi tabel lengkap dengan semua kolom dan primary key pada nim.
+- [Penerapan INSERT DATA] Skor: 10
+  Feedback: INSERT multi‑row sudah tepat.
+- [Penerapan SELECT / READ DATA] Skor: 18
+  Feedback: Query pertama benar, namun query kedua dan ketiga tidak lengkap (hilang kata kunci SELECT).
+- [Penerapan UPDATE DATA] Skor: 10
+  Feedback: Query UPDATE sudah tepat.
+- [Penerapan DELETE DATA] Skor: 0
+  Feedback: Tidak ada perintah DELETE, hanya SELECT untuk menampilkan data.
+- [Penerapan ALTER TABLE] Skor: 20
+  Feedback: ALTER TABLE dan UPDATE kolom baru sudah benar.
+- [Penerapan CREATE TABLE] Skor: 9.5
+  Feedback: Mahasiswa berhasil membuat tabel dengan benar, namun ada penambahan constraint CHECK yang tidak diminta.
+- [Penerapan DELETE DATA] Skor: 9
+  Feedback: Mahasiswa berhasil menghapus data dengan benar, namun ada sedikit kesalahan dalam penulisan query.
+- [Penerapan INSERT DATA] Skor: 10
+  Feedback: Mahasiswa telah menambahkan data mahasiswa dengan benar.
+- [Penerapan ALTER TABLE] Skor: 20
+  Feedback: Mahasiswa telah mengubah struktur tabel dengan benar.
+
+### COT LOG (CHAIN OF THOUGHT):
+Evaluasi dilakukan dengan membandingkan setiap query mahasiswa terhadap kriteria rubrik dan toleransi yang diberikan. Aspek CREATE DATABASE, CREATE TABLE, INSERT, UPDATE, dan ALTER TABLE terpenuhi sepenuhnya, sehingga masing‑masing mendapat nilai 100. Pada bagian SELECT, hanya query pertama yang lengkap; dua query lainnya tidak menyertakan kata kunci SELECT sehingga dianggap tidak valid, menghasilkan nilai 60. Pada bagian DELETE, mahasiswa tidak menuliskan perintah DELETE sama sekali, sehingga nilai 0. Menggunakan bobot masing‑masing aspek, total nilai tertimbang menjadi 78. Feedback diberikan untuk memperbaiki kekurangan pada SELECT dan DELETE.
+
+==================================================
+MAHASISWA: Makbul Insan Darojat (230102070)
+SKOR AI: 76
+==================================================
+
+### RAW ANSWER TEXT (DI DATABASE):
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : Makbul Insan Darojat NIM : 230102070 Tgl praktikum : 3 Desember 2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan: • Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL. • Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan : • Buat database baru bernama universitas. Perintah SQL: CREATE DATABASE universitas; Screenshot hasil running query 2. Membuat Tabel Latihan: • Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasi
+
+### RUBRIC BREAKDOWN:
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Sintaks CREATE DATABASE universitas; sudah tepat dan dapat dijalankan.
+- [Penerapan CREATE TABLE] Skor: 7
+  Feedback: Definisi tabel hampir benar, namun terdapat trailing comma sebelum tutup kurung yang menyebabkan error sintaks.
+- [Penerapan INSERT DATA] Skor: 10
+  Feedback: Perintah INSERT multi‑row sudah tepat dan sesuai dengan toleransi.
+- [Penerapan SELECT / READ DATA] Skor: 21
+  Feedback: Dua query SELECT pertama benar, tetapi query untuk jurusan menggunakan tanda kutip melengkung (‘ ’) sehingga sintaksnya salah.
+- [Penerapan UPDATE DATA] Skor: 0
+  Feedback: Tidak ada perintah UPDATE yang sesuai dengan permintaan soal.
+- [Penerapan DELETE DATA] Skor: 10
+  Feedback: Perintah DELETE menggunakan filter NIM yang diperbolehkan dan sintaksnya benar.
+- [Penerapan ALTER TABLE] Skor: 16
+  Feedback: ALTER TABLE berhasil menambah kolom, namun hanya dua mahasiswa yang di‑update nilai tanggal lahir, sehingga tidak lengkap.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Perintah CREATE DATABASE universitas; sudah tepat dan sesuai toleransi.
+- [Penerapan CREATE TABLE] Skor: 0
+  Feedback: Terdapat kesalahan sintaks pada definisi tabel (koma ekstra sebelum tutup tanda kurung).
+- [Penerapan INSERT DATA] Skor: 10
+  Feedback: Query INSERT multi‑row sudah benar dan memenuhi semua toleransi.
+- [Penerapan SELECT / READ DATA] Skor: 30
+  Feedback: Ketiga query SELECT sudah tepat secara logika dan sintaks.
+- [Penerapan UPDATE DATA] Skor: 0
+  Feedback: Tidak ada perintah UPDATE yang sesuai; mahasiswa malah menuliskan kembali SELECT.
+- [Penerapan DELETE DATA] Skor: 10
+  Feedback: Perintah DELETE menggunakan filter NIM sudah benar dan diperbolehkan.
+- [Penerapan ALTER TABLE] Skor: 16
+  Feedback: Penambahan kolom tanggal_lahir sudah tepat, namun nilai tanggal lahir hanya di‑update untuk dua mahasiswa, bukan semua tiga.
+
+### COT LOG (CHAIN OF THOUGHT):
+Evaluasi dilakukan dengan membandingkan setiap jawaban mahasiswa terhadap kriteria rubrik dan toleransi yang diberikan. Aspek CREATE DATABASE, INSERT, SELECT, dan DELETE sepenuhnya memenuhi standar, sehingga masing-masing mendapat nilai 100. Pada CREATE TABLE terdapat kesalahan sintaks (koma ekstra) yang membuat query gagal, sehingga nilai 0. Aspek UPDATE tidak disediakan sama sekali, sehingga nilai 0. Pada ALTER TABLE, meskipun penambahan kolom dan dua UPDATE sudah benar, satu data belum di‑update sehingga diberikan nilai parsial 80. Menggunakan bobot masing‑masing, total nilai tertimbang menjadi 76, yang menjadi skor holistik akhir.
+
+==================================================
+MAHASISWA: Muhammad Lutfi Ari Saputra (230102068)
+SKOR AI: 60
+==================================================
+
+### RAW ANSWER TEXT (DI DATABASE):
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : Muhammad Lutfi Ari Saputra NIM : 230102068 Tgl praktikum : 03/12/2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan: • Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL. • Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan : • Buat database baru bernama universitas. Perintah SQL: CREATE DATABASE UNIVERSITAS; Screenshot hasil running query 2. Membuat Tabel Latihan: • Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahas
+
+### RUBRIC BREAKDOWN:
+- [Penerapan CREATE TABLE] Skor: 10
+  Feedback: Struktur tabel lengkap dengan primary key dan tipe data yang diperbolehkan.
+- [Penerapan INSERT DATA] Skor: 0
+  Feedback: Data yang diinsert tidak sesuai dengan yang diminta pada soal.
+- [Penerapan SELECT / READ DATA] Skor: 30
+  Feedback: Semua tiga query SELECT sudah benar secara sintaks dan logika.
+- [Penerapan UPDATE DATA] Skor: 0
+  Feedback: Query UPDATE tidak menargetkan NIM yang diminta dan nilai IPK salah.
+- [Penerapan DELETE DATA] Skor: 0
+  Feedback: Query DELETE tidak menghapus data mahasiswa yang diminta.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Mahasiswa berhasil membuat database dengan benar.
+- [Penerapan ALTER TABLE] Skor: 16
+  Feedback: Mahasiswa berhasil menambahkan kolom tanggal lahir, tetapi ada kesalahan pada penulisan query update.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Sintaks CREATE DATABASE sudah benar dan tidak menghasilkan error.
+- [Penerapan CREATE TABLE] Skor: 10
+  Feedback: Tabel dibuat dengan semua kolom yang diminta dan primary key pada nim.
+- [Penerapan INSERT DATA] Skor: 0
+  Feedback: Data yang dimasukkan tidak sesuai dengan tiga baris yang diminta.
+- [Penerapan SELECT / READ DATA] Skor: 30
+  Feedback: Semua query SELECT sudah tepat secara logika dan sintaks.
+- [Penerapan UPDATE DATA] Skor: 0
+  Feedback: Query UPDATE tidak memperbarui NIM dan nilai yang diminta.
+- [Penerapan DELETE DATA] Skor: 0
+  Feedback: Query DELETE tidak menghapus data mahasiswa yang diminta.
+- [Penerapan ALTER TABLE] Skor: 10
+  Feedback: Kolom baru ditambahkan, namun nama kolom berbeda dan tidak semua baris di‑update.
+
+### COT LOG (CHAIN OF THOUGHT):
+Evaluasi dilakukan dengan membandingkan setiap query mahasiswa terhadap kriteria rubrik dan toleransi yang diberikan. Aspek CREATE DATABASE, CREATE TABLE, dan SELECT/READ DATA terpenuhi sepenuhnya, sehingga masing-masing mendapat nilai 100. Pada INSERT, UPDATE, dan DELETE, mahasiswa tidak menggunakan data yang diminta (NIM, nama, nilai IPK), sehingga nilai menjadi 0. Pada ALTER TABLE, meskipun sintaks penambahan kolom benar, nama kolom tidak sesuai dan pembaruan data tidak lengkap, sehingga diberikan nilai parsial 50. Menggunakan bobot masing‑masing aspek, total tertimbang menjadi 60, yang mencerminkan pemahaman dasar yang baik namun banyak kesalahan pada manipulasi data spesifik.
+
+==================================================
+MAHASISWA: Fahmi Maulana Sitakar (230102042)
+SKOR AI: 63
+==================================================
+
+### RAW ANSWER TEXT (DI DATABASE):
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : Fahmi Maulana Sitakar NIM : Tgl praktikum : Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan:  Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL.  Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan :  Buat database baru bernama universitas. Perintah SQL: create database universitas; Screenshot hasil running query 2. Membuat Tabel Latihan:  Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasiswa) tipe varchar. o juru
+
+### RUBRIC BREAKDOWN:
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Sintaks CREATE DATABASE sudah tepat dan dapat dijalankan tanpa error.
+- [Penerapan CREATE TABLE] Skor: 7
+  Feedback: Tabel dibuat dengan benar, namun tipe data kolom NIM tidak sesuai dengan ketentuan (harus VARCHAR).
+- [Penerapan INSERT DATA] Skor: 10
+  Feedback: Query INSERT sudah benar, baik menggunakan satu baris per pernyataan maupun nilai yang dimasukkan tepat.
+- [Penerapan SELECT / READ DATA] Skor: 0
+  Feedback: Tidak ada query SELECT yang dituliskan, sehingga tidak dapat dievaluasi.
+- [Penerapan UPDATE DATA] Skor: 0
+  Feedback: Nilai IPK yang di‑update salah (menulis 38 bukan 3.8).
+- [Penerapan DELETE DATA] Skor: 10
+  Feedback: Query DELETE menggunakan filter NIM yang diperbolehkan dan sintaksnya benar.
+- [Penerapan ALTER TABLE] Skor: 20
+  Feedback: Alter table dan update kolom baru sudah tepat.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Feedback: Sintaks CREATE DATABASE sudah tepat dan sesuai toleransi.
+- [Penerapan CREATE TABLE] Skor: 7
+  Feedback: Tabel dibuat dengan sintaks yang benar, namun tipe data kolom `nim` tidak sesuai permintaan (harus VARCHAR).
+- [Penerapan INSERT DATA] Skor: 10
+  Feedback: Data mahasiswa dimasukkan dengan benar menggunakan tiga perintah INSERT terpisah.
+- [Penerapan SELECT / READ DATA] Skor: 0
+  Feedback: Tidak ada query SELECT yang dituliskan, sehingga tidak dapat dievaluasi kebenarannya.
+- [Penerapan UPDATE DATA] Skor: 10
+  Feedback: Query UPDATE sudah tepat dan sesuai standar.
+- [Penerapan DELETE DATA] Skor: 10
+  Feedback: Query DELETE menggunakan filter NIM yang diperbolehkan.
+- [Penerapan ALTER TABLE] Skor: 16
+  Feedback: Kolom baru berhasil ditambahkan, namun nilai tanggal lahir hanya di‑update untuk dua mahasiswa, bukan semua tiga.
+
+### COT LOG (CHAIN OF THOUGHT):
+Evaluasi dilakukan dengan membandingkan setiap jawaban mahasiswa terhadap kriteria rubrik dan toleransi yang diberikan. Aspek CREATE DATABASE, INSERT, UPDATE, dan DELETE terpenuhi sepenuhnya, sehingga masing‑masing mendapat nilai 100. Pada CREATE TABLE terdapat ketidaksesuaian tipe data untuk kolom primary key, sehingga nilai turun menjadi 70. Bagian SELECT tidak disertakan kode SQL, sehingga nilai 0. Pada ALTER TABLE, penambahan kolom sudah benar tetapi nilai tidak lengkap untuk semua baris, menghasilkan skor 80. Menggunakan bobot masing‑masing aspek, total tertimbang menjadi 63, yang menjadi skor holistik akhir.
+

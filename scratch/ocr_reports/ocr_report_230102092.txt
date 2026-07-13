@@ -1,0 +1,327 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Muhammad Nawa Bayhaqi
+NIM: 230102092
+Tanggal Ekstraksi: 7/12/2026, 1:00:10 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+I MySQL Workbench — X
+Local instance MySQLED x
+File Edt View Query Database Sewer Tools Scripting Help
+Se SEHFHEE EE ® D=0
+SCHEMAS °° mB FFA [=] Lintto 1000rows + | 9g, | & Q [1] [3
+” 1+ CREATE DATABASE Universitas;
+> sekila
+> sys 2
+> universitas
+> world 3
+< >
+Output
+Administration Schemas Acton Gut =
+Information + Tme aden Message Dustin Fen
+© 1 193924 CREATE DATABASE Universtas 1 rows) affected 0032560
+No object selected
+Object nfo | Session
+" = =a 5 _ 739M
+@® OO = [=] > 9 = Ww GW EC pen B
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+I MySQL Workbench - X
+Local instance MySQL0 x
+File Edt View Query Dambase Sever Tools Scriping Help
+Se SEHFHEE EE ® D=0
+Navigator | saLFies x |
+SCHEMAS * mB FFA 3] Lintto 1000rows + | 9g, | & Q [1] [3
+Nr — 3
+> sekila
+> sys 5 eo CREATE TABLE Mahasiswa (
+¥ 5 universitas :
+BF Tables 6 nim varchar(10) PRIMARY KEY,
+BF Views
+B51 Stored Procedures 7 nama varchar(50),
+BR Functions .
+> © world 8 jurusan varchar(50),
+9 angkatan year,
+10 ipk decimal
+11 )s
+12 |
+< >
+Output
+Administration Schemas Acton Gut =
+Information + Tme aden Message Dustin Fen
+© 1 193924 CREATE DATABASE Universtas 1 rows) affected 0032560
+No object selected © 2 194048 CREATE TABLE Mahasiswa (nim varchar(10) PRIMARY KEY] CREATE TABLE Mahasiswa ( 1046. No database selected Select the defaut DB to be used by double-cicking ts . 0.000 sec
+© 3 194054 USE Universtas ama pm echar10) MARY KEY, eg 0000sec
+© 4 194101 CREATE TABLE Mahasiswa (nim varchar(10) PRIMARY KEY]  jurusan varchar(s0), cied 00625ec
+angkatan year,
+ipk decimal
+)
+Object nfo | Session
+= [=1 > ™ & wm gax IPM
+® 0 = [:] 9 WN Ww BW EY yay B
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+I MySQL Workbench — X
+Local instance MySQLED x
+File Edt View Query Dambase Sever Tools Scriping Help
+Se SEHFHEE EE 9 D=0
+Navigator | saLFies x |
+SCHEMAS * mB FFA 3] Lintto 1000rows + | 9g, | & Q [1] [3
+Nr — z
+a ” : 9 angkatan year,
+> sakia
+> Coss 10 ipk decimal
+v J universitas
+BF Tables 11 )s
+BF Views
+B stored Procedures 12
+E-i 13+ INSERT INTO Mahasiswa (nim,nama,jurusan,angkatan,ipk)
+14 VALUES ('12345','Ali Hasan','Informatika',2021,3.75),
+15 ('12346','Budi Santoso','Sistem Informasi',2022,3.60),
+16 ('12347','Citra Dewi’, 'Teknik Komputer ,2020,3.85)3|
+17
+< >
+Output
+Administration Schemas Acton Gut =
+Information + Tme aden Meszsge Dustin Fen
+© 1 193924 CREATE DATABASE Universtas row) affected 0032560
+No object selected © 2 194048 CREATE TABLE Mahasiowa (rim varchar(10) PRIMARY KEY, nama varchar(50), junusan .. Eror Code: 1046. No database selected Select the defaut DB to be used by double-clicking ts . 0.000 sec
+© 3 19405 USE Universtas Orow() afected 0000sec
+© 4 194101 CREATE TABLE Mahasiowa (rim varchar{10) PRIMARY KEY, nama varchar(50), junusan .. rows) fected 0062sec
+A 5 194148 INSERT INTO Mehasiowa fom nama unusan angkatan ik) VALUES (123451 A Hasan for... 3 row(s) flected, 3 waming(): 1265 Data tuncated for column pk at ow 1 1265 Datatuncat... 0.016 sec
+Object nfo | Session
+" = =a = _ TPM
+@® OO = [=] > 9 = Ww BW EC pn B
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+B® MySQL Workbench — x
+Local instance MySQLB0. x
+Fle Et View Query Daisbase Sever Tos Scripting Help
+So SE8EHEHE & ® D=0
+Navigator | saLFies x |
+SCHEMAS * mB FFA 3] Lintto 1000rows + | 9g, | & Q [1] [3
+a 3 insert into mahasisue (nim nana, jurusan,angkstan, pk) lS
+> sak 14 values ('12345',Ali Hasan’, Informatika’,2021,3.75),
+>a 15 ('12346',Budi Santoso’,"Sisten Informasi’;2622,3.60),
+v © universitas
+B Tables 16 (12347, Citra Dewi’, Teknik Komputer',2028,3.85);
+1 views 7
+B stored Procedures 156 SELECT * FROM Mahasiswas ©
+B Functions . R
+> orld
+[TL 1 | Lm Sy I—-t a
+om nema Jurusan angiatan pk. =
+12545 Aten Informatie 221 57 i=
+1246 BudiSentoso stem Informs 22 360
+12347 GraDew Telok Komputer 20 385
+m mm)
+Mahasiswa 2 x oo 1 Reve
+Output
+Administration Schemas Acton Gut g
+Information + me Aen Meszsge Duston Fetch
+© 1231243 CREATE DATABASE Liiverstas row) affected 0047sec
+No object selected © 2 231425 USE Universtas Drow) affected 0000sec
+© 3 23:14:30 CREATE TABLE Mahasiswa (rim varchar(10) PRIMARY KEY. nama varchar(50), jurusa... 0row(s) affected 0093sec
+A 4 231506 insert into mahasiswa (nim nama jurusan,angkatan jpk) values (12345'/Al Hasan’ Informatica’... 3row(s) affected, 3 waming(s): 1265 Data truncated for column pk’ at row 11265 Datatrunca... 0.015 sec
+© 5 23:16:07 INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES (12345' Ai Hasan’, 1... Eror Code: 1062. Duplicate ertry ‘12345 for key mahasiswa PRIMARY" 0000sec
+© 6 231648 SELECT" FROM Mahasiswa LIMIT 0, 1000 3row)retumed 0000sec /0.000sec
+© 7 231704 CREATE DATABASE Liverstas Eror Code: 1007. Cant create database univrstas’ database exists 0016 3ec
+objet nfo EET © 8 231707 SELECT" FROM Mahasiswa LIMIT 0, 1000 row) retumed 0000sec /0.000sec
+Query Completed 5]
+= = = T117PM
+= i] > IAN [ERR
+w Oo a ® Ww WN 5 ao LB
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+BN MySQL Workbench — X
+Local instance MySQLB0. x
+Ele Edt View Query Dsisbsse Sever Tools Sciping Help
+So SE8EHEHE & ® D=0
+Navigator | sacries |
+SCHEMAS * mH FFAO B® Unto 1000ows + | 7 | € Q, (1 =
+> sais 150 SELECT * FROW Mahasisua
+>a
+v © universitas
+BE Tables 20 0 SELECT * FROW Mahasiswa Where jurusan = Informstika’s
+views 2
+5 Stored Procedures W .
+5 Funcions . R
+> world
+| nestor |B 4 mrrom lo gy 8b Ee | porineors Bi Bl [Wop caconens js]
+nm nema wrusn angle pk =
+2 (125% Aivasan Informatie 2021 3.79 i=
+Mahssiswa2  Mahasiswa3 x = ==
+Output
+Adminstration Schemas Acton Ont =
+formation + Tme amen Message Out Fach A
+© 2231626 USE Unverstss Drow) afeced 0000sec
+No object selected © 3 231430 CREATE TABLE Mahasiswa (nim varchar(10) PRIMARY KEY. nama varchar(50). jus... 0rows) affected 0083sec
+A 4 231506 insettinto mahasiswa (nim nama jurusan angkatan ok) values (12345. Ai Hasan’ Informatik... 3 row(s) affected, 3 waming(s): 1265 Data truncated for column pk at row 11265 Data tun... 0.015 sec.
+© 5 231607 INSERT INTO mahasiswa (nim, nam, junusan, angkatan. isk) VALUES (12345' ‘Al Hasan’... Eror Code: 1062. Duplicate entry "12345 for key mahasiswa. PRIMARY 0.000sec
+© 6 231648 SELECT" FROM Mahasiswa LIMIT 0, 1000 Irow(s)retumed 0.000sec / 0.000 sec:
+© 7 231704 CREATE DATABASE Universtas ror Code: 1007. Cant create database ventas’ detsbase exits 0016 3ec
+© © 2317.07 SELECT * FROM Mahasisns LIMIT 0, 1000 row) retumed 0000560 / 0.000 sec:
+PR — © 5 231805 SELECT FROM Mahasisws Where uusan = fomatics LIMIT 0, 1000 Trow(e)retumed 00sec /0000sec
+Query Completed 8
+= — - 11:18PM
+= i] > IAN [ERR
+= Or Om EE 5m aw iB
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+BN MySQL Workbench — x
+Local instance MySQLB0. x
+File Edt View Query Database Sewer Tools Scripting Help
+So SE8EHEHE & ® D=0
+Navigator | saLFies x |
+SCHEMAS * mBIF FA 3] Lintto 1000rows + | 9 |< @ [1] (=)
+> sakia 18 ® SELECT * FROM Mahasiswe;
+> sys Wo
+v J universitas
+B Tables 20 ® SELECT * FROM Mahasiswa Where jurusan = ‘Informatika’
+1 views 2
+B sordracedures 220 SELECT * FROM Mahasiswa where ipk > 3.73 v
+» world < >
+[TL 1 | Lm Sy I—-t a
+om nema Jurusen angiatan pk. =
+12545 Aten Informatia 221 575 i=
+/ |12347 CiraDew  TelnkKomputer 20 3.850
+Mahasiswa2  Mahasiswa3  Mahasisviad x oo 1 Reve
+Output
+Administration Schemas Acton Gut g
+Information + me Aen Message Ouston Fen A
+© 3 23:14:30 CREATE TABLE Mahasiswa (rim varchar(10) PRIMARY KEY. nama varchar(50). jurus... 0row(s) affected 0093sec
+No object selected A 4 231506 insert into mahasiswa {nim nama jurusan angkatan jok) values (12345'/Al Hasan’ format... 3 rows) affected, 3 waming(s): 1265 Data truncated for column pk at row 11265 Data tun. 0.015 sec.
+© 5 2316.07 INSERT INTO mahasiswa (nim, nama, jurusan. angkatan, ink) VALUES (12345. ‘Ai Hasan’... Bor Code: 1062. Duplicate entry ‘12345 for key mahasiswa PRIMARY" 0000sec
+© 6 231648 SELECT * FROM Mahasiswa LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec.
+© 7 231704 CREATE DATABASE Liverstas Eror Code: 1007. Cant create database univrstas’ database exists 0016 3ec
+© 8 231707 SELECT" FROM Mahasiswa LIMIT 0, 1000 row) retumed 0000sec /0.000sec
+© 9 231809 SELECT" FROM Mahasiswa Where urusan = fomatka’ LIMIT 0, 1000 row) retumed 00003ec /0.000sec
+objet nfo EET © 10 231852 SELECT * FROM Mahasiswa Where pk > 37 LIMIT 0, 1000 row) retumed 0000sec/0000sec |
+Query Completed 5]
+= = = 11:19PM
+= i] > IAN [ERR
+w Oo a ® Ww WN 5 ao Lon B
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+BN MySQL Workbench — x
+Local instance MySQLB0. x
+File Edit View Query Database Server Tools Scripting Help
+Se SEHFHEE EE ® D=0
+Navigator | saLFies x |
+SCHEMAS * mB FFA 3] Lintto 1000rows + | 9g, | & Q [1] [3
+> sakia 20 ® SELECT * FROM Mahasiswa Where jurusan = ‘Informatika’
+> sys ow
+v J universitas
+B Tables 226 SELECT * FROM Mahasiswa Where ipk > 3.7
+5 Views 2
+BR stored Procedures 26 UPDATE Mahasiswa
+® Functions
+> orld 25 SET ipk = 3.5
+26 WHERE nim = "123453
+2
+26 © DELETE FROM Mahasiswa
+25 WHERE nim = '12347';
+EY
+31 ALTER TABLE Mahasiswa add tg] lahir date; .
+< >
+Output
+Administration Schemas 5 Acton Out =
+Information + me Aen Meszsge Ouston Fn A
+© 27 232749 Refresh Recordset There are pending changes. Please commit or rolback ist.
+‘Schema: universitas © 28 232750 Refresh Recordset There are pending changes. Please commit or rolback it.
+© 29 232750 Refresh Recordset There are pending changes. Please commit or rolback rst.
+© 30 232604 DELETE FROM Mahasswa WHERE nim = 12347 Orowe) afected 0000sec
+© 31 232612 SELECT" FROM Mahasswa LIMIT 0, 1000 2row() retumed 00003ec /0.000sec
+A 32 233053 UPDATE Mahasiswa SET ipk = 3.8 WHERE nim = "12346 Orow(s) affected, 1 waming(s): 1265 Data truncated for column pk at row 1 Rows matched: . 0.000 sec:
+A 33 233142 UPDATE Mahasiswa SET ipk = 3.8 WHERE nim = "12346 Orow(s) affected, 1 waming(s): 1265 Data truncated for column pk at row 1 Rows matched: .. 0.000 sec:
+obec ro [ESTE © 3 233224 UPDATE ahasiswa SET pk = 3.8 WHERE nim = 12346 0rows) affected Rows matched: 0 Changed: 0 Wamings: 0 0000sec .
+Query Completed 5]
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+BN MySQL Workbench — x
+Local instance MySQLB0. x
+File Edt View Query Database Seer Tools Scriping Help
+So SE8EHEHE & ® D=0
+Navigator | saLFies x |
+SCHEMAS * mB FFA 3] Lintto 1000rows + | 9g, | & Q [1] [3
+2 3 seapk- as -
+> sak 26 WHERE nim = '12345';
+> sys .
+v © universitas
+B Tables 26 © DELETE FROM Mahasiswa
+5 Views 25 WHERE nim = '12347';
+B Stored Procedures wo .
+5 Functions . R
+> world
+| ResuttGrid |B] 4% Frerrovs:[ ||ede gf) Bb Eb | evoryimpor: BY fl) | wrep Col Content: 18 aj
+nim nama Jurusan angkatan  ipk tgl_lahir
+12345 Mites Informatie 221 575 2040418 |
+/ |123% BudiSantoso Sistem Informasi 22 360 20030821
+Mahasiswa2  Mahasiswa3  Mahasiswad  Mahasiswa§  Mahasisua? x oo | Reve
+Output
+Administration Schemas Acton Gut g
+Information + me Aen Message Ouston Fn A
+© 24 232252 SELECT" FROM Mahasswa LIMIT 0, 1000 200m) retumed 0000sec /0.000sec
+Schema: universitas. © 25 23273 DELETE FROM Mahasiswa WHERE nim = "12347 rows) affected 0000sec
+© 26 232748 Refresh Recordset There are pending changes. Please commit or rolback frst
+© 27 232749 Refresh Recordset There are pending changes. Please commit or rolback fst
+© 28 232750 Refresh Recordset There are pending changes. Please commit or rolback frst.
+© 29 232750 Refresh Recordset There are pending changes. Please commit or rolback fst
+© 30 232604 DELETE FROM Mahasswa WHERE nim = 12347 Orow(s)afeced 0000sec
+objet nfo EET © 31 232812 SELECT" FROM Mahasswa LIMIT 0, 1000 200m) retumed 0000sec/0000sec |
+Cancelled open file 5]
+= = = 11:29PM
+= i] > IAN © = zd)
+® O ri @ ® wr NW sw au OB
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+BN MySQL Workbench — X
+Local instance WySQLED
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & ® D=0
+Navigator | sacries |
+SCHEMAS * mBIF FA 3] Lintto 1000rows + | 9 |< @ [1] (=)
+> sss 3
+EO Sie ALTER TABLE Mehasione add tgl_lahir dates
+BE Tables 320 UPDATE Mahssisua SET tgl shir - "2004-04-15" WHERE nim = 12345
+views 33 UPDATE Hahssisua SET tgl lshir - "2003-05-21" WHERE nim = 123465
+5 Sioredrocedures .
+#5 Functions . R
+> werd
+| Resutrid |] AY meron || gf Bb Eb | sworimport: BY {1 | weep cot Conterts TE aj
+nim nama Jurusan angkatan  ipk tgl_lahir
+23% Aires Informatie 21 375 2040418 |
+. Zu snicne sen formas ana
+Mahssisws2  Mahssisus3  Mahasiswad  ahasiwa x ol
+Output
+Adminstration Schemas Acton Ont =
+formation + Tme amen Vesage Ouaton Fach A
+0 17 23:21:29 ALTER TABLE Mahasiswa add tgl_lahir date Error Code: 1060. Duplicate column name Ygl_lahir’ 0.000 sec
+No object selected © 16 2321153 DELETE FROM Mahasisns WHERE nim = 12347 Oro) fected 0000560
+© 19 232204 UPDATE Mahasiowa SETtg lah = "2003.08.21" WHERE rim = 12346 Oro) affected Rows matched: 1 Changed: 0 Wamings: 0 0000560
+© 20 232209 UPDATE Mahasiowa SETtgl ahi = "20040416" WHERE rim = 12345 Oro) affected Rows matched: 1 Changed: 0 Wamings: 0 0000560
+© 21 232211 ALTER TABLE Mahasiswa add tol ahi date Eror Code: 1060. Duplicate column name Yg_lshic 0.000sec
+© 22 232215 ALTER TABLE Mehasiswa add tg lahir date Eror Code: 1060. Duplicate column name Yg_lshic 0.000 sec
+© 25 232241 SELECT FROM ahassws Viner uusan = fomatics LIMIT 0, 1000 Tron) retumed 0000560 /0.000 sec
+objet nfo [EER © 2 23225 SELECT" FROM Mahasisws LIT 0, 1000 2rou(e) retumed 0000360 /0000sec
+Query Completed 8
+--------------------------------------------------
+

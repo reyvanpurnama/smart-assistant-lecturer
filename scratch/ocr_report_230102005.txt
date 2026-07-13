@@ -1,0 +1,364 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Achmad Mahdi Adyan
+NIM: 230102005
+Tanggal Ekstraksi: 7/12/2026, 12:03:22 PM
+==================================================
+
+### SCREENSHOT 1 (achmad_img-000.png)
+--------------------------------------------------
+IB MysaL Workbench - 8 x
+fh Local instance MySQL9T-W. x
+Eile [Edt View Query Database Server Tools Scripting Help
+Silo 88H EA & © =m
+Navigator SL additions
+SCHEMAS * WEB FFAOCR [@] unto 1000ws  ~ | 5 | ¢ Q [1] & Bf Gp | moto 2
+o 1 use mahasisuey
+Bem | Automatic context help is disabled.
+"8 hens Use the toolbar to manually get help
+VE Tables for the current caret position or to
+vl mahasiswa toggle automatic help.
+[5 Columns
+* nm
+* nama
+* angkatan —————————
+* ink Rest Grid | 4) Fer Rove: oo gh Bb Be | Ewotivoor: BY il | Woo cal cote: TE
+> BY indexes nm nama Jurusan angkatan pk =
+Administration Schemas. » (12345 AiHasan Informatika 2021 3.75 Gr
+— 15% BS Seteminfmes 222 360
+12347 Ctabew  TelnkKomputer 2 385
+Na coc
+Table: mahasiswa
+_— net Help [Sippel
+Columns: phasisva } x & eR
+om COS Output
+nama varchar(50 Acton Output -
+Joi, a Er Mage Duson; Fach
+ok fecma(32) © 1110027 USE uments Orowls) affected 0000sec
+© 2 110416 INSERT INTO mahasisns fim. nama, Anusan,anghaten, pk) VALUES. (12345.'A1. 3row() fected Records: 3 Duplcates: 0 Wamings: 0 0000 sec
+© 3 110526 SELECT from mahasswa LIMIT 0, 1000 Sow) retumed 0000 sec /0000sec
+biect nfo Session
+2 ad ER Ca ae 1112
+Q om 8 & Wi B&D oo B®
+--------------------------------------------------
+
+### SCREENSHOT 2 (achmad_img-001.png)
+--------------------------------------------------
+EO
+EHIFFAQC RB OQ OIE umo0nmoms
+1e CREATE DATABASE universitasi|
+--------------------------------------------------
+
+### SCREENSHOT 3 (achmad_img-002.png)
+--------------------------------------------------
+1 ©) CREATE TABLE mahasiswa (
+
+2 nim VARCHAR(15) PRIMARY Kev,|
+3 nama VARCHAR(50),
+
+4 Jjurusan VARCHAR(52),
+
+5 angkatan YEAR,
+
+6 ipk DECIMAL(3, 2)
+
+70)
+
+8
+--------------------------------------------------
+
+### SCREENSHOT 4 (achmad_img-003.png)
+--------------------------------------------------
+& MysaL Workbench - 8 x
+A Local instance MySQLIT- WW. x
+Eile Edit View Query Database Server Tools Scripting Help
+Sle E8888 0 & [- m/=n |
+Navigator SqLAdditons
+SCHEMAS * mBIFFA ® [@] umor00mws  - 1% (¢ Q [1 & 5 fy | demote -
+1 INSERT INIO mahasiswa (nim, nama, jurusan, angkatan, ipk _-—
+B « ¥ ¢ ad Automatic context help is disabled.
+> 2 vawes
+v © uiersitas 2 aa Use the toolbar to manually get help
+vB Tables : CLIN: DEE emne’; [Teommding gE BT for the current caret position or to
+v8 mahasiswa ¢ (12346, “Budi Santos’, ‘Sistem Informesi', 2022, 3.60), toggle automatic help.
+(8) Columns s (12347, Citra Dewd’, "Teknik Komputer', 2020, 3.85))
+* nm
+rams
+* jurusan
+* angkatan
+ink Rest rid |B] 4% Fier Rov co gh) BB Ee | Econo BY Gi | Wrap Cot Contes T5
+» BF indexes
+~ nim nama jurusan angkatan ik &
+Administration Schemas » [12345  AliHasan Informatika 2021 3.75
+Sh 1234 Bud Santoso  Sstem Informast 122 360
+12347 CvaDew  Teknk Komputer 220 385
+. mm I
+Table: mahastswa
+—— mobasisms 1x © Contetrep Snippets
+nim = har(15, Output
+nama varchaso 0 Acton Ouput 3
+Jurusan  varchar(s . . SR.
+angkatan year bese) on lessage Duration / Feect
+pk decimal(3,2 © 1 11:0027 USE univenstas Orow(s) affected 0.000sec
+© 2 11.0416 INSERT INTO mahasiswa im, nama, krusan, angkatan, ipk) VALUES (12345, Al. 3 row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0.000sec
+[3 3 11:09:26 SELECT Yrom mahasiswa LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec.
+object wo. [EERERER
+' 2) . B 114
+Qe ® & i ET
+--------------------------------------------------
+
+### SCREENSHOT 5 (achmad_img-004.png)
+--------------------------------------------------
+B® MysaL Workbench - a x
+# Local instance MySQL -W. x
+Bio Et View |Qieey Deobome’ Serves Toke | Sinton Fe
+ile SEF&HE EA & [3 [=n |
+Navigate [ Query 1x] SaUAdditons
+SCHEMAS * mB FFACE B] imo om % ¢ Q 1 3 (® % | wmoto .
+1e SELECT *FROM mah; 1 i
+>8m — Automatic context help is disabled.
+4 pe— Use the toolbar to manually get help
+VE Tables for the current caret position or to
+vB mabasiowa toggle automatic help.
+Columns
+* im
+* am
+* pan
+* anghatan
+® pk Result Grid | 4% Fer Rows: cot: gh) Eb Bo | Eporyimpont: Bg fl) | Wrap Cel Content: TR
+" EE
+» EH Indexes nim nama Jurusan angkatan ik
+Administration Schemas » [12385 Alben Informatie 221 3.75 5
+— 1234 BudSmioso Stminfmes 222 380
+12347 ChaDew  TdnkKomuier 220 385
+. mm Em mi
+Table: mahasiswa
+Columns: ahasisva’s x ontextHelp Snippets
+archar(15 Ougat
+i
+rama varchar(s O Acton Opt g
+Tngiatan yor o Tme Aden esse [rey
+ok e al(3,2 [] 2 11:04:16 INSERT INTO mahasiswa (nim. nama, jurusan, angkatan, ipk) VALUES (12345.°A.. 3 row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0.000 sec
+© 3 110326 SELECT rom mahasiswa LIMIT 0, 1000 3 rows) retumed 0.000 sec / 0.000 sec
+© 4 111651 SELECT ‘FROM mahasiswa WHERE susan = informatica’ LIMIT 0, 1000 1row(s) retumed 00155ec 70.000 sec
+[-] 5 11:18:09 SELECT * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0, 1000 2row(s) retumed 0.031 sec / 0.000 sec:
+© 6 112622 SELECT" FROMmahasowa WHERE ok > 37 LIMIT 0, 1000 Zrowe)retamed 0000sec/0000 sec
+sect iro (EER © 7 113231 SELECT ‘FROM mahasswa LIMIT 0, 1000 3 owls) retumed 0000sec / 0000 sec
+ad 5 'Y 11:32
+Q © N & " AED 8
+--------------------------------------------------
+
+### SCREENSHOT 6 (achmad_img-005.png)
+--------------------------------------------------
+B® MysaL Workbench - 8 x
+A Local instance MySQLST - Wx
+Ele Edt View Query Database Sever looks Scriping Help
+Silo TEE E & ® D=0
+Navigator | Query 1 SqLAdditions
+SCHEMAS * WEB FFA ® [@] umwo100mws  - [4 ¢ Q [1 2 [BF | Jmpto -
+Q Fier object
+1 SELECT *FROM mahasiswa y
+Np EE ER Automatic context help is disabled.
+v © unwversitas " 2 Use the toolbar to manually get help
+vB Tables for the current caret position or to
+v El mahasiswa toggle automatic help.
+v [3] Columns
+* nim
+* nama
+* jonusan
+* anghatan
+* pk Result Grid | J 4% Fiter Rows: edt: gl Eb Ek | Bwort/imports Bg {1 | wrap Col Content: TE
+> B Indexes - a To
+Administration Schemas b 12365 AiHasn Informatka 221 375
+= B my Cm
+Information
+Table: mahasiswa
+— tet Help Snippets
+Ci ahasiswa 2 x
+bm 0S Output
+nama char(5 OF Action Output -
+jurusan  varchar( . .
+an © Tme Amen Message Ouaton Fe
+ok deamal3,2] © 1110027 USE universtas Orowis) affected 0000sec
+© 2 110416 INSERTINTOmahasiswa fim, nama, keusan, angkatan, ik) VALUES (12345. Al. 3rowis) affected Records: 3 Duplcates: 0 Wamings: 0 0000sec
+© 3 11:0926 SELECT Yom mahasewa LIMIT 0. 1000 3rowts)retumed 0000sec /0.000 sec
+© 4 111651 SELECT ‘FROM mahasiswa WHERE krusan = ifomatica’ LIMIT 0, 1000 1 rows) retumed 0015sec /0.000 sec
+ectinfo Session
+’ Ze) N 1116
+Qe "XEEL ET
+--------------------------------------------------
+
+### SCREENSHOT 7 (achmad_img-006.png)
+--------------------------------------------------
+B® MysaL Workbench - [= Xx
+Local instance MySQLS1 - Wx
+Fle Edt View Query Database Sever Tools Scriping Help
+Se 8888 @ & ° D=n
+Navigator [ Query 1x | SqLAdditions
+SCHEMAS * mEHIFFA @ B] uo 100m0w 45 | ¢ Q [1 = By % | moto v
+Q Frcs .
+® 1e SELECT * FROM mahasiswa . .
+i Automatic context help is disabled.
+> sys 2 WHERE dpk > 3.7;
+LT Use the toolbar to manually get help
+vB Tables B for the current caret position or to
+v [ mahasiswa toggle automatic help.
+[5] Columns
+* nim
+* nama
+* junusan =——
+© angkatan
+* ik Result Grid | [4% Fer Rows: ci: gd) Eb Bh | exporyimport: BY {i | Wrap Col Content: TE
+> B Indexes fn ln [man angaten pk x
+Administration Schemas > [12345 AiHasan Informatie 221 3.75
+om 12347 GiraDewi Tel Komputer 220 385
+= om om [ [ole
+Table: mahasiswa
+pr . Context Help Snipes
+Columns: i abasievad xc A .
+wm OS Output
+nama archar(50 3 Acton Output =
+jurusan  varchar(5 pe os
+i Ta ¢ Tre Aden Message Outen Fer
+ok decma(3,2 © 1 110027 USE unverstas Orow(s) affected 0000sec
+[] 2 11:04:16 INSERT INTO mahasiswa {nim. nama, jurusan, angkatan, ipk) VALUES (12345, Ali. 3 rows) affected Records: 3 Duplicates: 0 Wamings: 0 0.000 sec.
+© 3 110326 SELECT fom mohasiswa LIMIT 0, 1000 3row(s)retumed 0.000 sec / 0.000 sec
+© 4 111651 SELECT ‘FROM mahasiswa WHERE jurusan = infomatia’ LIMIT 0, 1000 1 row(s)retumed 00155ec / 0.000 sec
+© 5 111809 SELECT FROM mahasiswa WHERE pk > 3.7 LIMIT 0, 1000 2rowls) retumed 0.031 sec / 0.000 sec
+Object info [EERE © 6 112622 SELECT" FROM mahasswa WHERE ik >3.7 LIMIT 0, 1000 2rowls) retumed 0.000 sec / 0.000 sec
+a) « e 11:26
+Q @ § & ; ABD
+--------------------------------------------------
+
+### SCREENSHOT 8 (achmad_img-007.png)
+--------------------------------------------------
+& MysaL Workbench - 8 x
+#& Local instance MySQLST -W. x
+Ele Edt View Query Dasbsse Sever Ios Scriping Help
+Silo STH E ® D=0
+Navigator | Quen 1 x | SqLAdditons
+SCHEMAS * mE FFA [] [B]| unto 100mm ~ [45 | ¥ Q ({] [Z Bf | moto E
+1 UPDATE mahasiswa : Pe
+Automatic context help is disabled.
+rs 2 sETipk 8
+v © uniersitas roi il ey Use the toolbar to manually get help
+v5 Tables SN for the current caret position or to
+v  mahasiswa - toggle automatic help.
+v8) Columns
+* nm
++ nama
+* juusan
+* angkatan
+* ink
+» BF indexes
+Administration Schemas
+Table: mahasiswa
+— Context Help Snippets
+Columns:
+am Ch Output
+nama varchar(s (Acton Output -
+Jurasa hari! Action Message ration / Fetch
+i ome Ace - Ouaon Fe
+pk decimak3,2] © 3 110926 SELECT from mahasiswa LIMIT 0, 1000 rows) retumed 0.000 sec / 0.000 sec
+© 4 111651 SELECT ‘FROM mehasiswa WHERE juusan = infomatka’ LIMIT 0, 1000 1 rows) retumed 0.015 sec / 0.000 sec
+© 5 111809 SELECT * FROM mahasiswa WHERE ipk > 37 LIMIT 0, 1000 2rowis) retumed 0.031 sec / 0.000 sec
+© 6 112622 SELECT FROMmahasiswa WHERE ik > 37 LIMIT 0, 1000 2rows)retumed 0.000sec /0.000 sec
+© 7 11:3231 SELECT ‘FROM mahasiewa LIMIT 0, 1000 rows) retumed 0.000 sec / 0.000 sec
+tioct who NEE © © 11:3333 UPDATE mahasiowa SET ipk = 3.8 WHERE rim = 12346 owls) fected Rows matched: 1 Changed: 1 Wamings:0 0031 sec
+» s 3 133
+Q @ N & v AED yn &
+--------------------------------------------------
+
+### SCREENSHOT 9 (achmad_img-008.png)
+--------------------------------------------------
+12346 BudiSantoso Sistem Informasi 2022 3.80
+--------------------------------------------------
+
+### SCREENSHOT 10 (achmad_img-009.png)
+--------------------------------------------------
+es ZZ
+WH IFFAQC DO OE wmetoos -1%¢ Q [=
+
+1 DELETE FROM MAHASISWA
+
+2 WHERE nim = '12347°
+--------------------------------------------------
+
+### SCREENSHOT 11 (achmad_img-010.png)
+--------------------------------------------------
+| TEER TEER IEEE KN TEE TREES. 15. Se =
+» 12345 AliHasan Informatika 2021 3.75
+12346 Budi Santoso Sistem Informasi 2022 3.80
+.
+--------------------------------------------------
+
+### SCREENSHOT 12 (achmad_img-011.png)
+--------------------------------------------------
+nim nama jurusan angkatan pk tanggal_lahir
+» 12345 AliHasan Informatika 2021 3.75 2000-05-15
+
+12346 Budi Santoso Sistem Informasi 2022 3.80 2001-03-22
+.
+--------------------------------------------------
+
+### SCREENSHOT 13 (achmad_img-012.png)
+--------------------------------------------------
+B® MysaL Workbench - 8a x
+Local instance WySQLO1 VL x
+Eile [Edt View Query Database Server Tools Scripting Help
+Sle STEHT @E & (J =n |
+Navigate: [ae 1] SatAddtions
+soHemas * mEBIFFACB [Bl] to 100m ~ 1% | @ Q (1 @ CEST 5
+Q Fier oecs :
+1% ALTER TABLE mahasiswa
+—— Automatic context help is disabled.
+=r > AD tanggal_lahir DATE;
+"8 eras = Use the toolbar to manually get help
+VE Tables for the current caret position or to
+vl matasiowa toggle automatic help.
+8] Columns
+* nm
++ rama
+* angkatan
+“ok
+» B90 ides
+Administration Shes
+Table: mahasiswa
+FE tet ey [SHG
+Columns: ’ i
+as ok
+nama archar(50 9 Action Output -
+Jonson varchar
+fo ome Aen esage Dun Fach
+POT Yetmal32) © 9 113402 sclct Yommahasewa LITO, 1000 3rowetumed 00sec /0000sec
+© 10113530 DELETE FROM mahasiswa WHERE nama = Cra Dowd ror Code: 1175. Yu are ag see dae mode and you dt update atabe . 0016 sec
+© 11 11:3545 select Trommahasiswa LIMIT 0, 1000 3 rows) retumed 0000 sec /0.000 sec
+© 12 113726 DELETE FROM MAHASISWA WHERE im = 1247 rows) affected 00sec
+° 13 11:3743 SELECT "FROM mahasiswa LIMIT 0. 1000 2row(s) retumed 0.000 sec / 0.000 sec.
+ject io EE © 14 114148 ALTER TABLE mahasiwa ADD tanggal she DATE Orows) fected Records: 0 Duplicates 0 Wamigs:0 00475ec
+> al  g Saban 1142
+Q om N46 Wi B&O gyno B®
+--------------------------------------------------
+
+### SCREENSHOT 14 (achmad_img-013.png)
+--------------------------------------------------
+1 UPDATE mahasiswa
+
+2 SET tanggal lahir = "2000-05-15"
+3 WHERE nim = '12345°;
+
+a
+
+59 UPDATE mahasiswa
+
+6 SET tanggal lahir = '2001-03-22'
+7 WHERE nim = '12346';
+
+8
+
+9 ® UPDATE mahasiswa
+
+10 SET tanggal lahir = '1999-11-18'
+11 WHERE nim = '12347';
+--------------------------------------------------
+

@@ -102,7 +102,8 @@ export default function LecturerOverride({ params }: PageProps) {
             max_weight: maxWeight,
             description: rd.description,
             score: scoreVal,
-            ai_score: aiScoreVal
+            ai_score: aiScoreVal,
+            feedback_text: scoreRow ? scoreRow.feedback_text : ""
           };
         });
 
@@ -206,6 +207,14 @@ export default function LecturerOverride({ params }: PageProps) {
 
           <div className="flex items-center gap-3">
             <ThemeToggle />
+            <Link 
+              href={`/mahasiswa/hasil/${submissionId}`}
+              target="_blank"
+              className="px-4 py-2 text-xs font-semibold text-white bg-indigo-500 hover:bg-indigo-600 rounded-xl transition-all duration-300 flex items-center gap-1.5 shadow-sm shadow-indigo-500/10"
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              Lihat Hasil Mahasiswa
+            </Link>
             <Link 
               href="/dosen" 
               className="px-4 py-2 text-xs font-semibold text-muted-text hover:text-foreground bg-card border border-card-border rounded-xl transition-all duration-300 flex items-center gap-1.5"
@@ -360,6 +369,11 @@ export default function LecturerOverride({ params }: PageProps) {
                       <span className="text-indigo-400 font-bold">AI: {aspect.ai_score}</span>
                       <span>{aspect.max_weight} (Sempurna)</span>
                     </div>
+                    {aspect.feedback_text && (
+                      <div className="mt-2 p-2.5 bg-indigo-500/5 dark:bg-indigo-500/10 border-l-2 border-indigo-400 rounded-r-lg text-[10px] text-muted-text leading-normal">
+                        <strong>AI Reason/Feedback:</strong> {aspect.feedback_text}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

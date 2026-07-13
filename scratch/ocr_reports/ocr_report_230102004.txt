@@ -1,0 +1,249 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Abdurrahman Lunny Irham
+NIM: 230102004
+Tanggal Ekstraksi: 7/12/2026, 1:00:50 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+Bi welt a x
+
+a arcs ©
+
+BE 5 EEFERE RE ona
+
+Cr— sass
+
+Eo > EE 7 #AO0D OOM mmm inva CN Tyr T—
+
+Ld i toe th
+
+manual got help or he.
+Togele moore ei.
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+{B® MySQL Workbench
+
+A Localinstance WySQLED x
+
+Ele Edt View Query Databss
+6 SEEE
+SCHEMAS >
+
+Nr —
+> prod
+
+> sys
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+Bl MysaL Workbench - 9 x
+Blois x
+Fi Gh Von Gory Doe Seve To Si bl
+He SPREE ES Ya=s
+ts [2-1 —
+saws * WHIZ FRO MOOE mew 1% va WE RECESS E
+fmm Le cone muse ieee
+on : 4 Automatic context help is
+Fo disable, Use the toolbar to
+si Ep—— manually get help for the
+Binion H current core postion or to
+| f= PR ——— Too maton ein.
+TT renee man ce,
+BH sy
+| See wren,
+5 | pen,
+w | imeem
+why
+0 romows
+Rd © 1 135M USE ests Ow) acted 0000mec
+me © 7 135705 CREATE TABLE Wahsboma (rin vacha) PRAASY HEY. rns cach), ass Oso abcd 07m
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+a0 Walbeh a x
+py —
+CERES LY
+fn [=
+os + WRF TROMOOM w— ARLE RI TYP
+Be — baa ——
+A — dae, Use the ogibor to
+Smee ann co post to
+Omer
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+BB 5 ben coe
+0 rami x
+SO ¢OHFFF A [J a=
+sos * WME FFAOMOOHE Eww «x JADED <b IE Hy la a
+Eh Fi =———_mp—— deste,
+DOTA, hy re
+ETE IR —| LE ENE =|
+rm
+Sarasin Eo. fe
+SE sr cnn aa fe
+to obit selected © 4 140640 INSTT INTO Manswers use agtr 5k) VALUES {20454 ase hr. rae) ected esr: Dice: § Wares 0 toes
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+sa vent - 8 x
+
+Ly
+
+tn he Gr Boi nn So
+
+Fe LIFFH RK © Dan
+
+pre =m —
+
+sora * EH FFAOR COE mem i vaAN REE AEE []
+FT eR — A th Yona to
+Ts Cosme es sy ‘manly got hlp for the
+a hare annem cree poston ota
+BO in aan Toon atonal hep.
+= FR I gh BB Be tion Bl ww cco EH]
+3 rams
+
+pan em Gs Gist ves Toes fr
+
+mot 0 Li Apes ic ALS AEA Soh femme Bt Me Fe
+
+5 a i mown S00 pr frm
+oC ro SEE Ma mn Men HT 100 used prebusioning
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+MAE Wotimach - 8 x
+A maces x
+Be Bn Uer Ga Dobe Sew Tok Sow i
+88 ¢ STEHE RE « © 0=0
+I 7 SE ————
+screws * WE EHFAOC EO ORE meen -i¢QHE REAR B
+DN C= — eS pi SE 7
+ee CC ——_ Automatic context help is
+SAE SO SIE SS wee disabled, Use the toolbar to
+= TITS Sy HE Toner 053-49 iy hk he
+n current caret position or to
+Lae scr + aon nasa toggle automatic help.
+15% SELEY + Pion Mabon here Sarin + 'Enrnstia's
+Ee m— TA I a
+[IE ——Y
++l Awe pe Fe
+BY Gre es m3
+[ro i Cen Swe
+roma -
+HE owe ©" 1 kas CREATE ONTISE wt fran fr
+me © 2 eimai [vn aon
+© 3 THT CREATE TALE Mares (echo PRMAY EY. reveal, pn... Dow ici frases
+RAB es © 4 15540 SRT ATO rrr spent] ALES 246-8 or hr Jew fd cs Bc Wares 0 aio
+© 5 14716 SET ROM Krams UNTO 10 p— aoe 00
+© 5 141223 SELECT FROM Wun Wwe - omaha MIT 1000 fra cme ome
+© 7 AISI SELECT ROM Wt Whee 37 UNTO. 10 pi a2 000
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+0 scl Wedbench. - 8 x
+[JP
+Be Bt Gm Gey Dew Sne Dok Sees to
+S06 COPE FE & Ra=i
+pro =m py—
+sons. C EEFFACE OOM mewn - ok vALE mes
+rr — “
+Automatic context help is
+a er disabled Use the woolbar to
+HS CL AL a tit 01,07) ‘manually get help fo the
+Bs Creo aren sistem feast e100 current caret postion or to
+Came cits sei Tek tnpaer 908.050 toggle automatic help.
+19+ Suse + ron anes ere san + Torti’
+204 SET Sh nto ere 55 973
+Be wort nate
+Bose
+wane a se]
+p >" coneeren saps
+ome
+8 ramos -
+Ra] sie PERE Tr — je pros
+= PRE — [re ate
+© 3 10K) CENT TRE Mas (rm ch FRAGT. rs rach ps Omeic oom
+to obec sted (© 4 41640 WSERTINTo Moran mtn 4) VALLES 245A er. enh cid es) Det Wore aime
+© 5 WIS SCLCT-FrOM Ma TL 08 p— cme 00
+PR pe ————— Tomtrmares prem
+© 7 IS SELECT OM Ma hk 37 TO 08 pr" ome a0
+© 8 HIE) POAT Maa SETS GRE 36 ntfs vas 1 rege | Wao fre
+obec ne [SRE
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+0 4/50 Workbench - 8 x
+ym
+fo on Gu Dobe Sw To i ton
+CECICEEEEETE omen
+pe Em —
+sans © WEIFFTACIE OOM meen - 4 va NE <b IE yd -
+Ne ——— RX
+Antomaticcontext he is
+[ERR —— asa te odor to
+we CAST ITI, eet ee eo
+tts Samant at 0 nami get help for the
+5 Carron ma sien reps Toole automatic hein.
+arent 8 reer [lem gh 8 8 ete 4 nome a
+| CICS —r
+I sn Cones wove
+==
+BO rmoms ®
+EE, ee © 4 140643 INSERT INTO Mahasons fun rams user nkatan ok) VALUES (1215774 Hasan Vi... rows) acid Recon: ) Ducat: 0 Wars: 0 0s
+EE © % E716 SELECT FROM Manama LIT 0 1000 wh waned 000/000 me.
+© Wit SET. Me Won om (HTS 00 flee Felli
+Sechputminind © 7 TT14 SELECT FROM Manama Www gk >37LMIT 0 1000 2row amet A032 000 me.
+I Dr mm tt i 1 rt Wed Joong
++ iow PTE rn mOnt Et 73 overt ee btn i nt 00
+I pa fbosalosasosfoshourdesistor dooms vned
+I ion Trae en com
+IE pe Totton Som oom
+tw io [5 fl
+--------------------------------------------------
+
+### SCREENSHOT 10 (img-009.png)
+--------------------------------------------------
+8 MySQL Workbench - a x
+A naar x
+ta or Dm Dams Sr Tek Se
+FEOEEEEE © =n
+Navigator es 000000000 swam
+scHemas * EE FFAQ DOOR meme - vA EE <r | A | am .
+Q [fie dec 26% DELETE RON Mahasiska B
+ES we sa ron Automaticcontet hep is
+; sabi, Use the toolbar to
+“ ‘manually get help for the
+Be nr rine i Lire ae JE
+DIE TI He
+Ee ein hat © esa ee a ss
+| Red | TO tom [eon gh Eb Ee | erties (3 (fl [rp cot Corrs TE a B
+ERS —CWCT E
+am ie BEERS
+Mahasisma 8 x te Cortex Help Snippets.
+oo
+Orme
+= — © 10 142120 DELETE FROM Mahasowa WHERE nama « Cir Dew Err Code: 1175. You we wang see update mode and you to update atable hat a 0000 sec
+tomaton © 11 142309 DELETE FROM Maas WHERE an + 1237 Trowsiafocnd pr.
+. 2 et sm hear Pls Cm ee
+obec © 13 141230 ALTER TABLE Mahasma add Jor date NOT NULL Err Code: 1282. inconect date value: D0000008 for cota Joh’ a row 1 00sec
+rs ATA E meme si rT HAL ion 5 et erin teams amt Ot
+ok ek Ava ———— Sood ben Overs freed
+ki POE ror OLR RE paseo Copel —
+Te POEs Ee RIE EE 0 desman 1 Ot Vi res
+pe sma pei er Plsount a
+pp— y
+--------------------------------------------------
+

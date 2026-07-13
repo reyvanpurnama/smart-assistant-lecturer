@@ -1,0 +1,111 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Muhammad Ilyas Satria Fauzan
+NIM: 230102090
+Tanggal Ekstraksi: 7/12/2026, 12:59:06 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+# Time Action Message Duration / Fetch
+[] 1 13:47:36 create database mahasiswa 1row(s) affected 0.031sec
+[] 2 13:49:58 drop database mahasiswa 0row(s) affected 0.015sec
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+Navigator |
+SCHEMAS »
+a
+¥ [ universitas
+vB Tables
+Il mehasiswa
+[#8] Columns.
+* nim
+* nama
+* jurusan
++ anghatan
+* pk
+VBP indexes
+oF PRIMARY.
+> 2 Foreign Keys.
+» 55 Triggers
+BF views
+1B Stored Procedures
+[Pha
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+a VI CN TR ——— Ueadt Bf
+Tom name ruson agatn ok
+
+b 12345  AbHasan Informatika 2021 3.75
+iz Bud Sontoso Stem Informas x2 360
+12347 Otra Dew Tek Komputer 202 385
+Em om = cman
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+a VI CN TR ——— Ueadt Bf
+Tom name ruson agatn ok
+
+b 12345  AbHasan Informatika 2021 3.75
+iz Bud Sontoso Stem Informas x2 360
+12347 Otra Dew Tek Komputer 202 385
+Em om = cman
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+| Mesut Grid | 5 9 Fler Rows: [Edt gf 50 5% | Bwort/import: fd {GN | Wrap Cell Content: JI
+nm nema ruse agate ok
+
+» 12345 Altes Informatia 221 375
+
+. mn mm CE
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+ry hall
+nm name prussn angatan ok
+
+b [1245 AiHasan Informatia 221 3.75
+12347 OtraDews Teknik Komputer 220 385
+
+. [ [ com
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+| fom cows [SSS soln | bk
+12345 Ares Informatia 22 375
+[12% Budsant.. stem informas: 222 380
+1247 CtaDem Telok Komputer 2 385
+LE Em om ‘mem
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+—
+
+PT a 1
+
+|_jm _oms gem | siete [ok |
+
+b> [12345 Ares informatia 221 3.75
+fa Bud Sant... Ssten Informas: 222 380
+
+. [a mem
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+[nm rama yrusen anghatan pk tangol lhe
+b 12345 Altes Informatie 221375 19450817
+ze Budisentoso Sten Informas 222 380 19910823
+7 [9 [= Cam
+--------------------------------------------------
+

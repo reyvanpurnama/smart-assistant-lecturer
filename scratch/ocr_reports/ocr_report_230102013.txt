@@ -1,0 +1,54 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Aisyiyah Zahra Hariah Attin
+NIM: 230102013
+Tanggal Ekstraksi: 7/12/2026, 12:59:17 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+| NIM nama Jurusan angkatan ik
+» [23% Mites womete 221 35
+|1246 Budisanoso Ssteminformas 222 36
+=r Graven Tdekienouer 2% sss
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+NIM nama jurusan  angkatan ik
+> [12395 AiHasan Informatka 2021 3.75
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+| NIM nama Jurusan angkatan ik.
+> [2345 Mites Informota 221 575
+12347 CitaDewi TelnkKomputer 2020 385
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| Result Grid | fl] 4% Fiter Rows: |e: gd) BE Be | morn
+NM nama jurusan angkatan  ipk
+» [12345 AiHasan Informatica 2021 3.75
+12346  BudiSantoso Sistem Informasi 2022 38 S—
+= CitraDewi Teknik Informatka 2020 3.85 =
+Fl =
+Editor
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+NM nama jurusan angkatan _ ipk
+b [12345 Aitesn Informatika wa 37
+123% BudSantoso  Sstemlnformasi 2022 3.8
+FS =
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+| NIM nama Jurusan angkatan ik tol lahir
+b [12345 Aitesan  Infomatka 2021 375 20020412
+1234 BudiSentoso All Hosen mas 2022 38 20010621
+--------------------------------------------------
+

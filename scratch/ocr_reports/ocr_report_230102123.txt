@@ -1,0 +1,261 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Sultan Fadhilah Hilmiqashmal
+NIM: 230102123
+Tanggal Ekstraksi: 7/12/2026, 1:07:02 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+& MysaL Workbench - a x
+A Localinstence MySQLBO x
+File Edt View Query Database Sever Tools Scriping Help
+SB STFA MA CA n= |
+Navigator
+SCHEMAS * WH FFAQEOOE memo -%¢Q [HE
+A. Fierchyects 1e create database universitas;
+» sakila
+=r
+> universitas
+» 2 world
+Administration Schemas Fe Ss pepe CS NSN SP I SS SO SEY
+Information Output
+[7 Action Output =
+Mo object selected #  Tme Adon Message Duation / Fetch
+© 1135354 create database universtas Trot) affected 0015 sec
+Object Info Session
+1354
+2 HQuooueme PPCPan NEE RI
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+B® Mysql Workbench — o x
+A Localinstence MySQLBD x
+File Edt View Query Dawbsse Sever Tools Scripting Help
+Se S888 E & ® D0
+SCHEMAS * WH FFAQCEOOE memo -%¢ AQ [0E
+a. Fiter objects 1 create database universitas;
+> sakila 2 use universitas;
+> sys 3
+v1 universitas
+vB Tables 4 8G create table mahasiswa (
+[ » El mahasiswa  ODCN 5 nim varchar (15) primary key,
+5 views 6 nama varchar (50),
+TB Stored Procedures
+8 Functions 7 | jurusan varchar (5),
+» 5 world 8 angkatan year,
+9" ipk decimal
+10 )
+Administration Schemas BE —
+Information Output
+CF Action Output =
+Table: mahasiswa ¢ Tme amen Message Duaton/ Fetch
+Con © 1135354 create database universtas 1 row(s) affected 00155
+The edn 15) © 2135911 create database unwverstas Eror Code: 1007. Cant create database Unverstas' database exists 0.000sec
+nama varchar(S0) © 3135911 use universtas rows) fected 0000sec
+nan yarchart50) © 4 135511 create table mahasiswa (rim varchar (15) primary key. nema varchar (50), urusan var... 0row(s) affected 0031 sec
+ok decmal(10,
+Object Info Session
+5 1359
+2 HoauoouecBe SPERCAB ovo 008
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+S59 51 1441114. Sclect “from mahasivwa LIMIT 0, 1000 jin es 12315 As Hasan nfomatia WaT fe
+eT 144205 Select ET 3 eat CRIB BG Sin ese” Sister Infommast. SOO
+Eee 05. Selec “fiom mahasisn where usan = fomatica” LIMIT 0. 1000 § SE ease tes ves Teknik Komputer 2020.3. 85) — fr
+
+8 55 144245 Soect “from mehasiowa where pk > 3.7 LIMITO, 1000 bibs ow retuned —
+OS Geass oh 3 TS ee
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+SCHEMAS CC WH FFAQCR OOF momo -% ¥¢Q [0
+Q Fier objects 15 values ('12346, 'Budi Santoso’, 'Sistem Informasi', 2022, 3.60);
+> sakila 16 ® insert into mahasiswa (nim, nama, jurusan, angkatan, ipk)
+> sys , ER Coens . .85)s
+ve . 1 values ('12347', 'Citra Dewi’, ‘Teknik Komputer’, 2020, 3.85);
+» BF Tables 1 |
+BF views 19°¢ select * from mahasiswa;
+TB Stored Procedures ———
+8 Functions
+» 2 world | Result Grid | HH 4% Fiter Rows: | edt: gd Ed Es | Exportimport: Bg {lj | Wrep Col Content: 5 a
+nim nama Jurusan angkatan pk
+» (12345  AiiHasan Informatika 2021 3.75 Gr
+12346 BudiSantoso Sistem Informasi 2022 36
+12347 Citra Dewi. Teknik Komputer 2020 3.85
+. om
+Administration Schemas mahasiswa 4 x Apply Revert
+Information Output
+3 Action Output -
+Mo object selected #  Tme Acton Message Duration / Fetch
+[] 1 14:27:37 select * from mahasiswa LIMIT 0. 1000 3row(s) retumed 0.000 sec / 0.000 sec.
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+Navigator | saLFie2 x |
+SCHEMAS C WEIFFAOCDOO0E mew ik ¥Q [ME
+Q Fiter objects 15 values ('12346', 'Budi Santoso’, ‘Sistem Informasi', 2622, 3.68);
+> sakila 16 ® insert into mahasiswa (nim, nama, jurusan, angkatan, ipk)
+> sys ER RE . R
+> 8 word 17 values ('12347', 'Citra Dewi’, 'Teknik Komputer’, 2020, 3.85);
+18 |
+198 select * from mahasiswa where jurusan = ‘informatika's
+| Result Grid | HH 4% Pater Rows: |edit: gd Ed Bs | eworyimport: Bg {1 | Wrap Cel Content: TE a
+nm nema jwusn  agetn ok 5
+» 12345 AiHasan Informatika 2021 3.75 >
+. fou) [ole
+Administration Schemas mahasiswa 3 x Apply Revert
+Information Output
+[F Action Output -
+No object selected + Tme Adon Message Durton/ Fetch
+[] 1 14:26:54 select * from mahasiswa where jurusan = Informatika’ LIMIT 0. 1000 1 row(s) retumed 0.000 sec / 0.000 sec.
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+Navigator EE -_
+soHemas © ME FFAORBOOE mow -%¥alE
+Q Fiter objects 15 values ('12346°, ‘Budi Santoso’, Sistem Informasi’, 2022, 3.60);
+> sails 16 ® insert into mahasiswa (nim, nama, jurusan, angkatan, ipk)
+1 Lei 17 values ('12347', "Citra Dewi’, ‘Teknik Komputer’, 2020, 3.85);
+1 |
+| Resut Grid | 4% Fer Rov: |est: gl Bo Eb | eponiimpots Bg {fl | Woop Cot Contents 15 a
+nim nama yurusan angkatan pk
+» [12345 AlHasan Informatika 2021 3.75
+12347 GivaDew Telok Komputer 20 385
+FS oy mem
+v
+Administration Schemas mahasiswa2 x Roo Raven
+Information Output
+Acton Output -
+No object selected o Tm on Message Outen Fen
+° 1 142533 select “from mahasiswa where ipk > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec.
+Object Info Session
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+Navigator EE
+SCHEMAS * WHI FFAQC RI OOE momo -i% ¢aQ[lE
+Q Fiter objects 19 ® update mahasiswa
+> sala 20 set ipk = 3.8
+=r im aes
+ve . 21 where nim = '12345';
+» BF Tables 22 |
+5 views 23¢ select * from mahasiswa;
+BP stored Procedures. —————————————
+BP Functions
+» ES world | Result Grid | {4% Fiter Rows: | ede: gd) Eb Ek | eporiimpor: BY {8 | wrap cel Content: TE a
+nm nama urusan angiatan pk 5
+» [12345  AiHasan Informatika 2021 3.75 &
+1234 BudiSantoso Stem Informasi 222 38
+12347 CivaDew Teknik Komputer 2020 385
+. [=] [5] [ol]
+Administration Schemas. mahasiswa§ x Avply Raven
+Information Output
+CF Acton Output M
+No object selected #  Tme Adon Message Duration / Fetch
+© 1 143113 select from mahasiswa LIMIT 0, 1000 Irow(s)retumed 0.000sec /0.000 sec
+© 2 143215 update mahasiowa set pk = 3.8 where rim = 12346 1 rows) affected Rows matched: 1 Changed: 1 Wamings: 0 0016 sec
+© 3 143220 select from mahasiswa LIMIT 0, 1000 Irow(s) etumed 0.000sec /0.000 sec
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+Navigator | saL File |
+soos © WHIFFACROOE memos -%¥Q [HE
+Q Fier objects 2
+> sakia 238 delete from mahasiswa
+> ays im = 12347'3
+ve . 25 where nim = '12347°;
+» BF Tables > |
+5 views 25¢ select * from mahasiswa;
+89 stored Procedures. _————_____
+B Functions
+> & world | Result Grid | Fl] 4% Fier Rows: | edt: gh) Eb Ee | Exportimport: Bf 1 | Wrap Coll Content: TE a
+nm nama surusan angiatan pk
+> [12345 AiHassan Informatika 2021 3.75 ‘a
+12346 BudiSantoso Sistem Informasi 222 38
+Administration Schemas. mahasiswa 7 x omy Reve
+Information Output
+CF Action Output -
+Mo object selected ¢ Tm | Adon Message Durston / Fetch
+© 1 143113 select from mahasiswa LIMIT 0, 1000 Irow(s) retumed 0.000sec /0.000 sec
+© 2 143215 update mahasiswa set pk = 38 where rim = '12346' 1 owls) affected Rows matched: 1 Changed: 1 Wamings: 0 00165ec
+© 3 143220 select from mahasiswa LIMIT 0, 1000 Irow(s) retumed 0.000sec /0.000 sec
+© 4 143345 delete fom mahasiswa where nim = "12347 1 rows) affected 00165ec
+© 5 143351 select “from mahasiswa LIMIT 0, 1000 2 row(s) retumed. 0.000 sec / 0.000 sec.
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+Navigator | sat Fie x |
+SCHEMAS C WH FFAQC BOOM memos - ik ¢Q [HE
+ii 24 where nim = '12347';
+» sakila 25
+rn
+ve 26 ® alter table mahasiswa add tanggal_lahir date;
+» B Tables Ed N |
+views ue IGCERIE
+8 Stored Procedures
+_ 89 Functions =
+» 2 world | ResuitGrid | 4% Fiter Rows: | edt: gl Eb ES | ewortimpor: Bf {1 | wrap Cel Content: TE il =
+rin | noma Joss || angaten | pk: | tmogal jah | =
+» [12345 AiHassan Informatika 2021 375
+1236 BudSantoso Sete Informas az 38 a
+‘Administration Schemas mahasiswa 8 x Apply Rover
+Information. Output
+[Action Output ~
+Mo object selected #  Tme  Acon Message Duration / Fetch
+© 1 143113 select from mahasiswa LIMIT 0, 1000 3rowis)etumed 0000sec / 0.000 sec
+[-] 2 1432115 update mahasiswa set ik = 3.8 where nim = "12346" 1 rows) affected Rows matched: 1 Changed: 1 Wamings: 0 0.016 sec
+[] 3 14:3220 select * from mahasiswa LIMIT 0. 1000 3 row(s) retumed 0.000 sec / 0.000 sec
+© 4 143345 delete from mahasiswa where rim = 1247 1 rowis) affected 00163ec
+I] 5 143351 select * from mahasiswa LIMIT 0, 1000 2rowls) retumed 0.000 sec / 0.000 sec:
+[-] 6 14:35:08 ater table mahasiswa add tanggal_lahir date 0 rowls) affected Records: 0 Duplicates: 0 Wamings: 0 0.031 sec
+Object oo. ERR © 7 143614 select from mahasiswa LIMIT 0, 1000 2row(s) retumed 0000sec / 0.000 sec
+--------------------------------------------------
+
+### SCREENSHOT 10 (img-009.png)
+--------------------------------------------------
+Navigator: | SQALFle2" x §
+
+SEMA C WH FFAQCR OOE momo -% ¥¢Q [0
+
+Q Fiter objects 29 set tanggal_lahir = ‘2003-65-07
+
+> sak 30 where nim = "12345;
+
+> 31
+
+v J universitas
+
+> B Tables 328 update mahasiswa
+BF Views 33 set tanggal lahir = ‘2004-67-08
+- isles 34 where nim = '12345';
+| ResuitGrid | 4% Fiter Rove: | eae: gl Bb Eb | eworimport: BY {Hl | Wrap Col Content: TE a
+nm nama Jurusan angiatan pk tanggal lah
+
+» [12345 AiHasn Informal 221 375 20030807
+
+Administration Schema JERS ER ETT Ren dm
+
+Information
+
+No object selected mahasiswa 3 x Ao Raver
+Output
+CF Action Output -
+¢ Tm amen Message Duraton / Fech
+
+© 1 144122 update mahasiswa settanggal_lahi = 2003-08-07 where nim = "12345" 1 rows) affected Rows matched: 1 Changed: 1 Wamings: 0 0015 sec
+© 2 144122 update mahasiswa set tanggal_lahi = 2004-07-06" where nim = 12346' 1 rows) affected Rows matched: 1 Changed: 1 Wamings: 0 0000 sec
+© 3 144129 select from mahasiswa LIMIT 0, 1000 2rowie)retumed 0.000 sec / 0.000 sec
+
+Object Info | Suasion
+--------------------------------------------------
+

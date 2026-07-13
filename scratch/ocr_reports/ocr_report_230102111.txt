@@ -1,0 +1,284 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Raihan Hafidz Putra
+NIM: 230102111
+Tanggal Ekstraksi: 7/12/2026, 1:09:27 PM
+==================================================
+
+### SCREENSHOT 1 (image1.png)
+--------------------------------------------------
+# Time Action Message Duration / Fetch
+[] 1 13:47:36 create database mahasiswa 1row(s) affected 0.031sec
+[] 2 13:49:58 drop database mahasiswa 0row(s) affected 0.015sec
+--------------------------------------------------
+
+### SCREENSHOT 2 (image2.png)
+--------------------------------------------------
+I MysaL Workbench — x
+«a Local instance MySQL80 (uni. x Local instance MySQL80 x
+File Edit View Query Database Server Tools Scripting Help
+Sle SEEFLH RE (of m= |
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®]! unto 100rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+= 2 (2), Automatic context help is
+¥ [=] universitas 7 angkatan YEAR, i
+disabled. Use the toolbar to
+VE Tables 8 ipk DECIMAL(3, 2)
+v El mahasiswa manually get help for the
+v [5] Columns 9 | current caret position or to
+¢ nim 10 toggle automatic help.
+4 nam 1 e INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES
+jurusan
+PS ngkoton 12 ('12345', 'Ali Hasan', ‘Informatika’, 2021, 3.75),
+* ipk 13 ('12346', Budi Santoso', ‘Sistem Informasi’, 2022, 3.60),
+vB Indexes 14 ('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
+=] PRIMARY
+»  ForeignKeys 15
+» B51 Triggers 16 ® select *
+BF views 17
+[0 stored Procedures i.
+BF Functions v
+Administration Schemas < > Context Help Snippets
+Information Output
+A [J Action Output -
+Column: nama # Time Action Message Duration / Fetch
+Collation: © 1 1407.01 create DATABASE universtas 1 row(s) affected 0.016 sec
+utf8mb4_0900_ai_ci © 2 140701 USE universtas 0row(s) affected 0.000 sec
+Definition: © 3 1407.01 CREATE TABLEmahasiswa ( nim VARCHAR(50) PRIMARY KEY, nama VARCHAR... 0row(s) affected 0.062 sec
+nama  varchar(50) © 4 140701 INSERT INTO mahasiswa fnim, nama, jurusan, ankatan, ik) VALUES (12345'°Ali.. 3 rows) affected Records: 3 Duplicates: 0 Wamings: 0 0.016 sec
+v
+Object Info Session
+Query Completed Bl
+| LP search aia inn] gt d 9 x3 Wi @ "a IN Luar biasa lembap GG & @ = Nn 1410 B
+--------------------------------------------------
+
+### SCREENSHOT 3 (image3.png)
+--------------------------------------------------
+I MysaL Workbench _ x
+A Localinstance MySQLBO (uni. x Local instance MySQLBD x
+File Edit View Query Database Server Tools Scripting Help
+Sle SEEFLH RE (of m= |
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®]! unto 100rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+1 e INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES Automatic context help is
+. Cs SY . 2 > ong > 3p disabled. Use the toolbar to
+12 ('12345°, "A + ase , 'In ormatt a’, 2021, 3.75), manually get help for the
+13 ('12346", 'Budi Santoso', Sistem Informasi', 2022, 3.60), current caret position or to
+14 ('12347', Citra Dewi’, 'Teknik Komputer’, 2020, 3.85); toggle automatic help.
+15
+Pp ~ PRP Gp. . . ~/
+< >
+| ResuitGrid | BH 4% Ferrous: ||edt gh) Eb Ei | Epor/import: Bg {| Wrap Cot Contents TX un]
+nm nama jurusan angkatan  ipk —
+» [12345  AliHasan Informatika 2021 3.75 k=)
+12346 BudiSantoso Sistem Informasi 2022 3.60
+12347 CittaDewi Teknik Komputer 2020 3.85
+. [mm uid fot uci
+Administration Schemas mahasiswa 1 x — dies ContextHelp Snippets
+Information Output
+[J Action Output -
+No object selected # Time Action Message Duration / Fetch
+© 1 141418 create DATABASE universtas 1 row(s) affected 0.015 sec
+© 2 14:14:18 USE universtas 0row(s) affected 0.000 sec
+© 3 14:14:18 CREATE TABLEmahasiswa ( nim VARCHAR(50) PRIMARY KEY, nama VARCHA... 0 row(s) affected 0.063 sec
+© 4 14:14:18 INSERT INTO mahasiswa {nim, nama, jurusan, angkatan, ipk) VALUES (12345. Ali. 3row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0.015 sec
+© 5 14:14:18 select * FROM mahasiswa LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec
+Object Info ~ Session
+Query Completed Bl
+| AL search A =) Q ® x2 wl @ | ~ IN &% 27°C Hujan ringan 5 & 6 = Nn 41s BE
+--------------------------------------------------
+
+### SCREENSHOT 4 (image4.png)
+--------------------------------------------------
+I MysaL Workbench — x
+#  Localinstance MySQLEO (uni x Local instance MySQLBD x
+File Edit View Query Database Server Tools Scripting Help
+Silo SEFEEFLH @ & @ D0
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®]! unto 100rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+a 16 ® select * FROM mahasiswa;
+17 ® select * FROM Es zh jurusan = ‘Informatika’; Automatic context help Is
+ee , J . B J disabled. Use the toolbar to
+. i ; .
+18 Select FROM mahasiswa WHERE ipk > 3.7; manually get help for the
+@ current caret position or to
+20 toggle automatic help.
+2
+22
+23 v
+< >
+| ResuitGrid | BH 4% Frerrows:| ||edt gh) Eb Eb | Expor/import: Bg {8 | Wrap Cot Contents TX a
+nm nama jurusan angkatan ik —
+» [12345 AiHesan Informatika 2021 3.75 k=)
+fl] [od [oc To]
+Administration Schemas —
+Editor
+Information
+mahasiswa 6 mahasiswa 7 x mahasiswa 8 Apply Revert Context Help ~ Snippets
+No object selected
+Output
+[J Action Output ~
+HN Time Action Message Duration / Fetch ~
+© 5 14:30:39 select * FROM mahasiswa LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec
+© 6 1430:39 select * FROM mahasiswa WHERE jurusan = ‘informatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec
+© 7 1430:39 Select * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0, 1000 2rowls) retumed 0.000 sec / 0.000 sec
+Object Info Session v
+Query Completed Bl
+| A search AT = ° ® xz Wg @ = IN &% 27°C Hujan ringan T & = wn 43 B
+--------------------------------------------------
+
+### SCREENSHOT 5 (image5.png)
+--------------------------------------------------
+I MysaL Workbench _ x
+#  Localinstance MySQLBO (uni. x Local instance MySQLB0 x
+File Edit View Query Database Server Tools Scripting Help
+Silo SEFEEFLH @ & @ D0
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®]! unto 100rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+a 16 ® select * FROM mahasiswa; -
+17 ® select * FROM mahasisna WHERE jurusan = ‘Informatika’; Automatic context help Is
+ect + \ J . = ’ disabled. Use the toolbar to
+. i : "
+18 Select FROM mahasiswa WHERE ipk > 3.7; manually get help for the
+@ current caret position or to
+20 toggle automatic help.
+21
+22
+23 v
+< >
+| ResuitGrid | BH 4% Ferrous: ||edt gh) Eb Eb | epor/import Bg {| rep Cot Contents TX a
+nm nama jurusan angkatan ik —
+» [12345 AiHasan Informatika 2021 3.75 k=)
+12347 CitraDewi Teknik Komputer 2020 3.85
+o [mo my [onl]
+Administration Schemas —
+Editor
+Information
+mahasiswa 6 mahasiswa 7 mahasiswa 8 x Apply Revert Context Help ~ Snippets
+No object selected
+Output
+[J Action Output ~
+# Time. Action Message Duration / Fetch ~
+© 5 143039 select * FROM mahasiswa LIMIT 0, 1000 3 row(s) retumed 0.000 sec / 0.000 sec
+© 6 143039 select * FROM mahasiswa WHERE jurusan = ‘Informatika’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec
+© 7 1430:39 Select * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec
+Object Info Session v
+Query Completed Bl
+| A search AT = ° ® xz Wg @ = IN &% 27°C Hujan ringan Ta 6 = nh ux B
+--------------------------------------------------
+
+### SCREENSHOT 6 (image6.png)
+--------------------------------------------------
+I MysaL Workbench _ x
+#  Localinstance MySQLBO (uni. x Local instance MySQLB0 x
+File Edit View Query Database Server Tools Scripting Help
+Silo SEFEEFLH @ & @ D0
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®]! unto 100rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+oo TTY — Automatic context help is
+ok disabled. Use the toolbar to
+= SET dk = or : manually get help for the
+22 | =Cmo oes current caret position or to
+3 toggle automatic help.
+24
+25
+26 v
+< >
+| ResultGrid | HH 4% Fterrows: | ||eaw # Eb Eb | ewor/import: Bg fy) | wrap coll Content: TE a
+nm nama jurusan angkatan ik —
+» [12345 AliHasan Informatika 2021 3.75 =
+12346 Budi Sant... Sistem Informasi 2022 3.80
+12347 CitraDewi Teknik Komputer 2020 3.85
+Administration Schemas o [im mm = Lp —
+Editor
+Information
+mahasiswa 9 mahasiswa 10 mahasiswa 11 x Apply Revert Context Help ~ Snippets
+No object selected
+Output
+[J Action Output ~
+# Time. Action Message Duration / Fetch ~
+© 6 143513 select * FROM mahasiswa WHERE jurusan = Informatika’ LIMIT 0, 1000 1 row(s) retumed 0.000 sec / 0.000 sec
+© 7 143513 Select * FROM mahasiswa WHERE ik > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec
+© 8 143513 UPDATEmahasiswa SET ipk = 3.8 WHERE nim = '12346' 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0016 sec
+Object Info Session v
+Query Completed Bl
+| A search AT = ° ® xz Wg @ = IN &% 27°C Hujan ringan T & @ = No 1436 B
+--------------------------------------------------
+
+### SCREENSHOT 7 (image7.png)
+--------------------------------------------------
+I MysaL Workbench — x
+#  Localinstance MySQLBO (uni. x Local instance MySQLB0 x
+File Edit View Query Database Server Tools Scripting Help
+Silo SEFEEFLH @ & @ D0
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®]! unto 100rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+2 ee vin Cina Automatic context help is
+Bb ’ disabled. Use the toolbar to
+= . manually get help for the
+24° EE current caret position or to
+> WHERE nim = "12347" toggle automatic help.
+26
+27
+28 v
+< >
+| ResultGrid | HH 4% Fterrows: | ||eaw # Eb Eb | ewor/import: Bg fy) | wrap coll Content: TE a
+nm nama jurusan angkatan ik —
+» [12345 AliHasan Informatika 2021 3.75 =
+12346 Budi Sant... Sistem Informasi 2022 3.80
+o moo my [onlin]
+Administration Schemas —
+Editor
+Information
+mahasiswa 15 mahasiswa 16 mahasiswa 17 x Apply Revert Context Help ~ Snippets
+No object selected
+Output
+[J Action Output ~
+# Time Action Message Duration / Fetch a
+© 21 143914 Select * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0, 1000 2rowls) retumed 0.000 sec / 0.000 sec
+© 22 143914 UPDATEmahasiswa SET ipk = 3.8 WHERE nim = '12346' 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.015 sec
+© 23 143914 DELETE FROM mahasiswa WHERE nim = "12347 1 rowls) affected 0.000 sec
+Object Info Session v
+Query Completed Bl
+| A search A = ° ® xz Wg @ IN &% 27°C Hujan ringan T & @ = No 1439 B
+--------------------------------------------------
+
+### SCREENSHOT 8 (image8.png)
+--------------------------------------------------
+I MysaL Workbench _ x
+# Local instance MySQLB0 (uni. x Localinstance MySQLBD x
+File Edit View Query Database Server Tools Scripting Help
+Silo SEFEEFLH @ & @ D0
+Navigator: [ Query 1 x | sys - Schema universitas - Schema SQLAdditions
+SCHEMAS * mB ¥ FAH © B®] unto 1000rws  ~ | 95 | Q [1] [= | (32 Fp | dumpto
+a 51 SET tanggal_lahir = ‘1045-08-17° -
+> —-— fs reer i Automatic context help is
+- - disabled. Use the toolbar to
+> . manually get help for the
+4° EEE current caret position or to
+35 SET tanggal lahir = '1991-05-23" toggle automatic help.
+36 WHERE nim = '12346';
+37
+38 v
+< >
+| ResuitGrid | 3 4% Fiterrows:| ||edt gh) Eb Ei | Expor/import: Bg {| Wrap Cot Contents TX a
+nm nama jurusan angkatan pk tanggal_lahir —
+» [12345 AiHasan Informatika 2021 3.75 1945-08-17 =
+12346  BudiSantoso Sistem Informasi 2022 3.80 1991-08-23
+o moo my [orto Jo]
+Administration Schemas —
+Editor
+Information
+mahasiswa 21 x Apply Revert Context Help ~ Snippets
+No object selected
+Output
+[J Action Output ~
+# Time Action Message Duration / Fetch a
+© 42 145004 UPDATEmahasiswa SET tanggal_lahir = ‘1945-08-17 WHERE nim = "12345" 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.016 sec
+© 43 145004 UPDATE mahasiswa SET tanggal_lahir = "1991-08-23 WHERE nim = ‘12346 1 rowls) affected Rows matched: 1 Changed: 1 Wamings: 0 0.016 sec
+© 44 145326 select * FROM mahasiswa LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec
+Object Info Session v
+Query Completed Bl
+| A search AT Sit q ® xz WE @ [ 4%’ Lujan pada Kamis G a @@ @® np 1453 EB
+--------------------------------------------------
+

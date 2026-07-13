@@ -1,0 +1,76 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Daren Saffana Darmawan
+NIM: 230102033
+Tanggal Ekstraksi: 7/12/2026, 1:11:11 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+VE Tables
+v El mahasiswa
+¥ [#] Columns.
+
+* NM
+* Nama
+* Jurusan
+# tahunangkatan
+* PK
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+© 23 144315 create table Mahasiswa( NIM varchar (50) primary key, Nama varchar (50). Jurusan varchar (50), tahunAngkatan year, IPK float ) Orowls) affe... 0.094 sec
+values ('12345','Ali Hasan’, Informatika’, 2021,3.75),
+('12346','Budi Santoso', Sistem Informasi’, 2022, 3.60),
+('12347', Citra Dewi’, Teknik Komputer, 2022,3.85)
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+Result Grid | HH 4) Fiter Rows: | Export: Ef | wrap Cell Content: IA
+NM Nema Jurusan tahunAngkaten [PK
+
+» [12345 AiHasan Informatica 221 3.75
+1234 BudiSantoso Sistem Informasi 222 36
+12347 Citra Dewi Teknik Komputer 2022 3.85
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+NM Nema  Juusan  tshunAngkatan PK
+» [12345 AiHasan Informatika 2021 3.75
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+NM Nema Jurusan tahunAngkatan PK
+> [12345 AiHasan Informatica 2021 3.75
+12347 CGiraDewi Teknik Komputer 2022 385
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | eon: dl) Eb ER
+NIM Nama Jurusan tahunAngkatan  IPK.
+» 123% BudiSantoso Sistem Informasi 202 38
+.
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+NM Nama Jurusan tahunAngkatan PK.
+» [12345  Alitasan Informatika 2021 3.75
+123% BudiSantoso Sistem Informasi 2022 3.8
+. [onl]
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+NIM Nama Jurusan tahunAngkatan IPK  tanggal_lahir
+» 12345 AiHasan Informatica 2021 3.75 199408-12
+
+123%  BudiSantoso Sistem Informasi 2022 38 1994-08-10
+. [ool
+--------------------------------------------------
+

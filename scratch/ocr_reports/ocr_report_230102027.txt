@@ -1,0 +1,321 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Aulia Marwah Kandari
+NIM: 230102027
+Tanggal Ekstraksi: 7/12/2026, 1:02:23 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+
+A Localinstance WySQLED x
+
+File Edt View Query Dambase Sever Tools Scriping Help
+
+SE STHEEE & @D=0
+
+Navigator | Query 1 x |
+
+SCHEMAS * EHRIFFAOCB [BE] snato 0000ms - | 5, | ¥ Q [1] [2
+
+2 Te CREATE DATABASE universitas
+
+> sakia 2
+
+> B
+
+> universitas
+
+> world +
+
+Administration Schemas < >
+
+Information Output
+CJ Action Output -
+
+No object selected #  Tme Acton Message Duration / Fetch
+
+© 1132754 CREATE DATABASE unierstas Trou) affected 0078sec
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+B® MysaL Workbench — xX
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & @ D=0
+scremas °C WEIFFACH B] swoon ~ 19 1 ¥ Q {1 @
+= 51 = =
+rome 7 en vaca), -
+tes . | ——
+vip es B ANGKATAN YEAR,
+= ae » | EE.
+* NM 1m bE
+bn - .
+bi
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gh) Bb Eb | evoryimpor: Bg fl) | weep Col Content: TE a
+aS Nw mi mew Bx lew =
++B Foreign keys » [12345 iter Informatika 221 3.75 20040603 Gd
+2 orn NS Ne Ares
+BF Views 12347 CiraDewi Teknik Komputer 202 3.85
+5 Stored Procedures . =
+TB Functions Editor
+-
+NM archar(50) [Action Output -
+wt oe hon on oesmira 8
+JURUSAN ~~ varchar(50) © @ 3 135209 CREATE TABLE mahasiswa (NIM int AUTO_INCREMENT PRIMARY KEY, nama VARCHA... Eror Code: 1046. No database selected Select the defauit DB to be used by doublecicking .. 0.000 sec
+ANGKATAN year © 4 T5534 CREATE TABLE mahasiowa (NIM nt AUTO_INCREMENT PRIMARY KEY, nama VARCHA... Eror Code: 1045. No database slcted Selec the defutDB to be used by dovble-ccking . 0000 sec
+tollhir date © 5 135539 useuniverstas Orowls) affected 0.000sec
+BEER [CREATE TABLE mahasiswa ( NIM int AUTO_INCREMENT PRIMARY KEY, nama VARCHA.
+les cose ATG emert Cr Caer Gh te aon aera: tn ote
+p— pe ele tad e—
+a O 1 TRIPS [=i] c- NN RRL = , 1512
+58 © Type here to search HRY Et oe & & J WN by 24°C Hujan lebat Cm) ENG ons
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+B MySQL Workbench — x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS c mE FFACB [B]) mo 000ows + | 3 | ¢ Q [1] 3
+= 51 ET = =
+rome ise ERT MIO raasisus velues -
+v © unwersitas 16 (1236,'Budi santoso’, ‘Sistem Informasi', 2022, 3.68);
+BE 17 © INSERT INTO mahasiswa values
+BF Functions. 12
+- » EEE .
+< ;
+| ResuttGrid |B] 4% Frerrovs:[ ||ede gf) Bb Eb | evoryimpor: BY fH) | weep ol Content: TE a
+NM nama Jurusan angkatan pk i
+> [12345 AiHesan informatie 2021 4 =
+Sr SN A
+foodies
+* Form
+OF Action Output -
+Schema: universitas * Time Action Message Duration / Fetch. ~
+0 = ws memes fun fess
+© 26 142208 CREATE TABLEmahasiswa ( nim INT PRIMARY KEY. nama VARCHAR(100), jurus... Eror Code: 1050. Table mahasiswa' already exists 0.000sec
+© 27 14:23:12 use universtas. 0 rows) affected 0.000 sec.
+© 28 14:23:12 CREATE TABLE mahasiswa (nim varchar(50) PRIMARY KEY. nama VARCHAR(S0).jurusa... Error Code: 1050. Table mahasiswa' already exists. 0.000sec
+© 2 12512 SECT OMe LAT 160 SS Oe C00:
+p— EE a te otcziec 700 B
+8 P Type here toseard = @ aE & 25°C Hujan ringan mom MP =
+@ n° e here to search uy Si LE) 0 i: = ng: EB 03127204 ¥5
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS * mH FFACE [B]) mo 000ows + | 3 | ¢ Q [1] 3
+= 51 ET = =
+rome 15 (mer, Citra bert, Teknik erputer, 2020, 3.5)3 -
+v © unwversitas 20
+vB Tables 21
+vl mahssisua 22 © SELECT * FROM mahasiswaj
+v [#5] Columns
+bn p .
+bi
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gh) Bb Eb | evoryimpor: Bg fl) | weep Col Content: TE a
+aS Nw mi mew Bx lew =
+» 1B Foreakers » [12345 Mites Informatie 221 575 20040603 k=
+2 orn NS Ne Ares
+BF Views 12347 CiraDewi Teknik Komputer 2020 3.85
+5 Stored Procedures . =
+TB Functions Editor
+-
+NM archar(50) * [3 Action Output -
+Kwon J oesmtrar |B
+JURUSAN ~~ varchar(50) © 94 150634 UPDATE mahasiswa SET tanggal_lahir ='2001-03-20° WHERE nim = 12346 Error Code: 1054. Unknown column Yanggal_ahi in field list” 0.000sec
+ANGKATAN year © 55 150651 UPDATE mahesowo SETigloh = 20010320 WHERE nim = 12346° rows) fected Rows matched: 1 Changed: 1 Warings:0 0015 sec
+tolhir date © 9 150701 UPDATE mahasiswa SET tol lahir = 2004-06-03 WHERE NIM = "12345° Orow(s) affected Rows matched: 1 Changed: 0 Warming: 0 0.000sec
+© 97 150701 UPDATE mahasiswa SET tgl_lahir ='2001-03:20° WHERE nim = 12346 0row(s) affected Rows matched: 1 Changed: 0 Wamings: 0 0.000sec
+te rs ie otonsec70nRS
+p— © ® 155 SAECT- OMe LNT 100 — ote 20000 B
+- O Tube here to searct TRY] = NN & aoc i L114
+®w Pf Se here to search MHL Si 5 Sn x w nN 24°C Hujan lebat Gm) NG oi BE
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS * mHEIFFAC EB [BE] ume 0000we ~ | %, | ¥ Q [1 3
+= 51 = =
+» sys, 2
+v © universitas 25 SELECT * FROM mahasiswa
+vB Tables 26 WHERE jurusan = 'Informatika's|
+VE mahasiswa .
+¥[#] Columns
+lm BE  .
+bi
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gf) Bb Eb | evoryimpor: BY fE) | wrep Col Content: TE a
+aS NM NMA RUS AGATAN PX tor =
+YEE me pe ms sion =
+» B51 Triggers .
+BF Views
+B59 stored Procedures on
+TB Functions Editor
+-
+NM archar(50) * [3 Action Output -
+Kw ohm — oesmira 8
+JURUSAN ~~ varchar(50) © 95 150651 UPDATE mahasiswa SET tgl_lahir ='2001-03:20° WHERE nim = 12346 1 rows) affected Rows matched: 1 Changed: 1 Wamings: 0 0.0155ec
+ANGKATAN year © 96 150701 UPDATE mahssiwa SET lah - 2004-06 03 WHERE NIM - 12345 Oro) fected Rows matched: 1 Changed: 0 Wangs: 0 0000 sec
+tollhr date © 97 150701 UPDATE mahasiswa SET tl lahir = 2001-03:20° WHERE nim = 12346' 0row(s) affected Rows matched: 1 Changed: 0 Wamings: 0 0000sec
+ts Ee ie otonsec70nRS
+BC" 2 Torus mr: roma ATO 100 — O10 Cte
+p— ee eT ETE) die tone 7000 B
+58 © Type here to search gry = 5 6 of w w GB) NG os BR
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS * mHEIFFAC EB [B]| umito 10000ws  - | 4 | ¥ Q [1 [=
+= 51 EE = =
+> sala 25 ® SELECT * FROM mahasiswa ~
+Em
+vB Tables 27
+vl mahssisua 28 ® SELECT * FROM mahasiswa
+v [#5] Columns
+o nama oo | ©
+bi
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gh) Bb Eb | evoryimpor: Bg fl) | weep Col Content: TE a
+aS Nw mi mew Bx lew =
+» 1B Foreakers » [12345 Mites Informatie 221 575 20040603 k=
+2 orn NS Ne Ares
+BF Views 12347 CiraDewi Teknik Komputer 2020 3.85
+5 Stored Procedures . =
+TB Functions Editor
+-
+NM archar(50) * [3 Action Output -
+pr SO Pp — oesmtrar |B
+JURUSAN ~~ varchar(50) © 9 1507.01 UPDATE mahasiswa SET tgl_lahir = 2004-06-03 WHERE NIM = "12345 rows) affected Rows matched: 1 Changed: 0 Wamings: 0 0.000sec
+ANGKATAN year © 97 150701 UPDATE mahesowo SET oh = 20010320 WHERE nim = 12346° Oro) fected Rows matched: 1 hanged: 0 Wamings: 0 0000 sec
+tollhr date © 98 1507.12 SELECT FROM mahasiswa LIMIT 0, 1000 rows) retumed 0.000 sec / 0.000 sec:
+© ® 15 SAECT OMe LTD 100 — O10 Cte
+. © 100 15:15:08 SELECT *FROMmahasiswa WHERE junusan = nfomatka’ LIMIT 0. 1000 1 rows) retumed 0.000 sec / 0.000 sec:
+Object Info | Session © 101 15.1542 SELECT * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000sec
+= OT Gad ~ oN Losec & 5 ED
+& Pf be here to search MHL Si 5 Sn x w nN &% 24°C Hujan lebat Gm) NG oo BE
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS * mH FFACE [B]) mo 000ows + | 3 | ¢ Q [1] 3
+= 51 = =
+> saa 250 SELECT * FROW mahasiowa | -
+Em
+vB Tables 30
+vl mahssisua 31 ® UPDATE mahasiswa
+v [#5] Columns
+bi
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gh) Bb Eb | evoryimpor: Bg fl) | weep Col Content: TE a
+aS Nw mi mew Bx lew =
++B Foreign keys » [12345 iter Informatika 221 3.75 20040603 Gd
+2 orn NS Ne Ares
+BF Views 12347 CiraDewi Teknik Komputer 2020 3.85
+5 Stored Procedures . =
+TB Functions Editor
+-
+NM archar(50) * [3 Action Output -
+wine hom — oesmtra |B
+JURUSAN ~~ varchar(50) © 98 150712 SELECT * FROM mahasiswa LIMIT 0, 1000 3rowls) retumed 0.000 sec / 0.000 sec:
+en, :
+fT ex © ® 15 SAECT OMe LTD 100 — O10 Cte
+tollhir date © 100 151508 SELECT * FROM mahasiswa WHERE junsan = nfomatica’ LIMIT 0, 1000 1 owls) retumed 0.000 sec / 0.000 sec:
+© 101 15.1542 SELECT * FROM mahasiswa WHERE ipk > 3.7 LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec:
+Me ners tr Co Ut oon
+p— © Vn 151623 SAECT- Mma LAT 100 S— oto 0001 B
+- O Tube here to searct TRY] = NN & aoc i Lo 1516
+®w Pf Se here to search YHry Si 5 Sn x w nN 24°C Hujan lebat Gm) NG oe BR
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS * mH FFACE [B]) mo 000ows + | 3 | ¢ Q [1] 3
+= 51 = =
+» sys, 27
+v (5 universitas 28 ® SELECT * FROM mahasiswa |
+vB Tables 2 WHERE ipk > 3.7;
+VE mahasiowa
+v [#5] Columns
+lm FE —
+brie
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gh) Bb Eb | evoryimpor: Bg fl) | weep Col Content: TE a
+aS Nw mi mew Bx lew =
+» 1B Foreakers » [12345 Mites Informatie 221 5.75 20040603 k=
++B Troe 123% Budi Sentoso Stem Informasi 22 5 [33 jas
+BF Views 12347 CiraDewi Teknik Komputer 2020 3.85
+5 Stored Procedures . =
+TB Functions Editor
+-
+am hes) A J Acion Ouput -
+mo
+weno hom — oesmtra |B
+JURUSAN ~~ varchar(50) © 100 15:15:08 SELECT * FROM mahasiswa WHERE jurusan = Informatika’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec:
+ANGKATAN year © 101 15:15:42 SELECT FROM mahasisws WHERE pk > 37 LITO, 1000 rows) eumed 0000 sec/ 0000 sec
+tolhir date © 102 15:16:14 UPDATE mahasiswa SET ipk = 38 WHERE nim = 12346" Orow(s) affected Rows matched: 1 Changed: 0 Warming: 0 0.000sec
+© Vo 151623 SAECT- Mma LAT 100 Si — Oe C00:
+ee i oon
+p— © 1 ToT SECT TOMmtewa NIT 10 S— oto 0001 B
+58 © Type here to seard TAT & 4" ow nN 5 24°C Hujan lebat smn 07 BE
+22 | © Type here to search ha ig =D oe 7 WN 2 Ui = 0172004 TA
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+B® MysaL Workbench - x
+A Localinstance MySQLED x
+File Edit View Query Database Server Tools Scripting Help
+Sf ee 8EE88&EHE & ® =
+SCHEMAS * mHEIFFAC EB Lintto 1000rows + | 95, | Q (1) (3)
+= 51 EE = =
+> sala 23 ® DROP table mahasiswa; ~
+Em
+¥  universitas 24
+vB Tables 25 SELECT * FROM mahasiswa
+vl mahssisua 26 WHERE jurusan = ‘Informatika’;
+¥[#] Columns
+* NIM 27
+bn - EEE .
+brie
+° Pc | ResuttGrid |B] 4% Frerrovs:[ ||ede gh) Bb Eb | evoryimpor: Bg fl) | weep Col Content: TE a
+aS NM nA RUSE AGGTAN PK tor =
+» 1B Foreakers » [12345 Mites Informatie 221 575 20040603 k=
+2 orn NS Ne Ares
+BF Views 12347 CiraDewi Teknik Komputer 2020 3.85
+5 Stored Procedures . =
+TB Functions Editor
+-
+NM archar(50) * [3 Action Output -
+Kw o e hon — oesmirar 8
+JURUSAN ~~ varchar(50) © 103 15:16:23 SELECT * FROM mahasiswa LIMIT 0, 1000 3row(s) retumed 0.000 sec / 0.000 sec:
+en,
+fT ex ets i oon
+tollhr date © 105 1517.09 SELECT FROM mahasiswa LIMIT 0, 1000 rows) retumed 0.000sec / 0.000 sec:
+© 106 15:18:03 ater TABLE mahasiswa add tgl_lahir date Error Code: 1060. Duplicate column name Ygl_lahir” 0.016sec
+o © 107 151812 aker TABLE mahasiswa addtgl lahir date. Error Code: 1060. Duplicate column name Ygl_lahir” 0.000sec
+p— ee ee peg
+58 © Type here to seard TAT & 4" ow nN 5 24°C Hujan lebat smn 08 B=
+88 | P Type here to search Lig = 13 Oa “N os J < 012204 1
+--------------------------------------------------
+

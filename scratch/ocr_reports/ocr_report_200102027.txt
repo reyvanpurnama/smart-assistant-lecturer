@@ -1,0 +1,103 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: ALLIF FADHLAN ARIIDHI
+NIM: 200102027
+Tanggal Ekstraksi: 7/12/2026, 12:56:04 PM
+==================================================
+
+### SCREENSHOT 1 (image1.png)
+--------------------------------------------------
+[Navigator | © | ET ———————————=
+SCHEMAS * WH FFAQC BD OOE mows 1% ¢ Q [1 =
+Q Filter objects 1 CREATE DATABASE universitas;
+v2 sakila 2
+»> B Tables BN
+> B views
+» 7 Stored Procedures 4
+» B Functions H
+> osys 6
+v (5 universitas
+1 Tables 7
+BF Views 8
+TB Stored Procedures
+TB Functions
+» & world
+--------------------------------------------------
+
+### SCREENSHOT 2 (image2.png)
+--------------------------------------------------
+SCHEMAS * WME FFAQC ER OOE moines -| 9% ¢ Q 1
+Q Filter objects 1 CREATE DATABASE universitas;
+v © sakila 2
+rE oes 3e USE universitas;
+» B51 stored Procedures 4
+» B39 Functions 5 ® ©) CREATE TABLE mahasiswa (
+4-1 sys 6 nim VARCHAR(20) PRIMARY KEY,
+Tables 7 nama VARCHAR(59),
+» [E mahasiswa 8 jurusan VARCHAR(58),
+Zz ere 9 angkatan YEAR,
+B Functions 1e ipk DECIMAL(3, 2)
+» & world un);
+12
+13
+--------------------------------------------------
+
+### SCREENSHOT 3 (image3.png)
+--------------------------------------------------
+Vu
+(J Action Output E
+
+¢ Tm Acton
+o 13 14:23:35 CREATE DATABASE universitas
+© 14 14:24:32 CREATE TABLE mahasiswa ( nim VARCHAR(20) PRIMARY KEY, nama VARCHAR(S0). jurusan VARC..
+[] 15 14:24:56 USE universitas
+[x] 16 14:25:23 INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES (12345', ‘All Hasan’, ‘Informatika’, 202.
+o 17 14:25:40 CREATE TABLE mahasiswa (nim VARCHAR(20) PRIMARY KEY, nama VARCHAR(50). jurusan VARC...
+© 18 142604 INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES (12345', ‘Ali Hasan’, Informatika’, 202.
+--------------------------------------------------
+
+### SCREENSHOT 4 (image4.png)
+--------------------------------------------------
+| Result Grid | HH 4% ter Rows: |e: gh Eb Eis | eoryimpor: ER 1 | Wrap cof Content:
+nim nama Jurusan angkatan ip
+» [12345 AliHasan Informatika 2021 3.75
+12346 BudiSantoso Sistem Informasi 2022 3.60
+12347 CitaDewi  Teknk Komputer 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 5 (image5.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | eon: gd Eb E
+nim nama Jurusan angkatan pk
+Lm oom om meow
+--------------------------------------------------
+
+### SCREENSHOT 6 (image6.png)
+--------------------------------------------------
+| ResultGrid | HH 43 Fiter Rows: leat: gd BB ER
+nim nama Jurusan angkatan ik
+» 12345 AlHassan Informatika 2021 3.75
+12347 CitraDewi Teknik Komputer 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 7 (image7.png)
+--------------------------------------------------
+© 7 17:11:01 UPDATE: UPDATE mahasiswa  VHERE nim = "12346
+SETipk=3.8
+WHERE nim = "12346"
+--------------------------------------------------
+
+### SCREENSHOT 8 (image8.png)
+--------------------------------------------------
+[1] 8 17:11:52 DELETE FROM mahasiswa WHERE nim = 12347 Tn
+--------------------------------------------------
+
+### SCREENSHOT 9 (image9.png)
+--------------------------------------------------
+© 10 171256 UPDATE mahasiswa SET tanggal_lahir = 2003-01-15" WHERE nim = "12345"
+© 11 171256 UPDATE mahasiswa SET tanggal_lahir = 2004-0520' WHERE nim = 12346'
+© 12 171256 UPDATE mahasiswa SET tanggal_lahir = 2002-10-10' WHERE nim = 12347
+--------------------------------------------------
+

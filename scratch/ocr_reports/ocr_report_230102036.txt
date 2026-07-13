@@ -1,0 +1,66 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Fariz Rizal Subayu Luqmanul Hakim
+NIM: 230102036
+Tanggal Ekstraksi: 7/12/2026, 1:10:59 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+© 3 134303 create database Univaerstas 1 row(s) affected 0.000 sec
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+© 6 141205 create table Mahasiswa ( NIM varchar(50) primary key. Nama varchar(50). Jurusan varchar(50). angkatan year. ip... 0row(s) affected 0.016 sec
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+| Result Grid | {4% Fiter Rows: | edt: ly ER |
+NM Nama Jurusan anghatan pk
+> [12345 AiHasan informatie 221 3.75
+1234  BudiSantoso Sistem Informasi 2022 36
+12347 GtaDewi  TeknkKomputer 2020 3.85
+. mm
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+NM Nama Jurusan angkatan pk
+[12345 AiHasan  informatia 2021 3.75
+12347 CiraDewi Teknik Komputer 202 385
+.
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+NM Nama Jurusan angkatan pk
+[12345 AiHasan  informatia 2021 3.75
+12347 CiraDewi Teknik Komputer 202 385
+.
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+NM Nama Jurusan angkatan pk
+[12345 AiHasan  informatia 2021 3.75
+12347 CiraDewi Teknik Komputer 202 385
+.
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+9 21 14:48:39 update Mahasiswa set ipk = 3.8 where NIM = 12346" 1row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.000 sec
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+© 24 14:56:04 delete from Mahasiswa where NIM ="12347 1 row(s) affected 0.000 sec
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+© 27 150058 update Mahasiswa set tgl_lahir = "2004-03-17" where NIM = 12346" 1row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.000 sec
+--------------------------------------------------
+

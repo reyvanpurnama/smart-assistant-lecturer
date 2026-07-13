@@ -1,0 +1,168 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Tia Pebriyanti
+NIM: 230102125
+Tanggal Ekstraksi: 7/12/2026, 12:05:05 PM
+==================================================
+
+### SCREENSHOT 1 (tia_img-000.png)
+--------------------------------------------------
+1® create database universitas;
+2 ® use universitas;
+--------------------------------------------------
+
+### SCREENSHOT 2 (tia_img-001.png)
+--------------------------------------------------
+v [J universitas
+» B Tables
+BH views
+[Bf stored Procedures
+B Functions
+--------------------------------------------------
+
+### SCREENSHOT 3 (tia_img-002.png)
+--------------------------------------------------
+4 ® © create table mahasiswa (
+
+5 nim varchar(26) primary key,
+6 | nama varchar(5e),
+
+7 jurusan varchar(s8),
+
+8 | angkatan year,
+
+5 ipk decimal
+
+e )
+--------------------------------------------------
+
+### SCREENSHOT 4 (tia_img-003.png)
+--------------------------------------------------
+¥ I universitas
+vB Tables
+v BE mahasiswa
+¥[#] Columns
+# nim
+# nama
+* jurusan
+@ angkatan
+* ipk
+» BF Indexes
+» B ForeignKeys
+» 5 Triggers
+BH Views
+stored Procedures
+TB Functions
+--------------------------------------------------
+
+### SCREENSHOT 5 (tia_img-004.png)
+--------------------------------------------------
+12 ® insert into mahasiswa values
+
+13 (12345, ‘Ali Hasan’, 'Informatika', 2021, 3.75),
+
+14 (12346, 'Budi Santoso’, Sistem Informasi', 2022, 3.60),
+15 (12347, Citra Dewi’, 'Teknik Informatika’, 2020, 3.85);
+--------------------------------------------------
+
+### SCREENSHOT 6 (tia_img-005.png)
+--------------------------------------------------
+nim nama Jurusan angkatan  ipk
+> [12345 Aitesan Informatie 2021 3.7%
+12346 BudiSantoso Sistem Informasi 2022 3.600
+12347 CiraDewi Teknik Informatka 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 7 (tia_img-006.png)
+--------------------------------------------------
+17 ® select * from mahasiswa;
+--------------------------------------------------
+
+### SCREENSHOT 8 (tia_img-007.png)
+--------------------------------------------------
+nim nama Jurusan angkatan  ipk
+> [12345 Aitesan Informatie 2021 3.7%
+12346 BudiSantoso Sistem Informasi 2022 3.600
+12347 CiraDewi Teknik Informatka 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 9 (tia_img-008.png)
+--------------------------------------------------
+19 ® select * from mahasiswa where jurusan = “informatika";
+--------------------------------------------------
+
+### SCREENSHOT 10 (tia_img-009.png)
+--------------------------------------------------
+nim nama Jurusan angkatan pk
+> [12345 AiHasan Informatika 2021 3.750
+.
+--------------------------------------------------
+
+### SCREENSHOT 11 (tia_img-010.png)
+--------------------------------------------------
+21 ® select * from mahasiswa where ipk > 3.7;
+--------------------------------------------------
+
+### SCREENSHOT 12 (tia_img-011.png)
+--------------------------------------------------
+nim nama Jurusan angkatan ik.
+» [12345 AliHasan Informatika 2021 3.750
+12347 CiraDewi Teknik Informatika 2020 3.850
+.
+--------------------------------------------------
+
+### SCREENSHOT 13 (tia_img-012.png)
+--------------------------------------------------
+23 ® update mahasiswa set ipk = 3.5 where nim = '12346°;
+24 select * from mahasiswa;
+Result Grid | fl] 4% Fer Rov: ed: gl Bb Bs [eo
+nim nama Jurusan angkatan  ipk
+» [12345 AliHasan Informatika 2021 3.750
+12346 BudiSantoso Sistem Informasi 2022 3.800
+12347 CitaDewi Teknik Informatka 2020 3.850
+.
+--------------------------------------------------
+
+### SCREENSHOT 14 (tia_img-013.png)
+--------------------------------------------------
+26 ® DELETE FROM mahasiswa WHERE nim = '12347';
+27
+Result Grid | TH 4% Fiter Rows: | eat: 4) ER
+nim nama Jurusan angkatan ik.
+12345 AlHassan Informatika 2021 3.750
+1234 Bud Santoso Sten Informast
+--------------------------------------------------
+
+### SCREENSHOT 15 (tia_img-014.png)
+--------------------------------------------------
+28 ® alter table mahasiswa add tgl_lahir date;
+29
+| Result Grid | fl 4% Fiter Rows: |edt: gd) Bb Ei |e
+nim nama Jurusan angkatan pk tgl_lahir
+» [12345 AliHasan Informatika 2021 3.750
+123%  BudiSantoso Sistem Informasi 2022 3.800
+. 2
+--------------------------------------------------
+
+### SCREENSHOT 16 (tia_img-015.png)
+--------------------------------------------------
+28 ® alter table mahasiswa add tgl_lahir date;
+29
+30 © UPDATE mahasiswa
+31 SET tgl_lahir = ‘2005-05-65
+32 WHERE nim = "12345;
+33
+34° UPDATE mahasiswa
+35 SET tgl_lahir = '2002-82-02"
+36 WHERE nim = "12346;
+37
+38
+| ResuitGrid | 4% Fter Rows: |e: gl Eb EL |e
+nm nama jurusan angkatan pk tol lah
+» [12345 AliHasan Informatika 2021 3.750 2005-05-05
+123%. Bd sentoso. | Sse Informed az Zzozoz
+. m
+--------------------------------------------------
+

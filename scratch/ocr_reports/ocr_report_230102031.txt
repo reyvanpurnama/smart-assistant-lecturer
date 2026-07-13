@@ -1,0 +1,285 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Dafffa Aqyla Riyadi
+NIM: 230102031
+Tanggal Ekstraksi: 7/12/2026, 12:57:29 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+[= MySQL installer — x
+MySQL. Installer Choosing a Setup Type
+Adding Community
+Please select the Setup Type that suits your use case.
+Choosing a Setup Type O Server only Setup Type Description
+pony the tsa Sener including MySQL Server, MySQL Shell, MySQL
+Router, MySQL Workbench, documentation,
+© cientonty samples and examples and more
+tals only the MySQL Ciient
+© Full
+stalls al included MySQL
+O Custom
+Next> Cancel
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+[= MySQL installer — x
+MySQL. Installer Installation
+Adding Community
+The following products will be installed.
+Product Arch Status Progress Note
+MySQL Server 8.0.40 X64 Readytolnstall
+MySQL Workbench 8.0.40 X64 Ready tolnstal
+sata MySQL Shell 8.0.40 X64 Readytolnstall
+; MySQL Router 8.0.40 X64 Readytolnstall
+MySQL Documentation 8040 X86 Ready to Install
+Samples and Examples 8040 X86 Ready to Install
+Click [Execute] to install the following packages.
+<Back Execute
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+[=] MySQL Installer = x
+MySQL. Installer Product Configuration
+Adding Community
+We'l now walk through configuration wizard for each of the following products.
+You can cancel at any point f you wish to leave this wizard without configuring all the
+products.
+Product status
+MySQL Server 5040 Ready to configu
+MYSQL Router 5040 Ready to configure
+Samples and Examples 040 Ready to configure
+Product Configuration
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+[= MySQL installer — x
+MySQL. Installer Type and Networking
+MySQL Server 8.0.40 Server Configuration Type
+Choose the correct server configuration type for this MySQL Server instalation. This setting wi
+define how much system resources are assigned to the MySQL Server instance.
+—— Config pe: | Development Computer 7
+Connectivity
+@ woe Port: 3306 X Protocol Port: 33060
+8 Open Windows Firewall ports for network access
+0 Named Pipe Pipe Name: MYSQL
+(O Shared Memory ~~ Memory Name: MYSQL
+Advanced Configuration
+Select the check box below to get additional configuration pages where you can set advanced
+(0) Show Advanced and Logging Options
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+[= MySQL installer — x
+MySQL. Installer Authentication Method
+MySQL Server 8.0.40
+© Use Strong Password Encryption for Authentication (RECOMMENDED)
+MySQL & supports a new authentication based on improved stronger SHA256-based password
+methods It is recommended that all new MySQL Server installations use this method going
+Authentication Method A Commeciors an clients which add support for this mew 8.0 default authentication.
+Currently MySQL &:0 Connectors and community rivers which use libmysalclient £0 support
+authentication method, the MySQL 80 Server can be configure 0 use the legacy MySQL
+© Use Legacy Authentication Method (Retain MySQL 5:x Compatibilty)
+Using the old MySQL 5.x legacy authentication method should only be considered in the
+If applications cannot be updated to use MySQL & enabled Connectors and divers.
+Security Guidance: When possible, we highly recommend taking needed steps towards
+<Back Cancel
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+[2] MySQL Installer = Xx
+MySQL. Installer Accounts and Roles
+MySQL Server 8040 Root Account Password
+MySQL Root Password: ese
+Repeat Password: aod]
+Password strength:
+Accounts and Roles
+MySQL User Accounts
+Create MySQL user accounts for your users and applications. Assign a ole to the user that
+<Back Next> Cancel
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+[= MysQL installer — x
+MySQL. Installer Windows Service
+RUSQESChs 0s © Configure MySQL Server as 2 Windows Service
+Windows Service Details
+Please specify a Windows Service name to be used for ths MySQL Server instance,
+Windows Service Name: MySQLED
+© Start the MySQL Server at System Startup
+Windows Service
+Run Windows Service 2s.
+The MySQL Server needs to un under a given user account, Based on the security
+© Standard System Account
+© Custom User
+<Back Next>
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+[= MysQL installer — x
+MySQL. Installer Server File Permissions
+MySQL Server 8.0.40 MySQL Installer can secure the server's data directory by updating the permissions of files and
+CA\ProgramData\MySQL\MYSQL Server &.0\Data
+Do you want MySQL Installer to update the server fil permissions for you?
+© Yes gant full acces tothe uses runing the Windows Service f apiiable) and the
+administrators group only. Other users 2nd groups will not have access.
+© Yes, but let me review and configure the level of access.
+Serve Fle Permissions © No, Iwill manage the permissions after the server configuration.
+<Back Cancel
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+MySQL installer = x
+Th following configuration steps se being executed
+Configuration Steps Log
+@ Writing configuration file
+Der Ey @ Updating Windows Firewall rules
+Authentication Method © Adjusting Windows service
+Accounts and Roles © Initializing dstabase (may tske slong time)
+ee © Updating permissions fo the dss folder and related server files
+O Starting the server
+‘Server File Permissions J
+© Applying security settings
+© Updating the Start men link
+Cancel
+--------------------------------------------------
+
+### SCREENSHOT 10 (img-009.png)
+--------------------------------------------------
+[= MysQL installer — x
+MySQL. Installer Product Configuration
+Adding Community
+We'l now walk through configuration wizard for each of the following products.
+You can cancel at any point f you wish to leave this wizard without configuring all the
+products.
+Product status
+MySQL Server 5040 Configuration complete.
+MYSQL Router 5040 Ready to configure
+Samples and Examples 040 Ready to configure
+Product Configuration
+Next> Cancel
+--------------------------------------------------
+
+### SCREENSHOT 11 (img-010.png)
+--------------------------------------------------
+[= MysQL installer — x
+MySQL. Installer MySQL Router Configuration
+MySQL Router 8.0.40 (OJ Bootstrap MySQL Router for use with InnoDB Cluster
+TomoDb Caste. Applaions ak conned Lo th ute wil be automata dveced fo on
+SQL Route To onto, ss te coment Res ute stance of the cuter +
+Hostname:
+Port: 3305
+Management User: root
+Password: Test Connection
+MySQL Router requires specification of a base port (between 80 and 65532). The first port is used
+Classic MySQL protocol connections to InnoDB Cluster:
+Read/Write: 6446
+Read Only: 6447
+X Protocol connections to InnoDB Cluster
+Read/Write: 6445
+Read Only: 6449
+Cancel
+--------------------------------------------------
+
+### SCREENSHOT 12 (img-011.png)
+--------------------------------------------------
+[= MysQL installer — x
+MySQL. Installer Connect To Server
+Samples and Examples
+Select the MySQL server instances from the fist to receive sample schemas and data
+Connect To Server Server Port Arch... Type Status
+© MySQLSener8040 3306 X64 Stand-alone Server Running
+Username: root Credentials provided in Server configuration
+Password: sess.
+Check
+Cancel
+--------------------------------------------------
+
+### SCREENSHOT 13 (img-012.png)
+--------------------------------------------------
+MySQL Installer — x
+MySQL. Installer Apply Configuration
+Sess] Bas The following configuration steps are being executed.
+Configuration Steps Log
+© Checking if there are any features installed that need configuration.
+© Running Scripts .
+Apply Configuration
+--------------------------------------------------
+
+### SCREENSHOT 14 (img-013.png)
+--------------------------------------------------
+VE Tables
+v El mahasiswa
+¥ [#] Columns.
+
+* NM
+* Nama
+* Jurusan
+# tahunangkatan
+* PK
+--------------------------------------------------
+
+### SCREENSHOT 15 (img-014.png)
+--------------------------------------------------
+© 23 144315 create table Mahasiswa( NIM varchar (50) primary key, Nama varchar (50). Jurusan varchar (50), tahunAngkatan year, IPK float ) Orowls) affe... 0.094 sec
+values ('12345','Ali Hasan’, Informatika’, 2021,3.75),
+('12346','Budi Santoso', Sistem Informasi’, 2022, 3.60),
+('12347', Citra Dewi’, Teknik Komputer, 2022,3.85)
+--------------------------------------------------
+
+### SCREENSHOT 16 (img-015.png)
+--------------------------------------------------
+Result Grid | HH 4) Fiter Rows: | Export: Ef | wrap Cell Content: IA
+NM Nema Jurusan tahunAngkaten [PK
+
+» [12345 AiHasan Informatica 221 3.75
+1234 BudiSantoso Sistem Informasi 222 36
+12347 Citra Dewi Teknik Komputer 2022 3.85
+--------------------------------------------------
+
+### SCREENSHOT 17 (img-016.png)
+--------------------------------------------------
+NM Nema  Juusan  tshunAngkatan PK
+» [12345 AiHasan Informatika 2021 3.75
+--------------------------------------------------
+
+### SCREENSHOT 18 (img-017.png)
+--------------------------------------------------
+NM Nema Jurusan tahunAngkatan PK
+> [12345 AiHasan Informatica 2021 3.75
+12347 CGiraDewi Teknik Komputer 2022 385
+--------------------------------------------------
+
+### SCREENSHOT 19 (img-018.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | eon: dl) Eb ER
+NIM Nama Jurusan tahunAngkatan  IPK.
+» 123% BudiSantoso Sistem Informasi 202 38
+.
+--------------------------------------------------
+
+### SCREENSHOT 20 (img-019.png)
+--------------------------------------------------
+NM Nama Jurusan tahunAngkatan PK.
+» [12345  Alitasan Informatika 2021 3.75
+123% BudiSantoso Sistem Informasi 2022 3.8
+. [onl]
+--------------------------------------------------
+
+### SCREENSHOT 21 (img-020.png)
+--------------------------------------------------
+NIM Nama Jurusan tahunAngkatan IPK  tanggal_lahir
+» 12345 AiHasan Informatica 2021 3.75 199408-12
+
+123%  BudiSantoso Sistem Informasi 2022 38 1994-08-10
+. [ool
+--------------------------------------------------
+

@@ -1,0 +1,100 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Muhammad Lutfi Ari Saputra
+NIM: 230102068
+Tanggal Ekstraksi: 7/12/2026, 1:04:11 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+Output,
+EF Acton Output =
++ Tme aden Message Durston  Fech
+© 21 141724 DROP DATABASE uiverstas’ Trou) affected 0078sec
+© 22 141834 create database universtas. Trou) affected 0016 sec
+© 23 141834 useuniverstas row) afected 0000sec
+© 24 141837 create table mahasiswal( nim varchar(30) primary ke... 0row(s) fected 1281500
+© 25 141840 inset into mahasiswa fim nama unusan angatani.. 3rows) affected Records: 3 Duplicates: 0 Wamin... 0.031 sec:
+© 26 14:18:45 select "from mahasiswa where pk > 37 LIMIT 0, 1... 2row(s) retumed 0.000 sec / 0.000 sec:
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+Output,
+EF Acton Output =
++ Tme aden Message Durston  Fech
+© 21 141724 DROP DATABASE uiverstas’ Trou) affected 0078sec
+© 22 141834 create database universtas. Trou) affected 0016 sec
+© 23 141834 useuniverstas row) afected 0000sec
+© 24 141837 create table mahasiswal( nim varchar(30) primary ke... 0row(s) fected 1281500
+© 25 141840 inset into mahasiswa fim nama unusan angatani.. 3rows) affected Records: 3 Duplicates: 0 Wamin... 0.031 sec:
+© 26 14:18:45 select "from mahasiswa where pk > 37 LIMIT 0, 1... 2row(s) retumed 0.000 sec / 0.000 sec:
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+*
+Ee en [7 1-Y A
+im nama jurusen enghatan pk ry
+» [230102067 honcena informatica 223 375 =)
+2010068 hesti tek komputer 223 385
+230102085 karyana sistem informasi 223 36
+* Form
+Eto
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+<
+
+| nor |B errors [sy 8 Ee [emo
+om ema run agian pk =
+
+» [20102067 honcena informatica 223 375 Gd
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+<
+nes cod |B 4 rts [Jee gy Bb BB Joo
+im nama jurusen enghatan pk ry
+» [230102067 honcena informatica 223 375 =)
+230102068 hesti teknik komputer 2023 3.85
+Form
+and
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+<
+Ee en [7 1-Y A
+nim nema jurusan angiatan pk. ry
+» [230102067 honcena informatica 223 375 =)
+2010068 hesti tek komputer 22 39
+250102088 koryana | NSt jinformasi 223 36
+* Form
+Corer
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+<
+| nes cod |B 4 rts [ee gy Bb EB |e
+im nama jurusen enghatan pk ry
+» [230102067 honcena informatica 223 375 =)
+230102068 hesti teknik komputer 2023 3.9
+Form
+Eto
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+<
+| Restor | T] 4 mtorr [|i gf) Bb Eb [ee
+nim nema jurusan anglaten ik tol leh —
+» [230102067 jroncena informatike 2023 3.75 20050515 =
+002068 best tehnikomouter 2023 39 20050212
+=
+fared
+--------------------------------------------------
+

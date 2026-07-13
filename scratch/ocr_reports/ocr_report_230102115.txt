@@ -1,0 +1,91 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: REGINA ULIMA PRASISTA AURA
+NIM: 230102115
+Tanggal Ekstraksi: 7/12/2026, 12:59:54 PM
+==================================================
+
+### SCREENSHOT 1 (image1.png)
+--------------------------------------------------
+| Result Grid | J] 4% Fer Rows: | est: gl) BE Ek | expo
+Result
+
+» 12345  AliHasan Informatika 2021 3.75 Grid
+12346 BudiSantoso Sistem Informasi 2022 3.6 —
+12347 Citra Dewi Teknik Informatka 2020 3.85 =
+
+. = . Form
+Editor
+
+Field
+
+Types
+
+mahasiswa 1 x Apply Revert
+--------------------------------------------------
+
+### SCREENSHOT 2 (image2.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fater Rows: | eat: gd) Eb Eb | export
+
+NM nama jurusan angkatan  ipk =
+
+» [12345 AliHasan Informatika 2021 3.75 "ord
+.
+
+=
+
+Editor
+--------------------------------------------------
+
+### SCREENSHOT 3 (image3.png)
+--------------------------------------------------
+| Result Grd | [4% Fier Rove: [eit gd Eb ER | eon
+NM nama Jurusan angkatan pk
+
+> 12345 Aitasan Informatie 221 37s fed
+
+12347 CitaDewi TeknkInformatka 2020 3.85 —
+
+. [oud [ro] =
+
+Form)
+
+Editor
+--------------------------------------------------
+
+### SCREENSHOT 4 (image4.png)
+--------------------------------------------------
+| ResuitGrid [HH 4% FrerRows: [ede gl) Bb Ee | Eon
+NIM nama jurusan angkatan pk
+
+> [12345 AiHasn Informatika 221 375 fed
+
+12346 BudiSantoso Sistem Informasi 2022 38 —
+
+12347 CitaDewi  TeknkInformatka 2020 3.85 =
+
+. =
+
+Editor
+--------------------------------------------------
+
+### SCREENSHOT 5 (image5.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: |edit: gd Bb BL | wo
+NM nama jurusan angkatan ik
+
+> [12345 AiHesan Informatika 221 375 fed
+12346 BudiSantoso Sistem Informasi 2022 3.8
+. mm mm mw
+--------------------------------------------------
+
+### SCREENSHOT 6 (image6.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt: gd) Eb Eb | Exporyimport: fg {8 | Wrap cell Content: TR
+NM nama jurusan angiatan pk tol lahit tg ahr
+> [12345 AiHasan Informatika 021 375 2005-06-22
+1234 BudiSantoso Sistem Informasi 2022 38 2003-08-07
+.
+--------------------------------------------------
+

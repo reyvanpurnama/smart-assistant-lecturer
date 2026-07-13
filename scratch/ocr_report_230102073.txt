@@ -1,0 +1,191 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Melani Anggraena
+NIM: 230102073
+Tanggal Ekstraksi: 7/12/2026, 12:04:37 PM
+==================================================
+
+### SCREENSHOT 1 (melani_img-000.png)
+--------------------------------------------------
+Cf localinsmnce3306-Waming-notsupported
+8 dF SNmaa mE * oo C=3
+inion | ovens § Go| pT [=r pa.
+Cd mE FFAG @ 00E UwmmnnE % va @8 Cae
+Hee Te create database Universitas; Automatic context help is
+2 vrs nd mgs 2 disabled. Use the toolbar
+Sasa 0 + ISSURVeSitasH] to manually get help for
+& owatuor. the current caret position
+ou ert orto toggle automatic
+ owatngans ge
+nsTance +
+§ su shadonn
+A& sowrion
+oman
+® ours
+| pe—
+& tomar Schema Se
+a
+[rpe—
+Jeo
+Toe etn fee oust Fach Ton
+PR e— Ton stied 000
+3 a0 co samen Err Coe: 07 Crt crt tate Uri, 0004 se
+ERR gy ron sacs peti
+rea
+--------------------------------------------------
+
+### SCREENSHOT 2 (melani_img-001.png)
+--------------------------------------------------
++ B Universitas B i
+CumaTbles 5 =O create table mahasiswa (
++ | mahasiswa 6 nim VARCHAR(25) primary key,
++ pm Columns 7 namaMhs VARCHAR (50),
+& nim 8 jurusan VARCHAR(50),
+¢ namaMhs 9 TahunAngkatan YEAR,
+¢ jurusan 10 | IPK DECIMAL(3,2)
+& TahunAngkatan
+11
+* IPK 15> Ly.
+--------------------------------------------------
+
+### SCREENSHOT 3 (melani_img-002.png)
+--------------------------------------------------
+4
+
+5 = © create table mahasiswa (
+
+6 nim VARCHAR(25) primary key,
+7 namaMhs VARCHAR(50),
+
+8 jurusan VARCHAR(50),
+
+e] TahunAngkatan YEAR,
+
+0 IPK DECIMAL
+
+1
+
+2 );
+
+2
+--------------------------------------------------
+
+### SCREENSHOT 4 (melani_img-003.png)
+--------------------------------------------------
++ B Universitas B i
+CumaTbles 5 =O create table mahasiswa (
++ | mahasiswa 6 nim VARCHAR(25) primary key,
++ pm Columns 7 namaMhs VARCHAR (50),
+& nim 8 jurusan VARCHAR(50),
+¢ namaMhs 9 TahunAngkatan YEAR,
+¢ jurusan 10 | IPK DECIMAL(3,2)
+& TahunAngkatan
+11
+* IPK 15> Ly.
+--------------------------------------------------
+
+### SCREENSHOT 5 (melani_img-004.png)
+--------------------------------------------------
+14 insert into mahasiswa values
+15 (12345, 'Ali Hasan', 'Informatika', 2021, 3.75),
+16 (12346, 'Budi Santoso', 'Sistem Informasi', 2022, 3.60),
+17 (12347, 'Citra Dewi', 'Teknik Informatika', 2020, 3.85);
+18
+$2009
+Result Grid [lf t3 Filter Rows: Q Edit: fy Bi BE Export/import: Lo] 5)
+nim namaMhs jurusan TahunAngkatan IPK
+» [12345 |Ali Hasan Informatika 2021 3.75
+[12346 [Budi Santoso [Sistem Informasi [2022 [360 |
+[12347 [Citra Dewi [Teknik Informatika [2020 [385 |
+HULL HULL HULL HULL HULL
+--------------------------------------------------
+
+### SCREENSHOT 6 (melani_img-005.png)
+--------------------------------------------------
+14 insert into mahasiswa values
+15 (12345, 'Ali Hasan', 'Informatika', 2021, 3.75),
+16 (12346, 'Budi Santoso', 'Sistem Informasi', 2022, 3.60),
+17 (12347, 'Citra Dewi', 'Teknik Informatika', 2020, 3.85);
+18
+© select + fron nahasiswai]
+20
+$2519
+Result Grid [lf 3 Filter Rows: Q Search Edit: IZ) Ew BE Export/import: Lo] i
+nim namaMhs jurusan TahunAngkatan IPK
+» [12345 |Ali Hasan Informatika 2021 3.75
+[12346 [Budi Santoso [Sistem Informasi [2022 [360 |
+[12347 [Citra Dewi [Teknik Informatika [2020 [385 |
+HULL HULL HULL HULL HULL
+--------------------------------------------------
+
+### SCREENSHOT 7 (melani_img-006.png)
+--------------------------------------------------
+a
+22 = select x from mahasiswa where jurusan = "Informatika";
+| 55:22
+Result Grid [lf 3 Filter Rows: Q Edit: “4 E+ BE  Export/import: Lo]
+nim namaMhs jurusan TahunAngkatan IPK
+» |12345 |Ali Hasan |Informatika |2021 3.75
+WoLL || nuit HULL HULL HULL
+--------------------------------------------------
+
+### SCREENSHOT 8 (melani_img-007.png)
+--------------------------------------------------
+24 = select x from mahasiswa where IPK > 3.7;
+Cs ar24
+Result Grid [lf tV FilterRows: Q Edit: fy Bx BE Export/i
+nim namaMhs jurusan TahunAngkatan IPK
+» [12345 |Ali Hasan |Informatika 2021 3.75
+12347 [Gira Dewi [Teknik Informatika [2020 [385 |
+NULL | HULL HULL HULL HULL
+--------------------------------------------------
+
+### SCREENSHOT 9 (melani_img-008.png)
+--------------------------------------------------
+25
+26 = update mahasiswa set IPK = 3.8 where nim = "12346";
+$ 52:26
+Result Grid [lf tV Filter Rows: Q Edit: “4 E+ BE  Export/import: Lo] 7
+nim namaMhs jurusan TahunAngkatan IPK
+» [12345 |Ali Hasan Informatika 2021 3.75
+[12346 [Budi Santoso [Sistem Informasi [2022 [380 |
+12347 [Citra Dowi [Teknik Informatika [2020 [885 |
+NOLL | HULL HULL HULL HULL
+--------------------------------------------------
+
+### SCREENSHOT 10 (melani_img-009.png)
+--------------------------------------------------
+27
+28 = delete from mahasiswa where nim = "12347"
+$ 43:28
+Result Grid [lf tV Filter Rows: Q Edit: “4 E+ BE  Export/import: Lo] 5)
+nim namaMhs jurusan TahunAngkatan IPK
+» [12345 |Ali Hasan Informatika 2021 3.75
+[12346 [Budi Santoso [Sistem Iniommasi [2022 [380 |
+HULL | HULL HULL HULL HULL
+--------------------------------------------------
+
+### SCREENSHOT 11 (melani_img-010.png)
+--------------------------------------------------
+—
+30 = alter table mahasiswa add tgl_lahir date;
+$ 42:30
+Result Grid [lf tV FilterRows: Q Edit: of Bx BE Exp
+nim namaMhs jurusan TahunAngkatan IPK tgl_lahir
+» [12345 |Ali Hasan Informatika 2021 3.75 HULL
+[12546 [Budi Santoso [Sistem Informasi [2022 [080 [wi |
+NULL | HULL HULL HULL NULL | HULL
+--------------------------------------------------
+
+### SCREENSHOT 12 (melani_img-011.png)
+--------------------------------------------------
+32 = update mahasiswa set tgl_lahir = "2003-02-01" where nim = "12345";
+33 = update mahasiswa set tgl_lahir = "2004-03-02" where nim = "12346";
+Ql EER
+Result Grid [lf 3 Filter Rows: Q Edit: “4 E+ BE  Export/import: Lo] 5)
+nim namaMhs jurusan TahunAngkatan IPK tgl_lahir
+» [12345 |Ali Hasan Informatika 2021 3.75 |2003-02-01
+[12346 [Budi Santoso [Sistem Informasi [2022 [380 _[2004:03:02 |
+HULL | HULL HULL HULL NOLL | ULL
+--------------------------------------------------
+

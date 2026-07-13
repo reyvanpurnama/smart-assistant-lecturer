@@ -1,0 +1,188 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Muhammad Faathir Al Mukhrij
+NIM: 230102084
+Tanggal Ekstraksi: 7/12/2026, 1:03:01 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+I MysaL Workbench
+#& Local instance MySQLS1 - W
+File Edit View Query Datab:
+S18 & SF8
+SCHEMAS °
+Q Filter objects
+> sakila
+> sys
+v [= universitas oQ
+BF Tables
+BH Views
+[Bf Stored Procedures
+BF Functions
+> world
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+SCHEMAS o>
+Q Filter objects
+> sakila
+> sys
+v [ universitas
+vB Tables
+v El mahasiswa
+v [8] Columns
+nim
+* nama
+® jurusan
+# angkatan
+* ipk
+» Indexes
+» @ ForeignKeys
+» B Triggers
+BH views
+7 Stored Procedures
+Bf Functions
+> world
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+Local instance MySQLOT-W.. x
+Fle Edt View Query Dasbase Sever Tools Serbo Help
+Sle 8888 8 & [A=
+Navigator [ ros squaddons
+Scns * ME FFROBIOOME mmm - ik ¢a dE <r | we 8
+9 [Flr jects 16 (123457, 'AlL Hesan', ‘Informatika’, 2021, 3.75),
+Automatic context help is
+> sala “12346, * , : 60), 4
+8m Bi US Sa We, 3) disabled, Use the toolbar to
+4-1 16 "12347", "Cites Dewi’, ‘Teknik Komputer’, 2020, 3.85); manually get help for the
+vB Tables 2 current caret position or to
+VE mahasiswa 1 ‘toggle automatic help.
+TI 1s SELECH FON mabasiswn;
+* nim
++ nama »
+* jousan 2
+bl 22% SELECT * FROM mahasiswa WHERE jurusan = Informatika’;
+> B Indexes a
+3 ForeignKeys 24
+Bn 25% SELECT * ROW mahasiswa WHERE ipk > 3.7
+B90 Stored procedures ¥
+B Functions. 27 UPDATE mahasiswa
+> world 8 SET ipk=2s
+| est orid | 4% Fo ows: sot os Eb Ee | Eworimport BB [Wrap col cotrts TE a
+om nama srusen angen ox
+Vs Aree Infomata 1 375
+125% BdSatoso Seteminfmas 2022 3.60 =
+12347 CaDew Teknik Komputer 202 3.85 =
+5 om LH ‘Tm =
+Administration Scher ! Fm
+ee
+Mik mahasiswa 14 x hey | few Contehelo  Shppel
+Mo object selected fae
+Acton Output -
+ome ace Masage ouston Fen
+© 1 143425 CREATE DATABASE unwenstas rows) fected 0015sec
+© 2143450 USEuwentss Oot) fected 00sec
+© 3 143518 CREATE TABLE mahasawa (rim VARCHAR(I0) PRIMARY KEY. nama VARCHAR(S0, Arusan ARCH... Orowt) fected 0047sec
+© 4 143535 INSERT INTO nahasinea fm, nama, krusan, anchatan, gk) VALUES (12345, Hasan, omatka’, 2021... 3rows) fected Records: 3 Duplicates: 0 Wamings: 0 0015sec
+© 5 143539 SELECT" FROM mahasawa LITO, 1000 rows eames 00sec /000 sec
+otpec iio [RRR © © 143617 SELECT" FROM mahasswa LITO, 1000 3rowt)retumed 0000sec/0000 sec:
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| Result Grid | 4% Fiter Rowe: | edt: ol) Eo E
+nim nama jurusan angkatan pk
+» 12345  AliHasan Informatika 2021 3.75
+12346 BudiSantoso Sistem Informasi 2022 3.60
+12347 Citra Dewi Teknik Komputer 2020 3.85
+. [ou]
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt: g&
+nim nama Jjurusan angkatan  ipk
+» [12345 AiHasan Informatika 221 3.75
+.
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | eat: el) EB
+nim nama jurusan anghatan  ipk
+» 12345 AiHasan Informatika 2021 3.75
+12347 CiraDewi Teknik Komputer 2020 385
+. mm mE
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+| ResultGrid | Hf 4% Fiter Rows: | edt: gl) BE
+nim nama Jurusan angkatan  ipk
+» (12345 AiHassan Informatika 2021 3.75
+123% BudiSantoso Sistem Informasi 2022 3.80
+12347 CitaDewi Teknik Komputer 2020 3.85
+.
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+| Result Grid | Hl] 4% Fiter Rows: | ede: gl) BE BR |e
+nim nama Jurusan angkatan  ipk
+» (12345 AiHassan Informatika 2021 3.75
+123%  BudiSantoso Sistem Informasi 2022 3.80
+.
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+SCHEMAS °
+Q Filter objects
+3 sakila
+> 8s
+v I universitas
+vB Tables
+v EH mahasiswa
+¥ [#] Columns
+nim
++ nama
+@ jurusan
+# angkatan
+* ipk
++ tanggal_Iahir
+» BF Indexes
+» T ForeignKeys
+» 5 Triggers
+BF Views
+9 stored Procedures
+BF Functions
+> world [iTS
+--------------------------------------------------
+
+### SCREENSHOT 10 (img-009.png)
+--------------------------------------------------
+Result Grid | HE Fiter Rows edt: gh) Eb Eh | expor/import
+nim nama jurusan angkatan pk tanggal lahir
+
+» [12345 AlHasan Informatika 2021 3.75
+12346  BudiSantoso Sistem Informasi 2022 3.80
+--------------------------------------------------
+
+### SCREENSHOT 11 (img-010.png)
+--------------------------------------------------
+[No text detected]
+--------------------------------------------------
+
+### SCREENSHOT 12 (img-011.png)
+--------------------------------------------------
+| ResuitGrid | fH 4% Fier Rows: | edt: gd) Eb Bs | Exportim
+nim nama Jurusan angkatan ik tanggal lahir
+» [12345 AliHasan Informatika 2021 3.75 2000-01-15
+= Budi Santoso Sistem Informas 222 380 2001-03-20
+FA
+--------------------------------------------------
+

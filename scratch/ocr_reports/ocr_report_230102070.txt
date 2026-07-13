@@ -1,0 +1,80 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Makbul Insan Darojat
+NIM: 230102070
+Tanggal Ekstraksi: 7/12/2026, 1:01:21 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+Action Output -
+EC p. on
+© 1 140324 create database universtas 1 rows) affected 004752
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+SCHEMAS -
+a
+No
+ex
+v [J universitas
+vB Tables
+v 5 mahasiswa
+» [#] Columns
+» BF Indexes
+» 2 Foreignkeys
+» B51 Triggers
+BF views
+TB Stored Procedures
+BF Functions.
+A
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+© 4 141741 insert into mahasiswa {nim, nama, jurusan, angkatan, ipk) values (12345 'Ali Hasan’, Informatik... 3 row(s) affected Records: 3 Duplicates: 0 Wamings: 0° 0.063 sec
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| Result Grid | [fl] 4% Fier Rows: | edt: gl) Eb Ek | Ewort/import: Bg {i | wrep ell Content: TH
+nim nama jurusan angkatan ik
+
+» [1% Airs Informatika 21 375
+123% Bud Santoso stem formas: 222 360
+12347 GuaDew  Tekkiomuter 2020 385
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+| Result Grid [HH 4% Fterfows:| [edn gl) Eb Ek | woniimport: Bg ff) | wrap col Content: Tn
+nim nama jurusan angkatan ipk
+» 1% Mites infomsta 2021 375
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: |edt: hl) Eb Ek | Eort/import: Bg {i | wrep ell Content: TH
+nim nama jurusan angkatan ipk
+
+» [12395 Airis Informatica 21 375
+12347 CiraDew TekKomputer 2020 385
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+© 8 143715 update mahasiswa set ipk =3.8 where nim = "12346" 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.047 sec
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+© 11 144223 delete from mahasiswa where nim = 12347 rows) affected 0063sec
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+© 20 145009 update mahasiswa set tanggal lahir = 2000-01-15 where nim = "12345 0row(s) affected Rows matched: 1 Changed: 0 Wamings: 0
+© 21 145014 update mahasiowa set tanga lah = 2001-0320 where im = 12346" 1 row(s) affected Rows metched: 1 Changed: 1 Warings: 0
+--------------------------------------------------
+

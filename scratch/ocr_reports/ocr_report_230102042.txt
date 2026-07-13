@@ -1,0 +1,434 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Fahmi Maulana Sitakar
+NIM: 230102042
+Tanggal Ekstraksi: 7/12/2026, 1:04:21 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+IB MySQL Workbench - a x
+A Mysal@localhost3ds x
+Fie Edt View Query Dosbese Sever Teds Sciping Hep
+She SBE E & © ID=0
+Navigator: | Guery 1 >< | F.C =
+scHEmas °C MHIFFAC DO OME memos -% ¢ a [= <r 1 | mete
+Shem 9
+=p [] — Dore | Automatic context help is
+Te create database universitas; disabled. Use the toolbar to
+2 manually get help for the
+B current caret position or to
+B toggle automatic help.
+s
+B
+7
+B
+B
+10
+n
+2
+5
+1
+Adminstration. hemes ——— Content ily | Snippets
+formation ouput
+CJ Acton Output g
+No object selected #  Tme acon Message Duaton/ Fetch
+© 1 144541 cece atsbose vrs Trout) afeced 0047500
+Object no | Session
+Er Ema] =0
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+IB MysQL Workbench - a x
+A Mysal@localhost3306 x
+File Edit View Query Database Server Tools Scripting Help
+Se SEHFHEE EE @ D=0
+Sia
+schemas * WEIFFAOCIE OOM memo | ¥ QE <> IE |
+Ques Z
+5 umverstas = Le One | Automatic context help is
+5 Tables Te create database universitass disabled. Use the toolbar to
+= views Ze use universitas; manually get help for the
+25 Stored Procedures 3 current caret position or to
+E Functions s toggle automatic help.
+s
+.
+7
+s
+N
+0
+un
+2
+5
+1
+ir _ Content Help | Srippes
+rm ouput
+BF Acton Out -
+Ho object selected © me em Mesage J——
+© 1144541 cto datbase wives route) seced 0047500
+© 2 164833 wsouesios Orons)afected 0016560
+Object nfo | Session
+Query Completed IE]
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+IB MySQL Workbench - a x
+A Mysal@localhost3ds x
+Eile Edit View Query Datsbase Server Tools Scripting Help
+Se SEHFHEE EE @ D=0
+SQadiitons
+sores > MBI FACIEHO OME mom -%¥a dE < > | i | mow
+Goede -
+5 umverstas = Le One | Automatic context help is
+VE es ie creste database universitas; disabled. Use the toolbar to
++ Bl masiun 2e use universitos; manually get help for the
+Geen 30 creste TABLE mahasiom ( current caret position or to
+Soredrocedues ee :
+B sore + | nin int auto_increment przmsRy Kev, toggle automatic help.
+oe Pe ——
+¢ | urusan uarcion (59),
+7 | ngeatan int,
+5 | pk Double
+s Ly
+1
+u
+2
+5
+M
+Admitton Schemas = Comet ies Sipe
+Tr oun
+3 heinous g
+Ho object selected ¢ me [haem Messe ion; Fen
+© 1144541 ce catbmeusentas ow) feces 007s
+© 214483 weurientes Orofced oot6eec
+© 3 164934 create TABLE mahasiowa (rim rt auto_increment PRIMARY KEY, nama VARCHAR (.._ 0 rows) affected 0172sec
+obec to [Son
+r—— @
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@localhost3306 x
+Eile Edit View Query Datsbase Server Tools Scripting Help
+Se SEHFHEE EE @ D=0
+SQadiitons
+SCHEMAS * mEIFFACE [B]| snaro 000m - | 5 | ¥ Q [1] [2 <r [EF | amet
+Q iter objects
+ee Fn deplore automatic context helps
+hiro 5 disabled. Use the toolbar to
+» 5 mahasisua 4 manually get help for the
+views 15 INSERT INTO mshasisua (nim, nama, jurusan, sngkatan, ipk)value current caret position or to
+57 stored Procedures 16 (12345, "Ali Hasan’, ‘Informatika’, 2021, 3.75); toggle automatic help.
+5 Funcions
+1%
+150 INSERT INTO mshasisua (nim, nama, jurusan, sngkatan, ipk) VALUE
+15 (12346, ‘budi Santoso’, ‘Sistem Informasi', 2022, 3.60);
+2
+21 INSERT INTO mshasisua (nim, nama, jurusan, sngkatan, ipk) VALUE
+22 (12347, “Citra Dewi’, ‘Teknik Komputer’, 2020, 3.85);
+23
+2
+250 SELECT * FROW mahasisua
+26 0 SELECT * FROM mahasiswa WHERE durusan = ‘Teknik Komouter's
+Adminstration Schemas 25° SELECT PROM mehesiava WERE Tur Context elp Snippets
+Information Output
+1 Acton Out -
+No object selected + Tme amen Message Duration / Fetch
+© 1144541 crete detabsse unverstas Trowe) fected 0047560
+© 2144832 use universes Oro) fected 0016560
+© 3 144934 crests TABLE mahasiows (rim int auto_increment PRIMARY KEY, nama VARCHAR (... 0rows) affected 0172560
+© 4 1451:19 INSERT INTO mahasiswa (nim, nama, jurusan. angkatan. ipklvalue (12345, ‘Al Hasan... 1row(s) affected 0016 sec
+© 5 1451:19 INSERT INTO mahasiswa (nim. nama, jurusan. angkatan. ink) VALUE (12346, Budi S... 1row(s) affected 0015sec
+Object Info Session © 6 145119 INSERT INTO mahasisws (nim. nam, jurusan, angkatan. ipk) VALUE (12347, Ctra D... 1 rows) affected 0016 sec
+Query Completed IE]
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Et View Quen Dabs Sever Tods Scrising Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | SqLadditions
+schemas * WHIZ FAC SHO OME memo -% <a 0E <> IE |
+Goede - Done
+[= y— 2) J Automatic context help is
+hiro = disabled. Use the toolbar to
+VE mahsisua 2 manually get help for the
+v [5] Columns 256 SELECT * FROM mahasiswe; current caret position or to
+oom 26 SELECT * FROM mahasiswa WHERE jurusan = ‘Informatika’; | toggle automatic help.
++ vn 276 SELECT * FROM mahasiswa WHERE pk > 3.73
++ anghatan 2
+* ink
+> B Inderes EE
+> Foreignkeys | Result Grid | fH 4% ter Rows: |eat: gf) Bb Bs | mporiimport: ERY 8 | Wrap cot Content: TE a
+» 5 Taggers ——
+B views nm nema Jurusan angiatan pk. ry
+TB Stored Procedures > [12345 AliHasan Informatika 2021 375 =
+8 Functions 23% Budsaomo Sstemifomss 22 36
+37 GtaDew  Tekkiomuter 2020 3.85
+Administration chem mass 57 x hwy Res Cometic Snippets
+formation Output
+1 Acton Out -
+No object selected + Tme aan Message Duration / Fetch
+© 4 16:17:43 INSERT INTO mahasiswa (nim. nama, jurusan, angkatan. ipklvalue (12345. "Ali Ha... 1 rows) affected 0047sec
+© 5 16:17:43 INSERT INTO mahasiswa (im, nama, jurusan, angkatan. iok) VALUE (12346, Bud... 1row(s) affected 0015sec
+© 6 16:17:43 INSERT INTO mahasiswa fim. nama, jurusan, angkatan. isk) VALUE (12347, Cir... 1 row(s) affected 0016sec
+© 7 161755 SELECT" FROM mahasisna LMIT0, 1000 ous) retumed 0015 sec/ 0000 sec:
+© 8 16:17:55 SELECT * FROM mahasiswa WHERE jurusan = rformatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec:
+Object Info Session © 9 16:17:55 SELECT * FROM mahasiswa WHERE sk > 3.7 LIMIT 0, 1000 2row(s)retumed 0:00055c/ 0.000 sec
+@roy Era IE]
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | SqLadditions
+SCHEMAS *C mEIFFACE [B]| snato 000m - | 5 | ¥ Q [1] [2 <r [Ey |r
+Goede - Done
+[= y— 2) hl) J Automatic context help is
+J een 22 (12347, “Citra Dewi’, ‘Teknik Komputer’, 2020, 3.85); disabled. Use the toolbar to
+» 5 mahasisua 2 manually get help for the
+views 2 current caret position or to
+z Slored Procedures 258 SELECT * FROM mahasiswa; toggle automatic help.
+net 26 0 SELECT * FROW mahasiswa WHERE jurusan = Informstika’s |
+27 0 SELECT * FROW mahasiswa WHERE ipk > 3.7;
+| Rest Grid | £43 Fer ron: est Es Eh | Exortinports BY 81 | Wrap col Contents IE a
+nm nema jwusn  anghatan pk ry
+b [12345 Aitesan Informatke 2021 3.75 =)
+Adminstration Schemas mahasisa 10 mahssisus 11 x mahssiswa 2 hwy Res Cometic Snippets
+Information Output
+CJ Action Output -
+No object selected + Tme aan Message Duration / Fetch
+© 8 145211 SELECT * FROM mahasiswa WHERE jurusan = Teknik Komputer LIMIT 0.1000 1 row(s) retumed 0016 sec / 0.000 sec
+© 9 145211 SELECT * FROM mahasswa WHERE ipk > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec:
+© 10 145555 SELECT * FROM mahasiswa WHERE jurusan = ‘fomatica LIMIT 0, 1000 1 rows) retumed 0016 sec /0.000 sec
+© 11 145614 SELECT FROM mahssiwa LIMIT 0, 1000 3row(s) etumed 0000560 /0.000 sec:
+© 12 14:56:14 SELECT * FROM mahasiswa WHERE jurusan = ‘fomatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec:
+Object Info Session © 13 1456:14 SELECT * FROM mahasiswa WHERE pk > 3.7 LIMIT 0, 1000 2row(s)retumed 0:00055c/ 0.000 sec
+Query Completed IE]
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | SqLadditions
+SCHEMAS *C mEIFFACE [B]| snato 000m - | 5 | ¥ Q [1] [2 <r [Ey |r
+Goede - Done
+[= y— 2) hl) J Automatic context help is
+J een 22 (12347, “Citra Dewi’, ‘Teknik Komputer’, 2020, 3.85); disabled. Use the toolbar to
+» 5 mahasisua 2 manually get help for the
+views 2 current caret position or to
+z Slored Procedures 258 SELECT * FROM mahasiswa; toggle automatic help.
+net 26 0 SELECT * FROM mahasiswa WHERE jurusan = ‘Teknik Komputer’; |
+27 0 SELECT * FROW mahasiswa WHERE pk > 3.7;
+| Rest Grid | £43 Fier ron: est By Es Eh | Exportinports BY 8) | Wrap col Contents IE a
+nm nema juusen angiatan pk. ry
+b [12347 CiaDew TeknkKomputer 2020 385 =)
+Adminstration Schemas massa massive? x mahasisuas hwy Res Cometic Snippets
+Information Output
+CJ Action Output -
+No object selected + Tme aan Message Duration / Fetch
+© 4 1451:19 INSERT INTO mahasiswa (nim. nama, jurusan, ankatan. ipklvalue (12345. "Ali Ha... 1 rows) affected 0016 sec
+© 5 145119 INSERT INTO mahasiswa fim, nam, jurusan, angkatan. isk) VALUE (12346, Bud... 1row(s) affected 0015sec
+© 6 145119 INSERT INTO mahasiswa fim, nam, jurusan, angkatan. isk) VALUE (12347, Cir... 1 row(s) affected 0016sec
+© 7145211 SELECT FROM mahssiwa LIMIT 0, 1000 3row(s) etumed 0000560 / 0.000 sec:
+© 8 145211 SELECT * FROM mahasiswa WHERE jurusan = Teknik Komputer’ LIMIT 0.1000 1 row(s) retumed 0.016 sec / 0.000 sec
+Object Info Session © 9 145211 SELECT * FROM mahasiswa WHERE sk > 3.7 LIMIT 0, 1000 2row(s)retumed 0:00055c/ 0.000 sec
+Query Completed IE]
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | SqLadditions
+SCHEMAS ©» mE FFACE 0 [B] um owen - 3 | Q [1] [3 <r [EF | wm
+Goede - Done
+[= y— 2) LL Automatic context help is
+hiro 23 update mahasisua disabled. Use the toolbar to
+VE mahasisua 3 SET ipk = 38 manually get help for the
+v [5] Columns 31 where nim —'12345' current caret position or to
+oom BY | toggle automatic help.
+# jurusan 33
++ angaten 3
+* ink
+> B Inderes I
+> Foreionkeys | posuitord |B 4% Fier Rov: est By Es Eh | Exportinports BY 81 | Wrap col Contents IE a
+» 5 Taggers
+B views nm nama Jurusan anglaten ink —
+TB Stored Procedures > [12345 AliHasan Informatika 2021 375 =
+5 Funcions 123% BudSanoso Sstemifomss 22 3
+1237 CvsDew  Tecikkomuter 2 385
+Adminstration Schemas mass 60 x hwy Res Cometic Snippets
+Information Output
+CJ Action Output -
+No object selected + Tme aan Message Duration / Fetch
+© 8 16:17:55 SELECT * FROM mahasiswa WHERE jurusan = formatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec.
+© 9 16:17:55 SELECT * FROM mahasiswa WHERE iok > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec.
+© 10 16:19:29 update mahasiswa SET iok = 38 where nim 12346 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0.046 sec
+© 11161935 SELECT FROM mahssiwa LIMIT 0, 1000 ous) retumed 0000560 / 0.000 sec:
+© 12 16:19:35 SELECT * FROM mahasiswa WHERE jurusan = rformatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec.
+Object nfo [Session © 13 16:19:35 SELECT" FROM mahasiswa WHERE pk > 3.7 LIMIT 0, 1000 Irow(s)retumed 0:000'55¢/£0.000 sec:
+@roy Era IE]
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | SqLadditions
+SCHEMAS ©» mE FFACE 0 [B] um owen - 3 | Q [1] [3 <r [EF | wm
+Goede - Done
+[= y— 2) LL Automatic context help is
+hiro 23 update mahasisua disabled. Use the toolbar to
+VE mahasisua 3 SET ipk = 38 manually get help for the
+> Cone 31 where nim —'12345'; current caret position or to
+» BF indexes toggl i
+BY le automatic help.
+» 3 Foreigners | 099 vo
+» 5 Taggers 3
+BF views 34
+B stored Procedures
+BR Functions -—
+| Rest Grid | £43 Fer ron: est fy Eb Eb | Exortinports BY 8) | Wrap col Contents IE a
+nm nama Jurusan anglaten pk __tanggal lahir =
+> [123% Aitesan Informatika wr 37 =)
+12346  BudiSantoso Sistem Informasi 2022 38
+Adminstration Schemas mahasiswads  mahasiswa 7 x hwy Res Cometic Snippets
+Information Output
+CJ Action Output -
+No object selected + Tme aan Message Duration / Fetch
+© 10 16:05:06 SELECT * FROM mahasiswa WHERE jurusan = formatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec.
+© 11 16:05:07 SELECT * FROM mahasiswa WHERE iok > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec.
+© 12 16:09:08 ALTER TABLE mahasiswa ADD COLUMN tanggal_lahir DATE rows) affected Records: 0 Duplicates: 0 Wamings: 0 0609 sec
+© 13 160545 SELECT FROM mahssiowa LIMIT 0, 1000 Zou) retumed 0000560 /0.000 sec:
+© 14 16:09:45 SELECT * FROM mahasiswa WHERE jurusan = formatica’ LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec.
+Object nfo [Session © 15 16:09:45 SELECT FROM mahasiswa WHERE pk > 3.7 LIMIT 0, 1000 2row(s)retumed 001658c/£0.000 sec
+@roy Era IE]
+--------------------------------------------------
+
+### SCREENSHOT 10 (img-009.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | sqLaddtions
+SCHEMAS © WEIFFAQCID OOF momo -v¢Q [FE <r [EF | wm
+Goede -
+[= y— 2) J Dore | Automatic context help is
+hiro wo disabled. Use the toolbar to
+VE mahasisua 41 ALTER TABLE mahasisus manually get help for the
+v5) Columns 42 ADD COLUMN tanggal_lshir DATE; current caret position or to
+MN mim a toggle automatic help.
+© juusan a [
++ angaten a
+* ink
+> BF Indexes I
+2B rome | Rest Grid | £43 Fer ron: |e: gf Bb Ei | mporsimport: BY 1 | wrap cot ortert: 5 a
+ven nm rama susan anghatan pk tanggal lah =
+TB Stored Procedures > [12345 AliHasan Informatika 2021 375 =
+5 Funcions 123% Budsanoso Sstemifomss 222 3
+Adminstration Schemas mahasiswa 63 mahasiswa 65 x hwy Res Cometic Snippets
+Information Output
+CJ Action Output -
+No object selected #  Tme Acton Message Duration / Fetch
+© 1 162038 ALTER TABLE mahasiswa ADD COLUMN tanggal lah DATE rows) affected Records: 0 Duplicates: 0 Wamings: 0 0407sec
+© 2 162055 SELECT * FROM mahasiswa LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec.
+© 3 162055 SELECT * FROM mahasiswa WHERE jurusan = ‘nfomatica LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec:
+© 4 162056 SELECT * FROM mahasswa WHERE ipk > 37 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec:
+Object nfo | Session
+Query Completed =
+--------------------------------------------------
+
+### SCREENSHOT 11 (img-010.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator [ Query 1x | SqLadditions
+scHEmas ° mE FFAOQM@® [B]| umito 10000ws  - | 4 | ¥ Q [1 [= <> [EF [wm
+Goede -
+[= y— 2) J Dore | Automatic context help is
+hiro 44 disabled. Use the toolbar to
+VE mahasisua 15 manually get help for the
+v [5 Columns we current caret position or to
+¢ nim toggle automatic help.
+© nama 47
+© junusan
+# angkatan 48 © UPDATE mahasiswa
+oink ir = "2000-01-15"
+© tanggal_lahir 49 SET tanggal_lahir = "2000-01-15
+» BF Indexes 50 WHERE nim = '12345';
+» 3 Foreigners 0
+» 5 Taggers
+Views 52 UPDATE mahasiswa
+5 Stored Procedures >
+BF runcions 53 SET tanggal lahir = '2001-03-20"
+54 where nim= "12346
+Adminstration Schemas - Context elp Snippets
+Information Output
+CJ Action Output -
+No object selected #  Tme Acton Message Duration / Fetch
+© 6 162319 UPDATEmahasiswa SETtanggal lahir = "2001-03-20" where nim= "12346" 1 row(s) affected Rows matched: 1 Changed: 1 Wamings: 0 0266 sec
+© 7162331 SELECT" FROM mahssiwa LIMIT 0, 1000 210m) retumed 0015560 / 0.000 sec
+© 8 162331 SELECT * FROM mahasiswa WHERE jurusan = ‘nfomatica LIMIT 0, 1000 1 rows) retumed 0.000 sec / 0.000 sec:
+© 9 162331 SELECT * FROM mahasswa WHERE ipk > 3.7 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec:
+© 10 162420 UPDATEmahasiswa SET tanggal lahir = 2000-01-15" WHERE nim = '12345' rows) affected Rows matched: 1 Changed: 0 Wamings:0 0032sec
+Object Info Session © 11 162420 UPDATE mahasiswa SETtanggal lah = 2001-0320" where rim= "12346" Orow(s) affected Rows matched: 1 Changed: 0 Wamings:0 0000 ssc!
+@roy Era IE]
+--------------------------------------------------
+
+### SCREENSHOT 12 (img-011.png)
+--------------------------------------------------
+B MySQL Workbench - a x
+A Mysal@iocalnost3306 x
+File Edit View Query Database Server Tools Scripting Help
+So SE8EHEHE & @ D=0
+Navigator | quent x | sqLaddtions
+scHEmas ° mE FFAOQM@® [B]| umito 10000ws  - | 4 | ¥ Q [1 [= <> [EF [wm
+Goede -
+[= y— 2) J Dore | Automatic context help is
+VE Tables 50 WHERE nim = '12345'; disabled. Use the toolbar to
+v El mahasisua 51 manually get help for the
+v5) Columns . current caret position or to
+* nim 52 UPDATE mahasiswa ‘toggle automatic help.
+¢ nama 53 SET tanggal_lahir = '2001-03-20"
+© jurusan & |
+* angkatan 54 where nim= "12346";
+oink
+# tanggal_lahir
+dest | Result rid | HH 43 Fiter Rows: |edit: Eb Fh | ewor/import: Bg 5) | wrap cal Content: T1 a
+reign Keys —
+» 5 roa nm nama Jurusan ongioten pk tenggal ahi =
+5 views b [12345 Aitssan Informatika 021 375 20000115 =
+B Stored Procedures 12346 BudSnoso Ssteminfornas 222 3B 20010320
+Functions .
+Administration Schemas mahasiswa7l x hy Ress ContetHelp  Suppel
+Information Output
+CJ Action Output -
+No object selected #  Tme Acton Message Duration / Fetch
+© 9 162331 SELECT * FROM mahasiswa WHERE ipk > 37 LIMIT 0, 1000 2row(s) retumed 0.000 sec / 0.000 sec:
+© 10 162420 UPDATEmahasiswa SET tanggal lahir = 2000-01-15" WHERE nim = '12345' rows) affected Rows matched: 1 Changed: 0 Warmings: 0. 0032sec
+© 11 162420 UPDATEmahasiswa SETtanggal lahir = "2001-03-20" where rim="12346" rows) affected Rows matched: 1 Changed: 0 Warmings: 0. 0000sec
+© 12 162639 SELECT FROM mahasswa LIMIT 0, 1000 210m) retumed 0000sec /0.000sec
+© 13 162639 SELECT * FROM mahasiswa WHERE jurusan = ‘fomatica LIMIT 0, 1000 1 rows) retumed 10.000 sec / 0.000 sec:
+Object Info Session © 14 162639 SELECT * FROM mahasiswa WHERE pk > 3.7 LIMIT 0, 1000 2row(s)retumed 0:00055c/ 0.000 sec
+Query Completed =
+--------------------------------------------------
+

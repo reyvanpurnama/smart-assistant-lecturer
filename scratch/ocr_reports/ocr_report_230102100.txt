@@ -1,0 +1,107 @@
+==================================================
+OCR SCREENSHOT EXTRACTION REPORT
+Nama: Naufal akbar muhadzzib
+NIM: 230102100
+Tanggal Ekstraksi: 7/12/2026, 12:59:44 PM
+==================================================
+
+### SCREENSHOT 1 (img-000.png)
+--------------------------------------------------
+[] 1 14:11:33 create database universitas 1 row(s) affected 0.031 sec |
+--------------------------------------------------
+
+### SCREENSHOT 2 (img-001.png)
+--------------------------------------------------
+Qo 3 14:11:30 create table mahasiswa( nim varchar(30) primary key, nama varchar(30), jurusan var... 0 row(s) affected 0.047 sec
+--------------------------------------------------
+
+### SCREENSHOT 3 (img-002.png)
+--------------------------------------------------
+rv) 4 14:12:05 insert into mahasiswa (nim nama jurusan,angkatan ipk) values('12345' ‘ali hasan’ inf... 3 row(s) affected Records: 3 Duplicates: 0 Wamings: 0 0.031 sec
+--------------------------------------------------
+
+### SCREENSHOT 4 (img-003.png)
+--------------------------------------------------
+| Result Grid | HH 43 Fiter Rows: |edr: gd) Bb ER
+nim nama Jjurusan angkatan pk —
+
+» 12345 alihasan informatika 2021 3.75 Grd
+
+12346 budisantoso sistem informasi 2022 38 —
+12347 dra dewi teknik komputer 2020 3.85 =
+
+. =
+
+Form
+
+Editor
+--------------------------------------------------
+
+### SCREENSHOT 5 (img-004.png)
+--------------------------------------------------
+Result Grid | I] 4% Fiter Rows: lea: dB) Eb ER
+nm nama jurusan angkatan pk —
+
+» [12345 alihasan  informatka 2021 3.75 Grd
+
+L] —
+
+Form
+
+Editor
+
+mahasiswa 8 x Apply Revert
+--------------------------------------------------
+
+### SCREENSHOT 6 (img-005.png)
+--------------------------------------------------
+4 SEEE———
+| Result Grid | TH 4% Fiter Rows: lea: dB) Eb ER
+nm nama jurusan angkatan  ipk —
+
+» 12345 alihasan  informatika 2021 3.75 Grd
+12347 cittadewi teknik komputer 2020 3.85 —
+
+. =
+
+Form
+Editor
+mahasiswa 10 x Apply Revert
+--------------------------------------------------
+
+### SCREENSHOT 7 (img-006.png)
+--------------------------------------------------
+nm nama jurusan angkatan pk —
+» [12346 budisantoso sistem informasi 2022 3.8
+.
+
+Form
+
+Editor
+
+mahasiswa 11 x Apply Revert
+--------------------------------------------------
+
+### SCREENSHOT 8 (img-007.png)
+--------------------------------------------------
+© 20 14:23:38 delete from mahasiswa where nim = "12347 1row(s) affected 0.000 sec '
+--------------------------------------------------
+
+### SCREENSHOT 9 (img-008.png)
+--------------------------------------------------
+© 22 14:34:21 altertable mahasiswa add tanggal_lahir date 0 row(s) affected Records: 0 Duplicates: 0 Wamings: 0 0.094 sec
+--------------------------------------------------
+
+### SCREENSHOT 10 (img-009.png)
+--------------------------------------------------
+| Result Grid | HH 4% Fiter Rows: | edt: gd) Eb Eb | Export/import: Eg {Ey | wrap Cell Cont
+nim nama jurusan angkatan pk tanggal_lahir =
+» [12345 alihasan informatika 2021 3.75 2003-11-12 Grid
+123% budisantoso sistem informasi 2022 3.8 2003-12-24 —
+. =
+Form
+Editor
+mahasiswa 13 x Apply Revert
+druid
+--------------------------------------------------
+
