@@ -1,0 +1,100 @@
+==================================================
+NAMA: DESTI NOVIANTY (230102035)
+SKOR AI: 78
+==================================================
+
+### DETAIL SKOR RUBRIK:
+- [Penerapan CREATE DATABASE] Skor: 10
+  Alasan AI: Query CREATE DATABASE sudah benar dan sesuai toleransi.
+- [Penerapan SELECT / READ DATA] Skor: 18
+  Alasan AI: Query pertama benar, namun query kedua dan ketiga tidak lengkap (hilang kata kunci SELECT).
+- [Penerapan UPDATE DATA] Skor: 10
+  Alasan AI: Query UPDATE sudah tepat.
+- [Penerapan DELETE DATA] Skor: 0
+  Alasan AI: Tidak ada perintah DELETE, hanya SELECT untuk menampilkan data.
+- [Penerapan CREATE TABLE] Skor: 9.5
+  Alasan AI: Mahasiswa berhasil membuat tabel dengan benar, namun ada penambahan constraint CHECK yang tidak diminta.
+- [Penerapan INSERT DATA] Skor: 10
+  Alasan AI: Mahasiswa telah menambahkan data mahasiswa dengan benar.
+- [Penerapan ALTER TABLE] Skor: 20
+  Alasan AI: Mahasiswa telah mengubah struktur tabel dengan benar.
+
+### TEKS JAWABAN TERTULIS:
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : DESTI NOVIANTY NIM : 230102035 Tgl praktikum : 03 Desember 2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan:  Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL.  Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan :  Buat database baru bernama universitas. Perintah SQL: CREATE DATABASE universitas; Screenshot hasil running query 2. Membuat Tabel Latihan:  Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasiswa) tipe varchar. o jurusan (Jurusan Mahasiswa) tipe varchar. o angkatan (Tahun Angkatan) tipe Year. o ipk (Indeks Prestasi Kumulatif) tipe decimal. Perintah SQL: CREATE TABLE mahasiswa ( nim VARCHAR(20) PRIMARY KEY, nama VARCHAR(100) NOT NULL, jurusan VARCHAR(50) NOT NULL, angkatan YEAR NOT NULL, ipk DECIMAL(3, 2) CHECK (ipk BETWEEN 0.00 AND 4.00) ); Screenshot hasil running query 3. Menambahkan Data ke Tabel Latihan:  Tambahkan 3 data mahasiswa berikut ke tabel mahasiswa. Nim Nama jurusan Angkata
+
+
+==================================================
+NAMA: Makbul Insan Darojat (230102070)
+SKOR AI: 76
+==================================================
+
+### DETAIL SKOR RUBRIK:
+- [Penerapan CREATE TABLE] Skor: 7
+  Alasan AI: Definisi tabel hampir benar, namun terdapat trailing comma sebelum tutup kurung yang menyebabkan error sintaks.
+- [Penerapan SELECT / READ DATA] Skor: 21
+  Alasan AI: Dua query SELECT pertama benar, tetapi query untuk jurusan menggunakan tanda kutip melengkung (‘ ’) sehingga sintaksnya salah.
+- [Penerapan ALTER TABLE] Skor: 16
+  Alasan AI: ALTER TABLE berhasil menambah kolom, namun hanya dua mahasiswa yang di‑update nilai tanggal lahir, sehingga tidak lengkap.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Alasan AI: Perintah CREATE DATABASE universitas; sudah tepat dan sesuai toleransi.
+- [Penerapan INSERT DATA] Skor: 10
+  Alasan AI: Query INSERT multi‑row sudah benar dan memenuhi semua toleransi.
+- [Penerapan UPDATE DATA] Skor: 0
+  Alasan AI: Tidak ada perintah UPDATE yang sesuai; mahasiswa malah menuliskan kembali SELECT.
+- [Penerapan DELETE DATA] Skor: 10
+  Alasan AI: Perintah DELETE menggunakan filter NIM sudah benar dan diperbolehkan.
+
+### TEKS JAWABAN TERTULIS:
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : Makbul Insan Darojat NIM : 230102070 Tgl praktikum : 3 Desember 2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan: • Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL. • Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan : • Buat database baru bernama universitas. Perintah SQL: CREATE DATABASE universitas; Screenshot hasil running query 2. Membuat Tabel Latihan: • Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasiswa) tipe varchar. o jurusan (Jurusan Mahasiswa) tipe varchar. o angkatan (Tahun Angkatan) tipe Year. o ipk (Indeks Prestasi Kumulatif) tipe decimal. Perintah SQL: CREATE TABLE mahasiswa( nim varchar(10) primary key, nama varchar(50), jurusan varchar(50), angkatan year, ipk decimal(3,2), ); Screenshot hasil running query 3. Menambahkan Data ke Tabel Latihan: • Tambahkan 3 data mahasiswa berikut ke tabel mahasiswa. Nim Nama jurusan Angkatan ipk 12345 Ali Hasan Informatika 2021 3.75 12346 Budi San
+
+
+==================================================
+NAMA: Aulia Marwah Kandari (230102027)
+SKOR AI: 78
+==================================================
+
+### DETAIL SKOR RUBRIK:
+- [Penerapan CREATE TABLE] Skor: 10
+  Alasan AI: Tabel mahasiswa dibuat dengan semua kolom yang diminta dan primary key pada nim.
+- [Penerapan UPDATE DATA] Skor: 10
+  Alasan AI: Query UPDATE IPK sudah benar.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Alasan AI: Sintaks CREATE DATABASE sudah benar dan sesuai toleransi (case‑insensitive, titik koma opsional).
+- [Penerapan INSERT DATA] Skor: 4
+  Alasan AI: Tiga perintah INSERT ada, namun nilai NIM tidak di‑quote sehingga sintaks tidak valid untuk kolom VARCHAR.
+- [Penerapan SELECT / READ DATA] Skor: 30
+  Alasan AI: Ketiga query SELECT sudah tepat, baik dalam logika maupun sintaks.
+- [Penerapan DELETE DATA] Skor: 0
+  Alasan AI: Query DELETE menggunakan NIM yang salah (`'123457'`) sehingga tidak menghapus data yang diminta.
+- [Penerapan ALTER TABLE] Skor: 14
+  Alasan AI: ALTER TABLE berhasil menambah kolom tanggal_lahir, namun hanya dua mahasiswa yang di‑update nilai tanggal lahir, tidak lengkap untuk semua data.
+
+### TEKS JAWABAN TERTULIS:
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : Aulia Marwah Kandari NIM : 230102027 Tgl praktikum : 3 Desember 2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan: • Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL. • Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan : • Buat database baru bernama universitas. Perintah SQL: create DATABASE universitas; 2. Membuat Tabel Latihan: • Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasiswa) tipe varchar. o jurusan (Jurusan Mahasiswa) tipe varchar. o angkatan (Tahun Angkatan) tipe Year. o ipk (Indeks Prestasi Kumulatif) tipe decimal. Perintah SQL: CREATE TABLE mahasiswa ( NIM VARCHAR(50) PRIMARY KEY, NAMA VARCHAR(50), JURUSAN VARCHAR(50), ANGKATAN YEAR, IPK FLOAT ); 3. Menambahkan Data ke Tabel Latihan: • Tambahkan 3 data mahasiswa berikut ke tabel mahasiswa. Nim Nama jurusan Angkatan ipk 12345 Ali Hasan Informatika 2021 3.75 12346 Budi Santoso Sistem Informasi 2022 3.60 12347 Citra Dewi Teknik Komputer 2020
+
+
+==================================================
+NAMA: Luthfi Fauzan (230102065)
+SKOR AI: 79
+==================================================
+
+### DETAIL SKOR RUBRIK:
+- [Penerapan CREATE TABLE] Skor: 3
+  Alasan AI: Tabel dibuat dengan nama kolom yang tidak sesuai (im bukan nim) dan tidak ada deklarasi PRIMARY KEY.
+- [Penerapan SELECT / READ DATA] Skor: 30
+  Alasan AI: Ketiga query SELECT sudah tepat, termasuk filter jurusan dan IPK.
+- [Penerapan UPDATE DATA] Skor: 10
+  Alasan AI: Query UPDATE untuk mengubah IPK sudah benar.
+- [Penerapan CREATE DATABASE] Skor: 10
+  Alasan AI: Sintaks CREATE DATABASE sudah tepat, nama database sesuai, dan tidak ada error.
+- [Penerapan INSERT DATA] Skor: 8
+  Alasan AI: Query INSERT sudah benar secara logika, namun nilai NIM tidak diberi tanda kutip meskipun kolomnya VARCHAR.
+- [Penerapan DELETE DATA] Skor: 10
+  Alasan AI: Query DELETE sudah sesuai dengan standar.
+- [Penerapan ALTER TABLE] Skor: 12
+  Alasan AI: Kolom baru berhasil ditambahkan, namun hanya dua baris yang di‑update nilai tanggal lahir, tidak lengkap untuk semua data.
+
+### TEKS JAWABAN TERTULIS:
+Modul Praktikum Manajemen Basis Data Konsep DBMS dan MySQL Dasar Nama : Luthfi Fauzan NIM :230102065 Tgl praktikum : 3 Desember 2024 Teknik Informatika Universitas Muhammadiyah Bandung 2024 Mata Kuliah: Manajemen Basis Data Durasi: 170 menit Tujuan: • Mahasiswa memahami dan dapat menggunakan perintah dasar MySQL. • Mahasiswa mampu menerapkan konsep database sederhana untuk memanipulasi data. Materi dan Latihan A. Pendahuluan Pada praktikum ini, Anda akan membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup: 1. Membuat database dan tabel. 2. Mengelola data menggunakan perintah dasar MySQL (CRUD). 3. Studi kasus sederhana. B. Perintah Dasar MySQL 1. Membuat Database Latihan : • Buat database baru bernama universitas. Perintah SQL: Create database Universitas Screenshot hasil running query 2. Membuat Tabel Latihan: • Buat tabel mahasiswa dengan kolom berikut: o nim (Nomor Induk Mahasiswa) sebagai Primary Key tipe varchar. o nama (Nama Mahasiswa) tipe varchar. o jurusan (Jurusan Mahasiswa) tipe varchar. o angkatan (Tahun Angkatan) tipe Year. o ipk (Indeks Prestasi Kumulatif) tipe decimal. Perintah SQL: create Table mahasiswa( im varchar (9) not null, nama varchar(50), jurusan varchar(50), angkatan year, ipk decimal (3,2) ); 3. Menambahkan Data ke Tabel Latihan: • Tambahkan 3 data mahasiswa berikut ke tabel mahasiswa. Nim Nama jurusan Angkatan ipk 12345 Ali Hasan Informatika 2021 3.75 12346 Budi Santoso Sistem Informasi 2022 3.60 12347 Citra 
+
+
