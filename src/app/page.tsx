@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { Metadata } from "next";
+import { GraduationCap } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Smart Assistant Lecturer | Portal Praktikum",
@@ -21,8 +22,8 @@ export default function Home() {
       <main className="flex-1 flex flex-col items-center justify-center max-w-4xl w-full mx-auto px-6 py-12">
         {/* Brand Hero */}
         <div className="text-center space-y-4 mb-12">
-          <div className="inline-flex items-center justify-center bg-gradient-to-tr from-indigo-500 to-sky-400 text-white w-14 h-14 rounded-2xl font-extrabold text-2xl shadow-xl shadow-indigo-500/20 mb-3">
-            SAL
+          <div className="inline-flex items-center justify-center bg-gradient-to-tr from-indigo-500 to-sky-400 text-white w-14 h-14 rounded-2xl shadow-xl shadow-indigo-500/20 mb-3">
+            <GraduationCap className="w-8 h-8" />
           </div>
           <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-foreground leading-tight transition-colors duration-300">
             Smart Assistant Lecturer
