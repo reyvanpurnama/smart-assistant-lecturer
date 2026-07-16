@@ -43,3 +43,6 @@ next-env.d.ts
 # Tesseract cached data
 eng.traineddata
 
+# Student submission documents
+/jawaban_mahasiswa/
+/scratch/evaluation_data.json

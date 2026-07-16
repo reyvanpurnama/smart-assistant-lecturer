@@ -148,9 +148,6 @@ export default function DosenDashboard() {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="hidden md:inline-block text-xs text-foreground font-semibold bg-card border border-card-border px-3 py-1.5 rounded-xl transition-all duration-300">
-              Dosen: <strong className="text-brand-primary">Husni Mubarok, M.T.</strong>
-            </span>
             <ThemeToggle />
             <Link 
               href="/mahasiswa" 

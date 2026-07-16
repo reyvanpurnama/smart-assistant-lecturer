@@ -36,7 +36,7 @@ def quadratic_weighted_kappa(x, y, min_val=0, max_val=100):
     num_classes = len(classes)
     class_index = {c: idx for idx, c in enumerate(classes)}
     
-    # Obs matrix O
+    # Observational matrix O
     O = [[0] * num_classes for _ in range(num_classes)]
     hist_x = [0] * num_classes
     hist_y = [0] * num_classes
@@ -64,15 +64,9 @@ def quadratic_weighted_kappa(x, y, min_val=0, max_val=100):
         for j in range(num_classes):
             E[i][j] = (hist_x[i] * hist_y[j]) / n
             
+    # Compute agreement and expected disagreement
     num = 0.0
     den = 0.0
-    for i in range(num_classes):
-        for j in range(num_classes):
-            num += W[i][j] * O[i][j]
-            num += W[i][j] * O[i][j]
-            # Wait, let's fix double add
-            
-    num = 0.0
     for i in range(num_classes):
         for j in range(num_classes):
             num += W[i][j] * O[i][j]
@@ -82,8 +76,42 @@ def quadratic_weighted_kappa(x, y, min_val=0, max_val=100):
         return 0.0
     return 1.0 - (num / den)
 
+def generate_visualization(x_ai, y_dosen, output_path):
+    try:
+        import matplotlib.pyplot as plt
+        
+        plt.figure(figsize=(8, 6), dpi=300)
+        
+        # Plot scatter points
+        plt.scatter(x_ai, y_dosen, color='#4f46e5', alpha=0.7, edgecolors='none', s=60, label='Mahasiswa (N=33)')
+        
+        # Perfect agreement reference diagonal line
+        plt.plot([0, 100], [0, 100], color='#10b981', linestyle='--', linewidth=1.5, label='Garis Keselarasan Sempurna (y=x)')
+        
+        # Set titles & labels
+        plt.title('Perbandingan Skor Otomatis AI vs Skor Manual Dosen\n(Smart Assistant Lecturer)', fontsize=12, fontweight='bold', pad=15)
+        plt.xlabel('Skor Penilaian AI', fontsize=10)
+        plt.ylabel('Skor Penilaian Dosen', fontsize=10)
+        
+        plt.xlim(0, 105)
+        plt.ylim(0, 105)
+        plt.grid(True, linestyle=':', alpha=0.6)
+        plt.legend(loc='lower right', fontsize=9)
+        
+        plt.tight_layout()
+        plt.savefig(output_path)
+        plt.close()
+        print(f"Grafik visualisasi sebaran nilai berhasil disimpan di: {output_path}")
+        
+    except ImportError:
+        print("\n[INFO] Pustaka 'matplotlib' tidak terpasang.")
+        print("Untuk menghasilkan grafik visualisasi, silakan jalankan:")
+        print("  pip install matplotlib")
+
 def main():
     csv_path = os.path.join(os.path.dirname(__file__), "../docs/IF23A_cleaned.csv")
+    img_output_path = os.path.join(os.path.dirname(__file__), "../docs/sebaran_nilai.png")
+    
     if not os.path.exists(csv_path):
         print(f"File CSV tidak ditemukan di: {csv_path}")
         return
@@ -114,6 +142,9 @@ def main():
     print(f"2. Quadratic Weighted Kappa (QWK) Skala 100 (Integer)  : {qwk100:.4f}")
     print(f"3. Quadratic Weighted Kappa (QWK) Skala 10  (Binned)   : {qwk10:.4f}")
     print("=========================================\n")
+    
+    # Try to generate plot
+    generate_visualization(x_ai, y_dosen, img_output_path)
 
 if __name__ == "__main__":
     main()
