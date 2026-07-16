@@ -44,6 +44,10 @@ export default function StudentFeedback({ params }: PageProps) {
   ];
 
   useEffect(() => {
+    document.title = "Hasil Evaluasi AI | Smart Assistant Lecturer";
+  }, []);
+
+  useEffect(() => {
     let timer: NodeJS.Timeout;
     if (isLoading && step < steps.length - 1) {
       timer = setTimeout(() => {
@@ -78,12 +82,12 @@ export default function StudentFeedback({ params }: PageProps) {
 
         if (assignmentData?.model) {
           const m = assignmentData.model.toLowerCase();
-          if (m.includes("llama")) {
+          if (m.includes("llama") || m.includes("gpt-oss-120b")) {
             setModelName("Llama 3.3");
-          } else if (m.includes("qwen")) {
-            setModelName("Qwen 2.5");
+          } else if (m.includes("gpt-oss-20b")) {
+            setModelName("Llama 3");
           } else {
-            setModelName("GPT-OSS 120B");
+            setModelName("Llama 3 (Safety)");
           }
         }
 

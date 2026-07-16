@@ -34,6 +34,10 @@ export default function StudentPortal() {
   const supabase = createClient();
 
   useEffect(() => {
+    document.title = "Portal Mahasiswa | Smart Assistant Lecturer";
+  }, []);
+
+  useEffect(() => {
     async function fetchAssignments() {
       try {
         setIsLoading(true);

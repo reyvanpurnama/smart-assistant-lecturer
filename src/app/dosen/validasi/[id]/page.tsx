@@ -39,6 +39,10 @@ export default function LecturerOverride({ params }: PageProps) {
   const supabase = createClient();
 
   useEffect(() => {
+    document.title = "Validasi & Koreksi Nilai | Smart Assistant Lecturer";
+  }, []);
+
+  useEffect(() => {
     async function loadData() {
       try {
         setIsLoading(true);

@@ -38,6 +38,10 @@ export default function CreateAssignment() {
   const [isLoadingModels, setIsLoadingModels] = useState(true);
 
   useEffect(() => {
+    document.title = "Buat Soal Baru | Smart Assistant Lecturer";
+  }, []);
+
+  useEffect(() => {
     let active = true;
     async function loadModels() {
       try {

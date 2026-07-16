@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Smart Assistant Lecturer | Portal Praktikum",
+};
 
 export default function Home() {
   return (
@@ -36,7 +41,7 @@ export default function Home() {
           {/* DOSEN PORTAL CARD */}
           <Link 
             href="/dosen" 
-            className="bg-card/70 hover:bg-card border border-card-border hover:border-brand-primary/50 rounded-2xl p-6 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group"
+            className="bg-card/70 hover:bg-card border border-card-border hover:border-brand-primary/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-500/5 rounded-2xl p-6 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group"
           >
             <div className="space-y-4">
               <div className="size-10 bg-brand-primary/10 text-brand-primary rounded-xl flex items-center justify-center border border-brand-primary/20 group-hover:scale-105 transition-all duration-300">
@@ -62,7 +67,7 @@ export default function Home() {
           {/* MAHASISWA PORTAL CARD */}
           <Link 
             href="/mahasiswa" 
-            className="bg-card/70 hover:bg-card border border-card-border hover:border-brand-secondary/50 rounded-2xl p-6 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group"
+            className="bg-card/70 hover:bg-card border border-card-border hover:border-brand-secondary/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/5 rounded-2xl p-6 shadow-xl backdrop-blur-md transition-all duration-300 flex flex-col justify-between group"
           >
             <div className="space-y-4">
               <div className="size-10 bg-brand-secondary/10 text-brand-secondary rounded-xl flex items-center justify-center border border-brand-secondary/20 group-hover:scale-105 transition-all duration-300">
