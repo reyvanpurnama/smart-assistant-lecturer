@@ -82,12 +82,16 @@ export default function StudentFeedback({ params }: PageProps) {
 
         if (assignmentData?.model) {
           const m = assignmentData.model.toLowerCase();
-          if (m.includes("llama") || m.includes("gpt-oss-120b")) {
+          if (m.includes("llama")) {
             setModelName("Llama 3.3");
+          } else if (m.includes("qwen")) {
+            setModelName("Qwen 2.5");
           } else if (m.includes("gpt-oss-20b")) {
-            setModelName("Llama 3");
+            setModelName("GPT-OSS 20B");
+          } else if (m.includes("gpt-oss-safeguard")) {
+            setModelName("Safety GPT-OSS 20B");
           } else {
-            setModelName("Llama 3 (Safety)");
+            setModelName("GPT-OSS 120B");
           }
         }
 
