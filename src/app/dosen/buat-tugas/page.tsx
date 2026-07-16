@@ -27,7 +27,7 @@ export default function CreateAssignment() {
   const [courseCode, setCourseCode] = useState("IF204");
   const [title, setTitle] = useState("");
   const [model, setModel] = useState(DEFAULT_LLM_MODEL);
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(""); // kept as dummy to avoid refactoring other parts if any
   
   const [essayQuestion, setEssayQuestion] = useState("");
   
@@ -217,7 +217,7 @@ Aturan Toleransi:
           course_code: courseCode,
           title,
           model,
-          due_date: dueDate ? new Date(dueDate).toISOString() : null,
+          due_date: null,
           question: essayQuestion,
           reference_context: academicContext
         })
@@ -342,7 +342,7 @@ Aturan Toleransi:
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-muted-text block" htmlFor="llm-model">
                   Model Kecerdasan Buatan (AI) {isLoadingModels && <span className="text-[10px] text-muted-text animate-pulse">(Memuat...)</span>}
@@ -359,17 +359,6 @@ Aturan Toleransi:
                     </option>
                   ))}
                 </select>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-text block" htmlFor="due-date">Tenggat Pengumpulan</label>
-                <input 
-                  id="due-date" 
-                  type="datetime-local" 
-                  value={dueDate}
-                  onChange={(e) => setDueDate(e.target.value)}
-                  className="w-full text-xs bg-input-bg border border-input-border rounded-xl px-4 py-2.5 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300"
-                />
               </div>
             </div>
           </div>

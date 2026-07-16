@@ -218,9 +218,11 @@ export default function StudentPortal() {
                     {selectedAssignment.title}
                   </h2>
                 </div>
-                <div className="text-left sm:text-right font-mono text-[10px] text-muted-text">
-                  Tenggat: <strong className="text-rose-500">{formatDueDate(selectedAssignment.due_date)}</strong>
-                </div>
+                {selectedAssignment.due_date && (
+                  <div className="text-left sm:text-right font-mono text-[10px] text-muted-text">
+                    Tenggat: <strong className="text-rose-500">{formatDueDate(selectedAssignment.due_date)}</strong>
+                  </div>
+                )}
               </div>
 
               <div className="space-y-2 text-xs leading-relaxed text-foreground/80">
