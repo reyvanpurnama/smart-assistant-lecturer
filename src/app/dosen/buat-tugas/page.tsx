@@ -284,11 +284,11 @@ Aturan Toleransi:
           <div>
             <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider">
               <Settings className="w-4 h-4" />
-              Langkah Setup Evaluasi
+              Pengaturan Penilaian Tugas
             </div>
-            <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">Buat Parameter Grounding &amp; Rubrik</h1>
+            <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">Buat Soal &amp; Rubrik Penilaian</h1>
             <p className="text-xs text-muted-text max-w-2xl leading-relaxed">
-              Kunci parameter grounding di bawah ini. AI asisten dosen akan menilai jawaban mahasiswa secara ketat berdasarkan kunci/referensi materi ajar dan rubrik yang Anda tentukan untuk mencegah penilaian yang subjektif dan halusinasi model.
+              Tentukan kunci jawaban dan kriteria nilai di bawah ini. AI asisten dosen akan menilai jawaban mahasiswa secara obyektif berdasarkan panduan materi dan rubrik penilaian yang Anda tentukan.
             </p>
           </div>
           <button
@@ -341,7 +341,7 @@ Aturan Toleransi:
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-xs font-semibold text-muted-text block" htmlFor="llm-model">
-                  Model AI Inferencing (Groq Cloud) {isLoadingModels && <span className="text-[10px] text-muted-text animate-pulse">(Memuat...)</span>}
+                  Model Kecerdasan Buatan (AI) {isLoadingModels && <span className="text-[10px] text-muted-text animate-pulse">(Memuat...)</span>}
                 </label>
                 <select 
                   id="llm-model"
@@ -374,7 +374,7 @@ Aturan Toleransi:
           <div className="bg-card border border-card-border rounded-2xl p-6 shadow-sm transition-all duration-300 space-y-4">
             <h2 className="font-bold text-foreground text-sm tracking-wider uppercase border-b border-card-border pb-3 flex items-center gap-2">
               <span className="w-1.5 h-4 bg-indigo-500 rounded"></span>
-              2. Parameter Grounding (Jangkar Kontekstual)
+              2. Kunci Jawaban &amp; Panduan Toleransi
             </h2>
 
             <div className="space-y-2">
@@ -396,9 +396,9 @@ Aturan Toleransi:
             <div className="space-y-2">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-1">
-                  <label className="text-xs font-semibold text-muted-text block" htmlFor="academic-context">Konteks Akademik (Kunci Jawaban / Modul Referensi)</label>
+                  <label className="text-xs font-semibold text-muted-text block" htmlFor="academic-context">Kunci Jawaban &amp; Modul Referensi</label>
                 </div>
-                <span className="text-[10px] text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider">Mitigasi Halusinasi AI</span>
+                <span className="text-[10px] text-indigo-500 dark:text-indigo-400 font-bold uppercase tracking-wider">Panduan Akurasi AI</span>
               </div>
               <textarea 
                 id="academic-context" 

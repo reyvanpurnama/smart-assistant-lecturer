@@ -128,7 +128,7 @@ export default function DosenDashboard() {
     link.click();
     document.body.removeChild(link);
     
-    alert(`Sukses mengunduh berkas rekap nilai!\n\nDataset ini siap digunakan untuk komputasi QWK dan Pearson di Google Colab.`);
+    alert(`Sukses mengunduh berkas rekap nilai!`);
   };
 
   return (
@@ -270,7 +270,7 @@ export default function DosenDashboard() {
                   className="px-3 py-1.5 text-xs font-semibold text-foreground hover:text-indigo-600 bg-background border border-card-border hover:border-indigo-500/50 rounded-lg transition-all duration-300 flex items-center gap-1.5 shadow-sm"
                 >
                   <Download className="w-3.5 h-3.5" />
-                  Ekspor data QWK/Pearson (.csv)
+                  Unduh Rekap Nilai (.csv)
                 </button>
               </div>
 
@@ -304,17 +304,17 @@ export default function DosenDashboard() {
                           <td className="py-3.5 px-2 text-center">
                             {student.status === "Graded" && (
                               <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                                Graded
+                                Dinilai AI
                               </span>
                             )}
                             {student.status === "Overridden" && (
                               <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                                Overridden
+                                Koreksi Dosen
                               </span>
                             )}
                             {student.status === "Outlier" && (
                               <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
-                                Outlier
+                                Perlu Tinjauan
                               </span>
                             )}
                           </td>

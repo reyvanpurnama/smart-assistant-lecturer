@@ -346,12 +346,12 @@ export default function StudentPortal() {
                 {isSubmitting ? (
                   <>
                     <span className="animate-spin border-2 border-t-transparent border-white rounded-full w-4 h-4 mr-2"></span>
-                    Mengevaluasi Jawaban dengan AI...
+                    Mengirim &amp; Menilai Jawaban...
                   </>
                 ) : (
                   <>
                     <CheckCircle2 className="w-4 h-4" />
-                    Kirim &amp; Nilai Jawaban dengan AI
+                    Kumpulkan Jawaban
                   </>
                 )}
               </button>

@@ -38,9 +38,9 @@ export default function StudentFeedback({ params }: PageProps) {
   const steps = [
     "Membaca berkas jawaban mahasiswa...",
     "Mengekstrak teks & memetakan variabel database...",
-    "Mencocokkan jawaban dengan Modul Grounding...",
-    `Menjalankan inferensi kognitif ${modelName}...`,
-    "Mem-parsing output kriteria & memvalidasi skor..."
+    "Mencocokkan dengan Kunci Jawaban...",
+    `Menganalisis Logika Jawaban (${modelName})...`,
+    "Menghitung Nilai Akhir..."
   ];
 
   useEffect(() => {
@@ -204,7 +204,7 @@ export default function StudentFeedback({ params }: PageProps) {
             </div>
 
             <div className="space-y-2">
-              <h3 className="font-bold text-foreground text-sm tracking-wide uppercase">AI Evaluator Sedang Bekerja</h3>
+              <h3 className="font-bold text-foreground text-sm tracking-wide uppercase">Sistem Sedang Memeriksa Jawaban</h3>
               <p className="text-[10px] text-brand-primary font-mono font-semibold">LANGKAH {step + 1} DARI {steps.length}</p>
             </div>
 
@@ -250,7 +250,7 @@ export default function StudentFeedback({ params }: PageProps) {
               </div>
 
               <div className="bg-slate-500/5 px-6 py-3 rounded-2xl border border-card-border text-center w-full sm:w-auto">
-                <span className="text-[9px] text-muted-text uppercase font-bold block">Skor AI Kumulatif</span>
+                <span className="text-[9px] text-muted-text uppercase font-bold block">Nilai Akhir AI</span>
                 <div className="text-2xl font-extrabold text-brand-primary tracking-tight font-mono mt-0.5">
                   {Number(submission.final_score).toFixed(1)} <span className="text-xs text-muted-text">/ 100</span>
                 </div>
@@ -312,7 +312,7 @@ export default function StudentFeedback({ params }: PageProps) {
               <div className="space-y-1">
                 <h4 className="text-xs font-bold text-foreground">Catatan Hasil Penilaian AI</h4>
                 <p className="text-[10px] text-muted-text leading-relaxed">
-                  Nilai di atas merupakan penilaian objektif awal oleh AI asisten dosen menggunakan rubrik penugasan. Dosen pengampu Anda memiliki wewenang penuh untuk memeriksa ulang dan melakukan penyesuaian (*manual override*) nilai akhir sebelum disahkan ke portal KRS.
+                  Nilai di atas merupakan penilaian objektif awal oleh AI asisten dosen menggunakan rubrik penugasan. Dosen pengampu Anda memiliki wewenang penuh untuk memeriksa ulang dan melakukan koreksi jika terdeteksi kesalahan pembacaan kode.
                 </p>
               </div>
             </div>

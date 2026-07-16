@@ -201,7 +201,7 @@ export default function LecturerOverride({ params }: PageProps) {
             </Link>
             <div>
               <span className="font-bold text-foreground text-sm tracking-tight">Smart Assistant Lecturer</span>
-              <p className="text-[10px] text-muted-text -mt-0.5">Dosen Panel &bull; Validasi &amp; Override Nilai</p>
+              <p className="text-[10px] text-muted-text -mt-0.5">Dosen Panel &bull; Validasi &amp; Koreksi Nilai</p>
             </div>
           </div>
 
@@ -246,7 +246,7 @@ export default function LecturerOverride({ params }: PageProps) {
               <span className="text-[10px] text-muted-text uppercase font-bold block">Status Penilaian</span>
               <div className="flex items-center gap-1.5 mt-0.5">
                 <span className={`h-2 w-2 rounded-full ${isOverridden ? "bg-amber-500 animate-pulse" : "bg-emerald-500"}`}></span>
-                <span className="text-xs font-bold text-foreground">{isOverridden ? "Overridden (Dosen)" : "AI Evaluated"}</span>
+                <span className="text-xs font-bold text-foreground">{isOverridden ? "Koreksi Dosen" : "Nilai Sistem AI"}</span>
               </div>
             </div>
 
@@ -323,7 +323,7 @@ export default function LecturerOverride({ params }: PageProps) {
               >
                 <h2 className="font-bold text-foreground text-xs tracking-wider uppercase flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-sky-400" />
-                  AI Chain-of-Thought (Logs)
+                  Log Proses Penalaran AI
                 </h2>
                 {isCotExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
@@ -371,7 +371,7 @@ export default function LecturerOverride({ params }: PageProps) {
                     </div>
                     {aspect.feedback_text && (
                       <div className="mt-2 p-2.5 bg-indigo-500/5 dark:bg-indigo-500/10 border-l-2 border-indigo-400 rounded-r-lg text-[10px] text-muted-text leading-normal">
-                        <strong>AI Reason/Feedback:</strong> {aspect.feedback_text}
+                        <strong>Penjelasan AI:</strong> {aspect.feedback_text}
                       </div>
                     )}
                   </div>
@@ -408,7 +408,7 @@ export default function LecturerOverride({ params }: PageProps) {
                 }`}
               >
                 <Undo className="w-4 h-4" />
-                Reset ke AI
+                Gunakan Nilai AI
               </button>
 
               <button 
@@ -424,7 +424,7 @@ export default function LecturerOverride({ params }: PageProps) {
                 ) : (
                   <>
                     <Save className="w-4 h-4" />
-                    Simpan &amp; Sahkan Nilai
+                    Simpan Nilai
                   </>
                 )}
               </button>

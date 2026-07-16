@@ -23,10 +23,10 @@ export default function Home() {
             Smart Assistant Lecturer
           </h1>
           <p className="text-xs sm:text-sm text-muted-text max-w-lg mx-auto leading-relaxed transition-colors duration-300">
-            Sistem Asisten Dosen Cerdas berbasis kecerdasan buatan untuk penilaian otomatis jawaban esai mahasiswa menggunakan modul Context Grounding &amp; Chain-of-Thought.
+            Sistem Asisten Dosen Cerdas berbasis kecerdasan buatan untuk penilaian otomatis jawaban esai mahasiswa menggunakan modul Kunci Jawaban &amp; Log Penalaran.
           </p>
           <div className="inline-block px-3 py-1 bg-card border border-card-border rounded-full text-[10px] text-muted-text font-bold uppercase tracking-wider transition-colors duration-300">
-            Sistem Sidang Skripsi IT
+            Portal Praktikum Mahasiswa
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export default function Home() {
               <div>
                 <h3 className="text-base font-bold text-foreground group-hover:text-brand-primary transition-all duration-300 uppercase tracking-wide">Portal Dosen</h3>
                 <p className="text-xs text-muted-text mt-1 leading-relaxed transition-colors duration-300">
-                  Membuat tugas baru, mengunci parameter grounding &amp; kriteria rubrik, memvalidasi penilaian otomatis AI, dan mengekspor nilai (.csv).
+                  Membuat tugas baru, mengelola kunci jawaban &amp; kriteria rubrik, memvalidasi penilaian otomatis AI, dan mengunduh rekap nilai (.csv).
                 </p>
               </div>
             </div>
