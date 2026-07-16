@@ -283,7 +283,7 @@ Aturan Toleransi:
       </header>
 
       {/* FORM CONTAINER */}
-      <main className="flex-1 max-w-4xl w-full mx-auto px-6 py-8">
+      <main className="flex-1 max-w-5xl w-full mx-auto px-6 py-8">
         <div className="space-y-2 mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-indigo-500 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider">
@@ -388,12 +388,12 @@ Aturan Toleransi:
               </div>
               <textarea 
                 id="essay-question" 
-                rows={3} 
+                rows={6} 
                 required
                 value={essayQuestion}
                 onChange={(e) => setEssayQuestion(e.target.value)}
                 placeholder="Tuliskan detail pertanyaan penugasan..."
-                className="w-full text-xs bg-input-bg border border-input-border rounded-xl p-4 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300 leading-relaxed font-sans"
+                className="w-full text-xs bg-input-bg border border-input-border rounded-xl p-4 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300 leading-relaxed font-sans resize-y"
               />
             </div>
 
@@ -406,12 +406,12 @@ Aturan Toleransi:
               </div>
               <textarea 
                 id="academic-context" 
-                rows={6} 
+                rows={12} 
                 required
                 value={academicContext}
                 onChange={(e) => setAcademicContext(e.target.value)}
                 placeholder="Salin materi modul praktikum, contoh query yang benar, atau skema tabel di sini..."
-                className="w-full text-xs bg-input-bg border border-input-border rounded-xl p-4 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300 font-mono leading-relaxed"
+                className="w-full text-xs bg-input-bg border border-input-border rounded-xl p-4 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300 font-mono leading-relaxed resize-y"
               />
             </div>
           </div>
@@ -473,13 +473,13 @@ Aturan Toleransi:
                       </div>
                     </div>
                     <div className="col-span-6">
-                      <input 
-                        type="text" 
+                      <textarea 
                         value={item.description} 
                         onChange={(e) => handleFieldChange(item.id, "description", e.target.value)}
                         placeholder="Deskripsi kriteria penilaian detail..." 
                         required
-                        className="w-full text-xs bg-input-bg border border-input-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-indigo-500"
+                        rows={2}
+                        className="w-full text-xs bg-input-bg border border-input-border rounded-lg px-3 py-2 text-foreground focus:outline-none focus:border-indigo-500 resize-y leading-relaxed"
                       />
                     </div>
                     <div className="col-span-1 text-center">
