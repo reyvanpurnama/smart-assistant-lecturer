@@ -67,10 +67,7 @@ export default function CreateAssignment() {
     };
   }, []);
 
-  const loadTemplate = () => {
-    setCourseCode("IF204");
-    setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL");
-    setEssayQuestion(`Tuliskan perintah SQL untuk menyelesaikan seluruh latihan berikut secara berurutan:
+  const commonQuestion = `Tuliskan perintah SQL untuk menyelesaikan seluruh latihan berikut secara berurutan:
 
 1. Membuat Database:
 - Buat database baru bernama 'universitas'.
@@ -102,76 +99,101 @@ export default function CreateAssignment() {
 
 7. Mengubah Struktur Tabel:
 - Tambahkan kolom 'tanggal_lahir' pada tabel mahasiswa.
-- Masukkan nilai tanggal lahir pada setiap data di tabel mahasiswa.`);
-    setAcademicContext(`DOKUMEN ACUAN DAN PANDUAN TOLERANSI VARIASI (GROUND TRUTH):
+- Masukkan nilai tanggal lahir pada setiap data di tabel mahasiswa.`;
 
-1. PEMBUATAN DATABASE
-Sintaks Standar: CREATE DATABASE universitas;
-Aturan Toleransi:
-- Case-insensitivity dibebaskan (CREATE DATABASE / create database / Create Database).
-- Penggunaan karakter titik koma (;) di akhir query bersifat opsional.
+  const loadTemplate = (type: "trinary" | "relaxed" | "strict" | "binary" = "trinary") => {
+    setCourseCode("IF204");
+    setEssayQuestion(commonQuestion);
 
-2. PEMBUATAN TABEL
-Sintaks Standar: 
-CREATE TABLE mahasiswa (
-  nim VARCHAR(10) PRIMARY KEY,
-  nama VARCHAR(100),
-  jurusan VARCHAR(50),
-  angkatan YEAR,
-  ipk DECIMAL(3,2)
-);
-Aturan Toleransi:
-- Ukuran VARCHAR dibebaskan (misal VARCHAR(10) hingga VARCHAR(255)).
-- Presisi DECIMAL dibebaskan, atau boleh menggunakan FLOAT/DOUBLE.
-- Kolom angkatan boleh menggunakan tipe data YEAR, INT, atau INTEGER.
-- Susunan kolom boleh berbeda asalkan seluruh kolom yang diminta (nim, nama, jurusan, angkatan, ipk) ada dan primary key didefinisikan pada kolom nim.
+    if (type === "trinary") {
+      setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL (Trinary)");
+      setAcademicContext(`DOKUMEN ACUAN DAN PANDUAN PENILAIAN BERTINGKAT (TRINARY EVALUATION):
 
-3. MENAMBAHKAN DATA
-Sintaks Standar:
-INSERT INTO mahasiswa (nim, nama, jurusan, angkatan, ipk) VALUES 
-('12345', 'Ali Hasan', 'Informatika', 2021, 3.75),
-('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60),
-('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
-Aturan Toleransi:
-- Mahasiswa boleh menggunakan satu query INSERT dengan banyak VALUES (multi-row insert) ATAU tiga perintah INSERT INTO terpisah.
-- Tanda kutip string boleh menggunakan kutip tunggal (') atau kutip ganda (").
+### ATURAN UTAMA PENILAIAN BERTINGKAT (TRINARY):
+Setiap aspek penilaian dinilai menggunakan tiga kemungkinan nilai mentah (raw score):
+- 100: Terpenuhi sepenuhnya tanpa ada kesalahan sintaks atau kelalaian.
+- 50: Terpenuhi sebagian (ada typo ejaan, kelalaian tanda kutip, atau tidak ada screenshot bukti running tetapi kodenya secara logika benar).
+- 0: Salah total, tidak lengkap, atau tidak mengumpulkan.
+DILARANG memberikan skor di luar 0, 50, dan 100 untuk setiap aspek rubrik.
 
-4. MEMBACA DATA
-Sintaks Standar:
-- Query 1: SELECT * FROM mahasiswa;
-- Query 2: SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
-- Query 3: SELECT * FROM mahasiswa WHERE ipk > 3.7;
-Aturan Toleransi:
-- Kolom yang ditampilkan boleh menggunakan bintang (*) atau menjabarkan nama kolom secara eksplisit (nim, nama, dll).
-- Nilai filter 'Informatika' dan angka 3.7 boleh menggunakan variasi kutip tunggal/ganda serta format angka desimal (3.7 / 3.70).
+### SPESIFIKASI KUNCI JAWABAN DAN TOLERANSI:
+1. CREATE DATABASE (10%): CREATE DATABASE universitas; (Skor 100=Benar, 50=Nama beda, 0=Salah)
+2. CREATE TABLE (10%): CREATE TABLE mahasiswa (nim PK VARCHAR, nama, jurusan, angkatan, ipk); (Skor 100=Benar PK, 50=Typo kolom/tipe data, 0=Tidak ada)
+3. INSERT DATA (10%): Insert 3 data mahasiswa. (Skor 100=Lengkap, 50=NIM tanpa kutip/hanya 2 data, 0=Tidak ada)
+4. READ DATA - Query 1 (10%): SELECT * FROM mahasiswa;
+5. READ DATA - Query 2 (10%): SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
+6. READ DATA - Query 3 (10%): SELECT * FROM mahasiswa WHERE ipk > 3.7;
+7. UPDATE DATA (10%): UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346' + SS running.
+8. DELETE DATA (10%): DELETE FROM mahasiswa WHERE nama = 'Citra Dewi' + SS running.
+9. ALTER TABLE - Add Column (10%): ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
+10. ALTER TABLE - Update Data (10%): UPDATE tanggal_lahir untuk ketiga mahasiswa.`);
 
-5. MEMPERBARUI DATA
-Sintaks Standar: UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';
-Aturan Toleransi:
-- Sintaks dasar UPDATE-SET-WHERE harus terpenuhi dengan benar.
+      setRubrics([
+        { id: "1", name: "CREATE DATABASE", weight: 10, description: "Pembuatan database universitas. Skor bertingkat: 0, 50, atau 100." },
+        { id: "2", name: "CREATE TABLE", weight: 10, description: "Pembuatan tabel mahasiswa (wajib PK nim). Skor bertingkat: 0, 50, atau 100." },
+        { id: "3", name: "INSERT", weight: 10, description: "Insert 3 data mahasiswa. Skor bertingkat: 0, 50, atau 100." },
+        { id: "4", name: "READ - Query 1", weight: 10, description: "Query SELECT menampilkan semua data. Skor bertingkat: 0, 50, atau 100." },
+        { id: "5", name: "READ - Query 2", weight: 10, description: "Query SELECT menampilkan mahasiswa jurusan Informatika. Skor bertingkat: 0, 50, atau 100." },
+        { id: "6", name: "READ - Query 3", weight: 10, description: "Query SELECT menampilkan mahasiswa dengan IPK > 3.7. Skor bertingkat: 0, 50, atau 100." },
+        { id: "7", name: "UPDATE (Query & SS)", weight: 10, description: "Query UPDATE IPK mahasiswa NIM 12346 menjadi 3.8 dan bukti screenshot. Skor bertingkat: 0, 50, atau 100." },
+        { id: "8", name: "DELETE (Query & SS)", weight: 10, description: "Query DELETE mahasiswa Citra Dewi (filter nama) dan bukti screenshot. Skor bertingkat: 0, 50, atau 100." },
+        { id: "9", name: "ALTER - Add Column", weight: 10, description: "Query ALTER TABLE ADD tanggal_lahir. Skor bertingkat: 0, 50, atau 100." },
+        { id: "10", name: "ALTER - Update Data", weight: 10, description: "Query UPDATE tanggal lahir lengkap untuk ketiga data mahasiswa. Skor bertingkat: 0, 50, atau 100." }
+      ]);
+    } else if (type === "relaxed") {
+      setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL (Relaxed)");
+      setAcademicContext(`DOKUMEN ACUAN DAN PANDUAN TOLERANSI VARIASI (RELAXED EVALUATION):
+1. PEMBUATAN DATABASE: CREATE DATABASE universitas; (Toleransi case-insensitive & titik koma opsional).
+2. PEMBUATAN TABEL: CREATE TABLE mahasiswa (nim PK VARCHAR...); (Ukuran VARCHAR & presisi DECIMAL dibebaskan).
+3. MENAMBAHKAN DATA: INSERT 3 data mahasiswa. (Multi-row insert atau 3 insert terpisah dibebaskan).
+4. MEMBACA DATA: SELECT * / SELECT spesifik kolom, filter Informatika & IPK > 3.7.
+5. MEMPERBARUI DATA: UPDATE IPK NIM 12346 menjadi 3.8.
+6. MENGHAPUS DATA: DELETE Citra Dewi (filter nama / NIM 12347).
+7. MENGUBAH STRUKTUR TABEL: ALTER ADD tanggal_lahir DATE & UPDATE data.`);
 
-6. MENGHAPUS DATA
-Sintaks Standar: DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
-Aturan Toleransi:
-- Sintaks dasar DELETE-FROM-WHERE harus terpenuhi dengan benar.
-- Penggunaan filter berdasarkan NIM ('12347') diperbolehkan karena NIM '12347' secara unik merepresentasikan mahasiswa bernama Citra Dewi.
+      setRubrics([
+        { id: "1", name: "Penerapan CREATE DATABASE", weight: 10, description: "Pembuatan database 'universitas' dengan benar." },
+        { id: "2", name: "Penerapan CREATE TABLE", weight: 10, description: "Pembuatan tabel 'mahasiswa' lengkap dengan Primary Key (nim)." },
+        { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Query memasukkan ketiga baris data mahasiswa secara lengkap." },
+        { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Logika dari ketiga query pemanggilan data." },
+        { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Query perubahan IPK NIM '12346' menjadi 3.8." },
+        { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Query penghapusan data 'Citra Dewi'." },
+        { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom." }
+      ]);
+    } else if (type === "strict") {
+      setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL (Strict)");
+      setAcademicContext(`DOKUMEN ACUAN EVALUASI KETAT (STRICT EVALUATION):
+Kurangi skor secara bergradasi desimal untuk setiap kesalahan sintaks, typo nama kolom, atau kegagalan mengikuti instruksi eksak.`);
 
-7. MENGUBAH STRUKTUR TABEL
-Sintaks Standar:
-- Langkah 1: ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
-- Langkah 2: UPDATE mahasiswa SET tanggal_lahir = '2003-05-15' WHERE nim = '12345'; (diikuti update untuk data lainnya)
-Aturan Toleransi:
-- Kolom baru tanggal lahir boleh bertipe DATE atau VARCHAR/TEXT.
-- Nilai tanggal lahir yang di-update dibebaskan asalkan sintaks query UPDATE benar.`);
-    setRubrics([
-      { id: "1", name: "Penerapan CREATE DATABASE", weight: 10, description: "Kebenaran sintaks pembuatan database 'universitas' dengan benar tanpa error." },
-      { id: "2", name: "Penerapan CREATE TABLE", weight: 10, description: "Kebenaran sintaks pembuatan tabel 'mahasiswa' lengkap dengan Primary Key (nim) dan tipe data yang relevan." },
-      { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Kebenaran penulisan query untuk memasukkan ketiga baris data mahasiswa secara lengkap." },
-      { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran logika dan sintaks dari ketiga query pemanggilan data (tampil semua, filter jurusan, dan filter IPK)." },
-      { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Kebenaran query perubahan IPK mahasiswa dengan NIM '12346' menjadi 3.8." },
-      { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Kebenaran query penghapusan baris data mahasiswa atas nama 'Citra Dewi' (diperbolehkan menggunakan filter nim = '12347' atau nama = 'Citra Dewi')." },
-      { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Kebenaran query modifikasi struktur tabel (ALTER ADD) dan pembaruan kolom baru tersebut." }
-    ]);
+      setRubrics([
+        { id: "1", name: "Penerapan CREATE DATABASE", weight: 10, description: "Sintaks pembuatan database 'universitas' tanpa error." },
+        { id: "2", name: "Penerapan CREATE TABLE", weight: 10, description: "Sintaks pembuatan tabel 'mahasiswa' dengan PK (nim)." },
+        { id: "3", name: "Penerapan INSERT DATA", weight: 10, description: "Penulisan query insert 3 data mahasiswa secara akurat." },
+        { id: "4", name: "Penerapan SELECT / READ DATA", weight: 30, description: "Kebenaran sintaks dari ketiga query pemanggilan data." },
+        { id: "5", name: "Penerapan UPDATE DATA", weight: 10, description: "Query perubahan IPK NIM '12346' menjadi 3.8." },
+        { id: "6", name: "Penerapan DELETE DATA", weight: 10, description: "Query penghapusan data 'Citra Dewi'." },
+        { id: "7", name: "Penerapan ALTER TABLE", weight: 20, description: "Query modifikasi struktur tabel dan update tanggal lahir." }
+      ]);
+    } else if (type === "binary") {
+      setTitle("Praktikum 1: Konsep DBMS dan Dasar SQL (Binary)");
+      setAcademicContext(`DOKUMEN ACUAN EVALUASI BINER KETAT (BINARY EVALUATION 0/100):
+Setiap aspek HANYA dinilai 100 jika benar sempurna atau 0 jika ada kesalahan/ketidakpatuhan.`);
+
+      setRubrics([
+        { id: "1", name: "CREATE DATABASE", weight: 10, description: "Pembuatan database (0 atau 100)." },
+        { id: "2", name: "CREATE TABLE", weight: 10, description: "Pembuatan tabel (0 atau 100)." },
+        { id: "3", name: "INSERT", weight: 10, description: "Insert 3 data (0 atau 100)." },
+        { id: "4", name: "READ - Query 1", weight: 10, description: "SELECT * (0 atau 100)." },
+        { id: "5", name: "READ - Query 2", weight: 10, description: "SELECT Informatika (0 atau 100)." },
+        { id: "6", name: "READ - Query 3", weight: 10, description: "SELECT IPK > 3.7 (0 atau 100)." },
+        { id: "7", name: "UPDATE - Query", weight: 5, description: "UPDATE query (0 atau 100)." },
+        { id: "8", name: "UPDATE - Screenshot", weight: 5, description: "UPDATE SS (0 atau 100)." },
+        { id: "9", name: "DELETE - Query", weight: 5, description: "DELETE query (0 atau 100)." },
+        { id: "10", name: "DELETE - Screenshot", weight: 5, description: "DELETE SS (0 atau 100)." },
+        { id: "11", name: "ALTER - Add Column", weight: 10, description: "ALTER ADD (0 atau 100)." },
+        { id: "12", name: "ALTER - Update Data", weight: 10, description: "ALTER UPDATE (0 atau 100)." }
+      ]);
+    }
   };
 
   const [totalWeight, setTotalWeight] = useState(100);
@@ -296,13 +318,37 @@ Aturan Toleransi:
               Tentukan kunci jawaban dan kriteria nilai di bawah ini. AI asisten dosen akan menilai jawaban mahasiswa secara obyektif berdasarkan panduan materi dan rubrik penilaian yang Anda tentukan.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={loadTemplate}
-            className="self-start md:self-center px-4 py-2 text-xs font-bold text-indigo-500 hover:text-white bg-indigo-500/10 hover:bg-indigo-600 border border-indigo-500/20 hover:border-indigo-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
-          >
-            Gunakan Template Soal (Skripsi)
-          </button>
+          <div className="flex flex-wrap items-center gap-2 self-start md:self-center">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-text block w-full md:w-auto">Load Template:</span>
+            <button
+              type="button"
+              onClick={() => loadTemplate("trinary")}
+              className="px-3 py-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-300 hover:text-white bg-indigo-500/10 hover:bg-indigo-600 border border-indigo-500/30 hover:border-indigo-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap flex items-center gap-1"
+            >
+              ✨ Trinary (Skripsi)
+            </button>
+            <button
+              type="button"
+              onClick={() => loadTemplate("relaxed")}
+              className="px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-white bg-slate-500/10 hover:bg-slate-700 border border-slate-500/20 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+            >
+              🛡️ Relaxed
+            </button>
+            <button
+              type="button"
+              onClick={() => loadTemplate("strict")}
+              className="px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-white bg-slate-500/10 hover:bg-slate-700 border border-slate-500/20 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+            >
+              🎯 Strict
+            </button>
+            <button
+              type="button"
+              onClick={() => loadTemplate("binary")}
+              className="px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-white bg-slate-500/10 hover:bg-slate-700 border border-slate-500/20 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+            >
+              ⚡ Binary
+            </button>
+          </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
