@@ -15,10 +15,10 @@ Gantikan / Tambahkan paragraf berikut di bagian penjelasan metode Prototyping (S
 Penelitian ini menggunakan model Prototyping yang dilaksanakan secara iteratif melalui dua tahapan pengujian utama:
 
 1. Iterasi 1 (Prototype Awal - Baseline Biner):
-   Rancangan awal dikembangkan menggunakan skema Binary Scoring (0 atau 100) sebagai acuan baseline paling sederhana guna menguji kemampuan dasar Large Language Model (LLM) dalam mengenali kriteria rubrik.
+   Tahap awal perancangan difokuskan pada pengembangan prototype baseline menggunakan skema penilaian biner (Binary Scoring: 0 atau 100) untuk menguji kemampuan awal Large Language Model (LLM) dalam mengevaluasi pemenuhan kriteria rubrik dasar.
 
 2. Iterasi 2 (Prototype Final - 3-Point Partial Credit):
-   Berdasarkan hasil evaluasi Iterasi 1 di mana AI bersikap terlampau kaku terhadap kesalahan tipografi minor, sistem disempurnakan pada Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) pada lapisan middleware. Skema ini dirancang untuk mengakomodasi kebenaran logika parsial mahasiswa sesuai arahan dosen pengampu dan tinjauan literatur (Masters, 1982; Haller et al., 2022; Chen & Wan).
+   Tahap penyempurnaan prototype mengadopsi skema 3-Point Partial Credit Rubric (skor 0, 50, 100) pada lapisan middleware. Skema ini dirancang untuk memfasilitasi gradasi penilaian atas kebenaran logika parsial mahasiswa sesuai acuan dosen pengampu dan literatur penilaian rubrik bergradasi (Masters, 1982; Haller et al., 2022; Chen & Wan).
 
 
 --------------------------------------------------------------------------------
