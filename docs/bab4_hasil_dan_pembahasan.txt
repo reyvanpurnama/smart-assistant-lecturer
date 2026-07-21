@@ -2,83 +2,56 @@ BAB IV
 HASIL DAN PEMBAHASAN
 
 4.1. Implementasi Antarmuka Sistem
-Sistem Smart Assistant Lecturer (SAL) diimplementasikan berbasis web menggunakan framework Next.js, Supabase sebagai basis data BaaS (Backend-as-a-Service), serta Groq API untuk memproses inferensi Large Language Model (LLM) dengan model open-weight openai/gpt-oss-120b. Lapisan middleware bertindak sebagai pusat orkestrasi yang mengintegrasikan instruksi dosen, rubrik penilaian, dan konteks jawaban mahasiswa secara modular. 
+Sistem Smart Assistant Lecturer (SAL) diimplementasikan berbasis web menggunakan Next.js, Supabase, dan Groq API (openai/gpt-oss-120b). Lapisan middleware berfungsi mengorkestrasikan instruksi dosen, rubrik penilaian, dan jawaban mahasiswa secara terstruktur.
 
-Berikut adalah rincian implementasi antarmuka utama sistem yang digunakan dalam proses evaluasi:
-
-4.1.1. Antarmuka Pembuatan Tugas dan Template Rubrik Trinary (/dosen/buat-tugas)
-Halaman ini berfungsi sebagai sarana bagi dosen untuk mengelola parameter evaluasi akademik. Antarmuka ini menyediakan form pengisian judul tugas, kode mata kuliah, teks soal esai, dokumen acuan materi (knowledge grounding context), serta pengaturan 10 aspek rubrik penilaian dengan bobot masing-masing 10%. Untuk mempermudah operasional dosen, sistem dilengkapi dengan tombol preset "Trinary (Skripsi)" yang secara otomatis mengunduh templat instruksi bertingkat (0, 50, dan 100) serta acuan jawaban standar praktikum basis data SQL.
+4.1.1. Antarmuka Pembuatan Tugas (/dosen/buat-tugas)
+Formulir ini memungkinkan dosen menginput judul tugas, soal esai, dokumen acuan materi (knowledge grounding context), serta pengaturan 10 aspek rubrik penilaian dengan bobot masing-masing 10%. Sistem menyediakan pilihan preset rubrik 3-Point Partial Credit untuk memuat instruksi penilaian bertingkat (skor 0, 50, 100) secara otomatis.
 
 4.1.2. Antarmuka Dashboard Dosen (/dosen)
-Halaman dashboard dosen menyajikan rekapitulasi data pengumpulan tugas mahasiswa secara real-time. Antarmuka ini menampilkan daftar mahasiswa, waktu pengunggahan berkas, nilai akhir, serta indikator status koreksi. Indikator status koreksi terbagi menjadi dua status utama, yaitu "Dinilai AI" untuk nilai yang dihasilkan secara otomatis oleh sistem middleware, serta "Koreksi Dosen" untuk nilai yang telah melalui proses tinjauan atau penyuntingan manual oleh dosen pengampu.
+Halaman ini menyajikan daftar mahasiswa, waktu pengunggahan, skor akhir, serta indikator status koreksi. Status koreksi dikategorikan menjadi dua: "Dinilai AI" untuk nilai dari middleware dan "Koreksi Dosen" untuk nilai yang telah divalidasi atau disunting dosen.
 
-4.1.3. Antarmuka Validasi dan Koreksi Manual Dosen (/dosen/validasi/[id])
-Antarmuka validasi digunakan oleh dosen untuk meninjau secara mendalam hasil analisis yang diberikan oleh AI. Halaman ini menampilkan teks jawaban lengkap mahasiswa, rincian skor per aspek rubrik, serta naskah justifikasi analitis berbasis Chain-of-Thought (CoT). Jika dosen menemukan ketidaksesuaian penilaian, dosen dapat secara langsung mengubah nilai akhir pada kolom input skor dan mengklik tombol "Simpan Perubahan". Tindakan ini secara otomatis memperbarui nilai akhir di basis data Supabase dan mengubah status koreksi mahasiswa menjadi "Koreksi Dosen" (Overridden).
+4.1.3. Antarmuka Validasi dan Koreksi Manual (/dosen/validasi/[id])
+Halaman ini menampilkan teks jawaban mahasiswa, rincian skor per aspek, serta justifikasi penalaran Chain-of-Thought (CoT). Dosen dapat memperbarui skor secara manual melalui kolom input dan mengonfirmasi perubahan, yang secara otomatis memperbarui basis data dan mengubah status koreksi menjadi "Koreksi Dosen".
 
-4.1.4. Antarmuka Portal Pengunggahan Mahasiswa (/tugas/[id])
-Halaman ini difungsikan khusus bagi mahasiswa untuk mengunggah dokumen jawaban praktikum dalam format digital (.pdf, .docx, atau .txt). Setelah dokumen diunggah, sistem secara otomatis mengeksekusi modul parsing dan data cleaning di lapisan middleware, kemudian menampilkan skor sementara serta umpan balik formatif secara transparan kepada mahasiswa.
+4.1.4. Antarmuka Submission Mahasiswa (/tugas/[id])
+Portal bagi mahasiswa untuk mengunggah dokumen jawaban (.pdf, .docx, .txt). Setelah diunggah, middleware melakukan pembersihan data dan menampilkan skor serta umpan balik formatif.
 
 
 4.2. Hasil Iterasi Perbaikan Prototype Sistem
-Sesuai dengan metode pengembangan Prototyping yang diterapkan pada penelitian ini, pengembangan sistem Smart Assistant Lecturer (SAL) dilakukan melalui dua tahap iterasi perbaikan utama guna memastikan bahwa keluaran penilaian AI selaras dengan standar penilaian dosen pengampu.
+Pengembangan sistem SAL menerapkan model Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan.
 
-4.2.1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Evaluation)
-Pada Iterasi 1, sistem dibangun dengan logika prompt awal yang menerapkan skema penilaian biner kaku (0 atau 100) untuk setiap aspek rubrik. 
-1. Hasil Pengujian Statistik:
-   - Kendall's Tau (τ) : 0.4400
-   - Mean Absolute Error (MAE) : 18.33 Poin
-2. Evaluasi dan Umpan Balik Dosen:
-   Pada pengujian awal terhadap 33 dokumen jawaban mahasiswa, skema biner terbukti menghasilkan deviasi kesalahan yang sangat tinggi (MAE = 18.33 poin). Hal ini terjadi karena AI secara kaku memberikan skor 0 untuk kesalahan minor, seperti kelalaian tanda kutip pada literal string NIM ('12345') atau kesalahan ejaan tipografi (typo) kecil. Dosen mengevaluasi bahwa skema biner terlalu merugikan mahasiswa dan menyarankan perlunya skema penilaian parsial yang mampu menampung jawaban yang secara logika benar namun memiliki kesalahan kecil.
+4.2.1. Iterasi 1 (Prototype Awal - Binary Rubric)
+Pada Iterasi 1, prompt engine menggunakan skema biner (skor 0 atau 100). Pengujian pada 33 sampel jawaban menghasilkan koefisien korelasi Kendall's Tau τ = 0.4400 dan MAE = 18.33 poin. Deviasi kesalahan yang tinggi ini disebabkan oleh sifat kaku penilaian biner yang memberikan skor 0 pada kesalahan tipografi minor. Dosen mengevaluasi bahwa diperlukan skema penilaian parsial untuk menampung jawaban yang secara logika benar namun memiliki kesalahan kecil.
 
-4.2.2. Iterasi 2 (Prototype Final - Skema Penilaian Bertingkat Tiga Kategori / 3-Point Partial Credit Rubric)
-Berdasarkan umpan balik pada Iterasi 1, dilakukan perbaikan mendasar pada modul Prompt Orchestrator di lapisan middleware. Logika penilaian diperbarui mengadopsi prinsip 3-Point Partial Credit Rubric (Masters, 1982; Brookhart, 2013) yang direkomendasikan dalam literatur Automated Short Answer Grading (ASAG) (Haller et al., 2022). Skema ini membagi penilaian ke dalam tiga tingkatan skor diskrit (Trinary Evaluation: 0, 50, 100) pada 10 aspek rubrik berbobot masing-masing 10%.
+4.2.2. Iterasi 2 (Prototype Final - 3-Point Partial Credit Rubric)
+Berdasarkan evaluasi Iterasi 1, logika penilaian diperbarui mengadopsi 3-Point Partial Credit Rubric (Masters, 1982; Haller et al., 2022) dengan tiga tingkatan skor diskrit:
+1. Skor 100 (Full Credit): Jawaban benar sempurna tanpa kesalahan sintaks maupun logika.
+2. Skor 50 (Partial Credit): Jawaban benar sebagian (terdapat typo minor, kelalaian tanda kutip, atau tanpa bukti penjelas).
+3. Skor 0 (No Credit): Jawaban salah, tidak lengkap, atau tidak mengumpulkan.
 
-1. Landasan Teoretis dan Aturan Skor Mentah (Raw Score):
-   Secara teoritis, skema 3-Point Partial Credit Rubric membagi respon siswa ke dalam tiga kategori utama (Correct, Partially Correct, Incorrect) untuk mengakomodasi pemahaman parsial tanpa mengorbankan obyektifitas (Masters, 1982; Haller et al., 2022):
-   - Skor 100 (Correct / Full Credit): Terpenuhi secara sempurna tanpa ada kesalahan sintaks maupun kelalaian logika.
-   - Skor 50  (Partially Correct / Partial Credit): Terpenuhi sebagian (terdapat typo ejaan minor, kelalaian tanda kutip, atau penulisan filter alternatif yang secara logika benar namun tidak menyertakan bukti screenshot).
-   - Skor 0   (Incorrect / No Credit): Salah total, tidak lengkap, atau tidak mengumpulkan.
+Pengujian pada Iterasi 2 menunjukkan peningkatan koefisien Kendall's Tau menjadi τ = 0.7724 dan penurunan MAE menjadi 5.45 poin. Hasil ini mengonfirmasi bahwa skema kredit parsial 3-tingkat menghasilkan nilai yang presisi dan konsisten dengan penilaian dosen. Perbandingan hasil iterasi disajikan pada Tabel 4.1.
 
-2. Hasil Pengujian Statistik Final:
-   - Kendall's Tau (τ) : 0.7724
-   - Mean Absolute Error (MAE) : 5.45 Poin
-
-3. Perbandingan dan Dampak Perbaikan:
-   Penerapan skema 3-Point Partial Credit Rubric (Trinary) pada Iterasi 2 berhasil meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan menurunkan tingkat kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin). Selain itu, seluruh skor akhir yang dihasilkan terjamin berupa bilangan bulat bersih kelipatan 5 atau 10 (seperti 75, 80, 85, 90, 95, 100) yang memudahkan rekapitulasi nilai praktikum. Oleh karena itu, Prototype Versi 2 disetujui oleh dosen pengampu sebagai sistem final.
-
-Ringkasan perbandingan hasil iterasi perbaikan prototype disajikan pada Tabel 4.1 berikut:
-
-Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
------------------------------------------------------------------------------------------------------------------------------
-Tahap Prototype           Metode Penilaian          Kendall's Tau (τ)    MAE (Error Poin)    Catatan Evaluasi Dosen
------------------------------------------------------------------------------------------------------------------------------
-Iterasi 1 (Awal)          Binary (0 / 100)          0.4400               18.33 Poin          Terlalu kaku, penalti skor 0 pada
-                                                                                             typo minor merugikan mahasiswa.
-Iterasi 2 (Final)         Trinary (0 / 50 / 100)    0.7724               5.45 Poin           DISETUJUI: Keselarasan tinggi,
-                                                                                             error terkecil, nilai bulat bersih.
------------------------------------------------------------------------------------------------------------------------------
+Tabel 4.1 Perbandingan Hasil Iterasi Prototype
+---------------------------------------------------------------------------------------------------------
+Tahap Prototype       Skema Penilaian                Kendall's Tau (τ)    MAE (Poin)    Status Evaluasi
+---------------------------------------------------------------------------------------------------------
+Iterasi 1 (Awal)      Binary Rubric (0 / 100)        0.4400               18.33         Iterasi Perbaikan
+Iterasi 2 (Final)     3-Point Partial Credit (0/50/100) 0.7724            5.45          Disetujui (Final)
+---------------------------------------------------------------------------------------------------------
 
 
-4.3. Analisis Statistik dan Evaluasi Keandalan AI
-Pengujian keandalan sistem dilakukan secara terstandar pada 33 sampel dokumen jawaban praktikum basis data SQL retrospektif mahasiswa Program Studi Teknik Informatika Universitas Muhammadiyah Bandung. Evaluasi membandingkan skor prediksi dari sistem AI terhadap skor aktual dosen pengampu (ground truth).
+4.3. Analisis Statistik dan Keandalan AI
+Pengujian keandalan dilakukan pada 33 dokumen jawaban praktikum SQL retrospektif mahasiswa Teknik Informatika UMB.
 
-4.3.1. Analisis Keselarasan Peringkat (Kendall's Tau Correlation Coefficient τ)
-Koefisien korelasi Kendall's Tau (τ) digunakan untuk mengukur tingkat keselarasan hirarki atau urutan kualitas jawaban mahasiswa antara hasil penilaian AI dan dosen. Berdasarkan hasil perhitungan statistik, diperoleh nilai Kendall's Tau sebesar τ = 0.7724. 
-Nilai τ = 0.7724 mengindikasikan tingkat keselarasan peringkat yang sangat kuat (strong rank correlation). Hasil ini membuktikan bahwa logika penalaran model openai/gpt-oss-120b melalui lapisan middleware mampu meniru urutan prioritas dosen dalam menentukan jawaban mahasiswa mana yang secara kualitatif lebih baik atau lebih buruk.
+4.3.1. Analisis Keselarasan Peringkat (Kendall's Tau τ)
+Diperoleh nilai Kendall's Tau τ = 0.7724, yang menunjukkan korelasi peringkat yang kuat antara nilai AI dan dosen. Hal ini membuktikan konsistensi hierarki penilaian AI terhadap acuan dosen.
 
-4.3.2. Analisis Deviasi Kesalahan Fisik Skor (Mean Absolute Error / MAE)
-Mean Absolute Error (MAE) digunakan untuk menghitung rata-rata selisih fisik poin nilai antara sistem AI dengan skor aktual dosen. Hasil pengujian menunjukkan nilai MAE sebesar 5.45 poin.
-Nilai MAE = 5.45 poin berarti bahwa rata-rata deviasi nilai yang dihasilkan oleh AI hanya meleset sebesar 5.45 poin dari nilai ideal dosen pada skala 0–100. Angka kesalahan yang sangat kecil ini setara dengan deviasi setengah sub-aspek rubrik (5%), yang menunjukkan bahwa sistem memiliki tingkat presisi yang sangat tinggi dan layak digunakan sebagai asisten koreksi praktikum.
+4.3.2. Analisis Deviasi Kesalahan (MAE)
+Diperoleh nilai MAE sebesar 5.45 poin pada skala 0–100. Rata-rata deviasi yang kecil ini menunjukkan tingkat presisi prediksi skor yang tinggi.
 
-4.3.3. Evaluasi Mitigasi Halusinasi melalui Knowledge Grounding dan Chain-of-Thought (CoT)
-Rendahnya nilai kesalahan (MAE = 5.45) dan tingginya keselarasan peringkat (τ = 0.7724) tidak lepas dari keberhasilan penerapan dua mekanisme teknis pada lapisan middleware:
-1. Knowledge Grounding:
-   Modul Prompt Orchestrator mengunci ruang lingkup penalaran LLM hanya pada dokumen referensi materi dan rubrik dosen yang disematkan pada elemen [CRITERIA] dan [CONTEXT]. Hal ini terbukti berhasil memitigasi fenomena halusinasi (hallucination) intrinsik maupun ekstrinsik, sehingga AI tidak memberikan penilaian berdasarkan pengetahuan umum di luar materi praktikum.
-2. Chain-of-Thought (CoT) Reasoning:
-   Instruksi CoT pada elemen [TASK] memicu model openai/gpt-oss-120b untuk mengekstrak penjelasan rasional mengenai kelebihan dan kekurangan sintaks SQL mahasiswa sebelum membuat keputusan skor akhir. Penjelasan rasional ini disajikan secara transparan pada antarmuka dosen sebagai justifikasi penilaian yang dapat dipertanggungjawabkan secara akademik.
+4.3.3. Mitigasi Halusinasi melalui Knowledge Grounding dan Chain-of-Thought
+Penerapan Knowledge Grounding mengunci ruang penalaran LLM pada dokumen referensi [CRITERIA] dan [CONTEXT] untuk mencegah halusinasi faktual. Sementara itu, instruksi Chain-of-Thought (CoT) memicu model menghasilkan rasionalisasi evaluasi sebelum penetapan skor akhir.
 
 
-4.4. Pembahasan dan Implikasi Hasil
-Hasil penelitian ini menunjukkan bahwa penerapan arsitektur provider-agnostic middleware yang digabungkan dengan skema penilaian bertingkat Trinary memberikan kontribusi nyata bagi proses evaluasi akademik di perguruan tinggi. 
-
-Secara teknis, pemisahan logika (decoupling) antara platform utama dengan API inferensi AI menjamin stabilitas sistem dari risiko fluktuasi pembaruan model di masa depan. Secara operasional, sistem Smart Assistant Lecturer (SAL) terbukti mampu memangkas waktu koreksi esai dan praktikum mahasiswa secara signifikan, sekaligus mereduksi beban kelelahan kognitif (cognitive fatigue) dosen. Kehadiran fitur validasi dan koreksi manual (override) memastikan bahwa kendali penuh terhadap otoritas nilai akademik tetap berada secara mutlak di tangan dosen pengampu.
+4.4. Pembahasan
+Hasil evaluasi mengonfirmasi bahwa integrasi arsitektur middleware berbasis decoupling dan 3-Point Partial Credit Rubric secara efektif meningkatkan akurasi penilaian esai otomatis. Fitur validasi manual menjaga otoritas penuh dosen dalam penetapan nilai akhir.
