@@ -30,17 +30,21 @@ Pada Iterasi 1, sistem dibangun dengan logika prompt awal yang menerapkan skema 
 2. Evaluasi dan Umpan Balik Dosen:
    Pada pengujian awal terhadap 33 dokumen jawaban mahasiswa, skema biner terbukti menghasilkan deviasi kesalahan yang sangat tinggi (MAE = 18.33 poin). Hal ini terjadi karena AI secara kaku memberikan skor 0 untuk kesalahan minor, seperti kelalaian tanda kutip pada literal string NIM ('12345') atau kesalahan ejaan tipografi (typo) kecil. Dosen mengevaluasi bahwa skema biner terlalu merugikan mahasiswa dan menyarankan perlunya skema penilaian parsial yang mampu menampung jawaban yang secara logika benar namun memiliki kesalahan kecil.
 
-4.2.2. Iterasi 2 (Prototype Final - Penilaian Bertingkat Trinary 0/50/100)
-Berdasarkan umpan balik pada Iterasi 1, dilakukan perbaikan mendasar pada modul Prompt Orchestrator di lapisan middleware. Logika penilaian diperbarui menjadi skema bertingkat 3-level (Trinary Evaluation: 0, 50, 100) yang terdiri atas 10 aspek rubrik berbobot 10%.
-1. Aturan Skor Mentah (Raw Score Trinary):
-   - Skor 100 : Terpenuhi sepenuhnya tanpa ada kesalahan sintaks maupun kelalaian.
-   - Skor 50  : Terpenuhi sebagian (terdapat typo ejaan minor, kelalaian tanda kutip, atau penulisan filter alternatif yang secara logika benar namun tidak menyertakan bukti screenshot).
-   - Skor 0   : Salah total, tidak lengkap, atau tidak mengumpulkan.
+4.2.2. Iterasi 2 (Prototype Final - Skema Penilaian Bertingkat Tiga Kategori / 3-Point Partial Credit Rubric)
+Berdasarkan umpan balik pada Iterasi 1, dilakukan perbaikan mendasar pada modul Prompt Orchestrator di lapisan middleware. Logika penilaian diperbarui mengadopsi prinsip 3-Point Partial Credit Rubric (Masters, 1982; Brookhart, 2013) yang direkomendasikan dalam literatur Automated Short Answer Grading (ASAG) (Haller et al., 2022). Skema ini membagi penilaian ke dalam tiga tingkatan skor diskrit (Trinary Evaluation: 0, 50, 100) pada 10 aspek rubrik berbobot masing-masing 10%.
+
+1. Landasan Teoretis dan Aturan Skor Mentah (Raw Score):
+   Secara teoritis, skema 3-Point Partial Credit Rubric membagi respon siswa ke dalam tiga kategori utama (Correct, Partially Correct, Incorrect) untuk mengakomodasi pemahaman parsial tanpa mengorbankan obyektifitas (Masters, 1982; Haller et al., 2022):
+   - Skor 100 (Correct / Full Credit): Terpenuhi secara sempurna tanpa ada kesalahan sintaks maupun kelalaian logika.
+   - Skor 50  (Partially Correct / Partial Credit): Terpenuhi sebagian (terdapat typo ejaan minor, kelalaian tanda kutip, atau penulisan filter alternatif yang secara logika benar namun tidak menyertakan bukti screenshot).
+   - Skor 0   (Incorrect / No Credit): Salah total, tidak lengkap, atau tidak mengumpulkan.
+
 2. Hasil Pengujian Statistik Final:
    - Kendall's Tau (τ) : 0.7724
    - Mean Absolute Error (MAE) : 5.45 Poin
+
 3. Perbandingan dan Dampak Perbaikan:
-   Penerapan skema Trinary pada Iterasi 2 berhasil meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan menurunkan tingkat kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin). Selain itu, seluruh skor akhir yang dihasilkan terjamin berupa bilangan bulat bersih kelipatan 5 atau 10 (seperti 75, 80, 85, 90, 95, 100) yang memudahkan rekapitulasi nilai praktikum. Oleh karena itu, Prototype Versi 2 disetujui oleh dosen pengampu sebagai sistem final.
+   Penerapan skema 3-Point Partial Credit Rubric (Trinary) pada Iterasi 2 berhasil meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan menurunkan tingkat kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin). Selain itu, seluruh skor akhir yang dihasilkan terjamin berupa bilangan bulat bersih kelipatan 5 atau 10 (seperti 75, 80, 85, 90, 95, 100) yang memudahkan rekapitulasi nilai praktikum. Oleh karena itu, Prototype Versi 2 disetujui oleh dosen pengampu sebagai sistem final.
 
 Ringkasan perbandingan hasil iterasi perbaikan prototype disajikan pada Tabel 4.1 berikut:
 
