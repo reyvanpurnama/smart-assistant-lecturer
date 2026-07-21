@@ -55,8 +55,8 @@ Diperoleh nilai MAE sebesar 5.45 poin. Hal ini menunjukkan bahwa rata-rata devia
 4.3.3. Evaluasi Knowledge Grounding dan Chain-of-Thought (CoT)
 Rendahnya kesalahan (MAE = 5.45) dan tingginya keselarasan (τ = 0.7724) didukung oleh dua fungsi utama middleware:
 1. Knowledge Grounding: Mengunci penalaran AI pada dokumen referensi materi dan rubrik dosen untuk memitigasi halusinasi (Ji et al., 2023).
-2. Chain-of-Thought (CoT): Memicu AI untuk menyusun justifikasi rasional secara bertahap sebelum mengeluarkan keputusan skor akhir (Stahl et al., 2024).
+2. Chain-of-Thought (CoT): Memicu AI untuk menyusun justifikasi rasional secara bertahap sebelum mengeluarkan keputusan skor akhir (Stahl et al., 2024; Chen & Wan).
 
 
 4.4. Pembahasan dan Implikasi Hasil
-Penerapan arsitektur provider-agnostic middleware yang dikombinasikan dengan 3-Point Partial Credit Rubric terbukti efektif memangkas waktu koreksi dan mereduksi beban kelelahan kognitif dosen. Fitur validasi dan penyuntingan manual (override) memastikan bahwa otoritas nilai akhir tetap berada secara mutlak di tangan dosen pengampu.
+Penerapan arsitektur provider-agnostic middleware yang dikombinasikan dengan 3-Point Partial Credit Rubric secara signifikan meningkatkan akurasi penilaian AI hingga mencapai keselarasan tinggi setara penilai manusia (human-grade agreement) (Chen & Wan). Pendekatan ini terbukti efektif mereduksi beban kelelahan kognitif dosen, sementara fitur validasi dan penyuntingan manual (override) memastikan bahwa otoritas nilai akhir tetap berada secara mutlak di tangan dosen pengampu.
