@@ -1,0 +1,47 @@
+================================================================================
+DOKUMEN TAMBAHAN SUB-BAB BAB II (TINJAUAN PUSTAKA)
+Smart Assistant Lecturer (SAL)
+================================================================================
+
+Petunjuk Penggunaan:
+Silakan sisipkan bagian A di bawah Sub-bab 2.2 (setelah Sub-bab 2.2.2) dan perbarui Tabel 2.1 pada Sub-bab 2.7 di naskah Word Anda.
+
+--------------------------------------------------------------------------------
+A. SISIPAN SUB-BAB BARU 2.2.3 (Di bawah Sub-bab 2.2 Automated Essay Scoring)
+--------------------------------------------------------------------------------
+
+2.2.3. Variasi Skala Penilaian: Penilaian Biner (Binary Scoring) dan Kredit Parsial (Partial Credit Scoring)
+
+Dalam pengembangan sistem Automated Short Answer Grading (ASAG) maupun Automated Writing Evaluation (AWE), penentuan skala penilaian merupakan aspek krusial yang menentukan keadilan dan presisi evaluasi logika mahasiswa (Haller et al., 2022). Secara umum, skema penilaian dapat diklasifikasikan ke dalam dua pendekatan utama:
+
+1. Penilaian Biner (Binary Scoring / 2-Way Classification)
+   Skema biner menilai setiap jawaban secara absolut: benar (skor 100 / 1) atau salah (skor 0) (Dzikovska et al., 2013). Meskipun skema ini sederhana dan bebas dari ambiguitas gradasi, penilaian biner secara holistik terbukti terlampau kaku dalam konteks penilaian esai algoritma dan pseudocode. Hal ini dikarenakan skema biner memberikan penalti penuh (skor 0) pada kesalahan tipografi minor atau kelalaian tanda kutip, meskipun alur logika penalaran mahasiswa secara umum telah benar (Chen & Wan; Haller et al., 2022).
+
+2. Penilaian Kredit Parsial (Partial Credit Scoring / Gradated Rubric)
+   Untuk mengantisipasi kekakuan skema biner, dikembangkan pendekatan Partial Credit Scoring berbasis rubrik bergradasi (seperti 3-Point Partial Credit Rubric: skor 0, 50, 100) (Masters, 1982; Haller et al., 2022). Penelitian terbaru oleh Chen & Wan membuktikan bahwa penggunaan rubrik parsial multi-item yang dikombinasikan dengan mekanisme Chain-of-Thought (CoT) mampu meningkatkan akurasi penilaian Large Language Model (seperti GPT-4o dan GPT-OSS 120B) hingga mencapai tingkat keselarasan setara penilai manusia (human-grade agreement 70%–80%). Skema kredit parsial ini secara empiris lebih mampu merepresentasikan gradasi pemahaman dan logika berpikir mahasiswa secara objektif dan proporsional (Chen & Wan).
+
+
+--------------------------------------------------------------------------------
+B. PEMBAHARUAN TABEL 2.1 (Tabel Ikhtisar Penelitian Terdahulu pada Sub-bab 2.7)
+--------------------------------------------------------------------------------
+
+Tambahkan baris No. 6 berikut ke dalam Tabel 2.1 Ikhtisar Penelitian Terdahulu di Halaman 21-22 naskah Word Anda:
+
++----+--------------------+-----------------------------------+-----------------------------------+-----------------------------------+
+| No | Peneliti           | Fokus / Pendekatan                | Hasil Utama                       | Aspek yang Diadopsi               |
++----+--------------------+-----------------------------------+-----------------------------------+-----------------------------------+
+| 6  | Chen & Wan         | Evaluasi partial credit grading   | LLM mencapai akurasi selevel      | Pengadopsian struktur rubrik      |
+|    |                    | LLM pada penjelasan langkah       | manusia (70%-80% agreement).      | bergradasi (multi-item partial    |
+|    |                    | penalaran siswa berbasis rubrik   | Teknik CoT & detailed rubric      | credit), penggunaan CoT sebelum   |
+|    |                    | multi-item biner (1/0 per item).  | explanation terbukti krusial.     | skor, serta evaluasi keselarasan. |
++----+--------------------+-----------------------------------+-----------------------------------+-----------------------------------+
+
+--------------------------------------------------------------------------------
+C. TAMBAHAN SITASI UNTUK DAFTAR PUSTAKA
+--------------------------------------------------------------------------------
+
+Tambahkan entri referensi berikut pada bagian DAFTAR PUSTAKA naskah Word Anda:
+
+Chen, Z., & Wan, T. Using Large Language Models to Assign Partial Credit to Students' Explanations of Problem-Solving Process: Grade at Human Level Accuracy with Grading Confidence Index and Personalized Student-facing Feedback. arXiv preprint.
+Dzikovska, M. O., Nielsen, R. D., & Leacock, C. (2013). The 5-way student response classification task for automated short answer grading. In Proceedings of the 7th International Workshop on Semantic Evaluation (SemEval 2013) (pp. 487-495).
+Masters, G. N. (1982). A Rasch model for partial credit scoring. Psychometrika, 47(2), 149-174.
