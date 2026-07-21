@@ -37,6 +37,8 @@ for bar in bars2:
 plt.suptitle("Perbandingan Hasil Iterasi Perbaikan Prototype SAL", fontsize=13, fontweight='bold', y=1.02)
 plt.tight_layout()
 
-chart_path = "/home/alexa/Documents/SKRIPSI/project/sal/docs/grafik_iterasi_prototype.png"
-plt.savefig(chart_path, bbox_inches='tight')
-print(f"Grafik Iterasi Prototype berhasil disimpan ke {chart_path}")
+# Save image using relative path (works in Colab and local)
+plt.savefig('grafik_iterasi_prototype.png', bbox_inches='tight')
+
+# Display plot inline (ideal for Google Colab)
+plt.show()
