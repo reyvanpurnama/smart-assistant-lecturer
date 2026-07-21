@@ -4,26 +4,22 @@ KESIMPULAN DAN SARAN
 5.1. Kesimpulan
 Berdasarkan hasil perancangan, implementasi, serta pengujian dan pembahasan yang telah dilakukan pada sistem Smart Assistant Lecturer (SAL) untuk analisis jawaban esai otomatis berbasis Large Language Model (LLM), dapat ditarik beberapa kesimpulan utama sebagai berikut:
 
-1. Pengembangan Sistem Smart Assistant Lecturer (SAL):
-   Sistem SAL berhasil dibangun menggunakan arsitektur provider-agnostic middleware berbasis Next.js (App Router), Supabase Backend-as-a-Service (BaaS), dan Groq API Cloud dengan model openai/gpt-oss-120b. Lapisan middleware berhasil mengkombinasikan mekanisme Knowledge Grounding dan Chain-of-Thought (CoT) Reasoning untuk mengunci penalaran AI pada dokumen acuan dosen serta menghasilkan log justifikasi penilaian yang transparan per aspek rubrik.
+1. Perancangan dan Implementasi Middleware Smart Assistant Lecturer (SAL):
+   Sistem SAL berhasil dirancang dan diimplementasikan menggunakan arsitektur provider-agnostic middleware berbasis Next.js (App Router), Supabase Backend-as-a-Service (BaaS), dan Groq API Cloud dengan model openai/gpt-oss-120b. Lapisan middleware terbukti berhasil mengkombinasikan mekanisme Knowledge Grounding dan Chain-of-Thought (CoT) Reasoning untuk mengunci ruang penalaran AI murni pada dokumen acuan dosen, memitigasi risiko halusinasi, serta menghasilkan log justifikasi penilaian yang transparan dan dapat ditinjau kembali oleh dosen pengampu.
 
-2. Efektivitas Metode Prototyping dan Skema 3-Point Partial Credit Rubric:
-   Penerapan metode Prototyping terbukti berhasil mengarahkan pengembangan sistem melalui dua tahap iterasi perbaikan utama:
-   a. Iterasi 1 (Binary Scoring 0/100) menghasilkan nilai MAE yang tinggi sebesar 18.33 poin dan Kendall's Tau (τ) sebesar 0.4400 karena AI memberikan penalti penuh pada kesalahan tipografi minor.
-   b. Iterasi 2 (3-Point Partial Credit Rubric 0, 50, 100) berhasil disetujui dosen pengampu dengan meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan mereduksi kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin).
-
-3. Keandalan Statistik dan Implikasi Praktis:
-   Pengujian Uji Normalitas Shapiro-Wilk mengonfirmasi bahwa variabel Skor AI berdistribusi tidak normal (p = 0.0043 <= 0.05), sehingga mengesahkan keabsahan statistik non-parametrik Kendall's Tau (τ = 0.7724). Secara praktis, sistem berhasil memangkas waktu koreksi dari 3–5 menit per mahasiswa (secara manual) menjadi kurang dari 2 menit untuk 33 mahasiswa (secara otomatis), dengan tetap mempertahankan otoritas penuh dosen melalui fitur koreksi manual (manual override).
-
+2. Evaluasi Kesesuaian dan Keakuratan Hasil Penilaian (Kendall's Tau dan MAE):
+   Hasil evaluasi statistik komparatif antara skor otomatis AI dan nilai aktual dosen (ground truth) pada dua tahap iterasi prototyping menunjukkan peningkatan keakuratan yang signifikan:
+   a. Iterasi 1 (Binary Scoring 0/100) menghasilkan tingkat keselarasan peringkat Kendall's Tau (τ) sebesar 0.4400 dan tingkat deviasi skor fisik (MAE) sebesar 18.33 poin. Tingginya deviasi disebabkan oleh sifat biner kaku yang memberikan penalti penuh (skor 0) pada kesalahan tipografi minor mahasiswa.
+   b. Iterasi 2 (3-Point Partial Credit Rubric 0, 50, 100) secara signifikan meningkatkan keselarasan peringkat Kendall's Tau (τ) menjadi 0.7724 (peningkatan +75.5%) dan mereduksi deviasi kesalahan skor MAE menjadi 5.45 poin (penurunan deviasi -70.3%). Peningkatan ini membuktikan bahwa rubrik penilaian parsial 3-point mampu merepresentasikan logika dan preferensi penilaian dosen secara presisi, adil, dan objektif.
 
 5.2. Saran
-Berdasarkan keterbatasan dan evaluasi yang diperoleh dari penelitian ini, terdapat beberapa saran untuk pengembangan sistem Smart Assistant Lecturer (SAL) di masa mendatang:
+Berdasarkan batasan masalah dan hasil evaluasi penelitian ini, terdapat beberapa saran untuk pengembangan sistem Smart Assistant Lecturer (SAL) pada penelitian selanjutnya:
 
 1. Integrasi Multimodal Vision-Language Model (VLM):
-   Disarankan untuk mengembangkan middleware agar mendukung pemrosesan VLM secara langsung. Fitur ini memungkinkan sistem menganalisis tangkapan layar (screenshot) hasil eksekusi program/query mahasiswa secara otomatis tanpa tergantung pada ekstraksi teks atau Optical Character Recognition (OCR) terpisah.
+   Pengembangan middleware selanjutnya disarankan untuk mendukung pemrosesan VLM secara native guna menganalisis tangkapan layar (screenshot) hasil running eksekusi program/query mahasiswa secara visual tanpa tergantung pada ekstraksi teks atau OCR terpisah.
 
 2. Perluasan Variasi Mata Kuliah dan Tipe Soal Esai:
-   Pengujian dapat diperluas ke mata kuliah pemrograman lain (seperti Pemrograman Web, Pemrograman Berorientasi Objek) maupun tipe soal esai konseptual teoretis untuk mengevaluasi generalisabilitas middleware pada domain materi yang lebih luas.
+   Pengujian dapat diperluas ke mata kuliah pemrograman lain (seperti Pemrograman Web dan Pemrograman Berorientasi Objek) maupun tipe esai konseptual teoretis untuk mengevaluasi daya jangkau dan generalisabilitas middleware pada domain keilmuan yang lebih luas.
 
-3. Optimasi Latensi dan Mekanisme Task Queue:
-   Untuk mengantisipasi lonjakan pengumpulan laporan mahasiswa dalam jumlah besar, disarankan mengimplementasikan mekanisme asynchronous task queue (seperti Redis/BullMQ) guna mengelola antrean inferensi API agar terhindar dari kendala rate-limit infrastruktur cloud.
+3. Optimasi Latensi dan Mekanisme Asynchronous Task Queue:
+   Untuk mengantisipasi lonjakan beban pengumpulan tugas dalam jumlah besar, disarankan untuk mengimplementasikan antrean tugas asinkron (seperti Redis dan BullMQ) guna mengelola antrean pemanggilan inferensi API agar terhindar dari kendala rate-limit layanan cloud.
