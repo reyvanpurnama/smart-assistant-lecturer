@@ -1,0 +1,30 @@
+================================================================================
+DOKUMEN TAMBAHAN SUB-BAB BAB III (METODOLOGI PENELITIAN)
+Smart Assistant Lecturer (SAL)
+================================================================================
+
+Petunjuk Penggunaan:
+Silakan perbarui paragraf pada Sub-bab 3.1 dan Sub-bab 3.4 di naskah Word Bab III Anda dengan menyisipkan teks di bawah ini.
+
+--------------------------------------------------------------------------------
+A. PENYESUAIAN PADA SUB-BAB 3.1 (Alur Penelitian - Metode Prototyping)
+--------------------------------------------------------------------------------
+
+Gantikan / Tambahkan paragraf berikut di bagian penjelasan metode Prototyping (Sub-bab 3.1):
+
+Penelitian ini menggunakan model Prototyping yang dilaksanakan secara iteratif melalui dua tahapan pengujian utama:
+
+1. Iterasi 1 (Prototype Awal - Baseline Biner):
+   Rancangan awal dikembangkan menggunakan skema Binary Scoring (0 atau 100) sebagai acuan baseline paling sederhana guna menguji kemampuan dasar Large Language Model (LLM) dalam mengenali kriteria rubrik.
+
+2. Iterasi 2 (Prototype Final - 3-Point Partial Credit):
+   Berdasarkan hasil evaluasi Iterasi 1 di mana AI bersikap terlampau kaku terhadap kesalahan tipografi minor, sistem disempurnakan pada Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) pada lapisan middleware. Skema ini dirancang untuk mengakomodasi kebenaran logika parsial mahasiswa sesuai arahan dosen pengampu dan tinjauan literatur (Masters, 1982; Haller et al., 2022; Chen & Wan).
+
+
+--------------------------------------------------------------------------------
+B. PENYESUAIAN PADA SUB-BAB 3.4 (Perancangan Sistem - Gambar 3.3 Struktur Prompt Modular)
+--------------------------------------------------------------------------------
+
+Tambahkan kalimat penguat berikut pada penjelasan Gambar 3.3 (Struktur Prompt Modular) di Sub-bab 3.4:
+
+"Penyusunan elemen [TASK] menerapkan instruksi Chain-of-Thought (CoT) dengan memerintahkan model untuk menyusun rasionalisasi penalaran terlebih dahulu sebelum mengeluarkan keputusan skor akhir. Strategi ini merujuk pada temuan Chen & Wan yang membuktikan bahwa pemrosesan penalaran bertahap sebelum keputusan nilai secara signifikan meningkatkan keakuratan evaluasi LLM hingga mencapai tingkat keselarasan penilai manusia (human-grade agreement). Sementara itu, elemen [CRITERIA] dirancang menggunakan skema 3-Point Partial Credit Rubric (skor 0, 50, 100 pada 10 aspek berbobot 10%) untuk memberikan batasan penalaran yang jelas bagi AI (Chen & Wan; Haller et al., 2022)."
