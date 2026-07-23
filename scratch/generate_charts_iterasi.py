@@ -1,44 +1,209 @@
+import sys
+import os
+import csv
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 
 # Set clean aesthetic style
 plt.style.use('seaborn-v0_8-whitegrid' if 'seaborn-v0_8-whitegrid' in plt.style.available else 'default')
 
-# Data comparison for Prototyping Iterations (Formal Academic Terms)
-iterations = ['Iterasi 1\n(Binary Scoring)', 'Iterasi 2\n(3-Point Partial Credit)']
-kendall_tau = [0.4400, 0.7724]
-mae_values = [18.33, 5.45]
+def kendall_tau(x, y):
+    """
+    Computes Kendall's Tau (b) correlation coefficient between two lists of numbers.
+    """
+    n = len(x)
+    if n < 2:
+        return 0.0
+    nc, nd, tx, ty = 0, 0, 0, 0
+    for i in range(n):
+        for j in range(i + 1, n):
+            dx = x[i] - x[j]
+            dy = y[i] - y[j]
+            prod = dx * dy
+            if prod > 0:
+                nc += 1
+            elif prod < 0:
+                nd += 1
+            else:
+                if dx == 0 and dy != 0:
+                    tx += 1
+                elif dy == 0 and dx != 0:
+                    ty += 1
+    numerator = nc - nd
+    den1 = nc + nd + tx
+    den2 = nc + nd + ty
+    if den1 == 0 or den2 == 0:
+        return 0.0
+    return numerator / math.sqrt(den1 * den2)
 
-colors_tau = ['#94a3b8', '#4f46e5'] # Slate for Iteration 1, Indigo for Iteration 2 (Final)
-colors_mae = ['#ef4444', '#10b981'] # Red for Iteration 1, Emerald for Iteration 2 (Final)
+def mean_absolute_error(x, y):
+    """
+    Computes Mean Absolute Error (MAE) between predicted (x) and ground truth (y).
+    """
+    if not x:
+        return 0.0
+    return sum(abs(a - d) for a, d in zip(x, y)) / len(x)
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2), dpi=300)
+def load_scores_from_csv(csv_path):
+    """
+    Reads skor_ai and skor_dosen dynamically from a CSV file.
+    Supports flexible column names.
+    """
+    if not os.path.exists(csv_path):
+        raise FileNotFoundError(f"File CSV tidak ditemukan di: {csv_path}")
 
-# Chart 1: Kendall Tau Progress
-bars1 = ax1.bar(iterations, kendall_tau, color=colors_tau, width=0.45, edgecolor='black', linewidth=0.8)
-ax1.set_title("Keselarasan Peringkat (Kendall's Tau τ)", fontsize=11, fontweight='bold', pad=12)
-ax1.set_ylabel("Nilai Kendall's Tau (τ)", fontsize=9, fontweight='bold')
-ax1.set_ylim(0, 1.0)
+    x_ai = []
+    y_dosen = []
 
-for bar in bars1:
-    yval = bar.get_height()
-    ax1.text(bar.get_x() + bar.get_width()/2.0, yval + 0.02, f"{yval:.4f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
+    with open(csv_path, mode="r", encoding="utf-8-sig") as f:
+        reader = csv.DictReader(f)
+        if not reader.fieldnames:
+            raise ValueError(f"File CSV kosong atau format header tidak valid: {csv_path}")
 
-# Chart 2: MAE Error Reduction Progress
-bars2 = ax2.bar(iterations, mae_values, color=colors_mae, width=0.45, edgecolor='black', linewidth=0.8)
-ax2.set_title("Rata-Rata Kesalahan Skor (MAE Poin)", fontsize=11, fontweight='bold', pad=12)
-ax2.set_ylabel("Error Poin (MAE)", fontsize=9, fontweight='bold')
-ax2.set_ylim(0, 22.0)
+        ai_col = None
+        dosen_col = None
 
-for bar in bars2:
-    yval = bar.get_height()
-    ax2.text(bar.get_x() + bar.get_width()/2.0, yval + 0.4, f"{yval:.2f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
+        # Detect headers dynamically
+        for h in reader.fieldnames:
+            h_clean = h.strip().lower()
+            if h_clean in ["skor_ai", "ai_score", "skor ai", "ai", "score_ai"]:
+                ai_col = h
+            elif h_clean in ["skor_dosen", "dosen_score", "skor dosen", "dosen", "ground_truth", "score_dosen"]:
+                dosen_col = h
 
-plt.suptitle("Perbandingan Hasil Iterasi Perbaikan Prototype SAL", fontsize=13, fontweight='bold', y=1.02)
-plt.tight_layout()
+        # Fallback partial matching
+        if not ai_col or not dosen_col:
+            for h in reader.fieldnames:
+                h_clean = h.strip().lower()
+                if "ai" in h_clean and not ai_col:
+                    ai_col = h
+                elif ("dosen" in h_clean or "ground" in h_clean) and not dosen_col:
+                    dosen_col = h
 
-# Save image using relative path (works in Colab and local)
-plt.savefig('grafik_iterasi_prototype.png', bbox_inches='tight')
+        if not ai_col or not dosen_col:
+            raise ValueError(
+                f"Tidak dapat menemuukan kolom AI dan Dosen di CSV: {csv_path}.\n"
+                f"Header yang tersedia: {reader.fieldnames}"
+            )
 
-# Display plot inline (ideal for Google Colab)
-plt.show()
+        for row in reader:
+            try:
+                val_ai = float(row[ai_col])
+                val_dosen = float(row[dosen_col])
+                x_ai.append(val_ai)
+                y_dosen.append(val_dosen)
+            except (ValueError, TypeError):
+                continue
+
+    if not x_ai:
+        raise ValueError(f"Tidak ada baris data angka valid yang berhasil dibaca dari: {csv_path}")
+
+    return x_ai, y_dosen
+
+def generate_iteration_chart(csv_iter1_path, csv_iter2_path, output_img_path="grafik_iterasi_prototype.png"):
+    """
+    Calculates metrics dynamically from 2 CSV files (Iteration 1 & Iteration 2)
+    and plots Kendall's Tau & MAE comparison bar charts.
+    """
+    print(f"--> Membaca data Iterasi 1 dari: {csv_iter1_path}")
+    x_ai_1, y_dosen_1 = load_scores_from_csv(csv_iter1_path)
+    tau_1 = kendall_tau(x_ai_1, y_dosen_1)
+    mae_1 = mean_absolute_error(x_ai_1, y_dosen_1)
+
+    print(f"--> Membaca data Iterasi 2 dari: {csv_iter2_path}")
+    x_ai_2, y_dosen_2 = load_scores_from_csv(csv_iter2_path)
+    tau_2 = kendall_tau(x_ai_2, y_dosen_2)
+    mae_2 = mean_absolute_error(x_ai_2, y_dosen_2)
+
+    print("\n=========================================================")
+    print("      HASIL ANALISIS EVALUASI DINAMIS DARI CSV")
+    print("=========================================================")
+    print(f"Iterasi 1 (Baseline): N={len(x_ai_1)} | Kendall's Tau (tau) = {tau_1:.4f} | MAE = {mae_1:.2f} poin")
+    print(f"Iterasi 2 (Final)   : N={len(x_ai_2)} | Kendall's Tau (tau) = {tau_2:.4f} | MAE = {mae_2:.2f} poin")
+    
+    tau_diff_pct = ((tau_2 - tau_1) / tau_1) * 100 if tau_1 != 0 else 0
+    mae_diff_pct = ((mae_2 - mae_1) / mae_1) * 100 if mae_1 != 0 else 0
+    print(f"Perubahan Tau : {tau_diff_pct:+.1f}%")
+    print(f"Perubahan MAE : {mae_diff_pct:+.1f}%")
+    print("=========================================================\n")
+
+    iterations = ['Iterasi 1\n(Binary Scoring)', 'Iterasi 2\n(3-Point Partial Credit)']
+    kendall_tau_vals = [tau_1, tau_2]
+    mae_vals = [mae_1, mae_2]
+
+    colors_tau = ['#94a3b8', '#4f46e5'] # Slate for Iteration 1, Indigo for Iteration 2 (Final)
+    colors_mae = ['#ef4444', '#10b981'] # Red for Iteration 1, Emerald for Iteration 2 (Final)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4.2), dpi=300)
+
+    # Chart 1: Kendall Tau Progress
+    bars1 = ax1.bar(iterations, kendall_tau_vals, color=colors_tau, width=0.45, edgecolor='black', linewidth=0.8)
+    ax1.set_title("Keselarasan Peringkat (Kendall's Tau τ)", fontsize=11, fontweight='bold', pad=12)
+    ax1.set_ylabel("Nilai Kendall's Tau (τ)", fontsize=9, fontweight='bold')
+    max_tau_y = max(1.0, max(kendall_tau_vals) * 1.15)
+    ax1.set_ylim(0, max_tau_y)
+
+    for bar in bars1:
+        yval = bar.get_height()
+        ax1.text(bar.get_x() + bar.get_width()/2.0, yval + 0.02, f"{yval:.4f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+    # Chart 2: MAE Error Reduction Progress
+    bars2 = ax2.bar(iterations, mae_vals, color=colors_mae, width=0.45, edgecolor='black', linewidth=0.8)
+    ax2.set_title("Rata-Rata Kesalahan Skor (MAE Poin)", fontsize=11, fontweight='bold', pad=12)
+    ax2.set_ylabel("Error Poin (MAE)", fontsize=9, fontweight='bold')
+    max_mae_y = max(10.0, max(mae_vals) * 1.2)
+    ax2.set_ylim(0, max_mae_y)
+
+    for bar in bars2:
+        yval = bar.get_height()
+        ax2.text(bar.get_x() + bar.get_width()/2.0, yval + (max_mae_y * 0.02), f"{yval:.2f}", ha='center', va='bottom', fontsize=10, fontweight='bold')
+
+    plt.suptitle("Perbandingan Hasil Iterasi Perbaikan Prototype SAL", fontsize=13, fontweight='bold', y=1.02)
+    plt.tight_layout()
+
+    # Save output image
+    plt.savefig(output_img_path, bbox_inches='tight')
+    print(f"--> Grafik visualisasi berhasil disimpan di: {output_img_path}")
+
+    # Also copy to docs directory if it exists
+    docs_img_path = os.path.join(os.path.dirname(__file__), "../docs/grafik_iterasi_prototype.png")
+    if os.path.exists(os.path.dirname(docs_img_path)):
+        plt.savefig(docs_img_path, bbox_inches='tight')
+        print(f"--> Copy grafik berhasil disimpan di: {docs_img_path}")
+
+    plt.close()
+
+def main():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.abspath(os.path.join(script_dir, ".."))
+
+    # Determine CSV file paths dynamically from args or defaults
+    if len(sys.argv) >= 3:
+        csv_1 = sys.argv[1]
+        csv_2 = sys.argv[2]
+        output_img = sys.argv[3] if len(sys.argv) >= 4 else "grafik_iterasi_prototype.png"
+    else:
+        # Default fallback CSV files
+        default_csv1 = os.path.join(project_dir, "docs", "IF23A_cleaned_binary.csv")
+        default_csv2 = os.path.join(project_dir, "docs", "IF23A_cleaned_trinary.csv")
+
+        # Fallback search if specific binary/trinary files missing
+        if not os.path.exists(default_csv1):
+            default_csv1 = os.path.join(project_dir, "docs", "IF23A_cleaned.csv")
+        if not os.path.exists(default_csv2):
+            default_csv2 = os.path.join(project_dir, "docs", "IF23A_cleaned.csv")
+
+        csv_1 = default_csv1
+        csv_2 = default_csv2
+        output_img = "grafik_iterasi_prototype.png"
+
+    print("=== SCRIPT GENERATE GRAFIK ITERASI PROTOTYPE DINAMIS ===")
+    print(f"File Iterasi 1 : {csv_1}")
+    print(f"File Iterasi 2 : {csv_2}")
+    print("---------------------------------------------------------")
+
+    generate_iteration_chart(csv_1, csv_2, output_img)
+
+if __name__ == "__main__":
+    main()
