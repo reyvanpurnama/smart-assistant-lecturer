@@ -83,7 +83,7 @@ def load_scores_from_csv(csv_path):
 
         if not ai_col or not dosen_col:
             raise ValueError(
-                f"Tidak dapat menemuukan kolom AI dan Dosen di CSV: {csv_path}.\n"
+                f"Tidak dapat menemukan kolom AI dan Dosen di CSV: {csv_path}.\n"
                 f"Header yang tersedia: {reader.fieldnames}"
             )
 
@@ -101,12 +101,44 @@ def load_scores_from_csv(csv_path):
 
     return x_ai, y_dosen
 
+def try_colab_file_upload():
+    """
+    Triggers Google Colab file upload prompt if running inside Colab.
+    Returns (csv1_path, csv2_path) or (None, None).
+    """
+    try:
+        from google.colab import files
+        print("\n=========================================================")
+        print("  [GOOGLE COLAB DETECTED] SILAKAN UPLOAD FILE CSV SKELETON")
+        print("=========================================================")
+        
+        print("\n1. Silakan upload file CSV Iterasi 1 (Binary / Baseline)...")
+        uploaded_1 = files.upload()
+        if not uploaded_1:
+            print("Peringatan: File Iterasi 1 tidak diupload.")
+            return None, None
+        file_1 = list(uploaded_1.keys())[0]
+
+        print("\n2. Silakan upload file CSV Iterasi 2 (3-Point Partial Credit / Final)...")
+        uploaded_2 = files.upload()
+        if not uploaded_2:
+            print("Peringatan: File Iterasi 2 tidak diupload.")
+            return file_1, None
+        file_2 = list(uploaded_2.keys())[0]
+
+        return file_1, file_2
+    except (ImportError, ModuleNotFoundError):
+        return None, None
+    except Exception as e:
+        print(f"Peringatan upload Colab: {e}")
+        return None, None
+
 def generate_iteration_chart(csv_iter1_path, csv_iter2_path, output_img_path="grafik_iterasi_prototype.png"):
     """
     Calculates metrics dynamically from 2 CSV files (Iteration 1 & Iteration 2)
     and plots Kendall's Tau & MAE comparison bar charts.
     """
-    print(f"--> Membaca data Iterasi 1 dari: {csv_iter1_path}")
+    print(f"\n--> Membaca data Iterasi 1 dari: {csv_iter1_path}")
     x_ai_1, y_dosen_1 = load_scores_from_csv(csv_iter1_path)
     tau_1 = kendall_tau(x_ai_1, y_dosen_1)
     mae_1 = mean_absolute_error(x_ai_1, y_dosen_1)
@@ -169,34 +201,55 @@ def generate_iteration_chart(csv_iter1_path, csv_iter2_path, output_img_path="gr
     # Also copy to docs directory if it exists
     docs_img_path = os.path.join(os.path.dirname(__file__), "../docs/grafik_iterasi_prototype.png")
     if os.path.exists(os.path.dirname(docs_img_path)):
-        plt.savefig(docs_img_path, bbox_inches='tight')
-        print(f"--> Copy grafik berhasil disimpan di: {docs_img_path}")
+        try:
+            plt.savefig(docs_img_path, bbox_inches='tight')
+            print(f"--> Copy grafik berhasil disimpan di: {docs_img_path}")
+        except Exception:
+            pass
 
-    plt.close()
+    # Display plot in Google Colab inline cell
+    if 'google.colab' in sys.modules or 'ipykernel' in sys.modules:
+        plt.show()
+    else:
+        plt.close()
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
     project_dir = os.path.abspath(os.path.join(script_dir, ".."))
 
-    # Determine CSV file paths dynamically from args or defaults
+    csv_1 = None
+    csv_2 = None
+    output_img = "grafik_iterasi_prototype.png"
+
+    # 1. Priority: Command Line Arguments
     if len(sys.argv) >= 3:
         csv_1 = sys.argv[1]
         csv_2 = sys.argv[2]
-        output_img = sys.argv[3] if len(sys.argv) >= 4 else "grafik_iterasi_prototype.png"
-    else:
-        # Default fallback CSV files
+        if len(sys.argv) >= 4:
+            output_img = sys.argv[3]
+    
+    # 2. Check Google Colab environment upload
+    if not csv_1 or not csv_2:
+        if 'google.colab' in sys.modules:
+            colab_1, colab_2 = try_colab_file_upload()
+            if colab_1 and colab_2:
+                csv_1 = colab_1
+                csv_2 = colab_2
+
+    # 3. Default fallback local CSV files
+    if not csv_1 or not csv_2 or not os.path.exists(str(csv_1)) or not os.path.exists(str(csv_2)):
         default_csv1 = os.path.join(project_dir, "docs", "IF23A_cleaned_binary.csv")
         default_csv2 = os.path.join(project_dir, "docs", "IF23A_cleaned_trinary.csv")
 
-        # Fallback search if specific binary/trinary files missing
         if not os.path.exists(default_csv1):
             default_csv1 = os.path.join(project_dir, "docs", "IF23A_cleaned.csv")
         if not os.path.exists(default_csv2):
             default_csv2 = os.path.join(project_dir, "docs", "IF23A_cleaned.csv")
 
-        csv_1 = default_csv1
-        csv_2 = default_csv2
-        output_img = "grafik_iterasi_prototype.png"
+        if not csv_1:
+            csv_1 = default_csv1
+        if not csv_2:
+            csv_2 = default_csv2
 
     print("=== SCRIPT GENERATE GRAFIK ITERASI PROTOTYPE DINAMIS ===")
     print(f"File Iterasi 1 : {csv_1}")
