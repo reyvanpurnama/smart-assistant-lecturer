@@ -1,0 +1,34 @@
+================================================================================
+LANDASAN PENGUAT METRIK EVALUASI (KENDALL'S TAU & MAE)
+Smart Assistant Lecturer (SAL)
+================================================================================
+
+Petunjuk Penggunaan:
+Gunakan teks ini untuk memperkuat landasan teori metrik di Bab II (Sub-bab 2.5) dan metodologi pengukuran di Bab III (Sub-bab 3.5 / 3.6) naskah Word Anda.
+
+--------------------------------------------------------------------------------
+1. LANDASAN TEORI UNTUK BAB II (TINJAUAN PUSTAKA)
+--------------------------------------------------------------------------------
+
+2.5. Metrik Evaluasi Penilaian Otomatis (Evaluation Metrics in ASAG)
+
+Untuk mengukur keandalan dan akurasi sistem penilaian otomatis berbasis Large Language Model (LLM) terhadap nilai aktual dosen (ground truth), digunakan dua metrik evaluasi komplementer:
+
+a. Kendall's Tau Correlation Coefficient (τ)
+   Kendall's Tau (τ) merupakan statistik non-parametrik yang mengukur tingkat keselarasan peringkat (rank correlation) antara dua himpunan penilaian ordinal (Kendall, 1938). Metrik ini dipilih dibanding Pearson correlation karena skor penilaian esai/rubrik bergradasi tidak diasumsikan berdistribusi normal (non-parametric) (Fleiss et al., 2003). Dalam konteks ASAG, Kendall's Tau menguji apakah AI mampu mempertahankan urutan kualitas jawaban mahasiswa secara konsisten sejalan dengan preferensi dosen pengampu (Haller et al., 2022). Nilai τ berkisar antara -1 hingga +1, di mana nilai τ > 0.70 mengindikasikan keselarasan peringkat yang sangat kuat (Strong/Very High Agreement).
+
+b. Mean Absolute Error (MAE)
+   Mean Absolute Error (MAE) mengukur rata-rata besarnya deviasi mutlak antara skor prediksi AI dan skor riil dosen dalam skala poin riil (0–100) (Willmott & Matsuura, 2005). Berbeda dengan Root Mean Squared Error (RMSE) yang memberikan penalti kuadratik berlebih pada pencilan (outlier), MAE memberikan gambaran linier yang intuitif dan objektif mengenai rata-rata kesalahan fisik penilaian dalam satuan nilai asli (Chai & Draxler, 2014). Formula MAE didefinisikan sebagai:
+
+   MAE = (1 / n) * Σ |y_i - ŷ_i|
+
+   di mana n adalah jumlah sampel (n = 33), y_i adalah nilai dosen, dan ŷ_i adalah nilai AI.
+
+
+--------------------------------------------------------------------------------
+2. REFERENSI TAMBAHAN UNTUK DAFTAR PUSTAKA
+--------------------------------------------------------------------------------
+
+Chai, T., & Draxler, R. R. (2014). Root mean square error (RMSE) or mean absolute error (MAE)?–Arguments against avoiding RMSE in the literature. Geoscientific model development, 7(3), 1247-1250.
+Kendall, M. G. (1938). A new measure of rank correlation. Biometrika, 30(1/2), 81-93.
+Willmott, C. J., & Matsuura, K. (2005). Advantages of the mean absolute error (MAE) over the root mean squared error (RMSE) in assessing average model performance. Climate research, 30(1), 79-82.
