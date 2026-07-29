@@ -170,11 +170,13 @@ export default function DosenDashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="bg-card border border-card-border rounded-2xl p-5 shadow-sm transition-all duration-300">
             <span className="text-[9px] uppercase tracking-wider text-muted-text font-bold block mb-1">Mata Kuliah Aktif</span>
-            <div className="text-xl font-extrabold text-foreground tracking-tight flex items-center gap-1.5">
-              <BookOpen className="w-5 h-5 text-indigo-500" />
-              Basis Data Lanjut
+            <div className="text-xl font-extrabold text-foreground tracking-tight flex items-center gap-1.5 truncate">
+              <BookOpen className="w-5 h-5 text-indigo-500 shrink-0" />
+              {activeAssignment ? activeAssignment.course_code : "Semua Kelas"}
             </div>
-            <p className="text-[10px] text-brand-primary mt-1 font-semibold">IF204 &bull; Semester 4</p>
+            <p className="text-[10px] text-brand-primary mt-1 font-semibold truncate">
+              {activeAssignment ? activeAssignment.title : "Belum ada tugas"}
+            </p>
           </div>
 
           <div className="bg-card border border-card-border rounded-2xl p-5 shadow-sm transition-all duration-300">

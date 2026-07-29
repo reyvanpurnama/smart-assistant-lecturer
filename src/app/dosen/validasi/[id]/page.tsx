@@ -242,7 +242,7 @@ export default function LecturerOverride({ params }: PageProps) {
             </div>
             <div>
               <h1 className="text-lg font-extrabold text-foreground tracking-tight">{submission.student_name}</h1>
-              <p className="text-xs text-muted-text">NIM: <span className="font-mono">{submission.nim}</span> &bull; Kelas: Basis Data Lanjut (IF204)</p>
+              <p className="text-xs text-muted-text">NIM: <span className="font-mono">{submission.nim}</span> &bull; Kelas: {assignment?.course_code || "Mata Kuliah"}</p>
             </div>
           </div>
 

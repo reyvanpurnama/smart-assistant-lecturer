@@ -101,7 +101,104 @@ export default function CreateAssignment() {
 - Tambahkan kolom 'tanggal_lahir' pada tabel mahasiswa.
 - Masukkan nilai tanggal lahir pada setiap data di tabel mahasiswa.`;
 
-  const loadTemplate = (type: "trinary" | "binary" = "trinary") => {
+  const loadTemplate = (type: "trinary" | "binary" | "web" | "algoritma" | "custom" = "trinary") => {
+    if (type === "custom") {
+      setCourseCode("");
+      setTitle("");
+      setEssayQuestion("");
+      setAcademicContext("");
+      setRubrics([
+        { id: "1", name: "", weight: 40, description: "" },
+        { id: "2", name: "", weight: 30, description: "" },
+        { id: "3", name: "", weight: 30, description: "" }
+      ]);
+      return;
+    }
+
+    if (type === "web") {
+      setCourseCode("IF301");
+      setTitle("Praktikum Web: Fetch REST API & Manipulasi DOM");
+      setEssayQuestion(`Buatlah fungsi JavaScript untuk melakukan async fetch data pengguna dari endpoint 'https://api.example.com/users', kemudian tampilkan daftar nama pengguna tersebut ke dalam elemen <ul> di DOM.
+
+Persyaratan:
+1. Gunakan sintaks async/await dan API fetch.
+2. Lakukan manipulasi DOM untuk memasukkan <li> nama pengguna.
+3. Sertakan error handling dengan try/catch.
+4. Jelaskan alur eksekusi asynchronous tersebut.`);
+
+      setAcademicContext(`DOKUMEN ACUAN & PANDUAN PENILAIAN PROGRAMMING WEB (TRINARY EVALUATION):
+
+1. Async/Await & Fetch Syntax (Bobot 30%)
+- 100: Menggunakan async function, await fetch(), dan .json() secara tepat tanpa error.
+- 50: Menggunakan .then() callback biasa atau ada kesalahan minor pada syntax await.
+- 0: Tidak menggunakan fetch API atau salah total.
+
+2. DOM Manipulation (Bobot 30%)
+- 100: Membuat elemen <li> baru dan memasukkannya ke <ul> menggunakan appendChild/innerHTML secara rapi.
+- 50: Menyisipkan teks biasa tanpa struktur elemen HTML yang sesuai.
+- 0: Tidak melakukan manipulasi DOM.
+
+3. Exception & Error Handling (Bobot 20%)
+- 100: Menyertakan blok try/catch dan memeriksa response.ok.
+- 50: Hanya menyertakan try/catch tanpa mengecek status response.
+- 0: Tidak ada error handling.
+
+4. Penjelasan Alur Logic (Bobot 20%)
+- 100: Menjelaskan alur asynchronous event loop, promise, dan penanganan error secara eksplisit.
+- 50: Menjelaskan alur secara singkat tanpa menyebutkan konsep promise/event-loop.
+- 0: Tidak ada penjelasan.`);
+
+      setRubrics([
+        { id: "1", name: "Async/Await & Fetch Syntax", weight: 30, description: "Penggunaan async, await fetch(), dan .json(). Skor: 0, 50, atau 100." },
+        { id: "2", name: "DOM Manipulation", weight: 30, description: "Pembuatan elemen <li> dan penyisipan ke <ul>. Skor: 0, 50, atau 100." },
+        { id: "3", name: "Exception & Error Handling", weight: 20, description: "Penanganan exception try/catch & response.ok. Skor: 0, 50, atau 100." },
+        { id: "4", name: "Penjelasan Alur Logic", weight: 20, description: "Penjelasan alur asynchronous event loop dan promise. Skor: 0, 50, atau 100." }
+      ]);
+      return;
+    }
+
+    if (type === "algoritma") {
+      setCourseCode("IF102");
+      setTitle("Praktikum Algoritma: Pseudocode Binary Search & Analisis Big-O");
+      setEssayQuestion(`Tuliskan pseudocode algoritma Binary Search untuk mencari nilai 'target' di dalam array terurut 'A' berukuran N.
+
+Persyaratan:
+1. Deklarasikan pointer pencarian (low, high, mid).
+2. Tentukan kondisi perulangan dan pergeseran pointer yang tepat.
+3. Kembalikan indeks posisi data jika ditemukan, atau -1 jika tidak ada.
+4. Jelaskan kompleksitas waktu (Big-O) pada kondisi worst-case dan best-case.`);
+
+      setAcademicContext(`DOKUMEN ACUAN & PANDUAN PENILAIAN ALGORITMA (TRINARY EVALUATION):
+
+1. Logika Pointer & Loop (Bobot 30%)
+- 100: Deklarasi pointer low = 0, high = N-1, dan perulangan while (low <= high) secara presisi.
+- 50: Kondisi perulangan menggunakan low < high (kurang tanda samadengan).
+- 0: Tidak ada perulangan atau logika pointer salah total.
+
+2. Kalkulasi Mid & Pergeseran Pointer (Bobot 30%)
+- 100: Perhitungan mid = floor((low + high)/2) dan penyesuaian low = mid + 1 atau high = mid - 1 tepat.
+- 50: Salah perhitungan mid atau lupa menambah/mengurangi 1 pada pergeseran pointer.
+- 0: Logika pencarian menyimpang.
+
+3. Kondisi Temu / Return Value (Bobot 20%)
+- 100: Memeriksa A[mid] == target (return mid) dan mengembalikan -1 jika tidak ditemukan.
+- 50: Mengembalikan true/false saja tanpa mengembalikan indeks posisi.
+- 0: Tidak ada kondisi penghentian.
+
+4. Analisis Kompleksitas Big-O (Bobot 20%)
+- 100: Menyebutkan Worst-case O(log N) dan Best-case O(1) beserta justifikasi pembagian ruang pencarian 1/2 di setiap iterasi.
+- 50: Menyebutkan O(log N) saja tanpa penjelasan atau salah menyimpulkan Best-case.
+- 0: Tidak ada analisis kompleksitas.`);
+
+      setRubrics([
+        { id: "1", name: "Logika Pointer & Loop", weight: 30, description: "Deklarasi low, high, dan perulangan while (low <= high). Skor: 0, 50, 100." },
+        { id: "2", name: "Kalkulasi Mid & Pergeseran", weight: 30, description: "Perhitungan mid dan penyesuaian low/high. Skor: 0, 50, 100." },
+        { id: "3", name: "Kondisi Temu / Return Value", weight: 20, description: "Pemeriksaan target dan nilai return indeks. Skor: 0, 50, 100." },
+        { id: "4", name: "Analisis Kompleksitas Big-O", weight: 20, description: "Penjelasan O(log N) worst case dan O(1) best case. Skor: 0, 50, 100." }
+      ]);
+      return;
+    }
+
     setCourseCode("IF204");
     setEssayQuestion(commonQuestion);
 
@@ -379,16 +476,37 @@ Setiap aspek penilaian harus dinilai secara BINER (Hanya boleh diberi skor 0 ATA
             <button
               type="button"
               onClick={() => loadTemplate("trinary")}
-              className="px-3 py-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-300 hover:text-white bg-indigo-500/10 hover:bg-indigo-600 border border-indigo-500/30 hover:border-indigo-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap flex items-center gap-1"
+              className="px-3 py-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-300 hover:text-white bg-indigo-500/10 hover:bg-indigo-600 border border-indigo-500/30 hover:border-indigo-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
             >
-              Iterasi 2: Trinary (Prototype Final)
+              SQL Trinary (Iterasi 2)
+            </button>
+            <button
+              type="button"
+              onClick={() => loadTemplate("web")}
+              className="px-3 py-1.5 text-xs font-semibold text-sky-600 dark:text-sky-300 hover:text-white bg-sky-500/10 hover:bg-sky-600 border border-sky-500/30 hover:border-sky-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+            >
+              Pemrograman Web (IF301)
+            </button>
+            <button
+              type="button"
+              onClick={() => loadTemplate("algoritma")}
+              className="px-3 py-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-300 hover:text-white bg-emerald-500/10 hover:bg-emerald-600 border border-emerald-500/30 hover:border-emerald-600 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+            >
+              Dasar Algoritma (IF102)
             </button>
             <button
               type="button"
               onClick={() => loadTemplate("binary")}
               className="px-3 py-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-white bg-slate-500/10 hover:bg-slate-700 border border-slate-500/20 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
             >
-              Iterasi 1: Binary (Prototype Awal)
+              SQL Binary (Iterasi 1)
+            </button>
+            <button
+              type="button"
+              onClick={() => loadTemplate("custom")}
+              className="px-3 py-1.5 text-xs font-semibold text-rose-500 hover:text-white bg-rose-500/10 hover:bg-rose-600 border border-rose-500/20 rounded-xl transition-all duration-300 shadow-sm whitespace-nowrap"
+            >
+              Form Kosong (Bebas)
             </button>
           </div>
         </div>
@@ -404,17 +522,28 @@ Setiap aspek penilaian harus dinilai secara BINER (Hanya boleh diberi skor 0 ATA
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-xs font-semibold text-muted-text block" htmlFor="course-code">Mata Kuliah / Kelas</label>
-                <select 
+                <div className="flex justify-between items-center">
+                  <label className="text-xs font-semibold text-muted-text block" htmlFor="course-code">Mata Kuliah / Kelas</label>
+                  <span className="text-[10px] text-indigo-500 dark:text-indigo-400 font-semibold">Bisa ketik bebas/pilih</span>
+                </div>
+                <input 
                   id="course-code" 
+                  list="course-preset-options"
+                  type="text"
+                  placeholder="e.g. IF204, IF301, Kecerdasan Buatan..." 
                   value={courseCode}
                   onChange={(e) => setCourseCode(e.target.value)}
-                  className="w-full text-xs bg-input-bg border border-input-border rounded-xl px-3 py-2.5 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300"
-                >
+                  required
+                  className="w-full text-xs bg-input-bg border border-input-border rounded-xl px-4 py-2.5 text-foreground focus:outline-none focus:border-indigo-500 transition-all duration-300"
+                />
+                <datalist id="course-preset-options">
                   <option value="IF204">Basis Data Lanjut (IF204)</option>
                   <option value="IF301">Pemrograman Web Enterprise (IF301)</option>
                   <option value="IF102">Dasar Algoritma &amp; Pemrograman (IF102)</option>
-                </select>
+                  <option value="IF405">Keamanan Informasi (IF405)</option>
+                  <option value="IF501">Kecerdasan Buatan (IF501)</option>
+                  <option value="IF602">Struktur Data &amp; Pemrograman (IF602)</option>
+                </datalist>
               </div>
 
               <div className="space-y-2">

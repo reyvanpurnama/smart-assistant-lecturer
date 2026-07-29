@@ -1,0 +1,95 @@
+Paper baru dari **Zhongzhou Chen & Tong Wan (Physics Education Research/UCF)** ini adalah **DAGING BANGET (super relevan)** untuk skripsimu, bro!
+
+Paper Chen & Wan ini persis membahas apa yang kamu kerjakan: **Penggunaan LLM (GPT-4o) untuk memberikan nilai parsial (*partial credit grading*) pada penjelasan proses penalaran/logika jawaban siswa berdasarkan rubrik multi-item bergradasi (0 dan 1 per item)**.
+
+Berikut adalah analisis dan **panduan revisi konkret (langkah demi langkah)** untuk menyempurnakan draft Proposal & Laporan Skripsimu:
+
+---
+
+## 📌 Mengapa Paper Ini "Penyelamat" Skripsimu?
+
+1. **Justifikasi Skema Biner Per Aspek (Iterasi 1):** Chen & Wan menegaskan bahwa menilai item rubrik secara biner (1/0 per aspek/kriteria) sangat efektif untuk mengukur keselarasan AI dan dosen. Ini langsung memberikan **landasan teori yang sangat kuat kenapa kamu menguji Binary Scoring di Iterasi 1**!
+
+
+2. **Justifikasi Partial Credit 3-Point (Iterasi 2):** Ketika nilai biner per aspek dijumlahkan atau digabungkan, ia secara alami membentuk skala *partial credit* bergradasi (seperti 0, 50, 100 milikmu). Chen & Wan membuktikan bahwa pendekatan ini mampu mencapai *human-level accuracy* (keselarasan selevel penilai manusia).
+
+
+3. **Mekanisme Chain-of-Thought (CoT) & Prompt Refinement:** Chen & Wan menunjukkan bahwa prompt yang menyuruh LLM menuliskan penalaran CoT sebelum mengeluarkan skor, serta menambahkan penjelasan spesifik (*rubric item explanation*) pada kriteria, terbukti secara drastis meningkatkan keselarasan nilai AI dan menurunkan kesalahan. Ini pas banget dengan temuan di Iterasi 2 skripsimu!
+
+
+
+---
+
+## 🛠️ PANDUAN REVISI DRAFT SKRIPSI (Step-by-Step)
+
+### 1. Revisi BAB II: TINJAUAN PUSTAKA
+
+#### A. Tambahkan Baris Baru di Tabel 2.1 (Ikhtisar Penelitian Terdahulu) [Halaman 21-22 Proposal]
+
+Tambahkan paper Chen & Wan ke dalam tabel agar tinjauan pustakamu semakin *up-to-date*:
+
+| No | Peneliti | Fokus / Pendekatan | Hasil Utama | Aspek yang Diadopsi |
+| --- | --- | --- | --- | --- |
+| **6** | **Chen & Wan** | Evaluasi *partial credit grading* LLM (GPT-4o) pada penjelasan langkah penalaran siswa berbasis rubrik multi-item biner (1/0 per item). | GPT-4o mencapai akurasi selevel manusia (70%-80% agreement). Teknik CoT dan *detailed rubric explanation* terbukti krusial meningkatkan keakuratan skor. | Pengadopsian struktur rubrik bergradasi (*multi-item partial credit*), penggunaan instruksi CoT sebelum keputusan nilai, serta evaluasi keselarasan AI terhadap penilai manusia. |
+
+#### B. Sisipkan Sub-bab Baru `2.2.3` atau Tambahkan Paragraf di Sub-bab `2.2.1`
+
+Tambahkan narasi ilmiah berikut untuk menjembatani teori biner dan *partial credit*:
+
+> **2.2.3 Konsep Skema Penilaian Biner dan Kredit Parsial (Partial Credit Scoring)**
+> Dalam pengembangan sistem *Automated Short Answer Grading* (ASAG), penentuan skema penilaian merupakan elemen krusial untuk mengukur pemahaman logika mahasiswa secara adil. Pada bentuk paling mendasar, penilaian dilakukan menggunakan skema biner (*binary scoring* atau *2-way classification*) yang membagi keputusan secara eksplisit menjadi benar (1) atau salah (0) (Dzikovska et al., 2013; Haller et al., 2022). Meskipun skema biner sederhana untuk diterapkan, penilaian biner secara holistik sering kali terlalu kaku karena memberikan penalti penuh pada kesalahan minor (Chen & Wan; Haller et al., 2022).
+> 
+> 
+> Untuk mengatasi ketiadaan fleksibilitas tersebut, penelitian terbaru oleh Chen & Wan menerapkan pendekatan *multi-item binary rubric*, di mana setiap kriteria/aspek spesifik dinilai secara biner (1/0), yang kemudian dikumulatifkan menjadi nilai kredit parsial (*partial credit*). Pendekatan bergradasi ini (seperti skema 3-point partial credit) terbukti mampu meningkatkan akurasi penilaian LLM hingga mencapai tingkat keselarasan penilai manusia (*human-level accuracy*), sekaligus mengakomodasi jawaban mahasiswa yang memiliki kebenaran logika secara parsial (Chen & Wan; Masters, 1982).
+> 
+> 
+
+---
+
+### 2. Revisi BAB III: METODOLOGI PENELITIAN
+
+#### A. Tambahkan Penjelasan pada Sub-bab 3.4 (Perancangan Sistem - Gambar 3.3 Struktur Prompt Modular)
+
+Di bagian penjelasan elemen `[CRITERIA]` dan `[TASK]`, tambahkan landasan paper dari Chen & Wan:
+
+> "Penyusunan elemen `[TASK]` menerapkan instruksi Chain-of-Thought (CoT) dengan memerintahkan model untuk menyusun rasionalisasi penalaran terlebih dahulu sebelum mengeuarkan skor akhir. Strategi ini merujuk pada temuan Chen & Wan yang membuktikan bahwa pemrosesan penalaran bertahap sebelum keputusan nilai secara signifikan meningkatkan stabilitas evaluasi LLM. Sementara itu, elemen `[CRITERIA]` dirancang menggunakan skema **3-Point Partial Credit Rubric** (skor 0, 50, 100 pada 10 aspek berbobot 10%) untuk memberikan batasan penalaran yang jelas bagi AI (Chen & Wan; Haller et al., 2022)."
+> 
+> 
+
+---
+
+### 3. Revisi BAB IV: HASIL DAN PEMBAHASAN
+
+Di Bab IV, hasil eksperimenmu (**Kendall’s Tau naik dari 0.4400 ke 0.7724** dan **MAE turun dari 18.33 ke 5.45 poin** pada Iterasi 2) sekarang punya **pembahasan yang sangat tajam dan kuat**!
+
+#### Perbarui Sub-bab 4.4 (Pembahasan dan Implikasi Hasil)
+
+Tambahkan paragraf penguat ini di Bab IV:
+
+> **4.4 Pembahasan dan Implikasi Hasil**
+> Peningkatan keselarasan peringkat sebesar +75.5% (Kendall’s $\tau = 0.7724$) serta penurunan rata-rata kesalahan skor sebesar -70.3% (MAE = 5.45 poin) pada Iterasi 2 secara empiris membuktikan keunggulan skema **3-Point Partial Credit Rubric** dibandingkan *Binary Scoring* kaku pada Iterasi 1. Hasil ini memperkuat temuan **Chen & Wan**, yang menunjukkan bahwa penggunaan rubrik parsial yang dilengkapi dengan penjelasan aspek secara terstruktur (*detailed rubric explanation*) merupakan kunci utama bagi Large Language Model (seperti GPT-4o) untuk mencapai tingkat presisi penilaian selevel dosen (*human-grade accuracy*).
+> 
+> 
+> Pada Iterasi 1, sistem biner memberikan penalti penuh (skor 0) pada kesalahan tipografi minor, yang menyebabkan deviasi nilai fisik yang tinggi (MAE 18.33 poin). Setelah diperbaiki pada Iterasi 2 dengan memberikan bobot parsial (skor 50) untuk jawaban yang benar secara logika namun memiliki kekurangan minor, LLM mampu meniru prioritas dan gradasi penilaian dosen secara presisi. Hal ini juga mengonfirmasi teori *Prompt-Engineering & Self-Consistency* (Chen & Wan; Wang et al., 2019), di mana pembatasan kriteria rubrik melalui lapisan middleware secara efektif mereduksi marjin kesalahan AI dalam menilai jawaban esai dan pseudocode mahasiswa.
+> 
+> 
+
+---
+
+## 🎯 RINGKASAN REVISI (Checklist)
+
+1. **Daftar Pustaka:** Masukkan sitasi Chen & Wan:
+> Chen, Z., & Wan, T. Using Large Language Models to Assign Partial Credit to Students' Explanations of Problem-Solving Process: Grade at Human Level Accuracy with Grading Confidence Index and Personalized Student-facing Feedback. *arXiv preprint*.
+
+
+2. **Bab II (Proposal):** Masukkan konsep biner vs partial credit dari Chen & Wan + Dzikovska et al. (2013) + Haller et al. (2022).
+
+
+3. **Bab III (Proposal):** Rujuk Chen & Wan untuk memperkuat alasan penggunaan CoT dan struktur prompt modular.
+
+
+4. **Bab IV (Laporan Skripsi):** Pakai temuan Chen & Wan untuk menjelaskan *mengapa* Iterasi 2 kamu sukses besar memangkas error MAE dari 18.33 ke 5.45 poin!
+
+
+
+Dengan tambahan paper Chen & Wan ini, naskah skripsimu **sudah sangat lengkap, ilmiah, kokoh, dan sulit disanggah oleh dosen penguji**! Semangat, bro!

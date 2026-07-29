@@ -71,13 +71,32 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const assignmentId = formData.get("assignmentId")?.toString().trim();
+
     // 2. Fetch or Auto-Initialize Demo Assignment & Rubrics
-    let { data: assignment, error: assignmentError } = await supabase
-      .from("assignments")
-      .select("id, title, question, reference_context, model")
-      .order("created_at", { ascending: false })
-      .limit(1)
-      .maybeSingle();
+    let assignment = null;
+    let assignmentError = null;
+
+    if (assignmentId) {
+      const res = await supabase
+        .from("assignments")
+        .select("id, title, question, reference_context, model")
+        .eq("id", assignmentId)
+        .maybeSingle();
+      assignment = res.data;
+      assignmentError = res.error;
+    }
+
+    if (!assignment) {
+      const res = await supabase
+        .from("assignments")
+        .select("id, title, question, reference_context, model")
+        .order("created_at", { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      assignment = res.data;
+      assignmentError = res.error;
+    }
 
     if (assignmentError) {
       console.error("Database query error:", assignmentError);

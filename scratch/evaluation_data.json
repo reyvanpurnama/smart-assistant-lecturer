@@ -1,0 +1,238 @@
+{
+  "dataset": [
+    {
+      "nim": "200102027",
+      "name": "ALLIF FADHLAN ARIIDHI",
+      "aiScore": 100,
+      "finalScore": 100,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102003",
+      "name": "Abdullah Nurhadi Krishnamurti",
+      "aiScore": 81.5,
+      "finalScore": 81.5,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102004",
+      "name": "Abdurrahman Lunny Irham",
+      "aiScore": 94,
+      "finalScore": 94,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102005",
+      "name": "Achmad Mahdi Adyan",
+      "aiScore": 100,
+      "finalScore": 100,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102012",
+      "name": "Ahnaf Musyaffa",
+      "aiScore": 90,
+      "finalScore": 90,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102013",
+      "name": "Aisyiyah Zahra Hariah Attin",
+      "aiScore": 92,
+      "finalScore": 92,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102022",
+      "name": "ANGGA PAJRI PADILAH",
+      "aiScore": 87,
+      "finalScore": 87,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102025",
+      "name": "Arfian Setiawan",
+      "aiScore": 96,
+      "finalScore": 96,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102027",
+      "name": "Aulia Marwah Kandari",
+      "aiScore": 83.4,
+      "finalScore": 83.4,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102031",
+      "name": "Dafffa Aqyla Riyadi",
+      "aiScore": 91,
+      "finalScore": 91,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102032",
+      "name": "Darel Saffana Darmawan",
+      "aiScore": 83.4,
+      "finalScore": 83.4,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102033",
+      "name": "Daren Saffana Darmawan",
+      "aiScore": 89,
+      "finalScore": 89,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102034",
+      "name": "Decky Registian Lesmana",
+      "aiScore": 96,
+      "finalScore": 96,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102035",
+      "name": "DESTI NOVIANTY",
+      "aiScore": 78,
+      "finalScore": 78,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102036",
+      "name": "Fariz Rizal Subayu Luqmanul Hakim",
+      "aiScore": 90,
+      "finalScore": 90,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102038",
+      "name": "Diky Darmawan",
+      "aiScore": 89,
+      "finalScore": 89,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102041",
+      "name": "Fachri Fatrian Nugraha",
+      "aiScore": 81,
+      "finalScore": 81,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102042",
+      "name": "Fahmi Maulana Sitakar",
+      "aiScore": 91,
+      "finalScore": 91,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102049",
+      "name": "Fauzi Maulana Akbar",
+      "aiScore": 94,
+      "finalScore": 94,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102051",
+      "name": "Fina Faradilla",
+      "aiScore": 90,
+      "finalScore": 90,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102052",
+      "name": "Gita Rohimawati",
+      "aiScore": 86.5,
+      "finalScore": 86.5,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102056",
+      "name": "Hawa aufa",
+      "aiScore": 88,
+      "finalScore": 88,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102065",
+      "name": "Luthfi Fauzan",
+      "aiScore": 79,
+      "finalScore": 79,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102070",
+      "name": "Makbul Insan Darojat",
+      "aiScore": 88,
+      "finalScore": 88,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102081",
+      "name": "Muhammad Akmal Hidayatulloh",
+      "aiScore": 94,
+      "finalScore": 94,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102084",
+      "name": "Muhammad Faathir Al Mukhrij",
+      "aiScore": 96,
+      "finalScore": 96,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102086",
+      "name": "Muhammad Fathi Ulumuddin",
+      "aiScore": 80,
+      "finalScore": 80,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102090",
+      "name": "Muhammad Ilyas Satria Fauzan",
+      "aiScore": 92.5,
+      "finalScore": 92.5,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102092",
+      "name": "Muhammad Nawa Bayhaqi",
+      "aiScore": 96,
+      "finalScore": 96,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102100",
+      "name": "Naufal akbar muhadzzib",
+      "aiScore": 98,
+      "finalScore": 98,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102111",
+      "name": "Raihan Hafidz Putra",
+      "aiScore": 100,
+      "finalScore": 100,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102115",
+      "name": "REGINA ULIMA PRASISTA AURA",
+      "aiScore": 86.5,
+      "finalScore": 86.5,
+      "status": "Graded"
+    },
+    {
+      "nim": "230102123",
+      "name": "Sultan Fadhilah Hilmiqashmal",
+      "aiScore": 90,
+      "finalScore": 90,
+      "status": "Graded"
+    }
+  ],
+  "pearson": 1,
+  "qwk100": 1,
+  "qwk10": 1
+}

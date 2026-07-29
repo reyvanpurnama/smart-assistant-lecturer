@@ -45,4 +45,6 @@ eng.traineddata
 
 # Student submission documents
 /jawaban_mahasiswa/
-/scratch/evaluation_data.json
+# Python cache
+__pycache__/
+*.pyc
