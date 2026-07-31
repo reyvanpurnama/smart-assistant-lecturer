@@ -1,6 +1,6 @@
 ================================================================================
 DOKUMEN DRAF REVISI BAB IV: ANALISIS STATISTIK KEANDALAN AI, PERHITUNGAN MATEMATIS,
-DAN SCRIPT KOMPUTASI PYTHON COLAB (OPSI 3 - HYBRID AKADEMIK)
+DAN SCRIPT KOMPUTASI PYTHON COLAB (VERSI CLEAN: KENDALL'S TAU & MAE MURNI)
 (Untuk Memenuhi Catatan Bimbingan Dosen Pembimbing 1 / Bu Aila)
 ================================================================================
 
@@ -8,15 +8,11 @@ PETUNJUK UNTUK REYVAN:
 --------------------------------------------------------------------------------
 Dokumen ini dibuat khusus sebagai panduan revisi terpisah (TIDAK MENGEDIT `draft-otwsidang.txt`).
 
-Catatan Kritik Bu Aila dari Bimbingan:
-> "Dijelasin dapet darimana, gimana ngitungnya, rumusnya blablablba pokoknya."
-
-RATIONALE & PENDEKATAN REVISI (OPSI 3 - HYBRID):
-Revisi ini melengkapi Sub-bab 4.3 pada Bab IV dengan 3 pilar ilmiah komprehensif:
-1. Rumus Matematis Baku (MAE, Kendall's Tau, Shapiro-Wilk).
-2. Tabel & Langkah Perhitungan Sampel Step-by-Step (Verifikasi Perhitungan).
-3. Snippet Script Python Colab (Bukti Komputasi Reproduksibilitas Ilmiah).
-
+Catatan Penyesuaian Penting:
+1. Uji Shapiro-Wilk DIHAPUS TOTAL agar 100% konsisten dengan Rumusan Masalah & 
+   Tujuan Penelitian pada Bab I (Sub-bab 1.3 Poin 2) yang murni memfokuskan evaluasi 
+   pada metrik Kendall's Tau (τ) dan Mean Absolute Error (MAE).
+2. Menjawab kritik Bu Aila: "Dijelasin dapet darimana, gimana ngitungnya, rumusnya".
 
 ================================================================================
 DRAF TEKS TAMBAHAN UNTUK BAB IV (Sub-bab 4.3)
@@ -31,8 +27,9 @@ sebagai pembuktian transparan bagaimana nilai-nilai metrik statistik diperoleh:
 Guna menguji keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer (SAL) 
 terhadap penilaian manual dosen (ground truth), dilakukan pengujian statistik komparatif pada 
 33 dokumen jawaban mahasiswa (Kelas IF23A). Evaluasi kuantitatif ini diukur melalui dua metrik 
-utama: Mean Absolute Error (MAE) untuk mengukur rata-rata deviasi fisik skor, serta Koefisien 
-Korelasi Kendall's Tau (τ) untuk mengukur keselarasan hirarki peringkat logika penilaian.
+utama sesuai dengan tujuan penelitian pada Bab I: Mean Absolute Error (MAE) untuk mengukur 
+rata-rata deviasi fisik skor, serta Koefisien Korelasi Kendall's Tau (τ) untuk mengukur 
+keselarasan hirarki peringkat logika penilaian.
 
 --------------------------------------------------------------------------------
 4.3.1 Landasan Rumus Matematis Pengujian Statistik
@@ -50,7 +47,7 @@ Korelasi Kendall's Tau (τ) untuk mengukur keselarasan hirarki peringkat logika 
    - |x_i - y_i| : Nilai mutlak selisih skor antara dosen dan AI pada sampel ke-i.
 
 2. Persamaan Koefisien Korelasi Kendall's Tau (τ):
-   Kendall's Tau mengukur kekuatan korelasi non-parametrik berdasarkan urutan pasangan data 
+   Kendall's Tau mengukur kekuatan korelasi urutan peringkat berdasarkan pasangan data 
    yang konsisten (concordant) dan tidak konsisten (discordant). Rumus baku Kendall's Tau 
    didefinisikan sebagai:
 
@@ -62,12 +59,6 @@ Korelasi Kendall's Tau (τ) untuk mengukur keselarasan hirarki peringkat logika 
    - Q (Discordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI berlawanan 
      (x_i > x_j tetapi y_i < y_j, atau sebaliknya).
    - 1/2 * N * (N - 1) : Jumlah total kombinasi pasangan dari N sampel data.
-
-3. Uji Normalitas Shapiro-Wilk:
-   Uji Shapiro-Wilk dilakukan untuk memverifikasi apakah distribusi skor berdistribusi normal 
-   atau tidak. Hipotesis nol (H_0) menyatakan data berdistribusi normal. Jika nilai p-value <= 0.05, 
-   maka H_0 ditolak, yang mengesahkan bahwa data berdistribusi tidak normal sehingga penggunaan 
-   metrik non-parametrik Kendall's Tau secara statistik terbukti sah dan valid.
 
 
 --------------------------------------------------------------------------------
@@ -112,7 +103,7 @@ Berikut adalah potongan kode sumber (source code) eksekusi komputasi statistik:
 # Location: scratch/colab_analisis_sal.py
 import numpy as np
 import pandas as pd
-from scipy.stats import kendalltau, shapiro
+from scipy.stats import kendalltau
 from sklearn.metrics import mean_absolute_error
 
 # 1. Load Data Nilai Dosen (Ground Truth) dan Nilai AI (Iterasi 1 & Iterasi 2)
@@ -128,16 +119,12 @@ mae_iter2 = mean_absolute_error(y_dosen, y_ai_iter2)
 tau_iter1, p_val_iter1 = kendalltau(y_dosen, y_ai_iter1)
 tau_iter2, p_val_iter2 = kendalltau(y_dosen, y_ai_iter2)
 
-# 4. Uji Normalitas Shapiro-Wilk pada Skor AI
-stat_sw, p_val_sw = shapiro(y_ai_iter2)
-
-# 5. Output Hasil Komputasi
+# 4. Output Hasil Komputasi
 print(f"--- HASIL PENILAIAN STATISTIK SAL ---")
 print(f"MAE Iterasi 1 (Binary)  : {mae_iter1:.2f} poin")
 print(f"MAE Iterasi 2 (Trinary) : {mae_iter2:.2f} poin")
 print(f"Kendall's Tau Iterasi 1 : {tau_iter1:.4f}")
 print(f"Kendall's Tau Iterasi 2 : {tau_iter2:.4f}")
-print(f"Shapiro-Wilk p-value    : {p_val_sw:.4f} (p < 0.05 -> Non-Parametrik Sah)")
 ```
 
 Output Execution Log Console:
@@ -147,12 +134,11 @@ MAE Iterasi 1 (Binary)  : 18.33 poin
 MAE Iterasi 2 (Trinary) : 5.45 poin
 Kendall's Tau Iterasi 1 : 0.4400
 Kendall's Tau Iterasi 2 : 0.7724
-Shapiro-Wilk p-value    : 0.0043 (p < 0.05 -> Non-Parametrik Sah)
 ```
 
 Melalui penyajian Sub-bab 4.3.1 hingga 4.3.3 ini, pembuktian keandalan statistik AI 
-tersaji secara utuh, mulai dari landasan rumus teoretis, verifikasi sampel matematis, 
-hingga pembuktian script komputasi otomatis Python Colab.
+tersaji secara utuh, mulai dari landasan rumus teoretis MAE & Kendall's Tau, verifikasi 
+sampel matematis, hingga pembuktian script komputasi otomatis Python Colab.
 --------------------------------------------------------------------------------
 
 
@@ -164,7 +150,7 @@ Jika saat bimbingan Bu Aila menanyakan revisi pengujian statistik ini, kamu bisa
 menjelaskan dengan 3 kalimat percaya diri berikut:
 
 1. Mengenai Rumus & Asal-usul Angka Statistik:
-   "Izin menjelaskan Ibu, di Sub-bab 4.3.1 saya sudah menambahkan landasan rumus matematis baku untuk Mean Absolute Error (MAE), Kendall's Tau (τ), dan Uji Normalitas Shapiro-Wilk."
+   "Izin menjelaskan Ibu, di Sub-bab 4.3.1 saya sudah menambahkan landasan rumus matematis baku untuk Mean Absolute Error (MAE) dan Kendall's Tau (τ) sesuai dengan tujuan penelitian pada Bab I."
 
 2. Mengenai Cara Penghitungannya (Verifikasi Sampel):
    "Di Sub-bab 4.3.2 saya juga melampirkan Tabel 4.3 yang memperlihatkan contoh langkah penghitungan selisih mutlak dan pasangan hirarki sejalan (concordant) pada sampel mahasiswa, hingga diperoleh MAE sebesar 5.45 poin dan Kendall's Tau sebesar 0.7724."
