@@ -1,0 +1,158 @@
+================================================================================
+DOKUMEN DRAF REVISI BAB IV: PENJELASAN DETAILED ANTAARMUKA SISTEM (UI)
+DAN MEKANISME KOREKSI MANUAL (MANUAL OVERRIDE)
+(Bebas Istilah "Human-in-the-Loop" & Solusi Kebingungan Kolom Skor Dosen)
+================================================================================
+
+PETUNJUK UNTUK REYVAN:
+--------------------------------------------------------------------------------
+Dokumen ini dibuat khusus sebagai panduan revisi terpisah (TIDAK MENGEDIT `draft-otwsidang.txt`).
+
+Catatan Penyesuaian Penting:
+1. Istilah "Human-in-the-Loop" DIHAPUS TOTAL agar tidak menimbulkan pertanyaan teori baru
+   dari dosen penguji. Diganti dengan istilah baku yang sudah ada di Bab I & III: 
+   "Fitur Koreksi Manual Dosen (Manual Override)".
+2. Menjawab kritik Bu Aila tentang penjelasan screenshot UI yang "terlalu general" 
+   dengan memberikan bedah fungsi komprehensif untuk setiap gambar antarmuka (Gambar 4.1 s.d. 4.4).
+3. Memberikan jawaban & solusi atas kebingungan Bu Aila mengenai kolom "Skor Akhir Dosen".
+
+
+================================================================================
+[BAGIAN 1] SOLUSI & ALASAN AKADEMIK MENGENAI KOLOM "SKOR AKHIR DOSEN"
+================================================================================
+
+Kritik Bu Aila dari Bimbingan:
+> "Ini maksud skor akhir dosen tuh apa? kok sama semua? ini acuan nilai dosennya bukan? 
+> coba kasih penjelasannya biar ga bingung"
+
+SOLUSI & PENJELASAN UNTUK SKRIPSI:
+--------------------------------------------------------------------------------
+Penyebab kebingungan Bu Aila adalah karena pada tabel rekapitulasi awal, sistem menampilkan 
+dua kolom sejajar (Skor AI dan Skor Dosen) yang nilainya sama persis sebelum dosen melakukan 
+koreksi. Hal ini membuat dosen mengira kolom tersebut adalah "Acuan Nilai Manual Asli (Ground Truth)".
+
+Rancangan Penjelasan & Perbaikan Antarmuka:
+1. Pada antarmuka dan rekapitulasi data, sebelum dosen melakukan koreksi manual, 
+   status nilai ditandai secara jelas sebagai "[Belum Divalidasi]" dan murni menampilkan 
+   Skor Evaluasi AI.
+2. Kolom "Skor Akhir Dosen" baru aktif dan terisi angka apabila dosen secara eksplisit 
+   menggunakan Fitur Koreksi Manual (Manual Override) pada lembar validasi.
+3. Dengan mekanisme ini, pembaca skripsi dapat membedakan secara tegas antara:
+   - Nilai Evaluasi Otomatis AI (Hasil keluaran model LLM).
+   - Nilai Koreksi Manual Dosen (Hasil intervensi dosen jika nilai AI perlu direvisi).
+
+
+================================================================================
+[BAGIAN 2] DRAF TEKS PENJELASAN DETAILED SETIAP SCREENSHOT UI (BAB IV Sub-bab 4.1)
+================================================================================
+
+Teks di bawah ini digunakan untuk memperjelas narasi Sub-bab 4.1 (Implementasi Antarmuka Sistem)
+di Bab IV agar tidak terlalu umum (general):
+
+--------------------------------------------------------------------------------
+4.1.1 Implementasi Antarmuka Pengguna (User Interface)
+
+Implementasi antarmuka sistem Smart Assistant Lecturer (SAL) dibangun menggunakan framework 
+Next.js dengan pendekatan Tailwind CSS guna menghasilkan tampilan yang responsif, intuitif, 
+dan mendukung aksesibilitas pengguna. Setiap halaman antarmuka dirancang untuk merealisasikan 
+kebutuhan fungsional dosen dan mahasiswa sebagaimana yang telah dimodelkan pada Use Case 
+Diagram (Gambar 3.1).
+
+Penjelasan detail fungsi dan alur kerja teknis dari setiap antarmuka dijabarkan sebagai berikut:
+
+--------------------------------------------------------------------------------
+1. Antarmuka Pembuatan Tugas (/dosen/buat-tugas) - Gambar 4.1
+
+Halaman ini berfungsi sebagai pusat kendali dosen pengampu untuk mengonfigurasi penugasan 
+baru beserta parameter penilaian yang dinamis. 
+
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.1:
+a. Form Informasi Umum & Pilihan Matkul: Tempat dosen memasukkan nama mata kuliah (contoh: 
+   Basis Data Lanjut, Pemrograman Web, Dasar Algoritma) dan judul penugasan.
+b. Input Soal Esai [SOAL_ESAI]: Form teks tempat dosen memasukkan naskah soal esai atau 
+   instruksi praktikum yang wajib dikerjakan oleh mahasiswa.
+c. Input Konteks Akademik [CONTEXT]: Form teks tempat dosen memasukkan dokumen referensi, 
+   skema tabel, atau kunci jawaban acuan. Data ini dimanfaatkan oleh middleware sebagai 
+   mekanisme Knowledge Grounding untuk mengunci ruang lingkup penalaran AI.
+d. Tabel Konfigurasi Rubrik [CRITERIA]: Dosen dapat menambah kriteria rubrik secara fleksibel 
+   beserta bobot persentase (%) dan deskripsi kriteria. 
+e. Pilihan Template Preset: Menyediakan tombol "Load Template" untuk memuat konfigurasi 
+   rubrik secara otomatis untuk berbagai skenario mata kuliah.
+
+Data yang diinputkan pada antarmuka ini akan disimpan ke dalam tabel `assignments` dan `rubrics` 
+pada basis data Supabase, yang nantinya diserap oleh middleware saat proses inferensi AI berlangsung.
+
+
+--------------------------------------------------------------------------------
+2. Antarmuka Dashboard Dosen (/dosen) - Gambar 4.2
+
+Halaman ini menyajikan rekapitulasi ringkasan statistik dan daftar seluruh pengumpulan 
+jawaban mahasiswa yang telah diproses oleh sistem.
+
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.2:
+a. Kartu Ringkasan Statistik: Menyajikan informasi kuantitatif mengenai Mata Kuliah Aktif, 
+   Jumlah Tugas, Total Submisi Mahasiswa, dan Rata-rata Skor Evaluasi AI.
+b. Tabel Rekapitulasi Penilaian Mahasiswa: Menampilkan daftar mahasiswa (NIM, Nama), 
+   Waktu Submisi, Skor Evaluasi AI, serta Status Validasi Dosen.
+c. Indikator Status Validasi Dinamis: 
+   - Status "[Belum Divalidasi]" (Badge Kuning): Menandakan bahwa skor yang ditampilkan 
+     murni merupakan hasil evaluasi otomatis AI (Skor Evaluasi AI).
+   - Status "[Telah Divalidasi]" (Badge Hijau): Menandakan bahwa dosen telah meninjau dan 
+     melakukan penetapan nilai final melalui fitur Manual Override.
+d. Tombol Aksi "Detail & Validasi": Mengarahkan dosen ke lembar peninjauan rincian penalaran AI.
+
+
+--------------------------------------------------------------------------------
+3. Antarmuka Validasi dan Koreksi Dosen (/dosen/validasi/[id]) - Gambar 4.3
+
+Halaman ini merupakan antarmuka krusial yang menyajikan transparansi hasil evaluasi AI 
+serta memberikan kendali penuh kepada dosen untuk merevisi nilai.
+
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.3:
+a. Panel Jawaban Mahasiswa: Menampilkan teks murni jawaban mahasiswa yang telah diekstrak 
+   dan dibersihkan oleh sub-modul parser middleware.
+b. Panel Rincian Evaluasi Per Rubrik: Menampilkan skor keluaran AI pada masing-masing 
+   aspek rubrik (skala 0-100) beserta umpan balik (feedback) deskriptif dalam Bahasa Indonesia.
+c. Log Penalaran Global (Chain-of-Thought Reasoning): Menampilkan penjelasan rasional 
+   secara menyeluruh (`global_reasoning`) yang dihasilkan oleh model GPT-OSS 120B mengenai 
+   kelebihan dan kekurangan logika jawaban mahasiswa.
+d. Fitur Koreksi Manual (Manual Override): Dosen dapat mengubah angka skor pada aspek rubrik 
+   tertentu jika ditemukan ketidaksesuaian. Ketika dosen mengubah skor, sistem secara otomatis 
+   menghitung ulang total nilai terbobot dan memperbarui status menjadi "[Telah Divalidasi]".
+
+
+--------------------------------------------------------------------------------
+4. Antarmuka Portal Mahasiswa (/mahasiswa) - Gambar 4.4
+
+Halaman ini dirancang untuk mahasiswa dalam mengunggah berkas jawaban dan menerima 
+umpan balik evaluasi secara responsif.
+
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.4:
+a. Form Pengunggahan Dokumen: Mahasiswa menginputkan NIM, Nama, serta mengunggah berkas 
+   jawaban digital (.pdf, .docx, .txt).
+b. Tampilan Umpan Balik Formatif Real-time: Setelah proses inferensi AI selesai dieksekusi 
+   oleh middleware, mahasiswa dapat melihat total skor sementara beserta rincian umpan balik 
+   formatif per aspek rubrik secara transparan. Umpan balik ini membantu mahasiswa memahami 
+   letak kesalahan logika pada jawaban yang dikumpulkan.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+[BAGIAN 3] CHEAT SHEET / CARA MENJELASKAN KE BU AILA SAAT BIMBINGAN
+================================================================================
+
+Jika saat bimbingan Bu Aila menanyakan revisi antarmuka dan kolom skor ini, 
+kamu bisa menjelaskan dengan 3 poin ringkas berikut:
+
+1. Mengenai Penjelasan Screenshot UI yang Lebih Detail:
+   "Izin menjelaskan Ibu, pada Bab IV Sub-bab 4.1.1, penjelasan setiap gambar screenshot antarmuka sudah saya perjelas rincian komponennya. Saya bedah fungsi form input soal, dokumen grounding, rubrik, hingga alur pembentukan nilai AI-nya."
+
+2. Mengenai Kebingungan Kolom "Skor Akhir Dosen":
+   "Mengenai kolom Skor Dosen yang sebelumnya membuat bingung, sudah saya perjelas di antarmuka dan teks naskah Ibu. Sebelum dosen melakukan koreksi manual, statusnya ditandai sebagai '[Belum Divalidasi]' dan murni menampilkan Skor Evaluasi AI. Kolom Skor Dosen baru aktif dan terisi angka apabila dosen menggunakan fitur Koreksi Manual (Manual Override)."
+
+3. Mengenai Keterkaitan UI dengan Middleware:
+   "Antarmuka Pembuatan Tugas juga sudah saya hubungkan penjelasannya dengan Bab III Ibu, yaitu bagaimana form rubrik dan dokumen acuan diinputkan dosen lalu dirakit oleh middleware menjadi prompt grounding untuk AI."
+
+================================================================================
+END OF REVISION GUIDE DOCUMENT FOR UI & OVERRIDE
+================================================================================

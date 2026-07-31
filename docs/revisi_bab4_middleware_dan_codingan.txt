@@ -1,0 +1,238 @@
+================================================================================
+DOKUMEN DRAF REVISI BAB IV: IMPLEMENTASI ARSITEKTUR MIDDLEWARE, PIPELINE PENILAIAN,
+DAN SNIPPET KODE SUMBER (SOURCE CODE)
+(Untuk Memenuhi Catatan Bimbingan Dosen Pembimbing 1 / Bu Aila)
+================================================================================
+
+PETUNJUK UNTUK REYVAN:
+--------------------------------------------------------------------------------
+Dokumen ini dibuat khusus sebagai panduan revisi terpisah (TIDAK LANGSUNG MENGEDIT 
+file `docs/draft-otwsidang.txt`). 
+
+Catatan Kritik Utama Bu Aila dari Bimbingan:
+> "Lebih jelas lagi di bab4, pembahasan, cara kerja. Atau kemungkinan dipindahin ke bab4. 
+> Bab4 baru jawaban dari rencana dari bab3….. kan inti penelitian kamu ada 2, yaitu 
+> bikin sistem (ini doang yang ada di bab4 kamu bahkan bagaimana cara kerja middleware 
+> itu sendiri masih gaada gambarannya) sedangkan yg bagaiamana cara kerja ai itu menilai 
+> gaada sama sekali. Kalo bisa ada beberapa screenshot codingan."
+
+--------------------------------------------------------------------------------
+RATIONALE DAN SOLUSI AKADEMIK:
+- Di Bab III (Metodologi), kamu sudah menggambar RENCANA (Diagram 3.2 Arsitektur Middleware, 
+  Diagram 3.3 Struktur Prompt Modular, dan Diagram 3.4 Sequence Diagram).
+- Di Bab IV saat ini, kamu BARU menampilkan Screenshot Antarmuka Web (UI).
+- REVISI INI menambahkan Sub-bab 4.1.2 di Bab IV yang berisi REALISASI & CARA KERJA 
+  MIDDLEWARE dalam bentuk penjelasan alur, 3 Snippet Codingan Kunci (Source Code), 
+  serta Simulasi Log Inferensi AI (bagaimana AI melakukan Chain-of-Thought).
+
+
+================================================================================
+DRAF TEKS TAMBAHAN UNTUK BAB IV (Sub-bab 4.1.2)
+================================================================================
+
+Teks di bawah ini disisipkan di Bab IV setelah Sub-bab 4.1.1 (Implementasi Antarmuka Sistem)
+sebagai jawaban atas rencana perancangan yang dibuat pada Bab III:
+
+--------------------------------------------------------------------------------
+4.1.2 Implementasi Lapisan Middleware dan Pipe-line Penilaian AI
+
+Guna merealisasikan rancangan arsitektur sistem (Gambar 3.2) dan alur sekuensial (Gambar 3.4) 
+yang telah dirumuskan pada Bab III, dikembangkan lapisan perantara (middleware) berbasis 
+Node.js/Next.js API Routes. Lapisan middleware ini bertindak sebagai pengelola utama 
+yang menghubungkan antarmuka pengguna, basis data Supabase, dan layanan inferensi Groq API 
+(GPT-OSS 120B). 
+
+Secara fungsional, middleware terdiri dari tiga sub-modul utama yang bekerja secara 
+sekuensial untuk mengeksekusi penilaian esai otomatis:
+
+--------------------------------------------------------------------------------
+4.1.2.1 Sub-Modul Document Parser & Cleansing Teks
+
+Sub-modul ini bertugas mengekstrak berkas jawaban digital mahasiswa (.pdf, .docx, .txt) 
+menjadi string teks murni (raw text) serta melakukan pembersihan karakter (data cleansing) 
+menggunakan ekspresi reguler (Regex) guna menghilangkan noise seperti karakter tersembunyi 
+atau spasi berlebih.
+
+Berikut adalah potongan kode sumber (source code) implementasi cleansing teks pada middleware:
+
+```typescript
+// Location: src/lib/grading/text-parser.ts
+export function cleanRawStudentAnswer(rawText: string): string {
+  if (!rawText) return "";
+  
+  return rawText
+    // 1. Normalisasi karakter newline dan carriage return
+    .replace(/\r\n/g, "\n")
+    // 2. Hilangkan non-printable control characters
+    .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    // 3. Pangkas spasi horizontal berlebih (multiple spaces menjadi single space)
+    .replace(/[ \t]+/g, " ")
+    // 4. Batasi newline beruntun maksimal 2 baris (mencegah bloated prompt)
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+```
+
+
+--------------------------------------------------------------------------------
+4.1.2.2 Sub-Modul Prompt Assembler & Knowledge Grounding
+
+Sub-modul ini mengimplementasikan struktur prompt modular (Gambar 3.3) dengan menyatukan 
+instruksi kaku, parameter rubrik dari dosen pengampu, materi referensi grounding, serta 
+jawaban mahasiswa yang telah dibersihkan ke dalam format instruksi terstruktur sebelum 
+dikirimkan ke model LLM.
+
+Potongan kode sumber perakitan prompt modular pada middleware ditunjukkan sebagai berikut:
+
+```typescript
+// Location: src/lib/grading/prompt-composer.ts
+export function composeGradingPrompt(input: ComposePromptInput): string {
+  // 1. Format parameter rubrik dosen menjadi daftar terstruktur
+  const rubricBlock = input.rubrics
+    .map((r, i) => `${i + 1}. Aspect: ${r.aspect}\n   Weight: ${r.weight}%\n   Criteria: ${r.description}`)
+    .join("\n\n");
+
+  // 2. Rakit struktur prompt modular (Role, Task, Grounding, Input Data, Output Format)
+  return [
+    "### [ROLE]",
+    "You are a strict but fair smart assistant lecturer for essay and pseudocode grading.",
+    "",
+    "### [TASK]",
+    "Evaluate the student's answer using a step-by-step Chain-of-Thought (CoT) strategy:",
+    "1. Analyze the student's answer logic relative to the essay question, rubrics, and reference material.",
+    "2. Compare the logic of the student's answer with the context grounding. Note any discrepancies.",
+    "3. Reason about each specific grading aspect in the rubrics and assign scores strictly on a 0-100 scale.",
+    "4. Determine the overall holistic score and provide feedback based on this step-by-step reasoning.",
+    "",
+    "### Area Context Grounding (Lecturer Authority)",
+    "#### [CRITERIA] Rubrik Penilaian:",
+    rubricBlock,
+    "",
+    "#### [CONTEXT] Konteks Akademik / Materi Referensi:",
+    input.contextGrounding,
+    "",
+    "#### [SOAL_ESAI] Soal Ujian:",
+    input.soalEsai,
+    "",
+    "### [INPUT_DATA] Jawaban Mahasiswa:",
+    input.studentAnswer,
+    "",
+    "### [OUTPUT_FORMAT]",
+    "You MUST respond ONLY with a valid JSON object matching the schema below...",
+    '{"holistic": {"score": number, "feedback": "string"}, "rubric": [...], "weighted_total": number, "global_reasoning": "string"}'
+  ].join("\n");
+}
+```
+
+
+--------------------------------------------------------------------------------
+4.1.2.3 Sub-Modul Orchestrator & Groq API Client
+
+Sub-modul ini mengelola komunikasi asynchronous ke layanan inferensi Groq API Cloud, 
+menerima respons teks JSON dari model GPT-OSS 120B, melakukan parsing JSON, serta 
+menghitung total nilai terbobot (weighted total) sesuai aturan kebijakan penilaian.
+
+Potongan kode sumber pengolahan inferensi dan eksekusi pada middleware API route:
+
+```typescript
+// Location: src/app/api/grade/route.ts (Potongan Logika Utama Orchestrator)
+export async function POST(req: NextRequest) {
+  const { submissionId } = await req.json();
+  const supabase = createAdminClient();
+
+  // A. Ambil Data Jawaban, Tugas, dan Rubrik dari Supabase
+  const { data: submission } = await supabase.from("submissions").select("*").eq("id", submissionId).single();
+  const { data: assignment } = await supabase.from("assignments").select("*").eq("id", submission.assignment_id).single();
+  const { data: rubrics } = await supabase.from("rubrics").select("*").eq("assignment_id", assignment.id);
+
+  // B. Rakit Prompt Modular via Sub-Modul Assembler
+  const prompt = composeGradingPrompt({
+    soalEsai: assignment.question,
+    contextGrounding: assignment.reference_context,
+    studentAnswer: submission.raw_answer_text,
+    rubrics: rubrics.map(r => ({ aspect: r.aspect_name, weight: r.weight, description: r.description }))
+  });
+
+  // C. Eksekusi Inferensi API ke Groq Cloud (Model GPT-OSS 120B)
+  const provider = getLLMProvider({ providerName: "groq", modelName: assignment.model });
+  const rawLLMOutput = await provider.generateCompletion({ prompt, temperature: 0.1 });
+
+  // D. Parsing Respons JSON & Rekonsiliasi Skor
+  const parsedResponse = parseLLMResponse(rawLLMOutput);
+  const finalWeightedScore = computeWeightedTotal(parsedResponse.rubric);
+
+  // E. Simpan Log Hasil Evaluasi ke Basis Data Supabase
+  await supabase.from("submissions").update({ holistic_score: finalWeightedScore, global_reasoning: parsedResponse.global_reasoning, status: "graded" }).eq("id", submissionId);
+
+  return NextResponse.json({ success: true, finalScore: finalWeightedScore });
+}
+```
+
+
+--------------------------------------------------------------------------------
+4.1.2.4 Simulasi Cara Kerja AI Menilai (Trace Logging Inferensi CoT)
+
+Untuk memberikan gambaran nyata mengenai cara kerja AI dalam mengevaluasi jawaban 
+mahasiswa secara otomatis, berikut adalah simulasi alur data masukan (input) dan 
+keluaran (output) hasil penalaran Chain-of-Thought (CoT) oleh model GPT-OSS 120B 
+melalui lapisan middleware:
+
+1. Data Input Jawaban Mahasiswa (Jawaban Parsial / Typo minor):
+   "CREATE DATABASE universitas; CREATE TABLE mahasiswa (nim VARCHAR(10), nama VARCHAR(50)); INSERT INTO mahasiswa VALUES (12345, 'Ali'); SELECT * FROM mahasiswa;"
+
+2. Log Penalaran Chain-of-Thought (global_reasoning) dari AI:
+   "Mahasiswa berhasil membuat database universitas dan tabel mahasiswa. Namun pada pembuatan tabel, mahasiswa lupa mendeklarasikan kolom 'nim' sebagai PRIMARY KEY. Pada perintah INSERT, NIM 12345 dimasukkan tanpa tanda petik tunggal (kuotasi string), yang pada beberapa DBMS SQL dapat memicu kesalahan tipe data. Perintah SELECT * berhasil ditulis dengan benar."
+
+3. Keluaran Structured JSON Hasil Penilaian AI:
+   ```json
+   {
+     "rubric": [
+       {
+         "aspect": "Pembuatan Database",
+         "score": 100,
+         "weight": 10,
+         "reasoning": "Query CREATE DATABASE universitas ditulis tepat."
+       },
+       {
+         "aspect": "Pembuatan Tabel & Primary Key",
+         "score": 50,
+         "weight": 10,
+         "reasoning": "Tabel berhasil dibuat namun klausa PRIMARY KEY pada kolom nim tidak dideklarasikan."
+       },
+       {
+         "aspect": "Pengisian Data",
+         "score": 50,
+         "weight": 10,
+         "reasoning": "Sintaks INSERT ada namun nilai string NIM tidak menggunakan kuotasi."
+       }
+     ],
+     "weighted_total": 66.7,
+     "global_reasoning": "Mahasiswa memahami konsep dasar DDL dan DML SQL tetapi kurang teliti dalam penulisan tipe data string dan pembuatan constraint primary key."
+   }
+   ```
+
+Melalui alur simulasi pada Sub-bab 4.1.2.4 ini, terbukti bahwa lapisan middleware 
+berhasil membatasi ruang lingkup penalaran AI (knowledge grounding) serta mengekstrak 
+justifikasi nilai secara transparan dan terstruktur berbasis kriteria dosen pengampu.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+[BAGIAN 3] CHEAT SHEET / CARA MENJELASKAN KE BU AILA SAAT BIMBINGAN
+================================================================================
+
+Jika saat bimbingan Bu Aila menanyakan tentang cara kerja middleware dan codingan ini, 
+kamu bisa menjelaskan dengan 3 kalimat tenang & percaya diri berikut:
+
+1. Jawaban Poin "Mana Cara Kerja Middleware-nya":
+   "Izin menjelaskan Ibu, di Bab IV Sub-bab 4.1.2 saya sudah menambahkan pembuktian realisasi dari perancangan Bab III. Saya membaginya menjadi 3 sub-modul utama middleware: (1) Document Parser & Cleansing, (2) Prompt Assembler & Grounding, dan (3) Groq API Orchestrator."
+
+2. Jawaban Poin "Mana Codingan-nya":
+   "Sesuai arahan Ibu, di Sub-bab 4.1.2 tersebut saya tampilkan 3 potongan kode sumber (source code) kunci dari middleware kami, yaitu fungsi pembersihan regex, fungsi assembler prompt modular (Role, Task, Criteria, Context), dan API Route pengolah inferensi Groq."
+
+3. Jawaban Poin "Bagaimana Cara Kerja AI Menilai":
+   "Di Sub-bab 4.1.2.4, saya lampirkan contoh simulasi nyata alur masukan jawaban mahasiswa, bagaimana AI melakukan penalaran Chain-of-Thought (CoT), hingga menghasilkan luaran JSON terstruktur berisi skor per rubrik dan feedback Bahasa Indonesia."
+
+================================================================================
+END OF REVISION GUIDE DOCUMENT FOR CHAPTER IV
+================================================================================

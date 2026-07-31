@@ -1,0 +1,133 @@
+================================================================================
+DOKUMEN DRAF REVISI: PENJELASAN DATASET, SOAL, DAN RUBRIK GROUND TRUTH
+(Versi Disesuaikan: Bebas dari Istilah Screenshot/SS & Kode Rubrik Rumit)
+================================================================================
+
+PETUNJUK UNTUK REYVAN:
+--------------------------------------------------------------------------------
+Dokumen ini dibuat khusus sebagai panduan revisi terpisah (TIDAK MENGEDIT file 
+`docs/draft-otwsidang.txt`). 
+
+Catatan Penting Penyesuaian:
+1. Istilah Screenshot/SS DIHAPUS TOTAL agar 100% konsisten dengan Batasan Masalah 
+   skripsi (bahwa sistem murni mengevaluasi teks digital, bukan OCR/Gambar).
+2. Kode `RUB-01` diganti dengan istilah umum yang ramah dibaca: `Rubrik 1`, `Rubrik 2`, dst.
+3. Istilah teknis SQL (DDL/DML) dilengkapi dengan penjelasan bahasa Indonesia yang natural.
+
+================================================================================
+STRUKTUR PENEMPATAN REVISI (AGAR ALUR KARYA ILMIAH TETAP RAPI & LOGIS)
+================================================================================
+
+1. BAB II (Sub-bab 2.3): Karakteristik Jenis Soal Uraian Pada Penelitian Terkait
+   - Menjelaskan spesifikasi teknis soal praktikum SQL.
+   - Menampilkan TABEL 2.2: Spesifikasi Soal dan Kunci Jawaban Acuan Dosen.
+   - CATATAN ALUR: Di Bab II TIDAK dimasukkan kriteria skor 3-Point Trinary (0, 50, 100) 
+     agar alur penelitian tidak "spoiler", karena penskoran Trinary merupakan hasil 
+     inovasi dari proses Iterasi Prototyping di Bab III & IV.
+
+2. BAB III (Sub-bab 3.2.3): Pengumpulan dan Pengolahan Data (Dataset Penelitian)
+   - Menjelaskan rincian sampel dataset: 33 Dokumen Jawaban Mahasiswa (Kelas IF23A, 
+     Mata Kuliah Basis Data Lanjut IF204).
+   - Menampilkan TABEL 3.2: Matriks Rincian Dataset dan Bobot Rubrik Penilaian Dosen.
+   - Memberikan rujukan eksplisit ke Lampiran 1 dan Lampiran 2.
+
+3. LAMPIRAN (Bagian Akhir Dokumen Skripsi)
+   - Lampiran 1: Naskah Soal Lengkap & Modul Referensi Kunci Jawaban Dosen.
+   - Lampiran 2: Matriks Rekapitulasi 33 Jawaban Mahasiswa & Nilai Asli Dosen (Ground Truth).
+
+
+================================================================================
+[BAGIAN 1] DRAF TEKS & TABEL UNTUK BAB II (Sub-bab 2.3)
+================================================================================
+
+Teks di bawah ini disisipkan pada akhir Sub-bab 2.3 (setelah kalimat "...skema 3-point partial credit rubric dalam penelitian ini dirancang khusus untuk mengakomodasi karakteristik penalaran logika pada kategori tersebut."):
+
+--------------------------------------------------------------------------------
+DRAF TEKS TAMBAHAN BAB II:
+
+Guna memberikan gambaran eksplisit mengenai karakteristik soal esai logika yang dievaluasi dalam penelitian ini, instrumen evaluasi menggunakan kasus uji berupa tugas esai praktikum eksplorasi perintah Structured Query Language (SQL). Tugas ini dirancang oleh dosen pengampu untuk menguji kompetensi mahasiswa dalam mengeksekusi 10 operasi komputasi basis data yang mencakup pembuatan struktur basis data dan tabel, manipulasi data (insert, select, update, delete), serta penyesuaian struktur tabel (alter table). 
+
+Secara spesifik, kunci jawaban yang seharusnya (ground truth konten) beserta rincian 10 aspek operasi yang diperiksa oleh dosen pengampu disajikan pada Tabel 2.2:
+
+Tabel 2.2 Spesifikasi Soal dan Kunci Jawaban Acuan Dosen (Ground Truth Konten).
+-----------------------------------------------------------------------------------------------------------------------------------------
+No | Operasi SQL / Aspek Kriteria   | Deskripsi Instruksi Tugas                    | Kunci Jawaban Ideal / Sintaks Query Acuan Dosen
+---|--------------------------------|----------------------------------------------|------------------------------------------------------------
+1  | Pembuatan Database (Create DB) | Membuat database bernama 'universitas'       | CREATE DATABASE universitas;
+2  | Pembuatan Tabel (Create Table) | Membuat tabel 'mahasiswa' dengan PK 'nim'    | CREATE TABLE mahasiswa (nim VARCHAR(10) PRIMARY KEY, nama VARCHAR(50), jurusan VARCHAR(30), angkatan INT, ipk DECIMAL(3,2));
+3  | Pengisian Data (Insert Data)   | Memasukkan 3 data mahasiswa (Ali, Budi, Citra)| INSERT INTO mahasiswa VALUES ('12345', 'Ali Hasan', 'Informatika', 2021, 3.75), ('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60), ('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
+4  | Penampilan Data 1 (Select All) | Menampilkan seluruh data mahasiswa           | SELECT * FROM mahasiswa;
+5  | Penampilan Data 2 (Filter Teks)| Menampilkan mahasiswa jurusan 'Informatika'   | SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
+6  | Penampilan Data 3 (Filter Angka)| Menampilkan mahasiswa dengan IPK > 3.7        | SELECT * FROM mahasiswa WHERE ipk > 3.7;
+7  | Pembaruan Data (Update Data)   | Memperbarui IPK mahasiswa NIM '12346'        | UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';
+8  | Penghapusan Data (Delete Data) | Menghapus data mahasiswa bernama 'Citra Dewi'| DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
+9  | Tambah Kolom (Alter Add)       | Menambahkan kolom 'tanggal_lahir' (DATE)     | ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
+10 | Pembaruan Struktur Data        | Memperbarui tanggal lahir 3 data mahasiswa   | UPDATE mahasiswa SET tanggal_lahir = '2002-05-10' WHERE nim = '12345'; (3 query UPDATE terpisah)
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Melalui pemetaan pada Tabel 2.2, terlihat bahwa soal esai logika pemrograman memiliki karakteristik yang unik. Kebenaran jawaban tidak hanya dinilai dari kelancaran bahasa alami, melainkan dari presisi sintaksis SQL, ketepatan penggunaan tipe data, serta kebenaran klausa penyaringan data (WHERE).
+--------------------------------------------------------------------------------
+
+
+================================================================================
+[BAGIAN 2] DRAF TEKS & TABEL UNTUK BAB III (Sub-bab 3.2.3)
+================================================================================
+
+Teks di bawah ini disisipkan pada Sub-bab 3.2.3 (Pengumpulan dan Pengolahan Data), memperjelas kuantitas dataset dan pembagian bobot rubrik dosen pengampu:
+
+--------------------------------------------------------------------------------
+DRAF TEKS TAMBAHAN BAB III:
+
+3.2.3 Pengumpulan dan Pengolahan Data
+Data penelitian yang digunakan berupa data sekunder (retrospektif) yang diperoleh dari arsip tugas akademik mahasiswa pada mata kuliah Basis Data Lanjut (IF204) di lingkungan Program Studi Teknik Informatika Universitas Muhammadiyah Bandung. 
+
+Karakteristik spesifik dataset dan prosedur pengolahannya dijabarkan sebagai berikut:
+
+1. Sumber Data & Ukuran Sampel Dataset:
+   Dataset terdiri dari 33 dokumen jawaban esai praktikum mahasiswa retrospektif dari Kelas IF23A Angkatan 2023. Ukuran sampel ini (N = 33 dokumen) memenuhi asumsi kecukupan sampel statistik non-parametrik (N >= 30) untuk menguji korelasi dan deviasi skor (Islam, 2018; Fraenkel et al., 2019).
+
+2. Rincian Rubrik Acuan Dosen (Ground Truth):
+   Evaluasi dilakukan terhadap 10 aspek kriteria penilaian yang ditetapkan oleh dosen pengampu dengan total bobot akumulatif 100%. Setiap aspek memiliki bobot sebesar 10%, sebagaimana dirinci pada Tabel 3.2.
+
+Tabel 3.2 Matriks Rincian Dataset dan Bobot Rubrik Penilaian Dosen.
+-----------------------------------------------------------------------------------------------------------------------------------------
+No | Aspek Rubrik Penilaian            | Nama Aspek Kriteria Penilaian                | Bobot Nilai (%) | Target Evaluasi Logika
+---|-----------------------------------|----------------------------------------------|-----------------|----------------------------------------------------
+1  | Rubrik 1                          | Pembuatan Database 'universitas'             | 10%             | Ketepatan query CREATE DATABASE & nama db
+2  | Rubrik 2                          | Pembuatan Tabel 'mahasiswa' & Primary Key    | 10%             | Deklarasi tabel, kolom nim (VARCHAR), & PK
+3  | Rubrik 3                          | Pengisian Data (Insert 3 Mahasiswa)          | 10%             | Sintaks INSERT & penggunaan kuotasi string NIM
+4  | Rubrik 4                          | Query Read 1 (Tampilkan Semua Data)          | 10%             | Sintaks SELECT * tanpa filter
+5  | Rubrik 5                          | Query Read 2 (Filter Jurusan Informatika)    | 10%             | Ketepatan klausa WHERE jurusan = 'Informatika'
+6  | Rubrik 6                          | Query Read 3 (Filter Nilai IPK > 3.7)        | 10%             | Ketepatan klausa WHERE ipk > 3.7
+7  | Rubrik 7                          | Query Update Data IPK                        | 10%             | Query UPDATE NIM 12346
+8  | Rubrik 8                          | Query Delete Data Mahasiswa                  | 10%             | Query DELETE filter nama 'Citra Dewi'
+9  | Rubrik 9                          | Alter Table (Tambah Kolom tanggal_lahir)     | 10%             | Sintaks ALTER TABLE ADD tipe DATE
+10 | Rubrik 10                         | Update Data Tanggal Lahir                    | 10%             | Kelengkapan 3 query UPDATE tanggal lahir
+-----------------------------------------------------------------------------------------------------------------------------------------
+Total Bobot Akumulatif: 100%
+
+3. Dokumen Lampiran (Attachment):
+   Guna menjaga kerapian naskah utama dan memberikan transparansi penuh kepada pembaca:
+   a. Berkas Naskah Soal Asli dan Panduan Jawaban Ideal Dosen disajikan pada LAMPIRAN 1.
+   b. Matriks Data Mentah 33 Lembar Jawaban Mahasiswa beserta Nilai Aktual Dosen (Ground Truth) disajikan pada LAMPIRAN 2.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+[BAGIAN 3] CHEAT SHEET / PANDUAN PENJELASAN REYVAN SAAT BIMBINGAN
+================================================================================
+
+Jika saat bimbingan berikutnya Bu Aila menanyakan revisi ini, kamu bisa menjelaskan dengan 3 poin ringkas dan percaya diri berikut:
+
+1. Mengenai Dataset & Jumlah Soal:
+   "Izin menyampaikan Ibu, untuk dataset yang diuji sudah saya pertegas di Sub-bab 3.2.3 dan Tabel 3.2, yaitu menggunakan 33 lembar jawaban mahasiswa Kelas IF23A pada mata kuliah Basis Data Lanjut (IF204), dengan 10 aspek kriteria rubrik."
+
+2. Mengenai Gambaran Soal & Kunci Jawaban yang Seharusnya:
+   "Untuk memberikan gambaran kepada pembaca tentang soal dan jawaban yang seharusnya, saya sudah menambahkan Tabel 2.2 di Sub-bab 2.3 yang merinci 10 sintaks query SQL acuan Ibu (Ground Truth konten)."
+
+3. Mengenai Lampiran:
+   "Sesuai arahan Ibu, karena dokumen naskah soal lengkap dan rekapitulasi 33 jawaban mahasiswa beserta skornya sangat panjang, seluruhnya sudah saya kelompokkan dengan rapi di Lampiran 1 dan Lampiran 2 di bagian akhir naskah."
+
+================================================================================
+END OF REVISION GUIDE DOCUMENT
+================================================================================
