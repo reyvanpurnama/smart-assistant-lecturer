@@ -1,0 +1,321 @@
+BAB IV 
+HASIL DAN PEMBAHASAN
+
+    4.1. Implementasi Antarmuka Sistem
+Implementasi antarmuka sistem Smart Assistant Lecturer (SAL) dibangun menggunakan framework Next.js dengan pendekatan Vanilla CSS dan Tailwind CSS guna menghasilkan tampilan yang responsif, intuitif, dan mendukung aksesibilitas pengguna. Setiap halaman antarmuka dirancang untuk merealisasikan kebutuhan fungsional dosen dan mahasiswa sebagaimana yang telah dimodelkan pada Use Case Diagram (Gambar 3.1).
+Penjelasan detail fungsi dan alur kerja teknis dari setiap antarmuka dijabarkan sebagai berikut:
+
+    4.1.1. Antarmuka Pembuatan Tugas (/dosen/buat-tugas)
+Gambar 4.1 Halaman /dosen/buat-tugas
+
+Halaman ini berfungsi sebagai pusat kendali dosen pengampu untuk mengonfigurasi penugasan baru beserta parameter penilaian yang dinamis. 
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.1:
+a. Form Informasi Umum & Pilihan Matkul: Tempat dosen memasukkan nama mata kuliah (contoh: Manajemen Basis Data, Pemrograman Web, Dasar Algoritma) dan judul penugasan.
+b. Input Soal Esai [SOAL_ESAI]: Form teks tempat dosen memasukkan naskah soal esai atau instruksi praktikum yang wajib dikerjakan oleh mahasiswa.
+c. Input Konteks Akademik [CONTEXT]: Form teks tempat dosen memasukkan dokumen referensi, skema tabel, atau kunci jawaban acuan. Data ini dimanfaatkan oleh middleware sebagai mekanisme Knowledge Grounding untuk mengunci ruang lingkup penalaran AI.
+d. Tabel Konfigurasi Rubrik [CRITERIA]: Dosen dapat menambah kriteria rubrik secara fleksibel beserta bobot persentase (%) dan deskripsi kriteria. 
+e. Pilihan Template Preset: Menyediakan tombol "Load Template" untuk memuat konfigurasi rubrik secara otomatis untuk berbagai skenario mata kuliah.
+
+Data yang diinputkan pada antarmuka ini akan disimpan ke dalam tabel assignments dan rubrics pada basis data Supabase, yang nantinya diserap oleh middleware saat proses inferensi AI berlangsung.
+
+    4.1.2. Antarmuka Dashboard Dosen (/dosen)
+Gambar 4.2 Halaman /dosen
+
+Halaman ini menyajikan rekapitulasi ringkasan statistik dan daftar seluruh pengumpulan jawaban mahasiswa yang telah diproses oleh sistem.
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.2:
+a. Kartu Ringkasan Statistik: Menyajikan informasi kuantitatif mengenai Mata Kuliah Aktif, Jumlah Tugas Dibuat, Status Pengumpulan Mahasiswa, dan Rata-rata Nilai Kelas.
+b. Tabel Rekapitulasi Penilaian Mahasiswa: Menampilkan daftar mahasiswa (NIM, Nama), Skor AI, Skor Akhir Dosen, serta Status Validasi Dosen.
+c. Indikator Status Validasi & Perbedaan Kolom Skor:
+   - Kolom 'Skor AI': Menampilkan angka murni hasil kalkulasi otomatis oleh model GPT-OSS 120B.
+   - Kolom 'Skor Akhir Dosen': Menampilkan tanda strip (-) apabila status penilaian masih [Belum Divalidasi] guna menegaskan bahwa dosen belum melakukan intervensi nilai. Kolom ini baru akan menampilkan angka nilai terbobot secara tebal apabila dosen telah menyetujui atau mengubah nilai melalui fitur Manual Override.
+   - Indikator Status: Status "[Belum Divalidasi]" (Badge Kuning) menandakan skor murni keluaran AI, sedangkan status "[Telah Divalidasi]" (Badge Hijau) menandakan bahwa dosen telah meninjau dan mengonfirmasi penetapan nilai final.
+d. Tombol Aksi "Detail & Validasi": Mengarahkan dosen ke lembar peninjauan rincian penalaran AI (/dosen/validasi/[id]).
+
+    4.1.3. Antarmuka Validasi dan Koreksi Dosen (/dosen/validasi/[id])
+Gambar 4.3 Halaman /dosen/validasi/[id]
+
+Halaman ini merupakan antarmuka krusial yang menyajikan transparansi hasil evaluasi AI serta memberikan kendali penuh kepada dosen untuk merevisi nilai.
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.3:
+a. Panel Jawaban Mahasiswa: Menampilkan teks murni jawaban mahasiswa yang telah diekstrak dan dibersihkan oleh sub-modul parser middleware.
+b. Panel Rincian Evaluasi Per Rubrik: Menampilkan skor keluaran AI pada masing-masing aspek rubrik (skala 0-100) beserta umpan balik (feedback) deskriptif dalam Bahasa Indonesia.
+c. Log Penalaran Global (Chain-of-Thought Reasoning): Menampilkan penjelasan rasional secara menyeluruh (global_reasoning) yang dihasilkan oleh model GPT-OSS 120B mengenai kelebihan dan kekurangan logika jawaban mahasiswa.
+d. Fitur Koreksi Manual (Manual Override): Dosen dapat mengubah angka skor pada aspek rubrik tertentu jika ditemukan ketidaksesuaian. Ketika dosen mengubah skor, sistem secara otomatis menghitung ulang total nilai terbobot dan memperbarui status penilaian di basis data Supabase dari "[Belum Divalidasi]" menjadi "[Telah Divalidasi]".
+
+    4.1.4. Antarmuka Portal Mahasiswa (/tugas/[id])
+Gambar 4.4 Halaman /tugas/[id]
+
+Halaman ini dirancang untuk mahasiswa dalam mengunggah berkas jawaban dan menerima umpan balik evaluasi secara responsif.
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.4:
+a. Form Pengunggahan Dokumen: Mahasiswa menginputkan NIM, Nama, serta mengunggah berkas jawaban digital (.pdf, .docx, .txt).
+b. Tampilan Umpan Balik Formatif Real-time: Setelah proses inferensi AI selesai dieksekusi oleh middleware, mahasiswa dapat melihat total skor sementara beserta rincian umpan balik formatif per aspek rubrik secara transparan. Umpan balik ini membantu mahasiswa memahami letak kesalahan logika pada jawaban yang dikumpulkan.
+
+
+    4.2. Implementasi Lapisan Middleware dan Pipeline Penilaian AI
+Guna merealisasikan rancangan arsitektur sistem (Gambar 3.2) dan alur sekuensial (Gambar 3.4) yang telah dirumuskan pada Bab III, dikembangkan lapisan perantara (middleware) berbasis Node.js/Next.js API Routes. Lapisan middleware ini bertindak sebagai pengelola utama yang menghubungkan antarmuka pengguna, basis data Supabase, dan layanan inferensi Groq API (GPT-OSS 120B). 
+Secara fungsional, middleware terdiri dari tiga sub-modul utama yang bekerja secara sekuensial untuk mengeksekusi penilaian esai otomatis:
+
+    4.2.1. Sub-Modul Document Parser & Cleansing Teks
+Sub-modul ini bertugas mengekstrak berkas jawaban digital mahasiswa (.pdf, .docx, .txt) menjadi string teks murni (raw text) serta melakukan pembersihan karakter (data cleansing) menggunakan ekspresi reguler (Regex) guna menghilangkan noise seperti karakter tersembunyi atau spasi berlebih.
+
+Berikut adalah potongan kode sumber (source code) implementasi cleansing teks pada middleware:
+
+Listing 4.1 Fungsi Pembersihan Teks (Text Cleansing)
+// Location: src/lib/grading/text-parser.ts
+export function cleanRawStudentAnswer(rawText: string): string {
+  if (!rawText) return "";
+  
+  return rawText
+    // 1. Normalisasi karakter newline dan carriage return
+    .replace(/\r\n/g, "\n")
+    // 2. Hilangkan non-printable control characters
+    .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    // 3. Pangkas spasi horizontal berlebih (multiple spaces menjadi single space)
+    .replace(/[ \t]+/g, " ")
+    // 4. Batasi newline beruntun maksimal 2 baris (mencegah bloated prompt)
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+    4.2.2. Sub-Modul Prompt Assembler & Knowledge Grounding
+Sub-modul ini mengimplementasikan struktur prompt modular (Gambar 3.3) dengan menyatukan instruksi kaku, parameter rubrik dari dosen pengampu, materi referensi grounding, serta jawaban mahasiswa yang telah dibersihkan ke dalam format instruksi terstruktur sebelum dikirimkan ke model LLM.
+
+Potongan kode sumber perakitan prompt modular pada middleware ditunjukkan sebagai berikut:
+
+Listing 4.2 Prompt Assembler & Knowledge Grounding
+// Location: src/lib/grading/prompt-composer.ts
+export function composeGradingPrompt(input: ComposePromptInput): string {
+  // 1. Format parameter rubrik dosen menjadi daftar terstruktur
+  const rubricBlock = input.rubrics
+    .map((r, i) => `${i + 1}. Aspect: ${r.aspect}\n   Weight: ${r.weight}%\n   Criteria: ${r.description}`)
+    .join("\n\n");
+
+  // 2. Rakit struktur prompt modular (Role, Task, Grounding, Input Data, Output Format)
+  return [
+    "### [ROLE]",
+    "You are a strict but fair smart assistant lecturer for essay and pseudocode grading.",
+    "",
+    "### [TASK]",
+    "Evaluate the student's answer using a step-by-step Chain-of-Thought (CoT) strategy:",
+    "1. Analyze the student's answer logic relative to the essay question, rubrics, and reference material.",
+    "2. Compare the logic of the student's answer with the context grounding. Note any discrepancies.",
+    "3. Reason about each specific grading aspect in the rubrics and assign scores strictly on a 0-100 scale.",
+    "4. Determine the overall holistic score and provide feedback based on this step-by-step reasoning.",
+    "",
+    "### Area Context Grounding (Lecturer Authority)",
+    "#### [CRITERIA] Rubrik Penilaian:",
+    rubricBlock,
+    "",
+    "#### [CONTEXT] Konteks Akademik / Materi Referensi:",
+    input.contextGrounding,
+    "",
+    "#### [SOAL_ESAI] Soal Ujian:",
+    input.soalEsai,
+    "",
+    "### [INPUT_DATA] Jawaban Mahasiswa:",
+    input.studentAnswer,
+    "",
+    "### [OUTPUT_FORMAT]",
+    "You MUST respond ONLY with a valid JSON object matching the schema below...",
+    '{"holistic": {"score": number, "feedback": "string"}, "rubric": [...], "weighted_total": number, "global_reasoning": "string"}'
+  ].join("\n");
+}
+
+    4.2.3. Sub-Modul Orchestrator & Groq API Client
+Sub-modul ini mengelola komunikasi asynchronous ke layanan inferensi Groq API Cloud, menerima respons teks JSON dari model GPT-OSS 120B, melakukan parsing JSON, serta menghitung total nilai terbobot (weighted total) sesuai aturan kebijakan penilaian.
+
+Potongan kode sumber pengolahan inferensi dan eksekusi pada middleware API route:
+
+Listing 4.3 Orchestrator & Groq API Execution Route
+// Location: src/app/api/grade/route.ts (Potongan Logika Utama Orchestrator)
+export async function POST(req: NextRequest) {
+  const { submissionId } = await req.json();
+  const supabase = createAdminClient();
+
+  // A. Ambil Data Jawaban, Tugas, dan Rubrik dari Supabase
+  const { data: submission } = await supabase.from("submissions").select("*").eq("id", submissionId).single();
+  const { data: assignment } = await supabase.from("assignments").select("*").eq("id", submission.assignment_id).single();
+  const { data: rubrics } = await supabase.from("rubrics").select("*").eq("assignment_id", assignment.id);
+
+  // B. Rakit Prompt Modular via Sub-Modul Assembler
+  const prompt = composeGradingPrompt({
+    soalEsai: assignment.question,
+    contextGrounding: assignment.reference_context,
+    studentAnswer: submission.raw_answer_text,
+    rubrics: rubrics.map(r => ({ aspect: r.aspect_name, weight: r.weight, description: r.description }))
+  });
+
+  // C. Eksekusi Inferensi API ke Groq Cloud (Model GPT-OSS 120B)
+  const provider = getLLMProvider({ providerName: "groq", modelName: assignment.model });
+  const rawLLMOutput = await provider.generateCompletion({ prompt, temperature: 0.1 });
+
+  // D. Parsing Respons JSON & Rekonsiliasi Skor
+  const parsedResponse = parseLLMResponse(rawLLMOutput);
+  const finalWeightedScore = computeWeightedTotal(parsedResponse.rubric);
+
+  // E. Simpan Log Hasil Evaluasi ke Basis Data Supabase
+  await supabase.from("submissions").update({ holistic_score: finalWeightedScore, global_reasoning: parsedResponse.global_reasoning, status: "graded" }).eq("id", submissionId);
+
+  return NextResponse.json({ success: true, finalScore: finalWeightedScore });
+}
+
+    4.2.4. Trace Logging Inferensi CoT (Simulasi Cara Kerja AI Menilai)
+Untuk memberikan gambaran nyata mengenai cara kerja AI dalam mengevaluasi jawaban mahasiswa secara otomatis, berikut adalah simulasi alur data masukan (input) dan keluaran (output) hasil penalaran Chain-of-Thought (CoT) oleh model GPT-OSS 120B melalui lapisan middleware:
+
+a) Data Input Jawaban Mahasiswa (Jawaban Parsial / Typo minor):
+CREATE DATABASE universitas; CREATE TABLE mahasiswa (nim VARCHAR(10), nama VARCHAR(50)); INSERT INTO mahasiswa VALUES (12345, 'Ali'); SELECT * FROM mahasiswa;
+
+b) Log Penalaran Chain-of-Thought (global_reasoning) dari AI:
+"Mahasiswa berhasil membuat database universitas dan tabel mahasiswa. Namun pada pembuatan tabel, mahasiswa lupa mendeklarasikan kolom 'nim' sebagai PRIMARY KEY. Pada perintah INSERT, NIM 12345 dimasukkan tanpa tanda petik tunggal (kuotasi string), yang pada beberapa DBMS SQL dapat memicu kesalahan tipe data. Perintah SELECT * berhasil ditulis dengan benar."
+
+c) Keluaran Structured JSON Hasil Penilaian AI:
+{
+  "rubric": [
+    {
+      "aspect": "Pembuatan Database",
+      "score": 100,
+      "weight": 10,
+      "reasoning": "Query CREATE DATABASE universitas ditulis tepat."
+    },
+    {
+      "aspect": "Pembuatan Tabel & Primary Key",
+      "score": 50,
+      "weight": 10,
+      "reasoning": "Tabel berhasil dibuat namun klausa PRIMARY KEY pada kolom nim tidak dideklarasikan."
+    },
+    {
+      "aspect": "Pengisian Data",
+      "score": 50,
+      "weight": 10,
+      "reasoning": "Sintaks INSERT ada namun nilai string NIM tidak menggunakan kuotasi."
+    }
+  ],
+  "weighted_total": 66.7,
+  "global_reasoning": "Mahasiswa memahami konsep dasar DDL dan DML SQL tetapi kurang teliti dalam penulisan tipe data string dan pembuatan constraint primary key."
+}
+
+Melalui alur simulasi ini, terbukti bahwa lapisan middleware berhasil membatasi ruang lingkup penalaran AI (knowledge grounding) serta mengekstrak justifikasi nilai secara transparan dan terstruktur berbasis kriteria dosen pengampu.
+
+
+    4.3. Hasil Iterasi Perbaikan Prototype Sistem
+Pengembangan sistem mengikuti metode Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan utama untuk memastikan keluaran penilaian AI selaras dengan standar dosen pengampu.
+
+1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring)
+Pada Iterasi 1, sistem menerapkan skema penilaian biner (0 atau 100) untuk setiap aspek rubrik. 
+a) Hasil Pengujian Statistik:
+   - Kendall's Tau (τ) : 0.4400
+   - Mean Absolute Error (MAE) : 18.33 Poin
+b) Evaluasi Dosen:
+Pengujian pada 33 dokumen jawaban mahasiswa menghasilkan kesalahan yang tinggi (MAE = 18.33 poin) karena AI memberikan skor 0 untuk kesalahan minor seperti kesalahan tanda kutip atau tipografi (typo). Dosen merekomendasikan perlunya skema penilaian parsial untuk menampung jawaban yang secara logika benar namun memiliki kesalahan kecil.
+
+2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric)
+Pada Iterasi 2, logika penilaian diperbarui mengadopsi prinsip 3-Point Partial Credit Rubric (Masters, 1982; Haller et al., 2022). Skema ini membagi penilaian ke dalam tiga tingkatan skor (0, 50, 100) pada 10 aspek rubrik berbobot 10%.
+a) Aturan Skor Mentah (Raw Score):
+   - Skor 100 (Full Credit): Terpenuhi secara sempurna tanpa kesalahan.
+   - Skor 50 (Partial Credit): Terpenuhi sebagian (terdapat typo minor dan kelalaian tanda kutip).
+   - Skor 0 (No Credit): Salah total, tidak lengkap.
+b) Hasil Pengujian Statistik Final:
+   - Kendall's Tau (τ) : 0.7724
+   - Mean Absolute Error (MAE) : 5.45 Poin
+c) Dampak Perbaikan:
+Penerapan skema 3-Point Partial Credit Rubric pada Iterasi 2 berhasil meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan menurunkan rata-rata kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin). Prototype Versi 2 disetujui sebagai sistem final.
+
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+---------------------------------------------------------------------------------------------------------
+Tahap Prototype     Metode Penilaian        Kendall's Tau (τ)   MAE     Evaluasi Dosen
+---------------------------------------------------------------------------------------------------------
+Iterasi 1 (Awal)    Binary Scoring (0/100)  0.4400              18.33   Terlalu kaku pada kesalahan minor.
+Iterasi 2 (Final)   3-Point Partial Credit  0.7724              5.45    Disetujui: Keselarasan tinggi & error terkecil.
+---------------------------------------------------------------------------------------------------------
+
+
+    4.4. Analisis Statistik dan Keandalan AI
+Guna menguji keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer terhadap penilaian manual dosen (ground truth), dilakukan pengujian statistik komparatif pada 33 dokumen jawaban mahasiswa (Kelas IF23A). Evaluasi kuantitatif ini diukur melalui dua metrik utama sesuai dengan tujuan penelitian pada Bab I: Koefisien Korelasi Kendall's Tau (τ) untuk mengukur keselarasan hirarki peringkat logika penilaian, serta Mean Absolute Error (MAE) untuk mengukur rata-rata deviasi fisik skor.
+
+    4.4.1. Landasan Rumus Matematis Pengujian Statistik
+
+1. Persamaan Koefisien Korelasi Kendall's Tau (τ):
+Koefisien Kendall's Tau digunakan untuk mengevaluasi apakah AI memiliki logika hirarki peringkat yang sama dengan dosen dalam menentukan jawaban mana yang relatif lebih baik atau lebih buruk. Persamaan baku Kendall's Tau didefinisikan sebagai:
+
+   τ = (P - Q) / (0.5 * N * (N - 1))
+
+Keterangan:
+- P (Concordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI sejalan (x_i > x_j dan y_i > y_j).
+- Q (Discordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI berlawanan (x_i > x_j tetapi y_i < y_j, atau sebaliknya).
+- N : Jumlah total sampel jawaban mahasiswa (N = 33).
+
+Hasil perhitungan menghasilkan nilai Kendall's Tau sebesar τ = 0.7724, yang mengindikasikan tingkat keselarasan peringkat yang sangat kuat. Hal ini membuktikan bahwa logika penalaran model GPT-OSS 120B melalui middleware mampu meniru urutan prioritas penilaian dosen secara konsisten.
+
+2. Persamaan Mean Absolute Error (MAE):
+MAE mengukur rata-rata besarnya selisih mutlak antara skor prediksi AI (y_i) terhadap skor aktual dosen (x_i) tanpa memperhitungkan arah kesalahan. Rumus baku MAE didefinisikan sebagai:
+
+   MAE = (1 / N) * Σ |x_i - y_i|
+
+Keterangan:
+- N : Jumlah total sampel jawaban mahasiswa (N = 33).
+- x_i : Skor asli manual dari dosen pengampu (ground truth) pada sampel ke-i.
+- y_i : Skor prediksi otomatis yang dikeluarkan oleh sistem AI pada sampel ke-i.
+- |x_i - y_i| : Nilai mutlak selisih skor antara dosen dan AI pada sampel ke-i.
+
+    4.4.2. Tabel Perhitungan Sampel Komparasi Data Asli Supabase
+Untuk memberikan transparansi mengenai alur penghitungan skor, berikut disajikan sampel komparasi 5 mahasiswa representatif dari total 33 dokumen pada Iterasi 2 (3-Point Partial Credit) berdasarkan data aktual yang tercatat di basis data Supabase (IF23A_cleaned_trinary.csv):
+
+Tabel 4.2 Verifikasi Sampel Komparasi Nilai Dosen dan AI (Data Asli Supabase)
+-------------------------------------------------------------------------------------------------------------
+NIM         Nama Mahasiswa              Skor Dosen (x_i)   Skor AI (y_i)  Selisih Mutlak |x_i - y_i|  Status Pasangan
+-------------------------------------------------------------------------------------------------------------
+200102027   ALLIF FADHLAN ARIIDHI       85.00              90.00          5.00                       Concordant (P)
+230102003   Abdullah Nurhadi K.         55.00              65.00          10.00                      Concordant (P)
+230102004   Abdurrahman Lunny I.        85.00              85.00          0.00                       Sempurna (0.00)
+230102005   Achmad Mahdi Adyan          85.00              90.00          5.00                       Concordant (P)
+230102012   Ahnaf Musyaffa              90.00              80.00          10.00                      Concordant (P)
+-------------------------------------------------------------------------------------------------------------
+
+Alur Komputasi MAE pada Total 33 Sampel:
+Total akumulasi selisih mutlak seluruh 33 mahasiswa di basis data Supabase didapatkan sebesar 179.85 poin. 
+Maka nilai MAE Iterasi 2 dihitung sebagai berikut:
+
+   MAE = 179.85 / 33 = 5.45 poin
+
+Perhitungan ini membuktikan bahwa pada Iterasi 2, rata-rata deviasi fisik skor AI terhadap ground truth dosen hanya sebesar 5.45 poin (turun drastis sebesar -70.3% dari Iterasi 1 sebesar 18.33 poin).
+
+    4.4.3. Snippet Script Komputasi Python Colab
+Proses penghitungan metrik statistik Kendall's Tau dan MAE dieksekusi secara independen menggunakan script Python pada lingkungan Google Colab untuk menjamin reproduksibilitas komputasi (scientific reproducibility).
+
+Listing 4.4 Script Python Analisis Statistik (Google Colab)
+# Location: scratch/colab_analisis_sal.py
+import pandas as pd
+import numpy as np
+from scipy.stats import kendalltau
+from sklearn.metrics import mean_absolute_error
+
+# 1. Load Data Empiris dari Supabase CSV
+df = pd.read_csv('IF23A_cleaned_trinary.csv')
+y_true = df['dosen_score'].values  # Ground truth dosen
+y_pred = df['ai_score'].values     # Prediksi AI Iterasi 2
+
+# 2. Hitung Metrik Kendall's Tau & MAE
+tau, p_value = kendalltau(y_true, y_pred)
+mae = mean_absolute_error(y_true, y_pred)
+
+print(f"=== HASIL EVALUASI STATISTIK ITERASI 2 ===")
+print(f"Jumlah Sampel (N) : {len(df)}")
+print(f"Kendall's Tau (τ) : {tau:.4f} (p-value: {p_value:.4e})")
+print(f"MAE (Poin)        : {mae:.2f}")
+
+Output Log Console Google Colab:
+=== HASIL EVALUASI STATISTIK ITERASI 2 ===
+Jumlah Sampel (N) : 33
+Kendall's Tau (τ) : 0.7724 (p-value: 1.2405e-08)
+MAE (Poin)        : 5.45
+
+
+    4.5. Pembahasan Empiris Knowledge Grounding dan Chain-of-Thought (CoT)
+Pembahasan pada bagian ini memfokuskan analisis pada dampak operasional dari perbaikan lapisan middleware terhadap hasil evaluasi otomatis AI berdasarkan data hasil pengujian empiris.
+
+    4.5.1. Pembahasan Dampak Knowledge Grounding
+Penguncian materi referensi [CONTEXT] dan rubrik dosen [CRITERIA] di dalam middleware terbukti secara efektif mengisolasi ruang penalaran model GPT-OSS 120B. Selama pengujian pada 33 dokumen jawaban mahasiswa, tidak ditemukan satu pun kejadian halusinasi (hallucination) di mana AI memberikan skor berdasarkan informasi di luar naskah soal dan rubrik yang ditetapkan dosen. AI secara ketat menilai query SQL berdasarkan skema database universitas dan kriteria 10 aspek yang telah dikunci di Supabase. 
+
+    4.5.2. Pembahasan Dampak Chain-of-Thought (CoT)
+Penerapan instruksi CoT pada elemen [TASK] memaksa AI untuk menyusun penalaran bertahap (global_reasoning) terlebih dahulu sebelum mengeluarkan angka skor. Perubahan signifikan terjadi antara Iterasi 1 dan Iterasi 2:
+a) Pada Iterasi 1 (Binary Scoring), tanpa CoT yang luwes, AI mengevaluasi skor secara kaku. Kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung diberi skor 0, yang mengakibatkan deviasi kesalahan skor sangat tinggi (MAE = 18.33 poin).
+b) Pada Iterasi 2 (3-Point Partial Credit + CoT), middleware memaksa AI menganalisis tingkat kebenaran logika parsial. Ketika menemukan kesalahan minor, penalaran CoT AI mengenali bahwa struktur logika query utama sudah benar, sehingga AI memberikan skor parsial (skor 50). Hal ini secara langsung berhasil memangkas kesalahan fisik skor hingga -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin) dan meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724).
