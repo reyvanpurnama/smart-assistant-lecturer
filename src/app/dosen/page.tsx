@@ -303,16 +303,22 @@ export default function DosenDashboard() {
                           <td className="py-3.5 px-2 font-mono text-foreground/80">{student.nim}</td>
                           <td className="py-3.5 px-2 font-semibold text-foreground">{student.name}</td>
                           <td className="py-3.5 px-2 text-center font-mono text-foreground/70">{student.aiScore.toFixed(1)}</td>
-                          <td className="py-3.5 px-2 text-center font-mono text-brand-primary font-bold">{student.finalScore.toFixed(1)}</td>
+                          <td className="py-3.5 px-2 text-center font-mono font-bold">
+                            {student.status === "Overridden" ? (
+                              <span className="text-brand-primary font-extrabold">{student.finalScore.toFixed(1)}</span>
+                            ) : (
+                              <span className="text-muted-text font-normal text-[11px] italic">-</span>
+                            )}
+                          </td>
                           <td className="py-3.5 px-2 text-center">
                             {student.status === "Graded" && (
-                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                                Dinilai AI
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+                                [Belum Divalidasi]
                               </span>
                             )}
                             {student.status === "Overridden" && (
-                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
-                                Koreksi Dosen
+                              <span className="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                [Telah Divalidasi]
                               </span>
                             )}
                             {student.status === "Outlier" && (

@@ -1,0 +1,783 @@
+TUGAS AKHIR
+PENGEMBANGAN SMART ASSISTANT LECTURER UNTUK ANALISIS JAWABAN ESAI OTOMATIS BERBASIS LLM (LARGE LANGUAGE MODEL)
+
+
+
+
+
+
+disusun oleh:
+M Reyvan Purnama 
+220102043
+
+
+
+
+PROGRAM STUDI TEKNIK INFORMATIKA 
+FAKULTAS SAINS DAN TEKNOLOGI 
+UNIVERSITAS MUHAMMADIYAH BANDUNG 
+2026
+LEMBAR PERSETUJUAN
+TUGAS AKHIR
+
+PENGEMBANGAN SMART ASSISTANT LECTURER UNTUK ANALISIS JAWABAN ESAI OTOMATIS BERBASIS LLM (LARGE LANGUAGE MODEL)
+
+disusun oleh:
+M Reyvan Purnama
+220102043
+
+Menyetujui,
+
+Dosen Pembimbing I		Dosen Pembimbing II
+		
+		
+		
+Aila Gema Safitri, S.T., M.T.		Ririn Suharsih S.Pd..M.T.
+NIDN. 0416068505		NIDN. 0426108805
+
+
+
+
+Mengetahui,
+ Ketua Program Studi 
+
+
+
+Ririn Suharsih S.Pd.,M.T.
+NIDN. 0426108805
+
+DAFTAR ISI
+
+LEMBAR PERSETUJUAN	i
+DAFTAR ISI	ii
+DAFTAR GAMBAR	v
+DAFTAR TABEL	vi
+BAB I PENDAHULUAN	1
+1.1. Latar Belakang	1
+1.2. Rumusan Masalah	4
+1.3. Tujuan Penelitian	5
+1.4. Batasan Masalah	5
+1.5. Manfaat Penelitian	6
+1.6. Jadwal Penelitian	7
+BAB II TINJAUAN PUSTAKA	8
+2.1. Objek Penelitian	8
+2.2. Penelitian Terdahulu	9
+2.3. Karakteristik Jenis Soal Uraian Pada Penelitian Terkait	14
+2.4. Automated Essay Scoring (AES)	15
+2.4.1 Evolusi Metode: Dari Statistik ke Transformer	16
+2.4.2 Subjektivitas dan Batasan Penilaian Manual	16
+2.4.3 Variasi Skala Penilaian: Penilaian Biner (Binary Scoring) dan Kredit Parsial (Partial Credit Scoring)	17
+2.5. Large Language Models (LLM)	18
+2.5.1 Arsitektur Transformer	18
+2.5.2 Arsitektur Mixture-of-Experts (MoE)	19
+2.5.3 Klasifikasi Akses Parameter dan Pemilihan Model GPT-OSS 120B	20
+2.5.4 Fenomena Halusinasi Pada Large Language Model	21
+2.5.5 In-Context Learning dan Reasoning	22
+2.5.6 Groq API.	22
+2.6. Arsitektur Middleware dalam Sistem Penilaian	23
+2.6.1 Konsep Decoupling dan Modular Adapters	24
+2.6.2 Mekanisme Pengelolaan melalui Prompt-Template	25
+2.7. Prompt Engineering dan Knowledge Grounding	25
+2.7.1 Prinsip Rekayasa Prompt (Prompt Engineering) dalam Konteks Akademik	26
+2.7.2 Mekanisme Pelandasan Pengetahuan (Knowledge Grounding)	26
+2.8. Metrik Evaluasi Kesesuaian (Agreement Metrics)	27
+2.8.1 Kendall's Tau Correlation Coefficient 	27
+2.8.2 Mean Absolute Error (MAE)	28
+BAB III METODOLOGI PENELITIAN	29
+3.1. Alur Penelitian	29
+3.2. Analisis Kebutuhan	30
+3.2.1 Identifikasi Masalah	30
+3.2.2 Analisis Kebutuhan Pengguna dan Sistem	31
+3.2.3 Pengumpulan dan Pengolahan Data	33
+3.3. Perancangan Sistem	33
+3.3.1 Arsitektur Middleware dan Sub-Modul	34
+3.3.2 Struktur Prompt Modular	36
+3.3.3 Sequence Diagram Sistem	38
+3.4. Pengujian	39
+3.4.1 Skema Iterasi Prototyping	39
+BAB IV HASIL DAN PEMBAHASAN	40
+4.1. Implementasi Antarmuka Sistem	40
+1.	Antarmuka Pembuatan Tugas (/dosen/buat-tugas):	40
+2.	Antarmuka Dashboard Dosen (/dosen):	41
+3.	Antarmuka Validasi dan Koreksi Dosen (/dosen/validasi/[id]):	41
+4.	Antarmuka Portal Mahasiswa (/tugas/[id]):	42
+4.2. Hasil Iterasi Perbaikan Prototype Sistem	42
+1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring)	42
+2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric)	43
+4.3. Analisis Statistik dan Keandalan AI	44
+4.4. Pembahasan dan Implikasi Hasil	45
+BAB V KESIMPULAN DAN SARAN	46
+5.1. Kesimpulan	46
+5.2. Saran	46
+DAFTAR PUSTAKA	48
+
+
+DAFTAR GAMBAR
+
+Gambar 2.1 Arsitektur Transformer (Vaswani et al., 2022).	11
+Gambar 2.2 Arsitektur Middleware untuk Integrasi AI pada Platform Penilaian (Claes, 2025).	16
+
+Gambar 3.1 Use Case Diagram Smart Assistant Lecturer.	28
+Gambar 3.2 Diagram Arsitektur Sistem.	31
+Gambar 3.3 Struktur Prompt Modular.	33
+Gambar 3.4 Sequence Diagram Sistem.	34
+
+
+
+DAFTAR TABEL
+
+
+Tabel 2.1 Ikhtisar Penelitian.	21
+
+Tabel 3.1 Jadwal Penelitian.	36
+
+
+
+    BAB I 
+PENDAHULUAN
+
+        1.1. Latar Belakang
+Penilaian esai merupakan salah satu metode evaluasi utama untuk mengukur kemampuan analisis, penalaran logika, dan pemahaman mendalam mahasiswa terhadap materi perkuliahan. Namun, proses pemeriksaan jawaban esai secara manual membutuhkan waktu yang sangat lama (time-consuming), menyita energi, serta sulit diterapkan secara efisien pada kelas dengan jumlah mahasiswa yang besar (Gao et al., 2024). Selain beban skalabilitas, penilaian manual oleh manusia juga memiliki keterbatasan bawaan berupa kelelahan kognitif (evaluator fatigue), risiko bias, serta variabilitas subjektivitas yang berpotensi memicu ketidakkonsistenan skor antar-lembar jawaban (Kaldaras et al., 2024). Di Program Studi Teknik Informatika Universitas Muhammadiyah Bandung, peningkatan jumlah mahasiswa turut meningkatkan beban koreksi dosen yang dapat memengaruhi konsistensi penilaian dan kualitas umpan balik yang diberikan.
+Perkembangan teknologi Large Language Models (LLM) membuka peluang dalam mendukung proses evaluasi akademik secara otomatis. LLM telah dimanfaatkan untuk analisis teks, pemberian umpan balik, hingga evaluasi berbasis bahasa alami (Kasneci et al., 2023). Beberapa penelitian menunjukkan bahwa LLM mampu menghasilkan penilaian yang mendekati evaluasi manusia, meskipun hasilnya masih dipengaruhi oleh struktur instruksi atau prompt yang digunakan (Mizumoto & Eguchi, 2023; Pack et al., 2024). Selain itu, penelitian terkait prompt engineering menunjukkan bahwa pengelolaan instruksi yang tepat dapat secara signifikan meningkatkan kemampuan penalaran model (Wang et al., 2022), yang implementasinya terbukti mampu meningkatkan kualitas evaluasi dan umpan balik akademik (Stahl et al., 2024). Namun, implementasi evaluasi esai berbasis LLM dalam Bahasa Indonesia masih menghadapi tantangan pada aspek semantik dan parameter penilaian lokal.
+Penelitian terbaru dari Melvyn Claes (2025) mengusulkan arsitektur provider-agnostic middleware yang memisahkan (decoupling) mekanisme platform dari layanan AI melalui penggunaan modular adapters. Melalui sistem prompt-template yang dinamis, middleware mampu menyatukan instruksi dosen, konteks jawaban mahasiswa, dan tujuan evaluasi ke dalam format instruksi LLM yang terstruktur. Pendekatan ini memungkinkan pengelolaan kriteria penilaian secara lebih fleksibel sehingga hasil evaluasi otomatis dapat tetap konsisten dengan standar penilaian dosen (Claes, 2025). 
+Secara global, pemanfaatan Large Language Models (LLM) di dunia pendidikan terus mengalami peningkatan dan mulai diterima secara luas sebagai alat bantu pengajaran (Kasneci et al., 2023). Teknologi ini dinilai mampu merevolusi proses evaluasi akademik melalui sistem penilaian otomatis (assessment and evaluation), yang implementasinya terbukti dapat memangkas waktu koreksi teks atau esai mahasiswa hingga 85% dengan tingkat presisi yang tinggi (Kasneci et al., 2023). Beberapa studi internasional bahkan mengonfirmasi bahwa model bahasa mutakhir seperti GPT-4 memiliki tingkat validitas dan reliabilitas yang sangat baik dalam melakukan Automated Essay Scoring (AES) yang berkorelasi kuat dengan penilaian manusia (Pack et al., 2024).
+Namun, meskipun terdapat optimisme global tersebut, skeptisisme dan kekhawatiran dari kalangan akademisi tetap menjadi tantangan besar (Kasneci et al., 2023). Hal ini dipicu oleh keterbatasan mendasar dari model deep learning yang rentan mengalami fenomena hallucination (halusinasi), yaitu kecenderungan AI menghasilkan teks yang terlihat meyakinkan namun tidak akurat atau tidak sesuai dengan data sumber asli (Ji et al., 2023). Ketakutan akan adanya bias penilaian, sifat "kotak hitam" (black box) AI yang sulit diinterpretasikan, serta potensi hilangnya kendali penuh dosen terhadap parameter nilai menjadi alasan utama mengapa banyak institusi masih ragu mengadopsi AI secara mentah-mentah (Kasneci et al., 2023).
+Fenomena skeptisisme dan dinamika global tersebut nyata ditemukan di tingkat lokal melalui penjajakan awal (preliminary study) berupa penyebaran angket kuesioner kepada 5 orang dosen pengampu mata kuliah pemrograman di Program Studi Teknik Informatika Universitas Muhammadiyah Bandung. Berdasarkan data empiris yang dihimpun, 100% responden sepakat bahwa proses pemeriksaan jawaban esai dan pseudocode secara manual menyita waktu yang signifikan dan memicu kelelahan kognitif (cognitive fatigue). Kendala teknis utama yang dihadapi meliputi tingginya variasi alur logika algoritma mahasiswa (dialami oleh 100% dosen), beban penelusuran alur logika secara manual atau dry-run (80% dosen), bias batasan objektivitas nilai (80% dosen), serta ketidakstandaran format pseudocode yang abstrak (60% dosen). Selain itu, dosen juga kerap dihadapkan pada kesulitan menentukan bobot nilai yang adil pada penilaian parsial (40% dosen) ketika logika berpikir mahasiswa terhenti di tengah jalan.
+Ketika dihadapkan pada peluang integrasi teknologi, 80% responden mengekspresikan kekhawatiran yang serupa dengan kecemasan global terkait risiko halusinasi (hallucination) atau ketidakakuratan evaluasi logika berpikir AI. Namun, terdapat indikasi penerimaan yang sangat positif, di mana seluruh responden (100%) menyatakan bersedia penuh untuk mengadopsi AI sebagai asisten penilaian. Kesediaan ini diiringi dengan syarat bahwa sistem harus mampu menyediakan justifikasi skor yang transparan dan kendali rubrik tetap berada sepenuhnya di tangan dosen pengampu.
+Kekhawatiran teoretis dan empiris inilah yang melandasi urgensi pengembangan Smart Assistant Lecturer berbasis arsitektur middleware dalam penelitian ini untuk mendukung evaluasi jawaban esai akademik di Program Studi Teknik Informatika Universitas Muhammadiyah Bandung. Melalui pendekatan middleware, kendali rubrik kaku tetap berada sepenuhnya di tangan dosen (instructor goals). Dalam pendekatan ini, kriteria penilaian diintegrasikan untuk membatasi model AI secara ketat melalui mekanisme pembatasan pengetahuan (knowledge grounding) pada konteks referensi demi mereduksi risiko halusinasi tersebut (Claes, 2025; Ji et al., 2023). Dengan struktur integrasi ini, sistem diharapkan mampu menghasilkan proses evaluasi otomatis yang lebih terstruktur, konsisten, dan sesuai dengan standar akademik yang ditetapkan.
+Guna merealisasikan integrasi sistem yang responsif terhadap dinamika kriteria penilaian dosen tersebut, penelitian ini menerapkan pendekatan pengembangan sistem berbasis model Prototyping (Maryani et al., 2022). Pemilihan metode Prototyping didasarkan pada sifat pengembangan instruksi LLM (prompt engineering) dan perancangan rubrik yang membutuhkan proses evaluasi serta penyesuaian secara berulang (iterative). Melalui siklus iterasi prototyping, sistem dapat diuji secara bertahap. Mulai dari evaluasi skema dasar hingga penyesuaian skala nilai parsial (3-point partial credit rubric) sehingga performa penalaran model dapat secara presisi diselaraskan dengan standar dan intuisi penilaian dosen pengampu (Chen & Wan, 2024; Stahl et al., 2024).
+Berdasarkan seluruh uraian permasalahan teoretis, data empiris lapangan, serta peluang solusi teknologi di atas, maka penelitian ini mengusulkan proposal tugas akhir dengan judul "Pengembangan Smart Assistant Lecturer untuk Analisis Jawaban Esai Otomatis Berbasis LLM (Large Language Model)". Implementasi sistem ini diharapkan dapat memberikan kontribusi praktis dalam meringankan beban koreksi manual dosen dan memitigasi risiko halusinasi AI, sekaligus memberikan kontribusi ilmiah berupa integrasi komprehensif antara arsitektur provider-agnostic middleware, teknik knowledge grounding berbasis Chain-of-Thought (CoT), dan skema partial credit rubric pada model open-weight dalam domain Automated Short Answer Grading (ASAG) untuk konteks akademik lokal.
+
+        1.2. Rumusan Masalah 
+Berdasarkan latar belakang di atas, rumusan masalah dalam penelitian ini adalah sebagai berikut:
+    1. Bagaimana mengotomatisasi proses evaluasi jawaban esai dan pseudocode berbasis LLM guna meringankan beban kerja dosen, dengan tetap memastikan kendali rubrik berada di tangan dosen serta memitigasi risiko halusinasi AI?
+    2. Sejauh mana tingkat kesesuaian (agreement) dan korelasi hasil penilaian otomatis yang dihasilkan oleh sistem tersebut apabila dibandingkan dengan standar penilaian manual dosen?
+
+        1.3. Tujuan Penelitian
+Tujuan yang dapat dikemukakan pada penelitian ini adalah sebagai berikut.
+    1. Merancang dan mengimplementasikan middleware untuk mengintegrasikan soal, jawaban esai mahasiswa, rubrik penilaian dosen, dan layanan LLM melalui sistem prompt-template yang terstruktur.
+    2. Mengevaluasi tingkat kesesuaian dan keakuratan hasil penilaian sistem terhadap hasil penilaian manual dosen menggunakan metrik evaluasi statistik Kendall's Tau  untuk mengukur korelasi peringkat (rank correlation) keselarasan logika penilaian, serta Mean Absolute Error (MAE) untuk mengukur rata-rata deviasi fisik skor.
+
+        1.4. Batasan Masalah
+Agar penelitian ini terarah, terukur, dan dapat diselesaikan dalam jangka waktu yang telah ditentukan, batasan masalah dalam penelitian ini adalah sebagai berikut.
+    1. Objek Penelitian
+Sistem ini diterapkan secara khusus pada mata kuliah di Program Studi Teknik Informatika Universitas Muhammadiyah Bandung yang bersifat teoritis, analisis, dan logika pemrograman dasar (esai algoritma/pseudocode). Mata kuliah dengan perhitungan numerik kompleks dikecualikan untuk meminimalkan risiko halusinasi (hallucination) pada model.
+    2. Teknologi AI dan Arsitektur
+Menggunakan model GPT-OSS 120B melalui infrastruktur Groq API untuk memastikan proses inferensi dengan latensi rendah (low latency). Model bahasa ini diintegrasikan ke dalam platform melalui rancangan lapisan middleware terpisah yang mengadopsi prinsip decoupling.
+    3. Input Data
+Format data dokumen yang didukung terbatas pada berkas teks digital ekstensi .pdf, .docx, dan .txt. Sistem tidak mendukung pemrosesan data berbentuk citra, pemindaian dokumen, maupun tulisan tangan berbasis Optical Character Recognition (OCR).
+    4. Acuan Parameter Penilaian
+Analisis penilaian jawaban esai dilakukan berdasarkan instruksi, rubrik akademik, dan dokumen referensi materi yang diberikan oleh dosen pengampu. Untuk memitigasi fenomena halusinasi, sistem menerapkan pendekatan konwledge grounding yang mengunci ruang lingkup penalaran LLM hanya pada dokumen referensi tersebut.
+    5. Bahasa
+Sistem dikhususkan untuk analisis jawaban dalam Bahasa Indonesia guna menyesuaikan konteks akademik lokal serta menjaga konsistensi interpretasi semantik dalam proses evaluasi.
+    6. Ruang Lingkup Pengujian dan Evaluasi
+Evaluasi keandalan sistem murni dibatasi pada uji teknis berupa akurasi, validitas, dan konsistensi komparatif antara nilai keluaran AI terhadap nilai asli aktual dari dosen (ground truth). Pengujian menggunakan korpus data retrospektif (arsip masa lalu) dengan estimasi sampel berkisar 30 hingga 50 dokumen jawaban yang dihitung melalui metrik statistik Kendall's Tau  dan Mean Absolute Error (MAE) (Yeung, 2025; Bhat & Varma, 2026). Penelitian ini tidak mengukur aspek pengalaman pengguna (User Experience), tingkat kepuasan (User Satisfaction), maupun dampak efektivitas pedagogis pada mahasiswa secara langsung di kelas nyata.
+
+        1.5. Manfaat Penelitian
+Manfaat yang dapat dikemukakan pada penelitian ini adalah sebagai berikut. 
+    1. Bagi Akademis/Dosen
+Memberikan dukungan dalam proses evaluasi akademik, membantu menjaga konsistensi penilaian esai dalam skala besar, serta mereduksi beban kerja administratif koreksi manual dosen tanpa menghilangkan kendali terhadap kriteria rubrik utama.
+    2. Bagi Mahasiswa
+Menyediakan visualisasi kapabilitas sistem yang mampu menyajikan umpan balik (feedback) deskriptif formatif secara responsif dan transparan, sebagai representasi transparansi parameter penilaian yang telah ditetapkan oleh dosen pengampu.
+    3. Bagi Pengembangan Educational Technology (EdTech)
+Memberikan kontribusi ilmiah berupa bukti implementasi nyata arsitektur middleware berbasis prinsip decoupling ke dalam domain penilaian esai otomatis (Automated Essay Scoring). Hal ini menjadi referensi sistem tata kelola evaluasi akademik yang terstruktur, tangguh terhadap perubahan parameter AI, dan independen dari keterikatan vendor AI tertentu (provider-agnostic).
+        1.6. Jadwal Penelitian
+Penelitian ini direncanakan berlangsung selama empat bulan, mencakup tahap persiapan hingga penyusunan laporan akhir:
+
+Tabel 1.6 Jadwal Penelitian.
+Kegiatan	Bulan
+	1	2	3	4
+Studi Literatur & Pengumpulan Data	v			
+Perancangan & Implementasi Middleware	v	v		
+Eksperimen Penilaian LLM		v	v	
+Analisis Statistik (Kendall's Tau & MAE)			v	v
+
+
+    BAB II 
+TINJAUAN PUSTAKA
+
+        2.1. Objek Penelitian
+Objek penelitian dalam tugas akhir ini adalah proses evaluasi dan analisis otomatis terhadap lembar jawaban esai pendek, pseudocode, serta kueri logika pemrograman (seperti SQL) pada mahasiswa Program Studi Teknik Informatika Universitas Muhammadiyah Bandung. Proses evaluasi tugas esai berbasis logika selama ini dilakukan secara konvensional melalui pemeriksaan manual oleh dosen pengampu mata kuliah satu per satu. Dalam praktik penilaian manual tersebut, dosen dituntut untuk melakukan penelusuran alur logika algoritma (dry-run) secara mendalam baris demi baris guna memastikan kebenaran penalaran komputasi mahasiswa.
+Berdasarkan hasil penjajakan awal (preliminary study) yang dilakukan melalui penyebaran kuesioner kepada dosen pengampu mata kuliah rumpun logika pemrograman di lingkungan Teknik Informatika UM Bandung, terungkap bahwa proses koreksi manual satu per satu tersebut menyita waktu yang sangat signifikan dan memicu kelelahan kognitif (cognitive fatigue) (100% responden sepakat). Kendala operasional utama yang dihadapi dosen di lapangan meliputi:
+                            1. Tingginya Variasi Alur Logika (100% Dosen): Setiap mahasiswa cenderung menggunakan pendekatan algoritma yang berbeda-beda untuk menyelesaikan satu studi kasus yang sama, sehingga memerlukan waktu lama bagi dosen untuk memvalidasi kebenaran logika masing-masing jawaban. 
+                            2. Beban Penelusuran Alur Logika / Dry-Run (80% Dosen): Dosen harus mensimulasikan alur eksekusi logika secara manual guna mendeteksi keberadaan logical error maupun infinite loop. 
+                            3. Bias Batasan Nilai / Objektivitas (80% Dosen): Kesulitan dalam memisahkan secara objektif antara kesalahan logika yang fatal dengan kesalahan penulisan (typo atau syntax error) yang bersifat minor.
+                            4. Ketidakstandaran Format (60% Dosen): Gaya penulisan pseudocode mahasiswa yang abstrak dan tidak mengikuti konvensi baku.
+                            5. Penilaian Parsial / Partial Credit (40% Dosen): Kesulitan menentukan bobot nilai yang adil ketika alur berpikir mahasiswa terhenti atau patah di tengah jalan sebelum mencapai luaran yang sempurna.
+Dari sisi penerimaan teknologi, meskipun 80% dosen mengekspresikan kekhawatiran terhadap risiko ketidakakuratan atau halusinasi AI, seluruh dosen (100%) menyatakan bersedia mengadopsi sistem AI sebagai asisten penilaian. Kesediaan ini diiringi dengan syarat mutlak bahwa sistem wajib menyediakan justifikasi penilaian yang transparan serta kendali rubrik evaluasi tetap dikunci penuh di tangan dosen pengampu. Kondisi operasional dan kebutuhan empiris para dosen inilah yang dijadikan sebagai objek kajian utama dalam merancang arsitektur Smart Assistant Lecturer.
+
+        2.2. Penelitian Terdahulu
+Penelitian ini dilakukan dengan merujuk pada beberapa studi terdahulu yang relevan dengan pemanfaatan Large Language Model (LLM), arsitektur middleware, strategi prompt engineering, serta metrik evaluasi pada sistem Automated Essay Scoring (AES). Tinjauan literatur ini digunakan sebagai landasan komparatif untuk memetakan evolusi metode penilaian otomatis sekaligus memposisikan letak kebaruan dari sistem Smart Assistant Lecturer yang dikembangkan. Ringkasan perbandingan karakteristik penelitian terdahulu tersebut disajikan secara terstruktur pada Tabel 2.1:
+	
+Tabel 2.1 Ikhtisar Penelitian.
+No	Peneliti	Fokus / Pendekatan	Hasil Utama	Aspek yang Diadopsi
+1	Mizumoto & Eguchi (2023)	Uji zero-shot prompting GPT-3 (model text-davinci-003) pada 12.100 esai TOEFL11.	Akurasi memadai (89,15% adjacent agreement); meningkat jika didukung fitur leksikal.	Pengujian validitas dengan membandingkan skor otomatis AI terhadap nilai dari penilai manusia (human rater).
+2	Pack, Barrett, & Escalante (2024)	Uji longitudinal 4 LLM komersial pada esai penempatan bahasa menggunakan struktur prompt spesifik (peran, kriteria, konteks).	Performa model komersial terbukti fluktuatif akibat pembaruan vendor, serta perlunya instruksi prompt yang terstruktur untuk akurasi evaluasi.	Justifikasi penggunaan model open-weight untuk menghindari inkonsistensi performa, serta pengadopsian prinsip prompt engineering akademik (khususnya elemen [ROLE] dan [CONTEXT]).
+3	Stahl et al. (2024)	Eksplorasi strategi prompt engineering (CoT, Persona) untuk skoring esai pendek dan umpan balik otomatis pada dataset ASAP.	Penilaian dan pembuatan umpan balik secara bersamaan meningkatkan performa skoring LLM, terutama jika model dipicu menghasilkan penjelasan rasional sebelum skor dikeluarkan.	Strategi penyusunan struktur instruksi modular berbasis Chain-of-Thought (CoT) untuk mengekstrak justifikasi penilaian akademik.
+4	Haller, et al. (2022)	Survei metode ASAG dari fitur manual ke representasi Transformer.	Model Transformer unggul semantik, namun butuh rubrik kaku (hand-engineered) untuk hasil optimal.	Pendekatan hybrid yang menyatukan kapabilitas semantik model bahasa dengan parameter kaku dari rubrik penilaian oleh dosen.
+5	Claes (2025)	Pengembangan arsitektur provider-agnostic middleware untuk integrasi umpan balik LLM menggunakan sistem modular adapters.	Mekanisme decoupling sukses memisahkan kode platform utama dari perubahan API layanan AI.	Pola desain arsitektur middleware berbasis komponen decoupling untuk memisahkan logika aplikasi dengan API layanan inferensi model.
+6	Chen & Wan	Evaluasi partial credit grading LLM pada penjelasan langkah penalaran siswa berbasis rubrik multi-item biner (1/0 per item)	LLM mencapai akurasi selevel manusia (70-80% agreement). Teknik CoT & detailed rubric explanation terbukti krusial.	Pengadopsian struktur rubrik bergradasi (multi-item partial credit), penggunaan CoT sebelum skor, serta evaluasi keselarasan.
+
+Berdasarkan tinjauan terhadap penelitian terdahulu pada Tabel 2.1, ditemukan research gap yang signifikan. Mayoritas studi (seperti Mizumoto & Eguchi, 2023; Pack et al., 2024) mengevaluasi model LLM komersial secara langsung (tightly coupled) melalui prompting manual, yang memicu risiko fenomena halusinasi serta inkonsistensi akibat fluktuasi pembaruan vendor. Meskipun Chen & Wan terbukti berhasil menerapkan skema partial credit rubric berbasis multi-item binary dan Chain-of-Thought (CoT) untuk mengukur tingkat penalaran siswa, pengujian tersebut masih dilakukan secara langsung pada LLM komersial tanpa dukungan arsitektur perantara. Di sisi lain, meskipun Claes (2025) mengusulkan arsitektur middleware untuk pemisahan logika (decoupling), penerapannya masih terbatas pada umpan balik pemrograman generik tanpa pengujian kuantitatif terhadap akurasi skor. Demikian pula pembuktian keunggulan prompting modular oleh Stahl dkk. (2024) yang belum diintegrasikan ke dalam arsitektur sistem mandiri berbasis middleware yang dikendalikan penuh oleh dosen pengampu.
+Oleh karena itu, penelitian ini hadir untuk mengisi celah-celah tersebut dengan menyatukan dan mengintegrasikan berbagai keunggulan studi terdahulu ke dalam satu kesatuan arsitektur sistem Smart Assistant Lecturer. Secara spesifik, kebaruan (novelty) dari penelitian ini terletak pada integrasi menyeluruh antara: (1) penerapan arsitektur provider-agnostic middleware berbasis decoupling dari Claes (2025); (2) penyusunan prompt-template modular berbasis Chain-of-Thought (CoT) dari Stahl dkk. (2024); (3) pengadopsian skema partial credit rubric bergradasi dari Chen & Wan untuk mengakomodasi kebenaran parsial; serta (4) implementasi mekanisme Knowledge Grounding pada model open-weight (GPT-OSS 120B) guna memitigasi halusinasi AI secara kaku pada evaluasi esai jawaban pendek berbahasa Indonesia (Ji et al., 2023; Agarwal et al., 2025). Lebih lanjut, inovasi sistem ini divalidasi secara komprehensif dengan mengukur tingkat keselarasan peringkat dan presisi kesalahan skor fisik terhadap ground truth dosen menggunakan metrik Kendall's Tau  untuk menguji hirarki logika serta Mean Absolute Error (MAE) untuk deviasi rata-rata skor (Yeung, 2025; Bhat & Varma, 2026).
+
+        2.3. Karakteristik Jenis Soal Uraian Pada Penelitian Terkait
+Keberhasilan implementasi penilaian otomatis sangat dipengaruhi oleh karakteristik dan jenis esai atau soal uraian yang diujikan (Haller et al., 2022). Berdasarkan pemetaan terhadap literatur terdahulu, jenis esai yang diteliti dapat diklasifikasikan ke dalam beberapa tipe utama:
+                            1. Esai Kemahiran Bahasa Standar (Long-form Language Essay)
+Penelitian yang dilakukan oleh Mizumoto & Eguchi (2023) serta Pack dkk. (2024) berfokus pada esai panjang formal yang diambil dari korpus TOEFL11 dan tes penempatan bahasa Inggris. Karakteristik esai tipe ini bersifat argumentatif-naratif. Pada tipe ini, AI mengevaluasi aspek kekayaan leksikal (lexical diversity), kompleksitas sintaksis, tingkat kohesi teks, dan tata bahasa secara holistik (Mizumoto & Eguchi, 2023).
+                            2. Esai Pendek Konseptual Pemahaman Membaca (Short-Answer Reading Comprehension)
+Studi oleh Stahl dkk. (2024) menggunakan dataset ASAP (Automated Student Assessment Prize) yang mengevaluasi jawaban esai pendek dari siswa sekolah menengah. Jenis soal ini menuntut penalaran konten teoretis dan pemahaman teks pembacaan, sehingga akurasi penilaian AI sangat bergantung pada strategi instruksi langkah-demi-langkah (Chain-of-Thought) untuk mengekstrak penjelasan rasional sebelum skor diberikan (Stahl et al., 2024).
+                            3. Esai Kontekstual Pragmatik/Gaya Bahasa (Pragmatic and Politeness Classification)
+Ludwig dkk. (2021) menguji jenis esai pendek berupa respons email bisnis dalam dunia pendidikan vokasi. Fokus utamanya bukan pada konten faktual, melainkan klasifikasi gaya bahasa untuk mendeteksi aspek kesantunan (politeness) berdasarkan urutan kata menggunakan model Transformer (Ludwig et al., 2021).
+                            4. Esai Logika Pemrograman dan Konteks Kode (Source-Code & Computer Science Assessment)
+Claes (2025) mengeksplorasi domain yang paling relevan dengan Teknik Informatika. Pada domain tersebut, teks yang dievaluasi mencakup tugas pemrograman dasar, potongan kode (code snippet), dan penalaran logika komputer. Penilaian jenis soal ini sangat kompleks karena AI harus menyinkronkan teks narasi mahasiswa dengan hasil pengujian unit (unit-test) melalui bantuan sistem middleware agar tidak terjadi kesalahan interpretasi (Claes, 2025).
+Secara umum, literatur Automated Short Answer Grading (ASAG) menegaskan bahwa respons pendek berbasis konten teoretis dan logika prosedural memiliki tantangan yang berbeda dengan esai panjang (Haller et al., 2022). Pada esai pendek, representasi semantik dari model Transformer harus dikombinasikan dengan rubrik baku buatan manusia (hand-engineered features) demi memastikan bahwa AI tidak hanya menilai kelancaran bahasa, melainkan kebenaran substansi logika dari jawaban tersebut (Haller et al., 2022).
+Berdasarkan pemetaan karakteristik tersebut, penelitian ini difokuskan secara spesifik pada kategori keempat, yaitu Esai Logika Pemrograman dan Konteks Kode (Source-Code & Computer Science Assessment). Objek evaluasi dalam penelitian ini mencakup jawaban esai pendek berupa analisis alur logika algoritma, penulisan pseudocode, serta kueri basis data (SQL). Jenis soal ini dipilih karena memiliki kompleksitas struktur yang khas, di mana kebenaran jawaban tidak hanya diukur dari kelancaran sintaksis bahasa alami, melainkan dari ketepatan alur logika prosedural dan pemahaman konsep komputasi yang dituangkan mahasiswa. Oleh karena itu, penerapan arsitektur middleware dan skema 3-point partial credit rubric dalam penelitian ini dirancang khusus untuk mengakomodasi karakteristik penalaran logika pada kategori tersebut.
+Guna memberikan gambaran eksplisit mengenai karakteristik soal esai logika yang dievaluasi dalam penelitian ini, instrumen evaluasi menggunakan kasus uji berupa tugas esai praktikum eksplorasi perintah Structured Query Language (SQL). Tugas ini dirancang oleh dosen pengampu untuk menguji kompetensi mahasiswa dalam mengeksekusi 10 operasi komputasi basis data yang mencakup pembuatan struktur basis data dan tabel, manipulasi data (insert, select, update, delete), serta penyesuaian struktur tabel (alter table).
+Secara spesifik, kunci jawaban yang seharusnya beserta rincian 10 aspek operasi yang diperiksa oleh dosen pengampu disajikan pada Tabel 2.2:
+Tabel 2.2 Spesifikasi Soal dan Kunci Jawaban Acuan Dosen
+No	Metode Penilaian	Deskripsi Instruksi Tugas	Kunci Jawaban Ideal / Sintaks Query Acuan Dosen
+1	Pembuatan Database (Create Database)	Membuat database bernama 'universitas'	CREATE DATABASE universitas;
+2	Pembuatan Tabel (Create Table)	Membuat table ‘mahasiswa’ dengan Primary Key ‘nim’	CREATE TABLE mahasiswa (nim VARCHAR(10) PRIMARY KEY, nama VARCHAR(50), jurusan VARCHAR(30), angkatan INT, ipk DECIMAL(3,2));
+3	Pengisian Data (Insert)	Memasukkan 3 data mahasiswa (Ali, Budi, Citra)	INSERT INTO mahasiswa VALUES ('12345', 'Ali Hasan', 'Informatika', 2021, 3.75), ('12346', 'Budi Santoso', 'Sistem Informasi', 2022, 3.60), ('12347', 'Citra Dewi', 'Teknik Komputer', 2020, 3.85);
+4	Penampilan Data 1 (Select)	Menampilkan seluruh data mahasiswa	SELECT * FROM mahasiswa;
+5	Penampilan Data 2 (Filter Teks)	Menampilkan mahasiswa jruusan ‘Informatika’	SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';
+6	Penampilan Data 3 (Filter Angka)	Menampilkan mahasiswa dengan IPK > 3.7	SELECT * FROM mahasiswa WHERE ipk > 3.7;
+7	Pembaruan Data (Update Data)	Memperbarui IPK mahasiswa NIM '12346'	UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';
+8	Penghapusan Data (Delete Data)	Menghapus data mahasiswa bernama 'Citra Dewi'	DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';
+9	Tambah Kolom (Alter Add)  	Menambahkan kolom 'tanggal_lahir' (DATE)	ALTER TABLE mahasiswa ADD tanggal_lahir DATE;
+10	Pembaruan Struktur Data	Memperbarui tanggal lahir 3 data mahasiswa	UPDATE mahasiswa SET tanggal_lahir = '2002-05-10' WHERE nim = '12345'; (3 query UPDATE terpisah)
+
+Melalui pemetaan pada Tabel 2.2, terlihat bahwa soal esai logika pemrograman memiliki karakteristik yang unik. Kebenaran jawaban tidak hanya dinilai dari kelancaran bahasa alami, melainkan dari presisi sintaksis SQL, ketepatan penggunaan tipe data, serta kebenaran klausa penyaringan data (WHERE).
+        2.4. Automated Essay Scoring (AES)
+Automated Essay Scoring (AES) atau penilaian esai otomatis merupakan proses penggunaan teknologi komputasi untuk mengevaluasi dan memberikan skor pada jawaban esai secara otomatis. Implementasi AES dalam lingkungan pendidikan bertujuan untuk membantu proses evaluasi akademik, terutama dalam mengatasi tantangan skalabilitas akibat meningkatnya jumlah mahasiswa dalam proses pembelajaran (Haller et al., 2022).
+
+            2.4.1  Evolusi Metode: Dari Statistik ke Transformer
+Perkembangan metode dalam Automated Essay Scoring (AES) telah mengalami perubahan yang signifikan dari pendekatan berbasis fitur manual menuju pembelajaran representasi bahasa secara otomatis. Pada tahap awal, sistem AES sangat bergantung pada fitur linguistik yang dirancang secara manual (hand-engineered features), seperti jumlah kata, panjang kalimat, serta frekuensi statistik tertentu untuk menentukan kualitas tulisan (Haller et al., 2022).
+Seiring perkembangan teknologi pembelajaran mesin, pendekatan AES mulai memanfaatkan word embeddings dan model sekuensial seperti Recurrent Neural Network (RNN) maupun Long Short-Term Memory (LSTM). Model-model tersebut memungkinkan sistem mempelajari pola bahasa secara otomatis dari korpus data dalam jumlah besar tanpa sepenuhnya bergantung pada fitur linguistik manual (Haller et al., 2022).
+Perkembangan terbaru menunjukkan bahwa teknologi AES saat ini didominasi oleh arsitektur Transformer berbasis mekanisme attention. Pendekatan ini dinilai lebih efektif dalam memahami konteks semantik teks secara mendalam dibandingkan pendekatan sebelumnya. Selain itu, penelitian terbaru juga menunjukkan bahwa kombinasi antara fitur linguistik manual dan representasi semantik berbasis Transformer mampu menghasilkan performa evaluasi yang lebih baik dalam sistem AES (Haller et al., 2022).
+
+            2.4.2  Subjektivitas dan Batasan Penilaian Manual
+Meskipun penilaian manual oleh dosen masih dianggap sebagai acuan utama dalam evaluasi akademik, proses tersebut memiliki sejumlah keterbatasan mendasar terkait efisiensi, konsistensi, dan reliabilitas skor (Gao et al., 2024; Kaldaras et al., 2024). Gao et al. (2024) mengemukakan bahwa pemeriksaan tugas esai atau soal uraian terbuka di perguruan tinggi membutuhkan alokasi waktu dan tenaga yang masif (labor-intensive), sehingga sering kali menjadi kendala utama dalam memberikan umpan balik secara cepat pada kelas berskala besar.
+Dari sudut pandang psikometrik, penilai manusia bukanlah standar evaluasi yang sempurna (nonperfect criteria) karena rentan dipengaruhi oleh faktor subjektivitas, bias panjang-pendeknya jawaban, serta penurunan tingkat ketelitian akibat kelelahan (cognitive fatigue) (Kaldaras et al., 2024). Kompleksitas kognitif dalam menelusuri alur berpikir mahasiswa menyebabkan variabilitas keputusan nilai sulit dihindari, meskipun dosen telah dibekali dengan rubrik penilaian yang sama (Kaldaras et al., 2024). Kondisi ini menegaskan bahwa penggunaan rubrik kaku secara manual belum sepenuhnya mampu menjamin keseragaman standar penilaian pada evaluasi esai akademik.
+
+            2.4.3  Variasi Skala Penilaian: Penilaian Biner (Binary Scoring) dan Kredit Parsial (Partial Credit Scoring)
+Dalam pengembangan sistem Automated Short Answer Grading (ASAG) maupun Automated Writing Evaluation (AWE), penentuan skala penilaian merupakan aspek krusial yang menentukan keadilan dan presisi evaluasi logika mahasiswa (Haller et al., 2022). Secara umum, skema penilaian dapat diklasifikasikan ke dalam dua pendekatan utama:
+                            1. Penilaian Biner (Binary Scoring / 2-Way Classification)
+Skema biner menilai setiap jawaban secara absolut: benar (skor 100 / 1) atau salah (skor 0) (Dzikovska et al., 2013). Meskipun skema ini sederhana dan bebas dari ambiguitas gradasi, penilaian biner secara holistik terbukti terlampau kaku dalam konteks penilaian esai algoritma dan pseudocode. Hal ini dikarenakan skema biner memberikan penalti penuh (skor 0) pada kesalahan tipografi minor atau kelalaian tanda kutip, meskipun alur logika penalaran mahasiswa secara umum telah benar (Chen & Wan; Haller et al., 2022).
+                            2. Penilaian Kredit Parsial (Partial Credit Scoring / Gradated Rubric)
+Untuk mengantisipasi kekakuan skema biner, dikembangkan pendekatan Partial Credit Scoring berbasis rubrik bergradasi (seperti 3-Point Partial Credit Rubric: skor 0, 50, 100) (Masters, 1982; Haller et al., 2022). Penelitian terbaru oleh Chen & Wan membuktikan bahwa penggunaan rubrik parsial multi-item yang dikombinasikan dengan mekanisme Chain-of-Thought (CoT) mampu meningkatkan akurasi penilaian Large Language Model (seperti GPT-4o dan GPT-OSS 120B) hingga mencapai tingkat keselarasan setara penilai manusia (human-grade agreement 70%–80%). Skema kredit parsial ini secara empiris lebih mampu merepresentasikan gradasi pemahaman dan logika berpikir mahasiswa secara objektif dan proporsional (Chen & Wan).
+        2.5. Large Language Models (LLM) 
+Large Language Models (LLM) merupakan model bahasa berbasis jaringan saraf dengan jumlah parameter berskala besar yang dilatih menggunakan korpus teks dalam jumlah masif. Model ini dirancang untuk memahami, menghasilkan, dan memproses bahasa alami melalui proses pembelajaran representasi statistik dari data teks (Zhao et al., 2023). Salah satu karakteristik utama yang membedakan LLM dari generasi model bahasa sebelumnya adalah munculnya kemampuan emergen (emergent abilities), yaitu kemampuan menyelesaikan tugas kompleks tanpa pelatihan khusus ketika skala parameter model mencapai ukuran tertentu (Zhao et al., 2023).
+
+            2.5.1  Arsitektur Transformer
+Perkembangan LLM modern berakar pada arsitektur Transformer yang diperkenalkan oleh Vaswani et al. (2017). Arsitektur ini menggunakan mekanisme self-attention untuk memproses hubungan antar token dalam suatu urutan teks secara paralel. Melalui mekanisme tersebut, setiap token dapat memperhatikan token lainnya dalam satu konteks kalimat sehingga model mampu memahami hubungan semantik dan dependensi jarak jauh secara lebih efektif dibandingkan pendekatan sebelumnya (Vaswani et al., 2017).
+
+Gambar 2.1 Arsitektur Transformer (Vaswani et al., 2017).
+
+Selain memiliki kemampuan memahami konteks secara mendalam, arsitektur Transformer juga mendukung proses komputasi paralel yang lebih efisien dibandingkan model sekuensial seperti Recurrent Neural Network (RNN) maupun Long Short-Term Memory (LSTM). Kemampuan paralelisasi tersebut menjadi faktor penting yang memungkinkan pelatihan model bahasa dengan jumlah parameter berskala sangat besar pada pengembangan LLM modern (Vaswani et al., 2017).
+
+            2.5.2  Arsitektur Mixture-of-Experts (MoE)
+Seiring meningkatnya ukuran model bahasa, kebutuhan sumber daya komputasi juga menjadi semakin besar. Untuk mengatasi permasalahan tersebut, dikembangkan pendekatan Mixture-of-Experts (MoE) yang menggunakan struktur parameter renggang (sparse parameters). Pada pendekatan ini, model tidak mengaktifkan seluruh parameter secara bersamaan saat proses inferensi dilakukan.
+Melalui mekanisme routing, sistem hanya akan mengaktifkan sebagian kecil sub-jaringan atau experts yang dianggap relevan terhadap masukan tertentu, sementara parameter lainnya tetap tidak aktif. Pendekatan tersebut memungkinkan model memiliki kapasitas pengetahuan yang besar melalui jumlah parameter total yang masif, namun tetap mempertahankan efisiensi komputasi selama proses inferensi berlangsung. Dengan demikian, arsitektur MoE mampu meningkatkan efisiensi penggunaan sumber daya tanpa mengurangi kemampuan model dalam memahami konteks dan instruksi (Zhao et al., 2023).
+
+            2.5.3  Klasifikasi Akses Parameter dan Pemilihan Model GPT-OSS 120B
+Klasifikasi model bahasa berdasarkan akses parameternya secara umum memisahkan antara model komersial tertutup (closed-source) dan model bobot terbuka (open-weight) (Zhao et al., 2023). Model open-weight memberikan fleksibilitas bagi pengembang untuk mengakses dan mengunci parameter arsitektur jaringan saraf secara statis di infrastruktur mandiri guna menghindari risiko inkonsistensi penilaian akibat fluktuasi pembaruan berkala oleh vendor komersial (Pack et al., 2024).
+Sebagai implementasi dari pendekatan tersebut, penelitian ini memilih model GPT-OSS 120B. Model bahasa open-weight ini dirancang khusus untuk mendukung kemampuan penalaran (reasoning) mendalam dan pemrosesan instruksi secara kontekstual melalui beberapa karakteristik teknis unggulan (Agarwal et al., 2025):
+                            1. Variable Effort Reasoning
+Mekanisme yang memungkinkan sistem menyesuaikan tingkat kompleksitas proses penalaran berdasarkan tingkat kesulitan tugas yang diberikan (Agarwal et al., 2025). Karakteristik ini krusial dalam penilaian esai pendek akademik yang membutuhkan konsistensi interpretasi terhadap alur logika jawaban yang bervariasi.
+                            2. Format Harmony Chat
+Struktur yang dioptimalkan untuk meningkatkan kemampuan model dalam mengikuti instruksi pengguna (instruction-following) secara lebih presisi (Agarwal et al., 2025), sehingga memitigasi deviasi output saat disinkronkan dengan parameter rubrik dosen.
+                            3. Post-Training & Optimalisasi Multibahasa
+Model ini telah melalui fase Post-Training for Reasoning and Tool Use yang memperkuat kapabilitas In-Context Learning (ICL) lintas bahasa (Agarwal et al., 2025). Representasi tokenisasinya terbukti optimal terhadap arsitektur bahasa non-Inggris, termasuk Bahasa Indonesia, sehingga mampu mengenali instruksi kontekstual lokal serta struktur perintah modular yang diberikan melalui lapisan middleware secara presisi tanpa kehilangan makna logisnya.
+
+            2.5.4  Fenomena Halusinasi Pada Large Language Model
+Meskipun Large Language Model (LLM) memiliki kemampuan yang tinggi dalam memahami dan menghasilkan teks yang fasih, model berbasis jaringan saraf ini memiliki keterbatasan bawaan (inherent limitation) yang signifikan berupa fenomena halusinasi (hallucination). Halusinasi pada konteks Natural Language Generation (NLG) didefinisikan sebagai kondisi model yang menghasilkan teks atau keluaran yang terdengar meyakinkan, koheren, dan benar secara sintaksis, namun secara faktual menyimpang, salah, atau tidak sesuai dengan sumber referensi yang disediakan (Ji et al., 2023). Fenomena ini menjadi tantangan kritis dalam implementasi praktis sistem penilaian esai otomatis karena dapat mencederai validitas nilai akademik akibat kekeliruan model dalam membaca logika jawaban. 
+Secara taksonomi, Ji et al. (2023) mengklasifikasikan halusinasi ke dalam dua kategori utama, yaitu halusinasi intrinsik (intrinsic hallucination) dan halusinasi ekstrinsik (extrinsic hallucination). Halusinasi intrinsik terjadi ketika output yang dihasilkan oleh model secara langsung memuat informasi yang bertentangan atau kontradiktif dengan dokumen sumber yang diberikan. Sementara itu, halusinasi ekstrinsik terjadi ketika model menghasilkan informasi tambahan yang tidak dapat diverifikasi atau tidak terdapat sama sekali di dalam data masukan referensi. Pada kondisi tersebut, model cenderung mengekstrak pengetahuan umum hasil pre-training yang tidak relevan. Faktor utama penyebab halusinasi ini adalah kecenderungan model yang lebih memprioritaskan kelancaran bahasa (fluency) dibandingkan keakuratan informasi (faithfulness) terhadap data dasar (Ji et al., 2023). Oleh karena itu, dalam penilaian esai jawaban pendek (short answer) untuk rumpun logika pemrograman, risiko halusinasi ini harus dimitigasi secara sistematis agar proses evaluasi tetap berpijak kaku pada rubrik resmi dosen pengampu.
+
+            2.5.5  In-Context Learning dan Reasoning
+Salah satu kemampuan utama pada LLM modern adalah In-Context Learning (ICL), yaitu kemampuan model untuk mempelajari tugas baru hanya melalui instruksi atau contoh yang diberikan di dalam prompt tanpa memerlukan proses fine-tuning tambahan (Zhao et al., 2023). Pendekatan ini memungkinkan model beradaptasi terhadap berbagai jenis tugas secara fleksibel melalui pengelolaan konteks yang tepat.
+Selain kemampuan ICL, LLM juga memiliki kemampuan penalaran bertahap melalui pendekatan seperti Chain-of-Thought (CoT) (Wang et al., 2022). Pendekatan tersebut memungkinkan model menyelesaikan permasalahan logika melalui tahapan pemikiran yang lebih sistematis sehingga keluaran yang dihasilkan menjadi lebih konsisten dan mudah ditelusuri (Zhao et al., 2023).
+Dalam konteks penelitian ini, kemampuan In-Context Learning dan reasoning menjadi aspek penting karena memungkinkan sistem memahami kriteria evaluasi dosen serta menerapkannya secara logis terhadap jawaban esai mahasiswa. Dengan pendekatan tersebut, proses evaluasi berbasis LLM dapat dilakukan secara lebih terstruktur dan sesuai dengan konteks akademik yang diberikan.
+
+            2.5.6  Groq API.
+Groq API merupakan layanan inferensi Large Language Model (LLM) yang menyediakan antarmuka pemrograman berbasis OpenAI-compatible API untuk mendukung integrasi model bahasa ke dalam aplikasi secara lebih mudah dan fleksibel. Platform ini dirancang untuk mendukung proses inferensi dengan latensi rendah (low latency), sehingga cocok digunakan pada aplikasi yang membutuhkan respons cepat dalam pemrosesan bahasa alami, termasuk sistem evaluasi akademik berbasis LLM (Groq, 2026).
+Dalam penelitian ini, Groq API digunakan sebagai layanan inferensi untuk menjalankan model GPT-OSS 120B pada proses evaluasi jawaban esai. Melalui mekanisme chat completions yang kompatibel dengan format API OpenAI, sistem dapat mengirim instruksi dosen, konteks jawaban mahasiswa, dan parameter evaluasi dalam bentuk prompt terstruktur kepada model LLM. Pendekatan ini mendukung implementasi middleware dalam mengelola proses pertukaran konteks evaluasi secara lebih sistematis (Groq, 2026).
+Selain mendukung integrasi berbasis prompt, Groq juga menyediakan performa inferensi yang dioptimalkan untuk model berbasis Transformer dan Mixture-of-Experts (MoE). Dukungan tersebut memungkinkan proses evaluasi otomatis dilakukan secara lebih responsif tanpa mengurangi kemampuan model dalam memahami instruksi kontekstual (Groq, 2026).
+
+        2.6. Arsitektur Middleware dalam Sistem Penilaian
+Middleware didefinisikan sebagai lapisan perantara yang memungkinkan integrasi layanan kecerdasan buatan (AI) ke dalam platform penilaian otomatis tanpa harus mengubah logika utama dari platform tersebut. Pendekatan ini bertujuan untuk mengatasi keterbatasan pada platform penilaian konvensional yang seringkali kaku dan sulit beradaptasi dengan perkembangan teknologi LLM yang sangat cepat (Claes, 2025).
+
+Gambar 2.2 Arsitektur Middleware untuk Integrasi AI pada Platform Penilaian (Claes, 2025).
+Gambar 2.2 menunjukkan bahwa middleware berperan sebagai lapisan perantara antara platform penilaian otomatis dan layanan AI. Arsitektur tersebut memungkinkan proses integrasi model bahasa dilakukan secara lebih fleksibel melalui mekanisme pemisahan (decoupling) antara logika platform dan layanan AI yang digunakan (Claes, 2025).
+
+            2.6.1  Konsep Decoupling dan Modular Adapters
+Prinsip utama dalam arsitektur ini adalah pemisahan (decoupling) antara mekanisme platform penilaian dengan layanan penyedia AI (Claes, 2025).
+                            1. Pemisahan Logika
+Dengan memisahkan kode platform dari layanan AI, pengembang dapat memperbarui atau mengganti model bahasa yang digunakan tanpa mengganggu stabilitas sistem penilaian utama (Claes, 2025). 
+                            2. Modular Adapters
+Arsitektur middleware menggunakan modular adapters untuk menangani detail spesifik dari berbagai penyedia AI yang berbeda. Pendekatan ini memungkinkan sistem bersifat provider-agnostic sehingga mampu mendukung integrasi berbagai model bahasa secara lebih fleksibel (Claes, 2025).
+
+            2.6.2  Mekanisme Pengelolaan melalui Prompt-Template
+Middleware berfungsi sebagai pengelola instruksi melalui sistem prompt-template yang dinamis (Claes, 2025). Sistem ini digunakan untuk menjaga konsistensi instruksi dan konteks evaluasi yang dikirimkan ke model bahasa. 
+                            1. Integrasi Konteks
+Middleware menyatukan beberapa komponen utama, seperti tujuan instruktur (instructor goals), konteks jawaban mahasiswa (code/text context), serta hasil pengujian teknis jika diperlukan ke dalam format instruksi LLM yang terstruktur (Claes, 2025).
+                            2. Reproduksibilitas Instruksi
+Penggunaan templat prompt memungkinkan instruksi yang dikirimkan ke model AI tetap konsisten dan dapat direproduksi, sehingga mengurangi variabilitas hasil evaluasi yang sering muncul pada penggunaan prompt manual (Claes, 2025).
+
+        2.7. Prompt Engineering dan Knowledge Grounding
+Sebagai upaya strategis untuk memitigasi risiko halusinasi intrinsik maupun ekstrinsik pada model bahasa yang telah dipaparkan pada Sub-bab 2.3.2, diperlukan sebuah pendekatan teknis pada lapisan perantara berupa rekayasa instruksi (prompt engineering) dan pembatasan konteks (knowledge grounding). Prompt engineering dan knowledge grounding merupakan dua mekanisme utama dalam mengendalikan perilaku Large Language Model (LLM) agar menghasilkan keluaran yang sesuai dengan tujuan spesifik pengguna. Perancangan instruksi yang strategis berfungsi untuk mengarahkan kemampuan penalaran model, sementara knowledge grounding berperan sebagai pembatas agar model tetap berpijak pada data referensi yang valid (Ji et al., 2023). Integrasi kedua pendekatan ini dalam sistem evaluasi akademik sangat krusial untuk memastikan bahwa penilaian yang dihasilkan tidak hanya bersifat fasih secara bahasa, tetapi juga akurat secara faktual sesuai dengan rubrik yang ditetapkan (Pack et al., 2024). 
+
+            2.7.1  Prinsip Rekayasa Prompt (Prompt Engineering) dalam Konteks Akademik
+Prompt engineering merupakan teknik optimasi instruksi input untuk mengarahkan Large Language Model (LLM) agar menghasilkan keluaran yang sesuai dengan tujuan spesifik pengguna (Zhao et al., 2023). Dalam konteks evaluasi akademik, perancangan instruksi yang efektif harus mencakup lima elemen kunci, yaitu peran (role), tugas (task), kriteria penilaian (criteria), konteks (context), dan data masukan (input data) (Pack et al., 2024). Penggunaan teknik Chain-of-Thought (CoT) terbukti dapat secara signifikan meningkatkan kemampuan penalaran model (Wang et al., 2022). Dalam konteks penilaian akademik, teknik ini memicu AI untuk mengekstrak rasionalisasi berpikir secara bertahap sebelum model menghasilkan keputusan nilai akhir (Zhao et al., 2023; Stahl et al., 2024).
+Implementasi strategi tersebut dalam arsitektur middleware dilakukan melalui sistem templat yang memisahkan antara logika perintah tetap dengan data yang bersifat dinamis (Claes, 2025). Mekanisme ini memungkinkan middleware untuk secara otomatis menyusun konteks yang terdiri dari instruksi dosen dan jawaban mahasiswa ke dalam struktur prompt yang konsisten sebelum dikirimkan ke layanan LLM (Claes, 2025). Dengan menggunakan templat yang terstruktur, risiko variasi respons akibat perubahan kecil pada input dapat diminimalisir, sehingga mendukung tercapainya reproduksibilitas hasil penilaian akademik (Claes, 2025; Pack et al., 2024).
+
+            2.7.2  Mekanisme Pelandasan Pengetahuan (Knowledge Grounding)
+Knowledge grounding atau pelandasan pengetahuan merupakan pendekatan mitigasi halusinasi yang bertujuan untuk membatasi ruang lingkup respons model agar tetap berpijak pada data referensi nyata yang diberikan (Ji et al., 2023). Teknik ini dilakukan dengan menyematkan konteks akademik yang spesifik seperti rubrik penilaian dan jawaban esai mahasiswa ke dalam instruksi untuk memastikan model tidak menghasilkan teks di luar konteks acuan tersebut (Ji et al., 2023). Melalui mekanisme grounding, model diarahkan untuk mengabaikan pengetahuan umum hasil pre-training yang tidak relevan dengan standar penilaian lokal yang ditetapkan dosen pengampu (Ji et al., 2023). Implementasi arsitektur middleware memfasilitasi penerapan grounding secara sistematis dengan menyusun parameter evaluasi ke dalam format yang terstruktur sebelum diproses oleh model LLM (Claes, 2025).
+
+        2.8. Metrik Evaluasi Kesesuaian (Agreement Metrics)
+Evaluasi terhadap sistem Automated Essay Scoring (AES) atau Automated Writing Evaluation (AWE) dilakukan dengan mengukur tingkat kesesuaian (agreement) dan keakuratan antara skor yang dihasilkan oleh sistem (AI) dengan skor asli yang diberikan oleh penilai manusia (dosen) (Bhat & Varma, 2026; Yeung, 2025). Penggunaan metrik yang tepat sangat krusial untuk menentukan apakah sistem mampu meniru pola, prioritas, dan presisi penilaian dosen secara konsisten dan objektif (Bhat & Varma, 2026; Yeung, 2025).
+
+            2.8.1  Kendall's Tau Correlation Coefficient 
+Koefisien korelasi Kendall's Tau  merupakan metrik non-parametrik yang digunakan untuk mengukur kekuatan dan arah hubungan peringkat (rank correlation) antara dua variabel terurut (Bhat & Varma, 2026). Dalam konteks pengujian sistem penilaian esai otomatis berbasis LLM, Kendall's Tau digunakan untuk mengevaluasi keselarasan urutan prioritas atau hierarki kualitas jawaban antara prediksi AI dan penilaian dosen (human raters) (Bhat & Varma, 2026). Nilai Kendall's Tau dihitung menggunakan persamaan berikut:
+
+Dimana  adalah jumlah pasang data yang konsisten (concordant pairs),  adalah jumlah pasang data yang tidak konsisten (discordant pairs), dan adalah jumlah total sampel jawaban esai (Bhat & Varma, 2026).
+                            1. Keunggulan:
+Berbeda dengan metrik korelasi linear standar, Kendall's Tau mengevaluasi apakah AI memiliki logika urutan yang sama dengan dosen dalam menentukan jawaban mana yang relatif lebih baik atau lebih buruk, dengan rentang nilai dari  (berlawanan sempurna) hingga  (keselarasan peringkat sempurna) (Bhat & Varma, 2026).
+                            2. Ketahanan Terhadap Data Ordinal:
+Skor penilaian esai atau rubrik akademik sering kali bersifat ordinal. Kendall's Tau sangat efektif untuk data skala ordinal karena tidak mengasumsikan distribusi data normal dan lebih tangguh terhadap rentang skala nilai yang sempit (Bhat & Varma, 2026).
+
+            2.8.2  Mean Absolute Error (MAE)
+Mean Absolute Error (MAE) digunakan untuk mengukur rata-rata besarnya kesalahan atau deviasi fisik antara skor prediksi yang dihasilkan oleh sistem AI  terhadap nilai aktual dari dosen  tanpa memperhatikan arah kesalahan (Yeung, 2025). Rumus MAE didefinisikan sebagai berikut:
+
+Dimana  adalah skor aktual dari dosen (ground truth),  adalah skor prediksi dari sistem LLM, dan  adalah jumlah total sampel esai yang dievaluasi (Yeung, 2025):
+                            1. Interpretasi Deviasi Fisik:
+Nilai MAE merepresentasikan rata-rata selisih poin kesalahan prediksi dalam satuan skala nilai asli (Yeung, 2025). Semakin kecil nilai MAE (mendekati 0), semakin presisi dan akurat nilai prediksi AI terhadap nilai asli dosen (Yeung, 2025).
+                            2. Skalabilitas dan Kemudahan Interpretasi:
+MAE memberikan gambaran linier yang intuitif mengenai seberapa jauh skor evaluasi sistem meleset dari standar dosen secara rata-rata, menjadikannya indikator keandalan kuantitatif yang objektif dalam sistem Automated Writing Evaluation (Yeung, 2025).
+
+
+    BAB III 
+METODOLOGI PENELITIAN
+
+        3.1. Alur Penelitian
+Penelitian ini merupakan penelitian terapan (applied research) yang mengadopsi model pengembangan sistem Prototyping (Maryani et al., 2022). Pemilihan model Prototyping didasarkan pada karakteristik pengembangan instruksi Large Language Model (prompt engineering) dan perancangan rubrik penilaian yang membutuhkan proses evaluasi serta penyesuaian secara berulang (iterative). Melalui siklus iterasi prototyping, struktur instruksi pada lapisan middleware dapat disempurnakan secara bertahap agar hasil evaluasi otomatis LLM dapat mendekati standar dan intuisi penilaian dosen pengampu (Chen & Wan; Stahl et al., 2024).
+
+Penerapan model Prototyping dalam penelitian ini dilaksanakan melalui lima tahapan utama sebagai berikut:
+                            1. Pengumpulan Kebutuhan (Requirement Gathering)
+Mengidentifikasi permasalahan beban kerja dan ketidakkonsistenan penilaian esai manual dosen melalui kuesioner pendahuluan, serta mengumpulkan data sekunder berupa 33 dokumen jawaban esai/pseudocode retrospektif mahasiswa beserta rubrik dan nilai aktual dosen (ground truth).
+                            2. Perancangan Cepat (Quick Design)
+Merancang arsitektur sistem Smart Assistant Lecturer (SAL) berbasis provider-agnostic middleware, meliputi pemodelan Use Case Diagram, Sequence Diagram, perancangan basis data Supabase, antarmuka Next.js, serta templat prompt modular (komponen Role, Task, Criteria, Context, Input Data, dan Output Format).
+                            3. Pembangunan Prototype Awal (Construction of Prototype - Iterasi 1)
+Membangun sistem Prototype Versi 1 yang menerapkan skema Binary Scoring (skor 0 atau 100) pada elemen [CRITERIA] sebagai acuan baseline paling sederhana guna menguji kemampuan dasar model GPT-OSS 120B dalam mengenali kriteria rubrik.
+4. Evaluasi & Perbaikan Prototype (Evaluation & Refinement - Iterasi 2)
+Mengevaluasi hasil penilaian Prototype Versi 1 terhadap ground truth dosen. Dosen memberikan evaluasi bahwa skema biner terlampau kaku terhadap kesalahan minor (MAE = 18.33 poin). Berdasarkan hasil evaluasi tersebut, dilakukan perbaikan (refinement) pada middleware dengan memperbarui elemen [CRITERIA] menggunakan 3-Point Partial Credit Rubric (skor 0, 50, 100) dan memperkuat instruksi Chain-of-Thought (CoT). Hasil pengujian ulang pada Prototype Versi 2 terbukti meningkatkan keselarasan peringkat (Kendall's Tau τ = 0.7724) dan memangkas kesalahan skor fisik (MAE = 5.45 poin).
+5. Finalisasi Sistem (Final System Delivery)
+Sistem Prototype Versi 2 yang telah teruji secara statistik dan mendapatkan persetujuan dari dosen pengampu difinalisasi sebagai produk akhir asisten penilai otomatis (Smart Assistant Lecturer).
+
+        3.2. Analisis Kebutuhan
+Analisis kebutuhan dilakukan untuk merumuskan masalah operasional di lapangan, menentukan spesifikasi teknis dan fungsional yang harus dipenuhi oleh sistem Smart Assistant Lecturer (SAL), serta menyiapkan korpus data yang dibutuhkan.
+
+            3.2.1  Identifikasi Masalah
+Tahap awal dimulai dengan menganalisis permasalahan terkait beban kerja dan subjektivitas dosen dalam pemeriksaan jawaban esai secara manual. Pemeriksaan esai dan pseudocode secara manual terbukti membutuhkan alokasi waktu yang masif serta memicu kelelahan kognitif (evaluator fatigue) (Gao et al., 2024; Kaldaras et al., 2024). Selain itu, variasi alur logika mahasiswa dan ketidakpastian batasan nilai parsial menyebabkan tingkat ketidakkonsistenan skor sulit dihindari (Kaldaras et al., 2024).
+Berdasarkan data empiris hasil penjajakan awal (preliminary study) kepada 5 dosen pengampu mata kuliah pemrograman di Program Studi Teknik Informatika Universitas Muhammadiyah Bandung:
+
+1. Beban Waktu dan Kelelahan Kognitif: Pemeriksaan esai dan pseudocode secara manual membutuhkan waktu masif serta memicu evaluator fatigue. Kondisi ini melandasi kebutuhan akan fitur otomatisasi eksekusi penilaian berbasis LLM guna memangkas beban koreksi manual dosen.
+2. Kompleksitas Variasi Logika dan Dry-Run: Mahasiswa memiliki variasi alur algoritma yang tinggi serta format penulisan pseudocode yang abstrak, sehingga dosen harus melakukan penelusuran alur logika (dry-run) secara manual. Hal ini melandasi kebutuhan akan struktur instruksi Chain-of-Thought (CoT) pada prompt guna memicu AI mengekstrak penalaran logika bertahap sebelum skor dikeluarkan.
+3. Kekhawatiran Halusinasi dan Bias AI: Adanya kekhawatiran dosen terhadap risiko kesalahan logika AI melandasi kebutuhan akan mekanisme Knowledge Grounding untuk mengunci ruang penalaran model murni pada dokumen acuan dosen, serta fitur override nilai manual agar otoritas keputusan nilai tetap berada di tangan dosen.
+4. Ketidakpastian Penilaian Parsial: Kesulitan dosen dalam menentukan bobot nilai yang adil saat logika mahasiswa terhenti di tengah jalan melandasi kebutuhan akan penerapan skema 3-Point Partial Credit Rubric (skor 0, 50, 100) pada elemen kriteria middleware.
+
+            3.2.2  Analisis Kebutuhan Pengguna dan Sistem
+Sistem ini melibatkan dua aktor utama dengan hak akses dan kebutuhan fungsional yang berbeda:
+                            1. Dosen (Administrator/Evaluator):
+    a. Pengaturan Parameter: Memasukkan dan mengelola kriteria penilaian (rubrik) serta instruksi khusus untuk setiap soal esai.
+    b. Kendali Grounding: Menentukan parameter konteks akademik yang membatasi penalaran LLM agar tidak meluas ke pengetahuan umum (Ji et al., 2023).
+    c. Validasi Nilai: Meninjau skor akhir dan justifikasi analitis yang dihasilkan sistem sebelum difinalisasi.
+                            2. Mahasiswa (User): 
+    a. Pengunggahan Jawaban: Mengunggah dokumen jawaban dalam format digital (.pdf, .docx, .txt).
+    b. Umpan Balik Real-time: Menerima hasil skor sementara dan umpan balik formatif secara responsif dari sistem. Pemberian umpan balik otomatis ini sejalan dengan konsep Automated Writing Evaluation (AWE) yang berfungsi untuk mendukung proses evaluasi mandiri mahasiswa (Pack et al., 2024).
+Pembagian fungsionalitas tersebut direpresentasikan secara visual melalui Use Case Diagram pada Gambar 3.1.
+
+Gambar 3.1 Use Case Diagram Smart Assistant Lecturer
+
+Spesifikasi perangkat keras dan lunak pendukung dirancang berbasis lingkungan cloud sebagai berikut:
+                1. Perangkat Lunak (Software & Cloud Infrastructure): Framework Next.js (App Router), Supabase BaaS (PostgreSQL Database), Vercel Hosting, Groq API Client (model GPT-OSS 120B), dan Python Google Colab (library scipy.stats dan scikit-learn untuk analisis statistik Kendall's Tau dan MAE).
+
+
+                2. Perangkat Keras (Hardware Pengembang): Laptop dengan spesifikasi Prosesor Intel Core i5, RAM 12 GB, dan SSD 256 GB.
+
+            3.2.3  Pengumpulan dan Pengolahan Data
+Data penelitian yang digunakan berupa data sekunder (retrospektif) yang diperoleh dari arsip tugas akademik mahasiswa pada mata kuliah Manajemen Basis Data (IF23A) di lingkungan Program Studi Teknik Informatika Universitas Muhammadiyah Bandung.
+Karakteristik spesifik dataset dan prosedur pengolahannya dijabarkan sebagai berikut:
+                            1. Sumber Data & Ukuran Sampel: 
+Dataset terdiri dari 33 dokumen jawaban esai praktikum mahasiswa retrospektif dari Kelas IF23A Angkatan 2023. Ukuran sampel ini (N = 33 dokumen) memenuhi asumsi kecukupan sampel statistik non-parametrik (N >= 30) untuk menguji korelasi dan deviasi skor (Islam, 2018; Fraenkel et al., 2019).
+                            2. Rincian Rubrik Acuan Dosen
+Evaluasi dilakukan terhadap 10 aspek kriteria penilaian yang ditetapkan oleh dosen pengampu dengan total bobot akumulatif 100%. Setiap aspek memiliki bobot sebesar 10%, sebagaimana dirinci pada Tabel 3.1.
+Tabel 3.2 Matriks Rincian Dataset dan Bobot Rubrik Penilaian Dosen.
+No	Aspek Rubrik Penilaian	Nama Aspek Kriteria Penilaian	Bobot Nilai (%)	Target Evaluasi Logika
+1	Rubrik 1	Pembuatan Database ‘universitas’	10%	Ketepatan query CREATE DATABASE & nama db
+2	Rubrik 2	Pembuatan Tabel ‘mahasiswa’ & Primary Key	10%	Deklarasi tabel, kolom nim (VARCHAR), & PK
+3	Rubrik 3	Pengisian Data (Insert 3 Mahasiswa)	10%	Sintaks INSERT & penggunaan kuotasi string NIM
+4	Rubrik 4	Query Read 1 (Tampilkan Semua Data)	10%	Sintaks SELECT * tanpa filter
+5	Rubrik 5	Query Read 2 (Filter Jurusan Informatika)	10%	Ketepatan klausa WHERE jurusan = 'Informatika'
+6	Rubrik 6	Query Read 3 (Filter Nilai IPK > 3.7)	10%	Ketepatan klausa WHERE ipk > 3.7
+7	Rubrik 7	Query Update Data IPK  	10%	Query UPDATE NIM 12346
+8	Rubrik 8	Query Delete Data Mahasiswa   	10%	Query DELETE filter nama 'Citra Dewi'
+9	Rubrik 9	Alter Table (Tambah Kolom tanggal_lahir)	10%	Sintaks ALTER TABLE ADD tipe DATE
+10	Rubrik 10	Update Data Tanggal Lahir   	10%	Kelengkapan 3 query UPDATE tanggal lahir
+
+                            3. Prosedur Pengolahan Data (Pre-processing):
+    a) Text Extraction: Mengonversi berkas `.pdf`, `.docx`, atau `.txt` menjadi plain text terstruktur.
+    b) Data Cleaning: Membersihkan noise, karakter non-alfanumerik, dan spasi ganda menggunakan ekspresi reguler (regex) untuk menghemat penggunaan token LLM (Haller et al., 2022).
+    c) Context Mapping: Memetakan teks yang telah bersih ke dalam struktur prompt modular secara kaku.
+
+        3.3. Perancangan Sistem
+Arsitektur sistem dirancang untuk menjembatani interaksi antara pengguna dengan model GPT-OSS 120B melalui infrastruktur Groq API dengan menerapkan prinsip pemisahan logika (decoupling) pada lapisan middleware (Claes, 2025).
+
+            3.3.1  Arsitektur Middleware dan Sub-Modul
+
+Gambar 3.2 Diagram Arsitektur Sistem
+Berdasarkan Gambar 3.2, lapisan middleware mengorkestrasikan empat sub-modul utama secara sekuensial:
+                            1. Modul Document Parser: Bertugas menerima input dokumen mentah (.pdf, .docx, .txt) dari mahasiswa dan mengekstraknya menjadi teks murni (plain text).
+                            2. Modul Data Cleaning: Bertugas membersihkan teks hasil ekstraksi dari anomali karakter, noise, dan spasi ganda menggunakan ekspresi reguler (regex) guna memastikan efisiensi token.
+                            3. Modul Prompt Orchestrator: Bertindak sebagai inti middleware yang merakit struktur prompt dinamis secara modular berdasarkan komponen peran (role), tugas (task), soal esai, kriteria penilaian (criteria), konteks akademik (context), dan jawaban mahasiswa (input data). Modul ini memetakan jawaban mahasiswa yang sudah bersih dengan soal, kriteria rubrik, serta konteks akademik yang ditarik dari database Supabase. Pemisahan elemen-elemen instruksi ini bertujuan agar dosen dapat memodifikasi soal, kriteria penilaian, atau konteks materi secara fleksibel tanpa perlu melakukan perubahan pada struktur kode program sistem.
+                            4. Groq API Client: Bertugas membungkus seluruh instruksi yang telah terstruktur ke dalam format permintaan HTTP (API request) dan mengeksekusinya menuju infrastruktur Groq untuk proses inferensi oleh model GPT-OSS 120B.
+Pemisahan sub-modul ini memastikan platform bersifat provider-agnostic, sehingga stabilitas sistem tetap terjaga meskipun layanan inferensi AI pihak ketiga mengalami pembaruan parameter di masa mendatang (Claes, 2025).
+
+            3.3.2  Struktur Prompt Modular
+
+Gambar 3.3 Struktur Prompt Modular
+
+Berdasarkan Gambar 3.3, rancangan struktur prompt modular dibangun secara terkompartementalisasi di dalam lapisan middleware (Claes, 2025). Pemisahan elemen-elemen instruksi ini bertujuan agar dosen dapat memodifikasi kriteria penilaian atau konteks materi secara fleksibel tanpa perlu melakukan perubahan pada struktur kode program sistem utama (Claes, 2025). Adapun rincian elemen pembentuk prompt tersebut adalah sebagai berikut:
+    1. [ROLE] Peran Sistem: Menetapkan persona atau identitas spesifik bagi Large Language Model (LLM) sebagai asisten dosen cerdas yang bertugas menguji esai informatika secara objektif (Pack et al., 2024).
+    2. [TASK] Instruksi Evaluasi & CoT: Berisi perintah kaku untuk melakukan skoring. Pada tahap ini, sistem mengintegrasikan strategi instruksi Chain-of-Thought (CoT) untuk memicu proses berpikir bertahap sebelum model menghasilkan keputusan penilaian akhir. Penggunaan CoT ini secara teoritis terbukti meningkatkan kemampuan penalaran LLM (Zhao et al., 2023), dan secara spesifik telah teruji efektivitasnya dalam skenario otomatisasi pemberian skor serta umpan balik esai akademik (Stahl et al., 2024).
+    3. Area Knowledge grounding ([CRITERIA] & [CONTEXT]): Merupakan area otoritas mutlak dosen yang berfungsi sebagai jangkar data (grounding content) (Ji et al., 2023). Elemen [CRITERIA] memuat parameter bobot nilai dan aturan kelulusan logika, sedangkan [CONTEXT] memuat batasan dokumen keilmuan atau materi pembelajaran (Pack et al., 2024). Penyatuan kedua elemen ini berfungsi untuk membatasi ruang lingkup penalaran model GPT-OSS 120B secara ketat guna memitigasi fenomena halusinasi AI (Ji et al., 2023; Agarwal et al., 2025).
+    4. [SOAL_ESAI]: Berfungsi sebagai pembatas konteks permasalahan (problem context) yang harus dijawab oleh mahasiswa. Pemberian teks soal secara eksplisit bertujuan agar LLM dapat mengukur tingkat relevansi jawaban mahasiswa terhadap inti pertanyaan, sehingga meminimalisasi risiko model memberikan skor tinggi pada jawaban yang secara tata bahasa benar namun tidak menjawab (melenceng dari) konteks pertanyaan yang diberikan.
+    5. [INPUT_DATA] Jawaban Mahasiswa: Berisi teks jawaban esai pendek atau pseudocode mahasiswa yang telah diekstraksi dan melewati tahap pembersihan data (data cleaning) (Haller et al., 2022).
+    6. [OUTPUT_FORMAT] Spesifikasi Keluaran: Merupakan instruksi akhir yang memastikan model AI menyusun responsnya ke dalam format JSON (JavaScript Object Notation). Penyeragaman struktur respons ini sangat krusial agar middleware dapat mengekstraksi nilai skor akhir dan justifikasi evaluasi secara presisi, untuk kemudian disimpan ke dalam basis data Supabase.
+Penyusunan elemen [TASK] menerapkan instruksi Chain-of-Thought (CoT) dengan memerintahkan model untuk menyusun rasionalisasi penalaran terlebih dahulu sebelum mengeluarkan keputusan skor akhir. Strategi ini merujuk pada temuan Chen & Wan yang membuktikan bahwa pemrosesan penalaran bertahap sebelum keputusan nilai secara signifikan meningkatkan keakuratan evaluasi LLM hingga mencapai tingkat keselarasan penilai manusia (human-grade agreement). Sementara itu, elemen [CRITERIA] dirancang menggunakan skema 3-Point Partial Credit Rubric (skor 0, 50, 100 pada 10 aspek berbobot 10%) untuk memberikan batasan penalaran yang jelas bagi AI (Chen & Wan; Haller et al., 2022)."
+Melalui mekanisme ini, prompt orchestrator di dalam middleware secara aktif memaksa model untuk menghasilkan evaluasi berdasarkan bukti-bukti empiris yang ada di dalam dokumen referensi, bukan mengandalkan pengetahuan umum hasil fase pre-training (Ji et al., 2023). 
+
+            3.3.3  Sequence Diagram Sistem
+
+
+Gambar 3.4 Sequence Diagram Sistem
+
+Berdasarkan Gambar 3.4, proses evaluasi otomatis diawali oleh dosen melalui pengisian parameter penilaian berupa soal esai, rubrik, dan konteks akademik yang kemudian disimpan ke dalam basis data Supabase sebagai sumber grounding utama sistem. Pada tahap berikutnya, jawaban mahasiswa dikirim menuju lapisan middleware untuk melewati proses parsing dokumen dan pembersihan data sebelum dirakit menjadi prompt modular terstruktur. Setelah parameter penilaian dan jawaban mahasiswa berhasil dikombinasikan, middleware mengeksekusi permintaan inferensi ke layanan Groq API Cloud untuk menghasilkan skor beserta justifikasi evaluasi. Seluruh hasil inferensi kemudian disimpan kembali ke basis data sebagai log evaluasi yang dapat ditinjau oleh dosen melalui antarmuka rekapitulasi, sedangkan umpan balik individual tetap ditampilkan kepada mahasiswa. Rangkaian proses tersebut menunjukkan bahwa middleware berperan sebagai pusat orkestrasi yang mengendalikan validasi konteks, konsistensi instruksi, dan aliran data antara pengguna, basis data, serta layanan inferensi AI.
+
+        3.4. Pengujian 
+Pengujian keandalan sistem dilakukan melalui pendekatan Prototyping yang dilaksanakan secara iteratif dalam dua tahap utama untuk mengevaluasi dampak pembaruan skema penilaian pada lapisan middleware.
+
+            3.4.1  Skema Iterasi Prototyping
+                            1. Iterasi 1 (Prototype Awal - Baseline Binary Scoring):
+Sistem diuji menggunakan skema Binary Scoring (skor 0 atau 100) pada setiap aspek rubrik sebagai acuan baseline paling sederhana guna menguji kemampuan dasar LLM dalam mengenali kriteria rubrik.
+                            2. Iterasi 2 (Prototype Final - 3-Point Partial Credit Rubric):
+Berdasarkan hasil evaluasi Iterasi 1 di mana skema biner bersikap terlampau kaku terhadap kesalahan tipografi minor, sistem disempurnakan pada Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100). Skema bergradasi ini dirancang untuk mengakomodasi kebenaran logika parsial mahasiswa (Masters, 1982; Haller et al., 2022; Chen & Wan).
+
+
+
+    BAB IV 
+HASIL DAN PEMBAHASAN
+
+        4.1. Implementasi Antarmuka Sistem
+Implementasi antarmuka sistem Smart Assistant Lecturer (SAL) dibangun menggunakan framework Next.js dengan pendekatan Tailwind CSS guna menghasilkan tampilan yang responsif, intuitif, dan mendukung aksesibilitas pengguna. Setiap halaman antarmuka dirancang untuk merealisasikan kebutuhan fungsional dosen dan mahasiswa sebagaimana yang telah dimodelkan pada Use Case Diagram (Gambar 3.1).
+Penjelasan detail fungsi dan alur kerja teknis dari setiap antarmuka dijabarkan sebagai berikut:
+
+    1. Antarmuka Pembuatan Tugas (/dosen/buat-tugas):
+
+Gambar 4.1 halaman /dosen/buat-tugas
+Halaman ini berfungsi sebagai pusat kendali dosen pengampu untuk mengonfigurasi penugasan baru beserta parameter penilaian yang dinamis. 
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.1:
+a. Form Informasi Umum & Pilihan Matkul: Tempat dosen memasukkan nama mata kuliah (contoh: Basis Data Lanjut, Pemrograman Web, Dasar Algoritma) dan judul penugasan.
+b. Input Soal Esai [SOAL_ESAI]: Form teks tempat dosen memasukkan naskah soal esai atau instruksi praktikum yang wajib dikerjakan oleh mahasiswa.
+c. Input Konteks Akademik [CONTEXT]: Form teks tempat dosen memasukkan dokumen referensi, skema tabel, atau kunci jawaban acuan. Data ini dimanfaatkan oleh middleware sebagai mekanisme Knowledge Grounding untuk mengunci ruang lingkup penalaran AI.
+d. Tabel Konfigurasi Rubrik [CRITERIA]: Dosen dapat menambah kriteria rubrik secara fleksibel beserta bobot persentase (%) dan deskripsi kriteria. 
+e. Pilihan Template Preset: Menyediakan tombol "Load Template" untuk memuat konfigurasi rubrik secara otomatis untuk berbagai skenario mata kuliah.
+Data yang diinputkan pada antarmuka ini akan disimpan ke dalam tabel `assignments` dan `rubrics` pada basis data Supabase, yang nantinya diserap oleh middleware saat proses inferensi AI berlangsung.
+    2. Antarmuka Dashboard Dosen (/dosen):
+
+Gambar 4.2 halaman /dosen
+Halaman ini menyajikan rekapitulasi ringkasan statistik dan daftar seluruh pengumpulan jawaban mahasiswa yang telah diproses oleh sistem.
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.2:
+a. Kartu Ringkasan Statistik: Menyajikan informasi kuantitatif mengenai Mata Kuliah Aktif,  Jumlah Tugas, Total Submisi Mahasiswa, dan Rata-rata Skor Evaluasi AI.
+b. Tabel Rekapitulasi Penilaian Mahasiswa: Menampilkan daftar mahasiswa (NIM, Nama), Waktu Submisi, Skor Evaluasi AI, serta Status Validasi Dosen.
+c. Indikator Status Validasi Dinamis: 
+   - Status "[Belum Divalidasi]" (Badge Kuning): Menandakan bahwa skor yang ditampilkan murni merupakan hasil evaluasi otomatis AI (Skor Evaluasi AI).
+   - Status "[Telah Divalidasi]" (Badge Hijau): Menandakan bahwa dosen telah meninjau dan melakukan penetapan nilai final melalui fitur Manual Override.
+d. Tombol Aksi "Detail & Validasi": Mengarahkan dosen ke lembar peninjauan rincian penalaran AI.
+    3. Antarmuka Validasi dan Koreksi Dosen (/dosen/validasi/[id]):
+
+Gambar 4.3 halaman /dosen/validasi/[id]
+Halaman ini merupakan antarmuka krusial yang menyajikan transparansi hasil evaluasi AI serta memberikan kendali penuh kepada dosen untuk merevisi nilai.
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.3:
+a. Panel Jawaban Mahasiswa: Menampilkan teks murni jawaban mahasiswa yang telah diekstrak dan dibersihkan oleh sub-modul parser middleware.
+b. Panel Rincian Evaluasi Per Rubrik: Menampilkan skor keluaran AI pada masing-masing aspek rubrik (skala 0-100) beserta umpan balik (feedback) deskriptif dalam Bahasa Indonesia.
+c. Log Penalaran Global (Chain-of-Thought Reasoning): Menampilkan penjelasan rasional secara menyeluruh (`global_reasoning`) yang dihasilkan oleh model GPT-OSS 120B mengenai kelebihan dan kekurangan logika jawaban mahasiswa.
+d. Fitur Koreksi Manual (Manual Override): Dosen dapat mengubah angka skor pada aspek rubrik tertentu jika ditemukan ketidaksesuaian. Ketika dosen mengubah skor, sistem secara otomatis menghitung ulang total nilai terbobot dan memperbarui status menjadi "[Telah Divalidasi]".
+
+    4. Antarmuka Portal Mahasiswa (/tugas/[id]):
+
+Gambar 4.4 mahasiswa/tugas/[id]
+
+Halaman ini dirancang untuk mahasiswa dalam mengunggah berkas jawaban dan menerima umpan balik evaluasi secara responsif.
+Bedah Komponen dan Alur Kerja Antarmuka Gambar 4.4:
+a. Form Pengunggahan Dokumen: Mahasiswa menginputkan NIM, Nama, serta mengunggah berkas jawaban digital (.pdf, .docx, .txt).
+b. Tampilan Umpan Balik Formatif Real-time: Setelah proses inferensi AI selesai dieksekusi oleh middleware, mahasiswa dapat melihat total skor sementara beserta rincian umpan balik formatif per aspek rubrik secara transparan. Umpan balik ini membantu mahasiswa memahami  letak kesalahan logika pada jawaban yang dikumpulkan.
+        4.2. Implementasi Lapisan Middleware dan Pipe-line Penilaian AI
+Guna merealisasikan rancangan arsitektur sistem (Gambar 3.2) dan alur sekuensial (Gambar 3.4) yang telah dirumuskan pada Bab III, dikembangkan lapisan perantara (middleware) berbasis Node.js/Next.js API Routes. Lapisan middleware ini bertindak sebagai pengelola utama yang menghubungkan antarmuka pengguna, basis data Supabase, dan layanan inferensi Groq API (GPT-OSS 120B). 
+Secara fungsional, middleware terdiri dari tiga sub-modul utama yang bekerja secara sekuensial untuk mengeksekusi penilaian esai otomatis:
+                            1. Sub-Modul Document Parser & Cleansing Teks
+Sub-modul ini bertugas mengekstrak berkas jawaban digital mahasiswa (.pdf, .docx, .txt) menjadi string teks murni (raw text) serta melakukan pembersihan karakter (data cleansing) menggunakan ekspresi reguler (Regex) guna menghilangkan noise seperti karakter tersembunyi atau spasi berlebih.
+Berikut adalah potongan kode sumber (source code) implementasi cleansing teks pada middleware:
+Listing 4.1 Fungsi Pembersihan Teks (Text Cleansing)
+// Location: src/lib/grading/text-parser.ts
+export function cleanRawStudentAnswer(rawText: string): string {
+  if (!rawText) return "";
+  
+  return rawText
+    // 1. Normalisasi karakter newline dan carriage return
+    .replace(/\r\n/g, "\n")
+    // 2. Hilangkan non-printable control characters
+    .replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, "")
+    // 3. Pangkas spasi horizontal berlebih (multiple spaces menjadi single space)
+    .replace(/[ \t]+/g, " ")
+    // 4. Batasi newline beruntun maksimal 2 baris (mencegah bloated prompt)
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
+                            2. Sub-Modul Prompt Assembler & Knowledge Grounding
+Sub-modul ini mengimplementasikan struktur prompt modular (Gambar 3.3) dengan menyatukan instruksi kaku, parameter rubrik dari dosen pengampu, materi referensi grounding, serta jawaban mahasiswa yang telah dibersihkan ke dalam format instruksi terstruktur sebelum dikirimkan ke model LLM.Potongan kode sumber perakitan prompt modular pada middleware ditunjukkan sebagai berikut:
+Listing 4.2 Prompt Assembler & Knowledge Grounding
+// Location: src/lib/grading/prompt-composer.ts
+export function composeGradingPrompt(input: ComposePromptInput): string {
+  // 1. Format parameter rubrik dosen menjadi daftar terstruktur
+  const rubricBlock = input.rubrics
+    .map((r, i) => `${i + 1}. Aspect: ${r.aspect}\n   Weight: ${r.weight}%\n   Criteria: ${r.description}`)
+    .join("\n\n");
+
+  // 2. Rakit struktur prompt modular (Role, Task, Grounding, Input Data, Output Format)
+  return [
+    "### [ROLE]",
+    "You are a strict but fair smart assistant lecturer for essay and pseudocode grading.",
+    "",
+    "### [TASK]",
+    "Evaluate the student's answer using a step-by-step Chain-of-Thought (CoT) strategy:",
+    "1. Analyze the student's answer logic relative to the essay question, rubrics, and reference material.",
+    "2. Compare the logic of the student's answer with the context grounding. Note any discrepancies.",
+    "3. Reason about each specific grading aspect in the rubrics and assign scores strictly on a 0-100 scale.",
+    "4. Determine the overall holistic score and provide feedback based on this step-by-step reasoning.",
+    "",
+    "### Area Context Grounding (Lecturer Authority)",
+    "#### [CRITERIA] Rubrik Penilaian:",
+    rubricBlock,
+    "",
+    "#### [CONTEXT] Konteks Akademik / Materi Referensi:",
+    input.contextGrounding,
+    "",
+    "#### [SOAL_ESAI] Soal Ujian:",
+    input.soalEsai,
+    "",
+    "### [INPUT_DATA] Jawaban Mahasiswa:",
+    input.studentAnswer,
+    "",
+    "### [OUTPUT_FORMAT]",
+    "You MUST respond ONLY with a valid JSON object matching the schema below...",
+    '{"holistic": {"score": number, "feedback": "string"}, "rubric": [...], "weighted_total": number, "global_reasoning": "string"}'
+  ].join("\n");
+}
+
+                            3. Sub-Modul Orchestrator & Groq API Client
+Sub-modul ini mengelola komunikasi asynchronous ke layanan inferensi Groq API Cloud, menerima respons teks JSON dari model GPT-OSS 120B, melakukan parsing JSON, serta menghitung total nilai terbobot (weighted total) sesuai aturan kebijakan penilaian.
+Potongan kode sumber pengolahan inferensi dan eksekusi pada middleware API route:
+Listing 4.2 Prompt Assembler & Knowledge Grounding
+// Location: src/app/api/grade/route.ts (Potongan Logika Utama Orchestrator)
+export async function POST(req: NextRequest) {
+  const { submissionId } = await req.json();
+  const supabase = createAdminClient();
+
+  // A. Ambil Data Jawaban, Tugas, dan Rubrik dari Supabase
+  const { data: submission } = await supabase.from("submissions").select("*").eq("id", submissionId).single();
+  const { data: assignment } = await supabase.from("assignments").select("*").eq("id", submission.assignment_id).single();
+  const { data: rubrics } = await supabase.from("rubrics").select("*").eq("assignment_id", assignment.id);
+
+  // B. Rakit Prompt Modular via Sub-Modul Assembler
+  const prompt = composeGradingPrompt({
+    soalEsai: assignment.question,
+    contextGrounding: assignment.reference_context,
+    studentAnswer: submission.raw_answer_text,
+    rubrics: rubrics.map(r => ({ aspect: r.aspect_name, weight: r.weight, description: r.description }))
+  });
+
+  // C. Eksekusi Inferensi API ke Groq Cloud (Model GPT-OSS 120B)
+  const provider = getLLMProvider({ providerName: "groq", modelName: assignment.model });
+  const rawLLMOutput = await provider.generateCompletion({ prompt, temperature: 0.1 });
+
+  // D. Parsing Respons JSON & Rekonsiliasi Skor
+  const parsedResponse = parseLLMResponse(rawLLMOutput);
+  const finalWeightedScore = computeWeightedTotal(parsedResponse.rubric);
+
+  // E. Simpan Log Hasil Evaluasi ke Basis Data Supabase
+  await supabase.from("submissions").update({ holistic_score: finalWeightedScore, global_reasoning: parsedResponse.global_reasoning, status: "graded" }).eq("id", submissionId);
+
+  return NextResponse.json({ success: true, finalScore: finalWeightedScore });
+}
+
+                            4. Simulasi Cara Kerja AI Menilai (Trace Logging Inferensi CoT)
+Untuk memberikan gambaran nyata mengenai cara kerja AI dalam mengevaluasi jawaban mahasiswa secara otomatis, berikut adalah simulasi alur data masukan (input) dan keluaran (output) hasil penalaran Chain-of-Thought (CoT) oleh model GPT-OSS 120B melalui lapisan middleware:
+    a) Data Input Jawaban Mahasiswa (Jawaban Parsial / Typo minor):
+CREATE DATABASE universitas; CREATE TABLE mahasiswa (nim VARCHAR(10), nama VARCHAR(50)); INSERT INTO mahasiswa VALUES (12345, 'Ali'); SELECT * FROM mahasiswa;
+
+    b) Log Penalaran Chain-of-Thought (global_reasoning) dari AI:
+   "Mahasiswa berhasil membuat database universitas dan tabel mahasiswa. Namun pada pembuatan tabel, mahasiswa lupa mendeklarasikan kolom 'nim' sebagai PRIMARY KEY. Pada perintah INSERT, NIM 12345 dimasukkan tanpa tanda petik tunggal (kuotasi string), yang pada beberapa DBMS SQL dapat memicu kesalahan tipe data. Perintah SELECT * berhasil ditulis dengan benar."
+    c) Keluaran Structured JSON Hasil Penilaian AI:
+   {
+     "rubric": [
+       {
+         "aspect": "Pembuatan Database",
+         "score": 100,
+         "weight": 10,
+         "reasoning": "Query CREATE DATABASE universitas ditulis tepat."
+       },
+       {
+         "aspect": "Pembuatan Tabel & Primary Key",
+         "score": 50,
+         "weight": 10,
+         "reasoning": "Tabel berhasil dibuat namun klausa PRIMARY KEY pada kolom nim tidak dideklarasikan."
+       },
+       {
+         "aspect": "Pengisian Data",
+         "score": 50,
+         "weight": 10,
+         "reasoning": "Sintaks INSERT ada namun nilai string NIM tidak menggunakan kuotasi."
+       }
+     ],
+     "weighted_total": 66.7,
+     "global_reasoning": "Mahasiswa memahami konsep dasar DDL dan DML SQL tetapi kurang teliti dalam penulisan tipe data string dan pembuatan constraint primary key."
+   }
+
+Melalui alur simulasi pada Sub-bab 4.1.2.4 ini, terbukti bahwa lapisan middleware berhasil membatasi ruang lingkup penalaran AI (knowledge grounding) serta mengekstrak justifikasi nilai secara transparan dan terstruktur berbasis kriteria dosen pengampu.
+        4.3. Hasil Iterasi Perbaikan Prototype Sistem
+Pengembangan sistem mengikuti metode Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan utama untuk memastikan keluaran penilaian AI selaras dengan standar dosen pengampu.
+1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring)
+Pada Iterasi 1, sistem menerapkan skema penilaian biner (0 atau 100) untuk setiap aspek rubrik. 
+    a) Hasil Pengujian Statistik:
+                            1. Kendall's Tau (τ) : 0.4400
+                            2. Mean Absolute Error (MAE) : 18.33 Poin
+    b) Evaluasi Dosen:
+Pengujian pada 33 dokumen jawaban mahasiswa menghasilkan kesalahan yang tinggi (MAE = 18.33 poin) karena AI memberikan skor 0 untuk kesalahan minor seperti kesalahan tanda kutip atau tipografi (typo). Dosen merekomendasikan perlunya skema penilaian parsial untuk menampung jawaban yang secara logika benar namun memiliki kesalahan kecil.
+
+2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric)
+Pada Iterasi 2, logika penilaian diperbarui mengadopsi prinsip 3-Point Partial Credit Rubric (Masters, 1982; Haller et al., 2022). Skema ini membagi penilaian ke dalam tiga tingkatan skor (0, 50, 100) pada 10 aspek rubrik berbobot 10%.
+    a) Aturan Skor Mentah (Raw Score):
+                            1. Skor 100 (Full Credit): Terpenuhi secara sempurna tanpa kesalahan.
+                            2. Skor 50  (Partial Credit): Terpenuhi sebagian (terdapat typo minor dan kelalaian tanda kutip).
+                            3. Skor 0   (No Credit): Salah total, tidak lengkap.
+    b) Hasil Pengujian Statistik Final:
+                    1. Kendall's Tau (τ) : 0.7724
+                    2. Mean Absolute Error (MAE) : 5.45 Poin
+
+    c) Dampak Perbaikan:
+Penerapan skema 3-Point Partial Credit Rubric pada Iterasi 2 berhasil meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan menurunkan rata-rata kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin). Seluruh skor akhir berupa bilangan bulat bersih (kelipatan 5 atau 10). Prototype Versi 2 disetujui sebagai sistem final.
+
+
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+Tahap Prototype	Metode Penilaian	Kendall's Tau (τ)	MAE	Evaluasi Dosen
+Iterasi 1 (Awal)	Binary Scoring (0/100)	0.4400  	18.33	Terlalu kaku pada kesalahan minor.
+Iterasi 2 (Final)	3-Point Partial Credit	0.7724 	5.45	Disetujui: Keselarasan tinggi & error terkecil.
+
+        4.4. Analisis Statistik dan Keandalan AI
+Guna menguji keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer  terhadap penilaian manual dosen (ground truth), dilakukan pengujian statistik komparatif pada 33 dokumen jawaban mahasiswa (Kelas IF23A). Evaluasi kuantitatif ini diukur melalui dua metrik utama sesuai dengan tujuan penelitian pada Bab I: Mean Absolute Error (MAE) untuk mengukur rata-rata deviation fisik skor, serta Koefisien Korelasi Kendall's Tau (τ) untuk mengukur keselarasan hirarki peringkat logika penilaian.
+            4.4.1  Landasan Rumus Matematis Pengujian Statistik
+    1. Persamaan Koefisien Korelasi Kendall's Tau (τ):
+Diperoleh nilai Kendall's Tau sebesar τ = 0.7724, yang mengindikasikan tingkat keselarasan peringkat yang sangat kuat. Hal ini membuktikan bahwa logika penalaran model openai/gpt-oss-120b melalui middleware mampu meniru urutan prioritas penilaian dosen secara konsisten.
+
+Keterangan:
+    a)  (Concordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI sejalan ().
+    b)  (Discordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI berlawanan ( >  tetapi  < , atau sebaliknya).
+    c) : Jumlah total kombinasi pasangan dari N sampel data.
+
+    2. Persamaan Mean Absolute Error (MAE):
+MAE mengukur rata-rata besarnya selisih mutlak antara skor prediksi AI () terhadap skor aktual dosen () tanpa memperhitungkan arah kesalahan. Rumus baku MAE didefinisikan sebagai:
+
+Keterangan:
+a) N : Jumlah total sampel jawaban mahasiswa (N = 33).
+b)  : Skor asli manual dari dosen pengampu (ground truth).
+c)  : Skor prediksi otomatis yang dikeluarkan oleh sistem AI.
+d)  : Nilai mutlak selisih skor antara dosen dan AI pada sampel ke-i.
+            4.4.2  Tabel Perhitungan Sampel Komparasi Step-by-Step
+Untuk memberikan transparansi mengenai alur penghitungan skor, berikut disajikan sampel komparasi 5 mahasiswa representative dari total 33 dokumen pada Iterasi 2 (3-Point Partial Credit) berdasarkan data aktual yang tercatat di basis data Supabase (`IF23A_cleaned_trinary.csv`)
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+NIM	Skor Dosen ()	Skor AI 	Selisih Mutlak 	Status Pasangan Hirarki
+200102027	85.00	90.00	5.00	Concordant (P) terhadap MHS 2
+230102003	55.00	65.00	10.00	Concordant (P) terendah
+230102004	85.00	85.00	0.00	Sempurna (Deviasi 0)
+230102005	85.00	90.00	5.00	Concordant (P) sejalan
+230102012	90.00	80.00	10.00	Concordant (P) sejalan
+
+Rata-rata Selisih Mutlak 5 Sampel Tersebut: (5.00 + 10.00 + 0.00 + 5.00 + 10.00) / 5 = 6.00 poin.
+Contoh Alur Perhitungan MAE pada Total 33 Sampel:
+Total akumulasi selisih mutlak seluruh 33 mahasiswa di basis data Supabase didapatkan sebesar 179.85 poin. 
+Maka nilai MAE Iterasi 2 dihitung sebagai berikut:
+
+Perhitungan ini membuktikan bahwa pada Iterasi 2, rata-rata deviasi fisik skor AI terhadap ground truth dosen hanya sebesar 5.45 poin (turun drastis sebesar -70.3% dari Iterasi 1 sebesar 18.33 poin). 
+        4.5. Pembahasan Empiris Knowledge Grounding dan Chain-of-Thought (CoT)
+Pembahasan pada bagian ini memfokuskan analisis pada dampak operasional dari perbaikan lapisan middleware terhadap hasil evaluasi otomatis AI.
+                            1. Pembahasan Dampak Knowledge Grounding:
+Penguncian materi referensi [CONTEXT] dan rubrik dosen [CRITERIA] di dalam middleware terbukti secara efektif mengisolasi ruang penalaran model GPT-OSS 120B. Selama pengujian pada 33 dokumen jawaban mahasiswa, tidak ditemukan satu pun kejadian halusinasi (hallucination) di mana AI memberikan skor berdasarkan informasi di luar naskah soal dan rubrik yang ditetapkan dosen. AI secara ketat menilai query SQL berdasarkan skema database `universitas` dan kriteria 10 aspek yang telah dikunci di Supabase.
+                            2. Pembahasan Dampak Knowledge Grounding:
+Penerapan instruksi CoT pada elemen [TASK] memaksa AI untuk menyusun penalaran bertahap (`global_reasoning`) terlebih dahulu sebelum mengeluarkan angka skor. Perubahan signifikan terjadi antara Iterasi 1 dan Iterasi 2:
+    a) Pada Iterasi 1 (Binary Scoring), tanpa CoT yang luwes, AI mengevaluasi skor secara kaku. Kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung diberi skor 0, yang mengakibatkan deviasi kesalahan skor sangat tinggi (MAE = 18.33 poin).
+    b) Pada Iterasi 2 (3-Point Partial Credit + CoT), middleware memaksa AI menganalisis tingkat kebenaran logika parsial. Ketika menemukan kesalahan minor, penalaran CoT AI mengenali bahwa struktur logika query utama sudah benar, sehingga AI memberikan skor parsial (skor 50). Hal ini secara langsung berhasil memangkas kesalahan fisik skor hingga -70.3% (MAE turun menjadi 5.45 poin) dan meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724).
+
+    BAB V 
+KESIMPULAN DAN SARAN
+
+        5.1. Kesimpulan
+Berdasarkan hasil perancangan, implementasi, serta pengujian dan pembahasan yang telah dilakukan pada sistem Smart Assistant Lecturer (SAL) untuk analisis jawaban esai otomatis berbasis Large Language Model (LLM), dapat ditarik beberapa kesimpulan utama sebagai berikut:
+                            1. Pengembangan Sistem Smart Assistant Lecturer (SAL):
+   Sistem SAL berhasil dibangun menggunakan arsitektur provider-agnostic middleware berbasis Next.js (App Router), Supabase Backend-as-a-Service (BaaS), dan Groq API Cloud dengan model openai/gpt-oss-120b. Lapisan middleware berhasil mengkombinasikan mekanisme Knowledge Grounding dan Chain-of-Thought (CoT) Reasoning untuk mengunci penalaran AI pada dokumen acuan dosen serta menghasilkan log justifikasi penilaian yang transparan per aspek rubrik.
+                            2. Efektivitas Metode Prototyping dan Skema 3-Point Partial Credit Rubric:
+Penerapan metode Prototyping terbukti berhasil mengarahkan pengembangan sistem melalui dua tahap iterasi perbaikan utama:
+                                a. Iterasi 1 (Binary Scoring 0/100) menghasilkan nilai MAE yang tinggi sebesar 18.33 poin dan Kendall's Tau (τ) sebesar 0.4400 karena AI memberikan penalti penuh pada kesalahan tipografi minor.
+                                b. Iterasi 2 (3-Point Partial Credit Rubric 0, 50, 100) berhasil disetujui dosen pengampu dengan meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724) dan mereduksi kesalahan skor sebesar -70.3% (MAE turun dari 18.33 poin menjadi 5.45 poin).
+        5.2. Saran
+Berdasarkan keterbatasan dan evaluasi yang diperoleh dari penelitian ini, terdapat beberapa saran untuk pengembangan sistem Smart Assistant Lecturer (SAL) di masa mendatang:
+                            1. Integrasi Multimodal Vision-Language Model (VLM):
+   Disarankan untuk mengembangkan middleware agar mendukung pemrosesan VLM secara langsung. Fitur ini memungkinkan sistem menganalisis tangkapan layar (screenshot) hasil eksekusi program/query mahasiswa secara otomatis tanpa tergantung pada ekstraksi teks atau Optical Character Recognition (OCR) terpisah.
+                            2. Perluasan Variasi Mata Kuliah dan Tipe Soal Esai:
+   Pengujian dapat diperluas ke mata kuliah pemrograman lain (seperti Pemrograman Web, Pemrograman Berorientasi Objek) maupun tipe soal esai konseptual teoretis untuk mengevaluasi generalisabilitas middleware pada domain materi yang lebih luas.
+3. Optimasi Latensi dan Mekanisme Task Queue:
+Untuk mengantisipasi lonjakan pengumpulan laporan mahasiswa dalam jumlah besar, disarankan mengimplementasikan mekanisme asynchronous task queue (seperti Redis/BullMQ) guna mengelola antrean inferensi API agar terhindar dari kendala rate-limit infrastruktur cloud.
+
+
+DAFTAR PUSTAKA
+
+Agarwal, S., Ahmad, L., Ai, J., Altman, S., Applebaum, A., Arbus, E., ... & Zhao, S. (2025). gpt-oss-120b & gpt-oss-20b model card. arXiv preprint arXiv:2508.10925.
+Bhat, S., & Varma, V. What makes the whole? Probing Attribute-Level Compositionality in LLM Judges. In 2nd Workshop on Compositional Learning: Safety, Interpretability, and Agents.
+Chen, Z., & Wan, T. (2024). Using Large Language Models to Assign Partial Credit to Students' Explanations of Problem-Solving Process: Grade at Human Level Accuracy with Grading Confidence Index and Personalized Student-facing Feedback. arXiv preprint arXiv:2412.06910.
+CLAES, M. Middleware-Enabled LLM Feedback for Automated Grading Platforms.
+Dzikovska, M. O., Nielsen, R., Brew, C., Leacock, C., Giampiccolo, D., Bentivogli, L., ... & Dang, H. T. (2013, June). Semeval-2013 task 7: The joint student response analysis and 8th recognizing textual entailment challenge. In Second Joint Conference on Lexical and Computational Semantics ( SEM), Volume 2: Proceedings of the Seventh International Workshop on Semantic Evaluation (SemEval 2013) (pp. 263-274).
+Fraenkel, J. R., Wallen, N. E., & Hyun, H. H. (2019). How to design and evaluate research in education (10th ed.). McGraw-Hill Education.
+Gao, R., Merzdorf, H. E., Anwar, S., Hipwell, M. C., & Srinivasa, A. R. (2024). Automatic assessment of text-based responses in post-secondary education: A systematic review. Computers and Education: Artificial Intelligence, 6, 100206.
+Groq. (2025). Groq Documentation Overview. Retrieved May 14, 2026, from https://console.groq.com/docs/overview
+Groq. (2025). Groq API Reference. Retrieved May 14, 2026, from https://console.groq.com/docs/api-reference
+Groq. (2025). Groq Models Documentation. Retrieved May 14, 2026, from https://console.groq.com/docs/models
+Haller, S., Aldea, A., Seifert, C., & Strisciuglio, N. (2022). Survey on automated short answer grading with deep learning: from word embeddings to transformers. arXiv preprint arXiv:2204.03503.
+Islam, M. R. (2018). Sample size and its role in Central Limit Theorem (CLT). Computational and Applied Mathematics Journal, 4(1), 1-7.
+Ji, Z., Lee, N., Frieske, R., Yu, T., Su, D., Xu, Y., ... & Fung, P. (2023). Survey of hallucination in natural language generation. ACM computing surveys, 55(12), 1-38.
+Kaldaras, L., Akaeze, H. O., & Reckase, M. D. (2024, August). Developing valid assessments in the era of generative artificial intelligence. In Frontiers in education (Vol. 9, p. 1399377). Frontiers Media SA.
+Kasneci, E., Seßler, K., Küchemann, S., Bannert, M., Dementieva, D., Fischer, F., ... & Kasneci, G. (2023). ChatGPT for good? On opportunities and challenges of large language models for education. Learning and individual differences, 103, 102274.
+Ludwig, S., Mayer, C., Hansen, C., Eilers, K., & Brandt, S. (2021). Automated essay scoring using transformer models. Psych, 3(4), 897-915.
+Maryani, H. P., Gaol, F. L., & Hidayanto, A. N. (2022). Comparison of the system development life cycle and prototype model for software engineering. Int. J. Emerg. Technol. Adv. Eng, 12(4), 155-162.
+Masters, G. N. (1982). A Rasch model for partial credit scoring. Psychometrika, 47(2), 149-174.
+Mizumoto, A., & Eguchi, M. (2023). Exploring the potential of using an AI language model for automated essay scoring. Research Methods in Applied Linguistics, 2(2), 100050.
+Pack, A., Barrett, A., & Escalante, J. (2024). Large language models and automated essay scoring of English language learner writing: Insights into validity and reliability. Computers and Education: Artificial Intelligence, 6, 100234.
+Stahl, M., Biermann, L., Nehring, A., & Wachsmuth, H. (2024, June). Exploring LLM prompting strategies for joint essay scoring and feedback generation. In Proceedings of the 19th workshop on innovative use of NLP for building educational applications (BEA 2024) (pp. 283-298).
+Wang, X., Wei, J., Schuurmans, D., et al. (2022). Self-consistency improves chain of thought reasoning in language models. arXiv.
+Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems, 30.
+Yeung, S. (2025, March). A comparative study of rule-based, machine learning and large language model approaches in automated writing evaluation (AWE). In Proceedings of the 15th international learning analytics and knowledge conference (pp. 984-991).
+Zhao, W. X., Zhou, K., Li, J., Tang, T., Wang, X., Hou, Y., ... & Wen, J. R. (2023). A survey of large language models. arXiv preprint arXiv:2303.18223, 1(2), 1-124.
+
+
+
