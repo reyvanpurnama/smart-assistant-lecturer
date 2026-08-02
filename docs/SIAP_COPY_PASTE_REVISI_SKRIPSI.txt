@@ -157,34 +157,12 @@ Analisis keandalan sistem dilakukan dengan membandingkan nilai keluaran sistem t
 4. SIAP COPY-PASTE: BAB IV (HASIL DAN PEMBAHASAN - RUMAH UTAMA DATA)
 ================================================================================
 
-[Copy-Paste Sub-bab 4.3 Hasil Iterasi Perbaikan Prototype Sistem]
+[Copy-Paste Sub-bab 4.3 Analisis Statistik dan Komputasi Step-by-Step]
 --------------------------------------------------------------------------------
-        4.3. Hasil Iterasi Perbaikan Prototype Sistem
-Pengembangan sistem mengikuti metode Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan utama untuk memastikan keluaran penilaian AI selaras dengan standar dosen pengampu.
+        4.3. Analisis Statistik dan Komputasi Keandalan AI
+Sub-bab ini merupakan pusat analisis kuantitatif utama yang membuktikan keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer terhadap penilaian manual dosen (ground truth). Pengujian dilakukan secara komprehensif terhadap 33 dokumen jawaban mahasiswa Kelas IF23A.
 
-1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring):
-Pada Iterasi 1, sistem menerapkan skema penilaian biner (skor 0 atau 100) pada setiap aspek rubrik sebagai acuan baseline. Pada tahap ini, AI bersikap sangat kaku. Jawaban mahasiswa yang memiliki kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung dijatuhi penalti skor 0. Pengujian pada 33 dokumen mahasiswa di Iterasi 1 menghasilkan deviasi kesalahan skor yang tinggi (MAE = 18.33 poin) dan tingkat keselarasan peringkat sedang (\tau_b = 0.4400). Dosen merekomendasikan perlunya skema penilaian parsial untuk mengakomodasi kebenaran logika berpikir mahasiswa.
-
-2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric):
-Berdasarkan evaluasi Iterasi 1, dilakukan perbaikan pada middleware di Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) pada aspek rubrik berbobot. Skema ini membagi penilaian menjadi tiga tingkatan: Full Credit (100) untuk kebenaran sempurna, Partial Credit (50) untuk jawaban yang secara logika benar namun memiliki typo/kelalaian minor, dan No Credit (0) untuk jawaban yang salah total. Hasil pengujian ulang pada Iterasi 2 terbukti secara signifikan meningkatkan keselarasan peringkat (Kendall's Tau \tau_b naik menjadi 0.7724) dan memangkas rata-rata kesalahan skor (MAE turun drastis menjadi 5.45 poin).
-
-Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
-----------------------------------------------------------------------------------------------------
-Tahap Prototype     Metode Penilaian            Kendall's Tau (\tau_b)   MAE (Poin)   Evaluasi Dosen
-----------------------------------------------------------------------------------------------------
-Iterasi 1 (Awal)    Binary Scoring (0/100)      0.4400                  18.33        Terlalu kaku pada kesalahan minor.
-Iterasi 2 (Final)   3-Point Partial Credit      0.7724                  5.45         Disetujui: Keselarasan tinggi & error terkecil.
-----------------------------------------------------------------------------------------------------
-
-Visualisasi komparasi menunjukkan bahwa penerapan skema 3-Point Partial Credit pada Iterasi 2 berhasil meningkatkan korelasi peringkat Kendall's Tau sebesar +75.5% (dari 0.4400 menjadi 0.7724) dan mereduksi kesalahan rata-rata fisik MAE sebesar -70.3% (dari 18.33 poin menjadi 5.45 poin).
-
-
-[Copy-Paste Sub-bab 4.4 Analisis Statistik dan Keandalan AI]
---------------------------------------------------------------------------------
-        4.4. Analisis Statistik dan Keandalan AI
-Sub-bab ini merupakan pusat analisis kuantitatif utama yang membuktikan keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer terhadap penilaian manual dosen (ground truth). Pengujian dilakukan secara menyeluruh terhadap 33 dokumen jawaban mahasiswa Kelas IF23A.
-
-            4.4.1. Landasan Rumus & Perhitungan Step-by-Step Kendall’s Tau-b
+            4.3.1. Landasan Rumus & Perhitungan Step-by-Step Kendall’s Tau-b
 Koefisien Korelasi Kendall's Tau (\tau) digunakan untuk mengevaluasi apakah AI memiliki logika hirarki peringkat yang sama dengan dosen dalam menentukan kualitas jawaban mahasiswa (Bhat & Varma, 2026). Karena sampel data nilai 33 mahasiswa memiliki beberapa nilai kembar (ties) seperti beberapa mahasiswa yang memperoleh skor sama persis (misalnya skor 85.00), maka perhitungan komputasi disesuaikan menggunakan rumus Kendall's Tau-b yang mengoreksi faktor nilai kembar:
 
 \tau_b = \frac{P - Q}{\sqrt{(P + Q + T_x)(P + Q + T_y)}}
@@ -210,7 +188,7 @@ e. Maka nilai Kendall’s Tau \tau_b = \frac{351}{452.309} = 0.7724.
 Nilai Kendall's Tau sebesar 0.7724 mengindikasikan tingkat keselarasan peringkat yang sangat kuat dan signifikan secara statistik. Hal ini membuktikan bahwa logika penalaran model GPT-OSS 120B mampu meniru urutan prioritas penilaian dosen secara konsisten.
 
 
-            4.4.2. Landasan Rumus & Perhitungan Step-by-Step Mean Absolute Error (MAE)
+            4.3.2. Landasan Rumus & Perhitungan Step-by-Step Mean Absolute Error (MAE)
 MAE mengukur rata-rata besarnya selisih mutlak antara skor prediksi AI (\hat{y}_i) terhadap skor aktual dosen (y_i) tanpa memperhitungkan arah kesalahan (Yeung, 2025). Rumus baku MAE didefinisikan sebagai:
 
 MAE = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
@@ -226,6 +204,28 @@ b. Total akumulasi seluruh selisih mutlak 33 mahasiswa di basis data Supabase di
 c. Maka nilai MAE = \frac{179.85}{33} = 5.45 poin.
 
 Perhitungan ini membuktikan bahwa pada Iterasi 2, rata-rata deviasi fisik skor AI terhadap ground truth dosen hanya sebesar 5.45 poin (turun drastis sebesar -70.3% dibanding Iterasi 1 sebesar 18.33 poin).
+
+
+[Copy-Paste Sub-bab 4.4 Hasil Komparasi Iterasi Perbaikan Prototype & Pembahasan]
+--------------------------------------------------------------------------------
+        4.4. Hasil Komparasi Iterasi Perbaikan Prototype Sistem & Pembahasan
+Pengembangan sistem mengikuti metode Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan utama untuk memastikan keluaran penilaian AI selaras dengan standar dosen pengampu.
+
+1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring):
+Pada Iterasi 1, sistem menerapkan skema penilaian biner (skor 0 atau 100) pada setiap aspek rubrik sebagai acuan baseline. Pada tahap ini, AI bersikap sangat kaku. Jawaban mahasiswa yang memiliki kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung dijatuhi penalti skor 0. Pengujian pada 33 dokumen mahasiswa di Iterasi 1 menghasilkan deviasi kesalahan skor yang tinggi (MAE = 18.33 poin) dan tingkat keselarasan peringkat sedang (\tau_b = 0.4400). Dosen merekomendasikan perlunya skema penilaian parsial untuk mengakomodasi kebenaran logika berpikir mahasiswa.
+
+2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric):
+Berdasarkan evaluasi Iterasi 1, dilakukan perbaikan pada middleware di Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) pada aspek rubrik berbobot. Skema ini membagi penilaian menjadi tiga tingkatan: Full Credit (100) untuk kebenaran sempurna, Partial Credit (50) untuk jawaban yang secara logika benar namun memiliki typo/kelalaian minor, dan No Credit (0) untuk jawaban yang salah total. Hasil pengujian ulang pada Iterasi 2 terbukti secara signifikan meningkatkan keselarasan peringkat (Kendall's Tau \tau_b naik menjadi 0.7724) dan memangkas rata-rata kesalahan skor (MAE turun drastis menjadi 5.45 poin).
+
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+----------------------------------------------------------------------------------------------------
+Tahap Prototype     Metode Penilaian            Kendall's Tau (\tau_b)   MAE (Poin)   Evaluasi Dosen
+----------------------------------------------------------------------------------------------------
+Iterasi 1 (Awal)    Binary Scoring (0/100)      0.4400                  18.33        Terlalu kaku pada kesalahan minor.
+Iterasi 2 (Final)   3-Point Partial Credit      0.7724                  5.45         Disetujui: Keselarasan tinggi & error terkecil.
+----------------------------------------------------------------------------------------------------
+
+Visualisasi komparasi menunjukkan bahwa penerapan skema 3-Point Partial Credit pada Iterasi 2 berhasil meningkatkan korelasi peringkat Kendall's Tau sebesar +75.5% (dari 0.4400 menjadi 0.7724) dan mereduksi kesalahan rata-rata fisik MAE sebesar -70.3% (dari 18.33 poin menjadi 5.45 poin). Penerapan arsitektur provider-agnostic middleware yang menyatukan Knowledge Grounding dan Chain-of-Thought (CoT) terbukti berhasil memitigasi halusinasi model LLM serta menghasilkan evaluasi otomatis yang konsisten dengan standar dosen pengampu.
 
 
 ================================================================================
