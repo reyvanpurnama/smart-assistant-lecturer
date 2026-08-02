@@ -36,7 +36,7 @@ No | Operasi SQL / Aspek Kriteria   | Deskripsi Instruksi Tugas                 
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 Catatan Penjelasan Konsep Evaluasi Logika:
-Penting untuk dicatat bahwa dalam evaluasi jawaban esai logika pemrograman (SQL), sintaks acuan dosen pada Tabel 2.2 berfungsi sebagai acuan target operasional (Knowledge Grounding), bukan sebagai acuan string tunggal yang kaku secara absolut. Jawaban mahasiswa yang memiliki variasi penulisan sintaksis (seperti perbedaan kapitalisasi huruf, penggunaan perintah LIKE sebagai alternatif penyaringan string, atau variasi urutan kolom) tetap diakomodasi kebenarannya secara adil berpijak pada kriteria toleransi rubrik (3-Point Partial Credit Rubric: 0, 50, 100) yang ditetapkan oleh dosen pengampu.
+Penting untuk dicatat bahwa dalam evaluasi jawaban esai logika pemrograman (SQL), sintaks acuan dosen pada Tabel 2.2 berfungsi sebagai acuan target operasional (Knowledge Grounding), bukan sebagai acuan kaku pencocokan teks tunggal secara absolut. Jawaban mahasiswa yang memiliki variasi penulisan sintaksis (seperti perbedaan kapitalisasi huruf, penggunaan perintah LIKE sebagai alternatif penyaringan string, atau variasi urutan kolom) tetap diakomodasi kebenarannya secara adil berdasarkan kriteria penilaian terstruktur yang ditetapkan oleh dosen pengampu.
 
 
 ================================================================================
