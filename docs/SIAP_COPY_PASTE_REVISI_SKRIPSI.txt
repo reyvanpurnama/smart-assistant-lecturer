@@ -157,6 +157,28 @@ Analisis keandalan sistem dilakukan dengan membandingkan nilai keluaran sistem t
 4. SIAP COPY-PASTE: BAB IV (HASIL DAN PEMBAHASAN - RUMAH UTAMA DATA)
 ================================================================================
 
+[Copy-Paste Sub-bab 4.3 Hasil Iterasi Perbaikan Prototype Sistem]
+--------------------------------------------------------------------------------
+        4.3. Hasil Iterasi Perbaikan Prototype Sistem
+Pengembangan sistem mengikuti metode Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan utama untuk memastikan keluaran penilaian AI selaras dengan standar dosen pengampu.
+
+1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring):
+Pada Iterasi 1, sistem menerapkan skema penilaian biner (skor 0 atau 100) pada setiap aspek rubrik sebagai acuan baseline. Pada tahap ini, AI bersikap sangat kaku. Jawaban mahasiswa yang memiliki kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung dijatuhi penalti skor 0. Pengujian pada 33 dokumen mahasiswa di Iterasi 1 menghasilkan deviasi kesalahan skor yang tinggi (MAE = 18.33 poin) dan tingkat keselarasan peringkat sedang (\tau_b = 0.4400). Dosen merekomendasikan perlunya skema penilaian parsial untuk mengakomodasi kebenaran logika berpikir mahasiswa.
+
+2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric):
+Berdasarkan evaluasi Iterasi 1, dilakukan perbaikan pada middleware di Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) pada aspek rubrik berbobot. Skema ini membagi penilaian menjadi tiga tingkatan: Full Credit (100) untuk kebenaran sempurna, Partial Credit (50) untuk jawaban yang secara logika benar namun memiliki typo/kelalaian minor, dan No Credit (0) untuk jawaban yang salah total. Hasil pengujian ulang pada Iterasi 2 terbukti secara signifikan meningkatkan keselarasan peringkat (Kendall's Tau \tau_b naik menjadi 0.7724) dan memangkas rata-rata kesalahan skor (MAE turun drastis menjadi 5.45 poin).
+
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+----------------------------------------------------------------------------------------------------
+Tahap Prototype     Metode Penilaian            Kendall's Tau (\tau_b)   MAE (Poin)   Evaluasi Dosen
+----------------------------------------------------------------------------------------------------
+Iterasi 1 (Awal)    Binary Scoring (0/100)      0.4400                  18.33        Terlalu kaku pada kesalahan minor.
+Iterasi 2 (Final)   3-Point Partial Credit      0.7724                  5.45         Disetujui: Keselarasan tinggi & error terkecil.
+----------------------------------------------------------------------------------------------------
+
+Visualisasi komparasi menunjukkan bahwa penerapan skema 3-Point Partial Credit pada Iterasi 2 berhasil meningkatkan korelasi peringkat Kendall's Tau sebesar +75.5% (dari 0.4400 menjadi 0.7724) dan mereduksi kesalahan rata-rata fisik MAE sebesar -70.3% (dari 18.33 poin menjadi 5.45 poin).
+
+
 [Copy-Paste Sub-bab 4.4 Analisis Statistik dan Keandalan AI]
 --------------------------------------------------------------------------------
         4.4. Analisis Statistik dan Keandalan AI
