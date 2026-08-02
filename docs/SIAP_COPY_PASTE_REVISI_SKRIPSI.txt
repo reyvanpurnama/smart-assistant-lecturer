@@ -2,12 +2,63 @@
 DRAFT SIAP COPY-PASTE REVISI SKRIPSI (OPSI 1: CLEAN AI & EDTECH STANDARD)
 ================================================================================
 Karakteristik Draft:
-- 100% Konsisten dan Clean dari Bab I sampai Bab V.
+- 100% Konsisten dan Clean dari Abstrak s.d. Bab V.
 - Mengadopsi Standar Riset AI / LLM Judge (Yeung, 2025; Bhat & Varma, 2026).
 - Murni menggunakan Kendall's Tau (Rank Order Alignment) & MAE (Score Error).
 - Bebas dari Uji Normalitas Shapiro-Wilk (Tanpa Kontradiksi antar Bab).
 - Bebas dari Angka Hasil Prematur di Bab III.
 - Bebas Overclaim Sitasi Paper.
+
+================================================================================
+0. SIAP COPY-PASTE: ABSTRAK & KATA PENGANTAR
+================================================================================
+
+[Copy-Paste ABSTRAK - Bahasa Indonesia]
+--------------------------------------------------------------------------------
+ABSTRAK
+
+PENGEMBANGAN ASISTEN PENILAI ESSAY OTOMATIS BERBASIS LARGE LANGUAGE MODEL MENGGUNAKAN ARSITEKTUR MIDDLEWARE DAN SKEMA PARTIAL CREDIT RUBRIC
+
+Evaluasi jawaban esai pendek pada rumpun ilmu komputer (seperti perintah SQL dan pseudocode) membutuhkan ketelitian tinggi serta menyita waktu pengoreksian dosen yang signifikan. Di sisi lain, sistem penilaian otomatis konvensional rentan bersikap terlampau kaku (binary scoring) atau mengalami fenomena halusinasi (hallucination) saat menggunakan Large Language Model (LLM) tanpa pembatasan konteks yang ketat. Penelitian ini bertujuan membangun Smart Assistant Lecturer (SAL), sebuah sistem penilaian esai otomatis berbasis LLM open-weight (GPT-OSS 120B via Groq API) yang diintegrasikan melalui arsitektur provider-agnostic middleware berbasis decoupling (Next.js dan Supabase BaaS). Lapisan middleware menerapkan mekanisme Knowledge Grounding untuk mengunci penalaran AI pada dokumen acuan dosen, serta Chain-of-Thought (CoT) Reasoning yang dipadukan dengan skema 3-Point Partial Credit Rubric (skor 0, 50, 100) guna mengakomodasi kebenaran logika parsial mahasiswa. Pengembangan sistem mengikuti metode Prototyping dalam dua iterasi utama. Pengujian kuantitatif dilakukan secara retrospektif terhadap 33 dokumen jawaban mahasiswa pada kelas praktikum basis data. Hasil evaluasi menunjukkan bahwa transisi dari Iterasi 1 (Binary Scoring) ke Iterasi 2 (3-Point Partial Credit Rubric) berhasil meningkatkan keselarasan peringkat statistik (Kendall's Tau \tau_b) sebesar +75.5% dari 0.4400 menjadi 0.7724 (keselarasan hirarki logika sangat kuat). Selain itu, rata-rata deviasi fisik skor (Mean Absolute Error / MAE) berhasil dipangkas sebesar -70.3% dari 18.33 poin menjadi 5.45 poin. Penerapan arsitektur middleware yang mengombinasikan Knowledge Grounding, CoT, dan Partial Credit Rubric terbukti efektif meningkatkan presisi dan keselarasan penilaian esai otomatis berbasis LLM setara dengan standar evaluasi dosen pengampu.
+
+Kata Kunci: Automated Essay Scoring, Large Language Model, Middleware, Knowledge Grounding, Partial Credit Rubric, Kendall's Tau, MAE.
+
+
+[Copy-Paste ABSTRACT - English]
+--------------------------------------------------------------------------------
+ABSTRACT
+
+DEVELOPMENT OF AN AUTOMATED ESSAY SCORING ASSISTANT BASED ON LARGE LANGUAGE MODELS USING MIDDLEWARE ARCHITECTURE AND PARTIAL CREDIT RUBRIC SCHEME
+
+Evaluating short answer essays in computer science (such as SQL queries and pseudocode) requires high precision and consumes significant grading time for lecturers. Conversely, conventional automated grading systems suffer from rigid binary scoring or hallucination risks when employing Large Language Models (LLMs) without strict context grounding. This study aims to build the Smart Assistant Lecturer (SAL), an automated essay scoring system powered by an open-weight LLM (GPT-OSS 120B via Groq API) integrated through a provider-agnostic decoupling middleware architecture (Next.js and Supabase BaaS). The middleware layer incorporates Knowledge Grounding mechanisms to isolate AI reasoning within instructor reference documents, along with Chain-of-Thought (CoT) Reasoning coupled with a 3-Point Partial Credit Rubric scheme (scores 0, 50, 100) to evaluate partial logical correctness. System development followed a two-iteration Prototyping methodology. Quantitative evaluation was conducted retrospectively on 33 student submission documents from a database lab session. The evaluation results demonstrated that transitioning from Iteration 1 (Binary Scoring) to Iteration 2 (3-Point Partial Credit Rubric) significantly improved rank-order alignment (Kendall's Tau \tau_b) by +75.5%, rising from 0.4400 to 0.7724 (indicating strong hierarchical agreement). Furthermore, the physical error deviation (Mean Absolute Error / MAE) was reduced by -70.3%, dropping from 18.33 points to 5.45 points. The integration of a provider-agnostic middleware featuring Knowledge Grounding, CoT, and a Partial Credit Rubric effectively enhances the precision and alignment of automated LLM essay scoring to match instructor-level evaluation standards.
+
+Keywords: Automated Essay Scoring, Large Language Model, Middleware, Knowledge Grounding, Partial Credit Rubric, Kendall's Tau, MAE.
+
+
+[Copy-Paste KATA PENGANTAR]
+--------------------------------------------------------------------------------
+KATA PENGANTAR
+
+Puji dan syukur penulis panjatkan ke hadirat Allah SWT yang telah melimpahkan rahmat, hidayah, serta karunia-Nya, sehingga penulis dapat menyelesaikan naskah Tugas Akhir/Skripsi yang berjudul "Pengembangan Asisten Penilai Esai Otomatis Berbasis Large Language Model Menggunakan Arsitektur Middleware dan Skema Partial Credit Rubric" ini dengan baik dan tepat waktu. Shalawat serta salam semoga senantiasa tercurahkan kepada junjungan kita Nabi Muhammad SAW, keluarga, para sahabat, hingga umatnya hingga akhir zaman.
+
+Skripsi ini disusun sebagai salah satu syarat untuk memperoleh gelar Sarjana Komputer (S.Kom.) pada Program Studi Teknik Informatika, Fakultas Sains dan Teknologi, Universitas Muhammadiyah Bandung. Dalam proses penyusunan dan penyelesaian penelitian ini, penulis mendapatkan bantuan, bimbingan, arahan, serta dukungan yang luar biasa dari berbagai pihak. Oleh karena itu, pada kesempatan ini penulis menyampaikan rasa terima kasih dan penghargaan yang tulus kepada:
+
+1. Rektor Universitas Muhammadiyah Bandung beserta jajaran pimpinan universitas atas fasilitas dan lingkungan akademik yang kondusif.
+2. Dekan Fakultas Sains dan Teknologi Universitas Muhammadiyah Bandung.
+3. Ketua Program Studi Teknik Informatika Universitas Muhammadiyah Bandung yang telah memberikan arahan dan dorongan moral selama masa studi.
+4. Dosen Pembimbing Utama dan Dosen Pembimbing Pendamping yang telah dengan sabar meluangkan waktu, tenaga, serta memberikan kritik dan masukan konstruktif demi kesempurnaan penelitian ini.
+5. Seluruh Dosen dan Staf Pengajar Program Studi Teknik Informatika Universitas Muhammadiyah Bandung yang telah membekali penulis dengan ilmu pengetahuan bernilai selama kuliah.
+6. Kedua Orang Tua dan Keluarga Tercinta yang senantiasa memberikan doa tulus, kasih sayang, motivasi, serta dukungan finansial dan moral tanpa henti.
+7. Rekan-rekan mahasiswa Teknik Informatika angkatan 2023 (khususnya Kelas IF23A) serta seluruh pihak yang tidak dapat penulis sebutkan satu per satu atas kerja sama dan kebersamaannya selama ini.
+
+Penulis menyadari bahwa naskah skripsi ini masih jauh dari kesempurnaan akibat keterbatasan pengetahuan dan pengalaman penulis. Oleh karena itu, kritik dan saran yang membangun sangat penulis harapkan demi perbaikan di masa mendatang. Semoga hasil penelitian ini dapat memberikan kontribusi nyata serta manfaat akademis maupun praktis bagi pengembangan ilmu sains data dan kecerdasan buatan dalam bidang pendidikan.
+
+
+Bandung, Agustus 2026
+
+
+Penulis
+
 
 ================================================================================
 1. SIAP COPY-PASTE: BAB I (PENDAHULUAN)
