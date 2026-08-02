@@ -1,0 +1,98 @@
+================================================================================
+PANDUAN REVISI PARAGRAF DEMI PARAGRAF (BAB 1, BAB 2, DAN BAB 3)
+File Acuan Utama: docs/revisi reyvan 03 agustus
+================================================================================
+
+Panduan ini disusun khusus agar kamu bisa langsung tau bagian mana, baris mana, 
+serta kalimat asli mana yang perlu diganti tanpa pusing membandingkan seluruh dokumen.
+
+--------------------------------------------------------------------------------
+1. BAB I (PENDAHULUAN)
+--------------------------------------------------------------------------------
+
+[REVISI 1.1] 
+- Sub-bab: 1.3 Tujuan Penelitian (Poin 2)
+- Lokasi Baris Asli: Baris 159
+- Teks ASLI (Sebelum):
+  "2. Mengevaluasi tingkat kesesuaian dan keakuratan hasil penilaian sistem terhadap hasil penilaian manual dosen menggunakan metrik evaluasi statistik Kendall's Tau  untuk mengukur korelasi peringkat (rank correlation) keselarasan logika penilaian, serta Mean Absolute Error (MAE) untuk mengukur rata-rata deviasi fisik skor."
+
+- Teks REVISI (Sesudah):
+  "2. Mengevaluasi tingkat kesesuaian dan keakuratan hasil penilaian sistem terhadap hasil penilaian manual dosen menggunakan metrik evaluasi statistik Kendall's Tau untuk mengukur korelasi peringkat (rank correlation) keselarasan logika penilaian, serta Mean Absolute Error (MAE) untuk mengukur rata-rata deviasi fisik skor."
+- Arahan: Cukup hapus spasi ganda setelah kata "Kendall's Tau".
+
+---
+
+[REVISI 1.2]
+- Sub-bab: 1.4 Batasan Masalah (Poin 6)
+- Lokasi Baris Asli: Baris 174
+- Teks ASLI (Sebelum):
+  "... sampel berkisar 30 hingga 50 dokumen jawaban yang dihitung melalui metrik statistik Kendall's Tau  dan Mean Absolute Error (MAE) (Yeung, 2025; Bhat & Varma, 2026). Penelitian ini tidak mengukur ..."
+
+- Teks REVISI (Sesudah):
+  "... sampel berkisar 30 hingga 50 dokumen jawaban yang dihitung melalui metrik statistik Kendall's Tau dan Mean Absolute Error (MAE) (Yeung, 2025; Bhat & Varma, 2026). Penelitian ini tidak mengukur ..."
+- Arahan: Cukup hapus spasi ganda setelah kata "Kendall's Tau".
+
+
+--------------------------------------------------------------------------------
+2. BAB II (TINJAUAN PUSTAKA)
+--------------------------------------------------------------------------------
+
+[REVISI 2.1]
+- Sub-bab: 2.2 Penelitian Terdahulu (Paragraf Novelty Akhir)
+- Lokasi Baris Asli: Baris 222
+- Teks ASLI (Sebelum):
+  "... menggunakan metrik Kendall's Tau  untuk menguji hirarki logika serta Mean Absolute Error (MAE) untuk deviasi rata-rata skor (Yeung, 2025; Bhat & Varma, 2026)."
+
+- Teks REVISI (Sesudah):
+  "... menggunakan metrik Kendall's Tau untuk menguji keselarasan peringkat logika (rank order alignment) serta Mean Absolute Error (MAE) untuk mengukur rata-rata deviasi fisik skor (Yeung, 2025; Bhat & Varma, 2026)."
+- Arahan: Hapus spasi ganda dan pertegas istilah "keselarasan peringkat logika (rank order alignment)" agar presisi sesuai paper Bhat & Varma (2026).
+
+---
+
+[REVISI 2.2]
+- Sub-bab: 2.8.1 Kendall's Tau Correlation Coefficient
+- Lokasi Baris Asli: Baris 341-348
+- Teks ASLI (Sebelum):
+  "Koefisien korelasi Kendall's Tau  merupakan metrik non-parametrik yang digunakan untuk mengukur kekuatan dan arah hubungan peringkat (rank correlation) antara dua variabel terurut (Bhat & Varma, 2026). ..."
+
+- Teks REVISI (Sesudah):
+  "Koefisien korelasi Kendall's Tau merupakan metrik statistik non-parametrik yang digunakan untuk mengukur kekuatan dan arah hubungan keselarasan peringkat (rank correlation) antara dua variabel terurut (Bhat & Varma, 2026). Dalam konteks pengujian sistem penilaian esai berbasis LLM, Kendall's Tau dipilih secara a-priori karena skor evaluasi esai berbasis rubrik akademik secara teoretis tergolong skala ordinal bertingkat. Selain itu, Kendall's Tau terbukti lebih tangguh dalam menangani data dengan banyak skor kembar (ties) pada ukuran sampel yang terbatas (Akoglu, 2018; Bhat & Varma, 2026)."
+- Arahan: Hapus spasi ganda dan tambahkan alasan teoretis pemilihan Kendall's Tau secara a-priori berbasis skala ordinal rubrik esai (TANPA menyebut uji normalitas empiris, karena data Bab 4 belum diuji di Bab 2).
+
+---
+
+[REVISI 2.3]
+- Sub-bab: 2.8.2 Mean Absolute Error (MAE)
+- Lokasi Baris Asli: Baris 350-357
+- Teks ASLI (Sebelum):
+  "Mean Absolute Error (MAE) digunakan untuk mengukur rata-rata besarnya kesalahan atau deviasi fisik..."
+
+- Teks REVISI (Sesudah):
+  "Mean Absolute Error (MAE) digunakan untuk mengukur rata-rata besarnya kesalahan atau deviasi fisik antara skor prediksi yang dihasilkan oleh sistem AI terhadap nilai aktual dari dosen (ground truth) tanpa memperhatikan arah kesalahan (Yeung, 2025). Penggunaan MAE dalam Automated Writing Evaluation (AWE) memberikan interpretasi linier yang intuitif mengenai seberapa jauh nilai prediksi meleset dari nilai dosen dalam satuan poin asli (0–100), tanpa memberikan penalti berlebih yang disebabkan oleh pengkuadratan error (Yeung, 2025)."
+- Arahan: Perjelas bahwa MAE digunakan untuk interpretasi kesalahan linier pada unit poin asli 0-100 (sesuai kajian Yeung, 2025).
+
+
+--------------------------------------------------------------------------------
+3. RENCANA REVISI BAB III (METODOLOGI PENELITIAN)
+--------------------------------------------------------------------------------
+
+[REVISI 3.1 - KRITIS]
+- Sub-bab: 3.1 Alur Penelitian (Poin 4 - Evaluasi & Perbaikan Prototype Iterasi 2)
+- Lokasi Baris Asli: Baris 374
+- Masalah Utama: Terdapat angka hasil empiris prematur "(Kendall's Tau τ = 0.7724)" dan "(MAE = 5.45 poin)".
+- Teks ASLI (Sebelum):
+  "4. Evaluasi & Perbaikan Prototype (Evaluation & Refinement - Iterasi 2)
+  ... Hasil pengujian ulang pada Prototype Versi 2 terbukti meningkatkan keselarasan peringkat (Kendall's Tau τ = 0.7724) dan memangkas kesalahan skor fisik (MAE = 5.45 poin)."
+
+- Teks REVISI (Sesudah):
+  "4. Evaluasi & Perbaikan Prototype (Evaluation & Refinement - Iterasi 2)
+  Mengevaluasi hasil penilaian Prototype Versi 1 terhadap ground truth dosen. Dosen memberikan evaluasi bahwa skema biner terlampau kaku terhadap kesalahan minor (MAE pada Iterasi 1 tinggi). Berdasarkan hasil evaluasi tersebut, dilakukan perbaikan (refinement) pada middleware dengan memperbarui elemen [CRITERIA] menggunakan 3-Point Partial Credit Rubric (skor 0, 50, 100) dan memperkuat instruksi Chain-of-Thought (CoT). Tahap ini dirancang untuk memfasilitasi penilaian logika parsial mahasiswa serta meningkatkan keselarasan peringkat dan presisi skor akhir."
+- Arahan: HAPUS SEMUA ANGKA EMPIFIS (0.7724 dan 5.45) di Bab III! Gantikan dengan deskripsi kualitatif perbaikan middleware.
+
+---
+
+[REVISI 3.2]
+- Sub-bab: 3.4 Pengujian (Metode Analisis Data)
+- Lokasi Baris Asli: Baris 466-474
+- Arahan Tambahan di Bab III:
+  Tuliskan rumus matematis Kendall's Tau-b dan MAE secara teknis. Tambahkan penjelasan singkat bahwa sebelum kesimpulan statistik ditarik pada Bab IV, akan dilakukan Uji Normalitas Shapiro-Wilk pada data sampel retrospektif N=33 sebagai tahap konfirmasi data empiris.

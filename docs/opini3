@@ -1,0 +1,77 @@
+Viewed revisi%20reyvan%2003%20agustus:300-450
+Searched for "BAB IV"
+Searched for "KESIMPULAN"
+Viewed revisi%20reyvan%2003%20agustus:730-769
+
+Bro, pertanyaan dan kejelian kamu ini **SANGAT KRUSIAL!** Ini menunjukkan kamu mulai benar-benar menguasai struktur karya ilmiah skripsi.
+
+Berikut adalah jawaban tegas, analisis struktural, dan solusi agar draf skripsi kamu di `docs/revisi reyvan 03 agustus` menjadi **rapi, sistematis, bebas repetisi, dan tidak overclaim**.
+
+---
+
+# 📑 ANALISIS KRITIS & RESTROKTURISASI DRAF SKRIPSI
+
+---
+
+## 1. Apakah Boleh Ada Angka Hasil ($\tau = 0.7724, \text{MAE} = 5.45$) di BAB III?
+
+### ❌ JAWABAN: TIDAK BOLEH! Itu Kesalahan Struktural Karya Ilmiah.
+Di draf kamu (baris 374), di Sub-bab 3.1 (Metode Prototyping) tertulis angka persis $\tau = 0.7724$ dan $\text{MAE} = 5.45$. 
+
+* **Mengapa ini Salah?**
+  * **BAB III (Metodologi Penelitian)** adalah bab yang menjelaskan **PERENCANAAN, METODE, PROSEDUR, DAN RUMUS**. Bab III berisi *apa yang AKAN dilakukan dan BAGAIMANA cara mengukurnya*.
+  * Jika angka hasil pengujian sudah muncul di Bab III, dosen penguji pasti akan mencecar: *"Kamu kan baru menjelaskan metode di Bab 3, kenapa angka hasilnya sudah keluar? Mana data pengujiannya? Itu kan jatah Bab 4!"*
+
+### ✅ SOLUSI PERBAIKAN BAB III:
+Di Bab III Sub-bab 3.1 (Tahap Prototyping Iterasi 2), kita **hapus semua angka persis ($\tau$ dan MAE)**. 
+Gantikan dengan penjelasan **kualitatif metodologis**:
+> *"Berdasarkan evaluasi kaku pada Iterasi 1, dilakukan perbaikan (refinement) pada middleware di Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) dan mengintegrasikan instruksi Chain-of-Thought (CoT). Tahap ini bertujuan untuk memfasilitasi penilaian logika parsial mahasiswa dan mereduksi penalti kaku pada kesalahan tipografi minor."*
+
+👉 **Semua angka empiris ($\tau = 0.7724, \text{MAE} = 5.45$, dan Uji Shapiro-Wilk) MURNI DITARUH DI BAB IV (Hasil dan Pembahasan)!**
+
+---
+
+## 2. Mengatasi Repetisi / Pengulangan Berlebihan di Bab IV dan Bab V
+
+Saat ini draf kamu terasa "ditulis ulang terus-menerus" karena angka $\tau = 0.7724$ dan MAE = $5.45$ diulang-ulang dari Bab III, Bab IV, hingga Bab V dengan narasi yang hampir sama.
+
+### 📐 Pembagian Peran yang Benar (Bebas Repetisi):
+
+| Bab | Peran & Isi yang Benar | Apakah Boleh Ada Angka Hasil ($\tau = 0.7724, \text{MAE} = 5.45$)? |
+| :--- | :--- | :--- |
+| **BAB I (Batasan Masalah)** | Menetapkan metrik Kendall's Tau & MAE sebagai acuan ukur secara *a-priori*. | ❌ Tidak (hanya sebut nama metriknya). |
+| **BAB II (Tinjauan Pustaka)** | Menjelaskan teori Kendall's Tau & MAE dari literatur (Bhat 2026; Yeung 2025; Akoglu 2018). | ❌ Tidak (hanya sebut teorinya). |
+| **BAB III (Metodologi)** | Menjelaskan alur prototyping, rancangan prompt, dan rumus matematis metrik. | ❌ Tidak (hanya rumus & alurnya). |
+| **BAB IV (Hasil & Pembahasan)** | **PUSAT UTAMA DATA**. Menyajikan Tabel 33 mahasiswa, Uji Shapiro-Wilk, hitungan Kendall's Tau ($\tau = 0.7724$), MAE ($5.45$), serta pembahasan kualitatifnya. | ✅ **YA (Di sinilah rumah utamanya!)** |
+| **BAB V (Kesimpulan)** | **RINGKASAN JAWABAN RUMUSAN MASALAH (1-2 Paragraf Padat)**. Cukup sebutkan 1 kali angka akhir sebagai jawaban Rumusan Masalah 2. Hapus kronologi panjang 2 iterasi yang sudah ada di Bab IV. | ✅ YA (Hanya 1 kalimat ringkas sebagai jawaban akhir). |
+
+---
+
+## 3. Menjaga Sitasi Presisi & Tidak Overclaim Paper
+
+Agar tidak overclaim (mengklaim isi paper melebihi apa yang ditulis oleh penulis aslinya), berikut adalah batasan sitasi yang **100% Jujur & Akademis**:
+
+### 1. Paper Steven Yeung (2025) — LAK 2025 (ACM)
+* **Cara Sitasi yang Benar**: Dikutip sebagai rujukan penggunaan metrik **Mean Absolute Error (MAE)** dalam mengukur besarnya rata-rata deviasi fisik skor keluaran AI terhadap nilai manusia pada sistem *Automated Writing Evaluation* (AWE).
+* 🚫 **Jangan Overclaim**: Jangan bilang Yeung meneliti praktikum SQL atau coding.
+
+### 2. Paper Savita Bhat & Vasudeva Varma (2026) — ICML 2026 Workshop
+* **Cara Sitasi yang Benar**: Dikutip sebagai rujukan penggunaan metrik **Kendall's Tau ($\tau$)** untuk menguji keselarasan peringkat/hirarki (*rank order alignment*) antara *LLM-as-a-Judge* dan *Human Evaluator* pada evaluasi multidimensi.
+* 🚫 **Jangan Overclaim**: Jangan bilang Bhat meneliti esai bahasa Indonesia atau database SQL.
+
+### 3. Paper Statistik Pendukung (Razali & Wah, 2011; Akoglu, 2018; Shapiro & Wilk, 1965)
+* **Cara Sitasi yang Benar**: Dikutip untuk menjustifikasi penggunaan Uji Normalitas Shapiro-Wilk pada sampel $N < 50$, serta keunggulan statistik non-parametrik Kendall's Tau pada data berdistribusi tidak normal.
+
+---
+
+## 4. Kesimpulan & Langkah Eksekusi
+
+Dengan merapikan struktur ini:
+1. **Bab III** menjadi murni penjelasan metodologi & perancangan (bebas dari angka hasil prematur).
+2. **Bab IV** menjadi pusat data empiris dan pembahasan ilmiah yang kaya.
+3. **Bab V** menjadi kesimpulan yang ringkas, padat, dan langsung menjawab rumusan masalah tanpa pengulangan bertele-tele.
+4. **Sitasi Paper** terbebas dari klaim berlebihan (*overclaim*).
+
+Bagaimana bro? Apakah penjelasan ini membuat alur skripsi kamu jauh lebih terang dan masuk akal? 
+
+Jika sudah sepakat, saya akan mulai melakukan perbaikan rapi pada draf `docs/revisi reyvan 03 agustus`!
