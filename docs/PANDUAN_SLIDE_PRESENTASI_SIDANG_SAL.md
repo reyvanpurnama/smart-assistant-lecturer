@@ -140,11 +140,11 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
   * 📌 **Mahasiswa NIM 230102004 (Abdurrahman Lunny Irham):**
     * Skor Dosen ($y$): **85.00**
     * AI Binary (Iterasi 1): **20.00** ❌ (Error 65 poin akibat penalti biner kaku)
-    * AI Trinary (Iterasi 2): **85.00** ✅ (**Presisi Sempurna / Error 0.00!**)
+    * AI Partial Credit (Iterasi 2): **85.00** ✅ (**Presisi Sempurna / Error 0.00!**)
   * 📌 **Mahasiswa NIM 230102033 (Daren Saffana Darmawan):**
     * Skor Dosen ($y$): **90.00**
     * AI Binary (Iterasi 1): **10.00** ❌ (Error 80 poin)
-    * AI Trinary (Iterasi 2): **85.00** ✅ (Error terkendali 5 poin)
+    * AI Partial Credit (Iterasi 2): **85.00** ✅ (Error terkendali 5 poin)
 * **Visual Callout Box 1 (Log JSON CoT AI - Abdurrahman Lunny Irham):**
   ```json
   "global_reasoning": "Sintaks query mahasiswa mengandung typo minor pada klausa WHERE, namun struktur JOIN dan logika relasi tabel 80% tepat. Opsi penilaian: Partial Credit (Skor 50)."
@@ -159,6 +159,28 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 🎙️ **Script Omongan Bicara Reyvan (1 menit):**
 > *"Dampak nyata dari transisi ini dapat dilihat pada kasus mahasiswa NIM 230102004. Pada Iterasi 1, mahasiswa ini mendapat nilai AI 20.00 padahal nilai asli dosen 85.00 karena typo minor. Pada Iterasi 2, penalaran CoT dan kredit parsial (skor 50) memungkinkan AI mengenali bahwa logika algoritma mahasiswa sudah 80% benar (Masters, 1982; Chen & Wan, 2024), sehingga nilai keluaran AI presisi sempurna senilai 85.00."*
+
+---
+
+### 🖥️ SLIDE 7.5: MATRIKS CUPLIKAN EVALUASI (PENGHUBUNG SAMPELEVALUASI)
+**Tampilan Visual Slide:**
+* **Tabel Perwakilan 5 Sampel Mahasiswa Retrospektif:**
+
+| NIM | Nama Mahasiswa | Skor Dosen ($y$) | AI Binary ($\hat{y}_1$) | AI Partial Credit ($\hat{y}_2$) | Selisih Binary | Selisih Partial Credit | Status Perbaikan |
+| :-: | :--- | :-: | :-: | :-: | :-: | :-: | :--- |
+| **230102004** | Abdurrahman Lunny I. | **85.00** | 20.00 | **85.00** | 65.00 | **0.00** | Presisi Sempurna |
+| **230102031** | Daffa Aqyla R. | **80.00** | 50.00 | **80.00** | 30.00 | **0.00** | Presisi Sempurna |
+| **230102033** | Daren Saffana D. | **90.00** | 10.00 | **85.00** | 80.00 | **5.00** | Error Turun Drastis |
+| **230102052** | Gita Rohimawati | **80.00** | 40.00 | **80.00** | 40.00 | **0.00** | Presisi Sempurna |
+| **230102092** | M. Nawa Bayhaqi | **80.00** | 55.00 | **80.00** | 80.00 | **0.00** | Presisi Sempurna |
+
+*📌 Note di Bawah Tabel: "Tabel di atas merupakan cuplikan 5 sampel dari total N = 33 mahasiswa retrospektif."*
+
+📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
+`Chen & Wan (2024); Haller et al. (2022); Yeung (2025)`
+
+🎙️ **Script Omongan Bicara Reyvan (45 detik):**
+> *"Jika kita meninjau cuplikan matriks evaluasi dari 5 sampel mahasiswa perwakilan, terlihat jelas pola konsistensi sistem. Pada skema 3-Point Partial Credit, selisih skor AI terhadap dosen menyempit drastis hingga mendekati 0.00 poin. Tren konvergensi pada 33 mahasiswa inilah yang kemudian menghasilkan agregat performa statistik yang sangat tinggi."*
 
 ---
 
