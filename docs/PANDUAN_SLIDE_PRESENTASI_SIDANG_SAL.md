@@ -171,16 +171,16 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 8.5: MATRIKS SINTESIS LITERATUR & 4 PILAR KEBARUAN (NOVELTY)
+### 🖥️ SLIDE 8.5: MATRIKS SINTESIS LITERATUR & 4 PILAR NOVELTY
 **Tampilan Visual Slide:**
-* **Tabel Matriks Sintesis Literatur & 4 Pilar Novelty (Sangat Ringkas & Bebas Stress Canva):**
+* **Tabel Matriks Sintesis Literatur & 4 Pilar Novelty (Format 3 Kolom Canva-Ready):**
 
-| Pilar Kebaruan (Novelty SAL) | Referensi Peneliti & Tahun | Fokus & Temuan Penelitian Terdahulu | Aspek Kunci yang Diadopsi pada SAL |
-| :--- | :--- | :--- | :--- |
-| **1. Decoupling Middleware Architecture** | **Claes (2025)**<br><br>**Pack et al. (2024)** | • *Middleware* Mediator Pattern pemisah autograder & LLM.<br>• Uji longitudinal: LLM *closed-source* fluktuatif akibat pembaruan sepihak vendor. | • Arsitektur pemisah (*decoupling*) Web App SAL dari LLM Engine.<br>• Penggunaan model *open-weight* independen via Groq API. |
-| **2. Modular Chain-of-Thought (CoT) Prompting** | **Stahl et al. (2024)**<br><br>**Pack et al. (2024)**<br><br>**Agarwal et al. (2025)** | • CoT (*Feedback -> Scoring*) meningkatkan transparansi nilai.<br>• *Persona & Context Prompting* mendongkrak akurasi evaluasi.<br>• **GPT-OSS-120B**: *Open-weight reasoning* via *Harmony Format*. | • AI wajib mengurai log CoT sebelum rilis nilai akhir.<br>• Struktur prompt modular mencakup `[ROLE]` & `[CONTEXT]`.<br>• Kanal `System` vs `User` untuk cegah *prompt injection*. |
-| **3. 3-Point Partial Credit Scoring Scheme** | **Chen & Wan (2024)**<br><br>**Haller et al. (2024)**<br><br>**Mizumoto & Eguchi (2023)** | • Rubrik 3 poin bergradasi meningkatkan keadilan evaluasi.<br>• Taksonomi ASAG menetapkan perlunya nilai parsial.<br>• Evaluasi *Exact/Adjacent Agreement* pada skala ordinal. | • Skala nilai parsial 3 tingkat (0, 50, 100) pada rubrik praktikum.<br>• Memposisikan SAL pada domain ASAG (jawaban pendek).<br>• Pengujian kesepakatan nilai terhadap *ground truth* dosen. |
-| **4. Knowledge Grounding Module** | **Ji et al. (2023)** | • Taksonomi **Halusinasi Intrinsik** & **Ekstrinsik** akibat *Parametric Bias*.<br>• **Knowledge Grounding** sebagai strategi mitigasi teruji. | • **Modul Knowledge Grounding**: Mengikat prompt ke modul, rubrik, & *reference answer* dosen.<br>• Membasmi halusinasi intrinsik (salah nilai acuan) & ekstrinsik (mengarang kriteria). |
+| Referensi Peneliti & Tahun | Fokus & Temuan Penelitian Terdahulu | Aspek yang Diadopsi pada SAL (4 Pilar Novelty) |
+| :--- | :--- | :--- |
+| **Claes (2025)**<br>**Pack et al. (2024)** | • *Middleware* Mediator Pattern pemisah autograder & LLM.<br>• Uji longitudinal: LLM *closed-source* fluktuatif akibat pembaruan sepihak vendor. | • **Pilar 1 (Middleware Decoupling)**: Pemisahan Web App SAL dari Engine LLM.<br>• Penggunaan model *open-weight* independen via Groq API. |
+| **Stahl et al. (2024)**<br>**Pack et al. (2024)**<br>**Agarwal et al. (2025)** | • CoT (*Feedback -> Scoring*) meningkatkan transparansi nilai.<br>• *Persona & Context Prompting* mendongkrak akurasi evaluasi.<br>• **GPT-OSS-120B**: *Open-weight reasoning* via *Harmony Format*. | • **Pilar 2 (Modular CoT Prompting)**: AI wajib mengurai log CoT sebelum rilis nilai.<br>• Struktur prompt modular mencakup `[ROLE]` & `[CONTEXT]`.<br>• Kanal `System` vs `User` untuk cegah *prompt injection*. |
+| **Chen & Wan (2024)**<br>**Haller et al. (2024)**<br>**Mizumoto & Eguchi (2023)** | • Rubrik 3 poin bergradasi meningkatkan keadilan evaluasi.<br>• Taksonomi ASAG menetapkan perlunya nilai parsial.<br>• Evaluasi *Exact/Adjacent Agreement* pada skala ordinal. | • **Pilar 3 (3-Point Partial Credit)**: Skala nilai parsial (0, 50, 100) pada rubrik.<br>• Memposisikan SAL pada domain ASAG (jawaban pendek).<br>• Pengujian kesepakatan nilai terhadap *ground truth* dosen. |
+| **Ji et al. (2023)** | • Taksonomi **Halusinasi Intrinsik** & **Ekstrinsik** akibat *Parametric Bias*.<br>• **Knowledge Grounding** sebagai strategi mitigasi teruji. | • **Pilar 4 (Knowledge Grounding)**: Mengikat prompt ke modul, rubrik, & *reference answer* dosen untuk membasmi 100% halusinasi. |
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
 `Claes (2025); Pack et al. (2024); Agarwal et al. (2025); Stahl et al. (2024); Chen & Wan (2024); Haller et al. (2024); Mizumoto & Eguchi (2023); Ji et al. (2023)`
