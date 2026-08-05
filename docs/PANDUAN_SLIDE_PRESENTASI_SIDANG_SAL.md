@@ -253,20 +253,21 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 11: KESIMPULAN & SARAN
+### 🖥️ SLIDE 11: KESIMPULAN & SARAN (BAB V NASKAH SKRIPSI)
 **Tampilan Visual Slide:**
-* **Kesimpulan:**
-  1. Arsitektur provider-agnostic middleware berbasis Knowledge Grounding, CoT, dan 3-Point Partial Credit berhasil dibangun dan mampu mengunci AI bebas halusinasi.
-  2. Sistem terbukti memiliki keandalan sangat tinggi ($\tau_b = 0.7724$) dan presisi deviasi fisik terendah ($\text{MAE} = 5.45 \text{ poin}$).
-* **Saran:**
-  1. Pengembangan dukungan dokumen masukan berbasis Multimodal / Optical Character Recognition (OCR) untuk lembar tulisan tangan.
-  2. Perluasan uji coba pada rumpun mata kuliah logika lain seperti Struktur Data dan Pemrograman Berorientasi Objek.
+* 🎯 **Kesimpulan Utama (Bab 5.1):**
+  1. **Pengembangan Sistem SAL:** Berhasil merealisasikan arsitektur *provider-agnostic middleware* berbasis Next.js, Supabase BaaS, & Groq Cloud API (GPT-OSS 120B) yang mengombinasikan *Knowledge Grounding* dan CoT *Reasoning* transparan.
+  2. **Efektivitas 3-Point Partial Credit:** Transisi dari *Binary Scoring* (Iterasi 1: $\tau_b = 0.4400$, MAE = $18.33$) ke *3-Point Partial Credit* (Iterasi 2: $\tau_b = 0.7724$, MAE = $5.45$) terbukti meningkatkan keselarasan peringkat **+75.5%** dan mereduksi kesalahan skor fisik **-70.3%**.
+* 🚀 **Saran Pengembangan Mendatang (Bab 5.2):**
+  1. **Multimodal VLM:** Integrasi model *Vision-Language* untuk analisis tangkapan layar (*screenshot*) program tanpa tergantung OCR terpisah.
+  2. **Perluasan Domain:** Uji coba pada rumpun mata kuliah lain (PBO, Web) & esai teoretis konseptual.
+  3. **Task Queue & Optimasi:** Penerapan *asynchronous queue* (Redis/BullMQ) untuk menangani lonjakan antrean inferensi API.
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Yeung (2025); Bhat & Varma (2026)`
+`Yeung (2025); Bhat & Varma (2026); Claes (2025); Maryani et al. (2022)`
 
-🎙️ **Script Omongan Bicara Reyvan (45 detik):**
-> *"Kesimpulannya, arsitektur Smart Assistant Lecturer berbasis middleware dan 3-point partial credit berhasil dibuktikan secara ilmiah mampu menghasilkan penilaian esai otomatis yang presisi, bebas halusinasi, serta selaras dengan standar penilaian dosen. Untuk penelitian selanjutnya, disarankan pengembangan dukungan OCR tulisan tangan serta perluasan pada mata kuliah logika lainnya."*
+🎙️ **Script Omongan Bicara Reyvan (50 detik):**
+> *"Kesimpulannya, arsitektur Smart Assistant Lecturer berbasis middleware dan 3-Point Partial Credit terbukti secara signifikan meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau-b 0.7724) dan memangkas kesalahan fisik skor sebesar -70.3% (MAE 5.45 poin). Untuk pengembangan mendatang, disarankan integrasi Vision-Language Model multimodal untuk tangkapan layar, perluasan mata kuliah PBO dan Web, serta manajemen antrean asynchronous Redis untuk antisipasi beban puncak."*
 
 ---
 
