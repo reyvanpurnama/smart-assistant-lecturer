@@ -1,0 +1,26 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Claes (2025)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Middleware-Enabled LLM Feedback for Automated Grading Platforms
+   - Peneliti    : Melvyn Claes (Supervisors: Kim Mens, Siegfried Nijssen)
+   - Instansi    : Université catholique de Louvain (UCLouvain), Belgium.
+   - Tahun / Jenis: Master Thesis (2024-2025) in Computer Science and Engineering.
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Platform: Integrasi umpan balik LLM pada Automated Grading Platforms (AGP) seperti platform autograder INGInious.
+   - Arsitektur Utama:
+     1. Provider-Agnostic Middleware Architecture memanfaatkan Mediator Design Pattern untuk mendekopel (decouple) platform autograder dari berbagai penyedia LLM (OpenAI, Claude, Gemini, DeepSeek, Ollama/local).
+     2. Flask RESTful API + MongoDB Database + Docker Containerization + Python Client SDK (AICourseAssistant).
+     3. Sistem Parameterized Prompt Template yang menggabungkan keluaran unit test, kode mahasiswa, dan batasan pedagogis instruktur.
+   - Metodologi Evaluasi: Mixed-methods (analisis kuantitatif dari log submit/feedback + kuesioner kualitatif pada 2 fase uji coba).
+
+3. HASIL UTAMA PENELITIAN
+   - Peningkatan Performa Mahasiswa: Penggunaan umpan balik AI terbukti meningkatkan tingkat keberhasilan langsung (immediate success rate) pada resubmission berturut-turut sebesar +5.02% (Fase 1, 272 mahasiswa) dan +15.10% (Fase 2, 25 mahasiswa).
+   - Persepsi & Integritas Akademis: Lebih dari 94.4% hingga 100% mahasiswa menilai umpan balik terintegrasi sangat bermanfaat, dan >75% melaporkan bahwa adanya umpan balik terarah ini mengurangi dorongan mereka untuk memakai AI eksternal yang tidak terkontrol (seperti copypaste ChatGPT).
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Landasan Utama Pilar Novelty 1 (Middleware Decoupling Architecture): Paper Claes (2025) merupakan rujukan ilmiah primer paling kuat untuk mendasari arsitektur pemisahan (*decoupling*) antara layer autograder web SAL dan AI Engine menggunakan Mediator Design Pattern.
+   - Formative Guardrail Feedback: Menerapkan instruksi strict prompt agar AI memberikan petunjuk konsep/scaffolding tanpa memberikan potongan kode solusi matang.
+================================================================================

@@ -1,0 +1,1467 @@
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+Contents lists available at ScienceDirect
+
+Computers and Education: Artificial Intelligence
+journal homepage: www.sciencedirect.com/journal/computers-and-education-artificial-intelligence
+
+Large language models and automated essay scoring of English language
+learner writing: Insights into validity and reliability
+Austin Pack a, *, Alex Barrett b, Juan Escalante a
+a
+b
+
+Faculty of Education and Social Work, Brigham Young University-Hawaii, 55-220 Kulanui Street Bldg 5, Laie, HI, 96762-1293, USA
+College of Education, Florida State University, Stone Building, 114 West Call Street, Tallahassee, FL, 32306-2400, USA
+
+A R T I C L E I N F O
+
+A B S T R A C T
+
+Keywords:
+Automatic writing evaluation
+Automatic essay scoring
+Artificial intelligence
+Generative AI
+Large language model
+ChatGPT
+
+Advancements in generative AI, such as large language models (LLMs), may serve as a potential solution to the
+burdensome task of essay grading often faced by language education teachers. Yet, the validity and reliability of
+leveraging LLMs for automatic essay scoring (AES) in language education is not well understood. To address this,
+we evaluated the cross-sectional and longitudinal validity and reliability of four prominent LLMs, Google’s PaLM
+2, Anthropic’s Claude 2, and OpenAI’s GPT-3.5 and GPT-4, for the AES of English language learners’ writing. 119
+essays taken from an English language placement test were assessed twice by each LLM, on two separate oc­
+casions, as well as by a pair of human raters. GPT-4 performed the best, demonstrating excellent intrarater
+reliability and good validity. All models, with the exception of GPT-3.5, improved over time in their intrarater
+reliability. The interrater reliability of GPT-3.5 and GPT-4, however, decreased slightly over time. These findings
+indicate that some models perform better than others in AES and that all models are subject to fluctuations in
+their performance. We discuss potential reasons for such variability, and offer suggestions for prospective ave­
+nues of research.
+
+1. Introduction
+One of the earliest papers on automated essay scoring (AES) laments
+the plight of English teachers who labor under the burden of “exorbi­
+tant” grading responsibilities and how computerized essay scoring could
+prove a brilliant solution (Page, 1966). 50 years later objections over
+teacher workload persist, as do dreams of offloading that work to
+automation (Godwin-Jones, 2022). Furthermore, shifting emphasis on
+national standards, increased class sizes, and grade inflation have
+contributed to a decline in student writing ability over the decades
+(Carter & Harper, 2013; Singleton-Jackson et al., 2009). Teachers are
+typically reluctant to assign more writing practice as doing so requires
+the time to read and respond that teachers do not have (Page, 2002). A
+reliable method of automated scoring of writing seems to be the obvious,
+yet elusive solution for both reducing teacher workload and allowing for
+more writing practice for students.
+Testing services such as Educational Testing Service (ETS) and exams
+like the Test of English as a Foreign Language (TOEFL) already employ
+artificial intelligence (AI) integrated AES tools in their scoring proced­
+ures, enabling them to process huge numbers of essays annually. Com­
+mercial AES tools, such as Grammarly, have also adopted AI to provide
+
+formative feedback on writing. However, all of these programs are
+limited to specific features of writing (e.g., grammatical accuracy, word
+choice, style) (Ramesh & Sanampudi, 2021), and are typically restricted
+to academic genres of writing, such as the essay (Warschauer & Ware,
+2006). These limitations, in addition to their cost, have stymied their
+adoption in the classroom.
+Recent advances in generative AI may offer a solution to the short­
+comings of mainstream AES systems and finally address Page’s (1966)
+complaint of excessive teacher workload, and other drawbacks, to the
+manual scoring and feedback provision of student writing at the class­
+room level. Generative AI systems, like OpenAI’s GPT-4, are
+transformer-based deep neural network large language models (LLMs)
+developed with large amounts of text from the Internet (OpenAI,
+2023a). The domain-general nature of the training text for these systems
+gives them much more versatility in the genres of text they can interact
+with. Additionally, generative AI is not restricted to specific scoring
+metrics and can instead analyze a text based on whatever parameters are
+supplied by the user. Perhaps most importantly, many generative AI
+tools are free and easy to use, making them accessible to both students
+and teachers.
+Despite the apparent strengths of LLMs, they are not specifically
+
+* Corresponding author.
+E-mail addresses: Austin.Pack@byuh.edu (A. Pack), ABarrett3@fsu.edu (A. Barrett), Juan.Escalante@byuh.edu (J. Escalante).
+https://doi.org/10.1016/j.caeai.2024.100234
+Received 14 December 2023; Received in revised form 1 April 2024; Accepted 2 May 2024
+Available online 10 May 2024
+2666-920X/© 2024 The Authors. Published by Elsevier Ltd. This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/bync/4.0/).
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+designed for AES, nor is it clear how reliable they may be if employed for
+such purposes. The aim of this paper, therefore, is to explore the validity
+and reliability of four prominent generative AI LLMs in the scoring of
+student writing. In better understanding the validity and reliability of
+generative AI as an AES tool we can open the door to further exploration
+of this new tool’s potential impact on writing assessment.
+
+word in a sequence. The AI sampling techniques create an element of
+randomness which generates inconsistent output from identical input.
+This feature has resulted in LLMs demonstrating a high degree of crea­
+tivity (Guzik, et al., 2023), and rudimentary reasoning ability (Liu et al.,
+2023). Chan (2023) went so far as to refer to ChatGPT as a nascent form
+of artificial general intelligence, which describes an AI system that can
+perform any intellectual task that a human can do. This versatility has
+already led some researchers to study generative AI’s potential for
+analyzing student writing (e.g., Carlson et al., 2023; Pack & Maloney,
+2023a).
+The interface of generative AI tools allows users to provide prompts
+that explicitly outline the implementation parameters for a task. These
+prompts can be optimized iteratively through prompt engineering (Zhou
+et al., 2023). Therefore, it is theoretically possible to have ChatGPT, for
+example, score an essay via the same features that mainstream AES
+systems use, such as lexical variety or syntactic complexity. Alterna­
+tively, it is possible to prompt ChatGPT to provide a score within the
+parameters that a human rater might use, such as a rubric that reflects a
+specific curriculum. However, due to the non-deterministic nature of
+generative AI, the question of whether these systems can reliably adhere
+to prompt specifications for AES needs to be addressed.
+There is also the question of whether machines should be scoring
+essays at all. Most arguments against AES are contingent on the purpose
+for the writing. For example, some say that AES deprives writers of an
+audience and infringes on the social nature of writing (Shermis et al.,
+2013). Ericsson (2006) argues that writing conveys meaning more art­
+fully than can be conceptualized by an AES algorithm. These arguments
+have merit, and practitioners should consider carefully the ramifications
+of submitting student work to AES systems. However, artful writing that
+is done for the purpose of conveying meaning is one of many motives for
+writing. Learners of additional languages, alternatively, perform writing
+as a means of developing language proficiency and are therefore
+assessed for their proficiency over the quality of their ideas (Weigle,
+2013). This type of writing may be more conducive to AES, which is
+proficient at identifying sentence-level errors in grammar and usage.
+Exams for language education program placement or workplace certi­
+fication can benefit from the use of AES to quickly and reliably score
+essays along proficiency metrics.
+Early research into using generative AI for AES and feedback pro­
+vision have shown positive results. In a preprint by Dai et al. (2023),
+researchers used ChatGPT to formulate feedback on 102 learner essays
+and compared the feedback to the instructors. They found that ChatGPT
+wrote more detailed and easier to read feedback than the teacher did,
+but struggled to achieve a high level of agreement with the teacher’s
+feedback on certain writing points.
+In an experimental study, Mizumoto and Eguchi (2023) used the
+IELTS task 2 writing band descriptors1 to score 12,100 TOEFL essays
+using OpenAI’s text-davinci-003 model (a precursor of GPT-3.5) and
+compared them to human ratings. They concluded that generative AI
+tools like ChatGPT can accurately assess essays according to the rubric,
+demonstrating the feasibility and efficacy of generative AI tools for AES.
+In a related study, Escalante et al. (2023) employed GPT-4, OpenAI’s
+newest and most powerful model at the time of writing, to provide
+feedback on English language learner writing. They found that students
+who received writing feedback generated by AI showed no differences in
+learning outcomes and performance at the end of the semester from
+those who received feedback from a human. Additionally, another group
+of learners’ who received both AI and human feedback on their writing
+were evenly split as to their preference, finding advantages with both.
+For AI, they remarked on the clarity and specificity of the feedback, for
+the human feedback, they cited the ability to ask follow-up questions
+and the higher degree of interactivity. This study demonstrated that
+
+2. Background & literature
+AES involves analyzing written work and applying an evaluation
+(typically a numerical score) through the use of technology. This has
+been seen as a solution to human scoring of writing which is not only
+subject to noise and bias but takes a lot of time to do faithfully (Ramesh
+& Sanampudi, 2021). The key concerns regarding AES are whether
+machine scores are valid and reliable, and whether machines ought to be
+used for scoring human writing.
+AES has historically been viewed as a replacement for the human
+scoring of essays and this has led developers of AES systems to validate
+AES performance in comparison to human scorers. However, there is not
+a good understanding of how humans undertake the essay evaluation
+process (Attali, 2013). For example, Eckes (2008) found that human
+scorers are inconsistent with which writing features they give weight to
+when presented with a list of features. Drawing further confusion as to
+what governs human essay scoring, another study found rater scores to
+be significantly different even after standardization training (Weigle,
+1998). Despite the opaque nature of the human scoring process, AES
+systems have been able to produce remarkably similar scores with those
+of human raters (e.g., Page, 1966; Ramineni et al., 2012). However,
+mainstream AES systems do not read essays, nor analyze them, as a
+human would (Ericsson, 2006), which invites doubt as to their validity.
+The algorithms and models driving mainstream AES tools have
+become more sophisticated over time, allowing the use of these systems
+to become more prevalent, particularly in high-stakes exams. Early AES
+systems, such as Page’s (1966) Project Essay Grade™, used regression
+models, and more recent systems such as ETS’s e-rater® and Pearson’s
+Intelligent Essay Assessor™ have employed machine learning techniques
+(Warschauer & Ware, 2006). These methods all require the preselection
+of specific features of writing for analysis. For example, grammatical
+accuracy, lexical variety, and semantic similarity are some common
+features which are extracted from analyzed essays and compared to a
+corpus of human-scored essays or defined along other algorithmic pa­
+rameters (e.g., the ratio of unique word frequency to total words as a
+measure of lexical variety) (Attali, 2013). In using these machine
+learning techniques and focusing on certain writing features, machines
+have been able to reliably produce essay scores that correlate highly
+with those given by humans (Hussein et al., 2019). However, validity
+along these terms has been challenged as superficial correlation (Per­
+elman, 2014). If these criticisms are true, validity estimates that
+compare human and machine scores are tenuous, as humans and ma­
+chines are likely not measuring the same constructs.
+Recent groundbreaking advances in natural language processing and
+transformer-based AI have opened up new possibilities in AES. Ac­
+cording to a recent systematic review, since the public release of
+generative AI tools, such as ChatGPT by OpenAI in November of 2022,
+many researchers have speculated that a key affordance of these tools in
+educational contexts would be for evaluating and scoring student
+writing (Bahroun et al., 2023). But how they might overcome the val­
+idity and reliability shortcomings of predecessor AES systems is yet
+unknown.
+Unlike previous AES systems, generative AI is not specifically trained
+to score essays and therefore does not rely on analyzing texts for pre­
+defined features unless it is specifically prompted to do so. This might
+make generative AI more similar to humans when scoring writing in that
+the mechanisms through which it may arrive at an essay score are nondeterministic (Ouyang et al., 2023). Specifically, LLMs use an algorithm
+of probability, which simply produces the next most statistically likely
+
+1
+https://takeielts.britishcouncil.org/sites/default/files/ielts_writing_b
+and_descriptors.pdf.
+
+2
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+robust language processing abilities, differences in parameters and ar­
+chitecture may lead to variations in quality for certain tasks, such as
+AES. Because of this, and also due to the saliency of these models, they
+were selected for analysis.
+In line with Ingley and Pack’s (2023) prompt engineering guidelines,
+the selected LLMs were given the same prompt for the essay scoring task
+(Fig. 1). The prompt assigned a role to the LLM, specified the task,
+provided criteria for essay assessment (in this case a rubric, available in
+Appendix A), the writing prompt given to students, and lastly the stu­
+dent’s writing. The rubric was typed in a word document, with a brief
+explanation for each score, for example “Writing with a score of 6 is
+characterized by the following:” This was followed by a bullet point list
+of the descriptors for the score band exactly as they are given in Ap­
+pendix A. The entire prompt was copied and pasted into the chatbots’
+messaging interface. A new chat was started for each instance we asked
+the AI tools to assess student writing. Each student’s writing was
+assessed twice by each LLM on two separate instances (henceforth T1
+and T2) with a minimum interim of 90 days (M = 134.3, SD = 29.3; see
+Table C.1 in Appendix C). No fine tuning, example-driven optimization,
+or parameter adjustments were performed with any of the LLMs.
+
+GPT-4 has the ability to analyze ESL student writing and make sugges­
+tions on how to improve that writing.
+Given the feasibility of using generative AI LLMs like GPT-4 for AES,
+and their ability to provide actionable feedback, an important next step
+is in measuring the reliability of LLMs when used for AES. Numerous
+LLMs have been made available to the public but their comparative
+capabilities in AES are unknown. Therefore, the purpose of this paper is
+to explore the reliability of mainstream generative AI LLMs in AES.
+Understanding how well LLMs perform in prompt-based AES compared
+to human scorers will provide valuable insight on the efficacy of using
+these tools for AES as well as broader understanding of the comparative
+abilities of the prominent LLMs. A key complication in assessing the
+reliability of LLMs is that models are periodically updated with new
+training data, and this can affect their performance (Chen et al., 2023).
+As such, the following research questions guided the study.
+1. To what degree do LLMs exhibit intrarater reliability in automated
+essay scoring?
+2. How does the intrarater reliability of the LLMs change over time?
+3. To what degree are LLMs’ scores valid, as exhibited by interrater
+reliability with human scores?
+4. How does the interrater reliability of the LLMs change over time?
+
+3.3. Data analysis procedures
+
+3. Methodology
+
+The intraclass correlation coefficient (ICC) was selected to compare
+inter and intra-rater reliabilities, as recommended for cases using
+ordinal scales (de Raadt et al., 2021; Shrout & Fleiss, 1979). The ICC is
+an index of rater error variance commonly used to establish the reli­
+ability of measurement tools given a sample of subjects and two or more
+raters. It has been shown to be an appropriate indicator of agreement
+among raters even when the assumption of normality is not met by, for
+example, returning more conservative estimates for skewed distribu­
+tions (Mehta et al., 2018).
+Pearson’s correlations were used for comparisons between machine
+and human scores, as is typical in AES research (Attali, 2013).
+For interrater reliabilities, the scores of two human raters for each
+essay were averaged, as well were the two scores generated by each
+LLM. Proportional bias analyses (Bland & Altman, 1999) were con­
+ducted to further verify the reliability of measurements across instances.
+A paired-samples t-test was done to compare mean LLM scores at the
+T1 and T2 scoring instances. Lastly, descriptive statistics for each scoring
+attempt by instrument are given in Table B.1 in Appendix B. As the LLMs
+are being developed iteratively, we provide the versions of the LLMs as
+well as the dates of analysis in Table C.1 in Appendix C. All calculations
+were made using SPSS 28.
+
+3.1. Experimental setup and data
+The study used data from the admissions test of a small liberal arts
+university in the Asia-Pacific area. The dataset was composed of essays
+from a cohort of 119 ESL learners who took a university admissions and
+placement test to assess language proficiency. Students completed the
+test online using the Canvas learning management system. Students
+wrote their answer to an essay prompt within a textbox with access to
+the learning management system’s basic grammar and spellchecker,
+which functions similar to the grammar and spellchecker in Microsoft
+Word. Students’ essays had an average word count of 287. Standard
+ethical procedures of the educational institution were adhered to in
+order to protect the applicants’ anonymity.
+3.2. Data collection procedures
+The mandatory admissions test was created in-house and adminis­
+tered online. As part of the writing portion of this admissions test, ap­
+plicants were given 30 min to write an opinion essay on whether
+physical exercise should be a required part of every school day. Each
+essay was scored, individually by two English for Academic Purposes
+teachers who used a simple holistic rubric (see Table A.1 in Appendix A).
+This rubric was created by language educators of the host institution for
+the purposes of placing incoming students into appropriate levels of
+English language classes. In total 10 teachers participated in the rating
+process. All of these teachers hold graduate degrees in Teaching English
+to Speakers of Other Languages (TESOL), applied linguistics, and/or
+education, with an average of 18.3 years of experience. The teachers first
+calibrated on a subset of 10 essays. If any raters had Pearson correlation
+coefficients below 0.75, they received more training and recalibrated.
+After calibration, the Pearson’s correlation coefficient for the essay
+scores by two raters was significant at 0.749 (p < 0.001), indicating a
+strong correlation between scores and suggesting reasonable inter-rater
+reliability.
+In addition, four LLMs were used to score the essays. These were
+Google’s PaLM 2 (via chatbot Bard), Anthropic’s Claude 2, and OpenAI’s
+GPT-3.5 and GPT-4 (via chatbot ChatGPT). These LLMs are all
+transformer-based, autoregressive language models that have been
+trained on large internet corpora. These models were chosen because at
+the time of data collection they were among the best performing and
+most widely used models. Although each of these models provides
+
+4. Results
+The ICC values for interrater reliability and intrarater reliability are
+given in Table 1. According to Koo and Li (2016), ICC values can indi­
+cate excellent (>0.9), good (0.75-0.9), moderate (0.5-0.75), and poor
+reliability (<0.5). ICC values for interrater comparisons are moderate to
+good for the T1 scoring instance, with humans and GPT-4 showing the
+most reliability and PaLM 2 and Claude 2 showing the least. With the
+exception of GPT-3.5, LLMs improved on interrater reliability for the T2
+scoring instance. Intrarater reliability (consistency in scoring for the
+same rater) was also moderate to good, with GPT-4 again performing the
+strongest. T2 intrarater values were improved with the exception of
+GPT-3.5.
+Tables 2 and 3 report the proportional bias and limits of agreement
+for each rater across T1 and T2 rating instances. This analysis can be
+used to detect whether there is significant disagreement between
+repeated measures. The non-significant p-values for all paired ratings
+across T1 and T2 indicates that scores made by the same rater have no
+proportional bias.
+Pearson’s correlation coefficients are given in Tables 4 and 5. All
+correlations were found to be significant at the 0.001 alpha level,
+3
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+Fig. 1. The prompt used with each LLM.
+Table 1
+ICC reliability scores for LLMs and human raters.
+Rater
+
+PaLM 2
+Claude
+2
+GPT3.5
+GPT-4
+Human
+a
+
+Intrarater
+reliability
+for T1
+(between
+two scoring
+attempts
+using same
+instrument)
+
+Table 5
+Pearson’s correlation coefficients among rater averages for T2.
+
+Interater
+reliability
+for T1
+(between
+mean
+scores of
+LLMs &
+human, or
+between
+two
+human
+scores)
+
+Intrarater
+reliability
+for T2
+(between
+two scoring
+attempts
+using same
+instrument)
+
+Interater
+reliability
+for T2
+(between
+mean
+scores of
+LLMs &
+human)
+
+Intrarater
+reliability
+for T1 and
+T2
+(between
+mean
+scores of
+LLMs)
+
+0.597a
+0.836a
+
+0.605a
+0.607a
+
+0.702a
+0.885a
+
+0.713a
+0.701a
+
+0.694a
+0.791a
+
+0.735a
+
+0.719a
+
+0.605a
+
+0.663a
+
+0.714a
+
+0.897a
+N/A
+
+0.843a
+0.855a
+
+0.927a
+N/A
+
+0.779a
+N/A
+
+0.784a
+N/A
+
+GPT-4
+PaLM 2
+GPT-3.5
+Claude 2
+a
+
+Table 2
+Proportional bias analyses for two attempts for T1 using the same instrument.
+Bias
+
+SD
+
+95% Limits of
+Agreement
+
+B
+
+t
+
+p
+
+PaLM 2
+Claude 2
+GPT-3.5
+GPT-4
+Humana
+
+|0.0084|
+|0.084|
+|0.0084|
+|0.0731|
+|0.1008|
+
+0.529
+0.462
+0.589
+0.507
+0.643
+
+− 1.03
+− 0.82
+− 1.15
+− 0.92
+− 1.16
+
+0.018
+− 0.015
+0.076
+0.003
+0.089
+
+0.157
+− 0.202
+0.799
+0.043
+1.278
+
+0.875
+0.840
+0.426
+0.966
+0.204
+
+a
+
+1.05
+0.99
+1.16
+1.07
+1.36
+
+SD
+
+95% Limits of
+Agreement
+
+B
+
+t
+
+p
+
+PaLM 2
+Claude 2
+GPT-3.5
+GPT-4
+
+|0.0588|
+|0.0336|
+|0.021|
+|0.0126|
+
+0.668
+0.503
+0.806
+0.467
+
+− 1.29
+− 0.95
+− 1.56
+− 0.9
+
+0.055
+0.87
+− 0.002
+− 0.003
+
+0.542
+1.390
+− 0.019
+− 0.053
+
+0.589
+0.167
+0.985
+0.958
+
+1.37
+1.02
+1.6
+0.93
+
+Table 4
+Pearson’s correlation coefficients among rater averages for T1.
+Human
+GPT-4
+PaLM 2
+GPT-3.5
+Claude 2
+a
+
+a
+
+0.731
+0.547a
+0.604a
+0.470a
+
+GPT-4
+
+PaLM 2
+
+GPT-3.5
+
+–
+0.646a
+0.663a
+0.613a
+
+–
+0.388a
+0.585a
+
+–
+0.514a
+
+GPT-3.5
+
+–
+0.509a
+0.705a
+
+–
+0.533a
+
+p < .001.
+
+This study investigated the validity and intrarater reliability of four
+salient LLMs (PaLM 2, Claude 2, GPT-3.5, and GPT-4) in scoring ESL
+student writing. With regard to the first two research questions related
+to intrarater reliability, GPT-4 was the most reliable at both T1 and T2,
+demonstrating excellent reliability. Claude 2 demonstrated good reli­
+ability, and PaLM2 and GPT-3 exhibited moderate reliability. With the
+exception of GPT-3.5, LLMs tended to improve over time. As for research
+questions three and four, which relate to validity, PaLM 2, Claude 2, and
+GPT-3.5 demonstrated moderate interrater reliability at T1 and T2. The
+interrater reliability of GPT-3.5 and GPT-4, however, slumped over
+time. As with intrarater reliability, GPT-4 was the LLM found to be most
+reliable in scoring similar to the human raters, with good reliability at
+T1 and T2. GPT-4 had the highest correlation with human raters at T1 (r
+= 0.731) and T2 (r = 0.638). For comparison, Burstein and Chodorow
+(1999) reported an average correlation of 0.693 between humans and
+
+Table 3
+Proportional bias analyses for two attempts for T2 using the same instrument.
+Bias
+
+PaLM 2
+
+–
+0.595a
+0.561a
+0.605a
+
+5. Discussion
+
+More than two human raters were involved in scoring.
+
+Rater
+
+GPT-4
+
+0.638a
+0.583a
+0.515a
+0.544a
+
+in T2. Claude 2 has the lowest correlation with humans in the T1
+instance. However, most correlations were moderate to strong. The
+correlation between the two human scores is r = 0.749 (p < 0.001).
+Results of paired sample t-tests between T1 and T2 mean scores for
+each rating instrument are given in Table 6. With the exception of
+Claude 2, mean LLM scores differed significantly between T1 and T2
+scoring instances. Published model updates took place for GPT-4, GPT3.5, and PaLM 2 but not for Claude 2 during the interim period (see
+Table B.1 in Appendix B). This may help explain why the scores given by
+Claude 2 did or did not change significantly over time.
+To provide an overall impression of the score dispersions across each
+rater and scoring instances we have included Fig. 2, which depicts box
+plots of mean scores. This figure offers two notable points. One is that
+humans and GPT-4 both tended to use a larger range of rubric scores,
+with minimum and maximum whiskers extending from 2 to 6. The other
+is that GPT-4, PaLM 2, and GPT-3.5 were each able to identify some of
+the same low-scoring outliers, such as student essays 78, 55, and 50.
+
+p < .001.
+
+Rater
+
+Human
+
+Table 6
+Paired samples t-test between T1 and T2 mean scores for each LLM.
+
+p < .001.
+
+Rater
+
+Instance
+
+M (SD)
+
+t
+
+p
+
+d
+
+GPT-4
+
+T1
+T2
+T1
+T2
+T1
+T2
+T1
+T2
+
+4.35 (0.79)
+4.09 (0.86)
+3.81 (0.57)
+3.71 (0.64)
+4.12 (0.42)
+4.56 (0.61)
+4.24 (0.64)
+4.14 (0.74)
+
+4.07
+
+<0.001
+
+0.69
+
+2.03
+
+0.044
+
+0.57
+
+− 9.4
+
+<0.001
+
+0.51
+
+1.7
+
+0.091
+
+0.65
+
+GPT-3.5
+
+however we are primarily concerned with LLM score correlations with
+human scores. Human ratings correlated highest with GPT-4 in both T1
+and T2 scoring instances, although GPT-4’s correlation dropped slightly
+
+PaLM 2
+Claude 2
+
+4
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+to be assigned to each criterion. Furthermore, these LLMs have varying
+limitations on tokens. Generative AI prompts that include instructions to
+the AI, the rubric, the writing prompt given to students, and the writing
+of the students may exceed token limits, thereby rendering the AI output
+less effective and reducing reliability. However, future updates may
+alleviate the token issue. OpenAI, for instance, has recently released a
+newer version of GPT-4 (GPT-4 turbo) which affords users with a larger
+token context window and the ability to create custom versions of
+ChatGPT called “GPTs” (OpenAI, 2023b). As part of this, users can up­
+load documents that fine-tune the AI for specific tasks. This, and future
+upgrades, will likely influence the reliability of LLMs for AES and pro­
+vide ample opportunities for further research on this topic.
+Ethical concerns also merit further discussion. Mainstream AES
+systems have been found to score essays differently along demographic
+lines (Bridgeman et al., 2012; Ramineni & Williamson, 2018). A valid
+concern is the potential for LLMs to also perpetuate biases stemming
+from the material they are trained on. Such AI bias has been found in
+employment (Bogen, 2019), healthcare (Obenmeyer et al., 2019),
+criminal justice (Idder & Coulaux, 2021), and education (Baker & Hawn,
+2021). Research exploring potential bias of LLMs when tasked with
+evaluating student writing is needed. It may be possible, for example,
+that because LLMs are trained on large datasets that may overrepresent
+certain dialects or varieties of English, they might favor or be more ac­
+curate with writing that aligns with these forms. This would potentially
+put learners who use different structures or vocabulary, reflective of
+their native language influences, at a disadvantage. Another ethical
+concern is student privacy (Pack & Maloney, 2023b, 2024). Usage of
+generative AI for language assessment needs to adhere to institutional
+and governmental regulations and policies that protect student and
+participant privacy by, for example, stripping any identifying informa­
+tion provided to LLMs in student writing.
+Also worth noting is that some of the arguments against AES persist
+with the usage of LLMs. For example, some skepticism directed at
+mainstream AES systems is that they are proprietary, and research into
+them is restricted. Similarly, the developers of the chatbots and LLMs
+used in this study, namely OpenAI, Google, and Anthropic, carefully
+guard the algorithms behind these tools. It is also known that the de­
+velopers of generative AI do not have a full understanding of the internal
+workings of LLMs. The high dimensionality of deep neural networks
+makes it difficult for humans to visualize how generative AI makes de­
+cisions or handles new data; a phenomenon known as the black box
+(Bathaee, 2018). Because of this, a degree of trust is necessary when
+accepting any AI output.
+This study contributes to the research on AES by making the first
+exploration of the validity and reliability of LLMs for the automated
+scoring of language learner writing. These new technologies are easy
+and tempting to use in educational contexts and practitioners should be
+informed of their limitations. Our findings indicate that certain LLMs
+might presently be appropriate for limited AES. Their use as a second
+rater alongside human raters or to resolve a disagreement between two
+human raters might be acceptable, as might their use in low-stakes or
+formative writing. If the limitations and ethical considerations presented
+in this study can be addressed then it is undoubtable that LLMs will see
+more widespread use in AES.
+One limitation of our study is its use of a holistic rubric with a scoring
+range of 1–6. Small ordinal scoring systems have been found to, at times,
+exhibit correlations that are more likely to occur by chance (Gardner
+et al., 2021). With the recent functionality of GPT-4 turbo, future studies
+could leverage rubrics with more complex scoring systems.
+
+Fig. 2. Box plots for mean scores from humans and LLMs at T1 and T2.
+
+e-rater® on essays written by English language learners, and Bridgeman
+(2013) mentioned correlations between 0.62 and 0.72 between human
+and machine scores on TOEFL essays. Therefore, GPT-4’s correlation
+with human raters aligns with the performance of mainstream AES
+systems when scoring writing from English language learners.
+One reason for why GPT-4 demonstrated higher interrater reliability
+with humans was that it was more willing than the other LLMs to use a
+fuller range of the rubric scores, as seen in Fig. 2, and by GPT-4’s
+standard deviations which were the highest of the LLMs and comparable
+to the human scorers’ (see Table B.1 in Appendix B). PaLM 2, on the
+other hand, had the smallest standard deviations and a leptokurtic score
+distribution at T1 (although, notably, not at T2) indicating a more
+confined use of the scoring rubric.
+While GPT-4 demonstrated high intra and interrater reliability in this
+study, there are several reasons to be hesitant in applying it, or other
+LLMs, for AES at this point. To begin with, several of the LLMs exhibited
+notable quirks when assessing student writing. For instance, GPT-4,
+GPT-3.5 and PaLM 2, on a few occasions assigned scores on a contin­
+uous scale, despite the rubric being ordinal. For another example, there
+were a few instances where students finished the writing portion of the
+admissions test with an incomplete sentence lacking a full stop, GPT-4
+would respond by finishing the students’ paragraph for them and then
+assign a score, sometimes including its own writing in its evaluation of
+the students’ writing, thereby awarding the writing with a higher score.
+This was remedied by adding a full stop to the students’ writing, which
+we did before conducting our analyses. Furthermore, as evidenced by
+their scoring rationale (see Appendix D), the LLMs at times hallucinated
+features of student writing. For instance, PaLM 2 erroneously claimed
+that the student “developed 2–3 paragraphs” when the student’s writing
+had no visible paragraphing. It is possible that these quirks can be
+remedied using few-shot prompting or by adjusting the temperature
+parameter, and future research should explore these possibilities.
+Another reason to be cautious in using LLMs for AES is their nondeterministic nature; the same input given by a user will not generate
+the same output, a fact that prompted the current study. Several factors
+lead to this feature of generative AI, such as randomness in the sampling
+methods and temperature settings (Ouyang et al., 2023). This, plus the
+frequency at which models are updated, makes it impossible to make an
+ultimate reliability judgment. Due to this, it is our recommendation that
+practitioners using LLMs for AES conduct their own reliability analysis
+specific to their educational context.
+The success of using an LLM for assessing writing is also impacted by
+factors such as the nature of the writing assignment, the rubric utilized
+for scoring, and the token count required to engineer a successful
+prompt. As such, the generalizability of GPT-4’s success in this study is
+untenable until further evidence is acquired. For example, we have
+found GPT-4 to be more successful with simple holistic rubrics, such as
+the one used in this study that requires only one score as output, than
+with detailed analytic rubrics with multiple criteria that require a score
+
+6. Conclusion
+The advancement and refinement of LLMs is proceeding at an un­
+precedented rate. As the technology evolves, we anticipate LLMs will
+play an increasingly integral role in language assessment, especially if
+LLMs are fine-tuned for the specific purpose of assessing language. The
+5
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+next generation of LLMs, such as OpenAI’s GPT-5 may prove to be even
+more capable. In the near future we expect these generative AI tools to
+be able to reliably, accurately, and rapidly assess hundreds or thousands
+of writing samples in a short period. Furthermore, we anticipate the
+trajectory of technological development of LLMs to outpace the rate of
+academic research and publication, thereby posing both challenges and
+opportunities for the pedagogical community. While optimistic about
+this technology, we urge caution in using current LLMs for assessing
+language. Prior to integrating LLMs into assessment processes, we
+strongly urge language educators and program administrators to
+conduct rigorous validity and reliability analyses to ascertain the
+alignment of the LLM’s evaluations with those of human raters and with
+themselves.
+The importance of cross-disciplinary collaboration is increasingly
+apparent at this intersection of technological advancement and peda­
+gogical practice in the field of language assessment. In particular we see
+several major research gaps that warrant investigation. First, we need to
+better understand the capabilities of current LLMs. For example, while
+GPT-4 was found to be the most valid and reliable model in the current
+study, further examination of the GPT-4’s performance in other contexts
+that utilize various writing assessments and rubrics would provide in­
+sights into the versatility of the LLM and its validity and reliability across
+contexts. Additionally, the capacity for LLMs to consistently and accu­
+rately evaluate multiple students’ writing concurrently, by means of
+uploaded.csv files, ought to be explored. Third, cross-disciplinary
+collaborative efforts between computational linguists, machine
+learning experts, and language assessment experts, to fine tune LLMs for
+the purpose of assessing language would be of particular value as this
+would likely improve the LLMs’ performance in this regard. Further­
+more, as the utilization of LLMs for language assessment becomes more
+widespread, it is of growing importance that the ethical concerns
+highlighted above are addressed. In particular, it would be advanta­
+geous to know if and to what degree LLMs may exhibit bias in their
+
+assessment of learners’ language. To conclude, it is probable that
+generative AI tools like LLMs will significantly transform language
+assessment practices; it is therefore crucial to proactively engage with
+the potential challenges and opportunities that they present.
+Funding
+This research did not receive any specific grant from funding
+agencies in the public, commercial, or not-for-profit sectors.
+Statement on open data and ethics
+The data used in this study will be made available upon reasonable
+request emailed to the corresponding author. The study was approved
+by Brigham Young University-Hawaii’s Institutional Review Board (ID:
+23-20). All ethical procedures relating to obtaining participant volun­
+tary consent and data anonymity, as stipulated in the approved IRB
+application, were carefully adhered to. Participants were protected by
+hiding their personal during the research and publication processes.
+CRediT authorship contribution statement
+Austin Pack: Writing – review & editing, Writing – original draft,
+Project administration, Methodology, Investigation, Formal analysis,
+Data curation, Conceptualization. Alex Barrett: Writing – review &
+editing, Writing – original draft, Methodology, Formal analysis. Juan
+Escalante: Data curation, Conceptualization.
+Declaration of competing interest
+The authors declare that they have no known competing financial
+interests or personal relationships that could have appeared to influence
+the work reported in this paper.
+
+Appendix A
+
+Table A.1
+Rubric scoring descriptors as inputted into the prompt.
+Writing with a score of 6 is characterized by the following:
+● Organizes the essay clearly using some cohesive devices accurately.
+● Develops 4 or more paragraphs fully.
+● Writes developed, concrete supporting detail. Sometimes writes abstract elaborations.
+● Uses academic vocabulary appropriately.
+● Has infrequent grammar errors that do not affect comprehension; wide range of structures in all time frames, but may
+not completely control aspect.
+● Is easily understood by native readers unaccustomed to non-native writing.
+Writing with a score of 5 is characterized by the following:
+● Organizes the essay clearly using a few predictable cohesive devices accurately.
+● Develops 4 paragraphs.
+● Writes concrete supporting detail.
+● Uses a moderate amount of academic vocabulary appropriately.
+● May have evident error patterns, but they do not distort meaning; uses a variety of time frames and structures.
+● Is understood by native readers unaccustomed to non-native writing but requires effort.
+Writing with a score of 4 is characterized by the following:
+● Organizes some paragraphs clearly, but may not organize the essay clearly or completely. Uses few cohesive devices
+accurately.
+● Develops 2–3 paragraphs.
+● Writes personal and sometimes concrete supporting detail.
+● Uses sparse academic vocabulary appropriately.
+● Has error patterns that may distort meaning or confuse details; uses a variety of time frames.
+● Is generally understood by sympathetic readers accustomed to non-native writing.
+Writing with a score of 3 is characterized by the following:
+● Organizes the paragraph clearly.
+● Develops 1 paragraph; other paragraphs may be attempted but are not successful.
+● Writes personal supporting detail.
+● Uses highly varied general vocabulary.
+(continued on next page)
+
+6
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+Table A.1 (continued )
+● Has errors that often obscure meaning; uses a limited range of time frames and sentence structures.
+● Is generally understood by sympathetic readers accustomed to non-native writing but requires effort.
+Writing with a score of 2 is characterized by the following:
+● Groups sentences together but does not organize the paragraph clearly.
+● Writes at least 5 sentences.
+● Writes personal supporting detail within a very limited context.
+● Relies heavily on learned phrases; has a limited context for vocabulary.
+● Has many errors when creating sentences; uses a very limited range of time frames and sentence structures.
+● Is generally understood by sympathetic readers accustomed to non-native writing after rereading.
+Writing with a score of 1 is characterized by the following:
+● Writes sentences or phrases with minimal grouping.
+● Produces a very limited number of sentences or demonstrates an inability to divide sentences.
+● Relies almost solely on formulaic/memorized language.
+● Has a very limited context for vocabulary.
+● Produces insufficient language to assess sentence-level accuracy.
+● Is understood with great difficulty even by those accustomed to non-native writing.
+
+Appendix B
+
+Table B.1
+Descriptive statistics and Kolmogorov-Smirnov normality statistics for each scoring attempt by instrument.
+Rater
+
+Instance
+
+Mean
+
+Standard Deviation
+
+Variance
+
+Skewness
+
+Kurtosis
+
+Kolmogorov-Smirnov Statistic
+
+Human 1
+Human 2
+GPT-4
+GPT-4
+GPT-4
+GPT-4
+GPT-3.5
+GPT-3.5
+GPT-3.5
+GPT-3.5
+PaLM 2
+PaLM 2
+PaLM 2
+PaLM 2
+Claude 2
+Claude 2
+Claude 2
+Claude 2
+
+T1
+T1
+T1A
+T1B
+T2A
+T2B
+T1A
+T1B
+T2A
+T2B
+T1A
+T1B
+T2A
+T2B
+T1A
+T1B
+T2A
+T2B
+
+4.160
+4.261
+4.392
+4.319
+4.088
+4.101
+3.819
+3.811
+3.698
+3.719
+4.126
+4.118
+4.529
+4.588
+4.000
+4.084
+4.126
+4.160
+
+0.939
+0.868
+0.831
+0.829
+0.894
+0.896
+0.663
+0.624
+0.757
+0.758
+0.497
+0.490
+0.711
+0.682
+0.611
+0.619
+0.819
+0.748
+
+0.881
+0.754
+0.690
+0.687
+0.799
+0.803
+0.440
+0.390
+0.573
+0.575
+0.247
+0.240
+0.505
+0.465
+0.373
+0.383
+0.670
+0.559
+
+0.299
+0.177
+− 0.276
+− 0.202
+0.227
+0.167
+− 0.571
+− 0.256
+− 0.146
+− 0.366
+− 0.158
+− 0.161
+− 0.321
+− 0.407
+0.000
+− 0.053
+− 0.332
+− 0.270
+
+− 0.313
+− 0.279
+0.166
+− 0.435
+− 0.377
+− 0.386
+0.704
+0.360
+− 0.277
+0.440
+2.98
+3.2
+− 0.157
+0.027
+− 0.256
+− 0.364
+− 1.171
+− 1.161
+
+0.257*
+0.257*
+0.222*
+0.232*
+0.237*
+0.217*
+0.355*
+0.342*
+0.269*
+0.258*
+0.415*
+0.418*
+0.301*
+0.324*
+0.315*
+0.319*
+0.252*
+0.239*
+
+*df 119, p < 0.001.
+
+Appendix C
+
+Table C.1
+Versions of LLMs utilized and dates analyses were made.
+Large Language Model
+
+Chatbot
+
+Instance
+
+Chatbot version
+
+Date of Analysis
+
+Claude 2
+
+Claude
+
+GPT-4
+
+ChatGPT
+
+GPT-3.5
+
+ChatGPT
+
+PaLM 2
+
+Bard
+
+T1
+T2
+T1
+T2
+T1
+T2
+T1
+T2
+
+July 11, 2023
+July 11, 2023
+May 24, 2023
+Sept 25, 2023
+May 24, 2023
+Nov 6, 2023
+May 10, 2023
+Oct 23, 2023
+
+August 1–2, 2023
+Nov 1–10, 2023
+June 8–10, 2023
+Oct 25–27, 2023
+June 1–3, 2023
+Nov 7–17, 2023
+June 1–3, 2023
+Oct 26–28, 2023
+
+Appendix D. Sample scores and score rationalizations furnished by the LLMs
+The mean human score for the associated writing sample was 3.5.
+GPT-4
+Assessing the provided student writing using the rubric, I would give it a score of 3.
+Here’s the rationale.
+7
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+● The essay attempts to organize paragraphs around a central theme, but the organization of ideas is not clear or consistently developed across
+paragraphs. The use of cohesive devices is minimal.
+● There is one clear paragraph developed, with attempts at others that are not fully successful or coherent.
+● The supporting details provided are mostly personal and somewhat repetitive, lacking depth or full development.
+● The vocabulary used is general and not academic, with some phrases repeated.
+● There are frequent grammatical errors, and while some sentences are constructed in different time frames, the errors do obscure meaning and make
+comprehension effortful.
+● The writing can be understood by readers accustomed to non-native English writing, but it requires effort due to the unclear expression of ideas and
+language errors.
+The writing does not fully meet the requirements for a score of 4, which includes more coherent paragraph organization and a better use of ac­
+ademic vocabulary, and it is somewhat above the criteria for a score of 2, where the writer would have more difficulty forming clear sentences and
+paragraphs.
+GPT-3.5
+Based on the rubric provided, I would assign the following holistic score to the student’s writing:
+Holistic Score: 3.
+Here’s the breakdown of the score based on the criteria.
+● Organization: The essay is somewhat organized with some paragraphs, but the organization is not completely clear. There are some cohesive
+devices used, but they could be improved for better clarity.
+● Paragraph Development: The student develops 2–3 paragraphs, but the essay lacks a clear structure, and it’s challenging to follow the argument.
+● Supporting Details: The writing includes some concrete supporting details but also includes personal opinions and ideas that are not entirely
+relevant to the topic.
+● Academic Vocabulary: There is limited use of academic vocabulary, and some sentences lack precision in their expression.
+● Grammar and Errors: There are frequent grammar errors, and some sentences are awkwardly constructed. These errors can sometimes obscure the
+meaning of the text.
+● Comprehensibility: The writing can be understood by readers accustomed to non-native writing with some effort, but it lacks clarity and coherence.
+Overall, the writing shows some potential but needs improvement in terms of organization, clarity, and grammar to receive a higher score.
+PaLM 2: Holistic score: 4
+Analysis
+The student’s writing is organized into some paragraphs, but the essay is not completely organized. The student uses a few cohesive devices, but not
+accurately. The student develops 2–3 paragraphs fully, but the supporting detail is sometimes personal and not always concrete. The student uses
+sparse academic vocabulary appropriately, but there are error patterns that may distort meaning or confuse details. The student’s writing is generally
+understood by sympathetic readers accustomed to non-native writing.
+Specific feedback
+The student should use more cohesive devices to connect their ideas. For example, they could use transition words like “however,” “therefore,” and
+“in addition."
+The student should develop their supporting details more fully. For example, instead of saying “so we can focus on our education path that we
+trying to reach,” they could say something like “so that we can concentrate in class and learn more effectively."
+The student should use more academic vocabulary. For example, instead of saying “something apply to sports and any kind off activity that will put
+out from other people view opinion,” they could say “the same applies to sports and any other activity that distinguishes people from each other."
+The student should proofread their work carefully to catch grammar errors. For example, the sentence “so we can achive” should be “so that we can
+achieve."
+Overall, the student’s writing is good for a level 4 ELL writer. They are able to communicate their ideas clearly and support their opinion with
+evidence. However, there are some areas where they could improve, such as using more cohesive devices, developing their supporting details more
+fully, and using more academic vocabulary.
+Claude 2
+Based on the rubric, I would give this response a holistic score of 3.
+The writing is organized into paragraphs, but the paragraphs are not fully developed. There is an attempt to state an opinion and provide some
+supporting details, but the ideas are not fully explained.
+The vocabulary is quite varied and general. There are many grammar errors that occasionally obscure meaning, such as incorrect verb tenses and
+forms, missing words, and unclear pronouns. The range of sentence structures is somewhat limited.
+The response seems to rely more on personal ideas and experiences rather than concrete details. Academic vocabulary is used sparingly.
+While sympathetic readers accustomed to non-native writing may understand the general message, it would require some effort. The errors distract
+from the flow of the writing.
+Overall, this response meets many of the criteria for a score of 3 based on the rubric. The lack of academic vocabulary, limited sentence structures,
+and frequent errors that obscure meaning prevent it from reaching a 4. With effort, the opinion can be understood, so a 2 would be too low. Therefore, I
+8
+
+A. Pack et al.
+
+Computers and Education: Artificial Intelligence 6 (2024) 100234
+
+would give this response a holistic score of 3.
+
+References
+
+Koo, T. K., & Li, M. Y. (2016). A guideline for selecting and reporting intraclass
+correlation coefficients for reliability research. Journal of Chiropractic Medicine, 15
+(2), 155–163. https://doi.org/10.1016/j.jcm.2016.02.012
+Liu, H., Ning, R., Teng, Z., Liu, J., Zhou, Q., & Zhang, Y. (2023). Evaluating the logical
+reasoning ability of ChatGPT and GPT-4 [Preprint from ArXiv] https://doi.org/10.
+48550/arXiv.2304.03439.
+Mehta, S., Bastero-Caballero, R. F., Sun, Y., Zhu, R., Murphy, D. K., Hardas, B., & Koch, G.
+(2018). Performance of intraclass correlation coefficient (ICC) as a reliability index
+under various distributions in scale reliability studies. Statistics in Medicine, 37(18),
+2734–2752. https://doi.org/10.1002/dim.7679
+Mizumoto, A., & Eguchi, M. (2023). Exploring the potential of using an AI language
+model for automated essay scoring. Research Methods in Applied Linguistics, 2, Article
+100050. https://doi.org/10.1016/j.rmal.2023.100050
+Obenmeyer, Z., Powers, B., Vogeli, C., & Mullainathan, S. (2019). Dissecting racial bias in
+an algorithm used to manage the health of populations. Science, 366(6464),
+447–453. https://doi.org/10.1126/science.aax2342
+OpenAI. (2023a). GPT-4 system card. https://cdn.openai.com/papers/gpt-4-system
+-card.pdf.
+OpenAI. (2023b). Introducing GPTs. https://openai.com/blog/introducing-gpts.
+Ouyang, S., Zhang, J. M., Harman, M., & Wang, M. (2023). LLM is like a box of
+chocolates: The non-determinism of ChatGPT in code generation [Preprint from
+ArXiv] https://doi.org/10.48550/arXiv.2308.02828.
+Pack, A., & Maloney, J. (2023a). Potential affordances of generative AI in language
+education: Demonstrations and an evaluative framework. Teaching English with
+Technology, 23(2), 4–24. https://doi.org/10.56297/BUKA4060/VRRO1747.
+Pack, A., & Maloney, J. (2023b). Using generative artificial intelligence for language
+education research: Insights from using OpenAI’s ChatGPT. TESOL Quarterly. http
+s://doi.org/10.1002/tesq.3253.
+Pack, A., & Maloney, J. (2024). Using artificial intelligence in TESOL: Some ethical and
+pedagogical considerations. TESOL Quarterly. https://doi.org/10.1002/tesq.3320
+Page, E. B. (1966). The imminence of grading essays by computer. Phi Delta Kappan, 47
+(5), 238–243. https://www.jstor.org/stable/20371545.
+Page, E. B. (2002). Project message grade: Peg. In M. Shermis, & J. Burstein (Eds.),
+Automated essay scoring: A cross-disciplinary perspective (pp. 43–54). Lawrence
+Erlbaum Associates, Publishers.
+Perelman, L. (2014). When “the state of the art” is counting words. Assessing Writing, 21,
+104–111. https://doi.org/10.1016/j.asw.2014.05.001
+Ramesh, D., & Sanampudi, S. K. (2021). An automated essay scoring systems: A
+systematic literature review. Artificial Intelligence Review, 55, 2495–2527. https://
+doi.org/10.1007/s10462-021-10068-2
+Ramineni, C., Trapani, C. S., Williamson, D. M., Davey, T., & Bridgeman, B. (2012).
+Evaluation of e-rater® for the GRE® issue and argument prompts (ETS RR-12–02).
+Educational Testing Service, 2012(1). https://doi.org/10.1002/j.2333-8504.2012.
+tb02284.x
+Ramineni, C., & Williamson, D. (2018). Understanding mean score differences between
+the e-rater® automated scoring engine and humans for demographically based
+groups in the GRE® general test. ETS Research Report Series, 2018, 1–31. https://doi.
+org/10.1002/ets2.12192
+Shermis, M. D., Burstein, J., & Bursky, S. A. (2013). Introduction to automated essay
+evaluation. In M. Shermis, & J. Burstein (Eds.), Handbook of automated essay
+evaluation: Current applications and new directions (pp. 1–15). Routledge.
+Shrout, P. E., & Fleiss, J. L. (1979). Intraclass correlations: Uses in assessing rater
+reliability. Psychological Bulletin, 86(2), 420–428. https://doi.org/10.1037/0032909.86.2.420
+Singleton-Jackson, J. A., Lumsden, D. B., & Newsom, R. (2009). Johnny still can’t write,
+even if he goes to college: A study of writing proficiency in higher education
+graduate students. Current Issues in Education, 12(10). Retrieved from http://cie.asu.
+edu/ojs/index.php/cieatasu/article/download/45/9.
+Warschauer, M., & Ware, P. (2006). Automated writing evaluation: Defining the
+classroom research agenda. Language Teaching Research, 10(2), 157–180. https://doi.
+org/10.1191/1362168806lr190oa
+Weigle, S. C. (1998). Using FACETS to model rater training effects. Language Testing, 15
+(2), 263–287. https://doi.org/10.1177/026553229801500205
+Weigle, S. C. (2013). English as a second language writing and automated essay
+evaluation. In M. Shermis, & J. Burstein (Eds.), Handbook of automated essay
+evaluation: Current applications and new directions (pp. 36–54). Routledge.
+Zhou, Y., Muresanu, A. I., Han, Z., Paster, K., Pitis, S., Chan, H., & Ba, J. (2023). Large
+language models are human-level prompt engineers. International conference on
+learning representations 2023. https://doi.org/10.48550/arXiv.221.01910
+
+Attali, Y. (2013). Validity and reliability of automated essay scoring. In M. Shermis, &
+J. Burstein (Eds.), Handbook of automated essay evaluation: Current applications and
+new directions (pp. 181–198). Routledge.
+Bahroun, Z., Anane, C., Ahmed, V., & Zacca, A. (2023). Transforming education: A
+comprehensive review of generative artificial intelligence in educational settings
+through bibliometric and content analysis. Sustainability, 15(12983). https://doi.
+org/10.3390/su151712983
+Baker, R. S., & Hawn, A. (2021). Algorithmic bias in education. https://doi.org/10
+.35542/osf.io/pbmvz.
+Bathaee, Y. (2018). The artificial intelligence black box and the failure of intent and
+causation. Harvard Journal of Law and Technology, 31(2), 890–938. Retrieved from
+https://jolt.law.harvard.edu/assets/articlePDFs/v31/The-Artificial-IntelligenceBlack-Box-and-the-Failure-of-Intent-and-Causation-Yavar-Bathaee.pdf.
+Bland, J. M., & Altman, D. G. (1999). Measuring agreement in method comparison
+studies. Statistical Methods in Medical Research, 8(2), 135–160. https://doi.org/
+10.1177/096228029900800204
+Bogen, M. (2019). All the ways hiring algorithms can introduce bias. Harvard Business
+Review. https://hbr.org/2019/05/all-the-ways-hiring-algorithms-can-introduce-bias
+.
+Bridgeman, B. (2013). Human ratings and automated essay evaluation. In M. Shermis, &
+J. Burstein (Eds.), Handbook of automated essay evaluation: Current applications and
+new directions (pp. 221–232). Routledge.
+Bridgeman, B., Trapani, C., & Attali, Y. (2012). Comparison of human and machine
+scoring of essays: Differences by gender, ethnicity, and country. Applied Measurement
+in Education, 25(1), 27–40. https://doi.org/10.1080/08957347.2012.635502
+Burstein, J., & Chodorow, M. (1999). Automated essay scoring for nonnative English
+Speakers. In Computer mediated language assessment and evaluation in natural language
+processing (pp. 68–75). Association for Computational Linguistics.
+Carlson, M., Pack, A., & Escalante, J. (2023). Utilizing OpenAI’s GPT-4 for written
+feedback. TESOL Journal, 759. https://doi.org/10.1002/tesj.759
+Carter, M. J., & Harper, H. (2013). Student writing: Strategies to reverse ongoing decline.
+Academic Questions, 26, 285–295. https://doi.org/10.1007/s12129-013-9377-0
+Chan, K. Y. C. (2023). A comprehensive AI policy education framework for university
+teaching and learning. International Journal on Educational Technology in Higher
+Education, 20(38). https://doi.org/10.1186/s41239-023-00408-3
+Chen, L., Zaharia, M., & Zou, J. (2023). How is ChatGPT’s behavior changing over time?.
+arXiv:2307.09009v3 https://doi.org/10.48550/arXiv.2307.09009.
+Dai, W., Lin, J., Jin, F., Li, T., Tsai, Y.-S., Gašević, D., & Chen, G. (2023). Can large
+language models provide feedback to student? A case study on ChatGPT. https://doi.
+org/10.35542/osf.io/hcgzj [Preprint from EdArXiv].
+de Raadt, A., Warrens, M. J., Bosker, R. J., & Kiers, H. A. (2021). A comparison of
+reliability coefficients for ordinal rating scales. Journal of Classification, 38, 519–543.
+https://doi.org/10.1007/s00357-021-09386-5
+Eckes, T. (2008). Rater types in writing performance assessments: A classification
+approach to rater variability. Language Testing, 25(2), 155–185. https://doi.org/
+10.1177/0265532207086780
+Ericsson, P. F. (2006). The meaning of meaning: Is a paragraph more than an equation?
+In P. F. Ericsson, & R. H. Haswell (Eds.), Machine scoring of student essays: Truth and
+consequences (pp. 28–37). Utah State University Press.
+Escalante, J., Pack, A., & Barrett, A. (2023). AI-generated feedback on writing: Insights
+into efficacy and ENL student preference. International Journal of Educational
+Technology in Higher Education, 20. https://doi.org/10.1186/s41239-023-00425-2.
+Gardner, J., O’Leary, M., & Yuan, L. (2021). Artificial intelligence in educational
+assessment: ‘Breakthrough? Or buncombe and ballyhoo?”. Journal of Computer
+Assisted Learning, 37, 1207–1216. https://doi.org/10.1111/jcal.12577
+Godwin-Jones, R. (2022). Partnering with AI: Intelligent writing assistance and
+instructed language learning. Language, Learning and Technology, 26(2), 5–54,
+10125/73474.
+Guzik, E. E., Byrge, C., & Gilde, C. (2023). The originality of machines: AI takes the
+torrence test. Journal of Creativity, 33(100065). https://doi.org/10.1016/j.
+yjoc.2023.100065
+Hussein, M. A., Hassan, H., & Nassef, M. (2019). Automated language essay scoring
+systems: A literature review. PeerJ Computer Science, 5(e208). https://doi.org/
+10.7717/peerj-cs.208
+Idder, A., & Coulaux, S. (2021). Artificial intelligence in criminal justice: Invasion or
+revolution? International Bar Association. https://www.ibanet.
+org/dec-21-ai-criminal-justice#_edn9.
+Ingley, S. J., & Pack, A. (2023). Leveraging AI tools to develop the writer rather than the
+writing. Trends in Ecology and Evolution, 38(9), 785–787. https://doi.org/10.1016/j.
+tree.2023.05.007.
+
+9
+
+

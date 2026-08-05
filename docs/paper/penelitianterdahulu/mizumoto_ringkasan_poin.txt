@@ -1,0 +1,25 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Mizumoto & Eguchi (2023)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Exploring the potential of using an AI language model for automated essay scoring
+   - Peneliti    : Atsushi Mizumoto (Kansai University) & Masaki Eguchi (University of Oregon)
+   - Tahun / Publikasi: 2023 / Research Methods in Applied Linguistics (Elsevier), Vol. 2, 100050.
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Dataset: 12.100 esai bahasa Inggris dari ETS Corpus of Non-Native Written English (TOEFL11), mencakup 11 latar belakang bahasa ibu.
+   - Model AI: OpenAI GPT-3 model `text-davinci-003` (seri GPT-3.5) berbasis prompt completion zero-shot (tanpa fine-tuning).
+   - Rubrik Evaluasi: IELTS Task 2 Writing band descriptors (skala 0 - 9).
+   - Metrik Pengujian: Exact agreement, Adjacent agreement, Quadratic Weighted Kappa (QWK), Bayesian ordinal regression, dan LOOIC.
+
+3. HASIL UTAMA PENELITIAN
+   - Adjacent Agreement: Mencapai 89,15% kesesuaian jika memperhitungkan variasi toleransi 1 poin skor terhadap benchmark TOEFL11.
+   - Exact Agreement: Mencapai 54,33% pada pengujian awal dan 52,07% pada uji re-scoring 1.210 sampel acak (QWK = 0,682 / "substantial agreement").
+   - Integrasi Fitur Leksikal: Kombinasi skor GPT + fitur leksikal/sintaksis terbukti secara signifikan meningkatkan presisi prediksi skor dibanding hanya menggunakan skor GPT mentah.
+   - Peran AI: GPT efektif sebagai alat bantu (supportive tool) yang mempercepat waktu koreksi dan menjaga konsistensi, namun tidak untuk menggantikan posisi penguji manusia secara penuh.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Metodologi Evaluasi Keselarasan: Pengujian validitas sistem SAL dilakukan dengan membandingkan nilai keluaran LLM secara langsung terhadap skor acuan penilai manusia (human rater / ground truth dosen).
+   - Evaluasi Deviasi Skor: Memperhitungkan tingkat keselarasan hirarki dan toleransi selisih nilai fisik antara penilaian AI dengan dosen pengampu.
+================================================================================

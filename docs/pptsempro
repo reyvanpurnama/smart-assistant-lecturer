@@ -1,0 +1,146 @@
+slide1
+PENGEMBANGAN SMART ASSISTANT LECTURER UNTUK ANALISIS JAWABAN ESAI OTOMATIS BERBASIS LLM
+Oleh: M Reyvan Purnama (220102043)
+FAKULTAS SAINS DAN TEKNOLOGI UNIVERSITAS MUHAMMADIYAH BANDUNG
+2026
+
+slide2
+Latar Belakang
+Peningkatan jumlah mahasiswa
+(Bloxham et al., 2020)
+2
+Cognitive fatigue
+Konsistensi penilaian
+Masalah di lapangan.
+
+slide3
+Latar Belakang
+Reduces text correction time by up to 85%
+(Kasneci et al., 2023; Ji et al., 2023)
+3
+Hallucination risk
+Lectures are open to adopting AI
+Dilema Adopsi AI
+
+slide4
+Rumusan Masalah & Tujuan Penelitian
+4
+Rumusan Masalah
+Bagaimana merancang mekanisme pengelolaan instruksi berbasis middleware agar kriteria dosen terintegrasi secara terstruktur?
+Tujuan Penelitian
+Merancang & mengimplementasikan middleware dengan sistem prompt-template terstruktur.
+Sejauh mana tingkat kesesuaian (agreement) penilaian AI terhadap standar manual dosen?
+Mengevaluasi tingkat kesesuaian skor menggunakan metrik statistik relevan.
+
+slide5
+Batasan Masalah
+(Agarwal et al., 2025; Claes, 2025; Groq, 2026;  Ji et al., 2023; Fraenkel et al., 2019; Islam, 2018)
+5
+Teoritis, analisis, dan logika pemrograman dasar
+Context Grounding
+Khusus Bahasa Indonesia
+File digital teks (.pdf, .docx, .txt)
+Model GPT-OSS 120B via Groq API (low latency)
+30-50 data retrospektif dengan QWK dan Pearson
+Mata Kuliah
+Teknologi
+Input Data
+Acuan Penilaian
+Bahasa
+Metrik Evaluasi
+
+slide6
+Peneliti	Hasil Utama
+Mizumoto & Eguchi (2023) 	"Uji zero-shot prompting pada GPT-3 terhadap 12.100 esai TOEFL11 menunjukkan akurasi memadai dengan 89,15% adjacent agreement, yang meningkat ketika didukung fitur leksikal."
+"Pack, Barrett, & Escalante (2024) "	Uji longitudinal 4 LLM komersial menunjukkan bahwa performa model closed-source rentan fluktuatif akibat pembaruan vendor. Penelitian ini juga menegaskan pentingnya penggunaan instruksi prompt yang terstruktur (seperti penetapan peran dan konteks) untuk menjaga akurasi evaluasi.
+Stahl et al. (2024)	"Menggunakan prompt engineering (CoT dan Persona) untuk skoring esai dan umpan balik otomatis pada dataset ASAP; hasilnya, performa LLM meningkat ketika model diminta memberi penjelasan rasional sebelum skor dikeluarkan."
+Ji et al. (2023)	Taksonomi intrinsic-extrinsic hallucination dan pentingnya context grounding untuk menjaga kesesuaian output LLM terhadap sumber input.
+
+Penelitian Terdahulu
+6
+
+slide7
+Tinjauan Pustaka
+(Claes, 2025)
+7
+Keterbatasan kuantitatif.
+1
+Keterbatasan input data.
+2
+Belum ada mitigasi halusinasi.
+3
+Arsitektur Middleware Claes, 2025
+Research Gap
+
+slide8
+Mayoritas studi masih mengevaluasi LLM komersial secara langsung (tightly coupled) melalui prompt manual sehingga rentan terhadap hallucination, sementara arsitektur middleware dari Claes (2025) masih terbatas pada pemberian umpan balik generik dan belum diuji untuk penilaian skor kuantitatif.
+Tinjauan Pustaka
+(Claes, 2025; Stahl et al., 2024; Ji et al., 2023; Haller et al., 2022)
+8
+Penelitian ini mengintegrasikan middleware, prompt-template terstruktur, dan context grounding untuk memitigasi halusinasi pada analisis esai jawaban pendek berbahasa Indonesia, lalu memvalidasinya secara kuantitatif dengan Pearson Correlation dan QWK.
+Research Gap & Novelty
+
+slide9
+Tinjauan Pustaka
+(Agarwal et al., 2025; Groq, 2026)
+9
+AI Core Stack
+Application Architecture Stack
+Landasan Teknologi
+
+slide10
+Metodologi
+(Maryani et al., 2022; Bloxham et al., 2020; Claes, 2025; Ji et al., 2023; Haller et al., 2022)
+10
+Tahap 1
+Identifikasi Masalah
+Tahap 2
+Pengumpulan & Pre-processing
+Tahap 3
+Perancangan Sistem
+Tahap 4 & 5
+Implementasi & Pengujian
+Analisis Evaluasi Statistik.
+Alur Penelitian & Data
+
+slide11
+Metodologi
+(Claes, 2025)
+11
+Perancangan & Arsitektur Sistem
+
+slide12
+Metodologi
+(Agarwal et al., 2025; Claes, 2025; Haller et al., 2022; Ji et al., 2023; Pack et al., 2024; Stahl et al., 2024; Zhao et al., 2023)
+12
+Mekanisme Context Grounding
+
+slide13
+Metodologi
+(Ji et al., 2023; Claes, 2025; Stahl et al., 2024  Haller et al., 2022)
+13
+Rencana Pengujian Validitas Statistik
+Lingkungan Pengujian
+Eksperimen mandiri menggunakan Python (Google Colab) & library scikit-learn.
+Metrik 1: Quadratic Weighted Kappa (QWK)
+Mengukur tingkat kesesuaian antara skor AI  dan skor dosen dengan memberikan penalti kuadrat pada selisih skor besar.
+Metrik 2: Korelasi Pearson
+Mengukur kekuatan hubungan linier pola penilaian AI terhadap ground truth dosen.
+
+slide14
+Kegiatan	Bulan			
+	1	2	3	4
+Studi Literatur & Pengumpulan Data	V			
+Perancangan & Implementasi Middleware	V	V		
+Eksperimen Penilaian LLM		V	V	
+Analisis Statistik (QWK & Pearson)			V	V
+
+Jadwal Penelitian
+14
+Penelitian ini direncanakan selesai dalam waktu 4 bulan, mulai dari persiapan hingga analisis statistik di bulan keempat.
+
+slide15
+The End
+Thank You
+M Reyvan Purnama
+220102043

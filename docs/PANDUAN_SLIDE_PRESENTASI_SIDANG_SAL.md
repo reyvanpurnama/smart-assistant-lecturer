@@ -177,16 +177,16 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 | Pilar Kebaruan (Novelty) | Referensi Jurnal Acuan | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- |
-| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | Arsitektur pemisah aplikasi dari API AI & penggunaan model *open-weight* (GPT-OSS 120B). |
-| **2. Modular CoT Prompting** | Stahl et al. (2024) | Struktur prompt 5 kompartemen & *Chain-of-Thought (CoT)* untuk transparansi penalaran. |
-| **3. 3-Point Partial Credit** | Chen & Wan (2024) | Rubrik bergradasi (0, 50, 100) untuk keadilan nilai pada kesalahan minor/typo. |
-| **4. Knowledge Grounding** | Ji et al. (2023); Agarwal (2025) | Mengunci penalaran AI pada dokumen acuan dosen untuk garansi 0% halusinasi. |
+| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | Arsitektur pemisah aplikasi autograder dari service AI & fleksibilitas model open-weight. |
+| **2. Modular CoT Prompting** | Stahl et al. (2024); Agarwal et al. (2025) | Struktur prompt 5 kompartemen & Chain-of-Thought (CoT) untuk transparansi penalaran. |
+| **3. 3-Point Partial Credit** | Chen & Wan (2024); Haller et al. (2024); Mizumoto (2023) | Skema nilai bergradasi (0, 0.5, 1.0) pada domain ASAG untuk objektivitas penilaian logika. |
+| **4. Knowledge Grounding** | Ji et al. (2023) | Mengunci penalaran AI pada dokumen acuan dosen (modul, rubrik, reference answer) untuk memitigasi halusinasi. |
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Claes (2025); Pack et al. (2024); Stahl et al. (2024); Chen & Wan (2024); Ji et al. (2023); Agarwal et al. (2025)`
+`Claes (2025); Pack et al. (2024); Agarwal et al. (2025); Stahl et al. (2024); Chen & Wan (2024); Haller et al. (2024); Mizumoto & Eguchi (2023); Ji et al. (2023)`
 
 🎙️ **Script Omongan Bicara Reyvan (45 detik):**
-> *"Secara ringkas, kebaruan penelitian ini menyatukan 4 pilar utama: arsitektur decoupling middleware dari Claes & Pack (2024/2025), rekayasa prompt modular CoT dari Stahl et al. (2024), rubrik 3-Point Partial Credit dari Chen & Wan (2024), serta Knowledge Grounding dari Ji et al. (2023) untuk memitigasi halusinasi total."*
+> *"Secara ringkas, kebaruan penelitian ini menyatukan 4 pilar utama yang teruji di literatur ASAG: arsitektur decoupling middleware (Claes, 2025; Pack, 2024), modular CoT prompting (Stahl, 2024; Agarwal, 2025), rubrik 3-Point Partial Credit (Chen & Wan, 2024; Haller, 2024; Mizumoto, 2023), serta Modul Knowledge Grounding (Ji et al., 2023) untuk eliminasi halusinasi."*
 
 ---
 

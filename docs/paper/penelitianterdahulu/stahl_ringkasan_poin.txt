@@ -1,0 +1,27 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Stahl et al. (2024)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Exploring LLM Prompting Strategies for Joint Essay Scoring and Feedback Generation
+   - Peneliti    : Maja Stahl, Leon Biermann, Andreas Nehring, & Henning Wachsmuth (Leibniz University Hannover)
+   - Tahun / Publikasi: 2024 / Proceedings of the 19th Workshop on Innovative Use of NLP for Building Educational Applications (BEA 2024, ACL), pages 283–298.
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Dataset: 12.980 esai dari ASAP Dataset (Automated Student Assessment Prize, siswa kelas 7-10).
+   - Model AI yang Diuji: Mistral-7B-Instruct-v0.2 dan Llama-2-13b-chat-hf.
+   - Metodologi Uji: Eksplorasi kombinasi strategi prompt engineering:
+     1. Prompt Patterns: Base pattern vs Persona patterns (Teacher's Assistant, Educational Researcher, Creative Writing Mentor).
+     2. Task Instruction Types: Joint scoring & feedback (misal Feedback->Scoring, Scoring->Feedback_CoT, Feedback_dCoT->Scoring).
+     3. In-Context Learning: Zero-shot, One-shot, Few-shot.
+   - Metrik Pengujian: Quadratic Weighted Kappa (QWK) untuk scoring, dan evaluasi otomatis/manual (Likert scale 1-7) untuk feedback helpfulness.
+
+3. HASIL UTAMA PENELITIAN
+   - Keunggulan Prompting Berbasis Penalaran (CoT): Meminta LLM untuk memberikan analisis penalaran/justifikasi terlebih dahulu sebelum merilis skor akhir (teknik Feedback_dCoT->Scoring atau Explanation->Scoring) menghasilkan peningkatan performa QWK tertinggi (mencapai 0,553).
+   - Manfaat Persona Prompting: Penggunaan persona akademik seperti "Teacher's Assistant" (TA) atau "Educational Researcher" (ER) terbukti meningkatkan akurasi skoring dan kejelasan feedback dibanding prompt dasar generik.
+   - Kualitas Feedback Terpadu: Penilaian dan pembuatan umpan balik secara bersamaan memberikan nilai tambah bagi peserta didik karena LLM mampu menjelaskan letak kesalahan secara rasional dan terstruktur.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Rekayasa Prompt Modular berbasis Chain-of-Thought (CoT): Sistem SAL mewajibkan LLM untuk menghasilkan log penalaran eksplisit (step-by-step reasoning) terlebih dahulu sebelum mengeluarkan rincian nilai parsial dan skor akhir.
+   - Struktur Prompt Kompartemen Akademik: Mengadopsi penetapan persona penguji (`[ROLE]`) dan kompartementalisasi instruksi untuk mengekstrak umpan balik yang transparan dan dapat dipertanggungjawabkan.
+================================================================================

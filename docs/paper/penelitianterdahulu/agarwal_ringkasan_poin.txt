@@ -1,0 +1,25 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Agarwal et al. / OpenAI (2025)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: gpt-oss-120b & gpt-oss-20b Model Card
+   - Peneliti / Institusi: OpenAI (Sandhini Agarwal et al.)
+   - Tahun / Publikasi: August 2025 / arXiv:2508.10925v1 [cs.CL].
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Model: Evaluasi kapabilitas dan keandalan model AI Open-Weight berbasis Mixture-of-Experts (MoE) 120B dan 20B (GPT-OSS) under Apache 2.0.
+   - Metodologi & Arsitektur Utama:
+     1. Variable Effort Reasoning (Low, Medium, High reasoning level) melalui pengaturan token Chain-of-Thought (CoT) internal.
+     2. Harmony Chat Format: Penataan hirarki instruksi (System > Developer > User > Assistant > Tool) dan kanal terpisah (analysis for CoT, final for user answer) untuk mencegah manipulasi prompt (*prompt injection*).
+     3. Agentic Tool Use: Mendukung eksekusi kode Python, Web search, dan function calling.
+   - Benchmark Evaluasi: SWE-bench Verified (koding), Codeforces, AIME, GPQA, dan MMLU.
+
+3. HASIL UTAMA PENELITIAN
+   - Keandalan Open-Weight Reasoning: GPT-OSS 120B mampu menyamai atau melampaui performa model closed-source proprietary seperti OpenAI o3-mini dan mendekati o4-mini pada tugas penalaran logika dan koding.
+   - Test-Time Scaling via CoT: Menambah kedalaman penalaran CoT secara dinamis saat inferensi (*test-time scaling*) terbukti meningkatkan akurasi jawaban secara signifikan pada masalah yang rumit.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Landasan Pilar Novelty 2 (Modular CoT Prompting & Open-Weight LLM Selection): Mengjustifikasi penggunaan model open-weight berkapabilitas reasoning tinggi (seperti GPT-OSS / Llama 3) serta penggunaan CoT untuk menguraikan tahapan penilaian secara logis dan objektif.
+   - Hierarki Instruksi & Anti-Prompt Hacking: Penerapan pemisahan System/User prompt untuk mencegah mahasiswa melakukan prompt injection/hacking pada input jawaban praktikum.
+================================================================================

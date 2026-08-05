@@ -1,0 +1,24 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Pack, Barrett, & Escalante (2024)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Large language models and automated essay scoring of English language learner writing: Insights into validity and reliability
+   - Peneliti    : Austin Pack (BYU-Hawaii), Alex Barrett (Florida State Univ), & Juan Escalante (BYU-Hawaii)
+   - Tahun / Publikasi: 2024 / Computers and Education: Artificial Intelligence (Elsevier), Vol. 6, 100234.
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Dataset: 119 esai dari tes penempatan bahasa Inggris (ESL placement test) siswa pembelajar bahasa.
+   - Model AI yang Diuji: 4 LLM komersial terkemuka (Google PaLM 2, Anthropic Claude 2, OpenAI GPT-3.5, dan OpenAI GPT-4).
+   - Metodologi Uji: Pengujian longitudinal (lintas waktu) di mana 119 esai dinilai dua kali pada dua gelombang berbeda (T1 dan T2) dengan jeda waktu rata-rata 134 hari guna mengukur stabilitas performa terhadap pembaruan vendor.
+   - Metrik Pengujian: Intraclass Correlation Coefficient (ICC), Pearson's Correlation (r), Paired-samples t-test, dan Bland-Altman proportional bias.
+
+3. HASIL UTAMA PENELITIAN
+   - Instabilitas LLM Komersial (Closed-Source): Performa skoring LLM komersial terbukti fluktuatif dan mengalami pergeseran statistik seiring waktu akibat pembaruan model secara sepihak oleh vendor (misalnya korelasi interrater GPT-4 & GPT-3.5 mengalami penurunan / slumping dari T1 ke T2).
+   - Temuan Halusinasi: Model komersial rentan mengalami "halusinasi" fitur teks (misalnya PaLM 2 mengklaim mahasiswa menulis 2-3 paragraf padahal tidak ada paragraf sama sekali), serta kadang melengkapi kalimat mahasiswa yang menggantung sebelum memberi skor.
+   - Peran Prompt Engineering Akademik: Keberhasilan evaluasi LLM sangat bergantung pada struktur prompt yang terdefinisi secara ketat mencakup penetapan peran (role), kriteria rubrik spesifik, dan konteks tugas.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Justifikasi Pemilihan Model Open-Weight (GPT-OSS 120B): Sebagai landasan ilmiah untuk memilih model open-weight yang di-host mandiri via Groq API guna menghindari fluktuasi performa dan instabilitas akibat pembaruan sepihak dari vendor LLM komersial.
+   - Struktur Prompt Engineering Akademik: Mengadopsi struktur prompt modular yang secara ketat mendefinisikan komponen [ROLE] (peran penilai) dan [CONTEXT] (konteks tugas & dokumen acuan dosen).
+================================================================================

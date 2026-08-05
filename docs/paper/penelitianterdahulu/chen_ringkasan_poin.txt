@@ -1,0 +1,27 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Chen & Wan (2024)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Using Large Language Models to Assign Partial Credit to Students' Explanations of Problem-Solving Process: Grade at Human Level Accuracy with Grading Confidence Index and Personalized Student-facing Feedback
+   - Peneliti    : Zhongzhou Chen & Tong Wan (University of Central Florida)
+   - Tahun / Publikasi: 2024 / Department of Physics, UCF (arXiv:2407.xxxxx).
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Dataset: Penjelasan verbal dan tahapan penalaran mahasiswa dalam memecahkan soal fisika mekanika (multi-step problem solving).
+   - Model AI yang Diuji: OpenAI GPT-4o dan GPT-3.5 (zero-shot, tanpa reference answer / example).
+   - Metodologi Uji:
+     1. Evaluasi rubrik multi-item dengan skema pemberian skor parsial (partial credit).
+     2. Pengujian Self-Consistency (menjalankan inferensi 5 kali dan mengambil nilai modus/paling konsisten).
+     3. Formula Normalized Shannon Information Entropy sebagai Indeks Kepercayaan Penilaian (Grading Confidence Index).
+   - Metrik Pengujian: Simple Matching Distance (SMD), Macro F1-score, Quadratic Weighted Kappa (QWK), dan kesepakatan terhadap 2 penilai manusia independen (human raters).
+
+3. HASIL UTAMA PENELITIAN
+   - Akurasi Setara Manusia (Human-Level Accuracy): GPT-4o mencapai tingkat kesepakatan 70%–80% dengan rater manusia, yang secara statistik setara atau melampaui tingkat kesepakatan antara dua dosen/evaluator manusia.
+   - Skema Skor Parsial Bergradasi (Graded Partial Credit): Menilai setiap komponen penalaran secara terpisah (skor parsial) terbukti jauh lebih akurat, adil, dan mencerminkan tingkat pemahaman mahasiswa dibanding penilaian biner (all-or-nothing).
+   - Self-Consistency & Entropy Confidence Index: Pengukuran variansi antar eksekusi (Shannon Entropy) sangat efektif sebagai indikator tingkat keraguan AI. Dengan ambang entropi >0.4, dosen hanya perlu memeriksa 10-15% jawaban mahasiswa yang meragukan namun berhasil menangkap 40% potensi kesalahan AI.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Rujukan Utama Skema 3-Point Partial Credit Scoring: Paper Chen & Wan (2024) menjadi justifikasi ilmiah utama dalam merancang skema pemberian nilai parsial berjenjang pada SAL (0 = Salah, 0.5 = Parsial/Sebagian, 1.0 = Sempurna).
+   - Metodologi Evaluasi Kesepakatan Human-Machine: Menggunakan baseline kesepakatan antar dosen (*inter-human agreement*) sebagai benchmark acuan akurasi penilai AI.
+================================================================================

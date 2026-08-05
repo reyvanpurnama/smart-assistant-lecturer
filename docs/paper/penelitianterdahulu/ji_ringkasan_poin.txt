@@ -1,0 +1,27 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Ji et al. (2023/2024)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Survey of Hallucination in Natural Language Generation
+   - Peneliti    : Ziwei Ji, Nayeon Lee, Rita Frieske, Tiezheng Yu, Dan Su, Yan Xu, Etsuko Ishii, Ye Jin Bang, Andrea Madotto, & Pascale Fung
+   - Instansi    : Center for Artificial Intelligence Research (CAiRE), Hong Kong University of Science and Technology (HKUST).
+   - Tahun / Publikasi: ACM Computing Surveys (CSUR), Vol. 55, No. 12, Article 248 (2023/2024).
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Fokus: Taksonomi komprehensif mengenai fenomena halusinasi dalam Natural Language Generation (NLG/LLM), faktor penyebab, metrik pengukuran, dan teknik mitigasi.
+   - Klasifikasi Utama Halusinasi:
+     1. Intrinsic Hallucination: Keluaran LLM bertentangan secara langsung (contradicts) dengan dokumen/konteks acuan (misal: menentukan kesalahan logika yang sebenarnya benar).
+     2. Extrinsic Hallucination: Keluaran LLM mengandung informasi yang tidak dapat diverifikasi (unverifiable) dari dokumen acuan (mengarang fakta/asumsi baru diluar konteks soal).
+   - Penyebab Utama Halusinasi pada LLM:
+     - Parametric Knowledge Bias: Kecenderungan LLM untuk lebih mempercayai pengetahuan hafalan internalnya daripada konteks/instruksi yang diberikan dalam prompt.
+     - Exposure Bias & Erroneous Decoding.
+
+3. HASIL & STRATEGI MITIGASI PENELITIAN
+   - Information Augmentation & Knowledge Grounding: Mitigasi paling efektif untuk mengatasi halusinasi adalah dengan mengikat konteks input LLM menggunakan konteks pengetahuan terverifikasi (knowledge grounding), seperti dokumen acuan, struktur data, atau eksternal basis data.
+   - Constrained Generation & System Prompt Guardrails: Membatasi keluaran LLM dengan format ketat dan aturan khusus agar tidak menghasilkan fakta yang tak terverifikasi.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Rujukan Utama Pilar Novelty 4 (Knowledge Grounding Module & Mitigasi Halusinasi AI): Paper Ji et al. (2023) menjadi dasar ilmiah utama untuk membenarkan pembuatan **Modul Knowledge Grounding** pada SAL (mengikat context berupa modul materi, rubrik penilaian, dan reference answer ke dalam prompt penilaian).
+   - Mencegah Penilaian Ngawur/Halu: Menjelaskan dalam skripsi dan sidang bahwa tanpa modul Knowledge Grounding, LLM penilai akan mengalami *Parametric Knowledge Bias* dan *Intrinsic/Extrinsic Hallucination*, yang membuat nilai dan umpan balik mahasiswa menjadi tidak valid.
+================================================================================

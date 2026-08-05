@@ -1,0 +1,23 @@
+================================================================================
+RINGKASAN POIN EKSTRAKSI PAPER: Haller et al. (2022/2024)
+================================================================================
+
+1. INFORMASI JURNAL & PENELITI
+   - Judul Paper: Survey on Automated Short Answer Grading with Deep Learning: from Word Embeddings to Transformers
+   - Peneliti    : Stefan Haller, Adina Aldea, Christin Seifert, & Nicola Strisciuglio (University of Twente & Univ. of Duisburg-Essen)
+   - Tahun / Publikasi: 2022/2024 / ACM Computing Surveys / arXiv:2204.03503v1.
+
+2. FOKUS & METODOLOGI PENELITIAN
+   - Objek & Taksonomi: Survei komprehensif evolusi metode Automated Short Answer Grading (ASAG) dari pendekatan fitur terkayu (hand-engineered lexical/syntactic/semantic features) hingga Deep Learning (word embeddings, LSTM, dan Transformer/Attention architectures).
+   - Dataset Acuan yang Ditinjau: SciEntsBank, Beetle, Texas2011, dan ASAP-SAS.
+   - Metrik & Tantangan: Menganalisis transisi dari klasifikasi biner/multi-class ke penilaian berjenjang parsial serta tantangan evaluasi lintas domain.
+
+3. HASIL UTAMA PENELITIAN
+   - Karakteristik Spesifik ASAG vs AES: Berbeda dari Automated Essay Scoring (AES) yang berfokus pada gaya bahasa dan struktur panjang, ASAG berfokus pada ketepatan kandungan semantik jawaban pendek terhadap jawaban acuan (ground truth/reference answer).
+   - Keterbatasan Representasi Murni Deep Learning: Learned representations dari model deep learning murni sering kali kurang efektif jika tidak dikombinasikan dengan pengetahuan domain terstruktur atau aturan rubrik yang jelas.
+   - Efektivitas Skoring Parsial (Partial Credit): Penilaian jawaban pendek lebih akurat dan adil jika menggunakan skema skor bertingkat/parsial untuk menangkap kebenaran konsep yang disampaikan mahasiswa secara parsial.
+
+4. ASPEK KUNCI YANG DIADOPSI PADA SISTEM SAL (SKRIPSI REYVAN)
+   - Landasan Teoretis Taksonomi ASAG: Menjadikan survei ini sebagai rujukan akademis utama untuk mendefinisikan ruang lingkup penilaian jawaban praktikum SQL/pemrograman pada SAL sebagai domain ASAG (bukan AES).
+   - Skema Penilaian Parsial (3-Point Partial Credit Scoring): Mengadopsi prinsip skoring parsial berjenjang guna mengevaluasi kebenaran logika dan sintaksis jawaban mahasiswa secara objektif tanpa memberikan hukuman ekstrem (all-or-nothing).
+================================================================================
