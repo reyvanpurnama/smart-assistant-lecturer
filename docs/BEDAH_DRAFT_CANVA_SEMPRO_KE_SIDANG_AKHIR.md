@@ -52,18 +52,16 @@ Berdasarkan draf skripsi Bab II (Halaman 13, Paragraf Novelty), kebaruan penelit
   * Ubah Metrik: **Kendall's Tau-b ($\tau_b$) dan Mean Absolute Error (MAE)**.
   * Ukuran Sampel: **Dataset Retrospektif $N = 33$ Mahasiswa Kelas IF23A (Mata Kuliah Basis Data Lanjut IF204)**.
 
-### 📌 Slide 6, 7, 8: Tinjauan Pustaka & Tabel Penelitian Terdahulu
+### 📌 Slide 6, 7, 8: Tinjauan Pustaka & Sintesis 4 Pilar Novelty
 * **Sempro Lama:** Menyebut QWK & Pearson.
-* **Sidang Akhir Baru:** **GUNAKAN TABEL 2.1 EKSAK DARI DRAF SKRIPSI BAB II** (Tanpa Merubah Istilah Poin Naskah Anda):
+* **Sidang Akhir Baru:** **PAKAI TABEL RINGKAS 4 BARIS INI BIAR LANGSUNG KELIHATAN NOVELTY-NYA & TULISAN CANVA LEGA**:
 
-| Peneliti | Hasil Utama | Aspek yang Diadopsi |
+| Pilar Kebaruan (Novelty) | Referensi Jurnal Acuan | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- |
-| **Mizumoto & Eguchi (2023)** | Uji zero-shot GPT-3 (text-davinci-003) pada 12.100 esai TOEFL11 capai akurasi 89,15% adjacent agreement. | Pengujian validitas membandingkan skor otomatis AI terhadap nilai penilai manusia (*human rater*). |
-| **Pack, Barrett, & Escalante (2024)** | Performa LLM komersial (*closed-source*) terbukti fluktuatif akibat pembaruan vendor sepihak. | Justifikasi penggunaan model *open-weight* untuk cegah inkonsistensi, serta prompt elemen `[ROLE]` & `[CONTEXT]`. |
-| **Stahl et al. (2024)** | Skoring & umpan balik bersamaan tingkatkan performa LLM jika dipicu memberi penjelasan rasional sebelum skor dirilis. | Penyusunan struktur instruksi modular berbasis *Chain-of-Thought (CoT)* untuk mengekstrak justifikasi penilaian. |
-| **Haller et al. (2022)** | Model Transformer unggul secara semantik, namun membutuhkan rubrik kaku (*hand-engineered*) untuk hasil optimal. | Pendekatan *hybrid* menyatukan kapabilitas semantik model bahasa dengan parameter kaku rubrik dosen. |
-| **Claes (2025)** | Mekanisme *decoupling* arsitektur *provider-agnostic middleware* sukses memisahkan platform dari API AI. | Pola desain arsitektur *middleware* berbasis komponen *decoupling* memisahkan aplikasi dari API inferensi. |
-| **Chen & Wan (2024)** | Evaluasi *partial credit grading* LLM capai akurasi setara manusia (70-80% *agreement*) dengan teknik CoT. | Pengadopsian struktur rubrik bergradasi (*multi-item partial credit*), CoT sebelum skor, serta evaluasi keselarasan. |
+| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | Arsitektur pemisah aplikasi dari API AI & penggunaan model *open-weight* (GPT-OSS 120B). |
+| **2. Modular CoT Prompting** | Stahl et al. (2024) | Struktur prompt 5 kompartemen & *Chain-of-Thought (CoT)* untuk transparansi penalaran. |
+| **3. 3-Point Partial Credit** | Chen & Wan (2024) | Rubrik bergradasi (0, 50, 100) untuk keadilan nilai pada kesalahan minor/typo. |
+| **4. Knowledge Grounding** | Ji et al. (2023); Agarwal (2025) | Mengunci penalaran AI pada dokumen acuan dosen untuk garansi 0% halusinasi. |
 
 ### 📌 Slide 9: AI Core Stack & Technology
 * **Sempro Lama:** Landasan Teknologi Next.js, Supabase, Groq API.

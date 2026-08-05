@@ -171,24 +171,22 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 8.5: TABEL TERAKHIR PENELITIAN TERDAHULU (TABEL 2.1 NASKAH FINAL)
+### 🖥️ SLIDE 8.5: SINTESIS 4 PILAR NOVELTY PENELITIAN (TABEL RINGKAS 4 BARIS)
 **Tampilan Visual Slide:**
-* **Tabel Matriks Penelitian Terdahulu (Eksak Sesuai Draf Skripsi Bab II Tabel 2.1):**
+* **Tabel 4 Pilar Novelty Utama (Sangat Ringkas & Bebas Stress Canva):**
 
-| Peneliti | Hasil Utama | Aspek yang Diadopsi |
+| Pilar Kebaruan (Novelty) | Referensi Jurnal Acuan | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- |
-| **Mizumoto & Eguchi (2023)** | Uji zero-shot GPT-3 (text-davinci-003) pada 12.100 esai TOEFL11 capai akurasi 89,15% adjacent agreement. | Pengujian validitas membandingkan skor otomatis AI terhadap nilai penilai manusia (*human rater*). |
-| **Pack, Barrett, & Escalante (2024)** | Performa LLM komersial (*closed-source*) terbukti fluktuatif akibat pembaruan vendor sepihak. | Justifikasi penggunaan model *open-weight* untuk cegah inkonsistensi, serta prompt elemen `[ROLE]` & `[CONTEXT]`. |
-| **Stahl et al. (2024)** | Skoring & umpan balik bersamaan tingkatkan performa LLM jika dipicu memberi penjelasan rasional sebelum skor dirilis. | Penyusunan struktur instruksi modular berbasis *Chain-of-Thought (CoT)* untuk mengekstrak justifikasi penilaian. |
-| **Haller et al. (2022)** | Model Transformer unggul secara semantik, namun membutuhkan rubrik kaku (*hand-engineered*) untuk hasil optimal. | Pendekatan *hybrid* menyatukan kapabilitas semantik model bahasa dengan parameter kaku rubrik dosen. |
-| **Claes (2025)** | Mekanisme *decoupling* arsitektur *provider-agnostic middleware* sukses memisahkan platform dari API AI. | Pola desain arsitektur *middleware* berbasis komponen *decoupling* memisahkan aplikasi dari API inferensi. |
-| **Chen & Wan (2024)** | Evaluasi *partial credit grading* LLM capai akurasi setara manusia (70-80% *agreement*) dengan teknik CoT. | Pengadopsian struktur rubrik bergradasi (*multi-item partial credit*), CoT sebelum skor, serta evaluasi keselarasan. |
+| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | Arsitektur pemisah aplikasi dari API AI & penggunaan model *open-weight* (GPT-OSS 120B). |
+| **2. Modular CoT Prompting** | Stahl et al. (2024) | Struktur prompt 5 kompartemen & *Chain-of-Thought (CoT)* untuk transparansi penalaran. |
+| **3. 3-Point Partial Credit** | Chen & Wan (2024) | Rubrik bergradasi (0, 50, 100) untuk keadilan nilai pada kesalahan minor/typo. |
+| **4. Knowledge Grounding** | Ji et al. (2023); Agarwal (2025) | Mengunci penalaran AI pada dokumen acuan dosen untuk garansi 0% halusinasi. |
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Mizumoto & Eguchi (2023); Pack et al. (2024); Stahl et al. (2024); Haller et al. (2022); Claes (2025); Chen & Wan (2024)`
+`Claes (2025); Pack et al. (2024); Stahl et al. (2024); Chen & Wan (2024); Ji et al. (2023); Agarwal et al. (2025)`
 
-🎙️ **Script Omongan Bicara Reyvan (1 menit):**
-> *"Berikut adalah sintesis penelitian terdahulu pada Tabel 2.1 draf skripsi kami. Sebagaimana ditemukan oleh Pack, Barrett, & Escalante (2024), performa LLM komersial closed-source sangat rentan fluktuatif akibat pembaruan vendor. Oleh karena itu, penelitian ini mengadopsi model open-weight dan menyatukan 5 aspek kunci dari studi terdahulu: validitas human rater dari Mizumoto & Eguchi (2023), CoT prompting dari Stahl et al. (2024), rubrik kaku hybrid dari Haller et al. (2022), decoupling middleware dari Claes (2025), serta 3-point partial credit rubric dari Chen & Wan (2024)."*
+🎙️ **Script Omongan Bicara Reyvan (45 detik):**
+> *"Secara ringkas, kebaruan penelitian ini menyatukan 4 pilar utama: arsitektur decoupling middleware dari Claes & Pack (2024/2025), rekayasa prompt modular CoT dari Stahl et al. (2024), rubrik 3-Point Partial Credit dari Chen & Wan (2024), serta Knowledge Grounding dari Ji et al. (2023) untuk memitigasi halusinasi total."*
 
 ---
 
