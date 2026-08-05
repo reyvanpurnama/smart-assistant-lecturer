@@ -54,6 +54,19 @@ Dokumen ini disusun berdasarkan analisis mendalam terhadap draf eksemplar final 
 
 ---
 
+### 🖥️ SLIDE 3.5 (OPSIONAL): BATASAN MASALAH & RUANG LINGKUP PENELITIAN
+**Tampilan Visual Slide:**
+* 🎯 **Ruang Lingkup Kasus Uji:** Dibatasi pada pengujian esai **Logika Pemrograman Basis Data (SQL)** pada Mata Kuliah Basis Data Lanjut (IF204), mencakup 10 operasi DDL/DML.
+* 👥 **Dataset Retrospektif:** 33 Dokumen Jawaban Mahasiswa Kelas IF23A Angkatan 2023.
+* 🤖 **Teknologi AI & Infras:** Model Open-Weight **GPT-OSS 120B** via **Groq API Cloud** (Low Latency).
+* 🌐 **Bahasa & Input Data:** Khusus Bahasa Indonesia, berkas digital (.pdf, .docx, .txt).
+* 📊 **Ruang Lingkup Evaluasi:** Uji teknis keselarasan peringkat ($\tau_b$) dan deviasi selisih fisik (MAE) terhadap *Ground Truth* dosen.
+
+🎙️ **Script Omongan Bicara Reyvan (45 detik):**
+> *"Untuk menjaga fokus pengujian, penelitian ini dibatasi pada evaluasi esai logika pemrograman SQL mata kuliah Basis Data Lanjut (IF204). Data yang dievaluasi berupa 33 dokumen jawaban retrospektif mahasiswa yang diproses menggunakan model open-weight GPT-OSS 120B via Groq API, dengan fokus utama mengukur keselarasan peringkat dan deviasi skor terhadap nilai dosen."*
+
+---
+
 ### 🖥️ SLIDE 4: ARSITEKTUR MIDDLEWARE & KNOWLEDGE GROUNDING
 **Tampilan Visual Slide:**
 * **Diagram Arsitektur (Prinsip Decoupling):**
@@ -188,3 +201,6 @@ Apabila Dosen Penguji menanyakan draf eksemplar Anda saat sidang:
    * **Jawaban Reyvan:** *"Terima kasih atas masukannya Bapak/Ibu. Tabel komparasi lengkap antar-iterasi beserta matriks 33 mahasiswa retrospektif telah kami cantumkan pada Tabel 4.2 di Presentasi hari ini dan telah kami lampirkan secara utuh pada berkas Lampiran 2 revisi final."*
 2. **Penguji:** *"Kenapa kamu gak pakai Shapiro-Wilk uji normalitas?"*
    * **Jawaban Reyvan:** *"Sesuai dengan acuan metodologi penilaian LLM Judge mutakhir (Yeung, 2025; Bhat & Varma, 2026), evaluasi kuantitatif difokuskan langsung pada metrik korelasi hirarki peringkat Kendall's Tau-b dan deviasi fisik MAE. Kendall's Tau-b merupakan statistik non-parametrik yang memang diperuntukkan bagi data skala ordinal bertingkat tanpa memerlukan asumsi distribusi normal."*
+3. **Penguji:** *"Di Bab I kamu sebutkan batasan masalahnya esai logika pemrograman dasar, tapi kenapa kasus pengujiannya spesifik SQL?"*
+   * **Jawaban Reyvan:** *"Terima kasih atas pertanyaannya Ibu/Bapak. Payung besar riset ini dirancang untuk esai logika pemrograman di ilmu komputer. Pada penelitian ini, sintaks perintah SQL pada Mata Kuliah Basis Data Lanjut dipilih sebagai instrumen kasus uji spesifik (case study) yang ideal, karena sintaks SQL merepresentasikan kombinasi logika DDL/DML, klausa penyaringan data (WHERE), tipe data, dan manipulasi struktur relasional yang membutuhkan ketelitian penalaran tinggi."*
+
