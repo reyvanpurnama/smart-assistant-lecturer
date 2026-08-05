@@ -17,11 +17,22 @@ Dokumen ini memetakan perbandingan **Slide Sempro (Lama)** vs **Slide Sidang Akh
 
 ## 🔄 PEMETAAAN SLIDE DEMI SLIDE (OLD CANVA SEMPRO ➡️ NEW SIDANG AKHIR)
 
-### 📌 Slide 1: Judul Utama
-* **Sempro Lama:** Judul & Identitas
-* **Sidang Akhir Baru:** **PERTAHANKAN**, tambahkan sub-judul:
-  * *"Arsitektur Provider-Agnostic Middleware & 3-Point Partial Credit Rubric"*
-  * Tambahkan nama Dosen Pembimbing I (Aila Gema Safitri, S.T., M.T.) & Pembimbing II (Ririn Suharsih, S.Pd., M.T.).
+### 📌 Slide 1: Judul Utama & 4 Pilar Kebaruan (Novelty)
+* **Sempro Lama:** Judul & Identitas polos.
+* **Sidang Akhir Baru:** **PERTAHANKAN JUDUL UTAMA**, dan tambahkan **Sub-Judul / 4 Poin Pilar Kebaruan (Novelty)**:
+  * *"Integrasi Decoupling Middleware, Modular CoT Prompting, 3-Point Partial Credit, & Knowledge Grounding GPT-OSS 120B"*
+* **Apakah Sub-Judul ini Wajib?**
+  * **Secara Aturan Formal:** Tidak ada pasal yang mewajibkan sub-judul.
+  * **Secara Strategi Akademis Sidang Akhir:** **SANGAT PENTING & DISARANKAN!** Karena judul utama skripsi lu ("Pengembangan Smart Assistant Lecturer...") itu sifatnya umum. Begitu penguji melihat Slide 1 yang dilengkapi sub-judul 4 pilar ini, penguji **langsung tahu dalam 5 detik pertama** bahwa skripsi lu memiliki 4 kontribusi ilmiah yang sangat kuat dan berbobot!
+
+---
+
+#### 🏛️ 4 PILAR KONTRIBUSI ILMIAH (NOVELTY) SKRIPSI REYVAN:
+Berdasarkan draf skripsi Bab II (Halaman 13, Paragraf Novelty), kebaruan penelitian lu menyatukan 4 penelitian besar dunia:
+1. **Decoupling Middleware Architecture** (Claes, 2025): Memisahkan aplikasi dari vendor AI.
+2. **Modular CoT Prompting** (Stahl et al., 2024): Menjelaskan penalaran bertahap sebelum skor keluar.
+3. **3-Point Partial Credit Rubric** (Chen & Wan, 2024): Penilaian parsial 0, 50, 100 agar adil.
+4. **Knowledge Grounding GPT-OSS 120B** (Ji et al., 2023; Agarwal et al., 2025): Mengunci AI dari halusinasi pada esai Indonesia.
 
 ### 📌 Slide 2 & 3: Latar Belakang & Dilema Adopsi AI
 * **Sempro Lama:** Hanya teori umum Bloxham et al., 2020 & Kasneci et al., 2023.
@@ -43,8 +54,12 @@ Dokumen ini memetakan perbandingan **Slide Sempro (Lama)** vs **Slide Sidang Akh
 
 ### 📌 Slide 6, 7, 8: Tinjauan Pustaka & Research Gap
 * **Sempro Lama:** Menyebut novelty terintegrasi QWK & Pearson.
-* **Sidang Akhir Baru:** **UPDATE** pada Slide Novelty:
-  * Integrasi 4 Poin: (1) Decoupling Middleware (Claes, 2025), (2) Prompt Modular CoT (Stahl et al., 2024), (3) 3-Point Partial Credit Rubric (Chen & Wan, 2024), (4) Knowledge Grounding GPT-OSS 120B divalidasi dengan **Kendall's Tau-b & MAE** (Yeung, 2025; Bhat & Varma, 2026).
+* **Sidang Akhir Baru:** **UPDATE TOTAL** pada Slide 8 (Research Gap & Novelty) dengan menampilkan **4 PILAR KEBARUAN (NOVELTY) PENELITIAN REYVAN**:
+  1. 🏗️ **Decoupling Middleware Architecture** (Claes, 2025): Memisahkan platform aplikasi dari fluktuasi API vendor AI.
+  2. 📝 **Modular Prompting & CoT Reasoning** (Stahl et al., 2024): Menjelaskan logika alur pemikiran sebelum memberikan keputusan skor.
+  3. ⚖️ **3-Point Partial Credit Rubric** (Chen & Wan, 2024): Penilaian 3 tingkat (0, 50, 100) untuk mengeliminasi kekakuan biner pada kesalahan tipografi minor.
+  4. 🛡️ **Knowledge Grounding GPT-OSS 120B** (Ji et al., 2023; Agarwal et al., 2025): Mengunci ruang penalaran LLM open-weight agar 0% halusinasi pada evaluasi esai Indonesia.
+  * *Divalidasi dengan Metrik Mutlah AWE/AES:* **Kendall's Tau-b ($\tau_b$)** untuk korelasi hirarki logika dan **Mean Absolute Error (MAE)** untuk deviasi rata-rata skor fisik (Yeung, 2025; Bhat & Varma, 2026).
 
 ### 📌 Slide 9: AI Core Stack & Technology
 * **Sempro Lama:** Landasan Teknologi Next.js, Supabase, Groq API.
