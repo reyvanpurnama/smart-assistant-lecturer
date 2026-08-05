@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Assistant Lecturer - Dashboard Rekap Nilai</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #020617;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.3) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .transition-all-300 {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-100 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="border-b border-slate-800 bg-brand-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-tr from-indigo-500 to-sky-400 text-white w-9 h-9 rounded-xl flex items-center justify-center font-extrabold text-lg shadow-lg shadow-indigo-500/20">
+          S
+        </div>
+        <div>
+          <span class="font-bold text-slate-100 text-sm tracking-tight">Smart Assistant Lecturer</span>
+          <p class="text-[10px] text-slate-400 -mt-0.5">Universitas Muhammadiyah Bandung &bull; Portal Dosen</p>
+        </div>
+      </div>
+
+      <!-- User controls -->
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-300 font-semibold bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl">
+          Dosen Pengampu: <strong class="text-slate-100">Husni Mubarok, M.T.</strong>
+        </span>
+        <a href="halaman_d_e_mockup.html" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white bg-slate-950 border border-slate-800/60 hover:border-slate-800 rounded-xl transition-all-300">
+          Simulasi Mhs
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 space-y-6">
+    
+    <!-- STATS DASHBOARD -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <!-- Card 1 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md relative overflow-hidden">
+        <span class="text-[9px] uppercase tracking-wider text-slate-450 font-bold block mb-1">Mata Kuliah Aktif</span>
+        <div class="text-2xl font-extrabold text-white tracking-tight">Basis Data Lanjut</div>
+        <p class="text-[10px] text-indigo-400 mt-1 font-semibold">IF204 &bull; Semester 4</p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md relative overflow-hidden">
+        <span class="text-[9px] uppercase tracking-wider text-slate-455 font-bold block mb-1">Total Tugas Dibuat</span>
+        <div class="text-2xl font-extrabold text-white tracking-tight">3 Tugas</div>
+        <p class="text-[10px] text-slate-450 mt-1">Llama 3.3 sebagai model grading utama</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md relative overflow-hidden">
+        <span class="text-[9px] uppercase tracking-wider text-slate-455 font-bold block mb-1">Rata-rata Nilai Kelas</span>
+        <div class="text-2xl font-extrabold text-indigo-400 tracking-tight">85.4 / 100</div>
+        <p class="text-[10px] text-slate-450 mt-1">Mengalami tren kenaikan kualitatif</p>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md relative overflow-hidden">
+        <span class="text-[9px] uppercase tracking-wider text-slate-455 font-bold block mb-1">Status Pengumpulan</span>
+        <div class="text-2xl font-extrabold text-emerald-450 tracking-tight">95% (42 / 45)</div>
+        <p class="text-[10px] text-slate-450 mt-1">3 Mahasiswa belum mengumpulkan</p>
+      </div>
+    </div>
+
+    <!-- CONTENT GRID: Left (Assignments list), Right (Grades list) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- LEFT COLUMN: Assignment List (4 cols) -->
+      <div class="lg:col-span-4 space-y-4">
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md space-y-4">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <h2 class="font-bold text-slate-200 text-xs tracking-wider uppercase">Daftar Tugas</h2>
+            <a href="halaman_b_mockup.html" class="px-2.5 py-1 text-[10px] font-bold text-indigo-400 hover:text-white bg-indigo-500/10 hover:bg-indigo-500 border border-indigo-500/20 rounded-lg transition-all-300 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              Tugas Baru
+            </a>
+          </div>
+
+          <div class="space-y-3">
+            <!-- Assignment Item 1 (Selected) -->
+            <div class="bg-indigo-950/20 border-2 border-indigo-500/80 rounded-xl p-4 cursor-pointer transition-all-300 relative">
+              <div class="flex justify-between items-start gap-2">
+                <span class="px-1.5 py-0.5 text-[9px] bg-indigo-500/20 text-indigo-300 rounded font-semibold border border-indigo-500/30 uppercase">Aktif</span>
+                <span class="text-[10px] text-slate-450 font-mono">42 mhs</span>
+              </div>
+              <h3 class="font-bold text-slate-100 text-xs mt-2 leading-snug">Praktikum 2: Inner Join & Subquery</h3>
+              <p class="text-[10px] text-slate-400 mt-1">Tenggat: 15 Juli 2026</p>
+              <div class="mt-2 text-[9px] text-slate-500 font-mono">Model: llama-3.3-70b-versatile</div>
+            </div>
+
+            <!-- Assignment Item 2 -->
+            <div class="bg-slate-950/40 hover:bg-slate-950/80 border border-slate-850 hover:border-slate-800 rounded-xl p-4 cursor-pointer transition-all-300">
+              <div class="flex justify-between items-start gap-2">
+                <span class="px-1.5 py-0.5 text-[9px] bg-slate-800 text-slate-400 rounded font-semibold border border-slate-700/50 uppercase">Arsip</span>
+                <span class="text-[10px] text-slate-450 font-mono">45 mhs</span>
+              </div>
+              <h3 class="font-bold text-slate-300 text-xs mt-2 leading-snug">Praktikum 1: DDL & DML Schema</h3>
+              <p class="text-[10px] text-slate-500 mt-1">Tenggat: 28 Juni 2026</p>
+              <div class="mt-2 text-[9px] text-slate-600 font-mono">Model: llama3-8b-8192</div>
+            </div>
+
+            <!-- Assignment Item 3 -->
+            <div class="bg-slate-950/40 hover:bg-slate-950/80 border border-slate-850 hover:border-slate-800 rounded-xl p-4 cursor-pointer transition-all-300">
+              <div class="flex justify-between items-start gap-2">
+                <span class="px-1.5 py-0.5 text-[9px] bg-slate-900 text-slate-400 rounded font-semibold border border-slate-800/80 uppercase">Draft</span>
+                <span class="text-[10px] text-slate-450 font-mono">0 mhs</span>
+              </div>
+              <h3 class="font-bold text-slate-350 text-xs mt-2 leading-snug">Ujian Tengah Semester (Teori)</h3>
+              <p class="text-[10px] text-slate-500 mt-1">Tenggat: -</p>
+              <div class="mt-2 text-[9px] text-slate-600 font-mono">Model: -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Students Grades Table (8 cols) -->
+      <div class="lg:col-span-8 space-y-4">
+        <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 shadow-xl backdrop-blur-md space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-2">
+            <div>
+              <h2 class="font-bold text-slate-200 text-xs tracking-wider uppercase">Tabel Rekap Nilai Tugas</h2>
+              <p class="text-[10px] text-slate-450 mt-0.5">Praktikum 2: Inner Join & Subquery</p>
+            </div>
+            
+            <!-- Actions -->
+            <div class="flex items-center gap-2">
+              <button 
+                onclick="exportToCSV()"
+                class="px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-750 border border-slate-700 rounded-lg transition-all-300 flex items-center gap-1.5"
+              >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                Ekspor data QWK/Pearson (.csv)
+              </button>
+            </div>
+          </div>
+
+          <!-- Grades Table -->
+          <div class="overflow-x-auto custom-scrollbar">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr class="border-b border-slate-800 text-slate-450 font-bold">
+                  <th class="py-3 px-2">NIM</th>
+                  <th class="py-3 px-2">Nama Lengkap</th>
+                  <th class="py-3 px-2 text-center">Skor AI</th>
+                  <th class="py-3 px-2 text-center">Skor Akhir Dosen</th>
+                  <th class="py-3 px-2 text-center">Status</th>
+                  <th class="py-3 px-2 text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-850/60">
+                <!-- Student Row 1 (Graded normally) -->
+                <tr class="hover:bg-slate-850/10 transition-all-300">
+                  <td class="py-3.5 px-2 font-mono text-slate-300">220102043</td>
+                  <td class="py-3.5 px-2 font-semibold text-slate-200">M. Reyvan Purnama</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-300">96.0</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-200 font-bold">96.0</td>
+                  <td class="py-3.5 px-2 text-center">
+                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      Graded
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-2 text-center">
+                    <a href="halaman_c_mockup.html" class="px-2.5 py-1 text-[10px] font-bold text-indigo-400 hover:text-white bg-indigo-500/5 hover:bg-indigo-500 border border-indigo-500/10 hover:border-indigo-500 rounded-lg transition-all-300 inline-block">
+                      Periksa
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Student Row 2 (Overridden) -->
+                <tr class="hover:bg-slate-850/10 transition-all-300 bg-slate-900/10">
+                  <td class="py-3.5 px-2 font-mono text-slate-300">220102011</td>
+                  <td class="py-3.5 px-2 font-semibold text-slate-200">Ahmad Jalaludin</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-300 text-slate-400">82.0</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-amber-400 font-bold">90.0</td>
+                  <td class="py-3.5 px-2 text-center">
+                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20" title="Dosen mengoreksi nilai AI yang terlalu rendah">
+                      Overridden
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-2 text-center">
+                    <a href="halaman_c_mockup.html" class="px-2.5 py-1 text-[10px] font-bold text-indigo-400 hover:text-white bg-indigo-500/5 hover:bg-indigo-500 border border-indigo-500/10 hover:border-indigo-500 rounded-lg transition-all-300 inline-block">
+                      Periksa
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Student Row 3 (Pending review) -->
+                <tr class="hover:bg-slate-850/10 transition-all-300">
+                  <td class="py-3.5 px-2 font-mono text-slate-300">220102015</td>
+                  <td class="py-3.5 px-2 font-semibold text-slate-200">Siti Nurhaliza</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-300">88.5</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-350">-</td>
+                  <td class="py-3.5 px-2 text-center">
+                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-slate-800 text-slate-400 border border-slate-700/50">
+                      Pending
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-2 text-center">
+                    <a href="halaman_c_mockup.html" class="px-2.5 py-1 text-[10px] font-bold text-indigo-400 hover:text-white bg-indigo-500/5 hover:bg-indigo-500 border border-indigo-500/10 hover:border-indigo-500 rounded-lg transition-all-300 inline-block">
+                      Validasi
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Student Row 4 (Hallucination Warning / Irrelevant) -->
+                <tr class="hover:bg-slate-850/10 transition-all-300 bg-rose-950/5">
+                  <td class="py-3.5 px-2 font-mono text-slate-300">220102029</td>
+                  <td class="py-3.5 px-2 font-semibold text-slate-200">Fikri Syahputra</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-rose-450 font-bold">12.0</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-rose-450 font-bold">12.0</td>
+                  <td class="py-3.5 px-2 text-center">
+                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20" title="AI mendeteksi jawaban tidak nyambung / melenceng dari konteks grounding">
+                      Outlier
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-2 text-center">
+                    <a href="halaman_c_mockup.html" class="px-2.5 py-1 text-[10px] font-bold text-rose-400 hover:text-white bg-rose-500/5 hover:bg-rose-500 border border-rose-500/10 hover:border-rose-500 rounded-lg transition-all-300 inline-block">
+                      Periksa
+                    </a>
+                  </td>
+                </tr>
+
+                <!-- Student Row 5 (Graded) -->
+                <tr class="hover:bg-slate-850/10 transition-all-300">
+                  <td class="py-3.5 px-2 font-mono text-slate-300">220102052</td>
+                  <td class="py-3.5 px-2 font-semibold text-slate-200">Rizky Ramadhan</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-300">79.0</td>
+                  <td class="py-3.5 px-2 text-center font-mono text-slate-200 font-bold">79.0</td>
+                  <td class="py-3.5 px-2 text-center">
+                    <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                      Graded
+                    </span>
+                  </td>
+                  <td class="py-3.5 px-2 text-center">
+                    <a href="halaman_c_mockup.html" class="px-2.5 py-1 text-[10px] font-bold text-indigo-400 hover:text-white bg-indigo-500/5 hover:bg-indigo-500 border border-indigo-500/10 hover:border-indigo-500 rounded-lg transition-all-300 inline-block">
+                      Periksa
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-900 bg-brand-950 py-4 text-center text-xs text-slate-600">
+    <p>&copy; 2026 Smart Assistant Lecturer - Skripsi IT Universitas Muhammadiyah Bandung</p>
+  </footer>
+
+  <!-- CSV EXPORT SCRIPT -->
+  <script>
+    function exportToCSV() {
+      const csvData = [
+        ["nim", "nama_mahasiswa", "skor_ai", "skor_dosen", "status"],
+        ["220102043", "M. Reyvan Purnama", "96.0", "96.0", "Graded"],
+        ["220102011", "Ahmad Jalaludin", "82.0", "90.0", "Overridden"],
+        ["220102015", "Siti Nurhaliza", "88.5", "88.5", "Graded"],
+        ["220102029", "Fikri Syahputra", "12.0", "12.0", "Outlier"],
+        ["220102052", "Rizky Ramadhan", "79.0", "79.0", "Graded"]
+      ];
+
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvData.forEach(row => {
+        csvContent += row.join(",") + "\n";
+      });
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "rekap_nilai_praktikum2.csv");
+      document.body.appendChild(link);
+      
+      link.click();
+      document.body.removeChild(link);
+      
+      alert("Sukses mengunduh berkas 'rekap_nilai_praktikum2.csv'!\n\nBerkas ini berisi dataset yang siap digunakan untuk komputasi korelasi Pearson dan Quadratic Weighted Kappa (QWK) di Google Colab.");
+    }
+  </script>
+</body>
+</html>

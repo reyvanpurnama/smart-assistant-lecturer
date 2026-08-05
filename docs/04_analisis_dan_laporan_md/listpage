@@ -1,0 +1,59 @@
+Mantap bro! Langkah yang sangat strategis. Karena lu udah pegang data aslinya dan *role* dosen/asistennya udah di tangan lu, proses pengujian nanti bakal jauh lebih mulus.
+
+Untuk perancangan UI/UX di Next.js, lu nggak perlu bikin sistem LMS raksasa yang ribet. Fokus aja pada **alur fungsionalitas utama** yang ada di *Use Case Diagram* dan *Sequence Diagram* lu. Demi kelancaran demo saat sidang nanti, lu hanya butuh **6 halaman utama**.
+
+Berikut adalah rincian halaman dan komponen yang harus lu bangun:
+
+### 1. Halaman Login (Autentikasi Sederhana)
+
+Nggak perlu sistem *auth* yang rumit dulu, cukup *dropdown* atau dua tombol besar untuk memilih peran saat demo.
+
+* **Komponen:** Tombol "Masuk sebagai Dosen" dan "Masuk sebagai Mahasiswa".
+
+### 2. Portal Dosen (Administrator & Evaluator)
+
+Ini adalah "jantung" dari *novelty* skripsi lu. Penguji akan sangat fokus ke area ini.
+
+* **Halaman A: Dashboard & Rekapitulasi**
+* **Fungsi:** Menampilkan daftar tugas yang sudah dibuat (misalnya: Praktikum SQL 2, Praktikum SQL 3) dan tabel rekap nilai mahasiswa.
+* **Komponen:** Tabel rekap nilai (NIM, Nama, Skor AI, Skor Final Dosen), tombol "Buat Tugas Baru".
+
+
+* **Halaman B: Manajemen Evaluasi (*Prompt Builder*)**
+* **Fungsi:** Tempat lu mendemonstrasikan mekanisme *Context Grounding*.
+* **Komponen:** Form *input* untuk memasukkan "Soal Esai", "Konteks Akademik" (materi referensi), dan "Rubrik Penilaian". Ini data yang bakal disimpan ke Supabase dan dirakit sama *middleware*.
+
+
+* **Halaman C: Validasi Nilai Akhir**
+* **Fungsi:** Memenuhi syarat "kendali mutlak di tangan dosen".
+* **Komponen:** Tampilan *split-screen* (layar terbelah). Sebelah kiri nampilin teks jawaban asli mahasiswa, sebelah kanan nampilin hasil *generate* dari Groq API (Skor AI dan Justifikasi). Di bawahnya ada tombol "Setujui Nilai" atau kolom untuk mengedit nilai jika AI dianggap halusinasi.
+
+
+
+### 3. Portal Mahasiswa (User)
+
+Antarmuka untuk mahasiswa dibuat sangat linier dan terisolasi agar mereka tidak bisa memanipulasi parameter.
+
+* **Halaman D: Dashboard Tugas Mahasiswa**
+* **Fungsi:** Melihat daftar tugas yang tersedia dan form pengumpulan.
+* **Komponen:** Area *dropzone* untuk mengunggah berkas (`.pdf`, `.docx`, atau `.txt`) jawaban praktikum, dan tombol "Kirim Jawaban".
+
+
+* **Halaman E: Umpan Balik *Real-time***
+* **Fungsi:** Menampilkan hasil evaluasi setelah *middleware* selesai memproses.
+* **Komponen:** Menampilkan Skor Akhir dan teks deskriptif justifikasi/penjelasan kenapa mahasiswa mendapat nilai tersebut.
+
+
+
+---
+
+### Skenario Alur Demo Saat Sidang (The "Wow" Factor)
+
+Saat sidang nanti, lu jangan asal klak-klik. Bawa dosen penguji mengikuti alur cerita ini:
+
+1. **Tahap 1 (Setup Dosen):** Lu *login* sebagai dosen, masuk ke Halaman Manajemen Evaluasi. Pamerkan saat lu mem- *paste* soal praktikum SQL dan rubrik penilaiannya. Tekankan secara verbal: *"Di sinilah parameter grounding dikunci, Pak/Bu."*
+2. **Tahap 2 (Eksekusi Mahasiswa):** Buka *tab* baru (atau mode *incognito*), *login* sebagai mahasiswa. Pilih tugas yang baru dibuat, lalu *upload file* teks berisi *query* SQL acak atau jawaban yang sengaja disalahkan sedikit.
+3. **Tahap 3 (Momen Pembuktian):** Tunggu beberapa detik sampai hasil dari Groq API muncul di layar mahasiswa. Tunjukkan justifikasinya kepada penguji: *"Bisa dilihat, AI mampu mendeteksi kesalahan klausa JOIN mahasiswa secara spesifik sesuai rubrik, bukan memberikan jawaban umum."*
+4. **Tahap 4 (Validasi Dosen):** Kembali ke *tab* dosen. Buka halaman rekap nilai dan lakukan validasi akhir untuk membuktikan bahwa dosen tetap memiliki otoritas mutlak, bukan digantikan sepenuhnya oleh AI.
+
+Secara teknis di Next.js, lu mau pakai *UI library* bawaan kayak Tailwind CSS polos aja, atau mau pakai komponen *pre-built* seperti Shadcn UI/Chakra UI biar tampilannya langsung terlihat profesional tanpa banyak *coding* CSS?

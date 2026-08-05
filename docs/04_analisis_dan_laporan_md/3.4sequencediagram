@@ -1,0 +1,31 @@
+sequenceDiagram
+    autonumber
+    participant Dosen as Dosen
+    participant Mahasiswa as Mahasiswa
+    participant Frontend as Frontend (Next.js)
+    participant Middleware as Middleware (API)
+    participant Database as Database (Supabase)
+    participant Groq as Groq API Cloud
+
+    Dosen->>Frontend: inputParameter(soal, rubrik, context)
+    Frontend->>Database: saveParameter()
+    Database-->>Dosen: status_saved
+
+    Mahasiswa->>Frontend: uploadJawaban(.pdf/.docx)
+    Frontend->>Middleware: sendRawData()
+    Middleware->>Middleware: parseDocument() : plainText
+    Middleware->>Middleware: cleanText(regex) : cleanData
+    Middleware->>Database: fetchParameter(id_tugas)
+    Database-->>Middleware: return(soal, criteria, context)
+    Middleware->>Middleware: generatePrompt(cleanData, soal, criteria, context)
+    Middleware->>Groq: requestInferensi(prompt JSON)
+    Groq-->>Middleware: return(skor_yi, justifikasi)
+
+    Middleware->>Database: saveEvaluasiLog(skor_yi, justifikasi)
+    Middleware-->>Frontend: return(hasilEvaluasi)
+    Frontend-->>Mahasiswa: displayFeedback(skor_yi, justifikasi)
+
+    Dosen->>Frontend: bukaDashboardRekap()
+    Frontend->>Database: ambilRekapEvaluasi()
+    Database-->>Frontend: dataRekap
+    Frontend-->>Dosen: tampilRekap()

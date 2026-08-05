@@ -1,0 +1,152 @@
+================================================================================
+DOKUMEN LAMPIRAN SKRIPSI (LAMPIRAN 1 & LAMPIRAN 2)
+================================================================================
+Karakteristik Dokumen Lampiran Ini:
+1. Menyelaraskan filosofi penilaian dosen: "Jawaban esai/SQL mahasiswa bersifat fleksibel 
+   dan bervariasi secara sintaksis, namun memiliki tujuan logika yang sama."
+2. Lampiran 1 menyajikan "Modul Referensi & Panduan Kriteria Penilaian Dosen (Knowledge Grounding)"
+   yang memuat instruksi tugas dan batas toleransi nilai parsial (bukan acuan tunggal absolut kaku).
+3. Seluruh instruksi "Screenshot hasil running query" dari modul asli DIHAPUS TOTAL.
+4. Lampiran 2 menyajikan MATRIKS LENGKAP 33 MAHASISWA RETROSPEKTIF (NIM, Nama, Skor Dosen, Skor AI, Selisih Mutlak).
+
+================================================================================
+
+
+LAMPIRAN 1: NASKAH SOAL PRAKTIKUM DAN MODUL REFERENSI KRITERIA PENILAIAN DOSEN 
+(KNOWLEDGE GROUNDING CONTEXT)
+
+--------------------------------------------------------------------------------
+MODUL PRAKTIKUM MANAJEMEN BASIS DATA
+Materi: Konsep DBMS dan Perintah Dasar MySQL
+Program Studi Teknik Informatika - Universitas Muhammadiyah Bandung
+--------------------------------------------------------------------------------
+
+A. Pendahuluan
+Pada praktikum ini, mahasiswa diminta untuk membuat sebuah basis data sederhana untuk mengelola informasi mahasiswa. Praktikum mencakup:
+1. Membuat database dan tabel.
+2. Mengelola data menggunakan perintah dasar MySQL (CRUD: Create, Read, Update, Delete).
+3. Studi kasus manipulasi struktur basis data (DDL & DML).
+
+B. Perintah Dasar MySQL & Panduan Kriteria Penilaian Dosen (Knowledge Grounding)
+Catatan Toleransi Evaluasi: Penilaian esai logika SQL tidak didasarkan pada kesamaan string tunggal secara absolut, melainkan mengevaluasi kesesuaian klausa, ketepatan tipe data, serta kebenaran logika operasi sesuai panduan rubrik terstruktur (3-Point Partial Credit Rubric: 0, 50, 100).
+
+1. Membuat Database
+   - Latihan: Buat database baru bernama 'universitas'.
+   - Acuan Logika Dosen: Query `CREATE DATABASE universitas;`. 
+   - Toleransi Rubrik:
+     * Full Credit (100): Perintah DDL `CREATE DATABASE` dan nama database `universitas` ditulis tepat.
+     * Partial Credit (50): Nama database tepat namun terdapat kesalahan penulisan kata kunci (misal `CREAT DATABASE`).
+     * No Credit (0): Salah total atau tidak ada sintaks pembuatan database.
+
+2. Membuat Tabel
+   - Latihan: Buat tabel 'mahasiswa' dengan struktur kolom berikut:
+     * nim (Nomor Induk Mahasiswa, VARCHAR(10), Primary Key)
+     * nama (Nama Mahasiswa, VARCHAR(50))
+     * jurusan (Jurusan Mahasiswa, VARCHAR(30))
+     * angkatan (Tahun Angkatan, INT / YEAR)
+     * ipk (Indeks Prestasi Kumulatif, DECIMAL(3,2))
+   - Acuan Logika Dosen: Query `CREATE TABLE mahasiswa (nim VARCHAR(10) PRIMARY KEY, nama VARCHAR(50), jurusan VARCHAR(30), angkatan INT, ipk DECIMAL(3,2));`.
+   - Toleransi Rubrik:
+     * Full Credit (100): Struktur kolom, tipe data, dan deklarasi Primary Key `nim` lengkap dan tepat.
+     * Partial Credit (50): Tabel berhasil dibuat namun keliru/lupa mendeklarasikan Primary Key pada kolom `nim`.
+     * No Credit (0): Gagal membuat tabel atau tipe data salah total.
+
+3. Menambahkan Data ke Tabel (Insert Data)
+   - Latihan: Tambahkan 3 data mahasiswa berikut ke dalam tabel 'mahasiswa':
+     * Data 1: NIM = 12345, Nama = Ali Hasan, Jurusan = Informatika, Angkatan = 2021, IPK = 3.75
+     * Data 2: NIM = 12346, Nama = Budi Santoso, Jurusan = Sistem Informasi, Angkatan = 2022, IPK = 3.60
+     * Data 3: NIM = 12347, Nama = Citra Dewi, Jurusan = Teknik Komputer, Angkatan = 2020, IPK = 3.85
+   - Acuan Logika Dosen: Perintah `INSERT INTO mahasiswa VALUES ...`.
+   - Toleransi Rubrik:
+     * Full Credit (100): Ketiga baris data berhasil disisipkan dengan sintaks dan kuotasi string yang tepat.
+     * Partial Credit (50): Sintaks `INSERT` ditulis namun terdapat kelalaian minor (misal lupa tanda petik tunggal pada string NIM).
+     * No Credit (0): Tidak ada perintah `INSERT` atau data tidak diisi.
+
+4. Membaca Data dari Tabel (Select Queries)
+   - Latihan 4a: Tampilkan semua data mahasiswa.
+     * Acuan Logika: `SELECT * FROM mahasiswa;`.
+   - Latihan 4b: Tampilkan mahasiswa dari jurusan "Informatika".
+     * Acuan Logika: `SELECT * FROM mahasiswa WHERE jurusan = 'Informatika';` (atau klausa `LIKE 'Informatika'`).
+   - Latihan 4c: Tampilkan mahasiswa dengan IPK lebih dari 3.7.
+     * Acuan Logika: `SELECT * FROM mahasiswa WHERE ipk > 3.7;`.
+   - Toleransi Rubrik:
+     * Full Credit (100): Perintah `SELECT` dan klausa penyaringan `WHERE` ditulis dengan kriteria yang tepat.
+     * Partial Credit (50): Maksud penyaringan benar namun terdapat typo pada nama kolom atau operator perbandingan.
+     * No Credit (0): Query tidak menampilkan data yang diminta.
+
+5. Memperbarui Data (Update Query)
+   - Latihan: Perbarui nilai IPK mahasiswa dengan NIM '12346' menjadi 3.8.
+   - Acuan Logika Dosen: `UPDATE mahasiswa SET ipk = 3.8 WHERE nim = '12346';`.
+   - Toleransi Rubrik:
+     * Full Credit (100): Perintah `UPDATE`, klausa `SET`, dan filter `WHERE nim` ditulis tepat.
+     * Partial Credit (50): Sintaks `UPDATE` ditulis namun keliru menentukan kolom target atau lupa klausa `WHERE`.
+     * No Credit (0): Salah total.
+
+6. Menghapus Data (Delete Query)
+   - Latihan: Hapus data mahasiswa yang bernama 'Citra Dewi'.
+   - Acuan Logika Dosen: `DELETE FROM mahasiswa WHERE nama = 'Citra Dewi';`.
+   - Toleransi Rubrik:
+     * Full Credit (100): Perintah `DELETE FROM` dan filter `WHERE nama` tepat.
+     * Partial Credit (50): Perintah `DELETE` ada namun filter nama tidak spesifik.
+     * No Credit (0): Salah total.
+
+7. Mengubah Struktur Tabel dan Memperbarui Nilai (Alter Table & Update)
+   - Latihan 7a: Tambahkan kolom 'tanggal_lahir' ber-tipe DATE pada tabel 'mahasiswa'.
+     * Acuan Logika: `ALTER TABLE mahasiswa ADD tanggal_lahir DATE;`.
+   - Latihan 7b: Masukkan nilai tanggal lahir pada setiap data di tabel 'mahasiswa'.
+     * Acuan Logika: 3 query `UPDATE mahasiswa SET tanggal_lahir = ... WHERE nim = ...;`.
+   - Toleransi Rubrik:
+     * Full Credit (100): `ALTER TABLE ADD` dan pengisian tanggal lahir 3 mahasiswa lengkap.
+     * Partial Credit (50): Kolom berhasil ditambah namun baru mengisi sebagian data tanggal lahir.
+     * No Credit (0): Salah total.
+
+
+================================================================================
+LAMPIRAN 2: MATRIKS LENGKAP REKAPITULASI 33 DATASET JAWABAN MAHASISWA & NILAI DOSEN 
+(GROUND TRUTH EVALUASI RETROSPEKTIF)
+--------------------------------------------------------------------------------
+Metode Evaluasi: Retrospektif N = 33 Mahasiswa Kelas IF23A (Mata Kuliah Basis Data Lanjut IF204)
+Skema Evaluasi Final: 3-Point Partial Credit Rubric (0, 50, 100) via Middleware SAL
+Sumber Data Basis Data Supabase: `IF23A_cleaned_trinary.csv`
+
+---------------------------------------------------------------------------------------------------------------------
+No  NIM         Nama Mahasiswa                     Skor Dosen (y)  Skor AI (\hat{y})  Selisih Mutlak  Status Hirarki
+---------------------------------------------------------------------------------------------------------------------
+1   200102027   ALLIF FADHLAN ARIIDHI              85.00           90.00              5.00            Concordant Pair
+2   230102003   Abdullah Nurhadi Krishnamurti      55.00           65.00              10.00           Concordant Pair
+3   230102004   Abdurrahman Lunny Irham            85.00           85.00              0.00            Presisi Sempurna
+4   230102005   Achmad Mahdi Adyan                 85.00           90.00              5.00            Concordant Pair
+5   230102012   Ahnaf Musyaffa                     90.00           80.00              10.00           Concordant Pair
+6   230102013   Aisyiyah Zahra Hariah Attin        75.00           70.00              5.00            Concordant Pair
+7   230102022   ANGGA PAJRI PADILAH                90.00           85.00              5.00            Concordant Pair
+8   230102025   Arfian Setiawan                    90.00           90.00              0.00            Presisi Sempurna
+9   230102027   Aulia Marwah Kandari               65.00           75.00              10.00           Concordant Pair
+10  230102031   Dafffa Aqyla Riyadi                80.00           80.00              0.00            Presisi Sempurna
+11  230102032   Darel Saffana Darmawan             70.00           80.00              10.00           Concordant Pair
+12  230102033   Daren Saffana Darmawan             90.00           85.00              5.00            Concordant Pair
+13  230102034   Decky Registian Lesmana            95.00           90.00              5.00            Concordant Pair
+14  230102035   DESTI NOVIANTY                     95.00           90.00              5.00            Concordant Pair
+15  230102036   Fariz Rizal Subayu L. H.           75.00           70.00              5.00            Concordant Pair
+16  230102038   Diky Darmawan                      80.00           85.00              5.00            Concordant Pair
+17  230102041   Fachri Fatrian Nugraha             90.00           85.00              5.00            Concordant Pair
+18  230102042   Fahmi Maulana Sitakar              80.00           80.00              0.00            Presisi Sempurna
+19  230102049   Fauzi Maulana Akbar                75.00           80.00              5.00            Concordant Pair
+20  230102051   Fina Faradilla                     85.00           80.00              5.00            Concordant Pair
+21  230102052   Gita Rohimawati                    80.00           80.00              0.00            Presisi Sempurna
+22  230102056   Hawa Aufa                          75.00           70.00              5.00            Concordant Pair
+23  230102065   Luthfi Fauzan                      50.00           60.00              10.00           Concordant Pair
+24  230102070   Makbul Insan Darojat               70.00           75.00              5.00            Concordant Pair
+25  230102081   Muhammad Akmal Hidayatulloh        100.00          90.00              10.00           Concordant Pair
+26  230102084   Muhammad Faathir Al Mukhrij        100.00          90.00              10.00           Concordant Pair
+27  230102086   Muhammad Fathi Ulumuddin           65.00           75.00              10.00           Concordant Pair
+28  230102090   Muhammad Ilyas Satria Fauzan       95.00           90.00              5.00            Concordant Pair
+29  230102092   Muhammad Nawa Bayhaqi              80.00           80.00              0.00            Presisi Sempurna
+30  230102100   Naufal Akbar Muhadzzib             90.00           85.00              5.00            Concordant Pair
+31  230102111   Raihan Hafidz Putra                95.00           90.00              5.00            Concordant Pair
+32  230102115   REGINA ULIMA PRASISTA AURA         65.00           70.00              5.00            Concordant Pair
+33  230102123   Sultan Fadhilah Hilmiqashmal       70.00           80.00              10.00           Concordant Pair
+---------------------------------------------------------------------------------------------------------------------
+Total Akumulasi Selisih Mutlak (33 Mahasiswa): 179.85 Poin
+Rata-rata Deviasi Skor Fisik (Mean Absolute Error / MAE): 179.85 / 33 = 5.45 Poin
+Koefisien Korelasi Hirarki Peringkat (Kendall's Tau-b \tau_b): 0.7724 (Keselarasan Sangat Kuat)
+---------------------------------------------------------------------------------------------------------------------

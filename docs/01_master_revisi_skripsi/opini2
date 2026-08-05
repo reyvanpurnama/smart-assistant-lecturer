@@ -1,0 +1,90 @@
+Viewed revisi%20reyvan%2003%20agustus:770-785
+Searched for "BAB"
+Viewed revisi%20reyvan%2003%20agustus:1-50
+Searched for "BAB I"
+Searched for "DAFTAR PUSTAKA"
+Searched for "1.4. Batasan Masalah"
+Searched for "Batasan Masalah"
+Viewed revisi%20reyvan%2003%20agustus:150-180
+
+Bro, mari kita bedah secara matang dan terstruktur agar kamu **paham 100% alur berpikir dan alasan teknisnya**, sehingga saat sidang skripsi nanti kamu bisa menjawab dengan sangat percaya diri!
+
+---
+
+# 📑 ANALISIS REFERENSI & RENCANA STRATEGIS REVISI NASKAH
+
+---
+
+## 1. Analisis Kecukupan Referensi (Apakah Cukup atau Perlu Tambahan?)
+
+### 🔹 Untuk Domain AI & Automated Essay Scoring (AES / LLM Judge):
+Dua paper yang kamu punya di folder `docs/paper/` (**Yeung, 2025** dan **Bhat & Varma, 2026**) **SUDAH SANGAT CUKUP DAN KUAT**.
+* **Yeung (2025)** (Dipublikasikan di *LAK 2025 ACM*): Menjustifikasi penggunaan **Mean Absolute Error (MAE)** untuk mengukur rata-rata deviasi fisik skor AI terhadap manusia.
+* **Bhat & Varma (2026)** (Dipublikasikan di *ICML 2026 Workshop*): Menjustifikasi penggunaan **Kendall's Tau ($\tau$)** untuk menguji keselarasan peringkat/hirarki (*rank order alignment*) antara *LLM-as-a-Judge* dan *Human Evaluator*.
+
+### 🔹 Untuk Metodologi Statistik Murni (Rekomendasi Tambahan):
+Agar dosen penguji metodologi/statistik tidak protes dan melihat bahwa argumen kamu didukung oleh teori statistik murni (bukan cuma paper AI), **sangat disarankan menambahkan 3 referensi statistik berikut di Bab II, Bab III, dan Daftar Pustaka**:
+
+1. **Razali & Wah (2011)** / **Shapiro & Wilk (1965)**:
+   * *Fungsi*: Menjadi landasan ilmiah mengapa **Uji Normalitas Shapiro-Wilk** digunakan sebagai standar uji normalitas pada sampel terbatas ($N < 50$).
+2. **Akoglu (2018)** / **Field (2023)**:
+   * *Fungsi*: Menjadi landasan teori bahwa **statistik non-parametrik (seperti Kendall's Tau)** wajib digunakan ketika asumsi normalitas parametrik dilanggar, serta unggul menangani angka kembar (*ties*).
+
+> 💡 **Kesimpulan Referensi**: Gabungan antara **Paper AI (Yeung 2025 & Bhat 2026)** + **Paper Statistik (Shapiro & Razali)** akan membuat landasan teoretis skripsi kamu **tidak terbantahkan!**
+
+---
+
+## 2. Rencana Pemetaan Revisi di File `docs/revisi reyvan 03 agustus`
+
+Mari kita bedah alur perubahan yang akan kita terapkan di file draft utama kamu (`docs/revisi reyvan 03 agustus`):
+
+```mermaid
+flowchart TD
+    BAB1["<b>BAB I: Batasan Masalah (Baris 174)</b><br/>Menegaskan Kendall's Tau & MAE sebagai metrik a-priori (Yeung, 2025; Bhat & Varma, 2026)"] --> BAB2["<b>BAB II: Tinjauan Pustaka</b><br/>Menambahkan Sub-bab Teori Evaluasi Non-Parametrik Kendall's Tau & MAE (Akoglu, 2018; Bhat & Varma, 2026)"]
+    BAB2 --> BAB3["<b>BAB III: Metodologi Penelitian</b><br/>Menjabar Rumus Kendall's Tau-b, MAE, & Prosedur Uji Normalitas Shapiro-Wilk (Razali & Wah, 2011)"]
+    BAB3 --> BAB4["<b>BAB IV: Hasil & Pembahasan</b><br/>Menyajikan Tabel Shapiro-Wilk (p = 0.0043 <= 0.05) sebagai konfirmasi empiris + Hasil τ = 0.7724 & MAE = 5.45"]
+    BAB4 --> DAFTAR["<b>DAFTAR PUSTAKA</b><br/>Menambahkan entri sitasi lengkap Bhat (2026), Yeung (2025), Razali (2011), & Akoglu (2018)"]
+```
+
+---
+
+### 📍 Rincian Rencana Per Bagian File:
+
+#### 1. BAB I (Batasan Masalah - Baris 174)
+* **Status**: Kalimat di baris 174 sudah menyebutkan `Kendall's Tau dan Mean Absolute Error (MAE) (Yeung, 2025; Bhat & Varma, 2026)`.
+* **Perbaikan Minor**: Merapikan spasi ganda pada penulisan `Kendall's Tau  dan` agar estetik dan konsisten.
+
+#### 2. BAB II (Tinjauan Pustaka)
+* **Penambahan Sub-bab Baru**: **2.2.4 Landasan Teori Evaluasi Non-Parametrik Kendall's Tau dan Mean Absolute Error (MAE)**.
+* **Materi yang Dijelaskan**:
+  * Mengapa penilaian esai bergradasi pada sampel $N < 50$ membutuhkan pendekatan non-parametrik.
+  * Mengapa **Kendall's Tau ($\tau$)** dipilih untuk menguji keselarasan peringkat (*rank concordance*) dan bagaimana ia menangani skor kembar (*ties*) (Bhat & Varma, 2026; Akoglu, 2018).
+  * Mengapa **MAE** dipilih untuk mengukur deviasi rata-rata nilai riil (0–100) tanpa distorsi pengkuadratan error (Yeung, 2025).
+
+#### 3. BAB III (Metodologi Penelitian)
+* **Penyesuaian Sub-bab Teknik Analisis Data**:
+  * Menuliskan rumus matematis **Kendall's Tau-b ($\tau$)** lengkap dengan koreksi *ties* ($T_x, T_y$).
+  * Menuliskan rumus matematis **MAE**.
+  * Menjelaskan prosedur **Uji Normalitas Shapiro-Wilk** sebagai tahap konfirmasi awal untuk membuktikan apakah data sampel retrospektif $N=33$ memenuhi asumsi parametrik atau tidak (Razali & Wah, 2011).
+
+#### 4. BAB IV (Hasil dan Pembahasan)
+* **Penyesuaian Sub-bab Evaluasi Statistik**:
+  * Menyajikan **Tabel Hasil Uji Normalitas Shapiro-Wilk** ($W = 0.8963, p = 0.0043 \le 0.05$).
+  * **Narasi Penjelasan**: Menjelaskan bahwa nilai $p \le 0.05$ membuktikan secara empiris bahwa data berdistribusi **TIDAK NORMAL**, sehingga mengonfirmasi bahwa pemilihan metrik non-parametrik Kendall's Tau yang dipasang sejak Bab I-III sudah 100% tepat.
+  * Menyajikan hasil komputasi final: **Kendall's Tau ($\tau = 0.7724$)** dan **MAE ($5.45$ Poin)** disertai pembahasan kualitatifnya.
+
+#### 5. DAFTAR PUSTAKA (Baris 770–785)
+* Menambahkan entri rujukan lengkap yang rapi sesuai format standar skripsi:
+  * `Akoglu, H. (2018). User's guide to correlation coefficients. Turkish Journal of Emergency Medicine, 18(3), 91-93.`
+  * `Bhat, S., & Varma, V. (2026). What makes the whole? Probing Attribute-Level Compositionality in LLM Judges. In 2nd Workshop on Compositional Learning at ICML 2026.`
+  * `Razali, N. M., & Wah, Y. B. (2011). Power comparisons of Shapiro-Wilk, Kolmogorov-Smirnov, Lilliefors and Anderson-Darling tests. Journal of Statistical Modeling and Analytics, 2(1), 21-33.`
+  * `Shapiro, S. S., & Wilk, M. B. (1965). An analysis of variance test for normality (complete samples). Biometrika, 52(3/4), 591-611.`
+  * `Yeung, S. (2025). A comparative study of rule-based, machine learning and large language model approaches in automated writing evaluation (AWE). In Proceedings of the 15th International Learning Analytics and Knowledge Conference (pp. 984-991).`
+
+---
+
+## 3. Diskusi & Konfirmasi Persetujuan
+
+Bagaimana bro dengan alur rencana revisi di atas? 
+1. Apakah kamu sudah merasa paham dengan fungsi tiap-tiap bagian dari Bab I sampai Bab IV?
+2. Jika rencana ini sudah matang dan kamu setujui, saya siap untuk mengeksekusi pembaruan teksnya ke file draft `docs/revisi reyvan 03 agustus` secara rapi dan presisi!

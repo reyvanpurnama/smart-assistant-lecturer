@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Assistant Lecturer - Manajemen Evaluasi</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #020617;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(30, 41, 59, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(15, 23, 42, 0.3) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .transition-all-300 {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-100 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="border-b border-slate-800 bg-brand-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <div class="bg-gradient-to-tr from-indigo-500 to-sky-400 text-white w-9 h-9 rounded-xl flex items-center justify-center font-extrabold text-lg shadow-lg shadow-indigo-500/20">
+          S
+        </div>
+        <div>
+          <span class="font-bold text-slate-100 text-sm tracking-tight">Smart Assistant Lecturer</span>
+          <p class="text-[10px] text-slate-400 -mt-0.5">Dashboard Dosen &bull; Pembuat Tugas Baru</p>
+        </div>
+      </div>
+
+      <!-- Back Navigation -->
+      <div class="flex items-center gap-3">
+        <a href="halaman_c_mockup.html" class="px-4 py-2 text-xs font-semibold text-slate-400 hover:text-white bg-slate-900/60 border border-slate-800/80 rounded-xl transition-all-300 flex items-center gap-1.5">
+          Kembali ke Dashboard
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- FORM CONTAINER -->
+  <main class="flex-1 max-w-4xl w-full mx-auto px-6 py-8">
+    <div class="space-y-2 mb-8">
+      <div class="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        Langkah Setup Evaluasi
+      </div>
+      <h1 class="text-2xl font-extrabold tracking-tight text-slate-100 sm:text-3xl">Buat Parameter Grounding & Rubrik</h1>
+      <p class="text-xs text-slate-450 max-w-2xl leading-relaxed">
+        Kunci parameter grounding di bawah ini. AI asisten dosen akan menilai jawaban mahasiswa secara ketat berdasarkan kunci/referensi materi ajar dan rubrik yang Anda tentukan untuk mencegah penilaian yang subjektif dan halusinasi model.
+      </p>
+    </div>
+
+    <form id="assignment-form" onsubmit="handleSubmit(event)" class="space-y-6">
+      
+      <!-- CARD 1: INFORMASI UMUM & MODEL SELECTION -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-xl backdrop-blur-md space-y-4">
+        <h2 class="font-bold text-slate-200 text-sm tracking-wider uppercase border-b border-slate-800 pb-3 flex items-center gap-2">
+          <span class="w-1.5 h-4 bg-indigo-500 rounded"></span>
+          1. Informasi Umum & Model Penilaian
+        </h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Course Code -->
+          <div class="space-y-2">
+            <label class="text-xs font-semibold text-slate-400 block" for="course-code">Mata Kuliah / Kelas</label>
+            <select id="course-code" class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-slate-200 focus:outline-none focus:border-indigo-500 transition-all-300">
+              <option value="IF204">Basis Data Lanjut (IF204)</option>
+              <option value="IF301">Pemrograman Web Enterprise (IF301)</option>
+              <option value="IF102">Dasar Algoritma & Pemrograman (IF102)</option>
+            </select>
+          </div>
+
+          <!-- Assignment Title -->
+          <div class="space-y-2">
+            <label class="text-xs font-semibold text-slate-400 block" for="title">Judul Penugasan</label>
+            <input 
+              id="title" 
+              type="text" 
+              placeholder="e.g. Praktikum 2: Inner Join & Subquery" 
+              value="Praktikum 2: Inner Join & Subquery"
+              required
+              class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-indigo-500 transition-all-300"
+            >
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- LLM Provider & Model selection -->
+          <div class="space-y-2">
+            <label class="text-xs font-semibold text-slate-400 block" for="llm-model">Model AI Inferencing (Groq Cloud)</label>
+            <select id="llm-model" class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-slate-200 focus:outline-none focus:border-indigo-500 transition-all-300">
+              <option value="llama-3.3-70b-versatile">Llama 3.3 70B Versatile (Rekomendasi Skripsi)</option>
+              <option value="mixtral-8x7b-32768">Mixtral 8x7B (Kecepatan Tinggi)</option>
+              <option value="llama3-8b-8192">Llama 3 8B (Ringan)</option>
+            </select>
+          </div>
+
+          <!-- Due Date -->
+          <div class="space-y-2">
+            <label class="text-xs font-semibold text-slate-400 block" for="due-date">Tenggat Pengumpulan</label>
+            <input 
+              id="due-date" 
+              type="datetime-local" 
+              value="2026-07-15T23:59"
+              class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-slate-200 focus:outline-none focus:border-indigo-500 transition-all-300"
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 2: CONTEXT GROUNDING PARAMETERS -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-xl backdrop-blur-md space-y-4">
+        <h2 class="font-bold text-slate-200 text-sm tracking-wider uppercase border-b border-slate-800 pb-3 flex items-center gap-2">
+          <span class="w-1.5 h-4 bg-indigo-500 rounded"></span>
+          2. Parameter Grounding (Jangkar Kontekstual)
+        </h2>
+
+        <!-- Essay Question -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <label class="text-xs font-semibold text-slate-400 block" for="essay-question">Soal Uraian / Esai Praktikum</label>
+            <span class="text-[10px] text-slate-500">Akan ditampilkan pada layar mahasiswa</span>
+          </div>
+          <textarea 
+            id="essay-question" 
+            rows="3" 
+            required
+            placeholder="Tuliskan detail pertanyaan penugasan..."
+            class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 transition-all-300 leading-relaxed font-sans"
+          >Tuliskan sintaks query SQL untuk menampilkan nama mahasiswa (student_name), nama mata kuliah (course_name), dan nilai akhir (grade) yang diambil dari tabel mahasiswa, matakuliah, dan KRS. Kuncinya adalah hanya menampilkan data mahasiswa yang memiliki nilai di atas 80 dan menggunakan klausa JOIN secara benar. Jelaskan alur eksekusi query tersebut.</textarea>
+        </div>
+
+        <!-- Academic Context (Materi Ajar / Kunci / Referensi) -->
+        <div class="space-y-2">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center gap-1">
+              <label class="text-xs font-semibold text-slate-400 block" for="academic-context">Konteks Akademik (Kunci Jawaban / Modul Referensi)</label>
+              <div class="group relative">
+                <svg class="w-3.5 h-3.5 text-slate-500 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <div class="hidden group-hover:block absolute bottom-6 left-1/2 -translate-x-1/2 w-64 bg-slate-950 border border-slate-800 p-2 rounded text-[10px] text-slate-400 leading-relaxed z-25">
+                  Masukkan materi ajar, referensi sintaksis, schema database yang sah, atau kunci jawaban sebagai jangkar referensi AI untuk mencegah halusinasi jawaban.
+                </div>
+              </div>
+            </div>
+            <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Mitigasi Halusinasi AI</span>
+          </div>
+          <textarea 
+            id="academic-context" 
+            rows="6" 
+            required
+            placeholder="Salin materi modul praktikum, contoh query yang benar, atau skema tabel di sini..."
+            class="w-full text-xs bg-slate-950 border border-slate-800 rounded-xl p-4 text-slate-200 placeholder-slate-650 focus:outline-none focus:border-indigo-500 transition-all-300 font-mono leading-relaxed"
+          >SKEMA TABEL DATABASE REFERENSI:
+1. mahasiswa (id INT PRIMARY KEY, student_name VARCHAR(100))
+2. matakuliah (id INT PRIMARY KEY, course_name VARCHAR(100))
+3. krs (id INT PRIMARY KEY, mahasiswa_id INT, matakuliah_id INT, grade INT, FOREIGN KEY (mahasiswa_id) REFERENCES mahasiswa(id), FOREIGN KEY (matakuliah_id) REFERENCES matakuliah(id))
+
+SINTAKS QUERY YANG BENAR (GROUND TRUTH):
+SELECT m.student_name, mk.course_name, k.grade
+FROM mahasiswa m
+INNER JOIN krs k ON m.id = k.mahasiswa_id
+INNER JOIN matakuliah mk ON k.matakuliah_id = mk.id
+WHERE k.grade > 80;
+
+PENJELASAN LOGIS WAJIB:
+- FROM klausa dijalankan awal.
+- INNER JOIN m ke k ke mk dilakukan melalui key relasi mahasiswa_id dan matakuliah_id.
+- WHERE k.grade > 80 untuk menyaring data nilai di atas 80.
+- SELECT memproyeksikan nama mahasiswa, nama mk, dan grade.</textarea>
+        </div>
+      </div>
+
+      <!-- CARD 3: DYNAMIC RUBRIC BUILDER -->
+      <div class="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 shadow-xl backdrop-blur-md space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-3 gap-2">
+          <h2 class="font-bold text-slate-200 text-sm tracking-wider uppercase flex items-center gap-2">
+            <span class="w-1.5 h-4 bg-indigo-500 rounded"></span>
+            3. Rubrik Penilaian Khusus
+          </h2>
+          <!-- Validation status -->
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400">Total Bobot:</span>
+            <div id="weight-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5 transition-all-300">
+              <span id="weight-icon" class="h-1.5 w-1.5 bg-emerald-400 rounded-full"></span>
+              <span id="total-weight-text">100%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rubric Table / Grid Form -->
+        <div class="space-y-4">
+          <div class="hidden sm:grid grid-cols-12 gap-3 text-xs font-bold text-slate-450 px-2">
+            <div class="col-span-3">Nama Aspek</div>
+            <div class="col-span-2">Bobot (%)</div>
+            <div class="col-span-6">Kriteria Penilaian Detail</div>
+            <div class="col-span-1 text-center">Aksi</div>
+          </div>
+
+          <!-- Container for Dynamic Rows -->
+          <div id="rubric-container" class="space-y-3">
+            <!-- Row 1 -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-slate-950/20 border border-slate-850 p-4 sm:p-2.5 rounded-xl items-center rubric-row transition-all-300">
+              <div class="col-span-3">
+                <input 
+                  type="text" 
+                  value="Kebenaran Sintaks SQL" 
+                  placeholder="e.g. Sintaks SQL" 
+                  required
+                  class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+                >
+              </div>
+              <div class="col-span-2">
+                <div class="relative">
+                  <input 
+                    type="number" 
+                    value="40" 
+                    min="1" 
+                    max="100" 
+                    required
+                    oninput="calculateTotalWeight()"
+                    class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg pl-3 pr-7 py-2 text-slate-200 font-mono focus:outline-none focus:border-indigo-500 rubric-weight"
+                  >
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-bold">%</span>
+                </div>
+              </div>
+              <div class="col-span-6">
+                <input 
+                  type="text" 
+                  value="Sintaks SELECT, FROM, JOIN, dan WHERE harus ditulis dengan benar tanpa syntax error." 
+                  placeholder="Deskripsi kriteria penilaian detail..." 
+                  required
+                  class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+                >
+              </div>
+              <div class="col-span-1 text-center">
+                <button 
+                  type="button" 
+                  onclick="deleteRow(this)"
+                  class="p-2 text-rose-500 hover:text-white bg-rose-500/10 hover:bg-rose-500 border border-rose-500/20 rounded-lg transition-all-300"
+                >
+                  <svg class="w-3.5 h-3.5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-slate-950/20 border border-slate-850 p-4 sm:p-2.5 rounded-xl items-center rubric-row transition-all-300">
+              <div class="col-span-3">
+                <input 
+                  type="text" 
+                  value="Logika Join & Relasi Tabel" 
+                  placeholder="e.g. Sintaks SQL" 
+                  required
+                  class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+                >
+              </div>
+              <div class="col-span-2">
+                <div class="relative">
+                  <input 
+                    type="number" 
+                    value="30" 
+                    min="1" 
+                    max="100" 
+                    required
+                    oninput="calculateTotalWeight()"
+                    class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg pl-3 pr-7 py-2 text-slate-200 font-mono focus:outline-none focus:border-indigo-500 rubric-weight"
+                  >
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-bold">%</span>
+                </div>
+              </div>
+              <div class="col-span-6">
+                <input 
+                  type="text" 
+                  value="Kebenaran penghubung antar-tabel mahasiswa ke krs dan krs ke matakuliah." 
+                  placeholder="Deskripsi kriteria penilaian detail..." 
+                  required
+                  class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+                >
+              </div>
+              <div class="col-span-1 text-center">
+                <button 
+                  type="button" 
+                  onclick="deleteRow(this)"
+                  class="p-2 text-rose-500 hover:text-white bg-rose-500/10 hover:bg-rose-500 border border-rose-500/20 rounded-lg transition-all-300"
+                >
+                  <svg class="w-3.5 h-3.5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 bg-slate-950/20 border border-slate-850 p-4 sm:p-2.5 rounded-xl items-center rubric-row transition-all-300">
+              <div class="col-span-3">
+                <input 
+                  type="text" 
+                  value="Akurasi Penjelasan Alur" 
+                  placeholder="e.g. Sintaks SQL" 
+                  required
+                  class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+                >
+              </div>
+              <div class="col-span-2">
+                <div class="relative">
+                  <input 
+                    type="number" 
+                    value="30" 
+                    min="1" 
+                    max="100" 
+                    required
+                    oninput="calculateTotalWeight()"
+                    class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg pl-3 pr-7 py-2 text-slate-200 font-mono focus:outline-none focus:border-indigo-500 rubric-weight"
+                  >
+                  <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-bold">%</span>
+                </div>
+              </div>
+              <div class="col-span-6">
+                <input 
+                  type="text" 
+                  value="Ketepatan penjelasan urutan logika pemrosesan query (logical processing order)." 
+                  placeholder="Deskripsi kriteria penilaian detail..." 
+                  required
+                  class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+                >
+              </div>
+              <div class="col-span-1 text-center">
+                <button 
+                  type="button" 
+                  onclick="deleteRow(this)"
+                  class="p-2 text-rose-500 hover:text-white bg-rose-500/10 hover:bg-rose-500 border border-rose-500/20 rounded-lg transition-all-300"
+                >
+                  <svg class="w-3.5 h-3.5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Add Aspect Button -->
+          <button 
+            type="button" 
+            onclick="addNewRow()"
+            class="px-4 py-2.5 text-xs font-semibold text-indigo-400 hover:text-white bg-indigo-500/5 hover:bg-indigo-500 border border-indigo-500/10 hover:border-indigo-500 rounded-xl transition-all-300 flex items-center justify-center gap-1.5 w-full sm:w-auto"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+            Tambah Aspek Kriteria Baru
+          </button>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4">
+        <button 
+          type="button" 
+          onclick="alert('Tugas disimpan sebagai draft.')"
+          class="h-11 px-6 text-xs font-semibold text-slate-300 hover:text-white bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl transition-all-300 flex items-center justify-center gap-1.5"
+        >
+          Simpan ke Draft
+        </button>
+        <button 
+          id="btn-publish"
+          type="submit"
+          class="h-11 px-8 bg-gradient-to-r from-indigo-500 to-sky-500 hover:from-indigo-600 hover:to-sky-600 text-white font-bold text-xs tracking-wider uppercase rounded-xl transition-all-300 shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          Kunci & Publikasikan Tugas
+        </button>
+      </div>
+
+    </form>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-900 bg-brand-950 py-4 text-center text-xs text-slate-600">
+    <p>&copy; 2026 Smart Assistant Lecturer - Skripsi IT Universitas Muhammadiyah Bandung</p>
+  </footer>
+
+  <!-- JAVASCRIPT FOR DYNAMIC RUBRIC & WEIGHT VALIDATION -->
+  <script>
+    function calculateTotalWeight() {
+      const weightInputs = document.querySelectorAll('.rubric-weight');
+      let total = 0;
+      weightInputs.forEach(input => {
+        const val = parseFloat(input.value) || 0;
+        total += val;
+      });
+
+      const badge = document.getElementById('weight-badge');
+      const icon = document.getElementById('weight-icon');
+      const text = document.getElementById('total-weight-text');
+      const publishBtn = document.getElementById('btn-publish');
+
+      text.innerText = total + '%';
+
+      if (total === 100) {
+        badge.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5 transition-all-300';
+        icon.className = 'h-1.5 w-1.5 bg-emerald-400 rounded-full';
+        publishBtn.disabled = false;
+        publishBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      } else {
+        badge.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20 flex items-center gap-1.5 transition-all-300';
+        icon.className = 'h-1.5 w-1.5 bg-rose-400 rounded-full';
+        publishBtn.disabled = true;
+        publishBtn.classList.add('opacity-50', 'cursor-not-allowed');
+      }
+    }
+
+    function addNewRow() {
+      const container = document.getElementById('rubric-container');
+      const newRow = document.createElement('div');
+      newRow.className = 'grid grid-cols-1 sm:grid-cols-12 gap-3 bg-slate-950/20 border border-slate-850 p-4 sm:p-2.5 rounded-xl items-center rubric-row transition-all-300';
+      
+      newRow.innerHTML = `
+        <div class="col-span-3">
+          <input 
+            type="text" 
+            placeholder="Aspek Penilaian Baru" 
+            required
+            class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+          >
+        </div>
+        <div class="col-span-2">
+          <div class="relative">
+            <input 
+              type="number" 
+              value="0" 
+              min="1" 
+              max="100" 
+              required
+              oninput="calculateTotalWeight()"
+              class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg pl-3 pr-7 py-2 text-slate-200 font-mono focus:outline-none focus:border-indigo-500 rubric-weight"
+            >
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-500 font-bold">%</span>
+          </div>
+        </div>
+        <div class="col-span-6">
+          <input 
+            type="text" 
+            placeholder="Kriteria deskripsi penilaian secara spesifik..." 
+            required
+            class="w-full text-xs bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-200 focus:outline-none focus:border-indigo-500"
+          >
+        </div>
+        <div class="col-span-1 text-center">
+          <button 
+            type="button" 
+            onclick="deleteRow(this)"
+            class="p-2 text-rose-500 hover:text-white bg-rose-500/10 hover:bg-rose-500 border border-rose-500/20 rounded-lg transition-all-300"
+          >
+            <svg class="w-3.5 h-3.5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+          </button>
+        </div>
+      `;
+      
+      container.appendChild(newRow);
+      calculateTotalWeight();
+    }
+
+    function deleteRow(button) {
+      const row = button.closest('.rubric-row');
+      row.remove();
+      calculateTotalWeight();
+    }
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const title = document.getElementById('title').value;
+      alert(`Sukses! Tugas "${title}" berhasil dikunci dan dipublikasikan.\n\nParameter grounding dan rubrik disimpan ke database Supabase dan model Llama 3.3 siap melakukan penilaian otomatis.`);
+    }
+
+    // Initial load validation check
+    calculateTotalWeight();
+  </script>
+</body>
+</html>

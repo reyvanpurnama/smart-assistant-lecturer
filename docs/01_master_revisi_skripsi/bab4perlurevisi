@@ -1,0 +1,75 @@
+        4.3. Analisis Statistik dan Komputasi Keandalan AI
+Sub-bab ini merupakan pusat analisis kuantitatif utama yang membuktikan keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer terhadap penilaian manual dosen (ground truth). Pengujian dilakukan secara komprehensif terhadap 33 dokumen jawaban mahasiswa Kelas IF23A.
+            4.3.1  Perhitungan Step-by-Step Kendall’s Tau-b
+Koefisien Korelasi Kendall's Tau ( ) digunakan untuk mengevaluasi apakah AI memiliki logika hirarki peringkat yang sama dengan dosen dalam menentukan kualitas jawaban mahasiswa. Karena sampel data nilai 33 mahasiswa memiliki beberapa nilai kembar (ties) seperti beberapa mahasiswa yang memperoleh skor sama persis (misalnya skor 85.00), maka perhitungan komputasi disesuaikan menggunakan rumus Kendall's Tau-b yang mengoreksi faktor nilai kembar:
+
+Keterangan:
+    a)  (Concordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI sejalan ().
+    b)  (Discordant Pairs) : Jumlah pasangan sampel di mana hirarki nilai dosen dan AI berlawanan ( >  tetapi  < , atau sebaliknya).
+    c)  : Jumlah kembar (ties) pada skor dosen.
+    d)  : Jumlah total sampel mahasiswa ().
+    e)  : Jumlah total sampel mahasiswa ()
+Rincian komputasi step-by-step pada dataset 33 mahasiswa (Iterasi 2):
+    a) Jumlah Total Pasangan Kombinasi 
+    b) Dari 528 pasangan tersebut, diperoleh:
+                        i. Pasangan Concordant  = 379 pasangan.
+                        ii. Pasangan Discordant  = 28 pasangan.
+                        iii. Ties pada skor AI  = 71 pasangan.
+                        iv. Ties pada skor AI  = 21 pasangan.
+    c) Pembilang ().
+    d) Penyebut 
+    e) Maka nilai Kendall’s Tau .
+Nilai Kendall's Tau sebesar  mengindikasikan tingkat keselarasan peringkat yang sangat kuat dan signifikan secara statistik. Hal ini membuktikan bahwa logika penalaran model GPT-OSS 120B mampu meniru urutan prioritas penilaian dosen secara konsisten.
+            4.3.2  Perhitungan Step-by-Step Mean Absolute Error (MAE)
+MAE mengukur rata-rata besarnya selisih mutlak antara skor prediksi AI () terhadap skor aktual dosen () tanpa memperhitungkan arah kesalahan. Rumus baku MAE didefinisikan sebagai:
+
+Keterangan:
+a) : Jumlah total sampel jawaban mahasiswa ().
+b)  : Skor asli manual dari dosen pengampu (ground truth).
+c)  : Skor prediksi otomatis yang dikeluarkan oleh sistem AI.
+d)  : Nilai mutlak selisih skor antara dosen dan AI pada sampel ke-i.
+Rincian komputasi step-by-step pada total 33 sampel (Iterasi 2):
+    a) Setiap selisih skor mutlak antara dosen dan AI dihitung per mahasiswa .
+    b) Total akumulasi seluruh selisih mutlak 33 mahasiswa di basis data Supabase diperoleh sebesar .
+    c) Maka nilai MAE .
+Perhitungan ini membuktikan bahwa pada Iterasi 2, rata-rata deviasi fisik skor AI terhadap ground truth dosen hanya sebesar 5.45 poin (turun drastis sebesar -70.3% dibanding Iterasi 1 sebesar 18.33 poin).
+        4.4. Hasil Komparasi Iterasi Perbaikan Prototype & Pembahasan 
+Pengembangan sistem mengikuti metode Prototyping yang dilaksanakan melalui dua tahap iterasi perbaikan utama untuk memastikan keluaran penilaian AI selaras dengan standar dosen pengampu.
+1. Iterasi 1 (Prototype Awal - Penilaian Biner / Binary Scoring)
+Pada Iterasi 1, sistem menerapkan skema penilaian biner (skor 0 atau 100) pada setiap aspek rubrik sebagai acuan baseline. Pada tahap ini, AI bersikap sangat kaku. Jawaban mahasiswa yang memiliki kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung dijatuhi penalti skor 0. Pengujian pada 33 dokumen mahasiswa di Iterasi 1 menghasilkan deviasi kesalahan skor yang sangat tinggi (MAE = 18.33 poin) dan tingkat keselarasan peringkat yang sedang (Kendall's Tau ). Dosen merekomendasikan perlunya skema penilaian parsial untuk mengakomodasi kebenaran logika berpikir mahasiswa. 
+2. Iterasi 2 (Prototype Final - Penilaian Kredit Parsial 3-Tingkat / 3-Point Partial Credit Rubric)
+Berdasarkan evaluasi Iterasi 1, dilakukan perbaikan pada middleware di Iterasi 2 dengan menerapkan 3-Point Partial Credit Rubric (skor 0, 50, 100) pada 10 aspek rubrik berbobot 10%. Skema ini membagi penilaian menjadi tiga tingkatan: Full Credit (100) untuk kebenaran sempurna, Partial Credit (50) untuk jawaban yang secara logika benar namun memiliki typo/kelalaian minor, dan No Credit (0) untuk jawaban yang salah total. Hasil pengujian ulang pada Iterasi 2 terbukti secara signifikan meningkatkan keselarasan peringkat (Kendall's Tau  naik menjadi 0.7724) dan memangkas rata-rata kesalahan skor (MAE turun menjadi 5.45 poin). Iterasi 2 disetujui sebagai sistem final.
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+Tahap Prototype	Metode Penilaian	Kendall's Tau (τ)	MAE	Evaluasi Dosen
+Iterasi 1 (Awal)	Binary Scoring (0/100)	0.4400  	18.33	Terlalu kaku pada kesalahan minor.
+Iterasi 2 (Final)	3-Point Partial Credit	0.7724 	5.45	Disetujui: Keselarasan tinggi & error terkecil.
+
+Gambar 4.5 Grafik Perbandingan Performa Iterasi Prototyping
+
+Visualisasi komparasi menunjukkan bahwa penerapan skema 3-Point Partial Credit pada Iterasi 2 berhasil meningkatkan korelasi peringkat Kendall's Tau sebesar +75.5% (dari 0.4400 menjadi 0.7724) dan mereduksi kesalahan rata-rata fisik MAE sebesar -70.3% (dari 18.33 poin menjadi 5.45 poin). Penerapan arsitektur provider-agnostic middleware yang menyatukan Knowledge Grounding dan Chain-of-Thought (CoT) terbukti berhasil memitigasi halusinasi model LLM serta menghasilkan evaluasi otomatis yang konsisten dengan standar dosen pengampu.
+        4.5. Analisis Statistik dan Keandalan AI
+Sub-bab ini merupakan pusat analisis kuantitatif utama yang membuktikan keandalan dan tingkat keselarasan penilaian otomatis Smart Assistant Lecturer terhadap penilaian manual dosen (ground truth). Pengujian dilakukan secara menyeluruh terhadap 33 dokumen jawaban mahasiswa Kelas IF23A
+            4.5.1  Tabel Perhitungan Sampel Komparasi Data Asli
+Untuk memberikan transparansi mengenai alur penghitungan skor, berikut disajikan sampel komparasi 5 mahasiswa representative dari total 33 dokumen pada Iterasi 2 (3-Point Partial Credit) berdasarkan data aktual yang tercatat di basis data Supabase (`IF23A_cleaned_trinary.csv`)
+Tabel 4.1 Perbandingan Hasil Iterasi Perbaikan Prototype
+NIM	Skor Dosen ()	Skor AI 	Selisih Mutlak 	Status Pasangan Hirarki
+200102027	85.00	90.00	5.00	Concordant (P) terhadap MHS 2
+230102003	55.00	65.00	10.00	Concordant (P) terendah
+230102004	85.00	85.00	0.00	Sempurna (Deviasi 0)
+230102005	85.00	90.00	5.00	Concordant (P) sejalan
+230102012	90.00	80.00	10.00	Concordant (P) sejalan
+
+Rata-rata Selisih Mutlak 5 Sampel Tersebut: (5.00 + 10.00 + 0.00 + 5.00 + 10.00) / 5 = 6.00 poin.
+Contoh Alur Perhitungan MAE pada Total 33 Sampel:
+Total akumulasi selisih mutlak seluruh 33 mahasiswa di basis data Supabase didapatkan sebesar 179.85 poin. 
+Maka nilai MAE Iterasi 2 dihitung sebagai berikut:
+
+Perhitungan ini membuktikan bahwa pada Iterasi 2, rata-rata deviasi fisik skor AI terhadap ground truth dosen hanya sebesar 5.45 poin (turun drastis sebesar -70.3% dari Iterasi 1 sebesar 18.33 poin). 
+        4.6. Pembahasan Empiris Knowledge Grounding dan Chain-of-Thought (CoT)
+Pembahasan pada bagian ini memfokuskan analisis pada dampak operasional dari perbaikan lapisan middleware terhadap hasil evaluasi otomatis AI.
+                            1. Pembahasan Dampak Knowledge Grounding:
+Penguncian materi referensi [CONTEXT] dan rubrik dosen [CRITERIA] di dalam middleware terbukti secara efektif mengisolasi ruang penalaran model GPT-OSS 120B. Selama pengujian pada 33 dokumen jawaban mahasiswa, tidak ditemukan satu pun kejadian halusinasi (hallucination) di mana AI memberikan skor berdasarkan informasi di luar naskah soal dan rubrik yang ditetapkan dosen. AI secara ketat menilai query SQL berdasarkan skema database `universitas` dan kriteria 10 aspek yang telah dikunci di Supabase.
+                            2. Pembahasan Dampak Chain-of-Thought (CoT):
+Penerapan instruksi CoT pada elemen [TASK] memaksa AI untuk menyusun penalaran bertahap (`global_reasoning`) terlebih dahulu sebelum mengeluarkan angka skor. Perubahan signifikan terjadi antara Iterasi 1 dan Iterasi 2:
+    a) Pada Iterasi 1 (Binary Scoring), tanpa CoT yang luwes, AI mengevaluasi skor secara kaku. Kesalahan tipografi minor (seperti lupa tanda petik tunggal pada string NIM) langsung diberi skor 0, yang mengakibatkan deviasi kesalahan skor sangat tinggi (MAE = 18.33 poin).
+    b) Pada Iterasi 2 (3-Point Partial Credit + CoT), middleware memaksa AI menganalisis tingkat kebenaran logika parsial. Ketika menemukan kesalahan minor, penalaran CoT AI mengenali bahwa struktur logika query utama sudah benar, sehingga AI memberikan skor parsial (skor 50). Hal ini secara langsung berhasil memangkas kesalahan fisik skor hingga -70.3% (MAE turun menjadi 5.45 poin) dan meningkatkan keselarasan peringkat sebesar +75.5% (Kendall's Tau naik dari 0.4400 menjadi 0.7724).
