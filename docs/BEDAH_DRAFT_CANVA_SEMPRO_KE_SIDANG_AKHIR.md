@@ -52,14 +52,18 @@ Berdasarkan draf skripsi Bab II (Halaman 13, Paragraf Novelty), kebaruan penelit
   * Ubah Metrik: **Kendall's Tau-b ($\tau_b$) dan Mean Absolute Error (MAE)**.
   * Ukuran Sampel: **Dataset Retrospektif $N = 33$ Mahasiswa Kelas IF23A (Mata Kuliah Basis Data Lanjut IF204)**.
 
-### 📌 Slide 6, 7, 8: Tinjauan Pustaka & Research Gap
+### 📌 Slide 6, 7, 8: Tinjauan Pustaka, Research Gap, & Matriks Novelty
 * **Sempro Lama:** Menyebut novelty terintegrasi QWK & Pearson.
-* **Sidang Akhir Baru:** **UPDATE TOTAL** pada Slide 8 (Research Gap & Novelty) dengan menampilkan **4 PILAR KEBARUAN (NOVELTY) PENELITIAN REYVAN**:
-  1. 🏗️ **Decoupling Middleware Architecture** (Claes, 2025): Memisahkan platform aplikasi dari fluktuasi API vendor AI.
-  2. 📝 **Modular Prompting & CoT Reasoning** (Stahl et al., 2024): Menjelaskan logika alur pemikiran sebelum memberikan keputusan skor.
-  3. ⚖️ **3-Point Partial Credit Rubric** (Chen & Wan, 2024): Penilaian 3 tingkat (0, 50, 100) untuk mengeliminasi kekakuan biner pada kesalahan tipografi minor.
-  4. 🛡️ **Knowledge Grounding GPT-OSS 120B** (Ji et al., 2023; Agarwal et al., 2025): Mengunci ruang penalaran LLM open-weight agar 0% halusinasi pada evaluasi esai Indonesia.
-  * *Divalidasi dengan Metrik Mutlah AWE/AES:* **Kendall's Tau-b ($\tau_b$)** untuk korelasi hirarki logika dan **Mean Absolute Error (MAE)** untuk deviasi rata-rata skor fisik (Yeung, 2025; Bhat & Varma, 2026).
+* **Sidang Akhir Baru:** **PERBAIKI TABEL SEMPRO** menjadi **TABEL MATRIKS SINTESIS PENELITIAN TERDAHULU (Tabel 2.1 Final)** dengan 2 kolom utama yang sangat berbobot:
+
+| No | Peneliti & Referensi Jurnal | Hasil Utama Penelitian | Aspek Kunci yang Diadopsi / Kontribusi pada SAL |
+| :-: | :--- | :--- | :--- |
+| 1 | **Pack, Barrett, & Escalante (2024)** | Evaluasi LLM *closed-source* rentan fluktuatif & instabil akibat pembaruan vendor sepihak. | **Justifikasi Pemilihan Model Open-Weight (GPT-OSS 120B)** via Groq API untuk menjamin konsistensi evaluasi. |
+| 2 | **Claes (2025)** | Arsitektur *provider-agnostic middleware* berbasis *decoupling* memisahkan platform dari API AI. | **Pola Arsitektur Decoupling Middleware** untuk mengisolasi logika sistem dari layanan inferensi LLM. |
+| 3 | **Stahl et al. (2024)** | Prompting modular (*Persona* & *CoT*) terbukti meningkatkan akurasi skoring jika AI dipicu bernalar dulu. | **Struktur Prompt Modular & Chain-of-Thought (CoT)** untuk mengekstrak log penalaran sebelum skor dirilis. |
+| 4 | **Chen & Wan (2024)** | Skema *partial credit rubric* & CoT mencapai akurasi evaluasi esai setara penilai manusia. | **Skema 3-Point Partial Credit Rubric (0, 50, 100)** untuk mengakomodasi kebenaran logika parsial. |
+| 5 | **Ji et al. (2023); Agarwal (2025)** | Implementasi *Knowledge Grounding* mengunci penalaran LLM pada konteks acuan untuk memitigasi halusinasi. | **Mekanisme Knowledge Grounding** yang mengunci penalaran GPT-OSS 120B pada dokumen acuan dosen. |
+| 6 | **Yeung (2025); Bhat & Varma (2026)** | Evaluasi AWE/AES mutakhir bergantung pada korelasi hirarki (*Kendall Tau-b*) dan deviasi fisik (*MAE*). | **Metrik Evaluasi Kuantitatif (Kendall Tau-b & MAE)** untuk menguji presisi keselarasan skor terhadap dosen. |
 
 ### 📌 Slide 9: AI Core Stack & Technology
 * **Sempro Lama:** Landasan Teknologi Next.js, Supabase, Groq API.

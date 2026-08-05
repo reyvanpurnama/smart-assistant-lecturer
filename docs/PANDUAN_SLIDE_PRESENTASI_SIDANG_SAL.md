@@ -171,19 +171,24 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 8.5: RESEARCH GAP & 4 PILAR NOVELTY (EXPLICIT CARDS)
+### 🖥️ SLIDE 8.5: MATRIKS PENELITIAN TERDAHULU & SINTESIS NOVELTY
 **Tampilan Visual Slide:**
-* **4 Kotak / Card Kebaruan:**
-  1. 🏗️ **Decoupling Middleware** (Claes, 2025)
-  2. 📝 **Modular CoT Prompting** (Stahl et al., 2024)
-  3. ⚖️ **3-Point Partial Credit Rubric** (Chen & Wan, 2024)
-  4. 🛡️ **Knowledge Grounding GPT-OSS 120B** (Ji et al., 2023; Agarwal et al., 2025)
+* **Tabel Matriks Penelitian Terdahulu & Aspek yang Diadopsi (Tabel 2.1 Final):**
+
+| No | Peneliti & Referensi Jurnal | Hasil Utama Penelitian | Aspek Kunci yang Diadopsi / Kontribusi pada SAL |
+| :-: | :--- | :--- | :--- |
+| 1 | **Pack, Barrett, & Escalante (2024)** | Evaluasi LLM *closed-source* rentan fluktuatif & instabil akibat pembaruan vendor sepihak. | **Justifikasi Pemilihan Model Open-Weight (GPT-OSS 120B)** via Groq API untuk menjamin konsistensi evaluasi. |
+| 2 | **Claes (2025)** | Arsitektur *provider-agnostic middleware* berbasis *decoupling* memisahkan platform dari API AI. | **Pola Arsitektur Decoupling Middleware** untuk mengisolasi logika sistem dari layanan inferensi LLM. |
+| 3 | **Stahl et al. (2024)** | Prompting modular (*Persona* & *CoT*) terbukti meningkatkan akurasi skoring jika AI dipicu bernalar dulu. | **Struktur Prompt Modular & Chain-of-Thought (CoT)** untuk mengekstrak log penalaran sebelum skor dirilis. |
+| 4 | **Chen & Wan (2024)** | Skema *partial credit rubric* & CoT mencapai akurasi evaluasi esai setara penilai manusia. | **Skema 3-Point Partial Credit Rubric (0, 50, 100)** untuk mengakomodasi kebenaran logika parsial. |
+| 5 | **Ji et al. (2023); Agarwal (2025)** | Implementasi *Knowledge Grounding* mengunci penalaran LLM pada konteks acuan untuk memitigasi halusinasi. | **Mekanisme Knowledge Grounding** yang mengunci penalaran GPT-OSS 120B pada dokumen acuan dosen. |
+| 6 | **Yeung (2025); Bhat & Varma (2026)** | Evaluasi AWE/AES mutakhir bergantung pada korelasi hirarki (*Kendall Tau-b*) dan deviasi fisik (*MAE*). | **Metrik Evaluasi Kuantitatif (Kendall Tau-b & MAE)** untuk menguji presisi keselarasan skor terhadap dosen. |
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Claes (2025); Stahl et al. (2024); Chen & Wan (2024); Ji et al. (2023); Yeung (2025); Bhat & Varma (2026)`
+`Pack et al. (2024); Claes (2025); Stahl et al. (2024); Chen & Wan (2024); Ji et al. (2023); Yeung (2025); Bhat & Varma (2026)`
 
-🎙️ **Script Omongan Bicara Reyvan (45 detik):**
-> *"Secara eksplisit, kebaruan penelitian ini mengisi celah riset terdahulu dengan menyatukan 4 pilar utama: arsitektur middleware decoupling dari Claes (2025), prompting modular CoT dari Stahl et al. (2024), rubrik kredit parsial bergradasi dari Chen & Wan (2024), serta Knowledge Grounding pada model open-weight GPT-OSS 120B yang divalidasi presisinya menggunakan Kendall Tau-b dan MAE (Yeung, 2025; Bhat & Varma, 2026)."*
+🎙️ **Script Omongan Bicara Reyvan (1 menit):**
+> *"Berdasarkan tinjauan penelitian terdahulu pada tabel ini, mayoritas studi mengevaluasi LLM komersial closed-source secara langsung (tightly coupled) yang menurut Pack, Barrett, & Escalante (2024) sangat rentan fluktuatif akibat pembaruan vendor. Penelitian ini menjawab celah riset tersebut dengan mengadopsi model open-weight GPT-OSS 120B dan menyatukan 5 keunggulan studi dunia: decoupling middleware dari Claes (2025), CoT prompting dari Stahl et al. (2024), kredit parsial dari Chen & Wan (2024), serta Knowledge Grounding dari Ji et al. (2023) yang divalidasi dengan Kendall Tau-b dan MAE (Yeung, 2025; Bhat & Varma, 2026)."*
 
 ---
 
