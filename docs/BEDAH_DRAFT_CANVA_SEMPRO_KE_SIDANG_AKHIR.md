@@ -52,9 +52,9 @@ Berdasarkan draf skripsi Bab II (Halaman 13, Paragraf Novelty), kebaruan penelit
   * Ubah Metrik: **Kendall's Tau-b ($\tau_b$) dan Mean Absolute Error (MAE)**.
   * Ukuran Sampel: **Dataset Retrospektif $N = 33$ Mahasiswa Kelas IF23A (Mata Kuliah Basis Data Lanjut IF204)**.
 
-### 📌 Slide 6, 7, 8: Tinjauan Pustaka & Sintesis 4 Pilar Novelty
+### 📌 Slide 6, 7, 8: Tinjauan Pustaka & Matriks Kebaruan (State of the Art & Novelty)
 * **Sempro Lama:** Menyebut QWK & Pearson.
-* **Sidang Akhir Baru:** **PAKAI TABEL RINGKAS 4 BARIS INI BIAR LANGSUNG KELIHATAN NOVELTY-NYA & TULISAN CANVA LEGA**:
+* **Sidang Akhir Baru:** **PAKAI TABEL MATRIKS SINTESIS LITERATUR & KEBARUAN INI (BENTUK BULLET SHORT)**:
 
 | Pilar Kebaruan (Novelty SAL) | Referensi Peneliti & Tahun | Fokus & Temuan Penelitian Terdahulu | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- | :--- |

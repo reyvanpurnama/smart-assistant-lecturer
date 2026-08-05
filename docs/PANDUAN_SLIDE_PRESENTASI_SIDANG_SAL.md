@@ -171,9 +171,9 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 8.5: SINTESIS 4 PILAR NOVELTY PENELITIAN (TABEL RINGKAS 4 BARIS)
+### 🖥️ SLIDE 8.5: MATRIKS SINTESIS LITERATUR & 4 PILAR KEBARUAN (NOVELTY)
 **Tampilan Visual Slide:**
-* **Tabel 4 Pilar Novelty Utama (Sangat Ringkas & Bebas Stress Canva):**
+* **Tabel Matriks Sintesis Literatur & 4 Pilar Novelty (Sangat Ringkas & Bebas Stress Canva):**
 
 | Pilar Kebaruan (Novelty SAL) | Referensi Peneliti & Tahun | Fokus & Temuan Penelitian Terdahulu | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- | :--- |
