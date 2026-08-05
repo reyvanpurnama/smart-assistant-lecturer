@@ -171,24 +171,24 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 8.5: MATRIKS SINTESIS PENELITIAN TERDAHULU (2 KOLOM RINGKAS CANVA)
+### 🖥️ SLIDE 8.5: TABEL TERAKHIR PENELITIAN TERDAHULU (TABEL 2.1 NASKAH FINAL)
 **Tampilan Visual Slide:**
-* **Tabel Ringkas 2 Kolom (Mudah Dibaca & Canva-Friendly):**
+* **Tabel Matriks Penelitian Terdahulu (Eksak Sesuai Draf Skripsi Bab II Tabel 2.1):**
 
-| Peneliti & Referensi Jurnal | Pilar Novelty & Aspek Utama yang Diadopsi |
-| :--- | :--- |
-| **Pack, Barrett, & Escalante (2024)** | Pemilihan Model Open-Weight (GPT-OSS 120B) via Groq API *(Cegah Fluktuasi Vendor)* |
-| **Claes (2025)** | Arsitektur *Provider-Agnostic Middleware* *(Decoupling Logika Sistem & API AI)* |
-| **Stahl et al. (2024)** | Structure *Modular Prompting & Chain-of-Thought (CoT)* *(Transparansi Penalaran)* |
-| **Chen & Wan (2024)** | Skema *3-Point Partial Credit Rubric (0, 50, 100)* *(Keadilan Nilai Parsial)* |
-| **Ji et al. (2023); Agarwal (2025)** | *Knowledge Grounding* Konteks Dosen pada Open-Weight LLM *(0% Halusinasi)* |
-| **Yeung (2025); Bhat & Varma (2026)** | Metrik Evaluasi AWE/AES Mutakhir *(Pengujian Kendall's Tau-b & MAE)* |
+| Peneliti | Hasil Utama | Aspek yang Diadopsi |
+| :--- | :--- | :--- |
+| **Mizumoto & Eguchi (2023)** | Uji zero-shot GPT-3 (text-davinci-003) pada 12.100 esai TOEFL11 capai akurasi 89,15% adjacent agreement. | Pengujian validitas membandingkan skor otomatis AI terhadap nilai penilai manusia (*human rater*). |
+| **Pack, Barrett, & Escalante (2024)** | Performa LLM komersial (*closed-source*) terbukti fluktuatif akibat pembaruan vendor sepihak. | Justifikasi penggunaan model *open-weight* untuk cegah inkonsistensi, serta prompt elemen `[ROLE]` & `[CONTEXT]`. |
+| **Stahl et al. (2024)** | Skoring & umpan balik bersamaan tingkatkan performa LLM jika dipicu memberi penjelasan rasional sebelum skor dirilis. | Penyusunan struktur instruksi modular berbasis *Chain-of-Thought (CoT)* untuk mengekstrak justifikasi penilaian. |
+| **Haller et al. (2022)** | Model Transformer unggul secara semantik, namun membutuhkan rubrik kaku (*hand-engineered*) untuk hasil optimal. | Pendekatan *hybrid* menyatukan kapabilitas semantik model bahasa dengan parameter kaku rubrik dosen. |
+| **Claes (2025)** | Mekanisme *decoupling* arsitektur *provider-agnostic middleware* sukses memisahkan platform dari API AI. | Pola desain arsitektur *middleware* berbasis komponen *decoupling* memisahkan aplikasi dari API inferensi. |
+| **Chen & Wan (2024)** | Evaluasi *partial credit grading* LLM capai akurasi setara manusia (70-80% *agreement*) dengan teknik CoT. | Pengadopsian struktur rubrik bergradasi (*multi-item partial credit*), CoT sebelum skor, serta evaluasi keselarasan. |
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Pack et al. (2024); Claes (2025); Stahl et al. (2024); Chen & Wan (2024); Ji et al. (2023); Yeung (2025); Bhat & Varma (2026)`
+`Mizumoto & Eguchi (2023); Pack et al. (2024); Stahl et al. (2024); Haller et al. (2022); Claes (2025); Chen & Wan (2024)`
 
 🎙️ **Script Omongan Bicara Reyvan (1 menit):**
-> *"Berdasarkan tinjauan riset terdahulu, mayoritas studi mengevaluasi LLM komersial closed-source secara langsung yang menurut Pack et al. (2024) sangat rentan fluktuatif akibat pembaruan vendor sepihak. Penelitian ini menjawab celah tersebut dengan memilih model open-weight GPT-OSS 120B dan menyatukan 5 keunggulan studi dunia: decoupling middleware dari Claes (2025), CoT prompting dari Stahl et al. (2024), kredit parsial dari Chen & Wan (2024), serta Knowledge Grounding dari Ji et al. (2023) yang divalidasi presisinya menggunakan metrik Kendall Tau-b dan MAE (Yeung, 2025; Bhat & Varma, 2026)."*
+> *"Berikut adalah sintesis penelitian terdahulu pada Tabel 2.1 draf skripsi kami. Sebagaimana ditemukan oleh Pack, Barrett, & Escalante (2024), performa LLM komersial closed-source sangat rentan fluktuatif akibat pembaruan vendor. Oleh karena itu, penelitian ini mengadopsi model open-weight dan menyatukan 5 aspek kunci dari studi terdahulu: validitas human rater dari Mizumoto & Eguchi (2023), CoT prompting dari Stahl et al. (2024), rubrik kaku hybrid dari Haller et al. (2022), decoupling middleware dari Claes (2025), serta 3-point partial credit rubric dari Chen & Wan (2024)."*
 
 ---
 
