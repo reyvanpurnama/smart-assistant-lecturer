@@ -184,20 +184,20 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 8: METODOLOGI KOMPUTASI STATISTIK (STEP-BY-STEP)
+### 🖥️ SLIDE 8: GRAFIK EVOLUSI PERFORMANSI ITERASI PROTOTYPING (GAMBAR 4.5)
 **Tampilan Visual Slide:**
-* **Rumus Kendall's Tau-b:**
-  $$\tau_b = \frac{P - Q}{\sqrt{(P + Q + T_x)(P + Q + T_y)}}$$
-  * Total Pasangan ($\binom{33}{2} = 528$), $P = 379$, $Q = 28$, $T_x = 71$, $T_y = 21$.
-  * Hasil: $\tau_b = \frac{351}{452.309} = \mathbf{0.7724}$.
-* **Rumus Mean Absolute Error (MAE):**
-  $$\text{MAE} = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i| = \frac{179.85}{33} = \mathbf{5.45 \text{ poin}}$$
+* **Gambar 4.5 Grafik Perbandingan Prototyping (Subplot 2 Grafik Batang Side-by-Side):**
+  * 📊 **Subplot Left (Kendall's Tau-b $\tau_b$):** Lonjakan korelasi peringkat dari **0.4400** (Iterasi 1 Biner) $\rightarrow$ **0.7724** (Iterasi 2 Partial Credit) — **Meningkat +75.5%**.
+  * 📉 **Subplot Right (Mean Absolute Error MAE):** Reduksi deviasi selisih fisik skor dari **18.33 poin** (Iterasi 1 Biner) $\rightarrow$ **5.45 poin** (Iterasi 2 Partial Credit) — **Error Mereduksi -70.3%**.
+* **Sumber File Grafik & Script Colab:** 
+  * Script Colab: `scratch/colab_iterasi_prototyping.py` (Cell 2)
+  * Output Image: `grafik_iterasi_prototype.png` / Gambar 4.5 Bab IV.
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Bhat & Varma (2026); Yeung (2025); Akoglu (2018)`
+`Bhat & Varma (2026); Yeung (2025); Akoglu (2018); Maryani et al. (2022)`
 
 🎙️ **Script Omongan Bicara Reyvan (45 detik):**
-> *"Komputasi statistik dilakukan secara tepat mengoreksi faktor nilai kembar (ties) menggunakan rumus Kendall's Tau-b (Bhat & Varma, 2026). Dari total 528 kombinasi pasangan, didapatkan 379 pasangan concordant (sejalan) yang menghasilkan nilai Kendall's Tau-b sebesar 0.7724. Sedangkan total akumulasi selisih mutlak 33 mahasiswa sebesar 179.85 poin menghasilkan nilai MAE akhir sebesar 5.45 poin (Yeung, 2025)."*
+> *"Gambar 4.5 berikut menyajikan evolusi kinerja sistem secara visual dari Iterasi 1 ke Iterasi 2. Pada grafik kiri, tingkat keselarasan hirarki peringkat Kendall's Tau-b melonjak tajam +75.5% dari 0.4400 menjadi 0.7724 (Bhat & Varma, 2026). Sementara pada grafik kanan, rata-rata kesalahan fisik MAE berhasil dipangkas drastis -70.3% dari 18.33 poin menjadi 5.45 poin (Yeung, 2025), yang memvalidasi efektivitas transisi skema 3-Point Partial Credit pada middleware."*
 
 ---
 
