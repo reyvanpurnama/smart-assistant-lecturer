@@ -58,10 +58,10 @@ Berdasarkan draf skripsi Bab II (Halaman 13, Paragraf Novelty), kebaruan penelit
 
 | Pilar Kebaruan (Novelty) | Referensi Jurnal Acuan | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- |
-| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | Arsitektur pemisah aplikasi dari API AI & penggunaan model *open-weight* (GPT-OSS 120B). |
-| **2. Modular CoT Prompting** | Stahl et al. (2024) | Struktur prompt 5 kompartemen & *Chain-of-Thought (CoT)* untuk transparansi penalaran. |
-| **3. 3-Point Partial Credit** | Chen & Wan (2024) | Rubrik bergradasi (0, 50, 100) untuk keadilan nilai pada kesalahan minor/typo. |
-| **4. Knowledge Grounding** | Ji et al. (2023); Agarwal (2025) | Mengunci penalaran AI pada dokumen acuan dosen untuk garansi 0% halusinasi. |
+| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | **Claes:** Arsitektur *Provider-Agnostic Middleware* berbasis *Mediator Pattern* memisah web autograder dari LLM engine.<br>**Pack et al.:** Penggunaan LLM *Open-Weight* (seperti GPT-OSS/Llama) demi independensi akademis dari vendor tertutup. |
+| **2. Modular CoT Prompting** | Stahl et al. (2024); Agarwal et al. (2025) | **Stahl et al.:** Rekayasa prompt *Chain-of-Thought (CoT)* untuk *joint scoring & feedback* yang transparan.<br>**Agarwal et al.:** *Variable Effort Reasoning CoT* & kanal *Harmony Format* (System/User) untuk cegah *prompt injection*. |
+| **3. 3-Point Partial Credit** | Chen & Wan (2024); Haller et al. (2024); Mizumoto (2023) | **Chen & Wan:** Skema rubrik bergradasi 3 poin (0, 0.5, 1.0) berbasis multi-item rubrics.<br>**Haller et al.:** Taksonomi evaluasi domain *Automatic Short Answer Grading (ASAG)* mewajibkan nilai parsial daripada biner.<br>**Mizumoto:** Metrik evaluasi kesepakatan manusia-mesin berbasis *Adjacent Agreement*. |
+| **4. Knowledge Grounding** | Ji et al. (2023) | **Ji et al.:** Mitigasi *Parametric Knowledge Bias* penyebab **Halusinasi Intrisik** (kontradiksi fakta) dan **Halusinasi Ekstrinsik** (fakta tak terverifikasi) melalui **Knowledge Grounding** (mengikat prompt ke modul, rubrik, & reference answer). |
 
 ### 📌 Slide 9: AI Core Stack & Technology
 * **Sempro Lama:** Landasan Teknologi Next.js, Supabase, Groq API.

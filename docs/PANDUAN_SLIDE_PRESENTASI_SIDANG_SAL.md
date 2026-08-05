@@ -177,16 +177,16 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 | Pilar Kebaruan (Novelty) | Referensi Jurnal Acuan | Aspek Kunci yang Diadopsi pada SAL |
 | :--- | :--- | :--- |
-| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | Arsitektur pemisah aplikasi autograder dari service AI & fleksibilitas model open-weight. |
-| **2. Modular CoT Prompting** | Stahl et al. (2024); Agarwal et al. (2025) | Struktur prompt 5 kompartemen & Chain-of-Thought (CoT) untuk transparansi penalaran. |
-| **3. 3-Point Partial Credit** | Chen & Wan (2024); Haller et al. (2024); Mizumoto (2023) | Skema nilai bergradasi (0, 0.5, 1.0) pada domain ASAG untuk objektivitas penilaian logika. |
-| **4. Knowledge Grounding** | Ji et al. (2023) | Mengunci penalaran AI pada dokumen acuan dosen (modul, rubrik, reference answer) untuk memitigasi halusinasi. |
+| **1. Decoupling Middleware** | Claes (2025); Pack et al. (2024) | **Claes:** Arsitektur *Provider-Agnostic Middleware* berbasis *Mediator Pattern* untuk memisah web autograder dari LLM engine.<br>**Pack et al.:** Penggunaan LLM *Open-Weight* (seperti GPT-OSS/Llama) demi validitas & independensi sistem akademis dari vendor tertutup. |
+| **2. Modular CoT Prompting** | Stahl et al. (2024); Agarwal et al. (2025) | **Stahl et al.:** Rekayasa prompt *Chain-of-Thought (CoT)* untuk *joint scoring & feedback* yang menguraikan penalaran rasional.<br>**Agarwal et al.:** Penerapan *Variable Effort Reasoning CoT* & pemisahan kanal *Harmony Format* (System/User) untuk mencegah *prompt injection*. |
+| **3. 3-Point Partial Credit** | Chen & Wan (2024); Haller et al. (2024); Mizumoto (2023) | **Chen & Wan:** Skema rubrik bergradasi 3 poin (0, 0.5, 1.0) berbasis multi-item rubrics untuk keadilan penilaian.<br>**Haller et al.:** Taksonomi evaluasi domain *Automatic Short Answer Grading (ASAG)* yang mewajibkan penilaian parsial daripada biner (*all-or-nothing*).<br>**Mizumoto:** Pengukuran metrik kesepakatan penilai manusia-mesin berbasis *Adjacent Agreement* pada rubrik ordinal. |
+| **4. Knowledge Grounding** | Ji et al. (2023) | **Ji et al.:** Mitigasi *Parametric Knowledge Bias* penyebab **Halusinasi Intrisik** (kontradiksi fakta) dan **Halusinasi Ekstrinsik** (fakta tak terverifikasi) melalui teknik **Knowledge Grounding** (mengikat prompt ke modul praktikum, rubrik, dan *reference answer* dosen). |
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
 `Claes (2025); Pack et al. (2024); Agarwal et al. (2025); Stahl et al. (2024); Chen & Wan (2024); Haller et al. (2024); Mizumoto & Eguchi (2023); Ji et al. (2023)`
 
 🎙️ **Script Omongan Bicara Reyvan (45 detik):**
-> *"Secara ringkas, kebaruan penelitian ini menyatukan 4 pilar utama yang teruji di literatur ASAG: arsitektur decoupling middleware (Claes, 2025; Pack, 2024), modular CoT prompting (Stahl, 2024; Agarwal, 2025), rubrik 3-Point Partial Credit (Chen & Wan, 2024; Haller, 2024; Mizumoto, 2023), serta Modul Knowledge Grounding (Ji et al., 2023) untuk eliminasi halusinasi."*
+> *"Secara ringkas, kebaruan SAL menyatukan 4 pilar yang teruji di literatur ASAG: arsitektur middleware Mediator Pattern dari Claes (2025) & model open-weight dari Pack (2024); penalaran CoT transparan dari Stahl (2024) & proteksi Harmony Format dari Agarwal (2025); rubrik 3-Point Partial Credit pada domain ASAG dari Chen & Wan (2024), Haller (2024), dan Mizumoto (2023); serta Modul Knowledge Grounding dari Ji et al. (2023) yang secara eksplisit membasmi Halusinasi Intrisik dan Halusinasi Ekstrinsik AI."*
 
 ---
 
