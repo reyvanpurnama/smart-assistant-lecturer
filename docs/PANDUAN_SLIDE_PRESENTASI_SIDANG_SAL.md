@@ -145,9 +145,9 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
     * Skor Dosen ($y$): **90.00**
     * AI Binary (Iterasi 1): **10.00** ❌ (Error 80 poin)
     * AI Trinary (Iterasi 2): **85.00** ✅ (Error terkendali 5 poin)
-* **Visual Callout Box (Potongan Log JSON CoT Reasoning AI):**
+* **Visual Callout Box (Potongan Log JSON CoT Reasoning AI - Kasus Abdurrahman Lunny Irham):**
   ```json
-  "global_reasoning": "Sintaks query mahasiswa mengandung typo minor pada klausa WHERE, namun struktur JOIN dan logika logika relasi tabel 80% tepat. Opsi penilaian: Partial Credit (Skor 50)."
+  "global_reasoning": "Sintaks query mahasiswa mengandung typo minor pada klausa WHERE, namun struktur JOIN dan logika relasi tabel 80% tepat. Opsi penilaian: Partial Credit (Skor 50)."
   ```
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
