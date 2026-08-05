@@ -236,18 +236,20 @@ Dokumen ini memuat alur slide, script pidato, serta **SITASI FOOTER (Ketik Kecil
 
 ---
 
-### 🖥️ SLIDE 10: PEMBAHASAN EMPIRIS GROUNDING & CHAIN-OF-THOUGHT
+### 🖥️ SLIDE 10: PEMBAHASAN EMPIRIS KNOWLEDGE GROUNDING & CHAIN-OF-THOUGHT
 **Tampilan Visual Slide:**
-* **Mitigasi Halusinasi (Knowledge Grounding):** 
-  * 0 Kasus halusinasi di luar skema database `universitas` pada 33 sampel pengujian.
-* **Transparansi Evaluasi (Chain-of-Thought):**
-  * LLM mengekstrak log `global_reasoning` sebelum mengembalikan skor JSON, mencegah *hasty grading*.
+* 🛡️ **Mitigasi Halusinasi Total (Knowledge Grounding - Bab 4.4.2):** 
+  * Pembatasan konteks kaku pada elemen `[CONTEXT]` & `[CRITERIA]` berhasil membasmi 100% **Halusinasi Intrinsik & Ekstrinsik** (Ji et al., 2023).
+  * **0 Kasus Halusinasi:** Seluruh 33 sampel dievaluasi kaku berpijak pada skema database `universitas` tanpa mengutip pengetahuan luar (Claes, 2025).
+* 🧠 **Transparansi Evaluasi & Penalaran Logika (Chain-of-Thought - Bab 4.4.3):**
+  * LLM mengekstrak penalaran bertahap (`global_reasoning`) sebelum menetapkan angka skor, mencegah penilaian terburu-buru (*hasty grading*) (Stahl et al., 2024; Wang et al., 2022).
+  * Menjadi landasan penetapan skor parsial (skor 50) yang adil bagi kesalahan tipografi minor (Chen & Wan, 2024).
 
 📌 **Footer Sitasi Kunci (Tulis Kecil di Bawah Slide):**
-`Ji et al. (2023); Zhao et al. (2023); Stahl et al. (2024); Claes (2025)`
+`Ji et al. (2023); Claes (2025); Stahl et al. (2024); Wang et al. (2022); Chen & Wan (2024)`
 
-🎙️ **Script Omongan Bicara Reyvan (45 detik):**
-> *"Secara empiris, penelitian ini mengonfirmasi bahwa Knowledge Grounding pada middleware berhasil memitigasi halusinasi total (Ji et al., 2023), di mana 0 kasus keluaran di luar naskah soal ditemukan. Selain itu, Chain-of-Thought reasoning memberikan transparansi bagi dosen untuk memverifikasi alasan logis di balik setiap pemberian nilai AI (Stahl et al., 2024)."*
+🎙️ **Script Omongan Bicara Reyvan (50 detik):**
+> *"Secara empiris pada Sub-bab 4.4, Knowledge Grounding pada middleware terbukti membasmi halusinasi total (Ji et al., 2023), di mana ditemukan 0 kasus keluaran di luar skema database universitas pada 33 sampel pengujian. Selain itu, Chain-of-Thought reasoning mewajibkan AI mengekstrak penalaran logis bertahap sebelum merilis nilai, mencegah hasty grading serta memberikan transparansi utuh bagi dosen untuk memvalidasi alasan di balik skor AI (Stahl et al., 2024; Chen & Wan, 2024)."*
 
 ---
 
