@@ -16,8 +16,26 @@ try:
 except ImportError:
     IS_COLAB = False
 
+# Menggunakan library resmi scipy.stats dan scikit-learn (sklearn) sesuai draf Bab 3
+try:
+    from scipy.stats import kendalltau
+    HAS_SCIPY = True
+except ImportError:
+    HAS_SCIPY = False
+
+try:
+    from sklearn.metrics import mean_absolute_error
+    HAS_SKLEARN = True
+except ImportError:
+    HAS_SKLEARN = False
+
 def calculate_kendall_tau(x, y):
-    """Menghitung Kendall's Tau-b dengan ties handling."""
+    """Menghitung Kendall's Tau-b (memanfaatkan scipy.stats.kendalltau jika ada)."""
+    if HAS_SCIPY:
+        res = kendalltau(x, y)
+        return res.statistic if hasattr(res, 'statistic') else res[0]
+    
+    # Fallback logika manual jika tanpa library
     n = len(x)
     if n < 2: return 0.0
     nc = nd = tx = ty = 0
@@ -38,7 +56,10 @@ def calculate_kendall_tau(x, y):
     return num / math.sqrt(den1 * den2)
 
 def calculate_mae(x, y):
-    """Menghitung Mean Absolute Error (MAE)."""
+    """Menghitung Mean Absolute Error / MAE (memanfaatkan sklearn.metrics.mean_absolute_error jika ada)."""
+    if HAS_SKLEARN:
+        return float(mean_absolute_error(y, x))
+    
     if len(x) == 0: return 0.0
     return sum(abs(a - d) for a, d in zip(x, y)) / len(x)
 
