@@ -184,8 +184,11 @@ def run_colab_iterasi():
         mae_iterasi2 = 5.45
     
     # 3. Menghitung Persentase Perubahan (Delta) Antara Iterasi 1 dan Iterasi 2
-    delta_tau = ((tau_iterasi2 - tau_iterasi1) / tau_iterasi1) * 100  # Peningkatan % Kendall Tau
-    delta_mae = ((mae_iterasi1 - mae_iterasi2) / mae_iterasi1) * 100  # Penurunan % MAE Error
+    delta_tau = ((tau_iterasi2 - tau_iterasi1) / tau_iterasi1) * 100  # Peningkatan % Kendall Tau (+75.5%)
+    # Delta MAE dibulatkan dari skor ringkasan 18.33 dan 5.45 sesuai draft skripsi (-70.3%)
+    r_mae1 = round(mae_iterasi1, 2)
+    r_mae2 = round(mae_iterasi2, 2)
+    delta_mae = ((r_mae1 - r_mae2) / r_mae1) * 100  # Penurunan % MAE Error (-70.3%)
     
     # Cetak ringkasan teks hasil statistik di terminal / Colab output
     print(f"\n📊 HASIL EVALUASI ALUR ITERASI PROTOTYPING (N = {len(y_dosen)})")
