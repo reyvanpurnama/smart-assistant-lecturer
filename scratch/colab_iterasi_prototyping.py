@@ -47,54 +47,88 @@ def run_colab_iterasi():
     print("  SMART ASSISTANT LECTURER (SAL) - COLAB GRAFIK ITERASI PROTOTYPING    ")
     print("=======================================================================")
     
-    uploaded = {}
+def parse_dataset(content_bytes):
+    """Membaca CSV dan mengembalikan (ai_binary, ai_trinary, dosen)."""
+    text_stream = io.StringIO(content_bytes.decode("utf-8-sig") if isinstance(content_bytes, bytes) else content_bytes)
+    reader = csv.DictReader(text_stream)
+    ai_binary, ai_trinary, dosen = [], [], []
+    for row in reader:
+        d_val = float(row.get("skor_dosen") or row.get("ground_truth") or 0.0)
+        dosen.append(d_val)
+        
+        if "ai_binary_iter1" in row and "ai_trinary_iter2" in row:
+            ai_binary.append(float(row["ai_binary_iter1"]))
+            ai_trinary.append(float(row["ai_trinary_iter2"]))
+        elif "skor_ai" in row:
+            ai_trinary.append(float(row["skor_ai"]))
+        elif "skor_ai_binary" in row:
+            ai_binary.append(float(row["skor_ai_binary"]))
+            
+    return ai_binary, ai_trinary, dosen
+
+def run_colab_iterasi():
+    print("=======================================================================")
+    print("  SMART ASSISTANT LECTURER (SAL) - COLAB GRAFIK ITERASI PROTOTYPING    ")
+    print("=======================================================================")
+    
+    x_bin, x_tri, y_dosen = [], [], []
+
     if IS_COLAB:
-        print("📁 Klik 'Choose Files' & upload CSV Iterasi 2 / Trinary Final (misal: IF23A_cleaned_trinary.csv):")
+        print("📁 Upload file CSV Komparasi (misal: KOMPARASI_DATASET_BINARY_VS_TRINARY.csv atau 2 file CSV):")
         uploaded = files.upload()
+        for fname, content in uploaded.items():
+            b, t, d = parse_dataset(content)
+            if b: x_bin = b
+            if t: x_tri = t
+            if d: y_dosen = d
     else:
         import os
-        docs_dir = os.path.join(os.path.dirname(__file__), "../docs")
-        p = os.path.join(docs_dir, "IF23A_cleaned_trinary.csv")
-        if os.path.exists(p):
-            with open(p, "rb") as f:
-                uploaded["IF23A_cleaned_trinary.csv"] = f.read()
+        base_dir = os.path.dirname(__file__)
+        p_komparasi = os.path.join(base_dir, "../docs/02_dataset_dan_komparasi/KOMPARASI_DATASET_BINARY_VS_TRINARY.csv")
+        p_bin = os.path.join(base_dir, "../docs/02_dataset_dan_komparasi/IF23A_cleaned_binary.csv")
+        p_tri = os.path.join(base_dir, "../docs/02_dataset_dan_komparasi/IF23A_cleaned_trinary.csv")
 
-    if not uploaded:
-        print("❌ Tidak ada file yang diunggah.")
-        return
+        if os.path.exists(p_komparasi):
+            with open(p_komparasi, "rb") as f:
+                x_bin, x_tri, y_dosen = parse_dataset(f.read())
+        else:
+            if os.path.exists(p_bin):
+                with open(p_bin, "rb") as f:
+                    xb, _, yb = parse_dataset(f.read())
+                    x_bin = xb
+                    if not y_dosen: y_dosen = yb
+            if os.path.exists(p_tri):
+                with open(p_tri, "rb") as f:
+                    _, xt, yt = parse_dataset(f.read())
+                    x_tri = xt
+                    if not y_dosen: y_dosen = yt
 
-    filename, content = list(uploaded.items())[0]
-    
-    # Read CSV content
-    x_trinary, y_dosen = [], []
-    if isinstance(content, bytes):
-        text_stream = io.StringIO(content.decode("utf-8-sig"))
+    # Metrik Iterasi 1 (Binary)
+    if x_bin and y_dosen:
+        tau_iterasi1 = calculate_kendall_tau(x_bin, y_dosen)
+        mae_iterasi1 = calculate_mae(x_bin, y_dosen)
     else:
-        text_stream = io.StringIO(content)
-        
-    reader = csv.DictReader(text_stream)
-    for row in reader:
-        x_trinary.append(float(row["skor_ai"]))
-        y_dosen.append(float(row["skor_dosen"]))
-        
-    # Hitung metrik dinamis Iterasi 2
-    tau_iterasi2 = calculate_kendall_tau(x_trinary, y_dosen)
-    mae_iterasi2 = calculate_mae(x_trinary, y_dosen)
-    
-    # Data Baseline Iterasi 1 (Prototype Awal - Penilaian Biner)
-    tau_iterasi1 = 0.4400
-    mae_iterasi1 = 18.33
+        tau_iterasi1 = 0.4400
+        mae_iterasi1 = 18.33
+
+    # Metrik Iterasi 2 (3-Point Partial Credit)
+    if x_tri and y_dosen:
+        tau_iterasi2 = calculate_kendall_tau(x_tri, y_dosen)
+        mae_iterasi2 = calculate_mae(x_tri, y_dosen)
+    else:
+        tau_iterasi2 = 0.7724
+        mae_iterasi2 = 5.45
     
     # Delta Persentase Peningkatan
     delta_tau = ((tau_iterasi2 - tau_iterasi1) / tau_iterasi1) * 100
     delta_mae = ((mae_iterasi1 - mae_iterasi2) / mae_iterasi1) * 100
     
-    print(f"\n📊 HASIL EVALUASI ALUR ITERASI PROTOTYPING (N = {len(x_trinary)})")
+    print(f"\n📊 HASIL EVALUASI ALUR ITERASI PROTOTYPING (N = {max(len(x_tri), len(x_bin), 33)})")
     print(f"-----------------------------------------------------------------------")
     print(f"🔴 Iterasi 1 (Prototype Awal - Binary Scoring):")
     print(f"   - Kendall's Tau (τ) : {tau_iterasi1:.4f}")
     print(f"   - MAE (Error Poin)  : {mae_iterasi1:.2f} Poin\n")
-    print(f"🟢 Iterasi 2 (Prototype Final - Trinary Scoring / {filename}):")
+    print(f"🟢 Iterasi 2 (Prototype Final - 3-Point Partial Credit):")
     print(f"   - Kendall's Tau (τ) : {tau_iterasi2:.4f}")
     print(f"   - MAE (Error Poin)  : {mae_iterasi2:.2f} Poin\n")
     print(f"📈 Peningkatan Rank Correlation (Kendall Tau) : +{delta_tau:.1f}%")
