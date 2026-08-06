@@ -1,0 +1,974 @@
+Computational and Applied Mathematics Journal
+2018; 4(1): 1-7
+http://www.aascit.org/journal/camj
+ISSN: 2381-1218 (Print); ISSN: 2381-1226 (Online)
+
+Sample Size and Its Role in Central Limit Theorem
+(CLT)
+Mohammad Rafiqul Islam
+Department of Mathematics and Natural Sciences (MNS), BRAC University, Dhaka, Bangladesh
+
+Email address
+mrafiq@bracu.ac.bd
+
+Citation
+Mohammad Rafiqul Islam. Sample Size and Its Role in Central Limit Theorem (CLT). Computational and Applied Mathematics Journal.
+Vol. 4, No. 1, 2018, pp. 1-7.
+Received: January 10, 2018; Accepted: January 26, 2018; Published: February 27, 2018
+
+Abstract: It is very important to determine the proper or accurate sample size in any field of research. Sometimes
+researchers cannot take the decision that how many number of individuals or objects will they select for their study purpose.
+Also, a set of survey data is used to verify that central limit theorem (CLT) for different sample sizes. From the data of 1348
+students we got the average weight for our population of BRAC University students is 62.62 kg with standard deviation 11.79
+kg. We observed that our sample means became better estimators of true population mean. In addition, the shape of the
+distribution became more Normal as the sample size increased. So it is concluded that our simulation results were consistent
+with central limit theorem.
+Keywords: Sample Size, Inference, Precision, Confidence Interval (CI), Population and Sample
+
+1. Introduction
+Statistical Inference
+If we want to know the average education level in
+Bangladesh, one way we could do that is go, and find out the
+education level of every single person in Bangladesh. And
+then you could calculate a mean, and then we have the
+average educational level. But, this is extremely impractical.
+So instead, we just ask some people, what their education
+level is, and then we find out the average education level. We
+shall also try to figure out whether or not that value that we
+got from asking those people is actually accurate in terms of
+representing what is in the entire population. When we make
+calculation from the sample, we cannot be 100% sure that we
+are 100% right or 100% wrong, but we are going to figure
+out what the chances are, that we are right or wrong. To get
+the chances of doing error, we truly need a random sample
+from the population to represent our sample. The closer we
+get to that, the better off that we will be. But even if we get
+them perfectly, randomly selected there is always a chance
+that, by random chance, we are going to end up with some
+mistakes. And we are trying to minimize the chances that we
+are doing wrong. That is what we are all about in inferential
+statistics is figuring out what the chances are that we are
+going to be wrong. Inference [2] can be considered as
+
+answering the question: ‘What do these data entitle us to say
+about a particular aspect of the populations that interest us’.
+It is also [2] states, “Two things mark out statistical
+inferences. First, the information on which they are based is
+statistical, i.e. consists of observations subject to random
+fluctuations. Secondly, we explicitly recognize that our
+conclusion is uncertain, and attempt to measure, as
+objectively as possible, the uncertainty involve.”
+A statistical inference carries us from observations to
+conclusions about the populations sampled [2]. The main
+challenge is to select a representative sample. The size of the
+sample is determined by the optimum number necessary to
+enable valid inferences to be made about the population [13].
+The larger the sample size, the smaller the chance of a
+random sampling error, but since the sampling error is
+inversely proportional to the square root of the sample size,
+there is usually little to be gained from studying very large
+samples [13]. Within a quantitative survey design,
+determining sample size and dealing with nonresponse bias is
+essential [10]. One of the real advantages of quantitative
+methods is their ability to use smaller groups of people to
+make inferences about larger groups that would be
+prohibitively expensive to study [3]. Then the question is,
+how large the sample will be taken from the population to
+infer about the research finding? Any researchers could
+
+2
+
+Mohammad Rafiqul Islam: Sample Size and Its Role in Central Limit Theorem (CLT)
+
+benefit from a real-life primer on the tools needed to properly
+conduct research, including, but not limited to, sample size
+selection [2].
+This paper will be very helpful especially for the
+beginners to decide their sample size initially. First of all
+the factors those influence the size of sample are discussed
+briefly. Secondly, various formulas for determining sample
+are explained with examples depending on the field of
+study. In this paper, mainly the simplified sample size
+formula [20] for both continuous and categorical data will
+be taken into considerations. Besides, the formula [16] for
+determining sample size for categorical data will be
+presented as it provides identical sample sizes in all cases.
+Also there are many other formulas for determining sample
+size but these two are the most widely used in the field of
+research [10].
+In addition, a set of survey data is used to verify that
+central limit theorem (CLT) for different sample sizes. We
+examined how sample data can be used to discover the truth
+about a population. Our population data consists of ages,
+weights and heights of 1358 undergraduate students of
+BRAC University at Dhaka. The data are collected by the
+students of statistics (summer 2015) of BRAC University
+students for their course work assignment. We run few
+simulations on this data by R programming to see if we can
+replicate the samples what the Central Limit Theorem tells us
+about sampling
+
+2. Methods and Materials
+Factors influencing sample size
+One of the most burning questions in any type of
+quantitative survey is to determine the sample size which is a
+very important part in research. It can be written [11] as
+“Unless there is one variable that you are interested in
+beyond all others, this is one of the hardest questions that you
+can ask a survey researcher”. It is [11] also stated that one
+answer is: "How much time or money do you have?" Another
+is: "It depends." It depends on how accurate you want your
+estimate to be. That is the easy part. It depends on what kinds
+of comparisons you want to make. It is mentioned [8] that
+sample size is one of the four inter-related features of a study
+design that can influence the detection of significant
+differences, relationships or interactions. Generally, these
+survey designs try to minimize both alpha (α) error (finding a
+difference that does not actually exist in the population) and
+beta (β) error (failing to find a difference that actually exists
+in the population [8]. There are many factors which influence
+the sample size including the purpose of the study, population
+size, the risk of selecting a "bad" sample, and the allowable
+sampling error [6]. In addition [4] to the purpose of the study
+and population size, three criteria usually need to be specified
+to determine the appropriate sample size: the level of
+precision, the level of confidence or risk, and the degree of
+variability in the attributes being measured. Each of these
+criteria is elaborated shortly below. It has to be mentioned
+that sample size also depends on the type of data to be
+
+collected, size of the population, time and budget except the
+tree factors mentioned earlier.
+Precision or accuracy (Margin of error):
+As sample deals with a part of a population, one must
+accept a risk of being wrong when inferring something about
+population based on the basis of sample information. This is
+why before taking sample; one should identify the amount of
+risk to be allowed (or willing to take). This amount of risk
+directly relates to the size of the sample.
+Risk is specified by two interrelated factors: the precision
+(reliability) range desired and the confidence level. Sampling
+error or the precision [14] of a sample result is meant how
+closely we can reproduce from a sample the results which
+could be obtained if a complete count of the population were
+made under the same conditions. The difference between the
+sample result and the true value (population parameter) is
+called the accuracy of the sample survey which is also known
+as precision that is most frequently measured [14]. Thus
+precision is the maximum allowable error expressed in
+percentage when the sample is taken. This implies the
+maximum allowable difference between the sample estimate
+(which is supposed to calculate from the sample) and the true
+population value. In other words, this is the maximum
+allowable sampling error. If the difference is reduced, the
+level of desired precision or accuracy will be higher. Or if the
+difference is widen, the level of desired precision or accuracy
+will be lower. Thus, 1% precision is greater than the 5%
+precision as in 1% precision the difference (error) is lesser
+than the 4% precision. This is why for getting high degree of
+precision (accuracy), it is required larger sample size than
+relatively low degree of precision (accuracy).
+Precision is denoted by ‘E’ which means sample estimate
+will be within ±E% of the population parameter Precision
+level of 5% means that the actual value of the population
+(parameter) lies within an interval (+0.05 or – 0.05) around
+the sample estimate. Thus, if a researcher finds that 70% of
+students of a university in the sample have adopted are
+commended practice of using English language a method of
+communication in the campus with a precision rate of ±5%,
+then the researcher can conclude that between 65% and 75%
+of students in the population (that is all the students) have
+adopted the practice. Precision is also known as margin of
+error.
+The general rule relative to acceptable margins of error in
+educational and social research is as follows: For categorical
+data, 5% margin of error is acceptable, and, for continuous
+data, 3% margin of error is acceptable [16]. Most survey
+organizations use 3%, 5% or 10% precision level as the
+minimum. If there are too many variables in a research study,
+the researcher must make decisions as to which variables will
+be incorporated into formula calculations. This issue is
+addressed [20] by stating that “One method of determining
+sample size is to specify margins of error for the items that
+are regarded as most vital to the survey. An estimation of the
+sample size needed is first made separately for each of these
+important items”. Researchers may increase these values
+when a higher margin of error is acceptable or may decrease
+
+Computational and Applied Mathematics Journal 2018; 4(1): 1-7
+
+these values when a higher degree of precision is needed
+[10].
+More commonly, there is a sufficient variation among the
+sample size n’s so that we are reluctant to choose the largest,
+either from budgetary considerations or because this will
+give an over-all standard of precision substantially higher
+than originally contemplated. In this event, the desired
+standard of precision may be relaxed for certain of the items,
+in order to permit the use of a smaller value of the sample
+size n [20]. “The precision of the results procured from the
+sample survey is contingent not only on the size of the
+sample but also on other aspects of the sample design, such
+as the way the sample is chosen and the process of
+calculating the estimates from the survey results” described
+by [14]
+Level of Confidence Interval (CI)
+The confidence level means, how much we are confident
+that the sample estimate is as accurate as we desired. The
+confidence or risk level is based on ideas encompassed under
+the Central Limit Theorem [6]. Central Limit Theorem states
+that when a population is repeatedly sampled, the average
+value of the attribute obtained by those samples is equal to
+the true population value and distributed normally about the
+true value [6]. To minimize the risk one should have high
+confidence. This risk is reduced for 99% confidence levels
+and increased for 90% (or lower) confidence levels. In most
+cases, the 95% confidence level is specified. The 99%
+confidence level (an alpha level of .01) may be used in those
+cases where decisions based on the research are critical and
+errors may cause substantial financial or personal harm, e.g.,
+major programmatic changes [10]. If a 95% confidence level
+is chosen, 95 out of 100 samples will have the true
+population value within the range of precision specified
+earlier [6]. Thus, the desired 3% precision with 95%
+confidence interval means that we are 95% confident to get
+3% precision that is we 95% confident to make maximum
+3% error when we will take the sample size. For the most
+common confidence levels 90%, 95% and 99% the Z Scores
+are 1.645, 1.96 and 2.57 respectively.
+Degree of Variability
+The distribution of attributes or characteristics in the
+population is known as the degree of variability in the
+attributes being measured [5]. The desired attributes or a
+characteristic in the population also is an important factor for
+determining the sample size. For the more variability in the
+population, which is known as heterogeneous population, the
+larger sample size is required to obtain a given level of
+precision. On the other hands, the smaller sample size is
+needed when there is less variability (more homogeneous) in
+a population. Usually the variability is measured by the
+variance. The estimation of variance of the primary variables
+of interest is very important for calculating the sample size as
+the researcher does not have direct control over variance and
+must incorporate variance estimates into research design
+[10]. There are four ways [20] of estimating population
+variances for sample size determinations: (1) take the sample
+in two steps, and use the results of the first step to determine
+
+3
+
+how many additional responses are needed to attain an
+appropriate sample size based on the variance observed in the
+first step data; (2) use pilot study results; (3) use data from
+previous studies of the same or a similar population; or (4)
+estimate or guess the structure of the population assisted by
+some logical mathematical results. The first three ways are
+logical and produce valid estimates of variance. However, in
+many educational and social research studies, it is not
+feasible to use any of the first three ways and the researcher
+must estimate variance using the fourth method.
+When estimating the variance of a categorical
+(proportional) variable such as gender, it is recommended
+[16] that researchers should use 0.50 as an estimate of the
+population proportion. This proportion will result in the
+maximization of variance, which will also produce the
+maximum sample size. This proportion can be used to
+estimate variance (0.25) in the population.
+Sample size for estimating Proportion (or percentage)
+(Population N is large or unknown)
+Standard textbook authors and researchers offer tested
+methods that allow studies to take full advantage of statistical
+measurements, which in turn give researchers the upper hand
+in determining the correct sample size [10]. If the population
+size N is large (or unknown), the first approximation
+developed by Cochran [20] of minimum sample size n0 is
+needed to estimate a population proportion p to within the
+margin of error E at 100(1−α)% confidence is
+=
+
+̂ 1− ̂
+
+rounded up
+
+The number zα/2 is the tabulated value of z (for standard
+normal distribution) is determined by the desired 100(1−α)%
+level of confidence. To say that we wish to estimate the
+population proportion to within a certain number of
+percentage points means that we want the margin of error ‘E’
+to be no larger than that number (expressed as a proportion).
+In planning studies, investigators should also consider
+attrition or loss to follow-up. The formula above gives the
+number of participants needed with complete data to ensure
+that the margin of error in the confidence interval does not
+exceed E.
+Note that ‘p’ may be actual (from census) or estimated
+from the past experience. The formula for estimating how
+large a sample to take contains the number ̂ , which we know
+only after we have taken the sample. There are two ways out
+of this dilemma. Typically the researcher will have some idea
+as to the value of the population proportion p, hence of what
+the sample proportion ̂ is likely to be. For example, if last
+month 37% of all voters thought that state taxes are too high,
+then it is likely that the proportion with that opinion this
+month will not be dramatically different, and we would use
+the value 0.37 for ̂ in the formula.
+The second approach to resolving the dilemma is simply to
+replace ̂ in the formula by 0.5 [16]. This is because if ̂ is
+large then 1 − ̂ is small, and vice versa, which limits their
+product to a maximum value of 0.25, which occurs when
+pˆ=0.5.
+
+4
+
+Mohammad Rafiqul Islam: Sample Size and Its Role in Central Limit Theorem (CLT)
+
+Example: In the absence of estimated proportion (p) we
+assumed that the estimated population proportion p is 50%
+i.e. p= 0.50, and for 95% confidence level the value of z=
+1.96; and 4% margin of error (E=4%=0.04) we need a sample
+size:
+
+If σ cannot be guessed at all or estimated otherwise, a rule
+of thumb for estimating σ is to take one-sixth of the range of
+the values the researcher expects. If researcher expects that
+mean age will be between 30 to 35 years then an estimate of
+σ
+
+.
+
+σ =1/6(35-30)=0.83
+
+=
+
+× .
+
+.
+
+= 600
+For E=5%, = 385 and for E=6%, = 267 and so on. As
+margin of error ‘E’ increases sample size ‘n’ decreases
+Sample size for estimating Proportion (N is known and
+small)
+If we know or can estimate the population size N, which is
+small, first of all we calculate an initial sample size
+as
+before. Then the final sample size ‘n’ which is more precise
+is calculated as [20]:
+=
+
+!"
+
+$
+%
+
+# "
+
+Note: For big population the difference between n0 and n is
+negligible but for small population the difference is
+appreciable.
+Example: In the absence of estimated proportion (p) we
+assumed that the estimated population proportion p is 50%
+i.e. p= 0.50, and for 95% confidence level the value of z=
+1.96 and margin of error e=4%=0.04 then we need an initial
+sample size:
+.
+
+=
+
+#
+
+&""
+"""
+
+=462
+If N=5000, n = 538
+Note: For big population the difference between n0 and n is
+negligible but for small population the difference is
+appreciable.
+Minimum Sample Size for Estimating a Population Mean
+(Continuous Data)
+If the population size N is large (or unknown), the
+minimum sample size n0 is needed to estimate a population
+mean µ within the margin of error E at 100(1−α)%
+confidence is [20]:
+' / )
+*
+
+(rounded up)
+
+Where σ = population standard deviation
+σ may be actual or is estimated from the past experience. If
+σ not available, one could take a preliminary sample size,
+n≥30 to provide an estimate of σ.
+
+!"
+
+$
+%
+
+# "
+
+A Simplified Formula for Proportions
+Yamane [19] provides a simplified formula to calculate
+sample sizes. This formula was used to calculate the sample
+sizes in table 1 and table 2 and is shown below. A 95%
+confidence level and p = 0.5 are assumed
+=
+
+× .
+
+If we know the potation N =2000 then the final sample
+size n which is calculated as
+
+=
+
+=
+
++
+1++ -
+
+Table 1. Sample size for big population.
+
+.
+
+=600
+
+=
+
+The estimated σ can be considered as σ = 0.5 [16]
+The disadvantage [6] of the sample size based on the mean
+is that a "good" estimate of the population variance is
+necessary. Often, an estimate is not available. Furthermore,
+the sample size can vary widely from one attribute to another
+because each is likely to have a different variance. Because
+of these problems, the sample size for the proportion is
+frequently preferred.
+Adjusted Sample size: If the population size N is known or
+not negligible [20], the required sample size for estimating
+population mean will be
+
+Size of Population (N)
+500
+600
+700
+800
+900
+1,000
+2,000
+3,000
+4,000
+5,000
+6,000
+7,000
+8,000
+9,000
+10,000
+15,000
+20,000
+25,000
+50,000
+100,000
+>100,000
+
+Sample Size (n) for Precision (E) of:
+±3%
+
+±5%
+
+±7%
+
+±10%
+
+A
+A
+A
+A
+A
+A
+714
+811
+870
+909
+938
+959
+976
+989
+1,000
+1,034
+1,053
+1,064
+1,087
+1,099
+1,111
+
+222
+240
+255
+267
+277
+286
+333
+353
+364
+370
+375
+378
+381
+383
+385
+390
+392
+394
+397
+398
+400
+
+145
+152
+158
+163
+166
+169
+185
+191
+194
+196
+197
+198
+199
+200
+200
+201
+204
+204
+204
+204
+204
+
+83
+86
+88
+89
+90
+91
+95
+97
+98
+98
+98
+99
+99
+99
+99
+99
+100
+100
+100
+100
+100
+
+A = Assumption of normal population is poor (Yamane, 1967). The entire
+population should be sampled.
+
+Computational and Applied Mathematics Journal 2018; 4(1): 1-7
+
+Table 2. Sample size for small population.
+Size of Population (N)
+100
+125
+150
+175
+200
+225
+250
+275
+300
+325
+350
+375
+400
+425
+450
+
+Sample Size (n) for Precision (E) of:
+±5%
+±7%
+±10%
+81
+67
+51
+96
+78
+56
+110
+86
+61
+122
+94
+64
+134
+101
+67
+144
+107
+70
+154
+112
+72
+163
+117
+74
+172
+121
+76
+180
+125
+77
+187
+129
+78
+194
+132
+80
+201
+135
+81
+207
+138
+82
+212
+140
+82
+
+Additional information
+In addition, an adjustment in the sample size may be
+needed to accommodate a comparative analysis of subgroups
+(e.g., such as an evaluation of program participants with
+nonparticipants).
+It is suggested [17] that a minimum of 100 elements is
+needed for each major group or subgroup in the sample and
+for each minor subgroup, a sample of 20 to 50 elements is
+necessary.
+When the attribute is present 20 to 80 percent of the time
+(i.e., the distribution approaches normality) that 30 to 200
+elements are sufficient [12].
+On the other hand, skewed distributions can result in
+serious departures from normality even for moderate size
+samples [12]. Then a larger sample or a census is required.
+Frequently, researchers will add a buffer of 5-20% to the
+necessary sample sizes to achieve a desired level of power to
+allow for some dropout/non-participation. The sample size
+also is often increased by 30% to compensate for
+nonresponse [5].
+In telephone and face-to-face interviewing, response rates
+of 70 to 80 percent are common. Response rates to selfadministered surveys range much more widely than this,
+although it is possible to achieve a response rate of 70
+percent or even higher [11].
+To correct for the difference in design, the sample size is
+multiplied by the design effect (diff) which range is 1 to 2
+For more complex designs, e.g., stratified random samples,
+must take into account the variances of subpopulations,
+strata, or clusters before an estimate of the variability in the
+population as a whole can be made [5].
+Virtually the entire population would have to be sampled
+in small populations (e.g., 200 or less) to achieve a desirable
+level of precision [6]. As A census eliminates sampling error
+and provides data on all the individuals in the population. In
+addition, some costs such as questionnaire design and
+developing the sampling frame are "fixed," that is, they will
+be the same for samples of 50 or 200 [6].
+Sample size in general (Qualitative) used in Survey
+Let us determine the sample size by using a sound
+statistical formula for the first stage sampling. The
+
+5
+
+calculation of sample size is complicated by the fact that
+some of the factors vary by indicators. To calculate the
+proper sample size, using the appropriate mathematical
+formula, several factors be specified and values for others be
+assumed or taken from previous or similar surveys. The
+following formula is used to calculate the sample size:
+=
+
+. × 1 − ̂ × // × 0 × 1-22
+
+Where
+a.
+is the required sample size, for the key indicator
+b. ̂ is the predicted or anticipated prevalence for the
+indicator being estimated. When prevalence for the
+indicator is unknown is replaced by pˆ=0.5 in the
+formula. This is the most conservative estimate, since it
+gives the largest possible estimate of n
+c. The value of // is 196 to achieve the 95 per cent level
+of confidence and the value of // is 2.57 to achieve
+the 99 per cent level of confidence.
+d. R is the factor necessary to raise the sample size by 5 to
+20 per cent for non-response
+e. The sample size is multiplied by the design effect (deff)
+which range from 1 to 2, if a multi-stage sampling is
+done instead of a simple random sample.
+f. E is the margin of error (level of accuracy) to be
+tolerated at the given percent level of confidence. The
+higher value of ‘E’ will yield lower sample size and
+smaller value of ‘E’ will yield higher sample size.
+g. If the population size N is known or not negligible [20],
+the required sample size
+will be adjusted to get the
+final sample size n as follows:
+=
+
+!
+
+1+ "
+3
+
+3. Results and Discussion
+A case study: How sample data can be used to discover the
+truth about a population
+We will examine how sample data can be used to discover
+the truth about a population. Our population data consists of
+ages, weights and heights of 1358 undergraduate students of
+BRAC University at Dhaka. The data are collected by the
+students of statistics (summer 2015) of BRAC University
+students for their course work assignment. We will run few
+simulations on this data to see if we can replicate what the
+Central Limit Theorem tells us about sampling. We are
+pretending that we don't know the "true" population
+parameters, but in fact we do. We will use ‘R’ programming
+for our data analysis and simulation.
+Central Limit Theorem
+The central limit theorem (CLT), one of the most
+important theorems in statistics, implies that under most
+distributions, normal or non-normal, the sampling
+distribution of the sample mean will approach normality as
+the sample size increases [21]. One of the simplest versions
+of the theorem says that if is a random sample of size n (say,
+
+6
+
+Mohammad Rafiqul Islam: Sample Size and Its Role in Central Limit Theorem (CLT)
+
+n larger than 30) from an infinite population, finite standard
+deviation, then the standardized sample mean converges to a
+standard normal distribution or, equivalently, the sample
+mean approaches a normal distribution with mean equal to
+the population mean and standard deviation equal to standard
+deviation of the population divided by the square root of
+sample size n [7]. Without the CLT, inferential statistics that
+rely on the assumption of normality (e.g., two sample t-test,
+ANOVA) would be nearly useless, especially in the social
+sciences where most of the measures are not normally
+distributed [18]. It is often suggested that a sample size of 30
+will produce an approximately normal sampling distribution
+for the sample mean from a non-normal parent distribution.
+There is little to no documented evidence to support that a
+sample size of 30 is the magic number for non-normal
+distributions. It is not even feasible to state when the central
+limit theorem works or what sample size is large enough for
+a good approximation, but the only thing most statisticians
+agree on is “that if the parent distribution is symmetric and
+relatively short-tailed, then the sample mean reaches
+approximate normality for smaller samples than if the parent
+population is skewed or long-tailed” [7]. It seems that
+“normality is a myth; there never was, and never will be, a
+normal distribution” [15]. Still, normality is an assumption
+that is needed in many statistical tests. Determining the best
+way to approximate normality is the only option, since true
+normality does not seem to exist. This theorem, also
+described briefly below, only implies that the sampling
+means are approximately normally distributed when the
+sample size is large enough. Conducting more research on
+the robustness of the normality assumption based on the fact
+that real world data are often contaminated [18].
+Observing the Population
+We found that the average weight for our population of
+BRAC University students (1358 students) was 62.32 kg
+with standard deviation 11.79 kg. The shape of weights of the
+students can be visualized from the following histogram
+(Figure 1):
+
+Observing the Sampling Distributions
+We drew 1000 samples of sizes n=15, n=30 and n=50
+respectively from our population of students' weights. Then
+we calculate mean of each sample of sizes 15, 30 and 50; and
+got the following histograms (Figure 2) of 1000 sample
+means for three different sample sizes:
+
+Figure 2. Histogram of weights for different sample sizes.
+
+Later we calculate the mean and standard deviation of 1000
+sample means for the sample size n=15, n=30 and n=50
+respectively. The variability of the sample means is predicted
+by standard error (SE), which is obtained by dividing the
+population standard deviation by the square root of the
+sample size. The results of the sampling distribution for each
+sample size are summarized below table 3:Table 3. Simulation
+result of different sample sizes.
+Figure 1. Histogram of weights
+
+From the Figure 1, we can said that the weights of the
+students are not normally distributed which is slightly
+positive skewed.
+
+Results of simulation
+(100 times)
+Mean
+Standard deviation
+Standard error
+
+Sample Size
+n=15
+62.22
+3.047
+3.045
+
+n=30
+62.27
+2.16
+2.153
+
+n=50
+62.37
+1.665
+1.668
+
+According to the Central Limit Theorem (CLT) as sample
+
+Computational and Applied Mathematics Journal 2018; 4(1): 1-7
+
+size increases the sampling distribution becomes more normal,
+the mean of the sampling distribution will be same as the
+population mean; and the variability of the sample means is
+predicted by the standard error [7] which will be less variable
+as the sample size increases. The sample size is inversely
+related to the variability of sample means: the greater the
+sample size, the narrower the range of sample means [9].
+From the above table (Table 3) of sampling distribution we
+can say that the sample means of weight is approximately
+same as the population mean (62.32 kg) for all three
+sampling distributions and the size of standard error
+decreased as the sample size increased from 15 to 50.
+It is also observed from the histograms (Figure 2) of
+sampling means which are derived by the simulation that the
+if the sample size increase the shape of the sampling
+distribution will tend to be Normal no matter what the shape
+of the population.
+
+4. Conclusion
+From the data of 1348 students we got the average weight
+for our population of BRAC University students is 62.62 kg
+with standard deviation 11.79 kg. We found that that the
+weights of the students are not normally distributed which is
+slightly positive skewed. We drew samples of different sizes
+from our population to simulate the Central Limit Theorem.
+The simulation was done in 100 times with R programming.
+The sample means of weight is approximately same as the
+population mean (62.32 kg) for all three sampling
+distributions and the size of standard error decreased as the
+sample size increased from 15 to 50. As we increased the size
+of our sample from 15 to 50, the sample means become less
+variable and tended to cluster more tightly around the true
+mean. In other words, our sample means became better
+estimators of true population mean. In addition, the shape of
+the distribution became more Normal as the sample size
+increased. So it is concluded that our simulation results were
+consistent with Central Limit Theorem (CLT).
+
+References
+[1]
+
+[2]
+
+[3]
+
+[4]
+
+[5]
+
+A. I. Fleishman, “A Method for Simulating Non-Normal
+Distributions”, Psychometrika, Vol. 43, No. 4, pp. 521-532,
+1978. View at Google Scholar.
+D. R. Cox, “Some Problems Connected with Statistical
+Inference”, The Annals of Mathematical Statistics, Vol. 29,
+No. 2 pp. 357-372, Institute of Mathematical Statistics, Jun.,
+1958. View at Google Scholar.
+E. H. Holton and M. B. Burnett, Qualitative research methods,
+In R. A. Swanson, & E. F. Holton (Eds.), Human resource
+development research handbook: Linking research and
+practice, San Francisco: Berrett-Koehler Publishers, 1997.
+George Miaoulis and R. D. Michener, An Introduction to
+Sampling. Dubuque, Iowa: Kendall/Hunt Publishing
+Company, 1976.
+Glenn D. Israel, “Sampling: The Evidence of Extension
+
+7
+
+Program Impact”, Program Evaluation and Organizational
+Development, IFAS, University of Florida, PEOD-5, 1992.
+View at Google Scholar.
+[6]
+
+Glenn D. Israel, “Determining Sample Size”, Program
+Evaluation and Organizational Development, Florida
+Cooperative Extension Service, Institute of Food and
+Agricultural Sciences, University of Florida, PEOD-6,
+November 1992. View at Google Scholar.
+
+[7]
+
+H. Arsham, System Simulation: The Shortest Route to
+Applications, Version 9, 2005, Retrieved 1/1/20176 from
+http://home.ubalt.edu/ntsbarsh/simulation/sim.htm.
+
+[8]
+
+I. Peers, Statistical analysis for education and psychology
+researchers, PA: Falmer Press, Bristol, 1996. View at Google
+Scholar.
+
+[9]
+
+H. Watt James and van den Berg Sjef, Research Methods for
+Communication Science, Part II: Basic Tools of Research:
+Sampling, Measurement, Distributions, and Descriptive
+Statistics, pp. 136-137, Allyn & Bacon, Inc, 2002.
+
+[10] James E. Barlett, Joe W. Kotrlik and Chadwick C. Higgins,
+“Organizational research: Determining appropriate sample
+size in survey research”, Information Technology, Learning,
+and Performance Journal, Vol. 19, No. 1, pp. 43-50, Spring
+2001. View at Google Scholar.
+[11] Joe L. Spaeth, “Perils and pitfalls of survey research”,
+Applying Research to Practice: Allerton Park Institute
+Proceedings (no. 33, 1991), Graduate School of Library and
+Information Science, University of Illinois at UrbanaChampaign, 1992. View at Google Scholar.
+[12] Leslie Kish, Survey Sampling, John. Wiley and Sons, Inc.,
+New York, 1965.
+[13] Martin N. Marshall, “Sampling for qualitative research”,
+Oxford Journals: Medicine & Health Family Practice, Volume
+13, Issue 6, pp. 522-526, 1996. View at Google Scholar.
+[14] P. O. Johnson, “Development of the sample survey as a
+scientific methodology”, Journal of Experiential Education,
+Taylor & Francis, Ltd., vol. 27, no. 3, pp. 167-176, March
+1959. View at Google Scholar.
+[15] R. C. Geary, “Testing for normality” Biometrika, vol. 34, pp.
+209-242, 1947.
+[16] R. V. Krejcie and D. W. Morgan, “Determining sample size
+for research activities”, Educational and Psychological
+Measurement, pp. 30, pp. 607-610, 1970. View at Google
+Scholar.
+[17] S. Sudman, Applied sampling, Academic Press, New York,
+1976.
+[18] T. Micceri, “The Unicorn, The Normal Curve, and Other
+Improbable Creatures”, Psychological Bulletin, 105 (1), pp.
+156-166, 1989. View at Google Scholar.
+[19] Taro Yamane, Statistics, An Introductory Analysis, 2nd Ed.,
+Harper and Row, New York, 1967.
+[20] W. G. Cochran, Sampling techniques, John Wiley & Sons, 3rd
+ed., New York, USA, 1977.
+[21] W. L. Hays, Statistics, 5th ed., New York: Holt, Rinehart and
+Winston, 1994.
+
+

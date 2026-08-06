@@ -1,0 +1,4442 @@
+How to Design
+and Evaluate
+Research in Education
+TENTH EDITION
+
+Jack R. Fraenkel
+San Francisco State University
+
+Norman E. Wallen
+San Francisco State University
+
+Helen H. Hyun
+San Francisco State University
+
+HOW TO DESIGN AND EVALUATE RESEARCH IN EDUCATION, TENTH EDITION
+Published by McGraw-Hill Education, 2 Penn Plaza, New York, NY 10121. Copyright © 2019 by McGraw-Hill
+Education. All rights reserved. Printed in the United States of America. Previous editions © 2015, 2012, and
+2009. No part of this publication may be reproduced or distributed in any form or by any means, or stored in
+a database or retrieval system, without the prior written consent of McGraw-Hill Education, including, but not
+limited to, in any network or other electronic storage or transmission, or broadcast for distance learning.
+Some ancillaries, including electronic and print components, may not be available to customers outside the
+United States.
+This book is printed on acid-free paper.
+1 2 3 4 5 6 7 8 9 LWI 21 20 19 18 17
+ISBN 978-1-259-91383-9
+MHID 1-259-91383-X
+Portfolio Manager: Jamie Laferrera
+Product Developer: Francesca King
+Marketing Manager: Nancy Baudean
+Content Project Manager: Maria McGreal
+Buyer: Susan K. Culbertson
+Design: MPS Limited
+Content Licensing Specialists: Lori Slattery
+Cover Images: Volunteers holding turtle together near river:
+©Ariel Skelley/Blend Images; teacher observing: ©2007 Keith Eng
+Compositor: MPS Limited
+All credits appearing on page or at the end of the book are considered to be an extension of the copyright page.
+Library of Congress Cataloging-in-Publication Data
+Fraenkel, Jack R., 1932- author. | Wallen, Norman E., author. | Hyun,
+Helen H., author.
+How to design and evaluate research in education / Jack R. Fraenkel,
+San Francisco State University, Norman E. Wallen, San Francisco State
+University, Helen H. Hyun, San Francisco State University.
+Tenth edition. | New York : McGraw-Hill Education, [2018]
+LCCN 2017050811| ISBN 9781259913839 (acid-free paper) |
+ISBN 125991383X (acid-free paper)
+LCSH: Education—Research—Methodology. | Education—Research—Evaluation. |
+Proposal writing in educational research.
+LCC LB1028.F665 2018 | DDC 370.7—dc23 | LC record available at
+https://lccn.loc.gov/2017050811
+The Internet addresses listed in the text were accurate at the time of publication. The inclusion of a website does
+not indicate an endorsement by the authors or McGraw-Hill Education, and McGraw-Hill Education does not
+guarantee the accuracy of the information presented at these sites.
+
+mheducation.com/highered
+
+ABOUT THE AUTHORS
+
+Jack R. Fraenkel was Professor Emeritus of Interdisciplinary
+Studies in Education, and Director of the Research and Development Center, College of Education, San Francisco State University. He received his PhD from Stanford University and taught
+courses in research methodology for more than 30 years. In 1997,
+he received the James A. Michener prize in writing for his writings
+about the social studies and the social sciences. His recent work
+centered on advising and assisting faculty and students in generating and developing research projects.
+Courtesy of Norman E. Wallen
+
+Norman E. Wallen is Professor Emeritus of Interdisciplinary
+Studies in Education at San Francisco State University. An experienced researcher, he received his PhD from Syracuse University
+and taught courses in statistics and research design to master’s and
+doctoral students for many years. He is a former member of the
+City Council of Flagstaff, Arizona, and the Executive Committee,
+Grand Canyon Chapter of the Sierra Club.
+
+Courtesy of Norman E. Wallen
+
+Helen H. Hyun is Professor of Interdisciplinary Studies in Education at San Francisco State University. She received her EdD
+from Harvard University and has taught courses in research design
+and methodology to master’s and doctoral students at both San
+Francisco State and the University of California at Berkeley. Her
+teaching and research interests include higher education policy,
+mixed methods research, and equity issues in education.
+
+­
+
+Courtesy of Helen H. Hyun
+
+­
+
+­
+
+­
+
+­
+
+iii
+
+To Marge, Lina, and Jeff for all their support
+
+iv
+
+CONTENTS IN BRIEF
+
+Preface xxiii
+
+1 The Nature of Research 2
+
+14 Single-Subject Research 294
+15 Correlational Research 324
+16 Causal-Comparative Research 343
+17 Survey Research 357
+
+PART 2
+
+PART 5
+
+The Basics of Educational
+Research 25
+
+Introduction to Qualitative
+Research 379
+
+2 The Research Problem 26
+3 Locating and Reviewing the Literature 37
+4 Ethics and Research 60
+5 Variables and Hypotheses 75
+6 Sampling 90
+7 Instrumentation 110
+8 Validity and Reliability 142
+9 Internal Validity 160
+
+18 The Nature of Qualitative Research 380
+19 Observation and Interviewing 399
+20 Content Analysis 431
+
+PART 1
+
+Introduction to Research 1
+
+PART 3
+
+PART 6
+
+Qualitative Research
+Methodologies 447
+21 Ethnographic Research 448
+22 Historical Research 480
+
+Data Analysis 179
+10 Descriptive Statistics 180
+11 Inferential Statistics 213
+12 Statistics in Perspective 239
+
+PART 7
+
+Mixed-Methods Studies 501
+23 Mixed-Methods Research 502
+
+PART 4
+PART 8
+
+Research by Practitioners 527
+
+13 Experimental Research 258
+
+24 Action Research 528
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+Quantitative Research
+Methodologies 257
+
+v
+
+vi
+
+CONTENTS IN BRIEF
+
+PART 9
+
+Writing Research
+Proposals and Reports 547
+25 Preparing Research Proposals and
+Reports 548
+
+www.mhhe.com/fraenkel10e
+
+Appendixes A-1
+APPENDIX A Portion of a Table of Random
+
+Numbers A-2
+APPENDIX B Selected Values from a Normal
+Curve Table A-3
+APPENDIX C Chi-Square Distribution A-4
+APPENDIX D Using Microsoft Excel A-5
+
+
+
+
+
+	
+
+
+
+
+
+
+
+Glossary G-1
+Index I-1
+
+CONTENTS
+
+Preface xxiii
+
+PART 1
+
+Introduction to Research 1
+
+1 The Nature of Research 2
+Interactive and Applied Learning 3
+
+Some Examples of Educational Concerns 3
+Why Research Is of Value 4
+Ways of Knowing 4
+Types of Research 7
+General Research Types 15
+
+PART 2
+
+Critical Analysis of Research 16
+A Brief Overview of the Research Process 19
+Main Points 21
+Key Terms 22
+For Discussion 23
+References 23
+Research Exercise 1 24
+Problem Sheet 1 24
+
+The Basics of Educational Research 25
+
+2 The Research Problem 26
+Interactive and Applied Learning 27
+
+What Is a Research Problem? 27
+Research Questions 27
+Characteristics of Good Research Questions 28
+Main Points 34
+Key Terms 35
+For Discussion 35
+Research Exercise 2 36
+Problem Sheet 2 36
+
+3 Locating and Reviewing the
+Literature 37
+Interactive and Applied Learning 38
+
+The Definition and Value of a Literature Review 38
+Types of Sources 38
+Steps Involved in a Literature Search 39
+Doing a Computer Search 44
+Writing the Literature Review Report 51
+Main Points 56
+Key Terms 58
+For Discussion 58
+References 58
+Research Exercise 3 59
+Problem Sheet 3 59
+
+	
+
+vii
+
+viii
+
+CONTENTS
+
+4 Ethics and Research 60
+Interactive and Applied Learning 61
+
+Some Examples of Unethical Practice 61
+A Statement of Ethical Principles 61
+Protecting Participants from Harm 63
+Ensuring Confidentiality of Research Data 64
+When (If Ever) Is Deception of Subjects
+Justified? 64
+Three Examples Involving Ethical Concerns 65
+Research with Children 67
+Regulation of Research 67
+Academic Cheating and Plagiarism 70
+Main Points 72
+Key Terms 72
+For Discussion 72
+References 73
+Research Exercise 4 74
+Problem Sheet 4 74
+
+5 Variables and
+Hypotheses 75
+Interactive and Applied Learning 76
+
+The Importance of Studying Relationships 76
+Variables 77
+Hypotheses 83
+Main Points 87
+Key Terms 88
+For Discussion 88
+References 88
+Research Exercise 5 89
+Problem Sheet 5 89
+
+6 Sampling 90
+Interactive and Applied Learning 91
+
+	
+
+
+
+What Is a Sample? 91
+Random Sampling Methods 94
+Nonrandom Sampling Methods 97
+
+www.mhhe.com/fraenkel10e
+
+A Review of Sampling Methods 100
+Sample Size 102
+External Validity: Generalizing from a Sample 103
+Main Points 106
+Key Terms 107
+For Discussion 107
+Research Exercise 6 109
+Problem Sheet 6 109
+
+7 Instrumentation 110
+Interactive and Applied Learning 111
+
+What Are Data? 111
+Means of Classifying Data-Collection
+Instruments 113
+Examples of Data-Collection Instruments 116
+Norm-Referenced Versus Criterion-Referenced
+Instruments 132
+Measurement Scales 133
+Preparing Data for Analysis 136
+Main Points 138
+Key Terms 139
+For Discussion 139
+References 140
+Research Exercise 7 141
+Problem Sheet 7 141
+
+8 Validity and Reliability 142
+Interactive and Applied Learning 143
+
+The Importance of Valid Instrumentation 143
+Validity 143
+Reliability 149
+Main Points 157
+Key Terms 157
+For Discussion 158
+References 158
+Research Exercise 8 159
+Problem Sheet 8 159
+
+CONTENTS
+
+9 Internal Validity 160
+Interactive and Applied Learning 161
+
+What Is Internal Validity? 161
+Threats to Internal Validity 162
+How Can a Researcher Minimize These
+Threats to Internal Validity? 174
+
+PART 3
+
+Data Analysis 179
+
+10 Descriptive Statistics 180
+Interactive and Applied Learning 181
+
+Statistics Versus Parameters 181
+Two Fundamental Types of Numerical Data 181
+Types of Scores 183
+Techniques for Summarizing
+Quantitative Data 184
+Techniques for Summarizing Categorical Data 203
+Main Points 209
+Key Terms 210
+For Discussion 211
+Research Exercise 10 212
+Problem Sheet 10 212
+
+11 Inferential Statistics 213
+Interactive and Applied Learning 214
+
+What Are Inferential Statistics? 214
+The Logic of Inferential Statistics 215
+Hypothesis Testing 222
+Practical Versus Statistical Significance 224
+Inference Techniques 227
+
+PART 4
+
+Interactive and Applied Learning 259
+
+		
+
+		
+
+The Uniqueness of Experimental Research 259
+
+		
+
+Main Points 235
+Key Terms 237
+For Discussion 237
+Research Exercise 11 238
+Problem Sheet 11 238
+
+12 Statistics in Perspective 239
+Interactive and Applied Learning 240
+
+Approaches to Research 240
+Comparing Groups: Quantitative Data 241
+Relating Variables Within a Group:
+Quantitative Data 245
+Comparing Groups: Categorical Data 249
+Relating Variables Within a Group:
+Categorical Data 251
+A Recap of Recommendations 253
+Main Points 253
+Key Terms 254
+For Discussion 254
+Research Exercise 12 255
+Problem Sheet 12 255
+
+Quantitative Research Methodologies 257
+
+13 Experimental Research 258
+
+		
+
+Main Points 175
+Key Terms 176
+For Discussion 177
+Reference 177
+Research Exercise 9 178
+Problem Sheet 9 178
+
+Essential Characteristics of Experimental
+Research 260
+Control of Extraneous Variables 262
+Group Designs in Experimental Research 262
+
+ix
+
+x
+
+CONTENTS
+
+Control of Threats to Internal Validity:
+A Summary 273
+Evaluating the Likelihood of a Threat to Internal
+Validity in Experimental Studies 275
+Control of Experimental Treatments 278
+An Example of Experimental Research 279
+Analysis of the Study 287
+Main Points 289
+Key Terms 290
+For Discussion 291
+References 292
+Research Exercise 13 293
+Problem Sheet 13 293
+
+14 Single-Subject Research 294
+Interactive and Applied Learning 295
+
+Essential Characteristics of Single-Subject
+Research 295
+Single-Subject Designs 296
+Threats to Internal Validity in Single-Subject
+Research 302
+An Example of Single-Subject Research 307
+Analysis of the Study 320
+Main Points 321
+Key Terms 322
+For Discussion 322
+References 323
+
+15 Correlational Research 324
+Interactive and Applied Learning 325
+
+		
+
+		
+
+		
+
+		
+
+
+
+The Nature of Correlational Research 325
+Purposes of Correlational Research 326
+Basic Steps in Correlational Research 332
+What Do Correlation Coefficients Tell Us? 334
+Threats to Internal Validity in Correlational
+Research 334
+Evaluating Threats to Internal Validity in
+Correlational Studies 338
+Main Points 341
+
+www.mhhe.com/fraenkel10e
+
+Key Terms 342
+For Discussion 342
+References 342
+
+16 Causal-Comparative
+Research 343
+Interactive and Applied Learning 344
+
+What Is Causal-Comparative Research? 344
+Steps Involved in Causal-Comparative
+Research 347
+Threats to Internal Validity in Causal-Comparative
+Research 348
+Evaluating Threats to Internal Validity in CausalComparative Studies 350
+Data Analysis 351
+Associations Between Categorical Variables 353
+Main Points 354
+For Discussion 355
+References 356
+
+17 Survey Research 357
+Interactive and Applied Learning 358
+
+What Is a Survey? 358
+Why Are Surveys Conducted? 358
+Types of Surveys 359
+Survey Research and Correlational Research 360
+Steps in Survey Research 360
+Nonresponse 371
+Problems in the Instrumentation Process in Survey
+Research 374
+Evaluating Threats to Internal Validity in Survey
+Research 374
+Data Analysis in Survey Research 374
+Main Points 375
+Key Terms 376
+For Discussion 377
+References 377
+
+CONTENTS
+
+PART 5
+
+Introduction to Qualitative Research 379
+
+18 The Nature of Qualitative
+Research 380
+Interactive and Applied Learning 381
+
+What Is Qualitative Research? 381
+General Characteristics of Qualitative
+Research 382
+Philosophical Assumptions Underlying Qualitative
+as Opposed to Quantitative Research 383
+Postmodernism 384
+Steps in Qualitative Research 385
+Approaches to Qualitative Research 387
+Qualitative Data Analysis 391
+Generalization in Qualitative Research 391
+Internal Validity in Qualitative Research 393
+Ethics and Qualitative Research 393
+Qualitative and Quantitative Research
+Reconsidered 394
+Main Points 395
+Key Terms 396
+For Discussion 396
+References 397
+
+19 Observation
+and Interviewing 399
+Interactive and Applied Learning 400
+
+Observation 400
+
+PART 6
+
+Interactive and Applied Learning 449
+
+What Is Ethnographic Research? 449
+The Unique Value of Ethnographic
+Research 450
+Ethnographic Concepts 451
+		
+
+		
+		
+
+20 Content Analysis 431
+Interactive and Applied Learning 432
+
+What Is Content Analysis? 432
+Some Applications 433
+Categorization in Content Analysis 434
+Steps Involved in Content
+Analysis 434
+An Illustration of Content Analysis 440
+Using a Computer in Content
+Analysis 442
+Advantages of Content Analysis 443
+Disadvantages of Content
+Analysis 443
+Main Points 444
+Key Terms 445
+For Discussion 445
+References 446
+
+Qualitative Research Methodologies 447
+
+21 Ethnographic Research 448
+
+		
+
+Interviewing 405
+Validity and Reliability in Qualitative
+Research 413
+An Example of Qualitative Research 415
+Analysis of the Study 426
+Main Points 428
+Key Terms 429
+For Discussion 429
+References 430
+
+Sampling in Ethnographic Research 453
+Do Ethnographic Researchers Use
+Hypotheses? 453
+Data Collection in Ethnographic Research 454
+Data Analysis in Ethnographic Research 458
+Roger Harker and His Fifth-Grade Classroom 460
+
+xi
+
+xii
+
+CONTENTS
+
+Advantages and Disadvantages of
+Ethnographic Research 461
+An Example of Ethnographic Research 462
+Analysis of the Study 476
+Main Points 477
+Key Terms 478
+For Discussion 478
+References 479
+
+22 Historical Research 480
+Interactive and Applied Learning 481
+
+www.mhhe.com/fraenkel10e
+
+Steps Involved in Historical Research? 482
+Data Analysis in Historical Research 487
+Generalization in Historical Research 487
+Advantages and Disadvantages of Historical
+Research 488
+An Example of Historical Research 489
+Analysis of the Study 497
+Main Points 498
+Key Terms 499
+For Discussion 500
+References 500
+
+What Is Historical Research? 481
+
+PART 7
+
+Mixed-Methods Studies 501
+
+23 Mixed-Methods Research 502
+Interactive and Applied Learning 503
+
+What Is Mixed-Methods
+Research? 503
+Why Do Mixed-Methods Research? 504
+Drawbacks of Mixed-Methods Studies 504
+A (Very) Brief History 505
+Types of Mixed-Methods Designs 506
+Other Mixed-Methods Research Design
+Issues 508
+
+PART 8
+
+Research by Practitioners 527
+
+24 Action Research 528
+Interactive and Applied Learning 529
+
+		
+
+		
+
+
+
+What Is Action Research? 529
+Types of Action Research 530
+Steps in Action Research 533
+Similarities and Differences Between Action
+Research and Formal Quantitative and
+Qualitative Research 535
+
+		
+
+Steps in Conducting a Mixed-Methods Study 509
+Evaluating a Mixed-Methods Study 511
+Ethics in Mixed-Methods Research 511
+Summary 511
+An Example of Mixed-Methods Research 511
+Analysis of the Study 522
+Main Points 523
+Key Terms 525
+For Discussion 525
+References 525
+
+The Advantages of Action Research 536
+Hypothetical Examples of Practical Action
+Research 537
+An Example of Action Research 542
+Main Points 543
+Key Terms 544
+For Discussion 544
+References 545
+
+CONTENTS
+
+PART 9
+
+Writing Research Proposals and Reports 547
+
+25 Preparing Research Proposals For Discussion 572
+and Reports 548
+Interactive and Applied Learning 549
+
+
+
+
+
+
+
+
+
+		
+
+The Research Proposal 549
+The Major Sections of a Research Proposal
+or Report 549
+Sections Unique to Research Reports 555
+A Sample Research Proposal 559
+Main Points 571
+For Review 571
+Key Terms 571
+
+References 572
+
+Appendixes A-1
+APPENDIX A Portion of a Table of Random
+
+Numbers A-2
+APPENDIX B Selected Values from a Normal
+
+Curve Table A-3
+APPENDIX C Chi-Square Distribution A-4
+APPENDIX D Using Microsoft Excel A-5
+
+Glossary G-1
+Index I-1
+
+xiii
+
+This page intentionally left blank
+
+LIST OF FEATURES
+
+RESEARCH REPORTS
+How manipulatives affect the mathematics
+achievement of students in Nigerian
+schools 280
+Implementation of the guided reading approach
+with elementary school deaf students 308
+Walk and talk: An intervention for behaviorally
+challenged youths 415
+‘Belonging means you can go in’: Children’s
+perspectives and experiences of membership of
+kindergarten 462
+Lydia Ann Stow: Self-actualization in a period of
+transition 490
+Students’ perceptions of factors influencing their
+desire to major or not major in science 512
+
+RESEARCH TIPS
+Key Terms to Define in a Research Study 31
+What a Good Summary of a Journal Article Should
+Contain 50
+Some Tips About Developing Your Own
+Instrument 114
+Sample Size 228
+How Not to Interview 412
+What to Do About Contradictory Findings 510
+Things to Consider When Doing In-School
+Research 540
+Questions to Ask When Evaluating a Research
+Report 555
+
+MORE ABOUT RESEARCH
+Chaos Theory 8
+The Importance of a Rationale 33
+An Example of Unethical Research 65
+Department of Health and Human Services
+Revised Regulations for Research with Human
+Subjects 71
+Some Important Relationships That Have Been
+Clarified by Educational Research 79
+The Difficulty in Generalizing from a Sample 103
+Checking Reliability and Validity—An Example 152
+Threats to Internal Validity in Everyday Life 170
+Some Thoughts About Meta-Analysis 172
+Correlation in Everyday Life 207
+Interpreting Statistics 252
+Significant Findings in Experimental Research 277
+Important Findings in Single Subject
+Research 296
+Examples of Studies Conducted Using SingleSubject Designs 306
+Important Findings in Correlational Research 327
+Significant Findings in Causal-Comparative
+Research 353
+Important Findings in Survey Research 364
+Important Findings in Content Analysis
+Research 435
+Important Findings in Ethnographic Research 450
+Important Findings in Historical Research 488
+An Important Example of Action Research 537
+
+‑
+
+xv
+
+xvi
+
+LIST OF FEATURES
+
+CONTROVERSIES IN
+RESEARCH
+Should Some Research Methods Be Preferred
+over Others? 15
+Clinical Trials—Desirable or Not? 63
+Ethical or Not? 70
+Sample or Census? 102
+Which Statistical Index Is Valid? 136
+Is Consequential Validity a Useful Concept? 155
+Can Statistical Power Analysis Be
+Misleading? 234
+Statistical Inference Tests—Good or Bad? 243
+Do Placebos Work? 275
+How Should Research Methodologies
+Be Classified? 346
+Is Low Response Rate Necessarily a Bad
+Thing? 373
+Clarity and Postmodernism 385
+Portraiture: Art, Science, or Both? 388
+Should Historians Influence Policy? 486
+Are Some Methods Incompatible with
+Others? 506
+How Much Should Participants Be Involved
+in Research? 533
+
+TABLES
+Table 4.1 Criteria for IRB Approval 69
+Table 6.1 Part of a Table of Random Numbers 95
+Table 7.1 Characteristics of the Four Types of
+Measurement Scales 136
+Table 7.2 Hypothetical Results of Study Involving a
+Comparison of Two Counseling Methods 137
+Table 8.1 Example of an Expectancy Table 148
+Table 8.2 Methods of Checking Validity and
+Reliability 153
+Table 9.1 Threats to the Internal Validity
+of a Study 174
+
+
+
+Table 9.2 General Techniques for Controlling
+Threats to Internal Validity 175
+
+www.mhhe.com/fraenkel10e
+
+Table 10.1 Hypothetical Examples of Raw Scores
+and Accompanying Percentile Ranks 184
+Table 10.2 Example of a Frequency Distribution 185
+Table 10.3 Example of a Grouped Frequency
+Distribution 185
+Table 10.4 Example of the Mode, Median, and
+Mean in a Distribution 190
+Table 10.5 Yearly Salaries of Workers in a Small
+Business 191
+Table 10.6 Calculation of the Standard Deviation
+of a Distribution 193
+Table 10.7 Comparisons of Raw Scores and
+z Scores on Two Tests 196
+Table 10.8 Data Used to Construct Scatterplot in
+Figure 10.17 200
+Table 10.9 Frequency and Percentage of Total of
+Responses to Questionnaire 205
+Table 10.10 Grade Level and Gender of Teachers
+(Hypothetical Data) 206
+Table 10.11 Repeat of Table 10.10 with Expected
+Frequencies (in Parentheses) 206
+Table 10.12 Position, Gender, and Ethnicity of
+School Leaders (Hypothetical Data) 206
+Table 10.13 Position and Ethnicity of School
+
+Leaders with Expected Frequencies (Derived from
+Table 10.12) 207
+Table 10.14 Position and Gender of School
+Leaders with Expected Frequencies (Derived
+from Table 10.12) 207
+Table 10.15 Gender and Ethnicity of School
+Leaders with Expected Frequencies (Derived
+from Table 10.12) 207
+Table 10.16 Total of Discrepancies Between
+Expected and Observed Frequencies in
+Tables 10.13 Through 10.15 208
+Table 10.17 Crossbreak Table Showing
+Relationship Between Self-Esteem and Gender
+(Hypothetical Data) 208
+Table 11.1 Contingency Coefficient Values for
+Different-Sized Crossbreak Tables 232
+Table 11.2 Commonly Used Inferential
+Techniques 233
+Table 12.1 Gain Scores on Test of Ability to
+Explain: Inquiry and Lecture Groups 244
+
+xvii
+
+features
+
+of
+
+list
+
+Table 12.2 Calculations from Table 12.1 246
+Table 12.3 Interpretation of Correlation
+
+Coefficients When Testing Research
+Hypotheses 247
+Table 12.4 Self-Esteem Scores and Gains in
+Marital Satisfaction 248
+Table 12.5 Gender and Political Preference
+(Percentages) 250
+Table 12.6 Gender and Political Preference
+(Numbers) 250
+Table 12.7 Teacher Gender and Grade Level
+Taught: Case 1 250
+Table 12.8 Teacher Gender and Grade Level
+Taught: Case 2 250
+Table 12.9 Crossbreak Table Showing Teacher
+Gender and Grade Level with Expected
+Frequencies Added (Data from Table 12.7) 251
+Table 12.10 Summary of Commonly Used
+Statistical Techniques 252
+Table 13.1 Effectiveness of Experimental Designs
+in Controlling Threats to Internal Validity 274
+Table 15.1 Three Sets of Data Showing Different
+Directions and Degrees of Correlation 326
+Table 15.2 Teacher Expectation of Failure and
+Amount of Disruptive Behavior for a Sample of
+12 Classes 328
+Table 15.3 Correlation Matrix for Variables
+in Student Alienation Study 331
+Table 15.4 Example of Data Obtained in a
+Correlational Design 333
+Table 16.1 Grade Level and Gender of Teachers
+(Hypothetical Data) 353
+Table 17.1 Advantages and Disadvantages of
+Survey Data Collection Methods 361
+Table 17.2 Advantages and Disadvantages
+of Closed-Ended Versus Open-Ended
+Questions 366
+Table 18.1 Quantitative Versus Qualitative
+Research 382
+Table 18.2 Differing Philosophical Assumptions of
+Quantitative and Qualitative Researchers 384
+Table 19.1 Interviewing Strategies Used in
+Educational Research 407
+Table 19.2 Qualitative Research Questions,
+Strategies, and Data Collection Techniques 414
+
+Table 20.1 Coding Categories for Women in Social
+Studies Textbooks 437
+Table 20.2 Sample Tally Sheet (Newspaper
+Editorials) 440
+Table 20.3 Clarity of Studies 440
+Table 20.4 Type of Sample 440
+Table 20.5 Threats to Internal Validity 442
+Table 24.1 Basic Assumptions Underlying Action
+Research 530
+Table 24.2 Similarities and Differences Between
+
+Action Research and Formal Quantitative
+and Qualitative Research 536
+Table 25.1 References APA Style 556
+
+FIGURES
+Figure 1.1 Ways of Knowing 10
+Figure 1.2 Example of Results of Experimental
+
+Research: Effect of Method of Instruction on
+History Test Scores 11
+Figure 1.3 Is the Teacher’s Assumption
+Correct? 18
+Figure 1.4 The Research Process 20
+Figure 2.1 Some Times When Operational
+Definitions Would Be Helpful 32
+Figure 2.2 Relationship Between Voter Gender
+and Party Affiliation 34
+Figure 3.1 Excerpt from ERIC Journal Article 42
+Figure 3.2 Excerpt from ERIC Document 43
+Figure 3.3 Excerpt from ProQuest Dissertations
+and Theses 44
+Figure 3.4 Excerpt from Education Full Text 45
+Figure 3.5 Venn Diagrams Showing the Boolean
+Operators AND and OR 46
+Figure 3.6 Summary of Search Results 47
+Figure 3.7 Prompts for Evaluating Research
+Studies 51
+Figure 3.8 Example of an Annotated Table 52
+Figure 4.1 Example of a Consent Form 64
+Figure 4.2 Examples of Unethical Research
+Practices 66
+Figure 4.3 Example of a Consent Form for a Minor
+to Participate in a Research Study 68
+
+xviii
+
+
+
+features
+
+of
+
+list
+
+Figure 5.1 Quantitative Variables Compared with
+Categorical Variables 78
+Figure 5.2 Relationship Between Instructional
+
+Approach (Independent Variable) and
+Achievement (Dependent Variable), as
+Moderated by Gender of Students 81
+Figure 5.3 Examples of Extraneous Variables 82
+Figure 5.4 A Single Research Problem Can Suggest
+Several Hypotheses 84
+Figure 5.5 Directional Versus Nondirectional
+Hypotheses 86
+Figure 6.1 Representative Versus
+Nonrepresentative Samples 93
+Figure 6.2 Selecting a Stratified Sample 96
+Figure 6.3 Cluster Random Sampling 97
+Figure 6.4 Random Sampling Methods 98
+Figure 6.5 Convenience Sampling 99
+Figure 6.6 Nonrandom Sampling Methods 101
+Figure 6.7 Population as Opposed to Ecological
+Generalizing 105
+Figure 7.1 ERIC Database of Tests and
+Assessments 115
+Figure 7.2 Search Results for Social Studies
+Competency-Based Instruments 116
+Figure 7.3 Abstract from the ERIC Database 117
+Figure 7.4 Excerpt from a Behavior Rating Scale
+for Teachers 118
+Figure 7.5 Excerpt from a Graphic Rating Scale 118
+Figure 7.6 Example of a Product Rating Scale 119
+Figure 7.7 Interview Schedule (for Teachers)
+Designed to Assess the Effects of a
+Competency-Based Curriculum in Inner-City
+Schools 119
+Figure 7.8 Semi-Structured Interview Protocol 120
+Figure 7.9 Sample Observation Form 120
+Figure 7.10 Discussion-Analysis Tally Sheet 121
+Figure 7.11 Performance Checklist Noting Student
+Actions 122
+Figure 7.12 Time-and-Motion Log 124
+Figure 7.13 Example of a Self-Checklist 125
+Figure 7.14 Examples of Items from a Likert
+Scale Measuring Attitude Toward Teacher
+Empowerment 125
+
+www.mhhe.com/fraenkel10e
+
+Figure 7.15 Example of the Semantic
+Differential 126
+Figure 7.16 Pictorial Attitude Scale for Use with
+Young Children 126
+Figure 7.17 Sample Items from a Personality
+Inventory 127
+Figure 7.18 Sample Items from an Achievement
+Test 127
+Figure 7.19 Sample Item from an Aptitude
+Test 128
+Figure 7.20 Sample Items from an Intelligence
+Test 129
+Figure 7.21 Example from the Blum Sewing
+Machine Test 129
+Figure 7.22 Sample Items from the Picture
+Situation Inventory 130
+Figure 7.23 Example of a Sociogram 131
+Figure 7.24 Four Types of Measurement
+Scales 134
+Figure 7.25 A Nominal Scale of Measurement 134
+Figure 7.26 An Ordinal Scale: The Outcome of a
+Horse Race 135
+Figure 8.1 Types of Evidence of Validity 145
+Figure 8.2 Reliability and Validity 150
+Figure 8.3 Reliability of a Measurement 150
+Figure 8.4 Standard Error of Measurement 153
+Figure 8.5 The “Quick and Easy” Intelligence
+Test 154
+Figure 8.6 Reliability Worksheet 155
+Figure 9.1 A Mortality Threat to Internal
+Validity 163
+Figure 9.2 Location Might Make a Difference 164
+Figure 9.3 An Example of Instrument Decay 165
+Figure 9.4 A Data Collector Characteristics
+Threat 165
+Figure 9.5 A Testing Threat to Internal Validity 166
+Figure 9.6 A History Threat to Internal Validity 167
+Figure 9.7 Could Maturation Be at Work
+Here? 168
+Figure 9.8 The Attitude of Subjects Can Make a
+Difference 169
+Figure 9.9 Regression Rears Its Head 171
+
+xix
+
+Figure 9.10 Illustration of Threats to Internal
+Validity 173
+Figure 10.1 Example of a Frequency Polygon 186
+Figure 10.2 Example of a Positively Skewed
+Polygon 187
+Figure 10.3 Example of a Negatively Skewed
+Polygon 187
+Figure 10.4 Two Frequency Polygons
+Compared 187
+Figure 10.5 Histogram of Data in Table 10.3 188
+
+features
+
+of
+
+list
+
+Figure 10.6 The Normal Curve 189
+Figure 10.7 Averages Can Be Misleading! 191
+Figure 10.8 Different Distributions Compared with
+Respect to Averages and Spreads 192
+Figure 10.9 Boxplots 192
+Figure 10.10 Standard Deviations for Boys’ and
+Men’s Basketball Teams 194
+Figure 10.11 Fifty Percent of All Scores in
+
+a Normal Curve Fall on Each Side of the
+Mean 194
+Figure 10.12 Percentages Under the Normal
+Curve 194
+Figure 10.13 z Scores Associated with the Normal
+Curve 195
+Figure 10.14 Probabilities Under the Normal
+Curve 197
+Figure 10.15 Table Showing Probability Areas
+Between the Mean and Different z Scores 197
+Figure 10.16 Examples of Standard Scores 198
+Figure 10.17 Scatterplot of Data from
+Table 10.8 200
+Figure 10.18 Relationship Between Family
+Cohesiveness and School Achievement in a
+Hypothetical Group of Students 202
+Figure 10.19 Further Examples of
+Scatterplots 203
+Figure 10.20 A Perfect Negative Correlation! 204
+Figure 10.21 Positive and Negative
+Correlations 204
+Figure 10.22 Examples of Nonlinear (Curvilinear)
+Relationships 204
+Figure 10.23 Example of a Bar Graph 205
+Figure 10.24 Example of a Pie Chart 206
+
+Figure 11.1 Selection of Two Samples from Two
+Distinct Populations 215
+Figure 11.2 Sampling Error 216
+Figure 11.3 A Sampling Distribution of
+
+Means 217
+Figure 11.4 Distribution of Sample Means 218
+Figure 11.5 The 95 Percent Confidence
+Interval 219
+Figure 11.6 The 99 Percent Confidence
+Interval 219
+Figure 11.7 We Can Be 99 Percent Confident 220
+Figure 11.8 Does a Sample Difference Reflect a
+Population Difference? 220
+Figure 11.9 Distribution of the Difference Between
+Sample Means 221
+Figure 11.10 Confidence Intervals 221
+Figure 11.11 Null and Research Hypotheses 223
+Figure 11.12 Illustration of When a Researcher
+Would Reject the Null Hypothesis 224
+Figure 11.13 How Much Is Enough? 225
+Figure 11.14 Significance Area for a One-Tailed
+Test 225
+Figure 11.15 One-Tailed Test Using a Distribution
+of Differences Between Sample Means 226
+Figure 11.16 Two-Tailed Test Using a Distribution
+of Differences Between Sample Means 226
+Figure 11.17 A Hypothetical Example of Type I and
+Type II Errors 227
+Figure 11.18 Rejecting the Null Hypothesis 233
+Figure 11.19 Power Under an Assumed Population
+Value 233
+Figure 11.20 A Power Curve 234
+Figure 12.1 Combinations of Data and Approaches
+to Research 241
+Figure 12.2 A Difference That Doesn’t Make a
+Difference! 244
+Figure 12.3 Frequency Polygons of Gain Scores
+on Test of Ability to Explain: Inquiry and Lecture
+Groups 244
+Figure 12.4 90 Percent Confidence Interval for a
+Difference of 1.2 Between Sample Means 245
+Figure 12.5 Scatterplots with a Pearson r
+of .50 247
+
+xx
+
+
+
+features
+
+of
+
+list
+
+Figure 12.6 Scatterplot Illustrating the Relationship
+
+Between Initial Self-Esteem and Gain in Marital
+Satisfaction Among Counseling Clients 249
+Figure 12.7 95 Percent Confidence Interval for r =
+.42 249
+Figure 13.1 Example of a One-Shot Case Study
+Design 263
+Figure 13.2 Example of a One-Group PretestPosttest Design 263
+Figure 13.3 Example of a Static-Group
+Comparison Design 264
+Figure 13.4 Example of a Randomized PosttestOnly Control Group Design 265
+Figure 13.5 Example of a Randomized PretestPosttest Control Group Design 266
+Figure 13.6 Example of a Randomized Solomon
+Four-Group Design 267
+Figure 13.7 A Randomized Posttest-Only Control
+Group Design, Using Matched Subjects 268
+Figure 13.8 Results (Means) from a Study Using a
+Counterbalanced Design 270
+Figure 13.9 Possible Outcome Patterns in a TimeSeries Design 271
+Figure 13.10 Using a Factorial Design to
+Study Effects of Method and Class Size on
+Achievement 272
+Figure 13.11 Illustration of Interaction and No
+Interaction in a 2 by 2 Factorial Design 272
+Figure 13.12 Example of a 4 by 2 Factorial
+Design 273
+Figure 13.13 Guidelines for Handling Internal
+Validity in Comparison Group Studies 276
+Figure 14.1 Single-Subject Graph 296
+Figure 14.2 A-B Design 297
+Figure 14.3 A-B-A Design 298
+Figure 14.4 A-B-A-B Design 299
+Figure 14.5 B-A-B Design 300
+Figure 14.6 A-B-C-B Design 301
+Figure 14.7 Multiple-Baseline Design 301
+Figure 14.8 Multiple-Baseline Design 302
+Figure 14.9 Multiple-Baseline Design Applied to
+Different Settings 303
+Figure 14.10 Variations in Baseline Stability 304
+
+www.mhhe.com/fraenkel10e
+
+Figure 14.11 Differences in Degree and Speed
+of Change 305
+Figure 14.12 Differences in Return to Baseline
+Conditions 306
+Figure 15.1 Scatterplot Illustrating a Correlation
+of +1.00 326
+Figure 15.2 Prediction Using a Scatterplot 327
+Figure 15.3 Multiple Correlation 329
+Figure 15.4 Discriminant Function Analysis 330
+Figure 15.5 Path Analysis Diagram 332
+Figure 15.6 Scatterplots for Combinations
+of Variables 336
+Figure 15.7 Eliminating the Effects of Age Through
+Partial Correlation 337
+Figure 15.8 Scatterplots Illustrating How a Factor
+(C) May Not Be a Threat to Internal Validity 340
+Figure 15.9 Circle Diagrams Illustrating
+Relationships Among Variables 340
+Figure 16.1 Examples of the Basic CausalComparative Design 348
+Figure 16.2 A Subject Characteristics Threat 349
+Figure 16.3 Does a Threat to Internal Validity
+Exist? 352
+Figure 17.1 Example of an Ideal Versus an Actual
+Telephone Sample for a Specific Question 362
+Figure 17.2 Example of an Internet Survey Created
+on SurveyMonkey 363
+Figure 17.3 Example of SurveyMonkey Data
+Results 364
+Figure 17.4 Example of Several Contingency
+Questions in an Interview Schedule 369
+Figure 17.5 Sample Cover Letter for a Mail
+Survey 370
+Figure 17.6 Demographic Data and
+Representativeness 372
+Figure 18.1 How Qualitative and Quantitative
+Researchers See the World 386
+Figure 19.1 Variations in Approaches to
+Observation 402
+Figure 19.2 The Importance of a Second Observer
+as a Check on One’s Conclusions 404
+Figure 19.3 The Amidon/Flanders Scheme
+
+for Coding Categories of Interaction in the
+Classroom 405
+
+xxi
+
+features
+
+of
+
+list
+
+Figure 19.4 An Interview of Dubious Validity 410
+Figure 19.5 Don’t Ask More Than One Question at
+a Time 411
+Figure 20.1 TV Violence and Public Viewing
+Patterns 433
+Figure 20.2 What Categories Should I Use? 437
+Figure 20.3 An Example of Coding an
+Interview 438
+Figure 20.4 Categories Used to Evaluate Social
+Studies Research 441
+Figure 21.1 Triangulation and Politics 459
+Figure 22.1 What Really Happened? 487
+Figure 22.2 Historical Research Is Not as Easy as
+You May Think! 489
+
+Figure 23.1 Exploratory Design 506
+Figure 23.2 Explanatory Design 507
+Figure 23.3 Triangulation Design 507
+Figure 24.1 Stakeholders 531
+Figure 24.2 The Role of the “Expert” in Action
+Research 532
+Figure 24.3 Levels of Participation in Action
+Research 533
+Figure 24.4 Participation in Action Research 535
+Figure 24.5 Experimental Design for the
+DeMaria Study 542
+Figure 25.1 Organization of a Research
+Report 557
+
+This page intentionally left blank
+
+PREFACE
+
+How to Design and Evaluate Research in Education is
+directed to students taking their first course in educational research. Because this field continues to grow
+so rapidly with regard to both the knowledge it contains and the methodologies it employs, the authors
+of any introductory text are forced to carefully define
+their goals as a first step in deciding what to include
+in their book. In our case, we continually kept three
+main goals in mind. We wanted to produce a text that
+would:
+1. Provide students with the basic information needed to
+understand the research process, from idea formulation
+through data analysis and interpretation.
+2. Enable students to use this knowledge to design their
+own research investigation on a topic of personal
+interest.
+3. Permit students to read and understand the literature
+of educational research.
+
+­
+
+­
+
+The first two goals are intended to satisfy the needs
+of those students who must plan and carry out a research project as part of their course requirements.
+The third goal is aimed at students whose course
+requirements include learning how to read and understand the research of others. Many instructors,
+ourselves included, build all three goals into their
+courses, since each one seems to reinforce the others.
+It is hard to read and fully comprehend the research
+of others if you have not yourself gone through the
+process of designing and evaluating a research project. Similarly, the more you read and evaluate the
+
+research of others, the better equipped you will be to
+design your own meaningful and creative research. In
+order to achieve the above goals, we have developed a
+book with the following characteristics.
+
+CONTENT COVERAGE
+Goal one, to provide students with the basic information
+needed to understand the research process, has resulted
+in a nine-part book plan. Part 1 (Chapter 1) introduces
+students to the nature of educational research, briefly
+overviews each of the seven methodologies discussed
+later in the text, and presents an overview of the research
+process as well as criticisms of it.
+Part 2 (Chapters 2 through 9) discusses the basic
+concepts and procedures that must be understood before one can engage in research intelligently or critique
+it meaningfully. These chapters explain variables, definitions, ethics, sampling, instrumentation, validity, reliability, and internal validity. These and other concepts are
+covered thoroughly, clearly, and relatively simply. Our
+emphasis throughout is to show students, by means of
+clear and appropriate examples, how to set up a research
+study in an educational setting on a question of interest
+and importance.
+Part 3 (Chapters 10 through 12) describes in some
+detail the processes involved in collecting and analyzing
+data.
+Part 4 (Chapters 13 through 17) describes and illustrates the methodologies most commonly used in
+quantitative educational research. Many key concepts
+
+xxiii
+
+xxiv
+
+presented in Part 2 are considered again in these chapters in order to illustrate their application to each methodology. Finally, most of the methodology chapters
+conclude with a carefully chosen study from the published research literature. Each study is analyzed by the
+authors with regard to both its strengths and weaknesses.
+Students are shown how to read and critically analyze a
+study they might find in the literature.
+Part 5 (Chapters 18 through 20) and Part 6 (Chapters 21 through 22) discuss qualitative research.
+Part 5 begins the coverage by describing qualitative
+research, its philosophy, and essential features. It has
+been expanded to include various types of qualitative
+research. This is followed by an expanded treatment
+of both data collection and analysis methods. Part 6
+presents the qualitative methodologies of ethnography and historical research. As with the quantitative
+methodology chapters, most of them are followed
+by a carefully chosen research report from the published research literature, along with our analysis and
+critique.
+Part 7 (Chapter 23) discusses Mixed-Methods
+Studies, which combine quantitative and qualitative
+methods. Again, as in other chapters, the discussion
+is followed by our analysis and critique of a research
+report we have chosen from the published research
+literature.
+Part 8 (Chapter 24) describes the assumptions, characteristics, and steps of action research. We include
+classroom examples of action research questions to
+bring the subject to life.
+Part 9 (Chapter 25) shows how to prepare a research
+proposal or report (involving a methodology of choice)
+that builds on the concepts and examples developed and
+illustrated in previous chapters.
+
+RESEARCH EXERCISES
+
+
+
+preface
+
+To achieve our second goal of helping students learn to
+apply their knowledge of basic processes and methodologies, we organized the first 12 chapters in the same
+order that students normally follow in developing a research proposal or conducting a research project. Then
+we concluded each of these chapters with a research
+
+www.mhhe.com/fraenkel10e
+
+exercise that includes a fill-in problem sheet. These exercises allow students to apply their understanding of
+the major concepts of each chapter. When completed,
+these accumulated problem sheets will have led students
+through the step-by-step processes involved in designing
+their own research projects. Although this step-by-step
+development requires some revision of their work as
+they learn more about the research process, the gain in
+understanding that results as they slowly see their proposal develop “before their eyes” justifies the extra time
+and effort involved.
+Problem Sheet templates are available electronically
+at the Online Learning Center Web site, www.mhhe
+.com/fraenkel10e.
+
+ACTUAL RESEARCH STUDIES
+Our third goal, to enable students to read and understand the literature of educational research, has led
+us to conclude each of the methodology chapters in
+Parts 4, 5, 6, 7, and 8, with an annotated study that
+illustrates a particular research method. At the end of
+each study we analyze its strengths and weaknesses
+and offer suggestions as to how it might be improved.
+Similarly, at the end of our chapter on writing research
+proposals and reports, we include a student research
+proposal that we have critiqued with marginal comments. This annotated proposal has proved an effective
+means of helping students understand both sound and
+questionable research practices.
+
+STYLE OF PRESENTATION
+Because students are typically anxious regarding the
+content of research courses, we have taken extraordinary care not to overwhelm them with dry, abstract
+discussions, and we have adopted an informal writing
+style. More than in any text to date, our presentations
+are laced with clarifying examples and with summarizing charts, tables, and diagrams. Our experience in
+teaching research courses for more than 30 years has
+convinced us that there is no such thing as having “too
+many” examples in a basic text.
+
+xxv
+
+In addition to the many examples and illustrations
+that are embedded in the text, we have built the following pedagogical features into the book: (1) a graphic
+organizer for each chapter, (2) chapter objectives,
+(3) chapter-opening examples, (4) end-of-chapter summaries, (5) key terms with page references, (6) discussion questions, and (7) an extensive end-of-book glossary.
+
+Chapter 5: Variables and Hypotheses
+●
+
+New information on using propositions in qualitative
+research
+
+Chapter 6: Sampling
+●
+
+New material on “transferability” and how generalizing can be enhanced in qualitative studies
+
+CHANGES IN THE TENTH EDITION
+A number of key additions, new illustrations, and improved or refined examples, terminology, and definitions
+have been incorporated in this edition to further meet
+the goals of the text. The References have been updated
+throughout to include the latest research and have been
+reformatted to reflect use of APA style, Research Exercises and Problem Sheets have been revised with more
+effective questions.
+Following is a sampling of chapter-by-chapter
+changes:
+Chapter 1: The Nature of Educational Research
+●
+
+New discussion on education research in the digital age
+
+Chapter 3: Locating and Reviewing the Literature
+●
+
+●
+
+●
+
+●
+●
+
+●
+●
+
+How to annotate sources prior to preparation of a literature review
+New example of an annotated bibliography in tabular
+form
+Updated screen shots of ERIC and other useful
+databases
+Updated image and text for acquiring survey results
+Tips for avoiding plagiarism when summarizing
+sources
+New set of prompts for evaluating published sources
+New section on academic style manuals (e.g., APA)
+with links to website and online tutorials
+
+Chapter 7: Instrumentation
+●
+
+New content on the use of data collection tools in
+qualitative research
+
+Chapter 17: Survey Research
+●
+●
+
+New information on polls and polling
+Discussion of SurveyMonkey and Qualtrics, the webbased survey tools most commonly used by academic
+institutions
+
+Chapter 24: Action Research
+●
+
+New information on reflective practice in teacher research using self-study
+
+New Annotated and Analyzed Research Reports: Three
+new Research Reports have been added to the text,
+introducing more research involving qualitative research
+as well as urban and secondary settings, helping the
+student apply the text’s concepts and also practice
+evaluating published studies.
+●
+
+●
+
+●
+
+How manipulatives affect the mathematics achievement of students in Nigerian schools.
+‘Belonging means you can go in’: Children’s perspectives and experiences of membership in
+kindergarten.
+Students’ perceptions of factors influencing their desire to major or not major in science.
+
+Chapter 4: Ethics and Research
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+­
+
+●
+
+­
+
+●
+
+●
+
+­
+
+●
+
+preface
+
+●
+
+New information about online plagiarism checking
+tools
+Updated More About Research box with the latest
+Department of Health and Human Services regulations for research with human subjects
+
+SPECIAL FEATURES
+Support for Student Learning
+How to Design and Evaluate Research in Education
+helps students become critical consumers of research
+
+xxvi
+
+and prepares them to conduct and report their own
+research.
+
+www.mhhe.com/fraenkel10e
+
+●
+
+●
+
+Chapter-opening Features: Each chapter begins with
+an illustration that visually introduces a topic or issues
+related to the chapter. This is followed by an outline of
+chapter content, chapter learning objectives, the Interactive and Applied Learning feature that lists related supplementary material, and a related vignette.
+
+●
+
+●
+
+More About Research, Research Tips, and Controversies
+in Research: These informative sections help students to
+think critically about research while illustrating important techniques in educational research.
+End-of-Chapter Learning Supports: The chapters conclude with a reminder of the supplementary resources
+available, a detailed Main Points section, a listing of Key
+Terms, and Questions for Discussion.
+Chapters 1–12 include a Research Exercise and a
+Problem Sheet to aid students in the construction of a
+research project.
+Chapters 13–14, 19, and 21–23 include an actual
+Research Report that has been annotated to highlight
+concepts discussed in the chapter.
+
+SUPPLEMENTS THAT
+SUPPORT INSTRUCTORS
+The 10th edition of How to Design and Evaluate Research in Education is now available online with Connect, McGraw-Hill Education’s integrated assignment
+and assessment platform. Connect also offers SmartBook for the new edition, which is the first adaptive
+reading experience proven to improve grades and help
+students study more effectively. All of the title’s website and ancillary content is also available through
+Connect, including:
+●
+
+Practical Resources and Examples
+for Doing and Reading Research
+How to Design and Evaluate Research in Education provides a comprehensive introduction to research that is
+brought to life through practical resources and examples
+for doing and reading research.
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+●
+
+­
+
+●
+
+­
+
+­
+
+●
+
+●
+
+
+
+preface
+
+●
+
+Research Tips boxes provide practical suggestions for
+doing research.
+The Annotated Research Reports at the conclusion of
+Chapters 13–14, 19, and 21–23 present students with
+research reports and author commentary on how the
+study authors have approached and supported their
+research.
+Research Exercises and Problems Sheets at the conclusion of Chapters 1–13 are tools for students to use
+when creating their own research projects.
+
+Using Excel boxes show how these software programs
+can be used to calculate various statistics.
+Chapter 24: Action Research details how classroom
+teachers can and should do research to improve their
+teaching.
+Chapter 25: Preparing Research Proposals and
+Reports walks the reader through proposal and report
+preparation.
+Resources on the Online Learning Center Web site
+(see listing below) provide students with a place to
+start when gathering research tools.
+
+●
+
+●
+
+A full Test Bank of multiple-choice questions that
+test students on central concepts and ideas in each
+chapter.
+An Instructor’s Manual for each chapter with full
+chapter outlines, sample test questions, and discussion topics.
+Lecture Slides for instructor use in class.
+
+ACKNOWLEDGMENTS
+Directly and indirectly, many people have contributed to the preparation of this text. We will begin by
+acknowledging the students in our research classes,
+who, over the years, have taught us much. Also, we
+wish to thank the reviewers of this edition, whose generous comments have guided the preparation of this
+edition.
+
+xxvii
+
+They include:
+Christopher Brum, San Diego State University
+Susan Cordell, University of West Alabama
+Greg Knotts, CSU Northridge
+Minjuan Wang, San Diego State University
+Melissa Hawthorne, Louisiana State
+University-Shreveport
+Stacy Hughey Surman, The University of Alabama
+Dr. Robert D. Townsend, Xavier University
+Kevin Jones, University of West Alabama
+
+preface
+
+Sara Tomek, The University of Alabama
+
+We would also like to thank Vicki Malinee of Van
+Brien and Associates and the editors and staff at McGraw-Hill for their efforts in turning the manuscript into
+the finished book before you.
+Finally, we would like to thank our spouses for
+their unflagging support during the highs and lows
+that inevitably accompany the preparation of a text of
+this magnitude.
+Jack R. Fraenkel
+Norman E. Wallen
+Helen H. Hyun
+
+McGraw-Hill Connect® is a highly reliable, easy-touse homework and learning management solution
+that utilizes learning science and award-winning
+adaptive tools to improve student results.
+
+Homework and Adaptive Learning
+▪ Connect’s assignments help students contextualize
+what they’ve learned through application, so they can
+better understand the material and think critically.
+
+▪ Connect will create a personalized study path
+customized to individual student needs through
+SmartBook®.
+
+▪ SmartBook helps students study more efficiently by
+delivering an interactive reading experience through
+adaptive highlighting and review.
+
+Over 7 billion questions have been
+answered, making McGraw-Hill
+Education products more intelligent,
+reliable, and precise.
+
+Using Connect improves retention rates
+by 19.8 percentage points, passing rates
+by 12.7 percentage points, and exam
+scores by 9.1 percentage points.
+
+Quality Content and Learning Resources
+
+73% of instructors who
+use Connect require it;
+instructor satisfaction
+increases by 28% when
+Connect is required.
+
+▪ Connect content is authored by the world’s best subject
+matter experts, and is available to your class through a
+simple and intuitive interface.
+
+▪ The Connect eBook makes it easy for students to access their
+reading material on smartphones and tablets. They can study
+on the go and don’t need internet access to use the eBook as a
+reference, with full functionality.
+
+▪ Multimedia content such as videos, simulations, and games drive
+student engagement and critical thinking skills.
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+©McGraw-Hill Education
+
+Robust Analytics and Reporting
+▪ Connect Insight® generates easy-to-read
+reports on individual students, the class as a
+whole, and on specific assignments.
+
+▪ The Connect Insight dashboard delivers data
+on performance, study behavior, and effort.
+Instructors can quickly identify students who
+struggle and focus on material that the class
+has yet to master.
+
+©Hero Images/Getty Images
+
+▪ Connect automatically grades assignments
+and quizzes, providing easy-to-read reports
+on individual and class performance.
+
+More students earn
+As and Bs when they
+use Connect.
+
+Trusted Service and Support
+▪ Connect integrates with your LMS to provide single sign-on and automatic syncing
+of grades. Integration with Blackboard®, D2L®, and Canvas also provides automatic
+syncing of the course calendar and assignment-level linking.
+
+▪ Connect offers comprehensive service, support, and training throughout every
+phase of your implementation.
+
+▪ If you’re looking for some guidance on how to use Connect, or want to learn
+tips and tricks from super users, you can find tutorials as you work. Our Digital
+Faculty Consultants and Student Ambassadors offer insight into how to achieve
+the results you want with Connect.
+
+		
+
+www.mheducation.com/connect
+
+A Guided Tour of
+How to Design and Evaluate
+Research in Education
+Welcome to How to Design
+and Evaluate Research in
+Education.
+
+Opening Illustration
+
+This comprehensive introduction to research methods was
+designed to present the basics
+of educational research in as
+interesting and understandable a
+way as possible. To accomplish
+this, we’ve created the following
+features for each chapter.
+
+Chapter Outline
+
+Each chapter opens with an illustrative depiction of a key
+concept that will be covered in the chapter.
+
+Next, a chapter outline lists the topics to follow.
+
+Interactive and Applied
+Learning Tools
+This special feature lists the practice activities and
+resources related to the chapter that are available in
+the student supplements.
+
+INTERACTIVE AND APPLIED LEARNING
+
+Locating and Reviewing
+the Literature
+
+3
+The Definition and Value
+of a Literature Review
+Types of Sources
+Steps Involved in a
+Literature Search
+
+“Hey! There’s Joe.
+Taking it easy,
+as usual.”
+
+Define the Problem as
+Precisely as Possible
+Look Through One or Two
+Secondary Sources
+Select the Appropriate
+General Reference Tools
+Formulate Search Terms
+Search Using General
+Reference Tools
+
+“No, he says he’s
+reviewing the literature
+for his Biology class!”
+
+Doing a Computer Search
+Obtain Primary Sources
+Writing the Literature
+Review Report
+Researching the World Wide
+Web
+
+OBJECTIVES
+
+●●
+
+xxx
+
+●●
+
+Read the Guide to Electronic Research
+
+Go to your online Student Mastery
+Activities book to do the following
+activities:
+●●
+●●
+●●
+
+Activity 3.1: Library Worksheet
+Activity 3.2: Where Would You Look?
+Activity 3.3: Do a Computer Search of the Literature
+
+A
+
+fter a career in the military, Phil Gomez is in his first year as a teacher at an adult school in Logan, Utah. He teaches
+U.S. history to students who did not graduate from high school but who now are trying to obtain a diploma. He has
+
+learned the hard way, through trial and error, that there are a number of techniques that simply put students to sleep. He
+sincerely wants to be a good teacher, but he is having trouble getting his students interested in the subject. As he is the
+only history teacher in the school, the other teachers are not of much help.
+He wants to get some ideas, therefore, about other approaches, strategies, and techniques that he might use. He
+decides to do an Internet search to see what he can find out about effective strategies for teaching high school history.
+His first search yields 12,847 hits! Phil is overwhelmed and at a loss for which sources to view. Should he look at books?
+Journal articles? Websites? Government documents? Unpublished reports? Where should he look for the most valid
+resources? And how could his searching be done more systematically?
+In this chapter, you will learn some answers to these (and related) questions. When you have finished reading, you should
+
+Chapter Opening Example
+The chapter text begins with a practical example—
+a dialogue between researchers or a peek into a
+classroom—related to the content to follow.
+
+Studying this chapter should enable you to:
+
+Describe briefly why a literature review is
+of value.
+Name the steps a researcher goes
+through in conducting a review of the
+literature.
+●● Describe briefly the kinds of information
+contained in a general reference and give
+an example of such a source.
+●● Explain the difference between a primary
+and a secondary source and give an
+example of each type.
+●● Explain what is meant by the phrase
+“search term” and how it differs from the
+●●
+
+After, or while, reading this chapter:
+
+Go to the Online Learning Center at
+www.mhhe.com/fraenkel10e to:
+
+term “descriptor,” and how both terms
+are used in literature searches.
+Conduct both a manual and electronic
+search of the literature on a topic of
+interest to you after a small amount of
+“hands-on” computer time and a little
+help from a librarian.
+●● Write a summary of your literature review.
+●● Explain what a meta-analysis is.
+●●
+
+Objectives
+Chapter objectives prepare the student for the
+chapter ahead.
+
+MORE ABOUT
+RESEARCH
+
+Department of Health and Human
+Services Revised Regulations for
+Research with Human Subjects
+he following HHS guidelines currently allow for exemption from IRB review for certain projects. However, please
+make sure to check with your IRB for their exempt research
+guidelines.
+
+T
+
+1. Research conducted in established or commonly accepted
+educational settings, involving normal educational practices, such as (i) research on regular and special education
+instructional strategies, or (ii) research on the effectiveness
+of or the comparison among instructional techniques, curricula, or classroom management methods.
+2. Research involving the use of educational tests (cognitive,
+diagnostic, aptitude, achievement), survey procedures, interview procedures or observation of public behavior, unless: (i) information obtained is recorded in such a manner
+that human subjects can be identified, directly or through
+identifiers linked to the subjects; and (ii) any disclosure of
+the human subjects’ responses outside the research could
+reasonably place the subjects at risk of criminal or civil liability or be damaging to the subjects’ financial standing,
+employability, or reputation.
+3. Research involving the use of educational tests (cognitive,
+diagnostic, aptitude, achievement), survey procedures, interview procedures, or observation of public behavior that
+is not exempt under paragraph (b)(2) of this section, if:
+(i) the human subjects are elected or appointed public officials or candidates for public office; or (ii) federal statute(s)
+require(s) without exception that the confidentiality of the
+
+personally identifiable information will be maintained
+throughout the research and thereafter.
+4. Research involving the collection or study of existing data,
+documents, records, pathological specimens, or diagnostic
+specimens, if these sources are publicly available or if the
+information is recorded by the investigator in such a manner that subjects cannot be identified, directly or through
+identifiers linked to the subjects.
+5. Research and demonstration projects which are conducted
+by or subject to the approval of department or agency heads,
+and which are designed to study, evaluate, or otherwise examine: (i) Public benefit or service programs; (ii) procedures
+for obtaining benefits or services under those programs;
+(iii) possible changes in or alternatives to those programs or
+procedures; or (iv) possible changes in methods or levels of
+payment for benefits or services under those programs.
+6. Taste and food quality evaluation and consumer acceptance
+studies, (i) if wholesome foods without additives are consumed or (ii) if a food is consumed that contains a food ingredient at or below the level and for a use found to be safe,
+or agricultural chemical or environmental contaminant at
+or below the level found to be safe, by the Food and Drug
+Administration or approved by the Environmental Protection Agency or the Food Safety and Inspection Service of
+the U.S. Department of Agriculture.
+
+More About Research
+These boxes take a closer look at important
+topics in educational research. See a full listing
+of these boxes, starting on page xv.
+
+U.S. Department of Health and Human Services, 45CFR
+46.101(b)(1)–(6).
+Research activities involving human subjects that are
+exempt from IRB review are identified in 45CFR 46.101(b)
+(1)–(6). (Institutions and IRBs may not create new categories
+of exempt research under 45 CFR Part 46.) Institutions should
+have a clear policy in place on who shall determine what research is exempt under .46.101(b).
+*www.hhs.gov/ohrp/policy/hsdc95-02.html
+
+CHAPTER 2
+
+The Research Problem
+
+31
+
+RESEARCH TIPS
+●●
+
+Research Tips
+
+●●
+
+Key Terms to Define
+in a Research Study
+
+These boxes provide practical pointers for
+doing research. See a full listing of these
+boxes on page xv.
+
+CONTROVERSIES IN
+RESEARCH
+
+Ethical or Not?
+n September 1998, a U.S. District Court judge halted a
+study begun in 1994 to evaluate the effectiveness of the
+U.S. Job Corps program. For two years, the researchers had
+randomly assigned 1 out of every 12 eligible applicants to a
+control group that was denied service for three years—a total
+of 6,000 applicants. If applicants refused to sign a waiver
+agreeing to participate in the study, they were told to reapply
+two years later. The class action lawsuit alleged psychological, emotional, and economic harm to the control subjects.
+The basis for the judge’s decision was a failure to follow the
+federal law that required the methodology to be subject to
+
+I
+
+a study. In qualitative studies, however, the relationship
+between research and participant evolves over time. As
+Bogdan and Biklen suggest, doing qualitative research
+with informants can be “more like having a friendship
+than a contract. The people who are studied have a say
+in regulating the relationship and they continuously
+make decisions about their participation.”4 As a result,
+Bogdan and Biklen offer the following suggestions for
+qualitative researchers that might be considered when
+the criteria used by an IRB may not apply:5
+1. Avoid research sites where informants may feel coerced to participate in the research.
+2. Honor the privacy of informants—find a way to recruit informants so that they may choose to participate in the study.
+3. Tell participants who are being interviewed how long
+the interview will take.
+4. Unless otherwise agreed to, the identities of in-
+
+public review. A preliminary settlement pledged to locate all
+of the control subjects by the year 2000, invite them into the
+Job Corps (if still eligible), and pay each person $1,000.*
+In a letter to the editor† of Mother Jones in April 1999, however,
+Judith M. Gueron, the President of Manpower Demonstration
+Research Corporation (not the company awarded the evaluation
+grant) defended the study on two grounds: (1) since there were
+only limited available openings for the program, random selection
+of qualified applicants “is arguably fairer” than first-come, firstserved; and (2) the alleged harm to those rejected is unknown,
+since they were free to seek other employment or training.
+What do you think?
+
+*Price, J. (1999, January/February). Job Corps lottery. Mother Jones,
+21–22.
+†Backtalk. (1999, April). Mother Jones, 13.
+
+7. Tell the truth when findings are written up and reported. Mail in a separate card indicating that they
+completed the questionnaire.
+
+●●
+
+●●
+
+●●
+
+Terms● that● individuals● outside● the● field● of● study● may● not●
+understand
+Terms●that●have●multiple●meanings
+Terms● that● are● essential● to● understanding● what● the● study●
+is●about
+Terms●to●provide●precision●in●specifications●for●instruments●
+to●be●developed●or●located
+
+Terms● necessary● to● ensure● that● the● research● question● is●
+sharply●focused
+
+c.● At● least● half● of● every● class● period● open● for● students●to●work●on●projects●of●their●own●choosing●
+at●their●own●pace
+d.● Several●(more●than●three)●sets●of●different●kinds●
+of● educational● materials● available● for● every● student●in●the●class●to●use
+e.● Nontraditional● seating—students● sit● in● circles,●
+small●groupings●of●seats,●or●even●on●the●floor●to●
+work●on●their●projects
+f.● Frequent●(at●least●two●per●week)●discussions●in●which●
+students●are●encouraged●to●give●their●opinions●and●
+ideas●on●topics●being●read●about●in●their●textbooks
+
+● 3.● As●measured●by●the●“Math●Interest”●questionnaire
+● 4.● As●shown●by●attention●to●math●tasks●in●class
+● 5.● As●reflected●by●achievement●in●mathematics
+● 6.● As● indicated● by● records● showing● enrollment● in●
+mathematics●electives
+● 7.● As●shown●by●effort●expended●in●class
+● 8.● As●demonstrated●by●number●of●optional●assignments●
+completed
+● 9.● As●demonstrated●by●reading●math●books●outside●class
+10.●● As●observed●by●teacher●aides●using●the●“Mathematics●Interest”●observation●record*
+
+Controversies in Research
+These boxes highlight a controversy in research
+to provide you with a greater understanding of
+the issue. See a full listing of these boxes on
+page xvi.
+
+One further legal matter should be mentioned.
+Attorneys, physicians, and members of the clergy are
+protected by laws concerning privileged communications (i.e., they are protected by law from having to reveal
+information given to them in confidence). Researchers
+do not have this protection. It is possible, therefore, that
+any subjects who admit, on a questionnaire, to having
+committed a crime could be arrested and prosecuted. As
+you can see, it would be a risk therefore for the participants in a research study to admit to a researcher that
+they had participated in a crime. If such information is
+required to attain the goals of a study, a researcher can
+avoid the problem by omitting all forms of identification
+from the questionnaire. When mailed questionnaires are
+
+xxxi
+
+Populations
+
+R
+
+C
+M
+
+N
+
+T
+G
+
+P
+
+Q
+
+W
+
+D
+
+V
+
+K
+
+F
+E
+
+C
+S
+
+L
+Q
+
+M
+
+K
+J
+
+G
+
+H I
+
+F
+E
+
+Y
+
+A
+J X
+
+U
+
+H
+
+L
+X
+
+I
+
+B
+O
+
+B
+S
+
+A
+
+Z
+
+N
+
+D
+T
+
+U
+
+Y
+O
+
+R
+
+Z
+
+V
+
+P
+
+A
+F
+K
+P
+U
+Z
+
+B
+G
+L
+Q
+V
+
+C
+H
+M
+R
+W
+
+D
+I
+N
+S
+X
+
+E
+J
+O
+T
+Y
+
+W
+
+Figures and Tables
+Easily
+accessible
+
+Especially
+qualified
+
+Numerous figures and tables explain or extend
+concepts presented in the text.
+
+Q X L
+
+B F
+
+B G L
+
+I Y
+
+L N V
+
+Q V
+
+Purposive
+
+Systematic
+
+Convenience
+
+SAMPLES
+
+Research Reports
+Published research reports are included at
+the conclusion of methodology chapters. The
+reports have been annotated to illustrate
+important points.
+
+CHAPTER 22
+
+Historical Research
+
+491
+
+RESEARCH REPORT
+From: (2000, Summer). The Journal of Psychohistory 28(1), 62–71.
+
+Lydia Ann Stow: Self-Actualization
+in a Period of Transition
+Vivian C. Fox
+Worcester State College
+
+Definitions
+Purpose?
+
+Primary source
+
+This paper is concerned with a crucial period of self-actualization in the life of Lydia Ann
+Stow (1823–1904), an early nineteenth century Massachusetts woman who illustrates the interactions between adolescent development and the dynamics of reforms in education and
+feminism. The term “self-actualization” is adopted from Frederic L. Bender, who defines this
+Marxian concept as “the development of one’s talents and abilities and, the pursuit of one’s
+life interests in and through one’s work.”1 Although self-actualization appears to be a highly
+individualized process, it always occurs in a larger social context. It is crucial to emphasize
+this in Lydia Stow’s case since the most relevant context for her self-actualization was highly
+transitional in two important respects, namely, the development of educational theory and
+practice, and the evolution in the status of women.
+The major source for describing Stow’s self-actualization is the set of four Journals
+which she kept during the period of her training in Massachusetts as a professional
+teacher at the Lexington Normal School, and for about two years thereafter (July 8, 1839–
+February 23, 1843).2
+In this paper I undertake a brief description of the contextual events before proceeding
+to an analysis of the Journals. I would like to start with school reform.
+
+SCHOOL REFORM
+
+Independent
+variable
+
+Background
+
+490
+
+xxxii
+
+The process of school reform that played such an important role in Lydia’s life was itself a
+reflection of a panoply of post-Revolution concerns. To some, the advent of technology was
+altering New England’s predominantly rural work patterns through the construction of factories and railroads. Cities were growing larger, more varied, and increasingly sinister with
+vast numbers of immigrant-strangers, prostitutes and salesmen of magical drug products. The
+new arrivals were, moreover, largely untrained, uneducated and non-Anglo-Saxon men who
+appeared quickly to acquire political power at the ballot box. In view of these cascading
+changes, many wondered whether the glorious achievements of the Revolution could be
+maintained.3
+To some, the appropriate response to these issues was in the direction of ensuring
+an educated citizenry. Leaders in this movement emerged in the Northeast, particularly
+in Massachusetts. Such Massachusetts men as Horace Mann, James G. Carter, Edward
+Everett, Edmund Dwight, Cyrus Peirce, and Henry Barnard who was from New York, supported the idea that a key to confronting post-Revolutionary challenges was in the field of
+educational reform.4
+James G. Carter, for example, while Chairman of the Committee on Education of the
+Massachusetts House of Representatives, successfully established himself as the architect of
+an educational renaissance that included creation of a state-wide Board of Education. Horace
+Mann was appointed in 1837 as the first Secretary of the Board.5
+Mann immediately launched a crusade, which continued during his twelve years of incumbency, from which his ideas spread throughout the nation. His accomplishments included
+a proliferation of the common schools, an expansion of their curriculum, and the training of
+
+teachers in new approaches to teaching which encompassed a new philosophy of learning
+and moral discipline.6
+He accepted the Republican view, moreover, that popular education was necessary for the intellectual and monetary enhancement of citizens which would contribute
+to the general well-being of the Republic. His beliefs emphasized that the new Republic
+required a high standard of morality in order to eliminate, as he put it, “the long catalogue
+of human ills.”7
+Central to achieving educational reform and progress was the provision of professional
+training for school teachers. Prior to this time, little or no training was required and persons with
+a minimal amount of education could take charge of classrooms.
+Many of the ideas of Mann and his colleagues were obtained from Europe, especially
+from Prussia. Unlike its European counterparts, however, professional teacher training in what
+were called the Normal Schools (a title derived from the French École Normale) was open to
+females. In 1838 Massachusetts adopted a law authorizing the establishment of three Normal
+Schools. The first appeared in Lexington in 1839, and in accordance with the statute it was
+open only to females. The other two, in Barre and Bridgewater in 1840, were co-educational.
+Lydia was a member of the first class to enroll in Lexington.
+Speaking for many reformers, Horace Mann emphasized the importance of employing
+female teachers.
+Education . . . is woman’s work. . . . Let woman, then be educated to the highest practicable point; not only because it is her right, but because it is essential to the world’s
+progress. Let her voice be a familiar voice in the schools and the academies, and in
+halls of learning and science.8
+Mann was not, of course, the first to recognize appropriate roles for women in the educational enterprise. By the last part of the eighteenth century, for example, New England clergymen, struck by the greater church attendance of women, intoned that females were purer and
+more delicate than men, and advocated greater exposure to education for them as caretakers
+of the very young.9 From the latter part of the eighteenth century, then, sons as well as daughters came to be under the pedagogy of their mothers, unlike in the prior period when fathers
+became responsible for the education of boys when they reached the age of seven. The assumption that women had special moral strengths—that they were “angels in the house”—gave
+them important credentials for both domestic and professional teaching roles.10
+The call for women’s education grew stronger as post-Revolutionary ideology expressed
+the sentiment that in a Republic, school education must become available to all citizens, both
+male and female. Boston, for example, allowed girls to be educated in its grammar school in
+1789; and Dedham, Lydia’s hometown, had already anticipated this as early as the 1750s. In a
+highly unusual development, one Mary Green was so successful a teacher that she was added
+to the permanent Dedham teaching staff.11
+Clearly, when Lydia enrolled at Lexington she was riding the crest of unique educational opportunities. As detailed in the next section, this enhanced status of women as educators of the young was also strongly strengthened by demographic and economic conditions
+of the time.
+Now I want to discuss the matter of gender reform.
+
+GENDER REFORM
+At the same time that Mann and the other reformers were reconstructing the field of education so as to create new opportunities for women, their legal, social and economic
+circumstances generally were, paradoxically, much against the enhancement of their
+
+Reference needed
+
+Primary source
+
+We agree
+
+Analysis of the Study
+PURPOSE/JUSTIFICATION
+We do not find a clear statement of purpose. In part
+because of the publication in which the study appears,
+The Journal of Psychohistory, we think the purpose could
+have been stated as, for example, “to enhance our understanding of the ways in which societal conditions and
+personal characteristics interact in producing valued
+qualities such as ‘self-actualization.’” The justification
+implied in the introduction is that the life of Lydia Stow
+is important to understand; this is elaborated later under
+“Gender Reform.”
+There are no problems of risk, deception, or
+confidentiality.
+
+DEFINITIONS
+A clear definition of self-actualization is given in the introduction. This is particularly important because not
+all definitions of this term include “pursuit of one’s life
+interests in and through one’s work.” Other terms such
+as self-improvement and concerned and active citizen are
+probably clear enough in context.
+
+PRIOR RESEARCH
+There is no presentation of previous research, presumably because there is none that is directly relevant. If our
+interpretation of the author’s purpose is correct, it may
+be that other biographies would be pertinent. There is no
+mention of other biographies of Stow. If they exist, they
+might have provided additional evidence.
+
+HYPOTHESES
+None is stated. The “interaction” hypothesis is clearly
+implied; it appears likely that it conceptually preceded
+the analysis of the information.
+
+other words, a purposive sample. In this study, a population of persons could have been specified, though it’s
+not clear what its characteristics would be—perhaps
+“nineteenth-century women who made a significant
+impact on education.” A sample of such women would
+greatly increase the generalizability of findings but
+would, presumably, involve major problems in locating
+suitable source material.
+
+INSTRUMENTATION
+There is no instrumentation in the sense that we discuss
+it in this text. The “instrument” in this case is the researcher’s talent for locating, evaluating, and analyzing
+pertinent sources. The concept of reliability usually has
+little relevance to historical data, because each item is
+not meaningfully considered to be a sample across either content or time. In this study, however, comparison
+of journal statements pertaining to the same topic (e.g.,
+self-confidence) could be made across the early two journals and, again, across the later two. These comparisons
+would give an indication of the consistency of these
+statements.
+Validity, on the other hand, is paramount. It is addressed by evaluating sources and by comparing different sources regarding the same specifics. In this study,
+data are from two types of source. Secondary sources
+are used extensively in the sections on school reform and
+gender reform. The source of information about Stow is
+a primary one, her four journals. Some of the secondary
+sources could, it seems, have been used as cross-checks
+for validity, but this apparently was not done. The validity of the author’s summaries of this information is
+supported, in some instances, by quotations from the
+journals and from other primary sources.
+External criticism does not appear to be an issue with
+respect to the journals or, presumably, other references.
+The question of internal criticism is somewhat difficult
+to deal with, because the journals must be evaluated in
+terms of the writer’s feelings and perceptions rather than
+events. Here, we are highly dependent on the researcher’s summaries.
+
+Each research report is critiqued by the authors,
+with both its strengths and weaknesses discussed.
+
+SAMPLE
+The sampling issue is quite different in historical research as compared with other types of research. There
+typically is no population of persons to be sampled. It
+could be argued that a population of events exists, but
+if so, they are likely to be so different that selection
+among them makes more sense if done purposefully, in
+
+PROCEDURES/INTERNAL VALIDITY
+There is little to be said about procedures except that
+some discussion of the plans that the researcher developed and followed for analyzing the documents,
+particularly the journals, would be useful, especially
+so that readers could evaluate the presumed selection
+
+Chapter Review
+The chapter ends with a listing of the review
+resources available for students on the Online
+Learning Center Web site at www.mhhe.com
+/fraenkel10e.
+
+Go back to the INTERACTIVE AND APPLIED LEARNING feature at the
+beginning of the chapter for a listing of interactive and applied activities. Go to
+the Online Learning Center at www.mhhe.com/fraenkel10e to take quizzes,
+practice with key terms, and review chapter content.
+
+Main Points
+
+Main Points
+
+BASIC ETHICAL PRINCIPLES
+●●
+●●
+
+●●
+
+Bulleted main points highlight the key
+concepts of the chapter.
+
+●●
+
+●●
+
+●●
+●●
+
+Ethics●refers●to●questions●of●right●and●wrong.
+There●are●a●number●of●ethical●principles●that●all●researchers●should●be●aware●of●and●
+apply●to●their●investigations.
+The●basic●ethical●question●for●all●researchers●to●consider●is●whether●any●physical●or●
+psychological●harm●could●come●to●anyone●as●a●result●of●the●research.
+All● subjects● in● a● research● study● should● be● assured● that● any● data● collected● from● or●
+about●them●will●be●held●in●confidence.
+The●term●deception, as●used●in●research,●refers●to●intentionally●misinforming●the●subjects●of●a●study●as●to●some●or●all●aspects●of●the●research●topic.
+Plagiarism●is●the●act●of●misrepresenting●someone●else’s●work●as●one’s●own.
+Unintentional●plagiarism●can●be●avoided●through●the●proper●use●and●citation●of●published●and●unlisted●sources.
+
+RESEARCH WITH CHILDREN
+●●
+
+Children●as●research●subjects●present●problems●for●researchers●that●are●different●from●
+those● of● adult● subjects.● Children● are● more● vulnerable,● have● fewer● legal● rights,● and●
+often●do●not●understand●the●meaning●of●informed consent.
+
+REGULATION OF RESEARCH
+●●
+
+●●
+
+Before●any●research●involving●human●beings●can●be●conducted●at●an●institution●that●
+receives●federal●funds,●it●must●be●reviewed●by●an●institutional●review●board●(IRB)●at●
+the●institution.
+The●federal●agency●that●has●the●major●responsibility●for●establishing●the●guidelines●for●
+research●studies●that●involve●human●subjects●is●the●Department●of●Health●and●Human●
+Services.
+
+xxxiii
+
+GENERALIZATION IN QUALITATIVE RESEARCH
+●●
+
+Generalizing●is●possible●in●qualitative●research,●but●it●is●of●a●type●different●from●that●
+found●in●quantitative●studies.●Most●likely●it●will●be●done●by●interested●practitioners.
+
+ETHICS AND QUALITATIVE RESEARCH
+●●
+
+The●identities●of●all●participants●in●a●qualitative●study●should●be●protected,●and●they●
+should●be●treated●with●respect.
+
+RECONSIDERING QUALITATIVE AND QUANTITATIVE RESEARCH
+●●
+
+●●
+
+Key Terms
+
+Aspects● of● both● qualitative● and● quantitative● research● often● are● used● together● in● a●
+study.●Increased●attention●is●being●given●to●such●mixed-methods●studies.
+Whether● qualitative● or● quantitative● research● is● the● most● appropriate● boils● down● to●
+what●the●researcher●wants●to●find●out.
+
+autobiography 387
+biographical study 387
+case study 389
+coding 391
+confirming sample 391
+critical sample 391
+extreme case sample 391
+foreshadowed
+problem 385
+generalization in qualitative
+research 391
+grounded theory study 388
+homogeneous sample 391
+
+For Discussion
+
+instrumental case
+study 390
+intrinsic case study 390
+
+positivism 383
+
+life history 387
+
+postmodernist 384
+purposive sample 385
+
+maximal variation
+sample 391
+
+qualitative
+research 382
+
+multiple- (collective)
+case study 390
+
+replication 392
+
+narrative research 387
+opportunistic sample 391
+oral history 387
+phenomenological
+study 387
+
+Key Terms
+
+portraiture 388
+
+Key terms are listed with page references.
+
+snowball sample 391
+theoretical
+framework 383
+theoretical
+sample 391
+typical sample 391
+
+For Discussion
+
+1. ●●What●do●you●see●as●the●greatest●strength●of●qualitative●research?●the●biggest●weakness?
+2. ●●Are●there●any●topics●or●questions●that●could●not●be●studied●using●a●qualitative●approach?● If● so,● give● an● example.● Is● there● any● type● of● information● that● qualitative●
+research●cannot●provide?●If●so,●what●might●it●be?
+3. ●●Qualitative●researchers●are●sometimes●accused●of●being●too●subjective.●What●do●you●
+think●a●qualitative●researcher●might●say●in●response●to●such●an●accusation?
+●●4. ●●Qualitative● researchers● say● that● “complete”● objectivity● is● impossible.● Would● you●
+agree?●Explain●your●reasoning.
+●●5. ●●“The●essence●of●all●good●research●is●understanding,●rather●than●an●attempt●to●prove●
+something.”●What●does●this●statement●mean?
+●●6. ●●“All●researchers●are●biased●to●at●least●some●degree.●The●important●thing●is●to●be●●
+aware●of●one’s●biases!”●Is●just●being●“aware”●enough?●What●else●might●one●do?
+●●7. ●●Qualitative● researchers● often● say● that● “the● whole● is● greater● than● the● sum● of● its●
+parts.”●What●does●this●statement●mean?●What●implications●does●it●have●for●educational●research?
+
+End-of-chapter questions are designed for inclass discussion.
+
+36
+
+Research Exercises
+The research exercise explains how to fill in
+the Problem Sheet that follows.
+
+PART 2
+
+The Basics of Educational Research
+
+www.mhhe.com/fraenkel10e
+
+Research Exercise 2: The Research Question
+Using Problem Sheet 2, restate the research problem you listed in Research Exercise 1 in
+a sentence or two, and then formulate a research question related to this problem. Now list
+all the key terms in the question that you think are not clear and need to be defined. Define
+each of these terms both constitutively and operationally, and then state why you think your
+question is an important one to study.
+
+Problem Sheet 2
+
+The Research Question
+1. My (restated) research problem is: _________________________________________
+
+2. My research question(s) is/are: ____________________________________________
+
+3. The following are key terms in the problem or question that are not clear and thus
+need to be defined:
+
+Problem Sheets
+
+a.
+
+d.
+
+b.
+
+e.
+
+c.
+
+f.
+
+4. Here are my constitutive definitions for these terms: ___________________________
+
+Individually, the problem sheets allow students
+to apply their understanding of the major
+concepts of each chapter. As a whole, they
+walk students through each step of the
+research process.
+
+5. Here are my operational definitions for these terms: ____________________________
+
+6. My rationale for investigating this question/problem (why I would argue that it is an
+important question to investigate) is as follows: _______________________________
+
+xxxiv
+
+An electronic version
+of this Problem Sheet
+that you can fill in and
+print, save, or e-mail
+is available on the
+Online Learning Center
+at www.mhhe.com/
+fraenkel10e.
+
+P A R T
+
+1
+
+Introduction
+to Research
+Research takes many forms. In Part 1, we introduce you to the subject of educational research and explain why knowledge of the various types of research is of
+value to educators. Because research is but one way to obtain knowledge, we also
+describe several other ways and compare the strengths and weaknesses of each.
+We give a brief overview of educational research methodologies to set the stage
+for a more extensive discussion in later chapters. Lastly, we discuss criticisms of
+the research process.
+
+1
+
+The Nature of
+Research
+
+Some Examples of
+Educational Concerns
+
+“It seems pretty
+obvious to me that the
+more you know about a
+subject, the better you
+can teach it!”
+
+Why Research Is of Value
+Ways of Knowing
+Sensory Experience
+Agreement with Others
+Expert Opinion
+Logic
+The Scientific Method
+
+“Right! Just like
+we know that evidence
+is overwhelmingly in favor
+of phonics as the best way
+to teach reading!”
+
+“Well, you
+both may be in for
+a surprise!”
+
+Types of Research
+Quantitative, Qualitative, and
+Mixed-Methods Research
+Experimental Research
+Correlational Research
+Causal-Comparative
+Research
+Survey Research
+Ethnographic Research
+Historical Research
+Action Research
+Evaluation Research
+All Have Value
+Education Research
+in the Digital Age
+General Research Types
+Descriptive Studies
+Associational Research
+Intervention Studies
+Meta-Analysis
+Critical Analysis of
+Research
+A Brief Overview of the
+Research Process
+
+OBJECTIVES
+
+Studying this chapter should enable you to:
+
+Explain what is meant by the term
+“educational research” and give
+two examples of the kinds of topics
+educational researchers might investigate.
+●● Explain why a knowledge of scientific
+research methodology can be of value to
+educators.
+●● Name and give an example of four ways
+of knowing other than the method used
+by scientists.
+●● Explain what is meant by the term
+“scientific method.”
+●● Give an example of six different types
+of research methodologies used by
+educational researchers.
+●●
+
+Describe briefly what is meant by critical
+research.
+●● Describe the differences among
+descriptive, associational, and
+intervention-type studies.
+●● Describe briefly the difference between
+basic and applied research.
+●● Describe briefly the difference between
+quantitative and qualitative research.
+●● Describe briefly what is meant by
+mixed-methods research.
+●● Describe briefly the basic components
+involved in the research process.
+●●
+
+INTERACTIVE AND APPLIED LEARNING
+
+After, or while, reading this chapter:
+
+Go to the Online Learning Center at
+www.mhhe.com/fraenkel10e to:
+●●
+
+Go to your online Student Mastery
+Activities book to do the following
+activities:
+
+Learn More About Why Research Is of Value
+
+Activity 1.1: Empirical vs. Nonempirical Research
+Activity 1.2: Basic vs. Applied Research
+●● Activity 1.3: Types of Research
+●● Activity 1.4: Assumptions
+●● Activity 1.5: General Research Types
+●●
+●●
+
+“
+
+D
+
+r. Hunter? I’m Molly Levine. I called you about getting some advice about the master’s degree program in your
+department.”
+
+“Hello, Molly. Pleased to meet you. Come on in. How can I be of help?”
+“Well, I’m thinking about enrolling in the master’s degree program in marriage and family counseling, but first I want to
+know what the requirements are.”
+“I don’t blame you. It’s always wise to know what you are getting into. To obtain the degree, you’ll need to take a number
+of courses, and there is also an oral exam once you have completed them. You also will have to complete a small-scale
+study.”
+“What do you mean?”
+“You actually will have to do some research.”
+“Wow! What does that involve? What do you mean by research, anyway? And how does one do it? What kinds of research
+are there?”
+To find out the answers to Molly’s questions, as well as a few others, read this chapter.
+
+●●
+
+Some Examples
+of Educational Concerns
+●●
+
+●●
+
+●●
+
+●●
+
+●●
+
+A high school principal in San Francisco wants to
+improve the morale of her faculty.
+The director of the gifted student program in
+Denver would like to know what happens during
+a typical week in an English class for advanced
+placement students.
+An elementary school counselor in Boise wishes he
+could get more students to open up to him about
+their worries and problems.
+A tenth-grade biology teacher in Atlanta wonders
+if flipped classrooms are more effective than lectures in motivating students to learn biological
+concepts.
+A physical education teacher in Tulsa wonders if
+ability in one sport correlates with ability in other
+sports.
+
+●●
+
+A seventh-grade student in Philadelphia asks her counselor what she can do to improve her study habits.
+The president of the local PTA in Little Rock, parent of a sixth-grader at Cabrillo School, wonders
+how social media could be used to increase parent
+participation at the school.
+
+Each of these examples, although fictional, represents
+a typical question or concern facing many of us in education today. Together, these examples suggest that teachers,
+counselors, administrators, parents, and students continually need information to do their jobs. Teachers need
+to know what kinds of materials, strategies, and activities
+best help students learn. Counselors need to know what
+problems hinder or prevent students from learning and
+how to help them with these problems. Administrators
+need to know how to provide an environment for happy
+and productive learning. Parents need to know how to
+help their children succeed in school. Students need to
+know how to study to learn as much as they can.
+3
+
+4
+
+PART 1
+
+Introduction to Research
+
+www.mhhe.com/fraenkel10e
+
+Why Research Is of Value
+
+range of human knowing. To obtain reliable knowledge,
+therefore, we cannot rely on our senses alone but must
+check what we think we know with other sources.
+
+How can educators, parents, and students obtain the information they need? Many ways of obtaining information, of
+course, exist. One can consult experts, review books and
+articles, question or observe colleagues with relevant experience, examine one’s own past experience, or even rely
+on intuition. All these approaches suggest possible ways
+to proceed, but the answers they provide are not always
+reliable. Experts may be mistaken; source documents may
+contain no insights of value; colleagues may have no experience in the matter; and one’s own experience or intuition
+may be irrelevant or misunderstood.
+This is why a knowledge of scientific research methodology can be of value. The scientific method provides us
+with another way of obtaining information—information
+that is as accurate and reliable as we can get. Let us compare it, therefore, with some of the other ways of knowing.
+
+Ways of Knowing
+SENSORY EXPERIENCE
+
+­
+
+
+
+We see, we hear, we smell, we taste, we touch. Most of us
+have seen fireworks on the Fourth of July, heard the whine
+of a jet airplane’s engines overhead, smelled a rose, tasted
+chocolate ice cream, and felt the wetness of a rainy day. The
+information we take in from the world through our senses
+is the most immediate way we have of knowing something.
+Using sensory experience as a means of obtaining information, the director of the gifted-student program mentioned
+at the start of this chapter, for example, might visit an advanced placement English class to see and hear what happens during a week or two of the semester.
+Sensory data, to be sure, can be refined. Seeing the
+temperature on an outdoor thermometer can refine our
+knowledge of how cold it is; a top-quality audio system can
+help us hear Beethoven’s Fifth Symphony with greater clarity; similarly, smell, taste, and touch can all be enhanced,
+and usually need to be. Many experiments in sensory perception have revealed that we are not always wise to trust
+our senses too completely. Our senses can (and often do)
+deceive us: The gunshot we hear becomes a car backfiring;
+the water we see in the road ahead is but a mirage; the
+chicken we thought we tasted turns out to be rabbit.
+Sensory knowledge is undependable; it is also incomplete. The data we take in through our senses do not account for all (or even most) of what we seem to feel is the
+
+AGREEMENT WITH OTHERS
+One such source is the opinions of others. Not only can
+we share our sensations with others, we can also check
+on the accuracy and authenticity of these sensations:
+Does this soup taste salty to you? Isn’t that John over
+there? Did you hear someone cry for help? Smells like
+mustard, doesn’t it?
+Obviously, there is a great advantage to checking with
+others about whether they see or hear what we do. It
+can help us discard what is untrue and manage our lives
+more intelligently by focusing on what is true. If, while
+hiking in the country, I do not hear the sound of an approaching automobile but several of my companions do
+and alert me to it, I can proceed with caution. All of
+us frequently discount our own sensations when others
+report that we are missing something or “seeing” things
+incorrectly. Using agreement with others as a means of
+obtaining information, the tenth-grade biology teacher in
+Atlanta, for example, might check with her colleagues to
+see if they find flipped classrooms more effective than
+lectures in motivating their students to learn.
+The problem with such common knowledge is that it,
+too, can be wrong. A majority vote of a committee is no
+guarantee of the truth. My friends might be wrong about
+the presence of an approaching automobile, or the automobile they hear may be moving away from rather than toward
+us. Two groups of eyewitnesses to an accident may disagree
+as to which driver was at fault. Hence, we need to consider
+some additional ways to obtain reliable knowledge.
+
+EXPERT OPINION
+Perhaps there are particular individuals we should
+consult—experts in their field, people who know a great
+deal about what we are interested in finding out. We are
+likely to believe a noted heart specialist, for example,
+if he says that Uncle Charlie has a bad heart. Surely,
+a person with a PhD in economics knows more than
+most of us do about what makes the economy tick. And
+shouldn’t we believe our family dentist if she tells us that
+back molar has to be pulled? To use expert opinion as
+a means of obtaining information, perhaps the physical
+education teacher in Tulsa should ask a noted authority in the physical education field whether ability in one
+sport correlates with ability in another.
+
+CHAPTER 1
+
+Well, maybe. It depends on the credentials of the experts and the nature of the question about which they are
+being consulted. Experts, like all of us, can be mistaken.
+For all their study and training, what experts know is still
+based primarily on what they have learned from reading
+and thinking, from listening to and observing others, and
+from their own experience. No expert, however, has studied or experienced all there is to know in a given field,
+and thus even an expert can never be totally sure. All any
+expert can do is give us an opinion based on what he or
+she knows, and no matter how much this is, it is never all
+there is to know. This assertion was never more true than
+in the 2016 U.S. presidential election in which political
+experts predicted a Hillary Clinton landslide victory over
+Donald Trump. President Trump’s subsequent win came
+as a surprise to most election experts. Let us consider,
+then, another way of knowing: logic.
+
+LOGIC
+We also know things logically. Our intellect—our capability to reason things out—allows us to use sensory data to
+develop a new kind of knowledge. Consider the famous
+syllogism:
+All human beings are mortal.
+Sally is a human being.
+Therefore, Sally is mortal.
+To assert the first statement (called the major premise), we need only generalize from our experience about
+the mortality of individuals. We have never experienced
+anyone who was not mortal, so we state that all human
+beings are. The second statement (called the minor premise) is based entirely on sensory experience. We come
+in contact with Sally and classify her as a human being.
+We don’t have to rely on our senses, then, to know that
+the third statement (called the conclusion) must be true.
+Logic tells us it is. As long as the first two statements are
+true, the third statement must be true.
+Take the case of the counselor in Philadelphia who is
+asked to advise a student on how to improve her study habits. Using logic, she might present the following argument:
+Students who take notes on a regular basis in class find
+that their grades improve. If you take notes on a regular
+basis, then your grades should improve as well.
+This is not all there is to logical reasoning, of course,
+but it is enough to give you an idea of another way of
+knowing. There is a fundamental danger in logical reasoning, however: It is only when the major and minor
+premises of a syllogism are both true that the conclusion
+
+The Nature of Research
+
+5
+
+is guaranteed to be true. If either of the premises is false,
+the conclusion may or may not be true.*
+There is still another way of knowing to consider: the
+method of science.
+
+THE SCIENTIFIC METHOD
+When many people hear the word science, they think
+of things like white lab coats, laboratories, test tubes,
+or space exploration. Scientists are people who know
+a lot, and the term science suggests a tremendous body
+of knowledge. What we are interested in here, however,
+is science as a method of knowing. It is the scientific
+method that is important to researchers.
+What is this method? Essentially it involves testing ideas
+in the public arena. Almost all of us are capable of making
+connections—of seeing relationships and associations—
+among the sensory information we experience. Most of us
+then identify these connections as “facts”—items of knowledge about the world in which we live. We may speculate,
+for example, that our students may be less attentive in class
+when we lecture than when we engage them in discussion.
+A physician may guess that people who sleep between six
+and eight hours each night will be less anxious than those
+who sleep more or less than that amount. A counselor
+may feel that students read less than they used to because
+they spend most of their free time watching television. But
+in each of these cases, we do not really know if our belief is true. What we are dealing with are only guesses or
+hunches, or as scientists would say, hypotheses.
+What we must do now is put each of these guesses
+or hunches to a rigorous test to see if it holds up under
+more controlled conditions. To investigate our speculation on attentiveness scientifically, we can observe carefully and systematically how attentive our students are
+when we lecture and when we hold a class discussion.
+The physician can count the number of hours individuals sleep, then measure and compare their anxiety levels.
+The counselor can compare the reading habits of students who watch different amounts of television.
+Such investigations, however, do not constitute science unless they are made public. This means that all
+aspects of the investigation are described in sufficient
+detail so that the study can be repeated by anyone who
+questions the results—provided, of course, that those
+interested possess the necessary competence and resources. Private procedures, speculations, and conclusions are not scientific until they are made public.
+*In the note-taking example, the major premise (all students who take
+notes on a regular basis in class improve their grades) is probably not true.
+
+6
+
+PART 1
+
+Introduction to Research
+
+There is nothing very mysterious, then, about how
+scientists work in their quest for reliable knowledge. In
+reality, many of us proceed this way when we try to reach
+an intelligent decision about a problem that is bothering
+us. These procedures can be boiled down to five distinct
+steps.
+
+­
+
+
+
+1. First, there is a problem of some sort—some disturbance in our lives that disrupts the normal or desirable state of affairs. Something is bothering us. For
+most of us who are not scientists, it may be a tension
+of some sort, a disruption in our normal routine. Examples would be if our students are not as attentive
+as we wish or if we have difficulty making friends. To
+the professional scientist, it may be an unexplained
+discrepancy in one’s field of knowledge, a gap to be
+closed. Or it could be that we want to understand the
+practice of human sacrifice in terms of its historical
+significance.
+2. Second, steps are taken to define more precisely the
+problem or the questions to be answered, to become
+clearer about exactly what the purpose of the study is.
+For example, we must think through what we mean by
+student attentiveness and why we consider it insufficient;
+the scientist must clarify what is meant by human sacrifice (e.g., how does it differ from murder?).
+3. Third, we attempt to determine what kinds of information would solve the problem. Generally speaking, there are two possibilities: study what is already
+known or carry out a piece of research. As you will
+see, the first is a prerequisite for the second; the second is a major focus of this text. In preparation, we
+must be familiar with a wide range of possibilities for
+obtaining information, so as to get firsthand information on the problem. For example, the teacher might
+consider giving a questionnaire to students or having
+someone observe during class. The scientist might
+decide to examine historical accounts or spend time
+in societies where the practice of human sacrifice exists (or has until recently). Spelling out the details of
+information gathering is a major aspect of planning a
+research study.
+4. Fourth, we must decide, as far as it is possible, how
+we will organize the information that we obtain. It
+is not uncommon, in both daily life and research, to
+discover that we cannot make sense of all the information we possess (sometimes referred to as information
+overload). Anyone attempting to understand another
+society while living in it has probably experienced this
+phenomenon. Our scientist will surely encounter this
+
+www.mhhe.com/fraenkel10e
+
+problem, but so will our teacher unless she has figured
+out how to handle the questionnaire and/or observational information that is obtained.
+5. Fifth, after the information has been collected and
+analyzed, it must be interpreted. While this step may
+seem straightforward at first, this is seldom the case.
+As you will see, one of the most important parts of research is to avoid kidding ourselves. The teacher may
+conclude that her students are inattentive because
+they dislike lectures, but she may be misinterpreting the information. The scientist may conclude that
+human sacrifice is or was a means of trying to control
+nature, but this also may be incorrect.
+In many studies, there are several possible explanations for a problem or phenomenon. These are called hypotheses and may occur at any stage of an investigation.
+Some researchers state a hypothesis (e.g., “Students are
+less attentive during lectures than during flipped classrooms”) right at the beginning of a study. In other cases,
+hypotheses emerge as a study progresses, sometimes
+even when the information that has been collected is
+being analyzed and interpreted. The scientist might find
+that instances of sacrifice seemed to be more common
+after such societies made contact with other cultures,
+suggesting a hypothesis such as: “Sacrifice is more likely
+when traditional practices are threatened.”
+We want to stress two crucial features of scientific
+research: freedom of thought and public procedures. At
+every step, it is crucial that the researcher be as open
+as humanly possible to alternative ways of focusing and
+clarifying the problem, collecting and analyzing information, and interpreting results. Further, the process must
+be as public as possible. It is not a private game to be
+played by a group of insiders. The value of scientific research is that it can be replicated (i.e., repeated) by anyone interested in doing so.*
+The general order of the scientific method, then, is
+as follows:
+Identifying a problem or question
+Clarifying the problem
+Determining the information needed and how to
+obtain it
+Organizing the information
+Interpreting the results
+*This is not to imply that replicating a study is a simple matter. It may
+require resources and training—and it may be impossible to repeat any
+study in exactly the same way it was done originally. The important
+principle, however, is that public evidence (as opposed to private experience) is the criterion for belief.
+
+CHAPTER 1
+
+In short, the essence of all research originates in
+curiosity—a desire to find out how and why things happen, including why people do the things they do, as well
+as whether or not certain ways of doing things work better than others.
+A common misperception of science fosters the
+idea that there are fixed, once-and-for-all answers to
+particular questions. This contributes to a common,
+but unfortunate, tendency to accept, and rigidly adhere
+to, oversimplified solutions to very complex problems.
+While certainty is appealing, it is contradictory to a fundamental premise of science: All conclusions are to be
+viewed as tentative and subject to change, should new
+ideas and new evidence warrant revision. It is particularly important for educational researchers to keep this
+in mind, since the demand for final answers from parents, administrators, teachers, and politicians can often
+be intense. An example of how science changes is shown
+in the More About Research box on page 8.
+For many years, there has been a strong tendency in
+Western culture to value scientific information over all
+other kinds. In recent years, the limitations of this view
+have become increasingly recognized and discussed. In
+education, we would argue that other ways of knowing, in
+addition to the scientific, should at least be considered.
+As we have seen, there are many ways to collect information about the world around us. Figure 1.1 on page 10
+illustrates some of these ways of knowing.
+
+­
+
+Types of Research
+All of us engage in actions that have some of the characteristics of formal research, although perhaps we do not
+realize this at the time. We try out new methods of teaching, new materials, new textbooks. We compare what we
+did this year with what we did last year. Teachers frequently ask students and colleagues their opinions about
+school and classroom activities. Counselors interview
+students, faculty, and parents about school activities. Administrators hold regular meetings to gauge how faculty
+members feel about various issues. School boards query
+administrators, administrators query teachers, teachers
+query students and each other.
+We observe, we analyze, we question, we hypothesize,
+we evaluate. But rarely do we do these things systematically. Rarely do we observe under controlled conditions.
+Rarely are our instruments as accurate and reliable as
+they might be. Rarely do we use the variety of research
+techniques and methodologies at our disposal.
+
+The Nature of Research
+
+7
+
+The term research can mean any sort of “careful,
+systematic, patient study and investigation in some
+field of knowledge.”1 Basic research is concerned with
+clarifying underlying processes, with the hypothesis
+usually expressed as a theory. Researchers engaged in
+basic research studies are not particularly interested
+in examining the effectiveness of specific educational
+practices. An example of basic research might be an
+attempt to refine one or more stages of Erickson’s psychological theory of development. Applied research, on
+the other hand, is interested in examining the effectiveness of particular educational practices. Researchers
+engaged in applied research studies may or may not
+want to investigate the degree to which certain theories
+are useful in practical settings. An example might be an
+attempt by a researcher to find out whether a particular
+theory of how children learn to read can be applied to
+first graders who are nonreaders. Many studies combine the two types of research. An example would be
+a study that examines the effects of particular teacher
+behaviors on students while also testing a theory of
+personality.
+Many methodologies fit within the framework of research. If we learn how to use more of these methodologies where they are appropriate and if we can become
+more knowledgeable in our research efforts, we can obtain more reliable information upon which to base our
+educational decisions. Let us look, therefore, at some
+of the research methodologies we might use. We shall
+return to each of them in greater detail in Parts 4 and 5.
+
+QUANTITATIVE, QUALITATIVE, AND
+MIXED-METHODS RESEARCH
+Another distinction involves the difference between
+quantitative and qualitative research. Although we shall
+discuss the basic differences between these two types of
+research more fully in Chapter 18, we will provide a brief
+overview here. In the simplest sense, quantitative data
+deal primarily with numbers, whereas qualitative data
+primarily involve words. But this is too simple and too
+brief. Quantitative and qualitative methods differ in their
+assumptions about the purpose of research itself, methods utilized by researchers, kinds of studies undertaken,
+role of the researcher, and degree to which generalization is possible.
+Quantitative researchers usually base their work on
+the belief that the world is a single reality that can be
+approximated by careful study. Qualitative researchers,
+on the other hand, are likely to assume that the world is
+
+MORE ABOUT
+RESEARCH
+
+Chaos Theory
+he origins of what is now known as chaos theory are usually traced to the 1970s. Since then, it has come to occupy
+a prominent place in mathematics and the natural sciences
+and, to a lesser extent, in the social sciences.
+Although the physical sciences have primarily been known
+for their basic laws, or “first principles,” it has long been
+known by scientists that most of these laws hold precisely
+only under ideal conditions that are not found in the “real”
+world. Many phenomena, such as cloud formations, waterfall patterns, and even the weather, elude precise prediction.
+Chaos theorists argue that the natural laws that are so useful
+in science may, in themselves, be the exception rather than
+the rule.
+Although precise prediction of such phenomena as the
+swing of a pendulum or what the weather will be at a particular
+time is in most cases impossible, repeated patterns, according
+to a major principle of chaos theory, can be discovered and
+used, even when the content of the phenomena is chaotic. Developments in computer technology, for example, have made
+it possible to translate an extremely long sequence of “data
+points,” such as the test scores of a large group of individuals, into colored visual pictures of fascinating complexity and
+beauty. Surprisingly, these pictures show distinct patterns that
+are often quite similar across different content areas, such as
+physics, biology, economics, astronomy, and geography. Even
+more surprising is the finding that certain patterns recur as
+these pictures are enlarged. The most famous example is the
+“Mandlebrot Bug,” shown in Photographs 1.1 and 1.2. Note
+that Photograph 1.2 is simply a magnification of a portion of
+Photograph 1.1. The tiny box in the lower left corner of Photograph 1.1 is magnified to produce the box in the upper lefthand corner of Photograph 1.2. The tiny box within this box
+is then, in turn, magnified to produce the larger portion of
+Photograph 1.2, including the reappearance of the “bug” in
+the lower right corner. The conclusion is that even with highly
+complex data (think of trying to predict the changes that might
+occur in a cloud formation), predictability exists if patterns
+can be found across time or when the scale of a phenomenon
+is increased.
+
+T
+
+IMPLICATIONS FOR EDUCATIONAL RESEARCH
+
+We hope that this brief introduction has not only stimulated
+your interest in what has been called, by some, the third
+
+8
+
+revolution in science during the twentieth century (the theory
+of relativity and the discovery of quantum mechanics being the
+first two), but also that it helps to make sense out of what we
+view as some implications for educational research. What are
+these implications?*
+If chaos theory is correct, the difficulty in discovering
+widely generalizable rules or laws in education, let alone
+the social sciences in general, may not be due to inadequate
+concepts and theories or to insufficiently precise measurement and methodology, but may simply be an unavoidable
+fact about the world. Another implication is that whatever
+“laws” we do discover may be seriously limited in their
+applicability—across geography, across individual and/
+or group differences, and across time. If this is so, chaos
+theory provides support for researchers to concentrate
+on studying topics at the local level—classroom, school,
+agency—and for repeated studies over time to see if such
+laws hold up.
+Another implication is that educators should pay more attention to the intensive study of the exceptional or the unusual,
+rather than treating such instances as trivial, incidental, or “errors.” Yet another implication is that researchers should focus
+on predictability on a larger scale—that is, looking for patterns
+in individuals or groups over larger units of time. This would
+suggest a greater emphasis on long-term studies rather than the
+easier-to-conduct (and cheaper) short-time investigations that
+are currently the norm.
+Not surprisingly, chaos theory has its critics. In education,
+the criticism is not of the theory itself, but more with misinterpretations and/or misapplications of it.† Chaos theorists
+do not say that all is chaos; quite the contrary, they say that
+we must pay more attention to chaotic phenomena and revise
+our conceptions of predictability. At the same time, the laws
+of gravity still hold, as, with less certainty, do many generalizations in education.
+
+*For more extensive implications in the field of psychology, see
+Duke, M. P. (1994). Chaos theory and psychology: Seven propositions. Genetic, Social and General Psychology Monographs, 120,
+267–286.
+†See Hunter, W., Benson, J., & Garth, D. (1997). Arrows in time: The
+misapplication of chaos theory to education. Journal of Curriculum
+Studies, 29, 87–100.
+
+Photographs 1.1 and 1.2 The Mandlebrot Bug
+(top) The Mandlebrot Bug ©iserp/Shutterstock RF; (bottom) Mandelbrot fractal ©Science Photo
+Library/Alamy Stock Photo RF; (inset) Mathematical fractal structure ©wancl/123rf
+
+9
+
+10
+
+PART 1
+
+Introduction to Research
+
+www.mhhe.com/fraenkel10e
+
+“Boy, that’s hot!”
+Sensing
+
+Sharing information with others
+
+Being told something by
+an expert
+
+Logical reasoning
+
+If the cat is in the basket
+and the basket is in the
+box, the cat therefore
+has to be in the box.
+
+Box
+
+“I’ve concluded
+that Mr. Johnson has
+Lyman disease.”
+“On what
+basis?”
+
+“Based on
+what his x-rays and
+his blood sample reveal,
+both of which can be
+corroborated by
+anyone.”
+
+Science
+
+
+
+Figure 1.1 Ways of Knowing
+
+made up of multiple realities, socially constructed by different individual views of the same situation.
+When it comes to the purpose of research, quantitative researchers seek to establish relationships between variables and look for and sometimes explain
+the causes of such relationships. Qualitative researchers, on the other hand, are more concerned with understanding situations and events from the viewpoint
+of the participants. Accordingly, the participants often
+
+tend to be directly involved in the research process
+itself.
+Quantitative research has established widely agreedon general formulations of steps that guide researchers
+in their work. Quantitative research designs tend to
+be preestablished. Qualitative researchers have a much
+greater flexibility in both the strategies and techniques
+they use and the overall research process itself. Their designs tend to emerge during the course of the research.
+
+CHAPTER 1
+
+EXPERIMENTAL RESEARCH
+
+­
+
+Experimental research is the most conclusive of scientific
+methods. Because the researcher actually establishes different treatments and then studies their effects, results
+from this type of research are likely to lead to the most
+clear-cut interpretations.
+Suppose a history teacher is interested in the following question: How can I most effectively teach important concepts (such as democracy or colonialism) to my
+students? The teacher might compare the effectiveness
+of two or more methods of instruction (usually called
+the independent variable) in promoting the learning of
+historical concepts. After systematically assigning students to contrasting forms of history instruction (such
+
+11
+
+Discussion
+Test score (dependent variable)
+y-axis
+
+The ideal researcher role in quantitative research is
+that of a detached observer, whereas qualitative researchers tend to become immersed in the situations in which
+they do their research. The prototypical study in the
+quantitative tradition is the experiment; for qualitative
+researchers, it is an ethnography.
+Lastly, most quantitative researchers want to establish generalizations that transcend the immediate situation or particular setting. Qualitative researchers, on the
+other hand, often do not even try to generalize beyond
+the particular situation, but may leave it to the reader to
+assess applicability. When they do generalize, their generalizations are usually very limited in scope.
+Many of the distinctions just described, of course, are
+not absolute. Sometimes researchers will use both qualitative and quantitative approaches in the same study. This
+kind of research is referred to as mixed-methods research.
+Its advantage is that by using multiple methods, researchers are better able to gather and analyze considerably
+more and different kinds of data than they would be able
+to using just one approach. Mixed-methods studies can
+emphasize one approach over the other or give each approach roughly equal weight.
+Consider an example. It is often common in surveys to
+use closed-ended questions that lend themselves to quantitative analysis (such as through the calculation of percent-●
+ages of different types of responses), and also open-ended
+questions that permit qualitative analysis (such as following up a response that interviewees give to a particular
+question with further questions by the researcher to encourage them to elaborate and explain their thinking).
+Studies in which researchers use both quantitative
+and qualitative methods are becoming more common, as
+we will see in Chapter 23.
+
+The Nature of Research
+
+Lecture
+
+Method of instruction (independent variable)
+x-axis
+
+Figure 1.2 Example of Results of Experimental
+
+Research: Effect of Method of Instruction on History
+Test Scoresa
+a
+
+Many of the examples of data presented throughout this text, including that
+shown in Figure 1.2, are hypothetical. When actual data are shown, the source
+is indicated.
+
+as inquiry versus programmed units), the teacher could
+compare the effects of these contrasting methods by testing students’ conceptual knowledge. Student learning
+in each group could be assessed by an objective test or
+some other measuring device. If the average scores on
+the test (usually called the dependent variable) differed,
+they would give some idea of the effectiveness of the various methods. A simple graph could be plotted to show
+the results, as illustrated in Figure 1.2.
+In the simplest sort of experiment, two contrasting
+methods are compared and an attempt is made to control
+for all other (extraneous) variables—such as student ability
+level, age, grade level, time, materials, and teacher characteristics—that might affect the outcome under investigation. Methods of such control could include holding the
+classes during the same or closely related periods of time,
+using the same materials in both groups, comparing students of the same age and grade level, and so on.
+Of course, we want to have as much control as possible over the assignment of individuals to the various
+treatment groups, to ensure that the groups are similar. But in most schools, systematic assignment of students to treatment groups is difficult, if not impossible,
+to achieve. Nevertheless, useful comparisons are still
+possible. You might wish to compare the effect of different teaching methods (e.g., lectures versus flipped
+classrooms) on student achievement or attitudes in two
+or more intact history classes in the same school. If a
+
+12
+
+PART 1
+
+Introduction to Research
+
+difference exists between the classes in terms of what
+is being measured, this result can suggest how the two
+methods compare, even though the exact causes of the
+difference would be somewhat in doubt. We discuss this
+type of experimental research in Chapter 13.
+Another form of experimental research, singlesubject research, involves the intensive study of a single
+individual (or sometimes a single group) over time.
+These designs are particularly appropriate when studying individuals with special characteristics by means of
+direct observation. We discuss this type of research in
+Chapter 14.
+
+CORRELATIONAL RESEARCH
+
+­
+
+­
+
+
+
+Another type of research is done to determine relationships among two or more variables and to explore their
+implications for cause and effect; this is called correlational research. This type of research can help us make
+more intelligent predictions.
+For instance, could a math teacher predict which
+sorts of individuals are likely to have trouble learning the
+subject matter of algebra? If we could make fairly accurate predictions in this regard, then perhaps we could
+suggest some corrective measures for teachers to use to
+help such individuals so that large numbers of “algebrahaters” are not produced.
+How do we do this? First, we need to collect various
+kinds of information on students that we think is related
+to their achievement in algebra. Such information might
+include their performance on a number of tasks logically
+related to the learning of algebra (such as computational
+skills, ability to solve word problems, and understanding
+of math concepts), their verbal abilities, their study habits, aspects of their backgrounds, their early experiences
+with math courses and math teachers, the number and
+kinds of math courses they’ve taken, and anything else
+that might conceivably point to how those students who
+do well in math differ from those who do poorly.
+We then examine the data to see if any relationships
+exist between some or all of these characteristics and
+subsequent success in algebra. Perhaps those who perform better in algebra have better computational skills
+or higher self-esteem or receive more attention from the
+teacher. Such information can help us predict more accurately the likelihood of learning difficulties for certain
+types of students in algebra courses. It may even suggest
+specific ways to help students learn better.
+In short, correlational research seeks to investigate
+the extent to which one or more relationships of some
+
+www.mhhe.com/fraenkel10e
+
+type exist. The approach requires no manipulation or
+intervention on the part of the researcher other than
+administering the instrument(s) necessary to collect the
+data desired. In general, one would undertake this type
+of research to look for and describe relationships that
+may exist among naturally occurring phenomena, without trying in any way to alter these phenomena. We talk
+more about correlational research in Chapter 15.
+
+CAUSAL-COMPARATIVE RESEARCH
+Another type of research is intended to determine the
+cause for or the consequences of differences between
+groups of people; this is called causal-comparative
+research. Suppose a teacher wants to determine whether
+students from single-parent families do more poorly in
+her course than students from two-parent families. To investigate this question experimentally, the teacher would
+systematically select two groups of students and then
+assign each to a single- or two-parent family—which is
+clearly impossible (not to mention unethical!).
+To test this question using a causal-comparative design, the teacher might compare two groups of students
+who already belong to one or the other type of family
+to see if they differ in their achievement. Suppose the
+groups do differ. Can the teacher definitely conclude
+that the difference in family situation produced the difference in achievement? Alas, no. The teacher can conclude that a difference does exist but cannot say for sure
+what caused the difference.
+Interpretations of causal-comparative research are limited, therefore, because the researcher cannot say conclusively whether a particular factor is a cause or a result of
+the behavior(s) observed. In the example presented here,
+the teacher cannot be certain whether (1) any perceived
+difference in achievement between the two groups is due
+to the difference in home situation, (2) the parent status
+is due to the difference in achievement between the two
+groups (although this seems unlikely), or (3) some unidentified factor is at work. Nevertheless, despite problems of interpretation, causal-comparative studies are
+of value in identifying possible causes of observed variations in the behavior patterns of students. In this respect,
+they are very similar to correlational studies. We discuss
+causal-comparative research in Chapter 16.
+
+SURVEY RESEARCH
+Another type of research obtains data to determine
+specific characteristics of a group. This is called
+
+CHAPTER 1
+
+survey research. Take the case of a high school principal
+who wants to find out how his faculty feels about his
+administrative policies. What do they like about his policies? What do they dislike? Why? Which policies do they
+like the best or least?
+These sorts of questions can best be answered through
+a variety of survey techniques that measure faculty attitudes toward the policies of the administration. A descriptive survey involves asking the same set of questions
+(often prepared in the form of a written questionnaire
+or ability test) of a large number of individuals either
+by mail, by telephone, or in person. When answers to
+a set of questions are solicited in person, the research
+is called an interview. Responses are then tabulated and
+reported, usually in the form of frequencies or percentages of those who answer in a particular way to each of
+the questions.
+The difficulties involved in survey research are
+mainly threefold: (1) ensuring that the questions are
+clear and not misleading, (2) getting respondents
+to answer questions thoughtfully and honestly, and
+(3) getting a sufficient number of the questionnaires
+completed and returned to enable making meaningful analyses. The big advantage of survey research is
+that it has the potential to provide us with a lot of
+information obtained from quite a large sample of
+individuals.
+If more details about particular survey questions are
+desired, the principal (or someone else) can conduct
+personal interviews with faculty. The advantages of an
+interview (over a questionnaire) are that open-ended
+questions (those requiring a response of some length)
+can be used with greater confidence, particular questions of special interest or value can be pursued in depth,
+follow-up questions can be asked, and items that are
+unclear can be explained. We discuss survey research in●
+Chapter 17.
+
+ETHNOGRAPHIC RESEARCH
+In all the examples presented so far, the questions being
+asked involve how well, how much, or how efficiently
+knowledge, attitudes, or opinions and the like exist or
+are being developed. Sometimes, however, researchers may wish to obtain a more complete picture of the
+educational process than answers to these questions provide. When they do, some form of qualitative research is
+called for. Qualitative research differs from the previous
+(quantitative) methodologies in both its methods and its
+underlying philosophy. In Chapter 18, we discuss these
+
+The Nature of Research
+
+13
+
+differences, along with recent efforts to reconcile the two
+approaches.
+Consider the subject of physical education. Just how
+do physical education teachers teach their subject? What
+kinds of things do they do as they go about their daily
+routine? What sorts of things do students do? In what
+kinds of activities do they engage? What explicit and implicit rules of games in PE classes seem to help or hinder
+the process of learning?
+To gain some insight into such concerns, an ethnographic study can be conducted. The emphasis in this type
+of research is on documenting or portraying the everyday
+experiences of individuals by observing and interviewing
+them and relevant others. An elementary classroom, for
+example, might be observed on as regular a basis as possible, and the students and teacher involved might be interviewed in an attempt to describe, as fully and as richly
+as possible, what goes on in that classroom. Descriptions
+(a better word might be portrayals) might depict the social atmosphere of the classroom; the intellectual and
+emotional experiences of students; the manner in which
+the teacher acts toward and reacts to students of different ethnicities, sexes, or abilities; how the “rules” of the
+class are learned, modified, and enforced; the kinds of
+questions asked by the teacher and students; and so forth.
+The data could include detailed prose descriptions by
+students of classroom activities, audio of teacher-student
+conferences, video of classroom discussions, examples of
+teacher lesson plans and student work, sociograms depicting “power” relationships in the classroom, and flowcharts illustrating the direction and frequency of certain
+types of comments (e.g., the kinds of questions asked by
+teacher and students of one another and the responses
+that different kinds produce).
+In addition to ethnographic research, qualitative research includes historical research (see Chapter 22) and
+several other, less commonly used approaches. Casey,2
+for example, has identified 18 types of “narrative”
+methods. In Chapter 18, we discuss four of the most
+distinctive of these. These include biography, where the
+researcher focuses on important experiences in the life
+of an individual and interacts with the person to clarify
+meanings and interpretations (e.g., a study of the career
+of a high school principal). In phenomenology, the researcher focuses on a particular phenomenon (such as
+school board conflict), collects data through in-depth
+interviews with participants, and then identifies what is
+common to their perceptions. A third approach is the
+case study, in which a single individual, group, or important example is studied extensively and varied data are
+
+14
+
+PART 1
+
+Introduction to Research
+
+collected and used to formulate interpretations applicable to the specific case (e.g., a particular school board)
+or to provide useful generalizations. Lastly, grounded
+theory emphasizes continual interplay between raw data
+and the researcher’s interpretations that emerge from
+the data. Its central purpose is to inductively develop
+a theory from data (e.g., a study of teacher morale in a
+particular school beginning with interviews and other
+types of data).
+
+HISTORICAL RESEARCH
+You are probably already familiar with historical research.
+In this type of research, some aspect of the past is studied, either by perusing documents of the period or by
+interviewing individuals who lived during the time. The
+researcher then attempts to reconstruct as accurately as
+possible what happened during that time and to explain
+why it did.
+For example, a curriculum coordinator in a large urban
+school district might want to know what sorts of arguments have been made in the past as to what should be
+included in the social studies curriculum for grades K–12.
+She could read what various social studies and other
+curriculum theorists have written on the topic and then
+compare their positions. The major problems in historical
+research are making sure that the documents or individuals really did come from (or live during) the period under
+study and, once this is established, ascertaining that what
+the documents or individuals say is true. We discuss historical research in more detail in Chapter 22.
+
+­
+
+
+
+ACTION RESEARCH
+Action research differs from all the preceding methodologies in two fundamental ways. The first is that generalization to other persons, settings, or situations is of
+minimal importance. Instead of searching for powerful
+generalizations, action researchers (often teachers or
+other education professionals, rather than professional
+researchers) focus on getting information that will enable them to change conditions in a particular situation
+in which they are personally involved. Examples would
+include improving the reading capabilities of students
+in a specific classroom, reducing tensions between
+ethnic groups in the lunchroom at a particular middle
+school, or identifying better ways to serve special education students in a specified school district. Accordingly, any of the methodologies discussed earlier may
+be appropriate.
+
+www.mhhe.com/fraenkel10e
+
+The second difference involves the attention paid
+to the active involvement of the subjects* in a study●
+(i.e., those on whom data is collected), as well as those
+likely to be affected by the study’s outcomes. Commonly
+used terms in action research, therefore, are participants
+or stakeholders, reflecting an intent to involve them●
+directly in the research process as part of “the research
+team.” The extent of participation varies from just helping to select instruments and/or collect data to helping to
+formulate the research purpose and question to actually
+participating in all aspects of the research investigation
+from start to finish. We discuss action research in some
+detail in Chapter 24.
+
+EVALUATION RESEARCH
+There are many different kinds of evaluations depending on
+the object being evaluated and the purpose of the evaluation. Evaluation research is usually described as either formative or summative. Formative evaluations are intended to
+improve the object being evaluated; they help to form or
+strengthen it by examining the delivery of the program or
+technology and the quality of its implementation. In contrast, summative evaluations seek to examine the effects or
+outcomes of an object by describing what happens after the
+delivery of the program or technology in order to assess
+whether the object caused the outcome.
+An example of a formative evaluation product is a
+needs assessment report. A needs assessment determines the appropriate audience for the program, as
+well as the extent of the need and what might work to
+meet the need. Summative evaluations can be thought
+of as either (a) outcome evaluations, which investigate
+whether the program or technology appeared to have
+caused demonstrable effects on specifically defined
+target outcomes, or (b) impact evaluations, which are
+broader and attempt to assess the overall effects (intended or unintended) of the program or technology
+as a whole.
+Evaluators ask many different kinds of questions and
+often use a variety of methods to address them. For example, in summative evaluations, evaluators often use
+quasi-experimental research designs to assess the hypothesized causal effects of a program. Formative evaluations
+that examine program implementation may also include
+analysis of existing data sources, surveys, interviews, observational data, and focus groups.
+
+*“Participant” is also readily used now instead of “subject.”
+
+CONTROVERSIES IN
+RESEARCH
+
+Should Some Research Methods
+Be Preferred over Others?
+
+only, at least the most respectable form of research and the only
+one worthy of being called scientific. Such a preference has implications for both the funding of school programs and educational research. As one writer commented, “How scared should
+we be when the federal government endorses a particular view
+of science and rejects others?”†
+
+S
+
+everal researchers* have expressed their concern that the
+U.S. Department of Education is showing favoritism toward the narrow view that experimental research is, if not the
+*Berliner, D. C. (2002). Educational research: The hardest science
+of all. Educational Researcher, 31 (8), 18–20; Erickson, F. E., &
+Gutierrez, K. (2002). Culture, rigor, and science in educational
+research. Educational Researcher, 31(8), 21–24.
+
+ALL HAVE VALUE
+It must be stressed that each of the research methodologies described so briefly here has value for us in education. Each constitutes a different way of inquiring into
+the realities that exist within our classrooms and schools
+and into the minds and emotions of teachers, counselors,
+administrators, parents, and students. Each represents a
+different tool for trying to understand what goes on, and
+what works, in schools. It is inappropriate to consider any
+one or two of these approaches as superior to any of the
+others. The effectiveness of a particular methodology depends in large part on the nature of the research question
+one wants to ask and the specific context within which
+the particular investigation is to take place. We need to
+gain insights into what goes on in education from as many
+perspectives as possible, and hence we need to construe
+research in broad rather than narrow terms.
+As far as we are concerned, research in education
+should ask a variety of questions, move in a variety of directions, encompass a variety of methodologies, and use
+a variety of tools. Different research orientations, perspectives, and goals should be not only allowed but also encouraged. The intent of this book is to help you learn how
+and when to use several of these methodologies.
+
+EDUCATION RESEARCH IN THE DIGITAL AGE
+
+educational research. Along with these dynamic changes
+are important learning and teaching issues for students
+and faculty alike. Some examples include developing electronic information retrieval skills and critical evaluation
+strategies for assessing online resources. In Chapter 3, we
+discuss approaches for conducting electronic, manual, or
+hybrid searches to locate relevant sources in electronic or
+paper/print format, and provide guidelines for critically
+evaluating different types of sources. In Chapter 17, we discuss the advantages and disadvantages of Internet-based
+survey research, an increasingly popular data collection
+mode among researchers and students.
+
+General Research Types
+It is useful to consider the various research methodologies we have described as falling within one or more
+general research categories: descriptive, associational, or
+intervention-type studies.
+
+DESCRIPTIVE STUDIES
+Descriptive studies describe a given state of affairs as
+fully and carefully as possible. One of the best examples
+of descriptive research is found in botany and zoology,
+where each variety of plant and animal species is meticulously described and information is organized into useful
+taxonomic categories.
+In educational research, the most common descriptive
+methodology is the survey, as when researchers summarize the characteristics (abilities, preferences, behaviors,
+and so on) of individuals or groups or (sometimes)
+physical environments (such as schools). Qualitative
+
+­
+
+  
+
+Advances in communication and digital technology have
+affected education researchers both in terms of subject
+matter and access to information. From studying the
+effects of computer-assisted instruction and distance
+learning to using Internet-based surveys for data collection, technology continues to have a major impact on
+
+† St. Pierre, E. A. (2002). Science rejects postmodernism. Educational
+Researcher, 31 (8), 25.
+
+15
+
+16
+
+PART 1
+
+Introduction to Research
+
+approaches, such as ethnographic and historical methodologies are also primarily descriptive in nature. Examples
+of descriptive studies in education include identifying the
+achievements of various groups of students; describing
+the behaviors of teachers, administrators, or counselors;
+describing the attitudes of parents; and describing the
+physical capabilities of schools. The description of phenomena is the starting point for all research endeavors.
+Descriptive research in and of itself, however, is not very
+satisfying, since most researchers want to have a more complete understanding of people and things. This requires a
+more detailed analysis of the various aspects of phenomena and their interrelationships. Advances in biology, for
+example, have come about, in large part, as a result of the
+categorization of descriptions and the subsequent determination of relationships among these categories.
+
+
+
+ASSOCIATIONAL RESEARCH
+Educational researchers also want to do more than simply
+describe situations or events. They want to know how (or
+if), for example, differences in achievement are related to
+such things as teacher behavior, student diet, student interests, or parental attitudes. By investigating such possible
+relationships, researchers are able to understand phenomena more completely. Furthermore, the identification of
+relationships enables one to make predictions. If researchers know that student interest is related to achievement,
+for example, they can predict that students who are more
+interested in a subject will demonstrate higher achievement in that subject than students who are less interested.
+Research that investigates relationships is often referred
+to as associational research. Correlational and causalcomparative methodologies are the principal examples of
+associational research. Other examples include studying relationships (1) between achievement and attitude, between
+childhood experiences and adult characteristics, or between teacher characteristics and student achievement—all
+of which are correlational studies—and (2) between methods of instruction and achievement (comparing students
+who have been taught by each method) or between gender
+and attitude (comparing attitudes of males and females)—
+both of which are causal-comparative studies.
+As useful as associational studies are, they too are ultimately unsatisfying because they do not permit researchers
+to “do something” to influence or change outcomes. Simply
+determining that student interest is predictive of achievement does not tell us how to change or improve either interest or achievement, although it does suggest that increasing
+interest would increase achievement. To find out whether
+
+www.mhhe.com/fraenkel10e
+
+one thing will have an effect on something else, researchers
+need to conduct some form of intervention study.
+
+INTERVENTION STUDIES
+In intervention studies, a particular method or treatment
+is expected to influence one or more outcomes. Such
+studies enable researchers to assess, for example, the
+effectiveness of various teaching methods, curriculum
+models, classroom arrangements, and other efforts to influence the characteristics of individuals or groups. Intervention studies can also contribute to general knowledge
+by confirming (or failing to confirm) theoretical predictions (for instance, that abstract concepts can be taught
+to young children). The primary methodology used in
+intervention research is the experiment.
+Some types of educational research may combine these
+three general approaches. Although historical, ethnographic, and other qualitative research methodologies are
+primarily descriptive in nature, at times they may be associational if the investigator examines relationships. A descriptive historical study of college entrance requirements
+over time that examines the relationship between those
+requirements and achievement in mathematics is also associational. An ethnographic study that describes in detail the
+daily activities of an inner-city high school and also finds a
+relationship between media attention and teacher morale
+in the school is both descriptive and associational. An investigation of the effects of different teaching methods on
+concept learning that also reports the relationship between
+concept learning and gender is an example of a study that is
+both an intervention and an associational-type study.
+
+META-ANALYSIS
+Meta-analysis is an attempt to reduce the limitations of individual studies by trying to locate all of the studies on a
+particular topic and then using statistical means to synthesize the results of these studies. In Chapter 3, we discuss
+meta-analysis in more detail. In subsequent chapters, we
+examine in detail the limitations that are likely to be found
+in various types of research. Some apply to all types, while
+others are more likely to apply to particular types.
+
+Critical Analysis of Research
+There are some who feel that researchers who engage in
+the kinds of research we have just described take a bit
+too much for granted—indeed, that they make a number
+
+CHAPTER 1
+
+of unwarranted (and usually unstated) assumptions
+about the nature of the world in which we live. These
+critics (usually referred to as critical researchers) raise
+a number of philosophical, linguistic, ethical, and political questions not only about educational research as it
+is usually conducted but also about all fields of inquiry,
+ranging from the physical sciences to literature.
+In an introductory text, we cannot hope to do justice
+to the many arguments and concerns these critics have
+raised over the years. What we can do is provide an introduction to some of the major questions they have repeatedly asked.
+The first issue is the question of reality: As any beginning student of philosophy is well aware, there is no way
+to demonstrate whether anything “really exists.” There
+is, for example, no way to prove conclusively to others
+that I am looking at what I call a pencil (e.g., others may
+not be able to see it; they may not be able to tell where
+I am looking; I may be dreaming). Further, it is easily
+demonstrated that different individuals may describe
+the same individual, action, or event quite differently—
+leading some critics to the conclusion that there is no
+such thing as reality, only individual (and different) perceptions of it. One implication of this view is that any
+search for knowledge about the “real” world is doomed
+to failure.
+We would acknowledge that what the critics say is
+correct: We cannot, once and for all, “prove” anything,
+and there is no denying that perceptions differ. We
+would argue, however, that our commonsense notion of
+reality (that what most knowledgeable persons agree exists is what is real) has enabled humankind to solve many
+problems—even the question of how to put a man on●
+the moon.
+The second issue is the question of communication. Let
+us assume that we can agree that some things are “real.”
+Even so, the critics argue that it is virtually impossible to
+show that we use the same terms to identify these things.
+For example, it is well known that the Inuit have many
+different words (and meanings) for the English word
+snow. To put it differently, no matter how carefully we
+define even a simple term such as shoe, the possibility
+always remains that one person’s shoe is not another’s.
+(Is a slipper a shoe? Is a shower clog a shoe?) If so much
+of language is imprecise, how then can relationships or
+laws—which try to indicate how various terms, things, or
+ideas are connected—be precise?
+Again, we would agree. People often do not agree on
+the meaning of a word or phrase. We would argue, however (as we think would most researchers), that we can
+
+The Nature of Research
+
+17
+
+define terms clearly enough to enable different people
+to agree sufficiently about what words mean that they
+can communicate and thus get on with the acquisition of
+useful knowledge.
+The third issue is the question of values. Historically,
+scientists have often claimed to be value free, that is, “objective,” in their conduct of research. Critics have argued,
+however, that what is studied in the social sciences, including the topics and questions with which educational
+researchers are concerned, is never objective but rather
+socially constructed. Such things as teacher-student interaction in classrooms, the performance of students on examinations, the questions teachers ask, and a host of other
+issues and topics of concern to educators do not exist in a
+vacuum. They are influenced by the society and times in
+which people live. As a result, such topics and concerns,
+as well as how they are defined, inevitably reflect the values of that society. Further, even in the physical sciences,
+the choice of problems to study and the means of doing so
+reflect the values of the researchers involved.
+Here, too, we would agree. We think that most researchers in education would acknowledge the validity
+of the critics’ position. Many critical researchers charge,
+however, that such agreement is not sufficiently reflected
+in research reports. They say that many researchers fail
+to admit or identify “where they are coming from,” especially in their discussions of the findings of their research.
+The fourth issue is the question of unstated assumptions.
+An assumption is anything that is taken for granted rather
+than tested or checked. Although this issue is similar to
+the previous issue, it is not limited to values but applies
+to both general and specific assumptions that researchers
+make with regard to a particular study. Some assumptions
+are so generally accepted that they are taken for granted
+by practically all social researchers (e.g., the sun will
+come out; the earth will continue to rotate). Other assumptions are more questionable. An example given by
+Krathwohl3 clarifies this. He points out that if researchers change the assumptions under which they operate,
+this may lead to different consequences. If we assume,
+for example, that mentally limited students learn in the
+same way as other students but more slowly, then it follows that given sufficient time and motivation, they can
+achieve as well as other students. The consequences of
+this view are to give these individuals more time, to place
+them in classes where the competition is less intense, and
+to motivate them to achieve. If, on the other hand, we
+assume that they use different conceptual structures into
+which they fit what they learn, this assumption leads to a
+search for simplified conceptual structures they can learn
+
+18
+
+PART 1
+
+Introduction to Research
+
+“You all did well
+on the test. You must
+have studied hard!”
+"I knew the
+stuff from
+last year."
+
+"I read the
+right pages
+in the book."
+
+www.mhhe.com/fraenkel10e
+
+"I copied
+from Sam."
+?
+
+
+
+Figure 1.3 Is the Teacher’s Assumption Correct?
+
+that will result in learning that approximates that of other
+students. Frequently authors do not make such assumptions clear.
+In many studies, researchers implicitly assume that
+the terms they use are clear, that their samples are appropriate, and that their measurements are accurate.
+Designing a good study can be seen as trying to reduce
+these kinds of assumptions to a minimum. Readers
+should always be given enough information so that they
+do not have to make such assumptions. Figure 1.3 illustrates how an assumption can often be incorrect.
+The fifth issue is the question of societal consequences.
+Critical theorists argue that traditional research efforts
+(including those in education) predominantly serve political interests that are, at best, conservative or, at worst,
+oppressive. They point out that such research is almost
+always focused on improving existing practices rather
+than raising questions about the practices themselves.
+They argue that, intentional or not, the efforts of most
+educational researchers have served essentially to reinforce the status quo. A more extreme position alleges
+that educational institutions (including research), rather
+than enlightening the citizenry, have served instead to
+prepare them to be uncritical functionaries in an industrialized society.
+We would agree with this general criticism but note
+that there have been a number of investigations of the
+status quo itself, followed by suggestions for improvement, that have been conducted and offered by researchers of a variety of political persuasions.
+
+Let us examine each of these issues in relation to a
+hypothetical example. Suppose a researcher decides to
+study the effectiveness of a course in formal logic in improving the ability of high school students to analyze arguments and arrive at defensible conclusions from data.
+The researcher accordingly designs a study that is sound
+enough in terms of design to provide at least a partial answer as to the effectiveness of the course. Let us address
+the five issues presented in relation to this study.
+1. The question of reality: The abilities in question (analyzing arguments and reaching accurate conclusions)
+clearly are abstractions. They have no physical reality
+per se. But does this mean that such abilities do not
+“exist” in any way whatsoever? Are they nothing more
+than artificial by-products of our conceptual language
+system? Clearly, this is not the case. Such abilities do
+indeed exist in a somewhat limited sense, as when we
+talk about the “ability” of a person to do well on tests.
+But is test performance indicative of how well a student can perform in real life? If it is not, is the performance of students on such tests important? A critic
+might allege that the ability to analyze, for example,
+is situation specific: Some people are good analyzers
+on tests; others, in public forums; others, of written
+materials; and so forth. If this is so, then the concept
+of a general ability to “analyze arguments” would be
+an illusion. We think a good argument can be made
+that this is not the case—based on commonsense experience and on some research findings. We must admit,
+
+CHAPTER 1
+
+			
+
+			
+
+however, that the critic has a point (we don’t know for
+sure how general this ability is), and one that should
+not be overlooked.
+2. The question of communication: Assuming that these
+abilities do exist, can we define them well enough so
+that meaningful communication can result? We think
+so, but it is true that even the clearest definition does
+not always guarantee meaningful communication.
+This is often revealed when we discover that the way
+we use a term differs from how someone else uses the
+same term, despite previous agreement on a definition. We may agree, for example, that a “defensible
+conclusion” is one that does not contradict the data
+and that follows logically from the data, yet still find
+ourselves disagreeing as to whether or not a particular
+conclusion is a defensible one. Debates among scientists often boil down to differences as to what constitutes a defensible conclusion from data.
+3. The question of values: Researchers who decide to
+investigate outcomes such as the ones in this study
+make the assumption that the outcomes are either desirable (and thus to be enhanced) or undesirable (and
+thus to be diminished), and they usually point out
+why this is so. Seldom, however, are the values (of the
+researchers) that led to the study of a particular outcome discussed. Are these outcomes studied because
+they are considered of highest priority? because they
+are traditional? socially acceptable? easier to study?
+financially rewarding?
+The researcher’s decision to study whether a
+course in logic will affect the ability of students to
+analyze arguments reflects his or her values. Both the
+outcomes and the method studied reflect Eurocentric
+ideas of value; the Aristotelian notion of the “rational man” (or woman) is not dominant in all cultures.
+Might some not claim, in fact, that we need people in
+our society who will question basic assumptions more
+than we need people who can argue well from these
+assumptions? While researchers probably cannot
+be expected to discuss such complex issues in every
+study, these critics render a service by urging all of us
+interested in research to think about how our values
+may affect our research endeavors.
+4. The question of unstated assumptions: In carrying out
+such a study, the researcher is assuming not only that
+the outcome is desirable but also that the findings of
+the study will have some influence on educational
+practice. Otherwise, the study is nothing more than
+an academic exercise. Educational methods research
+has been often criticized for leading to suggested
+
+The Nature of Research
+
+19
+
+practices that, for various reasons, are unlikely to
+be implemented. While we believe that such studies
+should still be done, researchers have an obligation
+to make such assumptions clear and to discuss their
+reasonableness.
+5. The question of societal consequences: Finally, let us consider the societal implications of a study such as this.
+Critics might allege that this study, while perhaps defensible as a scientific endeavor, will have a negative overall
+impact. How so? First by fostering the idea that the outcome being studied (the ability to analyze arguments)
+is more important than other outcomes (e.g., the ability
+to see novel or unusual relationships). This allegation
+has, in fact, been made for many years in education—
+that researchers have overemphasized the study of some
+outcomes at the expense of others.
+A second allegation might be that such research
+serves to perpetuate discrimination against the less
+privileged segments of society. If it is true, as some contend, that some cultures are more “linear” and others
+more “global,” then a course in formal logic (being primarily linear) may increase the advantage already held
+by students from the dominant linear culture.4 It can
+be argued that a fairer approach would teach a variety
+of argumentative methods, thereby capitalizing on the
+strengths of all cultural groups.
+To summarize, we have attempted to present the
+major issues raised by an increasingly vocal part of the
+research community. These issues involve the nature of
+reality, the difficulty of communication, the recognition
+that values always affect research, unstated assumptions,
+and the consequences of research for society as a whole.
+While we do not agree with some of the specific criticisms raised by these writers, we believe the research enterprise is the better for their efforts.
+
+A Brief Overview
+of the Research Process
+Regardless of methodology, all researchers engage in
+a number of similar activities. Almost all research plans
+include, for example, a problem statement, a hypothesis,
+definitions, a literature review, a sample of subjects, tests or
+other measuring instruments, a description of procedures
+to be followed, including a time schedule, and a description
+of intended data analyses. We deal with each of these components in some detail throughout this book, but we want
+to give you a brief overview of them before we proceed.
+
+20
+
+PART 1
+
+Introduction to Research
+
+Research
+problem
+
+www.mhhe.com/fraenkel10e
+
+Hypotheses
+or
+questions
+
+Definitions
+
+Instrumentation
+
+Procedures/
+design
+
+Sample
+
+Literature
+review
+
+Data
+analysis
+
+Figure 1.4 The Research Process
+
+Figure 1.4 presents a schematic of the research components. The solid-line arrows indicate the sequence in
+which the components are usually presented and described in research proposals and reports. They also indicate a useful sequence for planning a study (i.e., thinking
+about the research problem, followed by the hypothesis,
+followed by the definitions, and so forth). The brokenline arrows indicate the most likely departures from
+this sequence (e.g., consideration of instrumentation
+sometimes results in changes in the sample; clarifying
+the question may suggest which type of design is most
+appropriate). The nonlinear pattern is intended to point
+out that, in practice, the process does not necessarily follow a precise sequence. In fact, experienced researchers
+often consider many of these components simultaneously as they develop their research plan.
+
+ ­
+
+­
+
+­
+
+
+
+Statement of the research problem: The problem of a
+study sets the stage for everything else. The problem statement should be accompanied by a description of the background of the problem (what
+factors caused it to be a problem in the first place)
+and a rationale or justification for studying it. Any
+legal or ethical ramifications related to the problem should be discussed and resolved.
+Formulation of an exploratory question or a hypothesis:
+Research problems are usually stated as questions, and often as hypotheses. A hypothesis is a
+prediction, a statement of what specific results or
+outcomes are expected to occur. The hypotheses
+of a study should clearly indicate any relationships expected between the variables (the factors,
+characteristics, or conditions) being investigated
+and be so stated that they can be tested within
+
+a reasonable period of time. Not all studies are
+hypothesis-testing studies, but many are. In qualitative studies, stating a hypothesis is inappropriate
+due its exploratory nature. Increasingly so, however, qualitative researchers are using propositions
+or “tentative hypotheses” to help guide their data
+collection and also possibly data analysis.
+Definitions: All key terms in the problem statement
+and hypothesis or proposition should be defined
+as clearly as possible.
+Review of the related literature: Other studies related to
+the research problem should be located and their results briefly summarized. The literature review (of
+appropriate journals, reports, monographs, etc.)
+should shed light on what is already known about
+the problem and should indicate logically why the
+proposed study would result in an extension of this●
+prior knowledge.
+Sample: The subjects* (the sample) of the study and
+the larger group, or population (to whom results are
+to be generalized), should be clearly identified. The
+sampling plan (the procedures by which the subjects will be selected) should be described.
+Instrumentation: Each of the measuring instruments
+or “data collection tools” (often referred to in
+qualitative research) used to collect data from the
+subjects should be described in detail, and a rationale should be given for its use.
+*The term subjects is offensive to some because it can imply that
+those being studied are deprived of dignity. The term used to denote
+subjects in qualitative studies is participants. Due to differences in
+how findings are generalized in qualitative and quantitative studies,
+we feel the term subjects is more appropriate when discussing quantitative research, in general, and intervention studies in particular.
+
+
