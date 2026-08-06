@@ -30,37 +30,60 @@ except ImportError:
     IS_COLAB = False
 
 def calculate_kendall_tau(x, y):
-    """Menghitung Kendall's Tau-b (Standard Scipy stats / Fallback Manual)."""
+    """
+    Fungsi Menghitung Koefisien Korelasi Kendall's Tau-b dengan Koreksi Ties.
+    -----------------------------------------------------------------------
+    x = Array skor prediksi AI (Binary / Trinary)
+    y = Array skor aktual Dosen (Ground Truth)
+    """
+    # 1. Jika library scipy.stats terpasang, gunakan fungsi bawaan scipy.stats.kendalltau
     if HAS_SCIPY:
         res = kendalltau(x, y)
         return float(res.statistic) if hasattr(res, 'statistic') else float(res[0])
     
-    # Fallback perhitungan manual Kendall's Tau-b dengan ties handling
+    # 2. FALLBACK MANUAL: Perhitungan manual Kendall's Tau-b berbasis rumus baku Bab 2 & 4
     n = len(x)
     if n < 2: return 0.0
-    nc = nd = tx = ty = 0
+    
+    nc = 0  # Concordant Pairs (Pasangan Sejalan: Dosen & AI sama-sama menaikkan urutan)
+    nd = 0  # Discordant Pairs (Pasangan Berlawanan: Dosen & AI beda arah urutan)
+    tx = 0  # Ties Dosen (Jumlah pasangan skor kembar pada nilai dosen)
+    ty = 0  # Ties AI (Jumlah pasangan skor kembar pada nilai AI)
+    
+    # Looping membandingkan setiap 2 mahasiswa (Kombinasi n(n-1)/2 pasang)
     for i in range(n):
         for j in range(i + 1, n):
-            dx = x[i] - x[j]
-            dy = y[i] - y[j]
+            dx = x[i] - x[j]  # Selisih skor AI antara mahasiswa i dan j
+            dy = y[i] - y[j]  # Selisih skor Dosen antara mahasiswa i dan j
             prod = dx * dy
-            if prod > 0: nc += 1
-            elif prod < 0: nd += 1
+            
+            if prod > 0: 
+                nc += 1      # Keduanya bernilai positif / negatif (Concordant)
+            elif prod < 0: 
+                nd += 1      # Arah berlawanan (Discordant)
             else:
-                if dx == 0 and dy != 0: tx += 1
-                elif dy == 0 and dx != 0: ty += 1
-    num = nc - nd
-    den1 = nc + nd + tx
-    den2 = nc + nd + ty
+                if dx == 0 and dy != 0: tx += 1  # Skor AI kembar, Dosen tidak
+                elif dy == 0 and dx != 0: ty += 1 # Skor Dosen kembar, AI tidak
+                
+    num = nc - nd                                # Pembilang (Concordant - Discordant)
+    den1 = nc + nd + tx                          # Koreksi Ties AI
+    den2 = nc + nd + ty                          # Koreksi Ties Dosen
+    
     if den1 == 0 or den2 == 0: return 0.0
-    return num / math.sqrt(den1 * den2)
+    return num / math.sqrt(den1 * den2)           # Hasil akhir Tau-b
 
 def calculate_mae(x, y):
-    """Menghitung Mean Absolute Error (Standard Sklearn / Fallback Manual)."""
+    """
+    Fungsi Menghitung Mean Absolute Error (MAE) / Rata-rata Deviasi Mutlak.
+    -----------------------------------------------------------------------
+    x = Array skor prediksi AI
+    y = Array skor aktual Dosen
+    """
+    # 1. Jika library scikit-learn terpasang, gunakan mean_absolute_error bawaan
     if HAS_SKLEARN:
         return float(mean_absolute_error(y, x))
     
-    # Fallback perhitungan manual MAE
+    # 2. FALLBACK MANUAL: Rumus linier MAE = (1 / N) * Sum( | Skor AI - Skor Dosen | )
     if len(x) == 0: return 0.0
     return sum(abs(a - d) for a, d in zip(x, y)) / len(x)
 
@@ -125,27 +148,34 @@ def run_colab_iterasi():
                     x_tri = xt
                     if not y_dosen: y_dosen = yt
 
-    # Metrik Iterasi 1 (Binary)
+    # =========================================================================
+    # KALKULASI METRİK STATISTIK DINAMIS BERDASARKAN HASIL UNGGAH/INPUT CSV
+    # =========================================================================
+    
+    # 1. Metrik Iterasi 1 (Binary Scoring: 0 / 100 poin)
     if x_bin and y_dosen:
+        # Menghitung korelasi hirarki Kendall's Tau-b dari array skor binary vs dosen
         tau_iterasi1 = calculate_kendall_tau(x_bin, y_dosen)
+        # Menghitung rata-rata deviasi fisik (MAE) dari array skor binary vs dosen
         mae_iterasi1 = calculate_mae(x_bin, y_dosen)
     else:
-        tau_iterasi1 = 0.4400
-        mae_iterasi1 = 18.33
+        raise ValueError("Data Iterasi 1 (Binary) tidak ditemukan dalam CSV yang diinput!")
 
-    # Metrik Iterasi 2 (3-Point Partial Credit)
+    # 2. Metrik Iterasi 2 (3-Point Partial Credit Scoring: 0 / 50 / 100 poin)
     if x_tri and y_dosen:
+        # Menghitung korelasi hirarki Kendall's Tau-b dari array skor trinary vs dosen
         tau_iterasi2 = calculate_kendall_tau(x_tri, y_dosen)
+        # Menghitung rata-rata deviasi fisik (MAE) dari array skor trinary vs dosen
         mae_iterasi2 = calculate_mae(x_tri, y_dosen)
     else:
-        tau_iterasi2 = 0.7724
-        mae_iterasi2 = 5.45
+        raise ValueError("Data Iterasi 2 (Trinary) tidak ditemukan dalam CSV yang diinput!")
     
-    # Delta Persentase Peningkatan
-    delta_tau = ((tau_iterasi2 - tau_iterasi1) / tau_iterasi1) * 100
-    delta_mae = ((mae_iterasi1 - mae_iterasi2) / mae_iterasi1) * 100
+    # 3. Menghitung Persentase Perubahan (Delta) Antara Iterasi 1 dan Iterasi 2
+    delta_tau = ((tau_iterasi2 - tau_iterasi1) / tau_iterasi1) * 100  # Peningkatan % Kendall Tau
+    delta_mae = ((mae_iterasi1 - mae_iterasi2) / mae_iterasi1) * 100  # Penurunan % MAE Error
     
-    print(f"\n📊 HASIL EVALUASI ALUR ITERASI PROTOTYPING (N = {max(len(x_tri), len(x_bin), 33)})")
+    # Cetak ringkasan teks hasil statistik di terminal / Colab output
+    print(f"\n📊 HASIL EVALUASI ALUR ITERASI PROTOTYPING (N = {len(y_dosen)})")
     print(f"-----------------------------------------------------------------------")
     print(f"🔴 Iterasi 1 (Prototype Awal - Binary Scoring):")
     print(f"   - Kendall's Tau (τ) : {tau_iterasi1:.4f}")
