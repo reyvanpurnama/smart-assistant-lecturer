@@ -67,7 +67,7 @@ export async function POST(req: NextRequest) {
       description: r.description
     }));
 
-    // 4. Compose Prompt and Trigger Groq API Inference
+    // 4. Menyusun Prompt Template CoT & Memanggil Inferensi Groq API Cloud
     const prompt = composeGradingPrompt({
       assignmentTitle: assignment.title,
       assignmentInstructions: null,
@@ -84,6 +84,7 @@ export async function POST(req: NextRequest) {
 
     let providerRawOutput = "";
     try {
+      // Mengirimkan prompt ke model AI (GPT-OSS 120B via Groq)
       providerRawOutput = await provider.gradeEssay({ prompt });
     } catch (err: any) {
       console.error("LLM Provider error:", err);
@@ -93,9 +94,10 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 5. Parse LLM Output & Reconcile Scores
+    // 5. Menerima & Memilah Keluaran Structured JSON dari AI
     let parsedResult;
     try {
+      // Memilah string JSON keluaran AI menggunakan parseLLMResponse()
       parsedResult = parseLLMResponse(providerRawOutput);
     } catch (err: any) {
       console.error("LLM Parser error:", err);
@@ -105,6 +107,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Rekonsiliasi skor rubrik parsial (0, 50, 100) dan menghitung total nilai terbobot
     const normalizedRubric = reconcileRubricScores(
       rubricDefinitions,
       parsedResult.rubric,
@@ -113,13 +116,13 @@ export async function POST(req: NextRequest) {
 
     const calculatedTotalScore = computeWeightedTotal(normalizedRubric);
 
-    // 6. Update Submission record in DB with grades
+    // 6. Menyimpan Hasil Nilai & Log Reasoning CoT ke Tabel Submissions di Supabase
     const { error: updateError } = await supabase
       .from("submissions")
       .update({
         ai_score: calculatedTotalScore,
         final_score: calculatedTotalScore,
-        cot_log: parsedResult.global_reasoning
+        cot_log: parsedResult.global_reasoning // Simpan narasi penalaran CoT AI
       })
       .eq("id", submission.id);
 
@@ -131,7 +134,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // 7. Save individual aspect scores (clear existing first just in case)
+    // 7. Menyimpan Rincian Skor per Aspek Rubrik ke Tabel rubric_scores di Supabase
     await supabase.from("rubric_scores").delete().eq("submission_id", submission.id);
 
     const aspectScores = normalizedRubric.map(ar => ({

@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { ParsedLLMGrade } from "@/lib/grading/types";
 
+// Schema Zod untuk validasi tiap kriteria aspek rubrik (skor, bobot, masukan, penalaran)
 const rubricScoreSchema = z.object({
   aspect: z.string().min(1),
   score: z.number().min(0).max(100),
@@ -9,6 +10,7 @@ const rubricScoreSchema = z.object({
   reasoning: z.string().min(1),
 });
 
+// Schema Zod utama untuk validasi struktur JSON lengkap hasil penilaian AI
 const llmGradeSchema = z.object({
   holistic: z.object({
     score: z.number().min(0).max(100),
@@ -19,17 +21,20 @@ const llmGradeSchema = z.object({
   global_reasoning: z.string().min(1),
 });
 
+// Fungsi pembantu untuk mengekstrak string JSON dari blok teks mentah respons AI
 function extractJsonObject(raw: string): string {
   const trimmed = raw.trim();
   if (trimmed.startsWith("{")) {
     return trimmed;
   }
 
+  // Jika AI membungkus JSON di dalam markdown code block ```json ... ```
   const blockMatch = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/i);
   if (blockMatch && blockMatch[1]) {
     return blockMatch[1].trim();
   }
 
+  // Mencari kurung kurawal pembuka { dan penutup } terluar
   const firstBrace = trimmed.indexOf("{");
   const lastBrace = trimmed.lastIndexOf("}");
   if (firstBrace >= 0 && lastBrace > firstBrace) {
@@ -39,6 +44,7 @@ function extractJsonObject(raw: string): string {
   throw new Error("LLM response does not contain a JSON object.");
 }
 
+// Fungsi utama parsing keluaran AI: Membaca teks mentah, melakukan pembersihan, dan memvalidasi ke schema Zod
 export function parseLLMResponse(raw: string): ParsedLLMGrade {
   const jsonText = extractJsonObject(raw);
 
@@ -49,7 +55,7 @@ export function parseLLMResponse(raw: string): ParsedLLMGrade {
     throw new Error("LLM response is not valid JSON.");
   }
 
-  // Pre-process and sanitize to make the parser resilient against model formatting slips
+  // Sanitasi & pra-pemrosesan agar parser tidak mudah gagal jika ada kesalahan format kecil dari AI
   if (parsedJson && typeof parsedJson === "object") {
     const rawRubrics = parsedJson.rubric;
     const validRubrics: any[] = [];
@@ -69,7 +75,7 @@ export function parseLLMResponse(raw: string): ParsedLLMGrade {
     }
     parsedJson.rubric = validRubrics;
 
-    // Fallbacks for missing/malformed root fields
+    // Nilai standar aman jika bidang alasan/umpan balik utama kosong
     if (!parsedJson.global_reasoning || typeof parsedJson.global_reasoning !== "string") {
       parsedJson.global_reasoning = parsedJson.holistic?.feedback || "Evaluasi otomatis selesai.";
     }
@@ -88,6 +94,7 @@ export function parseLLMResponse(raw: string): ParsedLLMGrade {
     }
   }
 
+  // Memastikan struktur akhir benar-benar memenuhi skema Zod llmGradeSchema
   const parsed = llmGradeSchema.safeParse(parsedJson);
   if (!parsed.success) {
     throw new Error(`LLM response schema invalid: ${parsed.error.message}`);

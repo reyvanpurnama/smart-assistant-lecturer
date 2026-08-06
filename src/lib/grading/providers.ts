@@ -32,6 +32,7 @@ class OpenAICompatibleProvider implements LLMProviderAdapter {
   }
 
   async gradeEssay(input: GradeEssayInput): Promise<string> {
+    // Memanggil endpoint Chat Completions API (Groq Cloud)
     const response = await fetch(`${this.config.baseUrl.replace(/\/$/, "")}/chat/completions`, {
       method: "POST",
       headers: {
@@ -40,8 +41,8 @@ class OpenAICompatibleProvider implements LLMProviderAdapter {
       },
       body: JSON.stringify({
         model: this.config.model,
-        temperature: 0.2,
-        response_format: { type: "json_object" },
+        temperature: 0.2, // Temperature rendah (0.2) untuk hasil evaluasi yang deterministik & konsisten
+        response_format: { type: "json_object" }, // MEMAKSA Groq API mengembalikan Structured JSON murni (JSON Mode)
         messages: [
           {
             role: "system",
