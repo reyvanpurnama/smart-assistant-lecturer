@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAL Defense Cheat Sheet & Interactive Simulator — Reyvan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --bg-card: #151c2c;
+            --bg-card-hover: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glow: rgba(6, 182, 212, 0.25);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 40%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .badge-header {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: var(--accent-cyan);
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Navigation Pills */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            padding: 0.75rem 1.75rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Grid Cards */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: var(--radius);
+            padding: 1.75rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stat-highlight {
+            font-size: 2.2rem;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0.5rem 0;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .bullet-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        .bullet-list li::before {
+            content: '⚡';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* Interactive Simulator Section */
+        .simulator-box {
+            background: linear-gradient(145deg, #1e1b4b, #0f172a);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        }
+
+        .question-badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .question-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 1.5rem;
+        }
+
+        .answer-reveal-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: #fff;
+            border: none;
+            padding: 0.85rem 1.75rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .answer-reveal-btn:hover {
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.6);
+            transform: scale(1.02);
+        }
+
+        .answer-box {
+            display: none;
+            background: rgba(15, 23, 42, 0.8);
+            border-left: 4px solid var(--accent-green);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-top: 1.5rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .answer-box.active {
+            display: block;
+        }
+
+        .script-quote {
+            font-size: 1rem;
+            color: #e2e8f0;
+            font-style: italic;
+            line-height: 1.7;
+        }
+
+        .script-quote strong {
+            color: var(--accent-cyan);
+            font-style: normal;
+        }
+
+        .timer-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="badge-header">🛡️ CHEAT SHEET SIDANG SKRIPSI SAL</div>
+        <h1>Visual Master Cheat Sheet & Simulator Defense</h1>
+        <p class="subtitle">Pahami Poin Kunci Landasan Sampel (N=33) & Metrik (Kendall Tau-b & MAE) dengan Bahasa Sendiri</p>
+    </header>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('sampel')">1. 📚 Landasan Sampel N=33</button>
+        <button class="tab-btn" onclick="switchTab('metrik')">2. 📊 Landasan Metrik Evaluasi</button>
+        <button class="tab-btn" onclick="switchTab('apriori')">3. 🧠 Pemilihan A-Priori (By Design)</button>
+        <button class="tab-btn" onclick="switchTab('simulator')">4. 🎙️ Simulator Tanya Jawab Sidang</button>
+    </div>
+
+    <!-- TAB 1: LANDASAN SAMPEL -->
+    <div id="tab-sampel" class="tab-content active">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-tag">Landasan Teori 1 — Statistik Inferensial</div>
+                <div class="card-title">Central Limit Theorem (CLT)</div>
+                <div class="stat-highlight">N = 33 ≥ 30</div>
+                <p style="color: var(--text-muted);"><strong>Mohammad Rafiqul Islam (2018)</strong></p>
+                <ul class="bullet-list">
+                    <li><strong>Aturan $N \ge 30$:</strong> Ambang batas baku dalam statistik di mana distribusi sampling rerata mulai mendekati distribusi normal.</li>
+                    <li><strong>Objektivitas Estimasi:</strong> Memastikan estimasi metrik seperti MAE dan Kendall Tau-b dari 33 sampel mahasiswa sah untuk digeneralisasi.</li>
+                    <li><strong>Standard Deviation ($\sigma$):</strong> Islam (2018) menegaskan jika varians populasi tidak diketahui, sampel $N \ge 30$ cukup untuk mengestimasi deviasi standar.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">Landasan Teori 2 — Metodologi Pendidikan</div>
+                <div class="card-title">Intact Class & Quasi-Experimental</div>
+                <div class="stat-highlight">Minimum Acceptable = 30</div>
+                <p style="color: var(--text-muted);"><strong>Fraenkel, Wallen, & Hyun (2019)</strong></p>
+                <ul class="bullet-list">
+                    <li><strong>Batas Minimum Riset Pendidikan:</strong> Untuk evaluasi korelasional dan instrumen kuasi-eksperimental, sampel minimum 30 subjek diakui sah.</li>
+                    <li><strong>Ecological Validity:</strong> Menggunakan 1 kelas praktikum utuh ($N=33$) memberikan keabsahan lingkungan kelas yang alami dan riil.</li>
+                    <li><strong>Retrospective Design:</strong> Data esai retrospektif mahasiswa kelas IF23A mencerminkan dinamika kelas perkuliahan sesungguhnya.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: LANDASAN METRIK -->
+    <div id="tab-metrik" class="tab-content">
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-tag">Metrik Korelasi Hirarki</div>
+                <div class="card-title">Kendall's Tau-b ($\tau_b$)</div>
+                <div class="stat-highlight">τb = 0.7724 (+75.5%)</div>
+                <p style="color: var(--text-muted);"><strong>Bhat & Varma (2026) | Akoglu (2018)</strong></p>
+                <ul class="bullet-list">
+                    <li><strong>Penanganan Ties (71 Pasang):</strong> Mengoreksi nilai kembar pada skor dosen dengan penyebut koreksi khusus.</li>
+                    <li><strong>Non-Parametrik Ordinal:</strong> Mengukur konsistensi pemeringkatan relatif (Mahasiswa A > Mahasiswa B).</li>
+                    <li><strong>Bebas Bias Kappa Paradox:</strong> Berbeda dari QWK yang anjlok artifisial jika data mengalami imbalansi nilai.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-tag">Metrik Presisi Deviasi Fisik</div>
+                <div class="card-title">Mean Absolute Error (MAE)</div>
+                <div class="stat-highlight">MAE = 5.45 Poin (-70.2%)</div>
+                <p style="color: var(--text-muted);"><strong>Yeung (2025) | Stahl et al. (2024)</strong></p>
+                <ul class="bullet-list">
+                    <li><strong>Interpretabilitas Pedagogis:</strong> Memiliki satuan fisik poin asli (skala 0-100). Selisih rata-rata AI cuma 5.45 poin.</li>
+                    <li><strong>Linier & Transparan:</strong> Tidak membesarkan kesalahan secara kuadratik seperti RMSE ($e^2$).</li>
+                    <li><strong>Direct Error Metric:</strong> Mengukur persis seberapa jauh angka fisik AI meleset dari skor dosen.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: PEMILIHAN A-PRIORI -->
+    <div id="tab-apriori" class="tab-content">
+        <div class="card" style="margin-bottom: 1.5rem;">
+            <div class="card-tag">Pertanyaan Filosofis Metodologi</div>
+            <div class="card-title">Mengapa Metrik Ditentukan Secara A-Priori di Bab 1?</div>
+            <p style="color: var(--text-muted); margin-bottom: 1rem;">Penentuan metrik di Bab 1 bukan tebak-tebakan, melainkan hasil perancangan metodologis (<em>by design</em>):</p>
+            <div class="grid-2">
+                <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 12px;">
+                    <h4 style="color: var(--accent-cyan); margin-bottom: 0.5rem;">1. Karakteristik Ordinal & Asumsi Ties</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Dalam penilaian esai 30+ mahasiswa, dosen secara ilmiah hampir dipastikan memberi skor yang sama pada beberapa mahasiswa (nilai kembar). Kendall Tau-b dipilih sejak awal karena rumusnya spesifik mengoreksi ties.</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 1.25rem; border-radius: 12px;">
+                    <h4 style="color: var(--accent-purple); margin-bottom: 0.5rem;">2. Evaluasi 2-Dimensi Saling Melengkapi</h4>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Peneliti memerlukan 2 dimensi independen: <strong>Kendall Tau-b</strong> untuk mengukur urutan hirarki kompetensi relatif, dan <strong>MAE</strong> untuk mengukur presisi deviasi angka fisik poin (0-100).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 4: SIMULATOR TANYA JAWAB -->
+    <div id="tab-simulator" class="tab-content">
+        <div class="simulator-box">
+            <div class="question-badge">SKENARIO 1: LANDASAN SAMPEL N = 33</div>
+            <div class="question-text">🗣️ Penguji: "Kenapa sampel evaluasi kamu cuma 33 mahasiswa? Apakah 33 data ini cukup secara statistik untuk mengambil kesimpulan?"</div>
+            <button class="answer-reveal-btn" onclick="toggleAnswer('ans1')">👁️ Tampilkan Jawaban Defensif Reyvan</button>
+            <div id="ans1" class="answer-box">
+                <div class="timer-tag">⏱️ Target Durasi: 45-60 Detik</div>
+                <p class="script-quote">
+                    "Terima kasih atas pertanyaannya Bapak/Ibu Penguji. Penggunaan sampel <strong>N = 33 mahasiswa</strong> sangat sah dan kuat secara metodologis ilmiah berdasarkan 2 landasan utama:<br><br>
+                    1. Secara statistik inferensial, merujuk pada <strong>Central Limit Theorem (CLT) oleh Islam (2018)</strong>, sampel $N \ge 30$ adalah batas standar di mana distribusi rerata sampel mulai mendekati normal, sehingga estimasi metrik MAE dan Kendall Tau-b dipercaya secara inferensial.<br><br>
+                    2. Dari metodologi penelitian pendidikan menurut <strong>Fraenkel et al. (2019)</strong>, untuk evaluasi retrospektif berbasis kelas utuh (intact class), sampel minimum 30 subjek sudah memenuhi syarat kelayakan."
+                </p>
+            </div>
+        </div>
+
+        <div class="simulator-box">
+            <div class="question-badge">SKENARIO 2: KENDALL'S TAU-B & MAE VS QWK</div>
+            <div class="question-text">🗣️ Penguji: "Kenapa kamu pakai Kendall's Tau-b dan MAE, sedangkan mayoritas paper terdahulu pakai QWK atau Pearson?"</div>
+            <button class="answer-reveal-btn" onclick="toggleAnswer('ans2')">👁️ Tampilkan Jawaban Defensif Reyvan</button>
+            <div id="ans2" class="answer-box">
+                <div class="timer-tag">⏱️ Target Durasi: 60 Detik</div>
+                <p class="script-quote">
+                    "Terima kasih atas pertanyaannya Bapak/Ibu Penguji. Pemilihan <strong>Kendall's Tau-b ($\tau_b$)</strong> dan <strong>MAE</strong> dilakukan secara terukur:<br><br>
+                    1. <strong>Kendall's Tau-b (Bhat & Varma, 2026; Akoglu, 2018):</strong> Sifat data 33 mahasiswa kami memiliki <strong>71 pasang nilai kembar (ties)</strong>. Tau-b mengoreksi ties tersebut dan menghindari <em>Kappa Paradox</em> (di mana QWK anjlok artifisial akibat imbalansi distribusi nilai). Tau-b mengukur hirarki kesepakatan sebesar 0.7724 secara murni.<br><br>
+                    2. <strong>MAE (Yeung, 2025):</strong> MAE mengukur deviasi fisik skor secara linier tanpa penalti kuadratik yang membias. MAE = 5.45 poin memberikan interpretabilitas pedagogis langsung bagi dosen."
+                </p>
+            </div>
+        </div>
+
+        <div class="simulator-box">
+            <div class="question-badge">SKENARIO 3: PEMILIHAN METRIK A-PRIORI</div>
+            <div class="question-text">🗣️ Penguji: "Kenapa sejak Bab 1 kamu sudah bisa menentukan Kendall's Tau-b dan MAE secara a-priori sebelum tahu datanya?"</div>
+            <button class="answer-reveal-btn" onclick="toggleAnswer('ans3')">👁️ Tampilkan Jawaban Defensif Reyvan</button>
+            <div id="ans3" class="answer-box">
+                <div class="timer-tag">⏱️ Target Durasi: 60 Detik</div>
+                <p class="script-quote">
+                    "Pertanyaan yang sangat jeli Bapak/Ibu Penguji. Penentuan metrik secara <strong>a-priori</strong> di Bab 1 berpijak pada 2 prinsip perancangan metodologis (by design):<br><br>
+                    1. <strong>Karakteristik Domain Penilaian Dosen:</strong> Secara teoritis penilaian esai pada 30+ mahasiswa pasti menghasilkan angka diskrit yang berulang (ties). Kendall Tau-b sejak awal memang diciptakan khusus untuk mengantisipasi ties.<br><br>
+                    2. <strong>Evaluasi 2-Dimensi Saling Melengkapi:</strong> Kami membutuhkan Kendall Tau-b untuk mengukur hirarki peringkat relatif mahasiswa, dan MAE untuk mengukur presisi selisih angka fisik poin (0-100). Fakta di ditemukannya 71 ties saat data dikumpulkan semakin memvalidasi asumsi a-priori kami."
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        event.target.classList.add('active');
+        document.getElementById('tab-' + tabName).classList.add('active');
+    }
+
+    function toggleAnswer(ansId) {
+        const box = document.getElementById(ansId);
+        box.classList.toggle('active');
+    }
+</script>
+
+</body>
+</html>
