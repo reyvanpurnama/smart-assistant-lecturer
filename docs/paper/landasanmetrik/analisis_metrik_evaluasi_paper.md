@@ -48,6 +48,7 @@ Dokumen ini disusun untuk memberikan **justifikasi teoretis dan matematis yang k
 
 ## 3. BAHAN JAWABAN SIDANG (Defense Script Tangkisan Dosen Kritis)
 
+### SKENARIO A: Perbandingan Metrik (QWK/Pearson vs Kendall's Tau-b & MAE)
 🗣️ **Penguji:** *"Kenapa kamu menggunakan Kendall's Tau-b dan MAE, sedangkan mayoritas paper terdahulu (Mizumoto, Pack, Haller) menggunakan Quadratic Weighted Kappa (QWK) atau Pearson r?"*
 
 > 🎙️ **Jawaban Bertahan Reyvan (60 Detik):**  
@@ -58,3 +59,19 @@ Dokumen ini disusun untuk memberikan **justifikasi teoretis dan matematis yang k
 > *2. **Alasan Penggunaan MAE (Yeung, 2025):** MAE mengukur deviasi fisik skor secara linier ($|y - \hat{y}|$) tanpa memberi penalti kuadratik yang berlebihan. Nilai MAE sebesar 5.45 poin memberikan **interpretabilitas pedagogis langsung** bagi dosen pengampu.*  
 > 
 > *Peneliti seperti **Stahl et al. (2024)** juga memanfaatkan MAE sebagai metrik deviasi fisik utama pada penilaian esai bertahap berbasis CoT."*
+
+---
+
+### SKENARIO B: Pemilihan Metrik Secara A-Priori (Sebelum Eksperimen Dijalankan)
+🗣️ **Penguji:** *"Metrik ini kan sudah kamu tentukan secara a-priori di Bab 1. Waktu Seminar Proposal kamu belum tahu hasil datanya kan? Kenapa sejak Bab 1 kamu sudah bisa yakin bahwa Kendall's Tau-b dan MAE adalah metrik yang paling cocok, padahal kamu belum tahu ada ties atau bagaimana distribusi datanya?"*
+
+> 🎙️ **Jawaban Bertahan Reyvan (Secara Metodologis & Logis):**  
+> *"Pertanyaan yang sangat jeli Bapak/Ibu Penguji. Penentuan metrik secara **a-priori** di Bab 1 tidak didasarkan pada 'menebak' hasil data, melainkan berpijak pada **dua prinsip perancangan metodologis (by design)**:*  
+>  
+> *1. **Karakteristik Domain Penilaian Dosen (Kenyataan Ordinal & Kemungkinan Ties):** Secara teoritis di bidang kependidikan, penilaian esai/praktikum pada populasi 30+ mahasiswa pasti memiliki skor yang diskrit dan berulang (ordinal bertingkat). Dosen secara ilmiah hampir dipastikan akan memberikan angka yang sama pada beberapa mahasiswa. Oleh karena itu, sejak perancangan Bab 1, kami secara sengaja memilih **Kendall's Tau-b** (bukan Kendall's Tau-a atau Pearson) karena rumusnya dari awal memang dirancang khusus untuk mengantisipasi *ties* (skor kembar) pada sampel data ordinal.*  
+> 
+> *2. **Pendekatan Evaluasi Dua Dimensi yang Saling Melengkapi (Multi-Dimensional Metric):** Sejak awal perancangan, kami membutuhkan dua metrik independen untuk mengevaluasi dua dimensi kualitas AI yang berbeda:*  
+>    * *Dimensi 1 (Konsistensi Peringkat Relatif):* Diukur oleh **Kendall's Tau-b** untuk memastikan AI tidak membolak-balikkan peringkat mahasiswa yang kompeten vs yang kurang kompeten.  
+>    * *Dimensi 2 (Presisi Deviasi Fisik Skor):* Diukur oleh **MAE** agar besarnya selisih poin fisik AI terhadap dosen dapat diinterpretasikan secara transparan dalam skala 0-100 poin.*  
+> 
+> *Jadi, fakta bahwa ditemukannya 71 pasang ties saat data dikumpulkan di Bab 4 semakin memvalidasi bahwa asumsi a-priori yang kami rancang di Bab 1 sudah sangat tepat secara ilmiah."*
