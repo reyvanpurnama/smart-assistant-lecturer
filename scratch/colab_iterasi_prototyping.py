@@ -10,13 +10,7 @@ import csv
 import math
 import matplotlib.pyplot as plt
 
-try:
-    from google.colab import files
-    IS_COLAB = True
-except ImportError:
-    IS_COLAB = False
-
-# Menggunakan library resmi scipy.stats dan scikit-learn (sklearn) sesuai draf Bab 3
+# Pustaka Standar Statistik (Bab 3.2.2 Skripsi)
 try:
     from scipy.stats import kendalltau
     HAS_SCIPY = True
@@ -29,13 +23,19 @@ try:
 except ImportError:
     HAS_SKLEARN = False
 
+try:
+    from google.colab import files
+    IS_COLAB = True
+except ImportError:
+    IS_COLAB = False
+
 def calculate_kendall_tau(x, y):
-    """Menghitung Kendall's Tau-b (memanfaatkan scipy.stats.kendalltau jika ada)."""
+    """Menghitung Kendall's Tau-b (Standard Scipy stats / Fallback Manual)."""
     if HAS_SCIPY:
         res = kendalltau(x, y)
-        return res.statistic if hasattr(res, 'statistic') else res[0]
+        return float(res.statistic) if hasattr(res, 'statistic') else float(res[0])
     
-    # Fallback logika manual jika tanpa library
+    # Fallback perhitungan manual Kendall's Tau-b dengan ties handling
     n = len(x)
     if n < 2: return 0.0
     nc = nd = tx = ty = 0
@@ -56,10 +56,11 @@ def calculate_kendall_tau(x, y):
     return num / math.sqrt(den1 * den2)
 
 def calculate_mae(x, y):
-    """Menghitung Mean Absolute Error / MAE (memanfaatkan sklearn.metrics.mean_absolute_error jika ada)."""
+    """Menghitung Mean Absolute Error (Standard Sklearn / Fallback Manual)."""
     if HAS_SKLEARN:
         return float(mean_absolute_error(y, x))
     
+    # Fallback perhitungan manual MAE
     if len(x) == 0: return 0.0
     return sum(abs(a - d) for a, d in zip(x, y)) / len(x)
 
