@@ -11,20 +11,20 @@ Topik: Pemodelan UML, Use Case Diagram Halaman, dan 3 Sequence Diagrams Terpisah
 
 3.3.1. Perancangan Use Case Diagram
 
-Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Aktor utama dalam sistem ini terbagi menjadi dua: Dosen Pengampu sebagai Primary Actor (Evaluator/Administrator) di sebelah kiri, dan Mahasiswa sebagai Secondary Actor di sebelah kanan.
+Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Aktor utama dalam sistem ini terbagi menjadi dua: Dosen Pengampu sebagai Primary Actor (Evaluator/Administrator) di posisi atas, dan Mahasiswa sebagai Secondary Actor di posisi bawah.
 
 Pengelompokan Use Case berdasarkan rute halaman aplikasi direpresentasikan sebagai berikut:
 
-1. Aktor Dosen Pengampu (Primary Actor - Sisi Kiri):
+1. Aktor Dosen Pengampu (Primary Actor - Posisi Atas):
    a. Halaman /dosen/buat-tugas: Dosen menginput naskah soal esai, mengunggah dokumen referensi acuan Knowledge Grounding, dan menguraikan kriteria rubrik 3-Point Partial Credit.
    b. Halaman /dosen: Dosen memantau dashboard rekapitulasi nilai, status pemeriksaan, dan daftar submisi mahasiswa.
    c. Halaman /dosen/validasi/[id]: Dosen mengulas (review) log penalaran Chain-of-Thought (CoT) AI, melakukan koreksi/override nilai manual, serta memfinalisasi status nilai.
 
-2. Aktor Mahasiswa (Secondary Actor - Sisi Kanan):
+2. Aktor Mahasiswa (Secondary Actor - Posisi Bawah):
    a. Halaman /tugas/[id]: Mahasiswa mengunggah berkas dokumen jawaban (.pdf, .docx, .txt).
    b. Halaman /tugas/[id]: Mahasiswa melihat visualisasi skor sementara dan rincian umpan balik formatif per aspek secara responsif.
 
-Diagram Use Case disajikan pada Gambar 3.x:
+Diagram Use Case disajikan pada Gambar 3.x (Urutan aktor diatur secara hierarkis: Dosen Pengampu di bagian atas, System Boundary di tengah, dan Mahasiswa di bagian bawah):
 
 ```mermaid
 %%{init: {
@@ -40,11 +40,13 @@ Diagram Use Case disajikan pada Gambar 3.x:
     'clusterBorder': '#64748b'
   }
 }}%%
-flowchart LR
+flowchart TB
     Dosen["Dosen Pengampu<br/>(Primary Actor)"]
 
     subgraph SystemBoundary["System Boundary: Smart Assistant Lecturer (SAL)"]
+        direction TB
         subgraph DosenPages["Portal Dosen"]
+            direction TB
             UC1["Buat Tugas & Grounding Context<br/>(/dosen/buat-tugas)"]
             UC2["Kelola Rubrik 3-Point Partial Credit<br/>(/dosen/buat-tugas)"]
             UC3["Lihat Dashboard Rekap Submisi<br/>(/dosen)"]
@@ -53,6 +55,7 @@ flowchart LR
         end
 
         subgraph StudentPages["Portal Mahasiswa"]
+            direction TB
             UC6["Unggah Berkas Jawaban<br/>(/tugas/id)"]
             UC7["Lihat Feedback Formatif & Skor<br/>(/tugas/id)"]
         end
