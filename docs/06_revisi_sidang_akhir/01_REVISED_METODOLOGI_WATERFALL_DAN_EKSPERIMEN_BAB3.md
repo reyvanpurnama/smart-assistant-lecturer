@@ -1,20 +1,20 @@
-# 📄 REVISI BAB III: METODE PENGEMBANGAN SISTEM (WATERFALL SDLC & EKSPERIMEN KOMPARASI)
+# REVISI BAB III: METODE PENGEMBANGAN SISTEM (WATERFALL SDLC & EKSPERIMEN KOMPARASI)
 
-**File Target:** `docs/06_revisi_sidang_akhir/01_REVISED_METODOLOGI_WATERFALL_DAN_EKSPERIMEN_BAB3.md`  
-**Topik:** Penyelarasan Metode SDLC Aplikasi (Waterfall) dan Skema Pengujian AI (Eksperimen Komparasi)  
-**Sitasi Acuan:** Pressman & Maxim (2019), Sommerville (2016), Yeung (2025), Chen & Wan (2024).
+File Target: docs/06_revisi_sidang_akhir/01_REVISED_METODOLOGI_WATERFALL_DAN_EKSPERIMEN_BAB3.md  
+Topik: Penyelarasan Metode SDLC Aplikasi (Waterfall) dan Skema Pengujian AI (Eksperimen Komparasi)  
+Sitasi Acuan: Pressman & Maxim (2019), Sommerville (2016), Yeung (2025), Chen & Wan (2024).
 
 ---
 
-## 📌 LANDASAN SITASI ILMIAH (ALASAN KENAPA PAKAI METODE INI)
+LANDASAN SITASI ILMIAH (ALASAN KENAPA PAKAI METODE INI)
 
-1. **Metode Pengembangan Aplikasi (Waterfall Model):**  
-   - **Sitasi:** Pressman, R. S., & Maxim, B. R. (2019). *Software Engineering: A Practitioner's Approach* (9th ed.). McGraw-Hill Education.  
-   - **Landasan:** Waterfall dipilih karena perancangan sistem Smart Assistant Lecturer (SAL) berbasis arsitektur *decoupled* (Next.js, Supabase, Groq API) memiliki spesifikasi kebutuhan yang sudah jelas sejak awal analisis, sehingga pembangunan dilakukan secara sekuensial dan terstruktur.
+1. Metode Pengembangan Aplikasi (Waterfall Model):  
+   - Sitasi: Pressman, R. S., & Maxim, B. R. (2019). Software Engineering: A Practitioner's Approach (9th ed.). McGraw-Hill Education.  
+   - Landasan: Waterfall dipilih karena perancangan sistem Smart Assistant Lecturer (SAL) berbasis arsitektur decoupled (Next.js, Supabase, Groq API) memiliki spesifikasi kebutuhan yang sudah jelas sejak awal analisis, sehingga pembangunan dilakukan secara sekuensial dan terstruktur.
 
-2. **Skema Pengujian Modul AI (Eksperimen Komparasi Skema Penilaian):**  
-   - **Sitasi:** Yeung, S. (2025); Chen & Wan (2024); Bhat & Varma (2026).  
-   - **Landasan:** Evaluasi modul penilaian AI tidak menggunakan siklus iterasi sistem aplikasi, melainkan menggunakan *Experimental Evaluation Scheme* (A/B Testing) untuk membandingkan performa *Binary Scoring* vs *3-Point Partial Credit Rubric* terhadap *ground truth* dosen.
+2. Skema Pengujian Modul AI (Eksperimen Komparasi Skema Penilaian):  
+   - Sitasi: Yeung, S. (2025); Chen & Wan (2024); Bhat & Varma (2026).  
+   - Landasan: Evaluasi modul penilaian AI tidak menggunakan siklus iterasi sistem aplikasi, melainkan menggunakan Experimental Evaluation Scheme (A/B Testing) untuk membandingkan performa Binary Scoring vs 3-Point Partial Credit Rubric terhadap ground truth dosen.
 
 ---
 

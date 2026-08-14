@@ -1,13 +1,11 @@
-# 🗄️ REVISI BAB III: ENTITY RELATIONSHIP DIAGRAM (ERD) SUPABASE
+# REVISI BAB III: ENTITY RELATIONSHIP DIAGRAM (ERD) SUPABASE
 
-**File Target:** `docs/06_revisi_sidang_akhir/02_ERD_DATABASE_SUPABASE_BAB3.md`  
-**Topik:** Perancangan Basis Data Relasional Supabase (BaaS)  
-**Catatan Penguji:** *"ERD belum ada (yang di Supabase) BAB 3."*  
-**Update Styling:** Font Mermaid diperbesar (`fontSize: 18px-20px`, *high contrast styling* agar jelas saat di-export ke PNG).
+File Target: docs/06_revisi_sidang_akhir/02_ERD_DATABASE_SUPABASE_BAB3.md  
+Topik: Perancangan Basis Data Relasional Supabase (BaaS)  
+Catatan Penguji: "ERD belum ada (yang di Supabase) BAB 3."  
 
 ---
 
-```markdown
 ================================================================================
 [SIAP COPY-PASTE SKRIPSI] - BAB III SUB-BAB 3.3.3 ENTITY RELATIONSHIP DIAGRAM
 ================================================================================
@@ -16,7 +14,7 @@
 
 Sistem Smart Assistant Lecturer (SAL) menggunakan basis data relasional PostgreSQL yang dikelola melalui Supabase Backend-as-a-Service (BaaS). Perancangan basis data dirancang untuk mendukung tiga alur kerja utama: (1) Pengelolaan parameter tugas dosen dan materi acuan Knowledge Grounding, (2) Pengelolaan berkas jawaban digital mahasiswa dan ekstraksi teks murni, serta (3) Pengelolaan log evaluasi Chain-of-Thought (CoT) AI, skor parsial rubrik, dan riwayat override nilai oleh dosen.
 
-Struktur hubungan antar-entitas basis data disajikan melalui Entity Relationship Diagram (ERD) pada Gambar 3.x (Teks dan elemen ERD telah dioptimasi dengan font HD 18px agar tetap tajam dan jelas saat diekspor ke gambar PNG):
+Struktur hubungan antar-entitas basis data disajikan melalui Entity Relationship Diagram (ERD) pada Gambar 3.x:
 
 ```mermaid
 %%{init: {
@@ -143,4 +141,3 @@ Tabel 3.x Spesifikasi Atribut dan Kamus Data Supabase:
 Perancangan kardinalitas basis data Supabase meliputi relasi 1 to Many (1:N) dari assignments ke rubrics, relasi 1 to Many (1:N) dari assignments ke submissions, relasi 1 to Many (1:N) dari submissions ke rubric_scores, serta relasi 1 to 1 (1:1) dari submissions ke grading_jobs.
 
 ================================================================================
-```

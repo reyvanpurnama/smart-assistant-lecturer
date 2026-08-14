@@ -1,12 +1,10 @@
-# 📊 REVISI BAB IV: ANALISIS MENDALAM HASIL MAE DAN KENDALL'S TAU
+# REVISI BAB IV: ANALISIS MENDALAM HASIL MAE DAN KENDALL'S TAU
 
-**File Target:** `docs/06_revisi_sidang_akhir/04_ANALISIS_MENDALAM_MAE_DAN_KENDALLS_TAU_BAB4.md`  
-**Topik:** Pembahasan Empiris & Penjelasan Matematis/Pedagogis Perubahan Performa dari Binary ke 3-Point Partial Credit  
-**Catatan Penguji:** *"Tambahkan analisis hasil MAE. Jelaskan perhitungan Kendall's Tau. (Intinya apa faktor utama kok bisa dari binary ke 3-point partial credit berpengaruh drastis terhadap hasil nilainya)."*
+File Target: docs/06_revisi_sidang_akhir/04_ANALISIS_MENDALAM_MAE_DAN_KENDALLS_TAU_BAB4.md  
+Topik: Pembahasan Empiris & Penjelasan Matematis/Pedagogis Perubahan Performa dari Binary ke 3-Point Partial Credit  
 
 ---
 
-```markdown
 ================================================================================
 [SIAP COPY-PASTE SKRIPSI] - BAB IV SUB-BAB 4.4 & 4.5 PEMBAHASAN MENDALAM HASIL MAE & KENDALL'S TAU
 ================================================================================
@@ -39,11 +37,7 @@ a. Mereduksi Kesalahan Fisik Skor (MAE): Skor AI untuk mahasiswa dengan typo min
 b. Meningkatkan Keselarasan Peringkat (Kendall's Tau): Urutan peringkat mahasiswa yang memiliki pemahaman logika lebih baik secara konsisten ditempatkan di atas mahasiswa yang kurang paham. Pasangan sejalan (Concordant Pairs / P) melonjak hingga 379 pasang dari total 528 pasangan kombinasi. Hal ini meningkatkan koefisien Kendall's Tau (tau_b) sebesar +75.5% menjadi 0.7724 (keselarasan hirarki peringkat sangat kuat).
 
 ================================================================================
-```
 
----
-
-```markdown
 ================================================================================
 [SIAP COPY-PASTE SKRIPSI] - BAB IV SUB-BAB 4.3 PERHITUNGAN KENDALL'S TAU-B & MAE STEP-BY-STEP
 ================================================================================
@@ -82,4 +76,3 @@ B. Perhitungan Step-by-Step Mean Absolute Error (MAE)
 Perhitungan ini membuktikan secara kuantitatif bahwa rata-rata deviasi kesalahan fisik skor AI terhadap ground truth dosen hanya sebesar 5.45 poin (skala 0-100), yang mengindikasikan tingkat presisi evaluasi yang sangat baik.
 
 ================================================================================
-```

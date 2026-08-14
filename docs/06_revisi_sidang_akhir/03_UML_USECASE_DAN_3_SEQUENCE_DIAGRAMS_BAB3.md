@@ -1,15 +1,10 @@
-# 📐 REVISI BAB III: USE CASE & 3 SEQUENCE DIAGRAMS TERPISAH
+# REVISI BAB III: USE CASE & 3 SEQUENCE DIAGRAMS TERPISAH
 
-**File Target:** `docs/06_revisi_sidang_akhir/03_UML_USECASE_DAN_3_SEQUENCE_DIAGRAMS_BAB3.md`  
-**Topik:** Pemodelan UML, Use Case Diagram Halaman, dan 3 Sequence Diagrams Terpisah  
-**Catatan Penguji:**  
-1. *"Use Case Diagram harus sesuai urutan alur kerja di setiap page dosen dan mahasiswa."*  
-2. *"Sequence Diagram masih kurang, harus nyampe ke dosen yang override nilai. Dibikin 3 sequence terpisah: Dosen, Mahasiswa, lalu Dosen lagi."*  
-**Update Layout:** Tata letak Use Case Diagram disempurnakan mengikut standar baku UML (Aktor Dosen di sebelah KIRI sebagai Primary Actor, Aktor Mahasiswa di sebelah KANAN sebagai Secondary Actor, dan System Boundary di TENGAH).
+File Target: docs/06_revisi_sidang_akhir/03_UML_USECASE_DAN_3_SEQUENCE_DIAGRAMS_BAB3.md  
+Topik: Pemodelan UML, Use Case Diagram Halaman, dan 3 Sequence Diagrams Terpisah  
 
 ---
 
-```markdown
 ================================================================================
 [SIAP COPY-PASTE SKRIPSI] - BAB III SUB-BAB 3.3.1 USE CASE DIAGRAM BERBASIS RUTE HALAMAN
 ================================================================================
@@ -29,7 +24,7 @@ Pengelompokan Use Case berdasarkan rute halaman aplikasi direpresentasikan sebag
    a. Halaman /tugas/[id]: Mahasiswa mengunggah berkas dokumen jawaban (.pdf, .docx, .txt).
    b. Halaman /tugas/[id]: Mahasiswa melihat visualisasi skor sementara dan rincian umpan balik formatif per aspek secara responsif.
 
-Diagram Use Case disajikan pada Gambar 3.x (Tata letak mengadopsi standar baku UML: Aktor Kiri = Dosen, Batas Sistem di Tengah, Aktor Kanan = Mahasiswa):
+Diagram Use Case disajikan pada Gambar 3.x:
 
 ```mermaid
 %%{init: {
@@ -46,9 +41,9 @@ Diagram Use Case disajikan pada Gambar 3.x (Tata letak mengadopsi standar baku U
   }
 }}%%
 flowchart LR
-    Dosen(("👨‍🏫 Dosen Pengampu<br/>(Primary Actor)"))
+    Dosen["Dosen Pengampu<br/>(Primary Actor)"]
 
-    subgraph SystemBoundary["Boundaries System: Smart Assistant Lecturer (SAL)"]
+    subgraph SystemBoundary["System Boundary: Smart Assistant Lecturer (SAL)"]
         subgraph DosenPages["Portal Dosen"]
             UC1["Buat Tugas & Grounding Context<br/>(/dosen/buat-tugas)"]
             UC2["Kelola Rubrik 3-Point Partial Credit<br/>(/dosen/buat-tugas)"]
@@ -63,7 +58,7 @@ flowchart LR
         end
     end
 
-    Mahasiswa(("👨‍🎓 Mahasiswa<br/>(Secondary Actor)"))
+    Mahasiswa["Mahasiswa<br/>(Secondary Actor)"]
 
     Dosen --> UC1
     Dosen --> UC2
@@ -71,23 +66,19 @@ flowchart LR
     Dosen --> UC4
     Dosen --> UC5
 
-    UC6 <-- Mahasiswa
-    UC7 <-- Mahasiswa
+    Mahasiswa --> UC6
+    Mahasiswa --> UC7
 ```
 
 ================================================================================
-```
 
----
-
-```markdown
 ================================================================================
 [SIAP COPY-PASTE SKRIPSI] - BAB III SUB-BAB 3.3.2 THREE-STAGE SEQUENCE DIAGRAMS
 ================================================================================
 
 3.3.2. Perancangan Sequence Diagram (Tiga Tahapan Terpisah)
 
-Guna memberikan gambaran eksplisit mengenai interaksi antar-komponen aplikasi, lapisan middleware, basis data Supabase, dan layanan Groq API Cloud, perancangan Sequence Diagram dibagi menjadi 3 tahapan sekuensial terpisah (seluruh diagram dioptimasi dengan font aktor & pesan 18px agar jelas saat diekspor ke gambar):
+Guna memberikan gambaran eksplisit mengenai interaksi antar-komponen aplikasi, lapisan middleware, basis data Supabase, dan layanan Groq API Cloud, perancangan Sequence Diagram dibagi menjadi 3 tahapan sekuensial terpisah:
 
 1. Sequence Diagram 1: Tahap Pembuatan Tugas dan Grounding Dosen (/dosen/buat-tugas)
 Sequence diagram pertama menggambarkan alur kerja Dosen Pengampu saat menerbitkan tugas baru, mengunggah konteks acuan Knowledge Grounding, dan menyimpan kriteria rubrik 3-Point Partial Credit ke basis data Supabase.
@@ -223,4 +214,3 @@ sequenceDiagram
 ```
 
 ================================================================================
-```
