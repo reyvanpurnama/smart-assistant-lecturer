@@ -11,7 +11,7 @@ Topik: Pemodelan UML, Use Case Diagram Halaman, dan 3 Sequence Diagrams Terpisah
 
 3.3.1. Perancangan Use Case Diagram
 
-Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Pemodelan mengadopsi notasi standar UML 2.5 dengan tata letak proporsional: Aktor Dosen Pengampu di sisi KIRI (Primary Actor), Batas Sistem (System Boundary) memuat simbol oval/elips Use Case di TENGAH, dan Aktor Mahasiswa di sisi KANAN (Secondary Actor).
+Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Pemodelan mengadopsi notasi standar UML 2.5 dengan tata letak proporsional 2-kolom kompak: Aktor Dosen Pengampu di sisi kiri, Batas Sistem (System Boundary) di tengah memuat simbol oval/elips Use Case, dan Aktor Mahasiswa di sisi kanan.
 
 Pengelompokan Use Case berdasarkan rute halaman aplikasi direpresentasikan sebagai berikut:
 
@@ -24,7 +24,7 @@ Pengelompokan Use Case berdasarkan rute halaman aplikasi direpresentasikan sebag
    a. Halaman /tugas/[id]: Mahasiswa mengunggah berkas dokumen jawaban (.pdf, .docx, .txt).
    b. Halaman /tugas/[id]: Mahasiswa melihat visualisasi skor sementara dan rincian umpan balik formatif per aspek secara responsif.
 
-Diagram Use Case disajikan pada Gambar 3.x (Layout dioptimasi proporsional horizontal: Dosen di KIRI, System Boundary di TENGAH, Mahasiswa di KANAN, agar pas dan jelas saat dimasukkan ke halaman Word A4):
+Diagram Use Case disajikan pada Gambar 3.x (Layout dioptimasi dalam bentuk 2-kolom kompak proporsional agar tidak gepeng dan pas pada dokumen Word A4):
 
 ```mermaid
 %%{init: {
@@ -40,20 +40,26 @@ Diagram Use Case disajikan pada Gambar 3.x (Layout dioptimasi proporsional horiz
     'clusterBorder': '#0f172a'
   }
 }}%%
-flowchart LR
-    Dosen["Dosen Pengampu<br/>(Primary Actor)"]
-
+flowchart TB
     subgraph SystemBoundary["System Boundary: Smart Assistant Lecturer (SAL)"]
-        direction TB
-        UC1(["Buat Tugas & Grounding Context (/dosen/buat-tugas)"])
-        UC2(["Kelola Rubrik Partial Credit (/dosen/buat-tugas)"])
-        UC3(["Lihat Dashboard Rekap Submisi (/dosen)"])
-        UC4(["Review Log Justifikasi CoT AI (/dosen/validasi/id)"])
-        UC5(["Koreksi & Override Nilai Manual (/dosen/validasi/id)"])
-        UC6(["Unggah Berkas Jawaban Mahasiswa (/tugas/id)"])
-        UC7(["Lihat Feedback Formatif & Skor (/tugas/id)"])
+        direction LR
+        subgraph DosenCases["Fitur Dosen"]
+            direction TB
+            UC1(["Buat Tugas & Grounding"])
+            UC2(["Kelola Rubrik Penilaian"])
+            UC3(["Lihat Dashboard Submisi"])
+            UC4(["Review Justifikasi CoT AI"])
+            UC5(["Koreksi & Override Nilai"])
+        end
+
+        subgraph StudentCases["Fitur Mahasiswa"]
+            direction TB
+            UC6(["Unggah Berkas Jawaban"])
+            UC7(["Lihat Feedback & Skor"])
+        end
     end
 
+    Dosen["Dosen Pengampu<br/>(Primary Actor)"]
     Mahasiswa["Mahasiswa<br/>(Secondary Actor)"]
 
     Dosen --- UC1
