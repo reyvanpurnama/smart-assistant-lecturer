@@ -11,66 +11,66 @@ Topik: Pemodelan UML, Use Case Diagram Halaman, dan 3 Sequence Diagrams Terpisah
 
 3.3.1. Perancangan Use Case Diagram
 
-Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Aktor utama dalam sistem ini terbagi menjadi dua: Dosen Pengampu sebagai Primary Actor (Evaluator/Administrator) di posisi atas, dan Mahasiswa sebagai Secondary Actor di posisi bawah.
+Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Pemodelan mengadopsi notasi standar UML 2.5: Aktor Dosen Pengampu di sisi kiri, Batas Sistem (System Boundary) di tengah memuat simbol oval/elips Use Case, dan Aktor Mahasiswa di sisi kanan.
 
 Pengelompokan Use Case berdasarkan rute halaman aplikasi direpresentasikan sebagai berikut:
 
-1. Aktor Dosen Pengampu (Primary Actor - Posisi Atas):
+1. Aktor Dosen Pengampu (Primary Actor - Sisi Kiri):
    a. Halaman /dosen/buat-tugas: Dosen menginput naskah soal esai, mengunggah dokumen referensi acuan Knowledge Grounding, dan menguraikan kriteria rubrik 3-Point Partial Credit.
    b. Halaman /dosen: Dosen memantau dashboard rekapitulasi nilai, status pemeriksaan, dan daftar submisi mahasiswa.
    c. Halaman /dosen/validasi/[id]: Dosen mengulas (review) log penalaran Chain-of-Thought (CoT) AI, melakukan koreksi/override nilai manual, serta memfinalisasi status nilai.
 
-2. Aktor Mahasiswa (Secondary Actor - Posisi Bawah):
+2. Aktor Mahasiswa (Secondary Actor - Sisi Kanan):
    a. Halaman /tugas/[id]: Mahasiswa mengunggah berkas dokumen jawaban (.pdf, .docx, .txt).
    b. Halaman /tugas/[id]: Mahasiswa melihat visualisasi skor sementara dan rincian umpan balik formatif per aspek secara responsif.
 
-Diagram Use Case disajikan pada Gambar 3.x (Urutan aktor diatur secara hierarkis: Dosen Pengampu di bagian atas, System Boundary di tengah, dan Mahasiswa di bagian bawah):
+Diagram Use Case disajikan pada Gambar 3.x (Notasi mengadopsi bentuk elips/oval baku UML 2.5 dengan garis asosiasi tanpa panah antara aktor dan use case):
 
 ```mermaid
 %%{init: {
   'theme': 'base',
   'themeVariables': {
     'fontFamily': 'Arial, sans-serif',
-    'fontSize': '18px',
-    'primaryColor': '#e0e7ff',
+    'fontSize': '16px',
+    'primaryColor': '#ffffff',
     'primaryTextColor': '#0f172a',
-    'primaryBorderColor': '#3730a3',
-    'lineColor': '#4338ca',
-    'clusterBkg': '#f8fafc',
-    'clusterBorder': '#64748b'
+    'primaryBorderColor': '#0f172a',
+    'lineColor': '#334155',
+    'clusterBkg': '#ffffff',
+    'clusterBorder': '#0f172a'
   }
 }}%%
-flowchart TB
+flowchart LR
     Dosen["Dosen Pengampu<br/>(Primary Actor)"]
 
     subgraph SystemBoundary["System Boundary: Smart Assistant Lecturer (SAL)"]
         direction TB
         subgraph DosenPages["Portal Dosen"]
             direction TB
-            UC1["Buat Tugas & Grounding Context<br/>(/dosen/buat-tugas)"]
-            UC2["Kelola Rubrik 3-Point Partial Credit<br/>(/dosen/buat-tugas)"]
-            UC3["Lihat Dashboard Rekap Submisi<br/>(/dosen)"]
-            UC4["Review Log Justifikasi CoT AI<br/>(/dosen/validasi/id)"]
-            UC5["Koreksi / Override Nilai Manual<br/>(/dosen/validasi/id)"]
+            UC1(["Buat Tugas & Grounding Context<br/>(/dosen/buat-tugas)"])
+            UC2(["Kelola Rubrik 3-Point Partial Credit<br/>(/dosen/buat-tugas)"])
+            UC3(["Lihat Dashboard Rekap Submisi<br/>(/dosen)"])
+            UC4(["Review Log Justifikasi CoT AI<br/>(/dosen/validasi/id)"])
+            UC5(["Koreksi / Override Nilai Manual<br/>(/dosen/validasi/id)"])
         end
 
         subgraph StudentPages["Portal Mahasiswa"]
             direction TB
-            UC6["Unggah Berkas Jawaban<br/>(/tugas/id)"]
-            UC7["Lihat Feedback Formatif & Skor<br/>(/tugas/id)"]
+            UC6(["Unggah Berkas Jawaban<br/>(/tugas/id)"])
+            UC7(["Lihat Feedback Formatif & Skor<br/>(/tugas/id)"])
         end
     end
 
     Mahasiswa["Mahasiswa<br/>(Secondary Actor)"]
 
-    Dosen --> UC1
-    Dosen --> UC2
-    Dosen --> UC3
-    Dosen --> UC4
-    Dosen --> UC5
+    Dosen --- UC1
+    Dosen --- UC2
+    Dosen --- UC3
+    Dosen --- UC4
+    Dosen --- UC5
 
-    Mahasiswa --> UC6
-    Mahasiswa --> UC7
+    UC6 --- Mahasiswa
+    UC7 --- Mahasiswa
 ```
 
 ================================================================================
