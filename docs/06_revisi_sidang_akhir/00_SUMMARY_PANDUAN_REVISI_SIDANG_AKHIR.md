@@ -12,11 +12,12 @@ Seluruh dokumen di folder docs/06_revisi_sidang_akhir/ telah dilengkapi dengan B
 
 | No | Nama Berkas | Bab Target | Deskripsi Isi & Box Copy-Paste |
 | :---: | :--- | :---: | :--- |
-| 1 | 01_REVISED_METODOLOGI_WATERFALL_DAN_EKSPERIMEN_BAB3.md | Bab III.1 & III.4 | Landasan sitasi resmi (Pressman & Maxim 2019, Yeung 2025) dan Naskah Siap Tempel Alur Penelitian Waterfall SDLC + Eksperimen Komparasi AI (menggantikan istilah Prototyping di 3.4.1). |
+| 1 | 01_REVISED_METODOLOGI_WATERFALL_DAN_EKSPERIMEN_BAB3.md | Bab III.1 & III.4 | Landasan sitasi resmi (Pressman & Maxim 2019, Yeung 2025) dan Naskah Siap Tempel Alur Penelitian Waterfall SDLC + Eksperimen Komparasi AI. |
 | 2 | 02_ERD_DATABASE_SUPABASE_BAB3.md | Bab III.3.3 | Naskah Siap Tempel Perancangan ERD Supabase (Mermaid Diagram + Kamus Data 5 Tabel Utama). |
-| 3 | 03_UML_USECASE_DAN_3_SEQUENCE_DIAGRAMS_BAB3.md | Bab III.3.1 & III.3.2 | Naskah Siap Tempel Use Case Diagram Halaman (UML Oval 2-kolom kompak) dan 3 Sequence Diagrams Terpisah (Dosen Buat Tugas, Mahasiswa Submit AI, Dosen Validasi/Override). |
+| 3 | 03_UML_USECASE_DAN_3_SEQUENCE_DIAGRAMS_BAB3.md | Bab III.3.1 & III.3.2 | Naskah Siap Tempel Use Case Diagram Halaman (UML Oval 2-kolom kompak) dan 3 Sequence Diagrams Terpisah. |
 | 4 | 04_ANALISIS_MENDALAM_MAE_DAN_KENDALLS_TAU_BAB4.md | Bab IV.3, IV.4, IV.5 | Naskah Siap Tempel Perhitungan Step-by-Step Tau-b & MAE serta Pembahasan Kasus Empiris Riil 33 Mahasiswa Supabase (NIM 230102004, 230102033, 230102052, 230102031). |
-| 5 | 05_REVISI_DETAIL_DIAGRAM_PROMPT_DAN_CLEANSING_BAB3_BAB4.md | Bab III & Bab IV | Jawaban Lengkap 6 Catatan Sidang Tambahan: (1) Asal-usul P=379, (2) Alasan Data Cleansing hemat token, (3) Bedah Perbedaan Context vs Soal_Esai, (4) Bedah Class Diagram vs ERD, (5) Pemindahan Use Case ke 3.3.1. |
+| 5 | 05_REVISI_DETAIL_DIAGRAM_PROMPT_DAN_CLEANSING_BAB3_BAB4.md | Bab III & Bab IV | Jawaban Lengkap 6 Catatan Sidang Tambahan: (1) Asal-usul P=379, (2) Data Cleansing, (3) Context vs Soal_Esai, (4) Class Diagram vs ERD, (5) Perpindahan Use Case. |
+| 6 | 06_REVISI_TABEL_IKHTISAR_PENELITIAN_BAB2.md | Bab II.2 | Naskah Siap Tempel Tabel 2.1 Ikhtisar Penelitian Terdahulu versi 4-Kolom Ringkas (Format Portrait A4, Bebas Landscape, Ber-bullet Point). |
 
 ---
 
@@ -30,10 +31,6 @@ CARA MENJAWAB PERTANYAAN DOSEN PENGUJI SAAT ASISTENSI REVISI
    Jawaban Reyvan:  
    "SOAL_ESAI adalah naskah instrumen pertanyaan mahasiswa, sedangkan CONTEXT adalah acuan Knowledge Grounding (kunci jawaban dosen, modul praktikum, dan batas toleransi variasi sintaksis). Pemisahan header di prompt modular ini wajib hukumnya untuk memitigasi Prompt Ambiguity agar AI tidak membocorkan kunci jawaban ke feedback mahasiswa."
 
-3. Pertanyaan: "Kenapa perlu ada modul Data Cleansing di Gambar 3.2?"  
+3. Pertanyaan: "Kenapa Tabel 2.1 Ikhtisar Penelitian diubah jadi 4 kolom?"  
    Jawaban Reyvan:  
-   "Ada 3 alasan teknis Pak/Bu: (1) Menghemat token hingga 20-30% dengan memangkas newline ganda (\r\n) dan spasi berlebih, (2) Mencegah error JSON.parse akibat karakter kontrol non-printable (\x00-\x1F) bawaan file PDF, dan (3) Menyeragamkan format teks agar penalaran CoT AI murni berfokus pada logika."
-
-4. Pertanyaan: "Apa bedanya Class Diagram dengan ERD di Bab 3?"  
-   Jawaban Reyvan:  
-   "ERD memodelkan penyimpan data permanen (PostgreSQL/Supabase Database Layer) mencakup 5 tabel. Sedangkan Class Diagram memodelkan struktur kelas & TypeScript Interfaces di dalam kode aplikasi Next.js (Application Logic Layer) seperti PromptComposer dan TextParser."
+   "Tabel disederhanakan menjadi 4 kolom ber-bullet point agar dapat dimuat secara proporsional dalam format Portrait A4 tanpa harus memutar halaman menjadi Landscape, dengan tetap mempertahankan seluruh poin inti fokus, metode, hasil utama, dan aspek yang diadopsi dari 6 literatur acuan utama."
