@@ -12,23 +12,28 @@ Seluruh dokumen di folder docs/06_revisi_sidang_akhir/ telah dilengkapi dengan B
 
 | No | Nama Berkas | Bab Target | Deskripsi Isi & Box Copy-Paste |
 | :---: | :--- | :---: | :--- |
-| 1 | 01_REVISED_METODOLOGI_WATERFALL_DAN_EKSPERIMEN_BAB3.md | Bab III.1 | Landasan sitasi resmi (Pressman & Maxim 2019, Sommerville 2016, Yeung 2025) dan Naskah Siap Tempel Alur Penelitian Waterfall SDLC + Eksperimen Komparasi AI. |
+| 1 | 01_REVISED_METODOLOGI_WATERFALL_DAN_EKSPERIMEN_BAB3.md | Bab III.1 & III.4 | Landasan sitasi resmi (Pressman & Maxim 2019, Yeung 2025) dan Naskah Siap Tempel Alur Penelitian Waterfall SDLC + Eksperimen Komparasi AI (menggantikan istilah Prototyping di 3.4.1). |
 | 2 | 02_ERD_DATABASE_SUPABASE_BAB3.md | Bab III.3.3 | Naskah Siap Tempel Perancangan ERD Supabase (Mermaid Diagram + Kamus Data 5 Tabel Utama). |
-| 3 | 03_UML_USECASE_DAN_3_SEQUENCE_DIAGRAMS_BAB3.md | Bab III.3.1 & III.3.2 | Naskah Siap Tempel Use Case Diagram Halaman dan 3 Sequence Diagrams Terpisah (Dosen Buat Tugas, Mahasiswa Submit AI, Dosen Validasi/Override). |
-| 4 | 04_ANALISIS_MENDALAM_MAE_DAN_KENDALLS_TAU_BAB4.md | Bab IV.3, IV.4, IV.5 | Naskah Siap Tempel Perhitungan Step-by-Step Tau-b & MAE serta Pembahasan 3 Faktor Utama Penyebab Perubahan Performa Signifikan dari Binary ke Partial Credit. |
+| 3 | 03_UML_USECASE_DAN_3_SEQUENCE_DIAGRAMS_BAB3.md | Bab III.3.1 & III.3.2 | Naskah Siap Tempel Use Case Diagram Halaman (UML Oval 2-kolom kompak) dan 3 Sequence Diagrams Terpisah (Dosen Buat Tugas, Mahasiswa Submit AI, Dosen Validasi/Override). |
+| 4 | 04_ANALISIS_MENDALAM_MAE_DAN_KENDALLS_TAU_BAB4.md | Bab IV.3, IV.4, IV.5 | Naskah Siap Tempel Perhitungan Step-by-Step Tau-b & MAE serta Pembahasan Kasus Empiris Riil 33 Mahasiswa Supabase (NIM 230102004, 230102033, 230102052, 230102031). |
+| 5 | 05_REVISI_DETAIL_DIAGRAM_PROMPT_DAN_CLEANSING_BAB3_BAB4.md | Bab III & Bab IV | Jawaban Lengkap 6 Catatan Sidang Tambahan: (1) Asal-usul P=379, (2) Alasan Data Cleansing hemat token, (3) Bedah Perbedaan Context vs Soal_Esai, (4) Bedah Class Diagram vs ERD, (5) Pemindahan Use Case ke 3.3.1. |
 
 ---
 
 CARA MENJAWAB PERTANYAAN DOSEN PENGUJI SAAT ASISTENSI REVISI
 
-1. Pertanyaan: "Metode SDLC-nya kemarin kan diprotes, sekarang pakai apa?"  
+1. Pertanyaan: "Ini angka P = 379 pasang, Q = 28, MAE 179.85 dapat dari mana?"  
    Jawaban Reyvan:  
-   "Untuk pengembangan aplikasi web SAL-nya kami menggunakan Waterfall Model (Pressman & Maxim, 2019), Pak/Bu. Karena spesifikasi kebutuhan sistem decoupled kami (Next.js, Supabase, Groq API) sudah terdefinisi secara sistematis dari analisis kebutuhan hingga implementasi."
+   "Dari N = 33 mahasiswa retrospektif di Supabase, total pasangan kombinasi adalah N(N-1)/2 = 528 pasang. Dari 528 pasangan tersebut, dihitung perbandingan selisih skor Dosen vs AI: 379 pasang sejalan (Concordant / P), 28 pasang berlawanan (Discordant / Q), 71 pasang ties dosen (Tx), 21 pasang ties AI (Ty), dan 29 pasang ties keduanya (Txy). Perhitungan ini dieksekusi secara presisi menggunakan modul scipy.stats.kendalltau."
 
-2. Pertanyaan: "Terus perubahan Binary ke 3-Point Partial Credit itu masuknya ke mana?"  
+2. Pertanyaan: "Kenapa elemen CONTEXT dan SOAL_ESAI dipisah di Gambar 3.3?"  
    Jawaban Reyvan:  
-   "Itu masuk ke Experimental Evaluation Scheme di bagian Pengujian Modul AI (Yeung, 2025; Chen & Wan, 2024), Pak/Bu. Kami melakukan A/B Testing eksperimen komparasi untuk mengukur sejauh mana skema rubrik parsial memitigasi catastrophic penalty pada jawaban mahasiswa."
+   "SOAL_ESAI adalah naskah instrumen pertanyaan mahasiswa, sedangkan CONTEXT adalah acuan Knowledge Grounding (kunci jawaban dosen, modul praktikum, dan batas toleransi variasi sintaksis). Pemisahan header di prompt modular ini wajib hukumnya untuk memitigasi Prompt Ambiguity agar AI tidak membocorkan kunci jawaban ke feedback mahasiswa."
 
-3. Pertanyaan: "Kenapa dari biner ke partial credit MAE-nya bisa turun drastis dan Kendall's Tau-nya bisa naik tinggi?"  
+3. Pertanyaan: "Kenapa perlu ada modul Data Cleansing di Gambar 3.2?"  
    Jawaban Reyvan:  
-   "Skema biner memicu catastrophic penalty (kesalahan minor/typo langsung diberi skor 0), sehingga nilai AI anjlok dan mengacak urutan peringkat mahasiswa. Dengan 3-Point Partial Credit + CoT, AI memberikan skor parsial 50 poin pada logika yang benar, sehingga selisih error fisik MAE berkurang drastis dari 18.33 ke 5.45 poin, dan urutan peringkat sejalan dengan dosen (Kendall's Tau naik dari 0.4400 ke 0.7724)."
+   "Ada 3 alasan teknis Pak/Bu: (1) Menghemat token hingga 20-30% dengan memangkas newline ganda (\r\n) dan spasi berlebih, (2) Mencegah error JSON.parse akibat karakter kontrol non-printable (\x00-\x1F) bawaan file PDF, dan (3) Menyeragamkan format teks agar penalaran CoT AI murni berfokus pada logika."
+
+4. Pertanyaan: "Apa bedanya Class Diagram dengan ERD di Bab 3?"  
+   Jawaban Reyvan:  
+   "ERD memodelkan penyimpan data permanen (PostgreSQL/Supabase Database Layer) mencakup 5 tabel. Sedangkan Class Diagram memodelkan struktur kelas & TypeScript Interfaces di dalam kode aplikasi Next.js (Application Logic Layer) seperti PromptComposer dan TextParser."
