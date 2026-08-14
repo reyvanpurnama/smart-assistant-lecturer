@@ -8,17 +8,27 @@
 
 ---
 
-## 📍 1. USE CASE DIAGRAM BERBASIS HALAMAN SISTEM
+```markdown
+================================================================================
+[SIAP COPY-PASTE SKRIPSI] - BAB III SUB-BAB 3.3.1 USE CASE DIAGRAM BERBASIS RUTE HALAMAN
+================================================================================
 
-### Pemetaan Halaman Aplikasi & Aktor:
-- **Aktor Dosen:**
-  - Halaman `/dosen/buat-tugas`: Membuat tugas, mengunggah materi referensi *Knowledge Grounding*, menetapkan bobot rubrik.
-  - Halaman `/dosen`: Memantau *dashboard* rekapitulasi nilai dan status pemeriksaan.
-  - Halaman `/dosen/validasi/[id]`: Meninjau log penalaran CoT AI, melakukan *override* nilai manual, serta memfinalisasi status nilai.
-- **Aktor Mahasiswa:**
-  - Halaman `/tugas/[id]`: Mengunggah berkas jawaban (.pdf, .docx, .txt), memicu eksekusi *pipeline* AI middleware, dan melihat umpan balik formatif *real-time*.
+3.3.1. Perancangan Use Case Diagram
 
-### Mermaid Diagram: Use Case System SAL
+Perancangan Use Case Diagram disesuaikan secara presisi dengan arsitektur antarmuka dan alur kerja pengguna pada setiap rute halaman aplikasi Smart Assistant Lecturer (SAL). Aktor utama dalam sistem ini terbagi menjadi dua, yaitu Dosen Pengampu (Evaluator/Administrator) dan Mahasiswa (User).
+
+Pengelompokan Use Case berdasarkan rute halaman aplikasi direpresentasikan sebagai berikut:
+
+1. Aktor Dosen Pengampu:
+   a. Halaman /dosen/buat-tugas: Dosen menginput naskah soal esai, mengunggah dokumen referensi acuan Knowledge Grounding, dan menguraikan kriteria rubrik 3-Point Partial Credit.
+   b. Halaman /dosen: Dosen memantau dashboard rekapitulasi nilai, status pemeriksaan, dan daftar submisi mahasiswa.
+   c. Halaman /dosen/validasi/[id]: Dosen mengulas (review) log penalaran Chain-of-Thought (CoT) AI, melakukan koreksi/override nilai manual, serta memfinalisasi status nilai.
+
+2. Aktor Mahasiswa:
+   a. Halaman /tugas/[id]: Mahasiswa mengunggah berkas dokumen jawaban (.pdf, .docx, .txt).
+   b. Halaman /tugas/[id]: Mahasiswa melihat visualisasi skor sementara dan rincian umpan balik formatif per aspek secara responsif.
+
+Diagram Use Case disajikan pada Gambar 3.x:
 
 ```mermaid
 flowchart LR
@@ -48,11 +58,22 @@ flowchart LR
     Mahasiswa --> UC7
 ```
 
+================================================================================
+```
+
 ---
 
-## 🔄 2. SEQUENCE DIAGRAM TERPISAH 1: DOSEN (PEMBUATAN TUGAS & GROUNDING)
+```markdown
+================================================================================
+[SIAP COPY-PASTE SKRIPSI] - BAB III SUB-BAB 3.3.2 THREE-STAGE SEQUENCE DIAGRAMS
+================================================================================
 
-*Fokus: Alur Dosen membuat instrumen soal, mengunggah materi acuan grounding, dan mengunci kriteria rubrik di Supabase.*
+3.3.2. Perancangan Sequence Diagram (Tiga Tahapan Terpisah)
+
+Guna memberikan gambaran eksplisit mengenai interaksi antar-komponen aplikasi, lapisan middleware, basis data Supabase, dan layanan Groq API Cloud, perancangan Sequence Diagram dibagi menjadi 3 tahapan sekuensial terpisah:
+
+1. Sequence Diagram 1: Tahap Pembuatan Tugas dan Grounding Dosen (/dosen/buat-tugas)
+Sequence diagram pertama menggambarkan alur kerja Dosen Pengampu saat menerbitkan tugas baru, mengunggah konteks acuan Knowledge Grounding, dan menyimpan kriteria rubrik 3-Point Partial Credit ke basis data Supabase.
 
 ```mermaid
 sequenceDiagram
@@ -73,11 +94,8 @@ sequenceDiagram
     FE-->>Dosen: Tampilkan Notifikasi "Tugas Berhasil Dipublikasikan"
 ```
 
----
-
-## 🔄 3. SEQUENCE DIAGRAM TERPISAH 2: MAHASISWA (SUBMISI & PIPELINE EVALUASI AI)
-
-*Fokus: Alur Mahasiswa mengunggah jawaban, eksekusi ekstraksi teks middleware, inferensi Groq LLM (GPT-OSS 120B), komputasi skor, dan penyampaian feedback.*
+2. Sequence Diagram 2: Tahap Submisi Mahasiswa dan Pipeline Evaluasi AI Engine (/tugas/[id])
+Sequence diagram kedua menggambarkan alur kerja Mahasiswa saat mengunggah berkas jawaban, dilanjutkan dengan eksekusi pipeline middleware (cleansing teks regex, perakitan prompt modular), inferensi ke Groq API Cloud (model GPT-OSS 120B), komputasi skor terbobot, hingga penyimpanan log justifikasi CoT ke Supabase.
 
 ```mermaid
 sequenceDiagram
@@ -105,11 +123,8 @@ sequenceDiagram
     FE-->>Mahasiswa: Visualisasi Skor Sementara & Log Feedback Formatif
 ```
 
----
-
-## 🔄 4. SEQUENCE DIAGRAM TERPISAH 3: DOSEN (VALIDASI, REVIEW COT, & OVERRIDE NILAI)
-
-*Fokus: Alur Dosen meninjau hasil AI, mengevaluasi justifikasi CoT, melakukan koreksi/override nilai manual jika diperlukan, dan memfinalisasi nilai resmi.*
+3. Sequence Diagram 3: Tahap Validasi, Review CoT, dan Override Nilai Manual Dosen (/dosen/validasi/[id])
+Sequence diagram ketiga menggambarkan alur kerja Dosen Pengampu saat membuka halaman validasi untuk meninjau log penalaran CoT AI. Apabila terdapat ketidaksesuaian penilaian, Dosen dapat melakukan override nilai secara manual dan menyimpan catatan justifikasi resmi ke basis data Supabase.
 
 ```mermaid
 sequenceDiagram
@@ -139,8 +154,5 @@ sequenceDiagram
     FE-->>Dosen: Tampilkan Label Status "Nilai Terverifikasi / Overridden"
 ```
 
----
-
-## 📌 PENJELASAN INTEGRASI DIAGRAM UNTUK NASKAH SKRIPSI
-1. **Pemisahan 3 Sequence Diagram** memberikan kejelasan arsitektur yang sangat tinggi. Penguji dapat melihat dengan jelas batasan antara tahap *authoring* (Dosen), tahap *automated inference* (Mahasiswa & AI Engine), serta tahap *human-in-the-loop control* (Validasi & Override Dosen).
-2. **Override Mechanism** pada Diagram 3 membuktikan secara eksplisit bahwa otoritas penilaian akademik tetap 100% berada di tangan dosen pengampu, sehingga menjawab rumusan masalah mengenai kendali kaku rubrik dosen.
+================================================================================
+```
