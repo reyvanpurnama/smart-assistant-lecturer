@@ -48,3 +48,33 @@ Tahapan alur penelitian dilaksanakan melalui 5 fase utama sebagai berikut:
 
 ================================================================================
 ```
+
+---
+
+```markdown
+================================================================================
+[SIAP COPY-PASTE SKRIPSI] - BAB III SUB-BAB 3.4 PENGUJIAN SISTEM DAN SKEMA EKSPERIMEN AI
+================================================================================
+
+3.4. Pengujian Sistem dan Skema Eksperimen AI
+
+Pengujian keandalan sistem Smart Assistant Lecturer (SAL) dibagi menjadi dua fokus pengujian utama: (1) Pengujian Fungsionalitas Aplikasi untuk memverifikasi integrasi antarmuka Next.js, middleware, basis data Supabase, dan API Groq, serta (2) Eksperimen Komparasi Skema Penilaian AI untuk mengukur akurasi dan keselarasan keluaran nilai AI terhadap standar dosen pengampu.
+
+3.4.1. Skema Eksperimen Komparasi Modul Penilaian AI (A/B Testing Skema Rubrik)
+
+Eksperimen komparatif dilakukan dengan menguji dua skema rubrik penilaian pada lapisan middleware terhadap korpus data retrospektif N = 33 dokumen jawaban mahasiswa (Kelas IF23A - Mata Kuliah Basis Data Lanjut):
+
+1. Skema Binary Scoring (Baseline Scoring - 0/100):
+   Modul AI diuji menggunakan skema biner kaku (skor 0 atau 100) pada setiap aspek rubrik sebagai acuan baseline paling sederhana guna menguji kemampuan inferensi dasar model GPT-OSS 120B dalam mengenali kriteria rubrik dosen.
+
+2. Skema 3-Point Partial Credit Rubric (Gradated Rubric - 0, 50, 100):
+   Modul AI disempurnakan dengan menerapkan 3-Point Partial Credit Rubric (skor 0 untuk salah total, 50 untuk kebenaran logika utama dengan kelalaian minor, dan 100 untuk kebenaran sempurna). Skema bergradasi ini dipadukan dengan teknik Chain-of-Thought (CoT) Reasoning pada elemen [TASK] middleware guna mengakomodasi kebenaran logika parsial mahasiswa secara objektif (Chen & Wan, 2024; Masters, 1982).
+
+3.4.2. Metode Analisis Data Statistik
+
+Analisis keandalan dilakukan dengan membandingkan nilai keluaran modul AI (yhat_i) terhadap nilai asli manual dosen (yi) pada sampel retrospektif N = 33 mahasiswa. Metrik kuantitatif yang digunakan adalah:
+1. Kendall's Tau-b (tau_b): Digunakan untuk mengukur tingkat keselarasan hirarki peringkat (Rank Order Alignment) logika penalaran AI terhadap standar dosen (Bhat & Varma, 2026).
+2. Mean Absolute Error (MAE): Digunakan untuk mengukur besarnya rata-rata deviasi kesalahan fisik skor prediksi AI terhadap nilai aktual dosen dalam satuan poin asli 0-100 (Yeung, 2025).
+
+================================================================================
+```
